@@ -30,10 +30,19 @@
 ## 2026-09-09 — Freeze dataset, split, session, and model protocol
 
 - Decision: the user approved all eight recommendations/questions recorded in
-  the initial assessment, with Junyi multi-tag wording but a general
-  deterministic composite-tag rule appropriate wherever tags are multi-valued.
+  the initial assessment. The explicit multi-tag directive names Junyi.
 - Evidence: [USER_DIRECTIVES.md](USER_DIRECTIVES.md), section “Approved
   scientific protocol,” and the active user message.
-- Consequence: implementation may begin. Genuine EdNet-KT1 acquisition and
-  schema verification is the first bounded stage; legacy Riiid/`ednetnew.csv`
-  outputs remain excluded from final results.
+- Consequence: genuine EdNet-KT1 acquisition and schema verification may begin;
+  legacy Riiid/`ednetnew.csv` outputs remain excluded from final results. Skill
+  mapping implementation must wait for clarification because official EdNet is
+  multi-tag while the supplied Junyi schema is single-skill.
+
+## 2026-09-09 — Publish private checkpoints to capstone-gpu
+
+- Decision: create private repository `Tanishgupta28/capstone-gpu` and push
+  cohesive code and project-memory checkpoints to its `main` branch.
+- Evidence: explicit user authorization and successful GitHub push of commit
+  `88aef9f`.
+- Consequence: `origin` remains the read-only conceptual upstream and remote
+  `capstone-gpu` is the project publication/checkpoint destination.

@@ -29,7 +29,9 @@ The user explicitly requested use of `Fyxod/durable-agent-memory`. This
 material boundaries, preserve failed/superseded work, and keep unsupported
 plans distinct from validated outcomes.
 
-No user authorization to push commits or publish artifacts has been recorded.
+The user authorized creation of private repository
+`Tanishgupta28/capstone-gpu` and periodic pushes of relevant code and project
+memory at sensible checkpoints. Raw datasets remain local and ignored.
 
 ## 2026-09-09 — Approved scientific protocol
 
@@ -39,8 +41,9 @@ The user approved all of the following as binding implementation decisions:
   metadata. Keep `ednetnew.csv` only as a legacy reduced/debugging experiment.
 - Use the full 14.66M-row Junyi file for final runs; use the 1M subset only for
   smoke tests and pipeline debugging.
-- Represent each complete sorted multi-tag set as one deterministic composite
-  skill ID; never expand an interaction into multiple rows.
+- For Junyi multi-tag questions, represent the complete sorted tag set as one
+  deterministic composite skill ID; never expand an interaction into multiple
+  rows.
 - Define sessions using a 10-hour inactivity threshold.
 - Exclude students with fewer than five sessions, then use chronological
   per-student 60/20/20 session splits with rolling past-only history.

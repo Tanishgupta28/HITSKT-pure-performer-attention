@@ -1,0 +1,79 @@
+# EdNet-KT1 provenance and schema
+
+Status: acquired and integrity-validated on 2026-09-09 UTC. Raw archives are
+local, ignored, and are not committed to Git.
+
+## Authoritative source
+
+- Project: [riiid/ednet](https://github.com/riiid/ednet)
+- Inspected source revision:
+  [`27db572eeaf4455a1f6c029ba27e34f78bb49d73`](https://github.com/riiid/ednet/tree/27db572eeaf4455a1f6c029ba27e34f78bb49d73)
+- KT1 link published by the project: `http://bit.ly/ednet_kt1`
+- Resolved Google Drive object ID: `1AmGcOs5U31wIIqvthn9ARqJMrMTFTcaw`
+- Contents link published by the project: `http://bit.ly/ednet-content`
+- Resolved Google Drive object ID: `117aYJAWG3GU48suS66NPaB82HwFj6xWS`
+
+## Verified artifacts
+
+| Artifact | Bytes | SHA-256 | Integrity result |
+| --- | ---: | --- | --- |
+| `EdNet-KT1.zip` | 1,201,163,816 | `0d13933f90201c5101c7fe8659e44474fa049e3fb93181a8ba6fb3e63267b535` | Full `unzip -tqq` passed |
+| `EdNet-Contents.zip` | 173,976 | `aa910a0436d9dbac0ba232f55e27b37ad8d39da285fcf15f1c1eb5d064be98e7` | Full `unzip -t` passed |
+
+`EdNet-KT1.zip` contains exactly 784,309 non-directory student CSV members,
+matching the official repository. Their summed uncompressed member size is
+3,072,366,053 bytes. Member paths have the form `KT1/u{integer}.csv`.
+
+## Interaction schema
+
+Every inspected student member uses this header:
+
+```text
+timestamp,solving_id,question_id,user_answer,elapsed_time
+```
+
+- `timestamp`: Unix timestamp in milliseconds, shifted for privacy by the
+  dataset publisher.
+- `solving_id`: one-based identifier for a delivered question bundle. The
+  official documentation calls this a learning session, but it is not the
+  project's inactivity-derived session ID and is not a unique event index.
+- `question_id`: `q{integer}` identifier joined to `questions.csv`.
+- `user_answer`: submitted choice `a` through `d`.
+- `elapsed_time`: time spent on the question in milliseconds.
+- Student identity: derived from the member filename `u{integer}.csv`.
+
+Correctness is not stored in KT1. It will be derived deterministically as
+`user_answer == correct_answer` after a validated many-to-one join on
+`question_id` to official `questions.csv`. Any missing or duplicate metadata
+key is a preprocessing failure, not a row to infer or silently discard.
+
+KT1 has no unique interaction/event index. `solving_id` identifies a bundle and
+can repeat across questions. Therefore, consistent with the approved tie rule,
+the original row ordinal within each student CSV is retained and used as the
+deterministic tie-breaker for equal timestamps. The 10-hour inactivity rule,
+not `solving_id`, defines the benchmark sessions.
+
+## Question metadata schema
+
+Official `contents/questions.csv` uses:
+
+```text
+question_id,bundle_id,explanation_id,correct_answer,part,tags,deployed_at
+```
+
+Observed metadata facts:
+
+- 13,169 question rows and 13,169 unique question IDs.
+- No missing `tags` values.
+- Tags are semicolon-delimited integer identifiers.
+- 7,120 questions have one tag; 6,049 have multiple tags.
+- The largest tag set contains seven tags.
+- There are 1,792 distinct tag-set strings before canonicalization.
+
+## Open protocol decision
+
+The approved composite-skill instruction explicitly names Junyi, but the
+supplied Junyi interaction schema contains one `skill` value per row. EdNet is
+the acquired dataset that demonstrably has multi-tag question metadata. The
+EdNet skill mapping is intentionally not implemented until the user confirms
+whether its complete sorted tag set should also become one composite skill ID.
