@@ -1,0 +1,30 @@
+{
+  "composite_skills": 1521,
+  "dataset": "junyi",
+  "event_order_column": null,
+  "event_shards": 15,
+  "excluded_students": 0,
+  "minimum_sessions": 5,
+  "multi_skill_question_interaction_percentage": 6.555728336081247,
+  "multi_skill_question_interactions": 961084,
+  "multi_skill_questions": 776,
+  "original_skills": 1326,
+  "questions": 25630,
+  "retained_interactions": 14660217,
+  "retained_sessions": 600154,
+  "retained_students": 29865,
+  "session_gap_seconds": 36000,
+  "source_rows": 14660217,
+  "source_sha256": "8a18000806279ae4feae90a94a5af75b7688f2e4ba666c9a0662c75e1a404b6a",
+  "source_students": 29865,
+  "split_interactions": {
+    "test": 2456402,
+    "train": 9647042,
+    "validation": 2556773
+  },
+  "split_sessions": {
+    "test": 109506,
+    "train": 381142,
+    "validation": 109506
+  }
+}

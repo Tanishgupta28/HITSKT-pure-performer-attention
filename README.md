@@ -83,6 +83,24 @@ Run preprocessing tests with:
 pytest tests/test_ednet_preprocessing.py
 ```
 
+The accepted ASSIST2017 and full Junyi sources use the same rebuilt session and
+split contract:
+
+```bash
+python -m ktbench.data.flat assist2017 \
+  data/raw/assist2017/2017.csv data/processed/assist2017/full
+python -m ktbench.data.flat junyi \
+  data/raw/junyi/Junyi.csv data/processed/junyi/full
+```
+
+ASSIST2017 preserves the supplied row-level `skill` on each interaction because
+no authoritative complete question-tag mapping is available. Junyi constructs
+one deterministic composite skill from the complete deduplicated, numerically
+sorted set of tags observed for each question in the accepted full source. In
+both cases one source interaction remains one row. Versioned mappings and full
+aggregate reports are under [`reports/datasets/assist2017/`](reports/datasets/assist2017/)
+and [`reports/datasets/junyi/`](reports/datasets/junyi/).
+
 ### Legacy repository instructions
 
 We list the command to run the HiTSKT on different datasets. Listed hyperparameters are the optimal parameters for the respective datasets. The preprocessed data of ASSISTment 2017 and Junyi datasets are provided in the ``dataset`` directory. Due to the file size limitation of GitHub, we are not able to provide the preprocessed data of the EdNet dataset at this stage. Please download the ``train.csv`` from [this kaggle page](https://www.kaggle.com/c/riiid-test-answer-prediction/data), rename it to "ednet.csv".

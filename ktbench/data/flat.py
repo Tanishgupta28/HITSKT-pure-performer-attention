@@ -168,6 +168,15 @@ def _render_report(summary: dict[str, object]) -> str:
         if summary["event_order_column"]
         else "original CSV row order for equal timestamps"
     )
+    skill_policy = (
+        "The supplied skill on each interaction is preserved. No authoritative "
+        "complete question-tag mapping is available, so skills are not merged "
+        "across rows and interactions are never expanded."
+        if summary["dataset"] == "assist2017"
+        else "Each question's complete set of tags observed in the accepted "
+        "full source is deduplicated and numerically sorted into one composite "
+        "skill. Every occurrence receives that one ID; rows are never expanded."
+    )
     return f"""# {summary['dataset']} preprocessing report
 
 - Source rows: {summary['source_rows']:,}
@@ -176,7 +185,8 @@ def _render_report(summary: dict[str, object]) -> str:
 - Questions: {summary['questions']:,}
 - Genuine original tags/skills: {summary['original_skills']:,}
 - Deterministic composite skill IDs: {summary['composite_skills']:,}
-- Multi-tag questions: 0 (the accepted source exposes one skill per row)
+- Questions with multiple observed row-level skills: {summary['multi_skill_questions']:,}
+- Interactions on those questions: {summary['multi_skill_question_interactions']:,} ({summary['multi_skill_question_interaction_percentage']:.6f}%)
 - Missing target labels: 0
 - Retained students (at least five rebuilt sessions): {summary['retained_students']:,}
 - Excluded students: {summary['excluded_students']:,}
@@ -187,9 +197,8 @@ def _render_report(summary: dict[str, object]) -> str:
 - Test interactions: {summary['split_interactions']['test']:,}
 
 IDs are determined by numeric sorting of the complete source vocabularies, with
-`0` reserved for padding. Each source skill is a singleton complete tag set and
-therefore maps to exactly one composite skill ID; interactions are not expanded.
-Rows are ordered per student by timestamp and {order}. Sessions are rebuilt at
+`0` reserved for padding. {skill_policy} Rows are ordered per student by
+timestamp and {order}. Sessions are rebuilt at
 gaps of at least 10 hours. Per-student sessions use chronological 60/20/20
 splits with `floor(n/5)` validation and test sessions and earlier remainder
 sessions in training. All positions and attempt counters are rebuilt afterward.
@@ -249,9 +258,78 @@ def preprocess_flat(
         frame = frame.rename(columns={"studentId": "source_student_id"})
 
         question_ids, question_map = _stable_ids(frame["problemId"])
-        skill_ids, skill_map = _stable_ids(frame["skill"])
         frame["question_id"] = question_ids
-        frame["skill_id"] = skill_ids
+        question_map.columns = ["question_id", "source_question_id"]
+
+        _, original_tag_map = _stable_ids(frame["skill"])
+        original_tag_map.columns = ["tag_index", "source_tag_id"]
+        source_question_tags = frame[["problemId", "skill"]].drop_duplicates()
+        tag_counts = source_question_tags.groupby("problemId")["skill"].nunique()
+        multi_skill_source_questions = set(tag_counts[tag_counts > 1].index.tolist())
+        multi_skill_interaction_count = int(
+            frame["problemId"].isin(multi_skill_source_questions).sum()
+        )
+
+        if dataset == "assist2017":
+            skill_ids, source_skill_map = _stable_ids(frame["skill"])
+            frame["skill_id"] = skill_ids
+            source_skill_map.columns = ["skill_id", "source_skill_id"]
+            skill_map = source_skill_map[["skill_id"]].copy()
+            skill_map["canonical_skill_key"] = source_skill_map[
+                "source_skill_id"
+            ].astype(str)
+            skill_map["original_tag_ids"] = source_skill_map[
+                "source_skill_id"
+            ].map(lambda value: json.dumps([int(value)], separators=(",", ":")))
+            skill_map["tag_count"] = 1
+            skill_map["is_untagged"] = False
+            question_skill = (
+                frame[["question_id", "skill_id"]]
+                .drop_duplicates()
+                .sort_values(["question_id", "skill_id"], kind="stable")
+            )
+        else:
+            question_tag_sets = (
+                source_question_tags.groupby("problemId", sort=True)["skill"]
+                .agg(lambda values: tuple(sorted(set(int(value) for value in values))))
+            )
+            canonical_by_question = question_tag_sets.map(
+                lambda values: ";".join(str(value) for value in values)
+            )
+            composite_keys = sorted(
+                canonical_by_question.unique(),
+                key=lambda key: tuple(int(token) for token in key.split(";")),
+            )
+            skill_id_by_key = {
+                key: index + 1 for index, key in enumerate(composite_keys)
+            }
+            skill_map = pd.DataFrame(
+                {
+                    "skill_id": np.arange(1, len(composite_keys) + 1),
+                    "canonical_skill_key": composite_keys,
+                }
+            )
+            skill_map["original_tag_ids"] = skill_map["canonical_skill_key"].map(
+                lambda key: json.dumps(
+                    [int(token) for token in key.split(";")], separators=(",", ":")
+                )
+            )
+            skill_map["tag_count"] = skill_map["canonical_skill_key"].map(
+                lambda key: len(key.split(";"))
+            )
+            skill_map["is_untagged"] = False
+            skill_by_source_question = canonical_by_question.map(skill_id_by_key)
+            frame["skill_id"] = (
+                frame["problemId"].map(skill_by_source_question).astype(np.int32)
+            )
+            question_skill = question_map.copy()
+            question_skill["skill_id"] = question_skill["source_question_id"].map(
+                skill_by_source_question
+            )
+            question_skill["canonical_skill_key"] = question_skill[
+                "source_question_id"
+            ].map(canonical_by_question)
+            question_skill = question_skill.drop(columns="source_question_id")
         frame["student_id"] = frame["source_student_id"].astype(np.int32)
         frame["correct"] = frame["correct"].astype(np.uint8)
         frame["timestamp"] = frame["startTime"].astype(np.int64) * 1000
@@ -270,27 +348,8 @@ def preprocess_flat(
                 "source_student_id": retained_originals,
             }
         )
-        question_map.columns = ["question_id", "source_question_id"]
-        skill_map.columns = ["skill_id", "source_skill_id"]
-        skill_map["canonical_skill_key"] = skill_map["source_skill_id"].astype(str)
-        skill_map["tag_count"] = 1
-        skill_map["is_untagged"] = False
-        question_skill = (
-            frame[["problemId", "question_id", "skill_id"]]
-            .drop_duplicates()
-            .sort_values(["question_id", "skill_id"], kind="stable")
-        )
-        # A question may occur under more than one source skill; this would make
-        # question-level tag mapping ambiguous and must not be guessed.
-        ambiguity = question_skill.groupby("question_id")["skill_id"].nunique()
-        if (ambiguity > 1).any():
-            examples = ambiguity[ambiguity > 1].index.tolist()[:10]
-            raise FlatDataValidationError(
-                f"questions associated with multiple skill values: {examples!r}"
-            )
-        question_skill = question_skill.drop(columns="problemId")
-
         question_map.to_csv(mappings_dir / "questions.csv", index=False)
+        original_tag_map.to_csv(mappings_dir / "original_tags.csv", index=False)
         skill_map.to_csv(mappings_dir / "composite_skills.csv", index=False)
         student_map.to_csv(mappings_dir / "students.csv", index=False)
         question_skill.to_csv(mappings_dir / "question_skills.csv", index=False)
@@ -319,8 +378,13 @@ def preprocess_flat(
             "source_rows": len(frame),
             "source_students": source_students,
             "questions": len(question_map),
-            "original_skills": len(skill_map),
+            "original_skills": len(original_tag_map),
             "composite_skills": len(skill_map),
+            "multi_skill_questions": len(multi_skill_source_questions),
+            "multi_skill_question_interactions": multi_skill_interaction_count,
+            "multi_skill_question_interaction_percentage": (
+                100.0 * multi_skill_interaction_count / len(frame)
+            ),
             "event_order_column": config.event_order_column,
             "retained_students": len(student_map),
             "excluded_students": source_students - len(student_map),

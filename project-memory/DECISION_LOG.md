@@ -104,3 +104,19 @@
 - Consequence: shared flat preprocessing is fail-closed until the user chooses
   row-level supplied skills or one globally constructed question-level
   composite set. Junyi preprocessing is also paused at this checkpoint.
+
+## 2026-09-09 — Preserve ASSIST2017 row-level skills
+
+- Decision: retain each interaction's supplied `skill`; do not infer a global
+  question-level composite or expand rows.
+- Evidence: explicit user decision and validated full ASSIST2017 artifacts.
+- Consequence: ASSIST uses 102 row-level skills and records the 697 multi-skill
+  questions as provenance, not as a transformation rule.
+
+## 2026-09-09 — Accept validated full Junyi composite preprocessing
+
+- Decision: use the full source to form each question's complete deduplicated,
+  sorted tag set and assign its one deterministic composite ID to every row.
+- Evidence: the approved Junyi multi-tag rule and full mapping/validator output.
+- Consequence: 1,326 original tags map into 1,521 composite skills; all
+  14,660,217 rows remain exactly once.

@@ -91,7 +91,15 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
 - The real ASSIST2017 run stopped before output completion because 697/3,162
   questions have multiple observed row-level skills (682 have two, 15 have
   three). They cover 440,761/942,807 interactions (46.749865%) and 3,874 unique
-  question/skill pairs. No mapping choice has been assumed; Junyi is paused.
+  question/skill pairs. The user directed preservation of supplied row-level
+  skills. The completed build retains 885,335 interactions from 1,388 eligible
+  students in 12,402 sessions; independent validation passes.
+- Full Junyi composite mapping found 1,326 genuine original tags and 1,521
+  complete-set composite skills. There are 776 multi-tag questions covering
+  961,084 interactions (6.555728%). The validated build retains all 14,660,217
+  interactions, 29,865 students, and 600,154 rebuilt sessions across 15 shards.
+- Aggregate mappings/reports for ASSIST2017 and Junyi are staged under
+  `../reports/datasets/`; interaction Parquet remains local and ignored.
 - No model/dataset experiment ran; there are no valid benchmark results.
 - No tensor/model/checkpoint/metrics smoke test or scientific experiment ran.
 

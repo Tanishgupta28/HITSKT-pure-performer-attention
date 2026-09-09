@@ -10,10 +10,10 @@ assessment is complete, and checkpoint `88aef9f` is on private repository
 
 ## Exact next bounded action
 
-Obtain the user's ASSIST2017 question/skill mapping decision for the 697
-multi-skill questions. Then complete ASSIST2017 and full-Junyi preprocessing,
-validate the shared post-filter session-window/rolling-history representation,
-and only afterward begin model-forward/backward/checkpoint smoke tests.
+Implement and validate the shared post-filter session-window/rolling-history
+representation across all three datasets. Prove that every target sees only
+strictly earlier events and that PAD/EOS never becomes a label. Then begin the
+five model forward/backward/checkpoint-loading smoke-test matrix.
 
 ## Stop conditions
 

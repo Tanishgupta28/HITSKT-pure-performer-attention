@@ -1,0 +1,30 @@
+{
+  "composite_skills": 102,
+  "dataset": "assist2017",
+  "event_order_column": "action_num",
+  "event_shards": 1,
+  "excluded_students": 321,
+  "minimum_sessions": 5,
+  "multi_skill_question_interaction_percentage": 46.749865030700875,
+  "multi_skill_question_interactions": 440761,
+  "multi_skill_questions": 697,
+  "original_skills": 102,
+  "questions": 3162,
+  "retained_interactions": 885335,
+  "retained_sessions": 12402,
+  "retained_students": 1388,
+  "session_gap_seconds": 36000,
+  "source_rows": 942807,
+  "source_sha256": "7577287d4ead073fdb9393b586a260043151f27338246bd076ca740e28be8bbb",
+  "source_students": 1709,
+  "split_interactions": {
+    "test": 112252,
+    "train": 647283,
+    "validation": 125800
+  },
+  "split_sessions": {
+    "test": 1977,
+    "train": 8448,
+    "validation": 1977
+  }
+}

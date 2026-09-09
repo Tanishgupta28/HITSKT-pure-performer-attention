@@ -1,0 +1,60 @@
+{
+  "contains_raw_interactions": false,
+  "files": [
+    {
+      "bytes": 367,
+      "file": "manifest.json",
+      "sha256": "50ddc678924a689d6401682fbafbb966f2086fa365de1fc7b84da5b742aa944f",
+      "source": "manifest.json"
+    },
+    {
+      "bytes": 11070,
+      "file": "original_tags.csv",
+      "sha256": "46b71e65a110e80f9d7e0f8ae2268b658a5e9cfd8510c6d49c7e6a6a94bc1c01",
+      "source": "mappings/original_tags.csv"
+    },
+    {
+      "bytes": 36512,
+      "file": "composite_skills.csv",
+      "sha256": "84198bf427ee419822f01e66710b71a72a89ad54c250472551b4289583a7e7e3",
+      "source": "mappings/composite_skills.csv"
+    },
+    {
+      "bytes": 285379,
+      "file": "questions.csv",
+      "sha256": "52ca552aa472afbbb6438ab1318fca50c7dbe4acb1a6be99427d5e3cf6f6684a",
+      "source": "mappings/questions.csv"
+    },
+    {
+      "bytes": 362749,
+      "file": "question_skills.csv",
+      "sha256": "bd3c7fa68dbb79ae8cc4c5a821c31a926da26afbc1e7316c95e5b64541f3ded7",
+      "source": "mappings/question_skills.csv"
+    },
+    {
+      "bytes": 52742,
+      "file": "composite_skill_distribution.csv",
+      "sha256": "bb150315366a446800a5ff0757e390132cee6a6cff2fb78c171d8a5465b15d9e",
+      "source": "reports/composite_skill_distribution.csv"
+    },
+    {
+      "bytes": 1312,
+      "file": "dataset_report.md",
+      "sha256": "94dde779c42573efa5b30b2bc2c52a82201559ddd1036adb52d2488e7e20b56f",
+      "source": "reports/dataset_report.md"
+    },
+    {
+      "bytes": 817,
+      "file": "summary.json",
+      "sha256": "5e6c0fbd3795e7dc21ef3a279aaa45d79dd9057488a91d54bd3a7574f60b40b9",
+      "source": "reports/summary.json"
+    },
+    {
+      "bytes": 134,
+      "file": "validation.json",
+      "sha256": "43bfc3b5ffd4a1c3c0d961175d399eeb86a79a0dec9d1687dbf02342a05f923b",
+      "source": "reports/validation.json"
+    }
+  ],
+  "processed_root": "data/processed/junyi/full"
+}

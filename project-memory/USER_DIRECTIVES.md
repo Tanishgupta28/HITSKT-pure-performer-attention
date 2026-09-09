@@ -78,3 +78,8 @@ The user approved all of the following as binding implementation decisions:
   available, make and document a reproduction and every deviation.
 - Stop and ask before resolving any new ambiguity that could materially affect
   data, preprocessing, architecture, evaluation, or scientific validity.
+- For ASSIST2017 specifically, preserve the supplied row-level skill on each
+  interaction, even when a question appears with different skills elsewhere.
+  Do not infer a complete mapping, merge skills, or expand rows. Record 3,162
+  questions, 697 multi-row-skill questions, and 440,761 affected interactions
+  (46.75%). Revisit only if authoritative complete metadata is found.
