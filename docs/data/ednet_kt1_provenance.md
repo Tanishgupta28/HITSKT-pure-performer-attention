@@ -83,9 +83,21 @@ whose literal value is `tags = -1` as missing metadata. They retain every
 interaction and share composite skill ID `1`, named `<UNTAGGED>`; `-1` is
 excluded from the 188 genuine original tags.
 
-The fail-closed real-data smoke test then identified a second format requiring
-review: 197 questions repeat one tag ID within the semicolon list. Tag `176` is
-repeated in 85 questions, `178` in 75, and `177` in 37. These comprise 83
-distinct raw strings. No other tag format outside positive semicolon-delimited
-integers and the approved exact `-1` sentinel was found. The preprocessor has
-not silently collapsed the duplicates; their treatment awaits user direction.
+The fail-closed real-data smoke test identified 197 questions that repeat one
+tag ID within the semicolon list. Tag `176` is repeated in 85 questions, `178`
+in 75, and `177` in 37; these comprise 83 distinct raw strings. The user
+confirmed that tags form a mathematical set, so repeated IDs are removed before
+numeric sorting. For example,
+`152;147;163;179;178;149;178` canonicalizes to
+`147;149;152;163;178;179`. No other format outside positive
+semicolon-delimited integers and the exact approved `-1` sentinel was found.
+
+## Open interaction-label decision
+
+After tag canonicalization passed, a 1,000-student real-data smoke run stopped
+on an empty `user_answer` in `KT1/u4.csv`. A bounded audit of the first 1,000
+numeric student files covered 1,427,687 interactions and found 2,898 empty
+answers across 349 students; the other four KT1 columns had no empty cells in
+that sample. Correctness cannot be derived by comparing an empty answer with
+`correct_answer`, so no label has been inferred and no affected row has been
+dropped pending user direction.

@@ -57,6 +57,10 @@ The user approved all of the following as binding implementation decisions:
   and document the decision in the dataset report and README.
 - Do not infer a policy for any other missing or malformed EdNet tag value; stop
   and ask before proceeding if one is encountered.
+- Treat positive EdNet tags as a mathematical set. Remove repeated IDs within a
+  question before numeric sorting and composite-ID generation. Record that 197
+  questions were affected; never expand or duplicate interactions because of
+  tags.
 - Define sessions using a 10-hour inactivity threshold.
 - Exclude students with fewer than five sessions, then use chronological
   per-student 60/20/20 session splits with rolling past-only history.

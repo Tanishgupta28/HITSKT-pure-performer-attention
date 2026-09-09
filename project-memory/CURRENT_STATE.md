@@ -48,17 +48,24 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
   and designated `tags = -1` as missing metadata mapped to one `<UNTAGGED>`
   composite skill ID. The provisional vocabulary is compatible with the
   existing embedding approach.
-- A deterministic streaming preprocessor, README protocol, and 12 focused tests
-  have been implemented. All 12 synthetic preprocessing tests pass.
+- A deterministic streaming preprocessor, README protocol, and focused tests
+  have been implemented. All 11 current synthetic preprocessing test cases pass.
 - The first real 1,000-student smoke invocation stopped before processing any
   interactions, as designed, on a previously unknown duplicate tag within a
-  question: `152;147;163;179;178;149;178`.
+  question. The user approved set deduplication, and the exact example now has a
+  regression test.
 - A full metadata audit found 197 questions with duplicated tag IDs: duplicate
   `176` in 85 questions, `178` in 75, and `177` in 37. There are 83 distinct raw
   affected tag strings and no other malformed format besides approved `-1`.
-  No deduplication or composite ID assignment has been assumed.
+  The approved implementation deduplicates these repeated IDs before sorting.
+- The second real smoke invocation passed tag mapping and stopped at interaction
+  row 674 of `KT1/u4.csv` because `user_answer` is empty. A bounded audit of the
+  first 1,000 numeric student files (1,427,687 interactions) found 2,898 empty
+  answers across 349 students and no empty values in the other four columns.
+  No rows were dropped and no correctness label was inferred.
 - No model/dataset experiment ran; there are no valid benchmark results.
-- No tensor/model/checkpoint/metrics smoke test or scientific experiment ran.
+- No complete real-data preprocessing, tensor/model/checkpoint/metrics smoke
+  test, or scientific experiment ran.
 
 ## Known implementation risks requiring evidence
 

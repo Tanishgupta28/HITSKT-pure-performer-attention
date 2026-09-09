@@ -10,8 +10,8 @@ assessment is complete, and checkpoint `88aef9f` is on private repository
 
 ## Exact next bounded action
 
-Obtain the user's explicit treatment of the 197 EdNet questions whose tag list
-repeats one ID. Then rerun the real-data smoke gate, persist deterministic
+Obtain the user's explicit treatment of EdNet interactions with empty
+`user_answer`. Then rerun the real-data smoke gate, persist deterministic
 original-tag/composite/question mappings, stream/sessionize/split the full
 archive, and produce the requested distribution report.
 

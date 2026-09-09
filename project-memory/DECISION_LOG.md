@@ -65,3 +65,12 @@
 - Consequence: preprocessing rejects every other malformed tag representation.
   The real-data smoke test consequently stopped on duplicated IDs in 197
   question tag strings; their treatment requires another explicit decision.
+
+## 2026-09-09 — Deduplicate repeated EdNet question tags
+
+- Decision: treat each positive tag list as a mathematical set, remove repeated
+  IDs within the question, numerically sort, and generate one composite skill.
+- Evidence: explicit user decision and the required canonicalization example.
+- Consequence: the 197 affected questions are retained without interaction
+  expansion. A subsequent real smoke run reached an empty `user_answer`, whose
+  correctness treatment is not yet authorized.

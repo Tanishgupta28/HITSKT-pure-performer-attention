@@ -39,9 +39,13 @@ def test_canonicalize_complete_sorted_tag_set_and_untagged() -> None:
     assert missing.tags == ()
     assert missing.is_untagged
 
+    duplicated = canonicalize_tags("152;147;163;179;178;149;178")
+    assert duplicated.canonical_key == "147;149;152;163;178;179"
+    assert duplicated.tags == (147, 149, 152, 163, 178, 179)
+
 
 @pytest.mark.parametrize(
-    "value", [None, "", " 1", "1 ", "1;;2", "1;-1", "1;1", "0"]
+    "value", [None, "", " 1", "1 ", "1;;2", "1;-1", "0"]
 )
 def test_canonicalize_rejects_unapproved_tag_metadata(value: object) -> None:
     with pytest.raises(EdNetValidationError):
@@ -153,4 +157,3 @@ def test_end_to_end_retains_rows_once_and_preserves_timestamp_ties(
     assert events["split"].tolist() == [0, 0, 0, 0, 1, 2]
     assert (output / "_SUCCESS").exists()
     assert not (output / "_FAILED").exists()
-

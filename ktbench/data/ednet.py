@@ -72,8 +72,10 @@ def canonicalize_tags(raw_value: object) -> TagSet:
     """Validate and canonicalize one official EdNet question tag value.
 
     The only approved missing representation is the exact string ``-1``.
-    Any other missing, negative, duplicated, whitespace-padded, or malformed
-    representation fails closed so it can be reviewed rather than inferred.
+    Positive IDs are interpreted as a mathematical set: duplicates are removed
+    before numeric sorting. Any other missing, negative, whitespace-padded, or
+    malformed representation fails closed so it can be reviewed rather than
+    inferred.
     """
 
     if raw_value is None or pd.isna(raw_value):
@@ -86,9 +88,7 @@ def canonicalize_tags(raw_value: object) -> TagSet:
     tags = tuple(int(token) for token in raw.split(";"))
     if any(tag <= 0 for tag in tags):
         raise EdNetValidationError(f"non-positive genuine tag ID: {raw!r}")
-    if len(tags) != len(set(tags)):
-        raise EdNetValidationError(f"duplicated tag ID in one question: {raw!r}")
-    sorted_tags = tuple(sorted(tags))
+    sorted_tags = tuple(sorted(set(tags)))
     return TagSet(";".join(str(tag) for tag in sorted_tags), sorted_tags, False)
 
 
@@ -132,6 +132,11 @@ def build_metadata_mappings(questions: pd.DataFrame) -> MetadataMappings:
             )
         question_numbers.add(question_number)
         tag_set = canonicalize_tags(row.tags)
+        raw_tag_tokens = (
+            []
+            if tag_set.is_untagged
+            else [int(token) for token in str(row.tags).split(";")]
+        )
         genuine_tags.update(tag_set.tags)
         answer = str(row.correct_answer)
         if answer not in {"a", "b", "c", "d"}:
@@ -146,6 +151,7 @@ def build_metadata_mappings(questions: pd.DataFrame) -> MetadataMappings:
                 "canonical_skill_key": tag_set.canonical_key,
                 "is_untagged": tag_set.is_untagged,
                 "is_multitag": len(tag_set.tags) > 1,
+                "had_duplicate_tags": len(raw_tag_tokens) != len(set(raw_tag_tokens)),
                 "tag_count": len(tag_set.tags),
             }
         )
@@ -413,6 +419,7 @@ Generated from the genuine full official EdNet-KT1 archive.
 
 - Genuine original tags (excluding `-1`): {summary['genuine_original_tags']:,}
 - Questions with missing tag metadata (`-1`): {summary['untagged_questions']:,}
+- Questions whose repeated tag IDs were deduplicated: {summary['duplicate_tag_questions']:,}
 - Multi-tag questions: {summary['multitag_questions']:,}
 - Unique composite skill IDs (including `<UNTAGGED>`): {summary['composite_skills']:,}
 - `<UNTAGGED>` composite skill ID: {UNTAGGED_SKILL_ID}
@@ -502,6 +509,9 @@ def preprocess_ednet(
             "is_full_dataset": max_students is None,
             "genuine_original_tags": len(mappings.original_tags),
             "untagged_questions": int(mappings.questions["is_untagged"].sum()),
+            "duplicate_tag_questions": int(
+                mappings.questions["had_duplicate_tags"].sum()
+            ),
             "multitag_questions": int(mappings.questions["is_multitag"].sum()),
             "composite_skills": composite_count,
             "raw_students": 0,

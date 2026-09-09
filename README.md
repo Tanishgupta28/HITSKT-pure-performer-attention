@@ -50,9 +50,10 @@ python -m ktbench.data.ednet \
   --output-dir data/processed/ednet_kt1/full
 ```
 
-EdNet tags are numerically sorted as a complete set and mapped to one stable
-composite skill ID; interactions are never expanded and no primary tag is
-selected. The literal metadata value `-1` is not an original tag. All such
+EdNet tags are treated as mathematical sets: repeated IDs within a question are
+deduplicated, then the remaining IDs are numerically sorted and mapped to one
+stable composite skill ID. Interactions are never expanded and no primary tag
+is selected. The literal metadata value `-1` is not an original tag. All such
 questions use the single reserved composite ID `1`, named `<UNTAGGED>`; `0` is
 reserved for padding. The generated `mappings/` tables make question, original
 tag, composite skill, and student IDs reproducible. Any other missing or
