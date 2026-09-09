@@ -59,6 +59,13 @@ reserved for padding. The generated `mappings/` tables make question, original
 tag, composite skill, and student IDs reproducible. Any other missing or
 malformed tag representation stops preprocessing for explicit review.
 
+Rows with an empty `user_answer` are excluded from the supervised sequence and
+are never relabeled as incorrect or converted to a third model state. Their
+original fields are preserved under `audit/unanswered_events/`. Sessions,
+sequence lengths, split assignments, and question/skill attempt counters are
+rebuilt after filtering. The generated report quantifies the full and bounded
+sample exclusion rates and any resulting session changes.
+
 Sessions use the approved 10-hour inactivity boundary. Students with fewer
 than five sessions are excluded, and each retained student's sessions are split
 chronologically 60/20/20 using earlier remainder sessions for training. The

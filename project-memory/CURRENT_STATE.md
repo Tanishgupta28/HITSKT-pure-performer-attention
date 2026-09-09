@@ -63,8 +63,19 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
   first 1,000 numeric student files (1,427,687 interactions) found 2,898 empty
   answers across 349 students and no empty values in the other four columns.
   No rows were dropped and no correctness label was inferred.
+- The user directed exclusion of empty answers from supervision with separate
+  audit retention. The implementation now filters before rebuilding sessions,
+  splits, and attempt counters. All 11 synthetic cases pass, including audit
+  row preservation and no synthetic label.
+- The third real first-1,000-student smoke run completed and was independently
+  validated: 2,898/1,427,687 rows (0.2029856684%) across 349 students were
+  excluded to audit; 1,409,948 supervised interactions from 704 eligible
+  students formed 32,795 sessions. Session counts changed for 19 students (net
+  -18); answered-event grouping changed for one. Parquet row counts, labels,
+  ordering, session continuity, per-session positions, split chronology, and
+  completion markers all passed.
 - No model/dataset experiment ran; there are no valid benchmark results.
-- No complete real-data preprocessing, tensor/model/checkpoint/metrics smoke
+- No full-dataset preprocessing, tensor/model/checkpoint/metrics smoke
   test, or scientific experiment ran.
 
 ## Known implementation risks requiring evidence

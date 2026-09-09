@@ -120,6 +120,7 @@ def test_end_to_end_retains_rows_once_and_preserves_timestamp_ties(
         header,
         [0, 1, "q1", "a", 10],
         [0, 1, "q2", "a", 11],
+        [2, 1, "q2", "", 11],
         [SESSION_GAP_MS, 2, "q2", "b", 12],
         [2 * SESSION_GAP_MS, 3, "q3", "c", 13],
         [3 * SESSION_GAP_MS, 4, "q3", "d", 14],
@@ -141,9 +142,13 @@ def test_end_to_end_retains_rows_once_and_preserves_timestamp_ties(
     assert summary["untagged_questions"] == 1
     assert summary["composite_skills"] == 3
     assert summary["raw_students"] == 2
-    assert summary["raw_interactions"] == 7
+    assert summary["raw_interactions"] == 8
+    assert summary["unanswered_interactions"] == 1
+    assert summary["unanswered_affected_students"] == 1
+    assert summary["supervised_interactions"] == 7
+    assert summary["unanswered_percentage"] == 12.5
     assert summary["raw_untagged_interactions"] == 3
-    assert summary["raw_multitag_interactions"] == 2
+    assert summary["raw_multitag_interactions"] == 3
     assert summary["retained_students"] == 1
     assert summary["retained_interactions"] == 6
     assert summary["retained_untagged_interactions"] == 2
@@ -155,5 +160,14 @@ def test_end_to_end_retains_rows_once_and_preserves_timestamp_ties(
     assert events["timestamp"].tolist()[:2] == [0, 0]
     assert events["skill_id"].tolist()[0] == 1
     assert events["split"].tolist() == [0, 0, 0, 0, 1, 2]
+    unanswered = (
+        ds.dataset(output / "audit" / "unanswered_events", format="parquet")
+        .to_table()
+        .to_pandas()
+    )
+    assert len(unanswered) == 1
+    assert unanswered.loc[0, "original_student_id"] == 20
+    assert unanswered.loc[0, "source_row"] == 3
+    assert unanswered.loc[0, "user_answer"] == ""
     assert (output / "_SUCCESS").exists()
     assert not (output / "_FAILED").exists()

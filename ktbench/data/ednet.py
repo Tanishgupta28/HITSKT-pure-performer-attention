@@ -262,48 +262,66 @@ EVENT_SCHEMA = pa.schema(
     ]
 )
 
+UNANSWERED_SCHEMA = pa.schema(
+    [
+        ("original_student_id", pa.int32()),
+        ("question_key", pa.string()),
+        ("question_id", pa.int32()),
+        ("skill_id", pa.int32()),
+        ("timestamp", pa.int64()),
+        ("elapsed_time", pa.int32()),
+        ("solving_id", pa.int32()),
+        ("source_row", pa.int32()),
+        ("raw_session_id", pa.int32()),
+        ("user_answer", pa.string()),
+    ]
+)
+
 
 class ShardWriter:
-    def __init__(self, directory: Path, rows_per_shard: int) -> None:
+    def __init__(
+        self, directory: Path, rows_per_shard: int, schema: pa.Schema = EVENT_SCHEMA
+    ) -> None:
         if rows_per_shard <= 0:
             raise ValueError("rows_per_shard must be positive")
         self.directory = directory
         self.rows_per_shard = rows_per_shard
-        self.columns: dict[str, list[int]] = {name: [] for name in EVENT_SCHEMA.names}
+        self.schema = schema
+        self.columns: dict[str, list[object]] = {name: [] for name in schema.names}
         self.shard_index = 0
         self.total_rows = 0
 
-    def append(self, values: dict[str, Sequence[int]]) -> None:
-        lengths = {len(values[name]) for name in EVENT_SCHEMA.names}
+    def append(self, values: dict[str, Sequence[object]]) -> None:
+        lengths = {len(values[name]) for name in self.schema.names}
         if len(lengths) != 1:
             raise RuntimeError(f"event column length mismatch: {lengths!r}")
         row_count = lengths.pop()
         offset = 0
         while offset < row_count:
-            capacity = self.rows_per_shard - len(self.columns[EVENT_SCHEMA.names[0]])
+            capacity = self.rows_per_shard - len(self.columns[self.schema.names[0]])
             take = min(capacity, row_count - offset)
-            for name in EVENT_SCHEMA.names:
+            for name in self.schema.names:
                 self.columns[name].extend(values[name][offset : offset + take])
             offset += take
-            if len(self.columns[EVENT_SCHEMA.names[0]]) == self.rows_per_shard:
+            if len(self.columns[self.schema.names[0]]) == self.rows_per_shard:
                 self.flush()
 
     def flush(self) -> None:
-        row_count = len(self.columns[EVENT_SCHEMA.names[0]])
+        row_count = len(self.columns[self.schema.names[0]])
         if not row_count:
             return
-        table = pa.Table.from_pydict(self.columns, schema=EVENT_SCHEMA)
+        table = pa.Table.from_pydict(self.columns, schema=self.schema)
         target = self.directory / f"part-{self.shard_index:05d}.parquet"
         pq.write_table(
             table,
             target,
             compression="zstd",
-            use_dictionary=["skill_id", "correct", "split"],
+            use_dictionary=True,
             write_statistics=True,
         )
         self.total_rows += row_count
         self.shard_index += 1
-        self.columns = {name: [] for name in EVENT_SCHEMA.names}
+        self.columns = {name: [] for name in self.schema.names}
 
     def close(self) -> None:
         self.flush()
@@ -314,7 +332,7 @@ def _read_student(
     member: str,
     user_number: int,
     question_lookup: dict[str, tuple[int, int, str, bool, bool]],
-) -> tuple[dict[str, list[int]], dict[str, int]]:
+) -> tuple[dict[str, list[int]], dict[str, list[object]], dict[str, int]]:
     records = []
     raw_nonmonotonic = 0
     previous_raw_timestamp: int | None = None
@@ -353,9 +371,9 @@ def _read_student(
                     f"unknown question {question_key!r} at row {source_row} in {member}"
                 )
             answer = row[3]
-            if answer not in {"a", "b", "c", "d"}:
+            if answer not in {"", "a", "b", "c", "d"}:
                 raise EdNetValidationError(
-                    f"invalid user_answer at row {source_row} in {member}: {answer!r}"
+                    f"unapproved user_answer at row {source_row} in {member}: {answer!r}"
                 )
             if previous_raw_timestamp is not None and timestamp < previous_raw_timestamp:
                 raw_nonmonotonic += 1
@@ -369,37 +387,63 @@ def _read_student(
                     source_row,
                     question_id,
                     skill_id,
-                    int(answer == correct_answer),
+                    None if answer == "" else int(answer == correct_answer),
                     elapsed_time,
                     solving_id,
                     int(is_multitag),
                     int(is_untagged),
+                    answer,
+                    question_key,
                 )
             )
     if not records:
         raise EdNetValidationError(f"student file has no interactions: {member}")
 
     records.sort(key=lambda row: (row[0], row[1]))
+    raw_session_ids, _, raw_session_count = assign_sessions_and_splits(
+        [row[0] for row in records]
+    )
+    answered_indices = [index for index, row in enumerate(records) if row[9] != ""]
+    answered_records = [records[index] for index in answered_indices]
     values: dict[str, list[int]] = {
-        "timestamp": [row[0] for row in records],
-        "source_row": [row[1] for row in records],
-        "question_id": [row[2] for row in records],
-        "skill_id": [row[3] for row in records],
-        "correct": [row[4] for row in records],
-        "elapsed_time": [row[5] for row in records],
-        "solving_id": [row[6] for row in records],
+        "timestamp": [row[0] for row in answered_records],
+        "source_row": [row[1] for row in answered_records],
+        "question_id": [row[2] for row in answered_records],
+        "skill_id": [row[3] for row in answered_records],
+        "correct": [row[4] for row in answered_records],
+        "elapsed_time": [row[5] for row in answered_records],
+        "solving_id": [row[6] for row in answered_records],
+        "raw_session_id": [int(raw_session_ids[index]) for index in answered_indices],
+    }
+    unanswered_indices = [index for index, row in enumerate(records) if row[9] == ""]
+    unanswered: dict[str, list[object]] = {
+        "original_student_id": [user_number] * len(unanswered_indices),
+        "question_key": [records[index][10] for index in unanswered_indices],
+        "question_id": [records[index][2] for index in unanswered_indices],
+        "skill_id": [records[index][3] for index in unanswered_indices],
+        "timestamp": [records[index][0] for index in unanswered_indices],
+        "elapsed_time": [records[index][5] for index in unanswered_indices],
+        "solving_id": [records[index][6] for index in unanswered_indices],
+        "source_row": [records[index][1] for index in unanswered_indices],
+        "raw_session_id": [int(raw_session_ids[index]) for index in unanswered_indices],
+        "user_answer": [records[index][9] for index in unanswered_indices],
     }
     stats = {
         "raw_interactions": len(records),
         "raw_multitag_interactions": sum(row[7] for row in records),
         "raw_untagged_interactions": sum(row[8] for row in records),
+        "unanswered_interactions": len(unanswered_indices),
+        "supervised_interactions": len(answered_records),
+        "supervised_multitag_interactions": sum(row[7] for row in answered_records),
+        "supervised_untagged_interactions": sum(row[8] for row in answered_records),
+        "raw_session_count": raw_session_count,
         "raw_timestamp_ties": sum(
             left[0] == right[0] for left, right in zip(records, records[1:])
         ),
         "raw_nonmonotonic_transitions": raw_nonmonotonic,
         "user_number": user_number,
     }
-    return values, stats
+    return values, unanswered, stats
 
 
 def _write_csv(frame: pd.DataFrame, path: Path) -> None:
@@ -411,9 +455,14 @@ def _write_json(value: object, path: Path) -> None:
 
 
 def _render_report(summary: dict[str, object]) -> str:
+    scope = (
+        "the genuine full official EdNet-KT1 archive"
+        if summary["is_full_dataset"]
+        else "a bounded smoke subset of the genuine official EdNet-KT1 archive"
+    )
     return f"""# EdNet-KT1 preprocessing report
 
-Generated from the genuine full official EdNet-KT1 archive.
+Generated from {scope}.
 
 ## Tag and composite-skill mapping
 
@@ -433,10 +482,31 @@ not a genuine tag; all such questions use the one `<UNTAGGED>` skill ID.
 
 - Students/files: {summary['raw_students']:,}
 - Interactions: {summary['raw_interactions']:,}
+- Unanswered interactions excluded from supervision: {summary['unanswered_interactions']:,}
+- Students with at least one unanswered interaction: {summary['unanswered_affected_students']:,}
+- Full interaction exclusion percentage: {summary['unanswered_percentage']:.6f}%
+- First-1,000-student sample interactions: {summary['sample_interactions']:,}
+- First-1,000-student sample unanswered interactions: {summary['sample_unanswered_interactions']:,}
+- Sample exclusion percentage: {summary['sample_unanswered_percentage']:.6f}%
 - Interactions on multi-tag questions: {summary['raw_multitag_interactions']:,}
 - Interactions on `<UNTAGGED>` questions: {summary['raw_untagged_interactions']:,}
 - Equal-timestamp adjacent interactions after stable ordering: {summary['raw_timestamp_ties']:,}
 - Nonmonotonic timestamp transitions in original file order: {summary['raw_nonmonotonic_transitions']:,}
+
+Unanswered rows are not labeled incorrect, are not supervised targets, and are
+not included in model history. Their exact source fields are preserved under
+`audit/unanswered_events/`. Sessions and sequence counters are rebuilt only
+after this filtering step.
+
+## Filtering effect on sessions and sequences
+
+- Supervised interactions after unanswered filtering: {summary['supervised_interactions']:,}
+- Sequence length reduction: {summary['unanswered_interactions']:,} interactions
+- Raw sessions before filtering: {summary['raw_sessions']:,}
+- Supervised sessions after filtering: {summary['supervised_sessions']:,}
+- Students whose session count changed: {summary['session_count_changed_students']:,}
+- Students whose answered-event grouping changed: {summary['session_grouping_changed_students']:,}
+- Net session-count change: {summary['session_count_change_net']:+,}
 
 ## Benchmark population
 
@@ -457,7 +527,8 @@ rows retain full chronology so downstream rolling-history examples can use only
 observations strictly before each target.
 
 Detailed question, composite, user, and distribution tables are saved under
-`mappings/` and `reports/`. Event shards are under `events/`.
+`mappings/` and `reports/`. Supervised event shards are under `events/`; removed
+source rows and per-student session effects are under `audit/`.
 """
 
 
@@ -482,9 +553,13 @@ def preprocess_ednet(
     events_dir = output_dir / "events"
     mappings_dir = output_dir / "mappings"
     reports_dir = output_dir / "reports"
+    audit_dir = output_dir / "audit"
+    unanswered_dir = audit_dir / "unanswered_events"
     events_dir.mkdir()
     mappings_dir.mkdir()
     reports_dir.mkdir()
+    audit_dir.mkdir()
+    unanswered_dir.mkdir()
     try:
         questions = load_question_metadata(contents_zip)
         mappings = build_metadata_mappings(questions)
@@ -504,6 +579,7 @@ def preprocess_ednet(
         }
         composite_count = len(mappings.composites)
         raw_skill_interactions = np.zeros(composite_count + 1, dtype=np.int64)
+        supervised_skill_interactions = np.zeros(composite_count + 1, dtype=np.int64)
         retained_skill_interactions = np.zeros(composite_count + 1, dtype=np.int64)
         summary: dict[str, object] = {
             "is_full_dataset": max_students is None,
@@ -516,10 +592,21 @@ def preprocess_ednet(
             "composite_skills": composite_count,
             "raw_students": 0,
             "raw_interactions": 0,
+            "unanswered_interactions": 0,
+            "unanswered_affected_students": 0,
+            "supervised_interactions": 0,
+            "sample_interactions": 0,
+            "sample_unanswered_interactions": 0,
+            "sample_unanswered_affected_students": 0,
             "raw_multitag_interactions": 0,
             "raw_untagged_interactions": 0,
             "raw_timestamp_ties": 0,
             "raw_nonmonotonic_transitions": 0,
+            "raw_sessions": 0,
+            "supervised_sessions": 0,
+            "session_count_changed_students": 0,
+            "session_grouping_changed_students": 0,
+            "session_count_change_net": 0,
             "retained_students": 0,
             "excluded_students": 0,
             "excluded_interactions": 0,
@@ -531,30 +618,92 @@ def preprocess_ednet(
             "split_sessions": {"train": 0, "validation": 0, "test": 0},
         }
         retained_users: list[dict[str, int]] = []
+        session_impacts: list[dict[str, int]] = []
         writer = ShardWriter(events_dir, rows_per_shard)
+        unanswered_writer = ShardWriter(
+            unanswered_dir, rows_per_shard, schema=UNANSWERED_SCHEMA
+        )
 
         with ZipFile(kt1_zip) as archive:
             members = sorted_student_members(archive)
             if max_students is not None:
                 members = members[:max_students]
             for member_index, (user_number, member) in enumerate(members, start=1):
-                values, student_stats = _read_student(
+                values, unanswered, student_stats = _read_student(
                     archive, member, user_number, question_lookup
                 )
                 summary["raw_students"] += 1
                 for name in (
                     "raw_interactions",
+                    "unanswered_interactions",
+                    "supervised_interactions",
                     "raw_multitag_interactions",
                     "raw_untagged_interactions",
                     "raw_timestamp_ties",
                     "raw_nonmonotonic_transitions",
                 ):
                     summary[name] += student_stats[name]
+                summary["raw_sessions"] += student_stats["raw_session_count"]
+                if student_stats["unanswered_interactions"]:
+                    summary["unanswered_affected_students"] += 1
+                    unanswered_writer.append(unanswered)
+                if member_index <= 1_000:
+                    summary["sample_interactions"] += student_stats["raw_interactions"]
+                    summary["sample_unanswered_interactions"] += student_stats[
+                        "unanswered_interactions"
+                    ]
+                    if student_stats["unanswered_interactions"]:
+                        summary["sample_unanswered_affected_students"] += 1
                 np.add.at(raw_skill_interactions, values["skill_id"], 1)
+                np.add.at(raw_skill_interactions, unanswered["skill_id"], 1)
+                np.add.at(supervised_skill_interactions, values["skill_id"], 1)
 
-                session_ids, splits, session_count = assign_sessions_and_splits(
-                    values["timestamp"]
+                if values["timestamp"]:
+                    session_ids, splits, session_count = assign_sessions_and_splits(
+                        values["timestamp"]
+                    )
+                    raw_answered = values["raw_session_id"]
+                    normalized_raw = []
+                    previous = None
+                    normalized_id = 0
+                    for raw_session_id in raw_answered:
+                        if raw_session_id != previous:
+                            normalized_id += 1
+                            previous = raw_session_id
+                        normalized_raw.append(normalized_id)
+                    grouping_changed = normalized_raw != session_ids.tolist()
+                else:
+                    session_ids = np.asarray([], dtype=np.int32)
+                    splits = np.asarray([], dtype=np.uint8)
+                    session_count = 0
+                    grouping_changed = False
+                summary["supervised_sessions"] += session_count
+                count_changed = session_count != student_stats["raw_session_count"]
+                if count_changed:
+                    summary["session_count_changed_students"] += 1
+                if grouping_changed:
+                    summary["session_grouping_changed_students"] += 1
+                summary["session_count_change_net"] += (
+                    session_count - student_stats["raw_session_count"]
                 )
+                if student_stats["unanswered_interactions"]:
+                    session_impacts.append(
+                        {
+                            "original_student_id": user_number,
+                            "raw_interactions": student_stats["raw_interactions"],
+                            "unanswered_interactions": student_stats[
+                                "unanswered_interactions"
+                            ],
+                            "supervised_interactions": student_stats[
+                                "supervised_interactions"
+                            ],
+                            "raw_session_count": student_stats["raw_session_count"],
+                            "supervised_session_count": session_count,
+                            "session_count_delta": session_count
+                            - student_stats["raw_session_count"],
+                            "answered_grouping_changed": int(grouping_changed),
+                        }
+                    )
                 if session_count < 5:
                     summary["excluded_students"] += 1
                     summary["excluded_interactions"] += len(values["timestamp"])
@@ -565,10 +714,10 @@ def preprocess_ednet(
                 summary["retained_interactions"] += len(values["timestamp"])
                 summary["retained_sessions"] += session_count
                 summary["retained_multitag_interactions"] += student_stats[
-                    "raw_multitag_interactions"
+                    "supervised_multitag_interactions"
                 ]
                 summary["retained_untagged_interactions"] += student_stats[
-                    "raw_untagged_interactions"
+                    "supervised_untagged_interactions"
                 ]
                 np.add.at(retained_skill_interactions, values["skill_id"], 1)
 
@@ -626,6 +775,7 @@ def preprocess_ednet(
                         flush=True,
                     )
         writer.close()
+        unanswered_writer.close()
 
         if writer.total_rows != summary["retained_interactions"]:
             raise RuntimeError(
@@ -633,12 +783,28 @@ def preprocess_ednet(
                 f"{summary['retained_interactions']}"
             )
         _write_csv(pd.DataFrame.from_records(retained_users), mappings_dir / "students.csv")
+        _write_csv(pd.DataFrame.from_records(session_impacts), audit_dir / "session_impacts.csv")
 
         distribution = mappings.composites.copy()
         distribution["raw_interaction_count"] = raw_skill_interactions[1:]
+        distribution["supervised_interaction_count"] = supervised_skill_interactions[1:]
         distribution["retained_interaction_count"] = retained_skill_interactions[1:]
         _write_csv(distribution, reports_dir / "composite_skill_distribution.csv")
+        if unanswered_writer.total_rows != summary["unanswered_interactions"]:
+            raise RuntimeError(
+                f"unanswered audit row mismatch: {unanswered_writer.total_rows} != "
+                f"{summary['unanswered_interactions']}"
+            )
+        summary["unanswered_percentage"] = (
+            100.0 * summary["unanswered_interactions"] / summary["raw_interactions"]
+        )
+        summary["sample_unanswered_percentage"] = (
+            100.0
+            * summary["sample_unanswered_interactions"]
+            / summary["sample_interactions"]
+        )
         summary["event_shards"] = writer.shard_index
+        summary["unanswered_audit_shards"] = unanswered_writer.shard_index
         summary["session_gap_ms"] = SESSION_GAP_MS
         summary["minimum_sessions"] = 5
         summary["split_label_mapping"] = {"0": "train", "1": "validation", "2": "test"}
@@ -651,7 +817,10 @@ def preprocess_ednet(
                 "complete": True,
                 "event_schema": str(EVENT_SCHEMA),
                 "event_shards": writer.shard_index,
+                "unanswered_audit_schema": str(UNANSWERED_SCHEMA),
+                "unanswered_audit_shards": unanswered_writer.shard_index,
                 "retained_rows": writer.total_rows,
+                "unanswered_audit_rows": unanswered_writer.total_rows,
                 "rows_per_shard": rows_per_shard,
             },
             output_dir / "manifest.json",

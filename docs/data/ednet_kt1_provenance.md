@@ -92,12 +92,19 @@ numeric sorting. For example,
 `147;149;152;163;178;179`. No other format outside positive
 semicolon-delimited integers and the exact approved `-1` sentinel was found.
 
-## Open interaction-label decision
+## Unanswered-interaction policy
 
-After tag canonicalization passed, a 1,000-student real-data smoke run stopped
-on an empty `user_answer` in `KT1/u4.csv`. A bounded audit of the first 1,000
-numeric student files covered 1,427,687 interactions and found 2,898 empty
-answers across 349 students; the other four KT1 columns had no empty cells in
-that sample. Correctness cannot be derived by comparing an empty answer with
-`correct_answer`, so no label has been inferred and no affected row has been
-dropped pending user direction.
+After tag canonicalization passed, a real-data smoke run found an empty
+`user_answer` in `KT1/u4.csv`. The user directed that empty/missing responses be
+excluded from supervised sequences, never labeled incorrect, and preserved
+separately for audit. Sessions, sequence lengths, splits, and attempt counters
+are rebuilt after this filtering.
+
+The completed first-1,000-student validation covered 1,427,687 original
+interactions and found 2,898 unanswered interactions across 349 students, an
+exclusion rate of 0.2029856684%. The other four KT1 columns had no empty cells
+in this sample. All 2,898 source rows were written exactly once to audit
+Parquet. Filtering changed the session count for 19 students (net -18 sessions)
+and changed the grouping of answered events for one student. The rebuilt
+supervised output contains 1,409,948 interactions from 704 students meeting the
+five-session threshold, organized into 32,795 sessions.

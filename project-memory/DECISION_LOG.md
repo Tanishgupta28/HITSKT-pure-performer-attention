@@ -74,3 +74,14 @@
 - Consequence: the 197 affected questions are retained without interaction
   expansion. A subsequent real smoke run reached an empty `user_answer`, whose
   correctness treatment is not yet authorized.
+
+## 2026-09-09 — Exclude unanswered EdNet rows before rebuilding sequences
+
+- Decision: empty/missing `user_answer` rows are excluded from supervised model
+  history and targets, never relabeled, and written exactly once to separate
+  audit data. Sessions, splits, and sequence counters are rebuilt afterward.
+- Evidence: explicit user decision and successful real first-1,000-student
+  smoke validation under `data/processed/ednet_kt1/smoke-1000-v3/`.
+- Consequence: the smoke supervised sequence is shorter by 2,898 interactions;
+  session counts changed for 19 students and grouping changed for one. Any
+  other response encoding remains a fail-closed condition.

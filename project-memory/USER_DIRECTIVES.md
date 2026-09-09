@@ -61,6 +61,11 @@ The user approved all of the following as binding implementation decisions:
   question before numeric sorting and composite-ID generation. Record that 197
   questions were affected; never expand or duplicate interactions because of
   tags.
+- Exclude empty/missing `user_answer` rows from the supervised KT sequence. Do
+  not label them incorrect or add a third response state. Preserve their source
+  fields separately for audit, rebuild sessions/sequences after filtering, and
+  report total/rate/affected-student and session/length effects. Stop on any
+  other ambiguous response encoding.
 - Define sessions using a 10-hour inactivity threshold.
 - Exclude students with fewer than five sessions, then use chronological
   per-student 60/20/20 session splits with rolling past-only history.

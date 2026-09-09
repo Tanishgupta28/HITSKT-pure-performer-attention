@@ -10,10 +10,10 @@ assessment is complete, and checkpoint `88aef9f` is on private repository
 
 ## Exact next bounded action
 
-Obtain the user's explicit treatment of EdNet interactions with empty
-`user_answer`. Then rerun the real-data smoke gate, persist deterministic
-original-tag/composite/question mappings, stream/sessionize/split the full
-archive, and produce the requested distribution report.
+Run the validated streaming pipeline across all 784,309 EdNet-KT1 student
+files. Validate full supervised/audit shard counts, chronology, rebuilt
+sessions/splits, mappings, and requested distributions before publishing the
+full-data report checkpoint.
 
 ## Stop conditions
 
