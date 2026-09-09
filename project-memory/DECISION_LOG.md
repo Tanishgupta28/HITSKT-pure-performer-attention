@@ -85,3 +85,12 @@
 - Consequence: the smoke supervised sequence is shorter by 2,898 interactions;
   session counts changed for 19 students and grouping changed for one. Any
   other response encoding remains a fail-closed condition.
+
+## 2026-09-09 — Accept the validated full EdNet preprocessing build
+
+- Decision: accept `data/processed/ednet_kt1/full/` as the local full EdNet
+  event/audit build and publish only its mappings and aggregate reports.
+- Evidence: `_SUCCESS`, `manifest.json`, full validator output, and versioned
+  artifacts under `../reports/datasets/ednet_kt1/`.
+- Consequence: EdNet event preprocessing is complete. Interaction Parquet is
+  not committed; hashes and all deterministic metadata mappings are committed.

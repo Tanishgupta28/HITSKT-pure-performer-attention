@@ -1,0 +1,10 @@
+{
+  "complete": true,
+  "event_schema": "student_id: int32\nquestion_id: int32\nskill_id: int32\ncorrect: uint8\ntimestamp: int64\nelapsed_time: int32\nsolving_id: int32\nsource_row: int32\nsession_id: int32\nsession_position: int32\nquestion_attempt_no: int32\nskill_attempt_no: int32\nsplit: uint8",
+  "event_shards": 82,
+  "retained_rows": 81940867,
+  "rows_per_shard": 1000000,
+  "unanswered_audit_rows": 27646,
+  "unanswered_audit_schema": "original_student_id: int32\nquestion_key: string\nquestion_id: int32\nskill_id: int32\ntimestamp: int64\nelapsed_time: int32\nsolving_id: int32\nsource_row: int32\nraw_session_id: int32\nuser_answer: string",
+  "unanswered_audit_shards": 1
+}

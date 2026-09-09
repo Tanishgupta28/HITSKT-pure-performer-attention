@@ -108,3 +108,24 @@ Parquet. Filtering changed the session count for 19 students (net -18 sessions)
 and changed the grouping of answered events for one student. The rebuilt
 supervised output contains 1,409,948 interactions from 704 students meeting the
 five-session threshold, organized into 32,795 sessions.
+
+The completed full pass covered all 784,309 files and 95,293,926 source
+interactions. It found 27,646 unanswered interactions across 4,477 students
+(0.0290112929%); all are preserved in audit data and excluded from supervision.
+After filtering, 95,266,280 supervised interactions remained. Session counts
+changed for 148 students (net -150 sessions), and the grouping of answered
+events changed for six students, so downstream sessions and counters were
+rebuilt rather than reused.
+
+Applying the minimum-five-session rule retained 116,548 students, 81,940,867
+interactions, and 2,577,988 sessions. The chronological split contains
+53,990,022 training, 14,520,975 validation, and 13,429,870 test interactions.
+The final tag report contains 188 genuine original tags, 1,495 composite skill
+IDs, 797 `<UNTAGGED>` questions, 19,430 source interactions on those questions,
+19,318 supervised interactions after unanswered filtering, and 18,307 retained
+benchmark interactions.
+
+Independent validation streamed all 82 supervised Parquet shards and reconciled
+every row, student, session, split, mapping, distribution, and all 27,646 audit
+rows. Versioned aggregate outputs and deterministic mappings are under
+[`reports/datasets/ednet_kt1/`](../../reports/datasets/ednet_kt1/).

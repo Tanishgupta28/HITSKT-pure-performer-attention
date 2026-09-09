@@ -10,10 +10,10 @@ assessment is complete, and checkpoint `88aef9f` is on private repository
 
 ## Exact next bounded action
 
-Run the validated streaming pipeline across all 784,309 EdNet-KT1 student
-files. Validate full supervised/audit shard counts, chronology, rebuilt
-sessions/splits, mappings, and requested distributions before publishing the
-full-data report checkpoint.
+Implement the shared post-filter session-window/rolling-history representation
+and corresponding leakage tests, then adapt ASSIST2017 and full Junyi to the
+same event/split contract. Only after all preprocessing/tensor gates pass should
+model-forward/backward/checkpoint smoke tests begin.
 
 ## Stop conditions
 

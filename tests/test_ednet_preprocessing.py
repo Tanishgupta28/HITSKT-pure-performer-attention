@@ -15,6 +15,7 @@ from ktbench.data.ednet import (
     canonicalize_tags,
     preprocess_ednet,
 )
+from ktbench.data.validate_ednet import validate_processed_ednet
 
 
 QUESTION_COLUMNS = [
@@ -171,3 +172,6 @@ def test_end_to_end_retains_rows_once_and_preserves_timestamp_ties(
     assert unanswered.loc[0, "user_answer"] == ""
     assert (output / "_SUCCESS").exists()
     assert not (output / "_FAILED").exists()
+    validation = validate_processed_ednet(output)
+    assert validation["validated_event_rows"] == 6
+    assert validation["validated_unanswered_rows"] == 1

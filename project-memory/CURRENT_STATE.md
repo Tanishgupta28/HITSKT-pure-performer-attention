@@ -74,9 +74,19 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
   -18); answered-event grouping changed for one. Parquet row counts, labels,
   ordering, session continuity, per-session positions, split chronology, and
   completion markers all passed.
+- The full EdNet pass completed across 784,309 files and 95,293,926 source
+  interactions. It excluded/audited 27,646 unanswered rows across 4,477
+  students (0.0290112929%), leaving 95,266,280 supervised interactions.
+- Post-filter session rebuilding changed session counts for 148 students (net
+  -150) and answered-event grouping for six. The five-session filter retained
+  116,548 students, 81,940,867 interactions, and 2,577,988 sessions, split into
+  53,990,022 train, 14,520,975 validation, and 13,429,870 test interactions.
+- Independent streaming validation passed all 82 event shards and 27,646 audit
+  rows. Aggregate reports, distributions, and deterministic question/tag/skill
+  mappings are staged under `../reports/datasets/ednet_kt1/`; interaction-level
+  Parquet remains ignored and local.
 - No model/dataset experiment ran; there are no valid benchmark results.
-- No full-dataset preprocessing, tensor/model/checkpoint/metrics smoke
-  test, or scientific experiment ran.
+- No tensor/model/checkpoint/metrics smoke test or scientific experiment ran.
 
 ## Known implementation risks requiring evidence
 

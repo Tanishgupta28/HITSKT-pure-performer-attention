@@ -66,6 +66,11 @@ sequence lengths, split assignments, and question/skill attempt counters are
 rebuilt after filtering. The generated report quantifies the full and bounded
 sample exclusion rates and any resulting session changes.
 
+The completed full-dataset mappings, aggregate distribution, validation
+manifest, and dataset report are versioned under
+[`reports/datasets/ednet_kt1/`](reports/datasets/ednet_kt1/). Event and audit
+Parquet shards remain local because they contain interaction-level data.
+
 Sessions use the approved 10-hour inactivity boundary. Students with fewer
 than five sessions are excluded, and each retained student's sessions are split
 chronologically 60/20/20 using earlier remainder sessions for training. The
