@@ -10,10 +10,10 @@ assessment is complete, and checkpoint `88aef9f` is on private repository
 
 ## Exact next bounded action
 
-Implement the shared post-filter session-window/rolling-history representation
-and corresponding leakage tests, then adapt ASSIST2017 and full Junyi to the
-same event/split contract. Only after all preprocessing/tensor gates pass should
-model-forward/backward/checkpoint smoke tests begin.
+Obtain the user's ASSIST2017 question/skill mapping decision for the 697
+multi-skill questions. Then complete ASSIST2017 and full-Junyi preprocessing,
+validate the shared post-filter session-window/rolling-history representation,
+and only afterward begin model-forward/backward/checkpoint smoke tests.
 
 ## Stop conditions
 

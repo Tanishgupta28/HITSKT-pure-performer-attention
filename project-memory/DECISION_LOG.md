@@ -94,3 +94,13 @@
   artifacts under `../reports/datasets/ednet_kt1/`.
 - Consequence: EdNet event preprocessing is complete. Interaction Parquet is
   not committed; hashes and all deterministic metadata mappings are committed.
+
+## 2026-09-09 — Stop on ASSIST2017 many-to-many question skills
+
+- Decision: do not silently force one skill per ASSIST2017 question.
+- Evidence: the accepted full file has 697 multi-skill questions covering
+  440,761 interactions; see repository path
+  `docs/data/assist2017_provenance.md`.
+- Consequence: shared flat preprocessing is fail-closed until the user chooses
+  row-level supplied skills or one globally constructed question-level
+  composite set. Junyi preprocessing is also paused at this checkpoint.

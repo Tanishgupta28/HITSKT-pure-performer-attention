@@ -85,6 +85,13 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
   rows. Aggregate reports, distributions, and deterministic question/tag/skill
   mappings are staged under `../reports/datasets/ednet_kt1/`; interaction-level
   Parquet remains ignored and local.
+- Accepted ASSIST2017 and full Junyi source files are staged under `data/raw/`
+  with verified hashes. A vectorized shared preprocessor and three synthetic
+  fail-closed tests have been added.
+- The real ASSIST2017 run stopped before output completion because 697/3,162
+  questions have multiple observed row-level skills (682 have two, 15 have
+  three). They cover 440,761/942,807 interactions (46.749865%) and 3,874 unique
+  question/skill pairs. No mapping choice has been assumed; Junyi is paused.
 - No model/dataset experiment ran; there are no valid benchmark results.
 - No tensor/model/checkpoint/metrics smoke test or scientific experiment ran.
 
