@@ -44,9 +44,14 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
   `aa910a0436d9dbac0ba232f55e27b37ad8d39da285fcf15f1c1eb5d064be98e7`.
 - Official EdNet `questions.csv` contains 13,169 questions. All have tags;
   6,049 questions have multiple semicolon-delimited tags (maximum seven).
-- A material tag-policy ambiguity remains: the user's composite-tag rule names
-  Junyi, whose supplied processed schema has one `skill` per interaction, while
-  multi-tag EdNet requires an explicit mapping decision.
+- The user explicitly extended the complete sorted composite-tag rule to
+  EdNet. Canonicalizing numeric tag sets yields a provisional 1,495 composite
+  values, which is not unexpectedly large for the existing embeddings.
+- A new material metadata ambiguity remains: 797 EdNet questions have literal
+  `tags = -1`. The official documentation uses `-1` as unavailable metadata in
+  the contents tables, but does not explicitly explain these question rows.
+  The user must decide whether this is an original tag or an untagged sentinel
+  before IDs and reported original-tag counts are finalized.
 - No preprocessing/tensor/forward/backward/checkpoint/metrics smoke test ran.
 - No model/dataset experiment ran; there are no valid benchmark results.
 - No changes to tracked project source have been made.

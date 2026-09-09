@@ -70,10 +70,17 @@ Observed metadata facts:
 - The largest tag set contains seven tags.
 - There are 1,792 distinct tag-set strings before canonicalization.
 
-## Open protocol decision
+## Composite-skill protocol
 
-The approved composite-skill instruction explicitly names Junyi, but the
-supplied Junyi interaction schema contains one `skill` value per row. EdNet is
-the acquired dataset that demonstrably has multi-tag question metadata. The
-EdNet skill mapping is intentionally not implemented until the user confirms
-whether its complete sorted tag set should also become one composite skill ID.
+The user confirmed that EdNet uses the same complete sorted composite-tag rule:
+all tags associated with a question form one canonical set and one persisted
+skill ID. Interactions are never expanded and no primary tag is selected.
+
+Numeric canonicalization of the metadata produces a provisional 1,495 distinct
+tag sets, so the vocabulary is not unexpectedly large for HiTSKT's embedding
+approach. The mapping is not finalized yet because 797 questions contain the
+literal value `tags = -1`. The official documentation uses `-1` for unavailable
+contents metadata but does not explicitly describe its meaning for question
+tags. Treating it as an original tag would report 189 original tag IDs; treating
+it as missing and assigning a dedicated untagged composite would report 188
+original tag IDs. This decision is intentionally deferred to the user.

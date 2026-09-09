@@ -44,6 +44,13 @@ The user approved all of the following as binding implementation decisions:
 - For Junyi multi-tag questions, represent the complete sorted tag set as one
   deterministic composite skill ID; never expand an interaction into multiple
   rows.
+- Apply the same rule to EdNet: collect every question tag, sort tag IDs
+  deterministically, map the complete set to one persisted composite skill ID,
+  and assign that one ID to each interaction without row expansion or
+  primary-tag selection. Report original/composite vocabulary sizes, multi-tag
+  questions, the composite distribution, and multi-tag interaction count.
+- If the EdNet composite vocabulary is unexpectedly large or incompatible with
+  HiTSKT's embedding/configuration, stop before changing the modeling approach.
 - Define sessions using a 10-hour inactivity threshold.
 - Exclude students with fewer than five sessions, then use chronological
   per-student 60/20/20 session splits with rolling past-only history.

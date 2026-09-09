@@ -46,3 +46,13 @@
   `88aef9f`.
 - Consequence: `origin` remains the read-only conceptual upstream and remote
   `capstone-gpu` is the project publication/checkpoint destination.
+
+## 2026-09-09 — Extend composite-tag mapping to EdNet
+
+- Decision: canonicalize every EdNet question's complete numerically sorted tag
+  set and map it to one persisted composite skill ID. Do not expand rows or
+  choose a primary tag.
+- Evidence: explicit user clarification following the EdNet metadata audit.
+- Consequence: the provisional canonical vocabulary has 1,495 values and is
+  compatible with the existing embedding approach. Final mapping is paused
+  because 797 questions contain the undocumented/sentinel-like value `-1`.

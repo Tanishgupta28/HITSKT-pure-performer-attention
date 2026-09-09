@@ -10,10 +10,10 @@ assessment is complete, and checkpoint `88aef9f` is on private repository
 
 ## Exact next bounded action
 
-Obtain the user's explicit EdNet multi-tag mapping decision. Then record the
-complete acquisition/schema report (including source revision/URLs, hashes,
-archive/file counts and sizes, exact schemas, ordering fields, correctness
-derivation, and tag format) and implement the shared preprocessing contract.
+Obtain the user's explicit treatment of EdNet question rows with `tags = -1`.
+Then persist deterministic original-tag, composite-skill, and question-to-skill
+mappings; stream/sessionize/split the full archive; and produce the requested
+metadata and interaction distribution report.
 
 ## Stop conditions
 
