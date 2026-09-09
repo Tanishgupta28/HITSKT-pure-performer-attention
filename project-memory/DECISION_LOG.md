@@ -120,3 +120,11 @@
 - Evidence: the approved Junyi multi-tag rule and full mapping/validator output.
 - Consequence: 1,326 original tags map into 1,521 composite skills; all
   14,660,217 rows remain exactly once.
+
+## 2026-09-09 — Stop before legacy HiTSKT action truncation
+
+- Decision: do not generate fixed tensors using the legacy last-`action_size-1`
+  truncation until the user reviews its measured data loss.
+- Evidence: repository path `docs/data/session_window_audit.md`.
+- Consequence: the validated event stores remain authoritative. No downstream
+  session chunks or variable-length batches have been chosen yet.

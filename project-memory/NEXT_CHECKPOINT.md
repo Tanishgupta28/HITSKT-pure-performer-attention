@@ -10,10 +10,10 @@ assessment is complete, and checkpoint `88aef9f` is on private repository
 
 ## Exact next bounded action
 
-Implement and validate the shared post-filter session-window/rolling-history
-representation across all three datasets. Prove that every target sees only
-strictly earlier events and that PAD/EOS never becomes a label. Then begin the
-five model forward/backward/checkpoint-loading smoke-test matrix.
+Obtain the user's action-window decision after reviewing the measured 29–43%
+legacy truncation loss. Then implement and validate the chosen rolling-history
+representation, prove strictly past-only targets and PAD/EOS exclusion, and
+begin the five-model forward/backward/checkpoint smoke-test matrix.
 
 ## Stop conditions
 

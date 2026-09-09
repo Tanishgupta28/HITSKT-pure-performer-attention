@@ -100,6 +100,12 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
   interactions, 29,865 students, and 600,154 rebuilt sessions across 15 shards.
 - Aggregate mappings/reports for ASSIST2017 and Junyi are staged under
   `../reports/datasets/`; interaction Parquet remains local and ignored.
+- A full session-length audit found that the legacy fixed action capacity would
+  discard 303,971 ASSIST interactions (34.334009%), 4,310,593 Junyi
+  interactions (29.403337%), and 35,198,097 EdNet interactions (42.955485%).
+  Maximum session lengths are 938, 3,924, and 13,080. Window generation is
+  paused because fixed truncation, chunking, and variable-length batching have
+  materially different scientific semantics.
 - No model/dataset experiment ran; there are no valid benchmark results.
 - No tensor/model/checkpoint/metrics smoke test or scientific experiment ran.
 
