@@ -51,6 +51,12 @@ The user approved all of the following as binding implementation decisions:
   questions, the composite distribution, and multi-tag interaction count.
 - If the EdNet composite vocabulary is unexpectedly large or incompatible with
   HiTSKT's embedding/configuration, stop before changing the modeling approach.
+- Treat EdNet `tags = -1` as missing metadata, not as a genuine original tag.
+  Retain every such interaction exactly once using the one deterministic
+  `<UNTAGGED>` composite skill ID, distinguish missing/genuine counts in reports,
+  and document the decision in the dataset report and README.
+- Do not infer a policy for any other missing or malformed EdNet tag value; stop
+  and ask before proceeding if one is encountered.
 - Define sessions using a 10-hour inactivity threshold.
 - Exclude students with fewer than five sessions, then use chronological
   per-student 60/20/20 session splits with rolling past-only history.

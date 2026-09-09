@@ -44,18 +44,21 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
   `aa910a0436d9dbac0ba232f55e27b37ad8d39da285fcf15f1c1eb5d064be98e7`.
 - Official EdNet `questions.csv` contains 13,169 questions. All have tags;
   6,049 questions have multiple semicolon-delimited tags (maximum seven).
-- The user explicitly extended the complete sorted composite-tag rule to
-  EdNet. Canonicalizing numeric tag sets yields a provisional 1,495 composite
-  values, which is not unexpectedly large for the existing embeddings.
-- A new material metadata ambiguity remains: 797 EdNet questions have literal
-  `tags = -1`. The official documentation uses `-1` as unavailable metadata in
-  the contents tables, but does not explicitly explain these question rows.
-  The user must decide whether this is an original tag or an untagged sentinel
-  before IDs and reported original-tag counts are finalized.
-- No preprocessing/tensor/forward/backward/checkpoint/metrics smoke test ran.
+- The user explicitly extended the complete sorted composite-tag rule to EdNet
+  and designated `tags = -1` as missing metadata mapped to one `<UNTAGGED>`
+  composite skill ID. The provisional vocabulary is compatible with the
+  existing embedding approach.
+- A deterministic streaming preprocessor, README protocol, and 12 focused tests
+  have been implemented. All 12 synthetic preprocessing tests pass.
+- The first real 1,000-student smoke invocation stopped before processing any
+  interactions, as designed, on a previously unknown duplicate tag within a
+  question: `152;147;163;179;178;149;178`.
+- A full metadata audit found 197 questions with duplicated tag IDs: duplicate
+  `176` in 85 questions, `178` in 75, and `177` in 37. There are 83 distinct raw
+  affected tag strings and no other malformed format besides approved `-1`.
+  No deduplication or composite ID assignment has been assumed.
 - No model/dataset experiment ran; there are no valid benchmark results.
-- No changes to tracked project source have been made.
-- No implementation source or scientific-result commit has been performed.
+- No tensor/model/checkpoint/metrics smoke test or scientific experiment ran.
 
 ## Known implementation risks requiring evidence
 

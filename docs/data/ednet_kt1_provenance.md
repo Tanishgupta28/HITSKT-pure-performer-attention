@@ -77,10 +77,15 @@ all tags associated with a question form one canonical set and one persisted
 skill ID. Interactions are never expanded and no primary tag is selected.
 
 Numeric canonicalization of the metadata produces a provisional 1,495 distinct
-tag sets, so the vocabulary is not unexpectedly large for HiTSKT's embedding
-approach. The mapping is not finalized yet because 797 questions contain the
-literal value `tags = -1`. The official documentation uses `-1` for unavailable
-contents metadata but does not explicitly describe its meaning for question
-tags. Treating it as an original tag would report 189 original tag IDs; treating
-it as missing and assigning a dedicated untagged composite would report 188
-original tag IDs. This decision is intentionally deferred to the user.
+tag sets when repeated IDs are collapsed, so the vocabulary is not unexpectedly
+large for HiTSKT's embedding approach. The user designated the 797 questions
+whose literal value is `tags = -1` as missing metadata. They retain every
+interaction and share composite skill ID `1`, named `<UNTAGGED>`; `-1` is
+excluded from the 188 genuine original tags.
+
+The fail-closed real-data smoke test then identified a second format requiring
+review: 197 questions repeat one tag ID within the semicolon list. Tag `176` is
+repeated in 85 questions, `178` in 75, and `177` in 37. These comprise 83
+distinct raw strings. No other tag format outside positive semicolon-delimited
+integers and the approved exact `-1` sentinel was found. The preprocessor has
+not silently collapsed the duplicates; their treatment awaits user direction.

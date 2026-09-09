@@ -54,5 +54,14 @@
   choose a primary tag.
 - Evidence: explicit user clarification following the EdNet metadata audit.
 - Consequence: the provisional canonical vocabulary has 1,495 values and is
-  compatible with the existing embedding approach. Final mapping is paused
-  because 797 questions contain the undocumented/sentinel-like value `-1`.
+  compatible with the existing embedding approach.
+
+## 2026-09-09 — Map EdNet -1 to one untagged skill
+
+- Decision: `tags = -1` means missing question tag metadata, is excluded from
+  the genuine original-tag count, and maps to the single reserved composite
+  skill ID `1` named `<UNTAGGED>`. Every interaction remains exactly once.
+- Evidence: explicit user clarification following the sentinel audit.
+- Consequence: preprocessing rejects every other malformed tag representation.
+  The real-data smoke test consequently stopped on duplicated IDs in 197
+  question tag strings; their treatment requires another explicit decision.

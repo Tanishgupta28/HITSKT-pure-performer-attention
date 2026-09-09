@@ -19,6 +19,59 @@ The requiring environments is as bellow:
 
 ## Data and Data Preprocessing
 
+### Reproducible benchmark pipeline
+
+The legacy instructions below describe the original research repository and
+are retained for provenance. They do **not** define the capstone's final EdNet
+benchmark: the prior Kaggle/Riiid file and `ednetnew.csv` are reduced or
+different datasets and are not accepted as full EdNet results.
+
+The final EdNet source is genuine official EdNet-KT1 plus its official
+`contents/questions.csv`. Acquisition hashes and schema evidence are recorded
+in [the EdNet provenance report](docs/data/ednet_kt1_provenance.md). Raw and
+processed data are ignored by Git.
+
+Run a bounded smoke test first:
+
+```bash
+python -m ktbench.data.ednet \
+  --kt1-zip data/raw/ednet/archives/EdNet-KT1.zip \
+  --contents-zip data/raw/ednet/archives/EdNet-Contents.zip \
+  --output-dir data/processed/ednet_kt1/smoke \
+  --max-students 1000
+```
+
+Run the full deterministic preprocessing by omitting `--max-students`:
+
+```bash
+python -m ktbench.data.ednet \
+  --kt1-zip data/raw/ednet/archives/EdNet-KT1.zip \
+  --contents-zip data/raw/ednet/archives/EdNet-Contents.zip \
+  --output-dir data/processed/ednet_kt1/full
+```
+
+EdNet tags are numerically sorted as a complete set and mapped to one stable
+composite skill ID; interactions are never expanded and no primary tag is
+selected. The literal metadata value `-1` is not an original tag. All such
+questions use the single reserved composite ID `1`, named `<UNTAGGED>`; `0` is
+reserved for padding. The generated `mappings/` tables make question, original
+tag, composite skill, and student IDs reproducible. Any other missing or
+malformed tag representation stops preprocessing for explicit review.
+
+Sessions use the approved 10-hour inactivity boundary. Students with fewer
+than five sessions are excluded, and each retained student's sessions are split
+chronologically 60/20/20 using earlier remainder sessions for training. The
+event table retains chronological rows and split membership so validation and
+test examples can use rolling, strictly past-only histories.
+
+Run preprocessing tests with:
+
+```bash
+pytest tests/test_ednet_preprocessing.py
+```
+
+### Legacy repository instructions
+
 We list the command to run the HiTSKT on different datasets. Listed hyperparameters are the optimal parameters for the respective datasets. The preprocessed data of ASSISTment 2017 and Junyi datasets are provided in the ``dataset`` directory. Due to the file size limitation of GitHub, we are not able to provide the preprocessed data of the EdNet dataset at this stage. Please download the ``train.csv`` from [this kaggle page](https://www.kaggle.com/c/riiid-test-answer-prediction/data), rename it to "ednet.csv".
 
 Then, create a new directory ``Dataset`` and put ``ednet.csv`` into this directory.
