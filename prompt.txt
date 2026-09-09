@@ -1,0 +1,886 @@
+You are working on my university capstone project on Knowledge Tracing (KT).
+
+You have access to my Google Drive and should inspect the existing project/code before making changes.
+
+The project is based on the existing GitHub repository:
+
+GitHub repository:
+https://github.com/pokerme7777/HiTSKT/tree/main
+
+This repository is the continuation point for our existing work.
+
+The main proposed model in this project is HiTSKT: a pure Performer-based Hierarchical Transformer.
+
+The existing HiTSKT implementation and dataset-specific code are available in the Google Drive folders listed below.
+
+1. VERY IMPORTANT: CONTINUE THE EXISTING PROJECT
+
+Do not create an unrelated implementation from scratch.
+
+The existing work in:
+
+https://github.com/pokerme7777/HiTSKT/tree/main
+
+is the base project.
+
+Inspect the repository and the corresponding Google Drive files first.
+
+The repository already contains the commands/configuration used to run the existing project, so:
+
+inspect the existing terminal commands
+preserve useful existing commands
+preserve the existing directory structure where practical
+update commands only when required
+document any changed commands in the README
+
+The current main model is:
+
+HiTSKT
+    ↓
+Hierarchical Transformer
+    ↓
+Pure Performer-based attention
+
+Do not replace the Performer-based HiTSKT with standard quadratic softmax attention unless I explicitly ask you to do so.
+
+2. ASK ME QUESTIONS WHENEVER THERE IS AMBIGUITY
+
+This is mandatory.
+
+Do not silently guess when something is ambiguous.
+
+If you encounter ambiguity involving:
+
+dataset version
+dataset file selection
+column mapping
+preprocessing
+train/validation/test protocol
+sequence construction
+session definition
+model implementation
+hyperparameters
+evaluation methodology
+conflicting existing code
+conflicting README instructions
+conflicting Google Drive files
+whether an existing implementation should be preserved or replaced
+expected output format
+GitHub structure
+experiment naming
+
+then stop and ask me a clear question before making the assumption.
+
+For each ambiguity, explain briefly:
+
+What is ambiguous
+What the two or more possible interpretations are
+What you recommend
+What decision you need from me
+
+Do not make a potentially consequential assumption just to continue execution.
+
+For routine implementation details that are unambiguous, proceed without asking unnecessary questions.
+
+3. GOOGLE DRIVE DATASETS
+
+The three datasets are available in these Google Drive folders.
+
+ASSISTment 2017
+https://drive.google.com/drive/folders/1a3xvT-vwuJtVab0wqp3aFmNjvy-r6Cqe?usp=sharing
+Junyi
+https://drive.google.com/drive/folders/1qN9fhnCNLHnOdn4LWHdurTM3ZD6wSdXQ?usp=sharing
+EdNet
+https://drive.google.com/drive/folders/17lOlqCjuy80SYSxYMhCof8HVxEbXxHTf?usp=sharing
+
+The code/files corresponding to each dataset are also stored in these folders.
+
+Do not assume the dataset schema. Inspect the actual files.
+
+4. CURRENT EDNET STATUS
+
+Previously, due to hardware limitations, we trained HiTSKT on:
+
+ednetnew.csv
+
+This is a compressed/smaller version of EdNet.
+
+That experiment was useful for debugging, but it is not the final EdNet experiment.
+
+I now have:
+
+GPU
+sufficient RAM
+
+Therefore, one pending task is to run HiTSKT on the full EdNet dataset.
+
+Do not use ednetnew.csv as the final full-EdNet result.
+
+Keep the old experiment for reference.
+
+5. TASK 1 — FULL EDNET + HiTSKT
+
+Use the full EdNet dataset from the provided Google Drive folder.
+
+First inspect:
+
+exact EdNet version
+exact files
+interaction structure
+question metadata
+skill/tag metadata
+timestamps
+answer correctness
+student identifiers
+question identifiers
+session-related information
+
+Earlier in this project we encountered an EdNet schema mismatch, so do not assume that the current EdNet raw schema matches the HiTSKT schema.
+
+Build a robust preprocessing pipeline from the actual files.
+
+The HiTSKT-compatible representation must provide the fields required by the existing model pipeline, including the equivalent of:
+
+studentId
+problemId
+skill
+correct
+question_no
+session_no
+
+and preserve temporal ordering.
+
+Before full training, verify:
+
+dataset loading
+↓
+preprocessing
+↓
+tensor conversion
+↓
+one batch
+↓
+forward pass
+↓
+loss
+↓
+backward pass
+↓
+checkpoint save
+↓
+checkpoint load
+↓
+metrics
+
+Only after this passes should full training begin.
+
+6. TASK 2 — BENCHMARK FIVE MODELS
+
+Train and evaluate these five KT models:
+
+DKT
+DKVMN
+SAKT
+RKT
+HiTSKT
+
+on all three datasets:
+
+ASSISTment 2017
+Junyi
+EdNet
+
+This gives:
+
+5 models × 3 datasets = 15 experiments
+
+Experiment matrix:
+
+                ASSIST2017    Junyi    EdNet
+------------------------------------------------
+DKT                train      train     train
+DKVMN              train      train     train
+SAKT               train      train     train
+RKT                train      train     train
+HiTSKT             train      train     train
+
+The benchmark must use our own actual trained results.
+
+7. REFERENCE IMAGES
+
+I may provide screenshots/images showing example result tables.
+
+Those images are reference only.
+
+Use them only to understand:
+
+expected table structure
+formatting
+types of metrics
+possible presentation style
+
+Do not:
+
+copy numerical values
+assume numerical values
+manually recreate numerical results
+calculate missing results from the screenshots
+use screenshot values as our experimental results
+
+All final values must come from actual experiments executed on our datasets.
+
+8. STANDARDIZED EVALUATION
+
+For every model/dataset combination calculate at minimum:
+
+Loss
+ROC-AUC
+Accuracy
+Precision
+Recall
+F1
+MSE
+
+Use probability outputs for ROC-AUC.
+
+For threshold-based metrics, use a documented threshold such as:
+
+0.5
+
+unless an existing model's accepted protocol requires another threshold.
+
+The same metric definition and target masking must be used consistently.
+
+9. PAD/EOS/SPECIAL TOKEN HANDLING
+
+This is especially important for HiTSKT.
+
+PAD and EOS values must not contaminate:
+
+loss
+AUC
+accuracy
+precision
+recall
+F1
+MSE
+
+Only genuine prediction targets should contribute to evaluation.
+
+Inspect the existing masking implementation carefully before changing it.
+
+10. TRAIN/VALIDATION/TEST SPLIT
+
+Use a consistent and defensible KT evaluation protocol.
+
+Avoid random interaction-level leakage.
+
+Prefer chronological/sequential evaluation where appropriate:
+
+past interactions → train
+later interactions → validation
+future interactions → test
+
+Document exactly how the split is performed for each dataset.
+
+Record actual counts:
+
+train examples
+validation examples
+test examples
+train ratio
+validation ratio
+test ratio
+
+Do not report nominal ratios if the generated examples differ from them.
+
+11. EDNET FULL DATASET — RESOURCE MANAGEMENT
+
+Because I now have GPU and RAM, use the available hardware effectively.
+
+Inspect:
+
+GPU model
+GPU memory
+system RAM
+CPU
+
+Use CUDA where available.
+
+For full EdNet:
+
+avoid unnecessary copies
+avoid repeatedly concatenating giant tensors
+use memory-efficient data loading
+use minibatches
+preserve chronological ordering
+do not load unnecessarily duplicated copies of the full dataset
+monitor memory use where practical
+
+If full EdNet still cannot fit the current implementation efficiently, do not silently switch to a sampled dataset.
+
+Ask me before changing the experimental design.
+
+12. SAMPLING RULE
+
+At this stage, the final EdNet task is the full EdNet experiment.
+
+Do not replace it with sampling merely because it is inconvenient.
+
+If hardware or implementation limitations make full EdNet impossible, report:
+
+what failed
+why it failed
+memory/runtime requirement
+what alternative you recommend
+
+Then ask me for approval before changing the methodology.
+
+13. MODEL ARCHITECTURE REQUIREMENT FOR HiTSKT
+
+Preserve the current HiTSKT architecture as the project's primary model.
+
+The project uses a hierarchical structure involving components such as:
+
+Action Encoder
+↓
+Session Encoder
+↓
+Correct/Padding Encoder
+↓
+Decoder
+↓
+Prediction
+
+and the main attention mechanism is:
+
+Pure Performer-based attention
+
+Do not silently replace this with:
+
+standard Transformer softmax attention
+
+or another architecture.
+
+If a change is required for correctness or compatibility, explain it and ask me where the change materially alters the architecture.
+
+14. OTHER BASELINE MODELS
+
+For:
+
+DKT
+DKVMN
+SAKT
+RKT
+
+inspect whether usable implementations already exist in:
+
+the GitHub repository
+the Google Drive
+existing project files
+
+Reuse compatible existing implementations when possible.
+
+Do not duplicate functionality unnecessarily.
+
+If an implementation is missing, build a clean implementation consistent with the project requirements.
+
+Document the source/origin of each implementation.
+
+15. HYPERPARAMETERS
+
+For every experiment, record:
+
+model
+dataset
+batch size
+learning rate
+optimizer
+weight decay
+epochs
+early stopping patience
+embedding size
+hidden size
+number of layers
+number of heads
+sequence length
+action length
+session length
+dropout
+model-specific parameters
+random seed
+device
+
+Also report:
+
+total model parameters
+trainable model parameters
+
+Keep the distinction clear:
+
+hyperparameters ≠ learned model parameters
+16. CHECKPOINTING
+
+Use validation ROC-AUC as the primary checkpoint-selection metric for consistency unless there is a documented model-specific reason not to.
+
+Expected flow:
+
+Train
+↓
+Validation
+↓
+Calculate validation AUC
+↓
+AUC improves?
+YES → save checkpoint
+NO → increase patience
+↓
+early stopping
+↓
+load best checkpoint
+↓
+final test evaluation
+
+Final test metrics must come from the best validation checkpoint.
+
+Make checkpoint loading compatible with the installed PyTorch version.
+
+Avoid unsafe or fragile checkpoint formats where possible.
+
+17. LOGGING
+
+Every experiment must have its own directory.
+
+Recommended structure:
+
+experiments/
+    assist2017/
+        DKT/
+        DKVMN/
+        SAKT/
+        RKT/
+        HiTSKT/
+
+    junyi/
+        DKT/
+        DKVMN/
+        SAKT/
+        RKT/
+        HiTSKT/
+
+    ednet/
+        DKT/
+        DKVMN/
+        SAKT/
+        RKT/
+        HiTSKT/
+
+Each experiment directory should contain as appropriate:
+
+training.log
+metrics.csv
+config.json
+best_model.pt
+dataset_stats.json
+final_results.json
+
+Do not mix results from different experiments.
+
+18. PER-EPOCH LOGGING
+
+Avoid printing model tensor shapes or debugging messages for every batch.
+
+Console/log output should primarily show:
+
+Epoch
+Train Loss
+Train AUC
+Validation Loss
+Validation AUC
+other validation metrics
+checkpoint status
+early stopping status
+
+Debug output should be disabled by default.
+
+Provide a debug mode only when useful.
+
+19. FINAL METRICS TABLES
+
+After the experiments are completed, generate final comparison tables from the actual CSV/result files.
+
+At minimum:
+
+ROC-AUC
+Model      ASSIST2017    Junyi    EdNet
+-----------------------------------------
+DKT        ...
+DKVMN      ...
+SAKT       ...
+RKT        ...
+HiTSKT     ...
+Accuracy
+
+Same structure.
+
+Precision
+
+Same structure.
+
+Recall
+
+Same structure.
+
+F1
+
+Same structure.
+
+MSE
+
+Same structure.
+
+Loss
+
+Same structure.
+
+Do not manually enter values into these tables.
+
+20. FINAL MASTER RESULTS FILE
+
+Generate a single machine-readable file such as:
+
+final_results.csv
+
+with columns covering:
+
+dataset
+model
+students
+interactions
+questions
+skills
+train_examples
+validation_examples
+test_examples
+train_ratio
+validation_ratio
+test_ratio
+sequence_length
+optimizer
+learning_rate
+batch_size
+epochs_completed
+best_epoch
+best_validation_auc
+test_loss
+test_auc
+test_accuracy
+test_precision
+test_recall
+test_f1
+test_mse
+total_parameters
+trainable_parameters
+runtime
+GPU
+seed
+
+Also generate:
+
+final_results.json
+
+where useful.
+
+21. DATASET REPORTS
+
+For each dataset generate a dataset summary:
+
+number of students
+number of interactions
+number of questions
+number of skills
+number of sessions
+correctness distribution
+student interaction statistics
+session statistics
+sequence length statistics
+missing values
+duplicates
+
+The report must be based on the actual files.
+
+22. TRAINING CURVES AND COMPARISON PLOTS
+
+Generate plots from actual metrics.
+
+For each experiment where applicable:
+
+train loss vs epoch
+validation loss vs epoch
+train AUC vs epoch
+validation AUC vs epoch
+
+Generate cross-model comparison plots such as:
+
+ROC-AUC by model
+F1 by model
+Accuracy by model
+
+Do not fabricate or manually insert plot values.
+
+23. CODE QUALITY
+
+Clean up the project so that it has:
+
+clear file organization
+reproducible commands
+clear configuration
+minimal duplicated code
+no dead imports where practical
+no debug prints in production mode
+proper error handling
+
+Do not perform unnecessary rewrites.
+
+Preserve working code where possible.
+
+24. GITHUB REPOSITORY
+
+The final project must have a proper GitHub repository structure.
+
+Continue from:
+
+https://github.com/pokerme7777/HiTSKT/tree/main
+
+Do not create a disconnected project unless the existing repository cannot be used, in which case ask me first.
+
+The repository should contain appropriate code such as:
+
+README.md
+
+models/
+    dkt/
+    dkvmn/
+    sakt/
+    rkt/
+    hitskt/
+
+data/
+    preprocessing/
+
+experiments/
+    scripts/
+
+configs/
+
+results/
+
+utils/
+
+Use a structure appropriate to the existing repository rather than blindly forcing this exact structure.
+
+25. README REQUIREMENTS
+
+Create or update a comprehensive README.md.
+
+It should explain:
+
+Project
+
+What HiTSKT is and that it is the primary proposed model.
+
+Models
+DKT
+DKVMN
+SAKT
+RKT
+HiTSKT
+Datasets
+ASSISTment 2017
+Junyi
+EdNet
+Environment
+
+Required:
+
+Python version
+PyTorch version
+CUDA requirements
+other dependencies
+Installation
+
+Give exact commands.
+
+Dataset preparation
+
+Explain where datasets are obtained and how they are preprocessed.
+
+Do not put private credentials or restricted links in source code.
+
+Training commands
+
+Document exact terminal commands for each model/dataset.
+
+For example, where appropriate:
+
+python main.py --dataset ...
+
+Use the actual commands validated in the project.
+
+Evaluation
+
+Explain all metrics.
+
+Checkpoints
+
+Explain best-validation-AUC selection.
+
+Results
+
+Explain where final CSV files and tables are stored.
+
+Reproducibility
+
+Document the random seed and experiment configuration.
+
+Repository structure
+
+Explain important directories/files.
+
+26. TERMINAL COMMANDS
+
+The existing GitHub repository already has commands that we have been using.
+
+Inspect those commands first.
+
+Do not invent a completely different command interface unless necessary.
+
+Where you change commands, update:
+
+README.md
+
+and provide the exact tested command.
+
+Every command documented as a working command must actually be tested.
+
+27. EXPERIMENT EXECUTION ORDER
+
+Do not launch all 15 experiments blindly.
+
+Use this workflow:
+
+1. Inspect repository
+2. Inspect Google Drive
+3. Inspect all datasets
+4. Inspect existing models
+5. Resolve ambiguities with me
+6. Build/verify preprocessing
+7. Run sanity checks
+8. Test DKT on one dataset
+9. Test DKVMN
+10. Test SAKT
+11. Test RKT
+12. Test HiTSKT
+13. Validate evaluation pipeline
+14. Run complete ASSIST2017 experiments
+15. Run complete Junyi experiments
+16. Run complete full-EdNet experiments
+17. Generate summary results
+18. Generate plots
+19. Update README
+20. Verify reproducibility
+
+Adjust this ordering if the repository structure suggests a better approach, but explain the change.
+
+28. FAILURE HANDLING
+
+If any experiment fails:
+
+Do not hide the failure.
+
+Record:
+
+experiment
+command
+error
+stage of failure
+root cause if known
+whether data/model/training/evaluation related
+recommended fix
+
+Ask me when the failure requires a methodological choice.
+
+Do not mark an experiment as complete if it did not produce valid final results.
+
+29. SCIENTIFIC VALIDATION CHECKLIST
+
+Before declaring the project complete, verify:
+
+No train/test leakage
+No future information leakage
+PAD/EOS excluded
+Correct target alignment
+Correct model output alignment
+Best checkpoint truly has best validation AUC
+Final test uses best checkpoint
+All metric definitions are consistent
+Dataset mappings are correct
+Chronological ordering preserved
+No accidental duplicate interactions
+No silent data loss
+Configuration is saved
+Seed is saved
+GPU/device is saved
+Runtime is recorded
+Results in CSV match printed results
+30. FINAL DELIVERABLE
+
+The final state of the project should contain:
+
+Working code
+Working preprocessing
+Working training scripts
+Working evaluation scripts
+Full EdNet HiTSKT experiment
+15-model/dataset benchmark
+Logs
+Checkpoints
+Metrics CSVs
+Final comparison tables
+Plots
+Dataset reports
+README
+Reproducible terminal commands
+
+Most importantly:
+
+All final performance numbers must be generated by actually training and evaluating our implementations on the actual datasets.
+
+Do not invent, estimate, copy, or infer final results.
+
+31. FIRST ACTION
+
+Before changing code or running long experiments:
+
+Inspect the GitHub repository and all three Google Drive dataset folders.
+
+Then inspect the existing code and determine:
+
+what already works
+what is broken
+what is missing
+what can be reused
+what needs modification
+what needs to be newly implemented
+
+Provide me with that assessment first.
+
+If anything important is ambiguous, ask me before proceeding.
+
+Do not start the 15 full experiments until the repository, dataset schemas, preprocessing, and evaluation pipeline have been verified.
+
+One additional project rule
+
+The primary research model remains the pure Performer-based HiTSKT. The other four models are benchmark/baseline models used to compare performance against HiTSKT.
+
+The objective is not merely to make all five models run. The objective is to produce a reproducible, scientifically valid comparison across ASSISTment 2017, Junyi, and full EdNet.
