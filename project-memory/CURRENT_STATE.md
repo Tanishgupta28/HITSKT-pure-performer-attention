@@ -183,7 +183,7 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
 - A CUDA-only implicit indexed-broadcast failure for the learned HiTSKT
   session-EOS vector was fixed by explicitly expanding the same vector across
   batch rows. EOS placement and the research architecture are unchanged.
-- All 47 automated tests pass. PyTorch warns that the CUDA cumulative-sum
+- All 49 automated tests pass. PyTorch warns that the CUDA cumulative-sum
   kernel used by Performer attention has no deterministic implementation in
   this installed build; seeding and deterministic warn-only mode remain on so
   this limitation is visible.
@@ -207,7 +207,7 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
   first student session and retain all 125,800/112,252 targets. No session was
   truncated or chunked.
 - The aggregate `reports/final_results.{csv,json}` is generated from completed
-  experiment artifacts and currently contains 4/15 rows; no smoke or
+  experiment artifacts and currently contains 5/15 rows; no smoke or
   throughput result enters it.
 - Full DKT on ASSIST2017 completed in 6,233.07 s with the unchanged batch-20,
   context-200 configuration. Strict early stopping selected epoch 12 at
@@ -230,9 +230,16 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
   0.0408 h, with no model or protocol change.
 - Baseline production runs now have a validated explicit resume path that
   restores model, Adam, and early-stopping state and appends durable artifacts.
-  DKVMN/ASSIST was externally interrupted after epoch 19 (best epoch 18,
-  validation AUC 0.6962520470; one patience miss) and is ready to resume at
-  epoch 20 without losing scientific state.
+  DKVMN/ASSIST was externally interrupted after epoch 19 and resumed at epoch
+  20 without losing scientific state.
+- Full DKVMN on ASSIST2017 completed across one validated resume in an
+  estimated combined 3,888.21 s. Strict early stopping selected epoch 18 at
+  validation AUC 0.6962520470 and stopped at epoch 23. Best-checkpoint test
+  metrics over all 112,252 targets are: AUC 0.6822527021, accuracy
+  0.6635961943, precision 0.6169661648, recall 0.3500987552, F1 0.4467106227,
+  MSE 0.2141332602, and loss 0.6182015214. Independent full test evaluation
+  reproduced every value exactly. The pre-resume wall-time component is
+  explicitly marked as estimated from artifact mtimes; metrics are exact.
 
 ## Known implementation risks requiring evidence
 

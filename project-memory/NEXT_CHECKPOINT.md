@@ -11,17 +11,18 @@ variant, train-only/cross-fitted Phi cache, timestamp normalization, `S_u` and
 lambda behavior, all metrics, and ASSIST smoke gate are implemented. Production
 runners for all five models share the common validation-AUC controller and pass
 end-to-end fixture tests. RKT clipping at maximum norm 10 is explicitly
-approved and recorded. All 47 tests pass. Seed 42 is centralized. Full
-DKT/ASSIST2017, RKT/ASSIST2017, HiTSKT/ASSIST2017, and SAKT/ASSIST2017 are complete and
+approved and recorded. All 49 tests pass. Seed 42 is centralized. All five
+ASSIST2017 model runs are complete and
 independently reproduced from their best checkpoints; the generated master
-result has 4/15 rows.
+result has 5/15 rows.
 
 ## Exact next bounded action
 
-Checkpoint the verified full SAKT/ASSIST2017 result, then launch full DKVMN on
-ASSIST2017 with the preserved repository hyperparameters, rolling 199-prior
-target-once inputs, seed 42, epoch ceiling 100, and common early-stopping
-protocol. Monitor epoch artifacts and independently verify the best checkpoint.
+Checkpoint the verified full DKVMN/ASSIST2017 result. Re-measure optimized
+DKVMN throughput on full Junyi and EdNet, then launch the next lowest-risk full
+Junyi run under its approved model-specific configuration and common
+early-stopping protocol. Monitor durable epoch artifacts and independently
+verify the best checkpoint before acceptance.
 Account for the measured compute-only lower bounds, particularly DKVMN's
 81.614-hour EdNet epoch, without silently changing batch size, context,
 targets, or dataset scope.

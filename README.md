@@ -120,7 +120,7 @@ implemented in [`ktbench/training.py`](ktbench/training.py).
 Machine-readable benchmark rows are generated only from completed experiment
 directories by `scripts/aggregate_results.py`. The current
 [`reports/final_results.csv`](reports/final_results.csv) and JSON companion
-contain four of 15 expected rows: full DKT, RKT, HiTSKT, and SAKT on
+contain five of 15 expected rows: full DKT, DKVMN, RKT, HiTSKT, and SAKT on
 ASSIST2017.
 Smoke and throughput diagnostics are excluded automatically.
 
@@ -175,8 +175,9 @@ Smoke outputs live under
 [`experiments/rkt/assist2017/smoke/`](experiments/rkt/assist2017/smoke/); they
 are diagnostic and must not be reported as final benchmark results. The
 production entry point is `scripts/train_rkt.py`; its artifact and
-best-checkpoint-reload contract has passed a bounded end-to-end test, but no
-full scientific RKT run is yet reported.
+best-checkpoint-reload contract has passed a bounded end-to-end test. The full
+ASSIST2017 RKT result is included in the generated master result table; smoke
+artifacts remain excluded.
 
 ### DKT, DKVMN, and SAKT baselines
 

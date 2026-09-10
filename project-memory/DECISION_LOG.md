@@ -317,3 +317,16 @@
 - Consequence: the externally interrupted DKVMN/ASSIST run can continue from
   completed epoch 19 without repeating targets from prior epochs or resetting
   its one-epoch non-improvement count. All 49 tests pass.
+
+## 2026-09-10 — Accept the full DKVMN/ASSIST2017 result
+
+- Decision: accept the completed seed-42 rolling target-once DKVMN run as the
+  fifth scientific benchmark result and the final ASSIST2017 model result.
+- Evidence: unchanged batch 32/context 200; model and Adam state resumed after
+  epoch 19; 23 total epoch records; best validation AUC 0.6962520470 at epoch
+  18; exactly five subsequent misses; best-checkpoint reload; all 112,252 test
+  targets; independent full test recomputation exactly matching every metric.
+- Consequence: the generated master files contain 5/15 actual rows. The
+  combined runtime is 3,888.21 s, with the pre-resume portion explicitly
+  identified as an artifact-mtime estimate; model results themselves are
+  exact and unaffected by the interruption.
