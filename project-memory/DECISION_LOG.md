@@ -264,3 +264,15 @@
   target count is 566,107 because each student's first session supplies
   context but cannot be a hierarchical target without an earlier session; no
   action in any target session was truncated or chunked.
+
+## 2026-09-10 — Accept the full DKT/ASSIST2017 result
+
+- Decision: accept the completed seed-42 rolling target-once DKT run as the
+  third scientific benchmark result.
+- Evidence: unchanged batch 20/context 200; 17 epoch records; best validation
+  AUC 0.7213696056 at epoch 12; exactly five subsequent misses; best-checkpoint
+  reload; all 112,252 test targets; independent full test recomputation exactly
+  matching every metric.
+- Consequence: the generated master files contain 3/15 actual rows. DKT remains
+  directly comparable under the standardized split/target/metric protocol
+  while retaining its established model-specific context and hyperparameters.

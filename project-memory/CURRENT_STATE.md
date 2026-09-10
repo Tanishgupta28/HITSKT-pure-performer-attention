@@ -207,8 +207,15 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
   first student session and retain all 125,800/112,252 targets. No session was
   truncated or chunked.
 - The aggregate `reports/final_results.{csv,json}` is generated from completed
-  experiment artifacts and currently contains 2/15 rows; no smoke or
+  experiment artifacts and currently contains 3/15 rows; no smoke or
   throughput result enters it.
+- Full DKT on ASSIST2017 completed in 6,233.07 s with the unchanged batch-20,
+  context-200 configuration. Strict early stopping selected epoch 12 at
+  validation AUC 0.7213696056 and stopped at epoch 17. Best-checkpoint test
+  metrics over all 112,252 targets are: AUC 0.7069997420, accuracy
+  0.6750258347, precision 0.6113932435, recall 0.4451564007, F1 0.5151970231,
+  MSE 0.2083804281, and loss 0.6057200542. Independent full test evaluation
+  reproduced every value exactly.
 
 ## Known implementation risks requiring evidence
 

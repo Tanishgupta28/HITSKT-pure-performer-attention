@@ -1,0 +1,28 @@
+{
+  "best_checkpoint_reloaded": true,
+  "best_epoch": 12,
+  "best_validation_auc": 0.7213696055764979,
+  "dataset": "assist2017",
+  "epoch_ceiling": 200,
+  "epochs_completed": 17,
+  "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+  "min_delta": 0.0,
+  "model": "DKT",
+  "patience": 5,
+  "runtime_seconds": 6233.0705237053335,
+  "seed": 42,
+  "status": "complete",
+  "test": {
+    "accuracy": 0.6750258347290026,
+    "f1": 0.5151970230580105,
+    "loss": 0.6057200541985488,
+    "mse": 0.20838042806546592,
+    "precision": 0.6113932435416206,
+    "recall": 0.44515640071654955,
+    "roc_auc": 0.7069997420457494,
+    "targets": 112252,
+    "threshold": 0.5
+  },
+  "total_parameters": 59751,
+  "trainable_parameters": 59751
+}

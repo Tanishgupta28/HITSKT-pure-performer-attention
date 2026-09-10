@@ -12,13 +12,14 @@ lambda behavior, all metrics, and ASSIST smoke gate are implemented. Production
 runners for all five models share the common validation-AUC controller and pass
 end-to-end fixture tests. RKT clipping at maximum norm 10 is explicitly
 approved and recorded. All 47 tests pass. Seed 42 is centralized. Full
-RKT/ASSIST2017 and HiTSKT/ASSIST2017 are complete and independently reproduced
-from their best checkpoints; the generated master result has 2/15 rows.
+DKT/ASSIST2017, RKT/ASSIST2017, and HiTSKT/ASSIST2017 are complete and
+independently reproduced from their best checkpoints; the generated master
+result has 3/15 rows.
 
 ## Exact next bounded action
 
-Launch full DKT on ASSIST2017 with the preserved repository hyperparameters,
-rolling 199-prior target-once inputs, seed 42, epoch ceiling 200, and common
+Launch full SAKT on ASSIST2017 with the preserved repository hyperparameters,
+rolling 99-prior target-once inputs, seed 42, epoch ceiling 300, and common
 early-stopping protocol. Monitor epoch artifacts and checkpoint the completed
 scientific result before moving to the next bounded run.
 Account for the measured compute-only lower bounds, particularly DKVMN's
