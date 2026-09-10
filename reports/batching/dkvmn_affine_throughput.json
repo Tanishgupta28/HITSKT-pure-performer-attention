@@ -1,0 +1,41 @@
+{
+  "device": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+  "execution": "chronological balanced affine composition, output/gradient equivalent to sequential reference",
+  "history_length": 199,
+  "measurements": [
+    {
+      "batch_size": 32,
+      "batches_per_epoch": 20228,
+      "compute_only_hours_per_epoch": 0.04082805761808737,
+      "dataset": "assist2017",
+      "peak_cuda_allocated_bytes": 383422976,
+      "seconds_per_batch": 0.007266215514391661,
+      "train_targets": 647283
+    },
+    {
+      "batch_size": 32,
+      "batches_per_epoch": 301471,
+      "compute_only_hours_per_epoch": 0.6163589629275699,
+      "dataset": "junyi",
+      "peak_cuda_allocated_bytes": 387964416,
+      "seconds_per_batch": 0.0073602179531008,
+      "train_targets": 9647042
+    },
+    {
+      "batch_size": 32,
+      "batches_per_epoch": 1687189,
+      "compute_only_hours_per_epoch": 3.4522953174107958,
+      "dataset": "ednet_kt1",
+      "peak_cuda_allocated_bytes": 387880960,
+      "seconds_per_batch": 0.007366254250518978,
+      "train_targets": 53990022
+    }
+  ],
+  "method": "3 warm-up and 20 measured full-history forward/loss/backward/optimizer steps using repository batch size",
+  "projected_epoch_excludes": [
+    "data loading",
+    "validation",
+    "checkpoint I/O"
+  ],
+  "seed": 42
+}

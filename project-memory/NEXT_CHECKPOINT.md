@@ -18,8 +18,8 @@ result has 5/15 rows.
 
 ## Exact next bounded action
 
-Checkpoint the verified full DKVMN/ASSIST2017 result. Re-measure optimized
-DKVMN throughput on full Junyi and EdNet, then launch the next lowest-risk full
+Checkpoint the verified full DKVMN/ASSIST2017 result and its updated throughput
+measurements, then launch full RKT/Junyi as the lowest projected complete
 Junyi run under its approved model-specific configuration and common
 early-stopping protocol. Monitor durable epoch artifacts and independently
 verify the best checkpoint before acceptance.
