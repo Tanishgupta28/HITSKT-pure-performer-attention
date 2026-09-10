@@ -288,3 +288,20 @@
 - Consequence: the generated master files contain 4/15 actual rows. SAKT
   retains its established repository hyperparameters under the standardized
   split, target-once, masking, checkpoint, and metric protocol.
+
+## 2026-09-10 — Execute DKVMN writes with balanced affine composition
+
+- Decision: compute the unchanged DKVMN erase/add recurrence by composing its
+  per-position affine writes in a chronological balanced tree instead of
+  issuing 199 Python-driven GPU recurrence steps.
+- Evidence: each write is exactly `M <- A*M + B`; composition uses
+  `(A2,B2) o (A1,B1) = (A2*A1, A2*B1+B2)`. An explicit test compares the
+  production reduction against the retained sequential reference across
+  variable-length/PAD histories and matches outputs and every parameter
+  gradient within tight floating-point tolerances. On full-history ASSIST
+  batches, measured training-step time fell from 0.174721 s to 0.007266 s
+  (24.0x), while peak allocation remained only 383,422,976 bytes.
+- Consequence: model parameters, memory equations, chronological order,
+  context, targets, optimizer, and hyperparameters are unchanged. Only the
+  associative execution schedule is optimized, making the full benchmark
+  tractable without changing scientific methodology.

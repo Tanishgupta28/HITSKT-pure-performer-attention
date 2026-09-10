@@ -155,6 +155,36 @@ def test_baseline_forward_backward_pad_and_target_masking(
         assert torch.equal(expected, restored(batch))
 
 
+def test_dkvmn_balanced_write_scan_matches_reference_outputs_and_gradients(
+    tmp_path: Path,
+) -> None:
+    seed_everything()
+    dataset = RollingTargetDataset(_store(tmp_path), "train", history_length=199)
+    batch = collate_rolling_targets([dataset[0], dataset[4], dataset[120], dataset[205]])
+    balanced = DKVMN(DKVMNConfig(num_skills=5))
+    sequential = DKVMN(DKVMNConfig(num_skills=5))
+    sequential.load_state_dict(balanced.state_dict())
+
+    balanced_memory = balanced._final_memory_balanced(batch)
+    sequential_memory = sequential._final_memory_sequential(batch)
+    assert torch.allclose(balanced_memory, sequential_memory, rtol=2e-5, atol=2e-6)
+
+    balanced_memory.square().mean().backward()
+    sequential_memory.square().mean().backward()
+    for balanced_parameter, sequential_parameter in zip(
+        balanced.parameters(), sequential.parameters(), strict=True
+    ):
+        if balanced_parameter.grad is None or sequential_parameter.grad is None:
+            assert balanced_parameter.grad is sequential_parameter.grad is None
+        else:
+            assert torch.allclose(
+                balanced_parameter.grad,
+                sequential_parameter.grad,
+                rtol=5e-5,
+                atol=2e-6,
+            )
+
+
 def test_production_runner_writes_and_reloads_best_checkpoint(tmp_path: Path) -> None:
     store = _store(tmp_path / "data", long_session=False)
     output = tmp_path / "experiment"

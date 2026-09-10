@@ -181,6 +181,14 @@ plus the target (context 100). DKT remains a width-64 one-layer LSTM, DKVMN
 retains its 20-slot dynamic key/value memory, and SAKT retains width 200, one
 layer, five heads, clipped relative positions, and dropout 0.2.
 
+DKVMN evaluates the unchanged erase/add memory recurrence using a
+chronological balanced composition of its affine writes. This is
+mathematically the same recurrence as the retained sequential reference but
+avoids 199 separate Python-driven GPU steps. Automated tests compare outputs
+and every parameter gradient across variable-length/PAD histories; this
+changes only the floating-point execution order, not architecture, parameters,
+context, targets, or training hyperparameters.
+
 Legacy non-overlapping chunks are excluded. The shared loader creates one
 rolling example per valid target, preserves chronological past-only history,
 dynamically pads each batch, and masks PAD from model state, loss, and metrics.

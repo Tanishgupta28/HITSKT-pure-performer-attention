@@ -223,6 +223,11 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
   0.6902950504, precision 0.6240144686, recall 0.5071425291, F1 0.5595408532,
   MSE 0.1998719304, and loss 0.5853560606. Independent full test evaluation
   reproduced every value exactly.
+- DKVMN's identical affine memory writes now use a chronological balanced
+  composition rather than 199 Python-driven GPU launches. Reference output and
+  gradient equivalence is tested. Actual full-history ASSIST step time improved
+  24.0x from 0.174721 s to 0.007266 s; projected compute-only epoch time is now
+  0.0408 h, with no model or protocol change.
 
 ## Known implementation risks requiring evidence
 

@@ -162,23 +162,58 @@ class DKVMN(nn.Module):
     def _weights(self, skill_embedding: torch.Tensor) -> torch.Tensor:
         return torch.softmax(skill_embedding @ self.memory_key.T, dim=-1)
 
-    def forward(self, batch: RollingTargetBatch) -> torch.Tensor:
-        batch_size, history_width = batch.history_skill.shape
+    def _write_terms(
+        self, batch: RollingTargetBatch
+    ) -> tuple[torch.Tensor, torch.Tensor]:
+        """Return the affine ``A`` and ``B`` terms for every memory write."""
+
         vocabulary = self.config.num_skills + 1
         skills = self.skill_embedding(batch.history_skill)
-        interaction_ids = (
-            batch.history_skill + batch.history_correct * vocabulary
-        )
+        interaction_ids = batch.history_skill + batch.history_correct * vocabulary
         interactions = self.interaction_embedding(interaction_ids)
+        weight = self._weights(skills)
+        erase = torch.sigmoid(self.erase(interactions))
+        add = torch.tanh(self.add(interactions))
+        a = 1.0 - weight.unsqueeze(-1) * erase.unsqueeze(2)
+        b = weight.unsqueeze(-1) * add.unsqueeze(2)
+        valid = batch.history_mask[:, :, None, None]
+        return torch.where(valid, a, torch.ones_like(a)), torch.where(
+            valid, b, torch.zeros_like(b)
+        )
+
+    def _final_memory_sequential(self, batch: RollingTargetBatch) -> torch.Tensor:
+        """Reference recurrence retained for equivalence tests."""
+
+        batch_size, history_width = batch.history_skill.shape
         memory = self.initial_memory_value.unsqueeze(0).expand(batch_size, -1, -1)
+        a, b = self._write_terms(batch)
         for position in range(history_width):
-            weight = self._weights(skills[:, position])
-            erase = torch.sigmoid(self.erase(interactions[:, position]))
-            add = torch.tanh(self.add(interactions[:, position]))
-            candidate = memory * (1.0 - weight.unsqueeze(-1) * erase.unsqueeze(1))
-            candidate = candidate + weight.unsqueeze(-1) * add.unsqueeze(1)
-            valid = batch.history_mask[:, position, None, None]
-            memory = torch.where(valid, candidate, memory)
+            memory = a[:, position] * memory + b[:, position]
+        return memory
+
+    def _final_memory_balanced(self, batch: RollingTargetBatch) -> torch.Tensor:
+        """Compose the identical affine writes with a logarithmic-depth scan."""
+
+        batch_size, history_width = batch.history_skill.shape
+        if history_width == 0:
+            return self.initial_memory_value.unsqueeze(0).expand(batch_size, -1, -1)
+        a, b = self._write_terms(batch)
+        while a.shape[1] > 1:
+            pair_count = a.shape[1] // 2
+            stop = pair_count * 2
+            early_a, late_a = a[:, :stop:2], a[:, 1:stop:2]
+            early_b, late_b = b[:, :stop:2], b[:, 1:stop:2]
+            combined_a = late_a * early_a
+            combined_b = late_a * early_b + late_b
+            if stop < a.shape[1]:
+                combined_a = torch.cat((combined_a, a[:, -1:]), dim=1)
+                combined_b = torch.cat((combined_b, b[:, -1:]), dim=1)
+            a, b = combined_a, combined_b
+        initial = self.initial_memory_value.unsqueeze(0).expand(batch_size, -1, -1)
+        return a[:, 0] * initial + b[:, 0]
+
+    def forward(self, batch: RollingTargetBatch) -> torch.Tensor:
+        memory = self._final_memory_balanced(batch)
 
         target = self.skill_embedding(batch.target_skill)
         target_weight = self._weights(target)
