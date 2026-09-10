@@ -125,7 +125,7 @@ def aggregate(experiments_root: Path, output_root: Path) -> list[dict[str, Any]]
                 rows.append(_row(root))
     output_root.mkdir(parents=True, exist_ok=True)
     with (output_root / "final_results.csv").open("w", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=FIELDS)
+        writer = csv.DictWriter(handle, fieldnames=FIELDS, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
     (output_root / "final_results.json").write_text(

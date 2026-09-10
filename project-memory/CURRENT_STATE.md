@@ -194,9 +194,21 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
   precision 0.6399917287, recall 0.4975655689, F1 0.5598625216, MSE
   0.1963360075, and loss 0.5771361224 across all 112,252 test targets.
 - An independent full test pass from `best_model.pt` reproduced every stored
-  test metric exactly. The aggregate `reports/final_results.{csv,json}` is
-  generated from completed experiment artifacts and currently contains 1/15
-  rows; no smoke or throughput result enters it.
+  test metric exactly.
+- Full HiTSKT on ASSIST2017 completed in 968.04 s. Strict early stopping
+  selected epoch 40 at validation AUC 0.7197572561 and stopped at epoch 45.
+  Best-checkpoint test metrics over all 112,252 held-out actions are: AUC
+  0.7096240159, accuracy 0.6744200549, precision 0.5866082262, recall
+  0.5440494235, F1 0.5645278522, MSE 0.2098452017, loss 0.6087257417.
+  Independent best-checkpoint evaluation reproduced every value exactly.
+- HiTSKT used all 566,107 actions in post-first training sessions; the 81,176
+  actions in each student's first session are context-only because the
+  hierarchical model requires an earlier session. Validation/test contain no
+  first student session and retain all 125,800/112,252 targets. No session was
+  truncated or chunked.
+- The aggregate `reports/final_results.{csv,json}` is generated from completed
+  experiment artifacts and currently contains 2/15 rows; no smoke or
+  throughput result enters it.
 
 ## Known implementation risks requiring evidence
 

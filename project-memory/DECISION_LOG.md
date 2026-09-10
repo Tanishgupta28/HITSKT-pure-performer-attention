@@ -252,3 +252,15 @@
   independent full test recomputation exactly matching every stored metric.
 - Consequence: `reports/final_results.{csv,json}` contains 1/15 actual result
   rows. The diagnostic smoke and throughput artifacts remain excluded.
+
+## 2026-09-10 — Accept the full HiTSKT/ASSIST2017 result
+
+- Decision: accept the completed seed-42 lossless variable-session run as the
+  second scientific benchmark result.
+- Evidence: 45 epoch records; best validation AUC 0.7197572561 at epoch 40;
+  exactly five subsequent misses; best-checkpoint reload; all 112,252 test
+  actions; independent full test recomputation exactly matching every metric.
+- Consequence: the generated master files contain 2/15 rows. The training
+  target count is 566,107 because each student's first session supplies
+  context but cannot be a hierarchical target without an earlier session; no
+  action in any target session was truncated or chunked.
