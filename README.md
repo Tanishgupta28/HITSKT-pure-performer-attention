@@ -117,6 +117,12 @@ experiment config/result records patience, `min_delta`, best epoch, best
 validation AUC, and total epochs completed. The reusable strict controller is
 implemented in [`ktbench/training.py`](ktbench/training.py).
 
+Machine-readable benchmark rows are generated only from completed experiment
+directories by `scripts/aggregate_results.py`. The current
+[`reports/final_results.csv`](reports/final_results.csv) and JSON companion
+contain one of 15 expected rows: full RKT on ASSIST2017. Smoke and throughput
+diagnostics are excluded automatically.
+
 The accepted ASSIST2017 and full Junyi sources use the same rebuilt session and
 split contract:
 

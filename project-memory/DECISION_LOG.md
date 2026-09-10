@@ -242,3 +242,13 @@
 - Consequence: implementation gates are complete. The remaining pre-launch
   scalability gate is full RKT Phi preparation; smoke outputs remain
   diagnostic and no scientific run is yet claimed.
+
+## 2026-09-10 — Accept the full RKT/ASSIST2017 result
+
+- Decision: accept the completed seed-42 run as the first scientific benchmark
+  result and generate the master row from its per-experiment artifacts.
+- Evidence: 19 epoch records; strict best validation AUC 0.7712554524 at epoch
+  14; five subsequent misses; best-checkpoint reload; 112,252 test targets;
+  independent full test recomputation exactly matching every stored metric.
+- Consequence: `reports/final_results.{csv,json}` contains 1/15 actual result
+  rows. The diagnostic smoke and throughput artifacts remain excluded.

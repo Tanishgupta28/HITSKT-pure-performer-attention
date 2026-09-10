@@ -163,6 +163,7 @@ def train_baseline(
     if any(len(dataset) == 0 for dataset in datasets.values()):
         raise ValueError("an experiment split contains no targets")
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    gpu_name = torch.cuda.get_device_name(device) if device.type == "cuda" else "CPU"
     model = make_baseline_model(
         model_name,
         num_questions=int(store.metadata["num_questions"]),
@@ -179,6 +180,7 @@ def train_baseline(
         "dataset": dataset_name,
         "seed": PROJECT_SEED,
         "device": str(device),
+        "gpu": gpu_name,
         "workers": workers,
         "early_stopping_metric": COMMON_EARLY_STOPPING.metric,
         "early_stopping_patience": COMMON_EARLY_STOPPING.patience,
@@ -342,6 +344,7 @@ def train_baseline(
         "total_parameters": total_parameters,
         "trainable_parameters": configuration["trainable_parameters"],
         "best_checkpoint_reloaded": True,
+        "gpu": gpu_name,
     }
     _write_json(output_root / "final_results.json", result)
     configuration.update(

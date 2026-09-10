@@ -118,6 +118,7 @@ def train_hitskt(
     if any(len(dataset) == 0 for dataset in datasets.values()):
         raise ValueError("a HiTSKT experiment split contains no target sessions")
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    gpu_name = torch.cuda.get_device_name(device) if device.type == "cuda" else "CPU"
     model_config = HiTSKTConfig(
         num_questions=int(store.metadata["num_questions"]),
         num_skills=int(store.metadata["num_skills"]),
@@ -143,6 +144,7 @@ def train_hitskt(
         "dataset": dataset_name,
         "seed": PROJECT_SEED,
         "device": str(device),
+        "gpu": gpu_name,
         "workers": workers,
         "action_truncation": False,
         "action_chunking": False,
@@ -273,6 +275,7 @@ def train_hitskt(
         "total_parameters": total_parameters,
         "trainable_parameters": configuration["trainable_parameters"],
         "best_checkpoint_reloaded": True,
+        "gpu": gpu_name,
     }
     _write_json(output_root / "final_results.json", result)
     (output_root / "_SUCCESS").write_text("complete\n")

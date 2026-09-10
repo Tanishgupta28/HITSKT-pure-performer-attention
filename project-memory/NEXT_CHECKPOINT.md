@@ -11,15 +11,16 @@ variant, train-only/cross-fitted Phi cache, timestamp normalization, `S_u` and
 lambda behavior, all metrics, and ASSIST smoke gate are implemented. Production
 runners for all five models share the common validation-AUC controller and pass
 end-to-end fixture tests. RKT clipping at maximum norm 10 is explicitly
-approved and recorded. All 46 tests pass. Seed 42 is centralized. No full
-scientific training run is active or complete.
+approved and recorded. All 47 tests pass. Seed 42 is centralized. Full
+RKT/ASSIST2017 is complete and independently reproduced from its best epoch-14
+checkpoint; the generated master result has 1/15 rows.
 
 ## Exact next bounded action
 
-Launch the first full experiment, RKT on ASSIST2017, without changing the
-approved leakage, target, early-stopping, or hyperparameter semantics. Monitor
-epoch artifacts and checkpoint the completed scientific result before moving
-to the next bounded run.
+Launch full HiTSKT on ASSIST2017, preserving the lossless session batches,
+pure-Performer hierarchy, seed 42, dataset-specific epoch ceiling 100, and
+common early-stopping protocol. Monitor epoch artifacts and checkpoint the
+completed scientific result before moving to the next bounded run.
 Account for the measured compute-only lower bounds, particularly DKVMN's
 81.614-hour EdNet epoch, without silently changing batch size, context,
 targets, or dataset scope.

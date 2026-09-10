@@ -9,6 +9,6 @@ data/processed/
 
 # Runtime artifacts are generated per experiment.
 experiments/**/best_model.pt
+!experiments/**/full/best_model.pt
 experiments/**/last_model.pt
 experiments/**/cache/
-

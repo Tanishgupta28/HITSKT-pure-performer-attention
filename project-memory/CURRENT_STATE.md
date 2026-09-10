@@ -183,10 +183,20 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
 - A CUDA-only implicit indexed-broadcast failure for the learned HiTSKT
   session-EOS vector was fixed by explicitly expanding the same vector across
   batch rows. EOS placement and the research architecture are unchanged.
-- All 46 automated tests pass. PyTorch warns that the CUDA cumulative-sum
+- All 47 automated tests pass. PyTorch warns that the CUDA cumulative-sum
   kernel used by Performer attention has no deterministic implementation in
   this installed build; seeding and deterministic warn-only mode remain on so
-  this limitation is visible. No full scientific experiment has started.
+  this limitation is visible.
+- The first full scientific experiment, RKT on ASSIST2017, completed in
+  1,474.90 s. Strict early stopping selected epoch 14 at validation AUC
+  0.7712554524 and stopped at epoch 19 after exactly five misses. Reloading the
+  best checkpoint produced test AUC 0.7486264899, accuracy 0.6965399280,
+  precision 0.6399917287, recall 0.4975655689, F1 0.5598625216, MSE
+  0.1963360075, and loss 0.5771361224 across all 112,252 test targets.
+- An independent full test pass from `best_model.pt` reproduced every stored
+  test metric exactly. The aggregate `reports/final_results.{csv,json}` is
+  generated from completed experiment artifacts and currently contains 1/15
+  rows; no smoke or throughput result enters it.
 
 ## Known implementation risks requiring evidence
 

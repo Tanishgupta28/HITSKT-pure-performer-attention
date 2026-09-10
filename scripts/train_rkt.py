@@ -137,6 +137,7 @@ def train_rkt(
         num_students=len(initial_s) - 1,
     )
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    gpu_name = torch.cuda.get_device_name(device) if device.type == "cuda" else "CPU"
     model = PaperFaithfulRKT(config, initial_s).to(device)
     optimizer = torch.optim.Adam(
         model.parameters(), lr=RKT_LEARNING_RATE, weight_decay=RKT_WEIGHT_DECAY
@@ -173,6 +174,7 @@ def train_rkt(
         "best_validation_auc": None,
         "epochs_completed": 0,
         "device": str(device),
+        "gpu": gpu_name,
         "workers": workers,
     }
     if epoch_ceiling_override is not None:
@@ -289,6 +291,7 @@ def train_rkt(
         "total_parameters": total_parameters,
         "trainable_parameters": configuration["trainable_parameters"],
         "best_checkpoint_reloaded": True,
+        "gpu": gpu_name,
     }
     _write_json(output_root / "final_results.json", result)
     (output_root / "_SUCCESS").write_text("complete\n")
