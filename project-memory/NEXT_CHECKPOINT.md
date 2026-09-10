@@ -12,16 +12,16 @@ lambda behavior, all metrics, and ASSIST smoke gate are implemented. Production
 runners for all five models share the common validation-AUC controller and pass
 end-to-end fixture tests. RKT clipping at maximum norm 10 is explicitly
 approved and recorded. All 47 tests pass. Seed 42 is centralized. Full
-DKT/ASSIST2017, RKT/ASSIST2017, and HiTSKT/ASSIST2017 are complete and
+DKT/ASSIST2017, RKT/ASSIST2017, HiTSKT/ASSIST2017, and SAKT/ASSIST2017 are complete and
 independently reproduced from their best checkpoints; the generated master
-result has 3/15 rows.
+result has 4/15 rows.
 
 ## Exact next bounded action
 
-Launch full SAKT on ASSIST2017 with the preserved repository hyperparameters,
-rolling 99-prior target-once inputs, seed 42, epoch ceiling 300, and common
-early-stopping protocol. Monitor epoch artifacts and checkpoint the completed
-scientific result before moving to the next bounded run.
+Checkpoint the verified full SAKT/ASSIST2017 result, then launch full DKVMN on
+ASSIST2017 with the preserved repository hyperparameters, rolling 199-prior
+target-once inputs, seed 42, epoch ceiling 100, and common early-stopping
+protocol. Monitor epoch artifacts and independently verify the best checkpoint.
 Account for the measured compute-only lower bounds, particularly DKVMN's
 81.614-hour EdNet epoch, without silently changing batch size, context,
 targets, or dataset scope.

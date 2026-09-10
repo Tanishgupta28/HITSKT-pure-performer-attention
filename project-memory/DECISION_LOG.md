@@ -276,3 +276,15 @@
 - Consequence: the generated master files contain 3/15 actual rows. DKT remains
   directly comparable under the standardized split/target/metric protocol
   while retaining its established model-specific context and hyperparameters.
+
+## 2026-09-10 — Accept the full SAKT/ASSIST2017 result
+
+- Decision: accept the completed seed-42 rolling target-once SAKT run as the
+  fourth scientific benchmark result.
+- Evidence: unchanged batch 10/context 100; 35 epoch records; best validation
+  AUC 0.7577061439 at epoch 30; exactly five subsequent misses;
+  best-checkpoint reload; all 112,252 test targets; independent full test
+  recomputation exactly matching every metric.
+- Consequence: the generated master files contain 4/15 actual rows. SAKT
+  retains its established repository hyperparameters under the standardized
+  split, target-once, masking, checkpoint, and metric protocol.

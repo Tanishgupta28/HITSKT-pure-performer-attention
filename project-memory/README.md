@@ -27,8 +27,8 @@ datasets. The pure Performer HiTSKT gate and the approved paper-faithful,
 cross-fitted performance-only RKT smoke gate pass. Project seed 42 is
 centralized and verified. Production runners for all five models pass their
 bounded end-to-end gates under the common validation-AUC controller. Full
-DKT/ASSIST2017, RKT/ASSIST2017, and HiTSKT/ASSIST2017 are complete,
-independently reproduced from their best checkpoints, and occupy three of 15
+DKT/ASSIST2017, RKT/ASSIST2017, HiTSKT/ASSIST2017, and SAKT/ASSIST2017 are complete,
+independently reproduced from their best checkpoints, and occupy four of 15
 generated master-result rows.
 Full Phi caches and production-cache throughput gates pass for all datasets.
-Full SAKT/ASSIST2017 is the next experiment.
+Full DKVMN/ASSIST2017 is the next experiment.
