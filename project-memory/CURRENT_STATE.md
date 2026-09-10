@@ -140,15 +140,12 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
 - Sparse Phi caches encode deterministic five-fold student cross-fitting for
   training and all-training-only lookup for validation/test. Tests prove fold,
   own-label, future-interaction, and validation/test exclusion.
-- Full-population Phi preparation is complete for ASSIST2017 and Junyi. ASSIST
+- Full-population Phi preparation is complete for all three datasets. ASSIST
   processed 647,283 training targets and 13,530,869 contributions in 14.17 s;
   Junyi processed 9,647,042 targets and 410,926,464 contributions in 734.99 s.
-  Exact unique-pair, scratch, RSS, and cache-size evidence is versioned in
-  `../reports/rkt/phi_scaling_benchmark.{json,md}`.
-- The deterministic 1,000-student EdNet gate processed 445,519 targets and
-  20,031,493 contributions in 84.73 s without an implementation or memory
-  issue. Its full-build planning estimate is about 2.85 hours and 32.81 GiB
-  scratch; these are estimates, not completed measurements.
+  EdNet processed 53,990,022 targets and 2,430,771,986 contributions in
+  1,984.27 s. Exact unique-pair, scratch, RSS, cache-size, sample, and historical
+  estimate evidence is versioned in `../reports/rkt/phi_scaling_benchmark.*`.
 - The bounded 20-student ASSIST RKT smoke passed a forward/backward update,
   `[128,49]` shapes, unique-target accounting, checkpoint round-trip, frozen
   evaluation relation parameters, and all required metrics. Its results are
@@ -195,9 +192,12 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
 
 - The supplied Drive “EdNet” data is Riiid and cannot be used; genuine full
   EdNet-KT1 must be acquired and provenance-verified.
-- Full EdNet sparse Phi construction is not yet complete. Any scalability issue
-  requiring changed cross-fitting or history semantics remains a stop
-  condition.
+- Loading the complete production Phi repositories and measuring RKT epoch
+  throughput is validated. Grouping identical lookups by applicable fold cache
+  is exactly equal to scalar lookup in tests and improves projected epochs from
+  96.3 s/98.0 min/9.89 h to 79.1 s/23.7 min/2.34 h for ASSIST/Junyi/EdNet.
+  These are planning estimates, not scientific results; raw evidence is under
+  `../reports/rkt/`.
 
 ## RKT protocol resolution
 

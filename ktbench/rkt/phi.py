@@ -314,3 +314,54 @@ class CrossFittedPhiRepository:
                 raise ValueError(f"student {student_id} has no persisted fold")
             matrix = self.excluding[fold]
         return matrix.lookup(target_questions, prior_questions)
+
+    def lookup_grouped(
+        self,
+        student_ids: Iterable[int],
+        splits: Iterable[int],
+        target_questions: Iterable[int],
+        prior_questions: Iterable[np.ndarray],
+    ) -> list[np.ndarray]:
+        """Vectorize equivalent lookups by cross-fit matrix selection.
+
+        Training rows are grouped by their excluded student fold; held-out rows
+        share the all-training matrix. Grouping only changes search granularity,
+        never which matrix or ordered question pair supplies a relation.
+        """
+
+        students = [int(value) for value in student_ids]
+        split_values = [int(value) for value in splits]
+        targets = [int(value) for value in target_questions]
+        priors = [np.asarray(value, dtype=np.int64) for value in prior_questions]
+        length = len(students)
+        if not (len(split_values) == len(targets) == len(priors) == length):
+            raise ValueError("grouped Phi lookup fields have different lengths")
+        groups: dict[int, list[int]] = {}
+        for row, (student, split) in enumerate(zip(students, split_values)):
+            matrix_index = FOLD_COUNT
+            if split == 0:
+                if student >= len(self.fold_by_student):
+                    raise ValueError(f"student {student} has no persisted fold")
+                matrix_index = int(self.fold_by_student[student])
+                if matrix_index >= FOLD_COUNT:
+                    raise ValueError(f"student {student} has no persisted fold")
+            groups.setdefault(matrix_index, []).append(row)
+
+        result = [np.empty(0, dtype=np.float32) for _ in range(length)]
+        for matrix_index, rows in groups.items():
+            matrix = self.all_train if matrix_index == FOLD_COUNT else self.excluding[matrix_index]
+            sizes = np.asarray([len(priors[row]) for row in rows], dtype=np.int64)
+            total = int(sizes.sum())
+            if total == 0:
+                continue
+            flat_priors = np.concatenate([priors[row] for row in rows])
+            flat_targets = np.repeat(
+                np.asarray([targets[row] for row in rows], dtype=np.int64), sizes
+            )
+            relations = matrix.lookup(flat_targets, flat_priors)
+            cursor = 0
+            for row, size in zip(rows, sizes):
+                stop = cursor + int(size)
+                result[row] = relations[cursor:stop]
+                cursor = stop
+        return result

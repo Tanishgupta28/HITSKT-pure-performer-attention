@@ -27,6 +27,6 @@ datasets. The pure Performer HiTSKT gate and the approved paper-faithful,
 cross-fitted performance-only RKT smoke gate pass. Project seed 42 is
 centralized and verified. Production runners for all five models now pass their
 bounded end-to-end gates under the common validation-AUC controller. No full
-scientific benchmark experiment has begun. Full ASSIST2017 and Junyi Phi caches
-are complete; the next bounded task is full EdNet Phi preparation before the
-15 full runs.
+scientific benchmark experiment has begun. Full ASSIST2017, Junyi, and EdNet
+Phi caches are complete, and production-cache loading plus RKT throughput
+validation pass. RKT on ASSIST2017 is the next full experiment.

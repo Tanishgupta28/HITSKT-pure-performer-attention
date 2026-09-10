@@ -133,6 +133,14 @@ training partition. The saved `student_folds.csv`, per-fold contingency files,
 complement caches, and metadata make the optimization auditable without
 changing these semantics.
 
+Production collation groups a batch by the matrix it must use—one of five
+fold-exclusion matrices for training, or the all-training matrix for held-out
+targets—and vectorizes the identical ordered-pair binary searches. An explicit
+test compares every grouped result with its scalar lookup across all five
+folds. This optimization reduces full-cache cost without changing fold
+selection, Phi values, rolling history, or leakage rules. Full construction and
+throughput evidence is in `reports/rkt/`.
+
 The full deterministic fold sizes are:
 
 | Dataset | Fold sizes | Balance |

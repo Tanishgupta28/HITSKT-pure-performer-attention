@@ -1,0 +1,34 @@
+{
+  "batch_size": 128,
+  "cuda_peak_allocated_bytes": 124505600,
+  "cuda_peak_reserved_bytes": 148897792,
+  "dataset": "ednet_kt1",
+  "device": "cuda",
+  "estimate_scope": "bounded random targets; includes lookup, collation, transfer, and model step; excludes checkpoint and full-epoch loader setup",
+  "estimated_compute_and_collation_seconds": {
+    "one_train_plus_validation_epoch": 8412.726536805738,
+    "train_split": 7140.230643829989,
+    "validation_split": 1272.4958929757486
+  },
+  "evaluation_seconds": 0.22433682903647423,
+  "evaluation_targets_per_second": 11411.41207618557,
+  "full_cache": true,
+  "gradient_clip": 10.0,
+  "measured_batches_per_mode": 20,
+  "measured_targets_per_mode": 2560,
+  "peak_process_rss_bytes": 29776150528,
+  "repository_load_seconds": 60.38256014091894,
+  "sample_history_length": {
+    "maximum": 49,
+    "mean": 46.41640625,
+    "minimum": 0
+  },
+  "seed": 42,
+  "split_targets": {
+    "test": 13429870,
+    "train": 53990022,
+    "validation": 14520975
+  },
+  "train_seconds": 0.3385623819194734,
+  "train_targets_per_second": 7561.383475287848
+}

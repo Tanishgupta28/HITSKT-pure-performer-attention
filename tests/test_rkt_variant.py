@@ -188,6 +188,28 @@ def test_rolling_history_target_uniqueness_shapes_and_causality(tmp_path: Path) 
     assert torch.equal(changed.delta_hours, original.delta_hours)
     assert torch.equal(changed.phi, original.phi)
 
+    # Grouped production lookup is exactly equal to one scalar lookup per row,
+    # including rows selected from different training folds.
+    mixed_examples = []
+    seen_folds = set()
+    for example in datasets[0]:
+        fold = int(repository.fold_by_student[example.student_id])
+        if fold not in seen_folds and len(example.history_question):
+            mixed_examples.append(example)
+            seen_folds.add(fold)
+        if len(seen_folds) == 5:
+            break
+    grouped = collate_rkt(mixed_examples, phi_repository=repository)
+    for row, example in enumerate(mixed_examples):
+        history = np.asarray(example.history_question, dtype=np.int64)
+        scalar = repository.lookup(
+            example.student_id,
+            example.split,
+            np.full(len(history), example.target_question, dtype=np.int64),
+            history,
+        )
+        assert np.array_equal(grouped.phi[row, -len(history) :].numpy(), scalar)
+
 
 def test_s_u_lambda_temporal_learning_freeze_metrics_and_checkpoint(tmp_path: Path) -> None:
     seed_everything()

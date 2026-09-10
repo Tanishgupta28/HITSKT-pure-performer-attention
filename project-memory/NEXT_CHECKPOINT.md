@@ -16,9 +16,10 @@ scientific training run is active or complete.
 
 ## Exact next bounded action
 
-Run the complete EdNet RKT Phi preparation now that full ASSIST2017 and Junyi
-caches have completed and the deterministic EdNet sample shows safe resource
-use. Do not alter the approved leakage semantics if actual scaling diverges.
+Launch the first full experiment, RKT on ASSIST2017, without changing the
+approved leakage, target, early-stopping, or hyperparameter semantics. Monitor
+epoch artifacts and checkpoint the completed scientific result before moving
+to the next bounded run.
 Account for the measured compute-only lower bounds, particularly DKVMN's
 81.614-hour EdNet epoch, without silently changing batch size, context,
 targets, or dataset scope.

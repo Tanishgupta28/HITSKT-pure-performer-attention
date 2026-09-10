@@ -139,14 +139,17 @@ def collate_rkt(
     mask = torch.zeros(batch_size, HISTORY_LENGTH, dtype=torch.bool)
     delta = torch.zeros(batch_size, HISTORY_LENGTH, dtype=torch.float32)
     phi = torch.zeros_like(delta)
+    prior_question_requests: list[np.ndarray] = []
     for row, example in enumerate(examples):
         length = len(example.history_question)
         if length > HISTORY_LENGTH:
             raise ValueError("RKT history exceeds approved rolling length")
         if length == 0:
+            prior_question_requests.append(np.empty(0, dtype=np.int64))
             continue
         start = HISTORY_LENGTH - length
         history_question = np.asarray(example.history_question, dtype=np.int64)
+        prior_question_requests.append(history_question)
         history_timestamp = np.asarray(example.history_timestamp_ms, dtype=np.int64)
         questions[row, start:] = torch.tensor(history_question)
         correctness[row, start:] = torch.tensor(example.history_correct, dtype=torch.long)
@@ -155,14 +158,15 @@ def collate_rkt(
         if np.any(differences < 0):
             raise ValueError("future timestamp found in RKT history")
         delta[row, start:] = torch.tensor(differences / MILLISECONDS_PER_HOUR, dtype=torch.float32)
-        target_questions = np.full(length, example.target_question, dtype=np.int64)
-        relation = phi_repository.lookup(
-            example.student_id,
-            example.split,
-            target_questions,
-            history_question,
-        )
-        phi[row, start:] = torch.tensor(relation)
+    relations = phi_repository.lookup_grouped(
+        (example.student_id for example in examples),
+        (example.split for example in examples),
+        (example.target_question for example in examples),
+        prior_question_requests,
+    )
+    for row, relation in enumerate(relations):
+        if len(relation):
+            phi[row, HISTORY_LENGTH - len(relation) :] = torch.from_numpy(relation)
     return RKTBatch(
         student_id=torch.tensor([item.student_id for item in examples], dtype=torch.long),
         history_question=questions,
