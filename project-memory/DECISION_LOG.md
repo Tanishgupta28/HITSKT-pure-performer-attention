@@ -189,3 +189,26 @@
 - Consequence: tensor shapes, one forward/backward update, target uniqueness,
   relation freezing, checkpoint round-trip, and all required metrics are
   verified. Full RKT Phi preparation/training has not begun.
+
+## 2026-09-10 — Preserve baseline-specific rolling contexts
+
+- Decision: use rolling 199-prior histories for DKT/DKVMN and 99-prior
+  histories for SAKT, retaining their repository hyperparameters unchanged
+  across all datasets. Every split event is one target; legacy non-overlapping
+  chunks are excluded.
+- Evidence: explicit user resolution, `../docs/models/baseline_rolling_protocol.md`,
+  40 passing tests, and nine real-schema smoke artifact sets.
+- Consequence: the three baselines intentionally have different contexts and
+  hyperparameters, while seed, splits, chronology, masking, metrics, and
+  validation-AUC checkpoint policy are standardized.
+
+## 2026-09-10 — Record rolling-baseline full-scale cost before training
+
+- Decision: do not start a large run until the missing common early-stopping
+  patience is explicitly fixed and the measured rolling cost is reviewed.
+- Evidence: `../reports/batching/baseline_rolling_throughput.json`; EdNet
+  compute-only estimates are 8.169 h/epoch DKT, 81.614 h/epoch DKVMN, and
+  4.953 h/epoch SAKT. A `torch.compile` DKVMN trial failed to complete initial
+  compilation in over three minutes and was interrupted.
+- Consequence: memory is not a blocker and no methodology was changed. The
+  estimates exclude loading, validation, and I/O, so they are lower bounds.

@@ -1,0 +1,53 @@
+{
+  "checkpoint_round_trip": true,
+  "chronological_past_only": true,
+  "dataset": "assist2017",
+  "dynamic_batch_history_width": 199,
+  "full_target_counts": {
+    "test": 112252,
+    "train": 647283,
+    "validation": 125800
+  },
+  "maximum_history_exercised": 199,
+  "metrics": {
+    "test": {
+      "accuracy": 0.46875,
+      "f1": 0.19047619047619047,
+      "loss": 0.7591949701309204,
+      "mse": 0.2821846666936161,
+      "precision": 0.16666666666666666,
+      "recall": 0.2222222222222222,
+      "roc_auc": 0.43478260869565216,
+      "targets": 32,
+      "threshold": 0.5
+    },
+    "validation": {
+      "accuracy": 0.5625,
+      "f1": 0.5,
+      "loss": 0.6706621050834656,
+      "mse": 0.24188841407556044,
+      "precision": 0.5384615384615384,
+      "recall": 0.4666666666666667,
+      "roc_auc": 0.5882352941176471,
+      "targets": 32,
+      "threshold": 0.5
+    }
+  },
+  "model": "DKVMN",
+  "padding_excluded": true,
+  "seed": 42,
+  "selected_students": [
+    124,
+    269,
+    909,
+    1074
+  ],
+  "selected_target_counts": {
+    "test": 359,
+    "train": 3934,
+    "validation": 348
+  },
+  "status": "smoke_complete",
+  "targets_unique": true,
+  "train_step_loss": 0.9915231466293335
+}

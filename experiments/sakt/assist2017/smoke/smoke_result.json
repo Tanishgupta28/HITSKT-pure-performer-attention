@@ -1,0 +1,53 @@
+{
+  "checkpoint_round_trip": true,
+  "chronological_past_only": true,
+  "dataset": "assist2017",
+  "dynamic_batch_history_width": 99,
+  "full_target_counts": {
+    "test": 112252,
+    "train": 647283,
+    "validation": 125800
+  },
+  "maximum_history_exercised": 99,
+  "metrics": {
+    "test": {
+      "accuracy": 0.5,
+      "f1": 0.0,
+      "loss": 0.7077845931053162,
+      "mse": 0.2572156241239224,
+      "precision": 0.0,
+      "recall": 0.0,
+      "roc_auc": 0.64,
+      "targets": 10,
+      "threshold": 0.5
+    },
+    "validation": {
+      "accuracy": 0.8,
+      "f1": 0.0,
+      "loss": 0.6020233035087585,
+      "mse": 0.20488246289715625,
+      "precision": 0.0,
+      "recall": 0.0,
+      "roc_auc": 0.6875,
+      "targets": 10,
+      "threshold": 0.5
+    }
+  },
+  "model": "SAKT",
+  "padding_excluded": true,
+  "seed": 42,
+  "selected_students": [
+    124,
+    269,
+    909,
+    1074
+  ],
+  "selected_target_counts": {
+    "test": 359,
+    "train": 3934,
+    "validation": 348
+  },
+  "status": "smoke_complete",
+  "targets_unique": true,
+  "train_step_loss": 0.6202549934387207
+}

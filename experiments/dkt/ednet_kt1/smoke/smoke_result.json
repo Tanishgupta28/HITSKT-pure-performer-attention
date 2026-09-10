@@ -1,0 +1,53 @@
+{
+  "checkpoint_round_trip": true,
+  "chronological_past_only": true,
+  "dataset": "ednet_kt1",
+  "dynamic_batch_history_width": 199,
+  "full_target_counts": {
+    "test": 13429870,
+    "train": 53990022,
+    "validation": 14520975
+  },
+  "maximum_history_exercised": 199,
+  "metrics": {
+    "test": {
+      "accuracy": 0.75,
+      "f1": 0.8148148148148148,
+      "loss": 0.6819056868553162,
+      "mse": 0.24438192040217807,
+      "precision": 0.9166666666666666,
+      "recall": 0.7333333333333333,
+      "roc_auc": 0.7733333333333333,
+      "targets": 20,
+      "threshold": 0.5
+    },
+    "validation": {
+      "accuracy": 0.65,
+      "f1": 0.7586206896551724,
+      "loss": 0.6937510371208191,
+      "mse": 0.25029463997857476,
+      "precision": 0.9166666666666666,
+      "recall": 0.6470588235294118,
+      "roc_auc": 0.4509803921568628,
+      "targets": 20,
+      "threshold": 0.5
+    }
+  },
+  "model": "DKT",
+  "padding_excluded": true,
+  "seed": 42,
+  "selected_students": [
+    218,
+    10403,
+    76290,
+    90203
+  ],
+  "selected_target_counts": {
+    "test": 10343,
+    "train": 25282,
+    "validation": 5301
+  },
+  "status": "smoke_complete",
+  "targets_unique": true,
+  "train_step_loss": 0.6977441906929016
+}

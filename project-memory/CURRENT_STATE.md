@@ -144,8 +144,23 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
   `[128,49]` shapes, unique-target accounting, checkpoint round-trip, frozen
   evaluation relation parameters, and all required metrics. Its results are
   diagnostic only.
-- All 35 automated tests pass. No full model/dataset experiment ran; there are
+- All 40 automated tests pass. No full model/dataset experiment ran; there are
   no valid final benchmark results.
+- The user fixed baseline contexts/hyperparameters across datasets. Clean DKT,
+  DKVMN, and SAKT adapters now use rolling target-once histories of 199, 199,
+  and 99 prior interactions respectively, with dynamic PAD masking and the
+  repository's unchanged model settings.
+- Nine real-data/schema smoke gates pass across all model/dataset pairs. Full
+  train/validation/test target counts reconcile to every retained interaction;
+  each required history cap, forward/backward, all metrics, and strict
+  checkpoint round-trip passed.
+- Real H100 compute-only timing makes large rolling runs expensive, especially
+  DKVMN: EdNet lower bounds are 8.169 h/epoch DKT, 81.614 h/epoch DKVMN, and
+  4.953 h/epoch SAKT. Exact results and exclusions are in
+  `../reports/batching/baseline_rolling_throughput.json`.
+- The repository has no validation-AUC patience value. Full-run patience is a
+  remaining material hyperparameter and has not been guessed; smoke configs
+  record it as not applicable.
 
 ## Known implementation risks requiring evidence
 

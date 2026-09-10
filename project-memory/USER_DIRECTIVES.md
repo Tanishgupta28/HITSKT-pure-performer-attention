@@ -119,3 +119,19 @@ The user approved all of the following as binding implementation decisions:
 - Persist seed 42 in every experiment config and training log and in every
   final-results row/equivalent benchmark summary. The primary benchmark is
   single-seed unless a separately documented multi-seed run is approved.
+
+## 2026-09-10 — Baseline contexts and hyperparameters
+
+- Preserve repository configurations across every dataset rather than tuning
+  per dataset. DKT and DKVMN use context 200 as 199 strictly prior interactions
+  plus the target. SAKT uses context 100 as 99 prior plus target.
+- Replace non-overlapping chunks with rolling target-once histories. Preserve
+  chronological ordering, exclude future information, and keep PAD out of
+  model state, loss, and metrics.
+- Use validation ROC-AUC for early stopping and best-checkpoint selection.
+  Persist all model/dataset configuration fields, seed 42, patience, best
+  epoch, and parameter counts. State explicitly that model contexts and
+  hyperparameters differ while evaluation methodology is standardized.
+- Smoke-test target counts, caps, chronology, future exclusion, loss/metric
+  masking, and checkpoint loading before large runs. Stop before changing any
+  incompatible context or hyperparameter on Junyi/EdNet.

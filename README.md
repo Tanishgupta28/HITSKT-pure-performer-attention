@@ -144,6 +144,35 @@ Smoke outputs live under
 [`experiments/rkt/assist2017/smoke/`](experiments/rkt/assist2017/smoke/); they
 are diagnostic and must not be reported as final benchmark results.
 
+### DKT, DKVMN, and SAKT baselines
+
+The clean baseline path preserves the continuation repository's established
+model settings across all datasets: DKT and DKVMN use 199 prior interactions
+plus the current target (context 200), while SAKT uses 99 prior interactions
+plus the target (context 100). DKT remains a width-64 one-layer LSTM, DKVMN
+retains its 20-slot dynamic key/value memory, and SAKT retains width 200, one
+layer, five heads, clipped relative positions, and dropout 0.2.
+
+Legacy non-overlapping chunks are excluded. The shared loader creates one
+rolling example per valid target, preserves chronological past-only history,
+dynamically pads each batch, and masks PAD from model state, loss, and metrics.
+The models intentionally do not have identical contexts or hyperparameters;
+only target construction, splits, metrics, seed 42, validation-AUC checkpoint
+selection, and leakage controls are standardized. Exact provenance and all
+nine real-data smoke gates are in
+[the baseline rolling protocol](docs/models/baseline_rolling_protocol.md).
+
+Run the tested gates with:
+
+```bash
+PYTHONPATH=. python scripts/smoke_baselines.py assist2017 \
+  data/processed/assist2017/full/session_store experiments
+PYTHONPATH=. python scripts/smoke_baselines.py junyi \
+  data/processed/junyi/full/session_store experiments
+PYTHONPATH=. python scripts/smoke_baselines.py ednet_kt1 \
+  data/processed/ednet_kt1/full/session_store experiments
+```
+
 ### Variable-length HiTSKT batching
 
 The accepted HiTSKT path no longer calls the legacy fixed-action array loader.

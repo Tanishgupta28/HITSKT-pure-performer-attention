@@ -1,0 +1,179 @@
+{
+  "device": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+  "measurements": [
+    {
+      "batch_size": 20,
+      "batches_per_epoch": 32365,
+      "compute_only_hours_per_epoch": 0.09898252100069335,
+      "dataset": "assist2017",
+      "estimate_excludes": [
+        "data loading",
+        "validation",
+        "checkpoint I/O"
+      ],
+      "history_length": 199,
+      "measured_steps": 20,
+      "model": "DKT",
+      "peak_cuda_allocated_bytes": 111749120,
+      "seconds_per_batch": 0.011009951354935765,
+      "seed": 42,
+      "train_targets": 647283,
+      "warmup_steps": 3
+    },
+    {
+      "batch_size": 32,
+      "batches_per_epoch": 20228,
+      "compute_only_hours_per_epoch": 0.9817368402322495,
+      "dataset": "assist2017",
+      "estimate_excludes": [
+        "data loading",
+        "validation",
+        "checkpoint I/O"
+      ],
+      "history_length": 199,
+      "measured_steps": 20,
+      "model": "DKVMN",
+      "peak_cuda_allocated_bytes": 213182976,
+      "seconds_per_batch": 0.17472081396263092,
+      "seed": 42,
+      "train_targets": 647283,
+      "warmup_steps": 3
+    },
+    {
+      "batch_size": 10,
+      "batches_per_epoch": 64729,
+      "compute_only_hours_per_epoch": 0.06282489641620648,
+      "dataset": "assist2017",
+      "estimate_excludes": [
+        "data loading",
+        "validation",
+        "checkpoint I/O"
+      ],
+      "history_length": 99,
+      "measured_steps": 20,
+      "model": "SAKT",
+      "peak_cuda_allocated_bytes": 112928768,
+      "seconds_per_batch": 0.0034941004356369375,
+      "seed": 42,
+      "train_targets": 647283,
+      "warmup_steps": 3
+    },
+    {
+      "batch_size": 20,
+      "batches_per_epoch": 482353,
+      "compute_only_hours_per_epoch": 1.4570319692021845,
+      "dataset": "junyi",
+      "estimate_excludes": [
+        "data loading",
+        "validation",
+        "checkpoint I/O"
+      ],
+      "history_length": 199,
+      "measured_steps": 20,
+      "model": "DKT",
+      "peak_cuda_allocated_bytes": 116236800,
+      "seconds_per_batch": 0.010874432395212352,
+      "seed": 42,
+      "train_targets": 9647042,
+      "warmup_steps": 3
+    },
+    {
+      "batch_size": 32,
+      "batches_per_epoch": 301471,
+      "compute_only_hours_per_epoch": 14.816815885886058,
+      "dataset": "junyi",
+      "estimate_excludes": [
+        "data loading",
+        "validation",
+        "checkpoint I/O"
+      ],
+      "history_length": 199,
+      "measured_steps": 20,
+      "model": "DKVMN",
+      "peak_cuda_allocated_bytes": 218277376,
+      "seconds_per_batch": 0.17693422315642238,
+      "seed": 42,
+      "train_targets": 9647042,
+      "warmup_steps": 3
+    },
+    {
+      "batch_size": 10,
+      "batches_per_epoch": 964705,
+      "compute_only_hours_per_epoch": 0.8792516410810317,
+      "dataset": "junyi",
+      "estimate_excludes": [
+        "data loading",
+        "validation",
+        "checkpoint I/O"
+      ],
+      "history_length": 99,
+      "measured_steps": 20,
+      "model": "SAKT",
+      "peak_cuda_allocated_bytes": 141745152,
+      "seconds_per_batch": 0.003281112783588469,
+      "seed": 42,
+      "train_targets": 9647042,
+      "warmup_steps": 3
+    },
+    {
+      "batch_size": 20,
+      "batches_per_epoch": 2699502,
+      "compute_only_hours_per_epoch": 8.168564494578867,
+      "dataset": "ednet_kt1",
+      "estimate_excludes": [
+        "data loading",
+        "validation",
+        "checkpoint I/O"
+      ],
+      "history_length": 199,
+      "measured_steps": 20,
+      "model": "DKT",
+      "peak_cuda_allocated_bytes": 116154880,
+      "seconds_per_batch": 0.01089342855848372,
+      "seed": 42,
+      "train_targets": 53990022,
+      "warmup_steps": 3
+    },
+    {
+      "batch_size": 32,
+      "batches_per_epoch": 1687189,
+      "compute_only_hours_per_epoch": 81.61447595472167,
+      "dataset": "ednet_kt1",
+      "estimate_excludes": [
+        "data loading",
+        "validation",
+        "checkpoint I/O"
+      ],
+      "history_length": 199,
+      "measured_steps": 20,
+      "model": "DKVMN",
+      "peak_cuda_allocated_bytes": 218262016,
+      "seconds_per_batch": 0.17414297594223171,
+      "seed": 42,
+      "train_targets": 53990022,
+      "warmup_steps": 3
+    },
+    {
+      "batch_size": 10,
+      "batches_per_epoch": 5399003,
+      "compute_only_hours_per_epoch": 4.953084498775082,
+      "dataset": "ednet_kt1",
+      "estimate_excludes": [
+        "data loading",
+        "validation",
+        "checkpoint I/O"
+      ],
+      "history_length": 99,
+      "measured_steps": 20,
+      "model": "SAKT",
+      "peak_cuda_allocated_bytes": 126294016,
+      "seconds_per_batch": 0.0033026661025360227,
+      "seed": 42,
+      "train_targets": 53990022,
+      "warmup_steps": 3
+    }
+  ],
+  "method": "repeated full-history forward/loss/backward/optimizer steps using repository batch sizes",
+  "pytorch": "2.4.0a0+f70bd71a48.nv24.06",
+  "seed": 42
+}
