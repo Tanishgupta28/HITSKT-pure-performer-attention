@@ -138,6 +138,25 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
 - RKT is missing locally; an authors' reference implementation must be located
   or its absence documented before a reproduction is written.
 
+## Newly identified RKT protocol ambiguity
+
+- The paper-author repository is available at `shalini1194/RKT`; author Shalini
+  Pandey's current reference was inspected at commit `cac60f512f`. The paper is
+  arXiv `2008.12736`.
+- Full RKT defines exercise relations as the thresholded sum of a train-data
+  performance Phi coefficient and cosine similarity of textual exercise
+  embeddings. The paper also reports performance-only Phi and same-KC relation
+  ablations. The accepted capstone datasets do not expose authoritative,
+  comparable full exercise text for all three datasets.
+- The authors specify maximum interaction length 50 and partition longer
+  sequences. Their released model materializes quadratic attention, relation,
+  and time matrices. Requiring complete 13,080-action EdNet sessions in a
+  single RKT pass would materially depart from the author protocol and carries
+  a substantial GPU-memory risk.
+- No RKT implementation has been changed. User direction is required on the
+  no-text relation variant and whether author-standard bounded rolling context
+  is permitted for RKT while retaining every supervised target exactly once.
+
 Local-only inspection material is under `../.inspection/`; it is untracked and
 contains downloaded dataset copies and source variants. It is evidence staging,
 not a deliverable or accepted data layout.
