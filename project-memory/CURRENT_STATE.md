@@ -1,6 +1,6 @@
 # Current state
 
-Updated: 2026-09-09 UTC
+Updated: 2026-09-10 UTC
 
 ## Established
 
@@ -103,11 +103,31 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
 - A full session-length audit found that the legacy fixed action capacity would
   discard 303,971 ASSIST interactions (34.334009%), 4,310,593 Junyi
   interactions (29.403337%), and 35,198,097 EdNet interactions (42.955485%).
-  Maximum session lengths are 938, 3,924, and 13,080. Window generation is
-  paused because fixed truncation, chunking, and variable-length batching have
-  materially different scientific semantics.
+  Maximum session lengths are 938, 3,924, and 13,080.
+- The user selected variable-length length-bucketed batches, per-batch dynamic
+  padding, and token-budgeted batch sizes, with no action truncation or session
+  chunking. Lossless memory-mapped session stores now reconcile all 97,486,419
+  retained interactions and all 3,190,544 sessions across the three datasets.
+- The consolidated HiTSKT path explicitly retains Action Encoder, Session
+  Encoder, Correct/Padding Encoder, Decoder, and prediction stages. All
+  attention uses causal prefix-sum ELU+1 linear attention with PAD masks; there
+  is no softmax or quadratic sequence attention in the new implementation.
+- Full batch planning uses the legacy rolling context of at most 15 earlier
+  complete sessions, a normal 32,768 padded-token budget, and batch-size cap
+  64. Every post-first session remains one complete target. The worst EdNet
+  example is indivisible and uses a 196,280-token singleton batch.
+- Real forward/loss/backward benchmarks passed on the H100 MIG device. Peak
+  allocated/reserved CUDA memory was 7.066/8.686 GiB for ASSIST, 4.593/5.621
+  GiB for Junyi, and 24.989/30.861 GiB for the worst EdNet singleton.
+- All 28 automated tests pass, covering dynamic shapes/padding, causal and PAD
+  masks, target shifting, EOS metric exclusion, long singleton batching,
+  past-only rolling history, all-stage backward gradients, and strict
+  checkpoint loading. Exact evidence is versioned in
+  `docs/data/variable_length_batching.md` and
+  `reports/batching/dynamic_batching_benchmark.json`.
 - No model/dataset experiment ran; there are no valid benchmark results.
-- No tensor/model/checkpoint/metrics smoke test or scientific experiment ran.
+- The HiTSKT tensor/forward/backward/checkpoint/masking smoke gate has passed;
+  baseline smoke gates and all scientific training experiments remain pending.
 
 ## Known implementation risks requiring evidence
 

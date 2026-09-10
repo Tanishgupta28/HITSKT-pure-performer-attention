@@ -35,3 +35,13 @@ has 9,647,042 training, 2,556,773 validation, and 2,456,402 test interactions.
 Independent streaming validation passed all 15 event shards, original-row tie
 ordering, binary targets, exact 10-hour boundaries, rebuilt positions, split
 chronology, composite mappings, and aggregate distributions.
+
+## Downstream variable-length representation
+
+The validated 14,660,217 interactions were rebuilt into a lossless
+memory-mapped store of 600,154 sessions. The maximum complete session has 3,924
+actions. No action is truncated and no session is chunked. Every post-first
+session is a target using up to 15 strictly earlier complete sessions.
+Length-bucketed, dynamically padded batches use a 32,768-token budget and
+maximum batch size 64; indivisible longer examples use singleton batches. See
+[the shared batching report](variable_length_batching.md).

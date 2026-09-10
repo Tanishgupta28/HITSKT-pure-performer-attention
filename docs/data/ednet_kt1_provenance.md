@@ -129,3 +129,15 @@ Independent validation streamed all 82 supervised Parquet shards and reconciled
 every row, student, session, split, mapping, distribution, and all 27,646 audit
 rows. Versioned aggregate outputs and deterministic mappings are under
 [`reports/datasets/ednet_kt1/`](../../reports/datasets/ednet_kt1/).
+
+## Downstream variable-length representation
+
+All 81,940,867 retained supervised interactions were rebuilt into a lossless
+memory-mapped store of 2,577,988 sessions. The maximum complete session has
+13,080 actions. No action is truncated and no session is chunked. Every
+post-first session is a target using up to 15 strictly earlier complete
+sessions. Length bucketing, dynamic per-batch padding, a 32,768-token budget,
+and a maximum batch size of 64 make long sessions automatically use smaller
+batches. An indivisible over-budget example remains whole in a singleton batch.
+The actual full split plans and worst-case CUDA result are in
+[the shared batching report](variable_length_batching.md).

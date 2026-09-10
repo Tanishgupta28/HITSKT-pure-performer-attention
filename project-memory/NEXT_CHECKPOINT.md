@@ -1,19 +1,21 @@
 # Next checkpoint
 
-Updated: 2026-09-09 UTC
+Updated: 2026-09-10 UTC
 
 ## Last valid terminal checkpoint
 
-Upstream `origin/main` is restored, durable memory is bootstrapped, the initial
-assessment is complete, and checkpoint `88aef9f` is on private repository
-`Tanishgupta28/capstone-gpu`. No scientific run is active or complete.
+Full ASSIST2017, Junyi, and EdNet preprocessing is validated. Lossless session
+stores, variable-length token-budgeted batching, the hierarchical pure
+Performer HiTSKT path, mask-safe loss/counts, and the full real-data batching
+and CUDA benchmark are implemented locally. All 28 tests pass. No scientific
+training run is active or complete.
 
 ## Exact next bounded action
 
-Obtain the user's action-window decision after reviewing the measured 29–43%
-legacy truncation loss. Then implement and validate the chosen rolling-history
-representation, prove strictly past-only targets and PAD/EOS exclusion, and
-begin the five-model forward/backward/checkpoint smoke-test matrix.
+Checkpoint and push the validated variable-length implementation. Then add the
+common training/evaluation runner and complete DKT, DKVMN, SAKT, RKT, and
+HiTSKT forward/backward/checkpoint/metric smoke gates before starting the 15
+full scientific experiments.
 
 ## Stop conditions
 

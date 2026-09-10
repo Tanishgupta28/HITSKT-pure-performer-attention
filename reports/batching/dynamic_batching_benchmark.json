@@ -1,0 +1,22 @@
+{
+  "benchmark_date_utc": "2026-09-10",
+  "configured_maximum_batch_size": 64,
+  "configured_token_budget": 32768,
+  "datasets": {
+    "assist2017": {
+      "cuda": {"batch_size": 15, "forward_backward_seconds": 0.8496582382358611, "host_batch_tensor_bytes": 863694, "padded_tokens": 32768, "peak_cuda_allocated_bytes": 7586727424, "peak_cuda_reserved_bytes": 9326034944, "supervised_targets": 2414},
+      "splits": {"train": {"batches": 164, "examples": 7060, "maximum_batch_size_used": 64, "maximum_padded_tokens_used": 32768, "singleton_batches_over_budget": 0}, "validation": {"batches": 82, "examples": 1977, "maximum_batch_size_used": 64, "maximum_padded_tokens_used": 32766, "singleton_batches_over_budget": 0}, "test": {"batches": 98, "examples": 1977, "maximum_batch_size_used": 64, "maximum_padded_tokens_used": 32768, "singleton_batches_over_budget": 0}}
+    },
+    "junyi": {
+      "cuda": {"batch_size": 1, "forward_backward_seconds": 0.36805701488628983, "host_batch_tensor_bytes": 883482, "padded_tokens": 35341, "peak_cuda_allocated_bytes": 4931752960, "peak_cuda_reserved_bytes": 6035603456, "supervised_targets": 5},
+      "splits": {"train": {"batches": 8828, "examples": 351277, "maximum_batch_size_used": 64, "maximum_padded_tokens_used": 32768, "singleton_batches_over_budget": 0}, "validation": {"batches": 3645, "examples": 109506, "maximum_batch_size_used": 64, "maximum_padded_tokens_used": 32768, "singleton_batches_over_budget": 0}, "test": {"batches": 3658, "examples": 109506, "maximum_batch_size_used": 64, "maximum_padded_tokens_used": 35341, "singleton_batches_over_budget": 1}}
+    },
+    "ednet_kt1": {
+      "cuda": {"batch_size": 1, "forward_backward_seconds": 0.5315913050435483, "host_batch_tensor_bytes": 4907290, "padded_tokens": 196280, "peak_cuda_allocated_bytes": 26831744512, "peak_cuda_reserved_bytes": 33137098752, "supervised_targets": 48},
+      "splits": {"train": {"batches": 54750, "examples": 1511786, "maximum_batch_size_used": 64, "maximum_padded_tokens_used": 82499, "singleton_batches_over_budget": 208}, "validation": {"batches": 23188, "examples": 474827, "maximum_batch_size_used": 64, "maximum_padded_tokens_used": 121468, "singleton_batches_over_budget": 154}, "test": {"batches": 24248, "examples": 474827, "maximum_batch_size_used": 64, "maximum_padded_tokens_used": 196280, "singleton_batches_over_budget": 321}}
+    }
+  },
+  "device": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+  "history_sessions": 15,
+  "pytorch": "2.4.0a0+f70bd71a48.nv24.06"
+}

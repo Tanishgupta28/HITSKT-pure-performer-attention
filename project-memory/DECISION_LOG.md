@@ -128,3 +128,18 @@
 - Evidence: repository path `docs/data/session_window_audit.md`.
 - Consequence: the validated event stores remain authoritative. No downstream
   session chunks or variable-length batches have been chosen yet.
+
+## 2026-09-10 — Adopt lossless variable-length token-budgeted batches
+
+- Decision: preserve every complete 10-hour session, use length buckets and
+  per-batch dynamic padding, greedily cap normal batches at 32,768 padded token
+  slots and 64 examples, and place an indivisible over-budget example alone.
+  Do not truncate actions or chunk sessions.
+- Evidence: explicit user directive, 28 passing tests, complete store counts,
+  full split plans, and real H100 measurements in
+  `../docs/data/variable_length_batching.md`.
+- Consequence: the legacy fixed `action_size` loader is excluded from final
+  HiTSKT experiments. The existing `session_size=16` semantics are retained as
+  up to 15 chronological earlier sessions plus one complete target. The full
+  EdNet worst case fits the available 40 GiB device at 24.989 GiB allocated and
+  30.861 GiB reserved, so no methodological exception is needed.

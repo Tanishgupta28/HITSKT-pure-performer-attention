@@ -77,10 +77,10 @@ chronologically 60/20/20 using earlier remainder sessions for training. The
 event table retains chronological rows and split membership so validation and
 test examples can use rolling, strictly past-only histories.
 
-Run preprocessing tests with:
+Run all preprocessing, batching, masking, model, and checkpoint tests with:
 
 ```bash
-pytest tests/test_ednet_preprocessing.py
+python -m pytest -q
 ```
 
 The accepted ASSIST2017 and full Junyi sources use the same rebuilt session and
@@ -100,6 +100,56 @@ sorted set of tags observed for each question in the accepted full source. In
 both cases one source interaction remains one row. Versioned mappings and full
 aggregate reports are under [`reports/datasets/assist2017/`](reports/datasets/assist2017/)
 and [`reports/datasets/junyi/`](reports/datasets/junyi/).
+
+### Variable-length HiTSKT batching
+
+The accepted HiTSKT path no longer calls the legacy fixed-action array loader.
+Every 10-hour session is stored and encoded at its complete observed length;
+there is no action truncation and no artificial session chunking. Each
+post-first session is used once as a target session. Its input is a rolling
+window of at most 15 strictly earlier sessions, retaining the original
+`session_size=16` context convention while making every action inside those
+sessions available. Validation histories may contain only earlier training
+sessions, and test histories may contain only earlier training/validation
+sessions.
+
+Build the lossless memory-mapped session indices with:
+
+```bash
+PYTHONPATH=. python scripts/build_session_store.py \
+  data/processed/assist2017/full data/processed/assist2017/full/session_store
+PYTHONPATH=. python scripts/build_session_store.py \
+  data/processed/junyi/full data/processed/junyi/full/session_store
+PYTHONPATH=. python scripts/build_session_store.py \
+  data/processed/ednet_kt1/full data/processed/ednet_kt1/full/session_store
+```
+
+`LengthBucketTokenBatchSampler` stably orders examples by their largest action
+sequence, shuffles only within bounded buckets for training, and greedily packs
+up to 64 examples under a 32,768 dynamically padded-token budget. Historical
+sessions are flattened for the Action Encoder and padded only to the longest
+history in that batch; target sessions and the Session Encoder hierarchy are
+padded independently. A session that is itself larger than the budget remains
+whole in a singleton batch. PAD positions are excluded by explicit attention
+and metric masks; EOS participates in sequence encoding but never in loss or
+metrics; target correctness is shifted with BOS so the target response is not
+visible to its own prediction.
+
+The consolidated implementation remains
+`ActionEncoder -> SessionEncoder -> CorrectPaddingEncoder -> Decoder ->
+prediction`. Every attention layer is causal ELU+1 prefix-sum linear attention;
+it does not materialize a quadratic softmax attention matrix. Runtime
+sinusoidal positions remove the old fixed positional cap. Exact full-data plan
+counts and real H100 forward/backward memory measurements are documented in
+[the variable-length batching report](docs/data/variable_length_batching.md).
+Reproduce a plan and its worst-batch CUDA benchmark with, for example:
+
+```bash
+PYTHONPATH=. PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True \
+python scripts/benchmark_dynamic_batching.py ednet_kt1 \
+  data/processed/ednet_kt1/full/session_store \
+  --token-budget 32768 --max-batch-size 64
+```
 
 ### Legacy repository instructions
 

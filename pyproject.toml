@@ -11,6 +11,7 @@ dependencies = [
   "numpy>=1.24",
   "pandas>=2.0",
   "pyarrow>=14",
+  "torch>=2.2",
 ]
 
 [project.optional-dependencies]
@@ -22,4 +23,3 @@ addopts = "-ra"
 
 [tool.setuptools.packages.find]
 include = ["ktbench*"]
-

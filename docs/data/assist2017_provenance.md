@@ -40,3 +40,13 @@ streaming validation passed the event shard, chronological `action_num` tie
 ordering, 10-hour boundaries, session positions, split ordering, mappings, and
 all aggregate totals. Versioned outputs are under
 [`reports/datasets/assist2017/`](../../reports/datasets/assist2017/).
+
+## Downstream variable-length representation
+
+The validated events were rebuilt into a lossless memory-mapped session store:
+885,335 interactions, 12,402 sessions, and a maximum complete session length of
+938. No action is truncated and no session is chunked. Every post-first session
+is a target using up to 15 strictly earlier complete sessions. Length-bucketed,
+dynamically padded batches use a 32,768-token budget and maximum batch size 64.
+The full split plan and real CUDA benchmark are in
+[the shared batching report](variable_length_batching.md).
