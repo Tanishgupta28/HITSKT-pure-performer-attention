@@ -305,3 +305,15 @@
   context, targets, optimizer, and hyperparameters are unchanged. Only the
   associative execution schedule is optimized, making the full benchmark
   tractable without changing scientific methodology.
+
+## 2026-09-10 — Resume interrupted baseline runs from durable epoch state
+
+- Decision: baseline production runs may use explicit `--resume` only when no
+  `_SUCCESS` marker exists and all config/log/model/optimizer artifacts agree.
+- Evidence: an end-to-end interruption fixture proves that resume restores the
+  last model and Adam state, strict validation-AUC best and patience state,
+  continues with the next epoch's deterministic seed-42 bucket order, appends
+  prior metrics, and performs one final best-checkpoint test evaluation.
+- Consequence: the externally interrupted DKVMN/ASSIST run can continue from
+  completed epoch 19 without repeating targets from prior epochs or resetting
+  its one-epoch non-improvement count. All 49 tests pass.

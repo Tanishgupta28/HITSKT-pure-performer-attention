@@ -228,6 +228,11 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
   gradient equivalence is tested. Actual full-history ASSIST step time improved
   24.0x from 0.174721 s to 0.007266 s; projected compute-only epoch time is now
   0.0408 h, with no model or protocol change.
+- Baseline production runs now have a validated explicit resume path that
+  restores model, Adam, and early-stopping state and appends durable artifacts.
+  DKVMN/ASSIST was externally interrupted after epoch 19 (best epoch 18,
+  validation AUC 0.6962520470; one patience miss) and is ready to resume at
+  epoch 20 without losing scientific state.
 
 ## Known implementation risks requiring evidence
 

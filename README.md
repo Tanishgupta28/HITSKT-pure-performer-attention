@@ -124,6 +124,12 @@ contain four of 15 expected rows: full DKT, RKT, HiTSKT, and SAKT on
 ASSIST2017.
 Smoke and throughput diagnostics are excluded automatically.
 
+Long baseline runs can be continued with `scripts/train_baseline.py --resume`.
+Resume validates the stored model/dataset/seed/batching contract, restores the
+last model and optimizer checkpoint plus exact validation-AUC patience state,
+continues at the next epoch's deterministic seed-42 bucket order, and appends
+to existing metrics/logs. Completed runs cannot be resumed or overwritten.
+
 The accepted ASSIST2017 and full Junyi sources use the same rebuilt session and
 split contract:
 

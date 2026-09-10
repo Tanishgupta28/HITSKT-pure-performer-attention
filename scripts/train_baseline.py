@@ -120,6 +120,7 @@ def _checkpoint_payload(
     *,
     epoch: int,
     validation_auc: float,
+    control: ValidationAUCEarlyStopping,
 ) -> dict[str, Any]:
     payload = model.checkpoint()
     payload.update(
@@ -129,6 +130,11 @@ def _checkpoint_payload(
             "optimizer_state_dict": optimizer.state_dict(),
             "seed": PROJECT_SEED,
             "early_stopping": COMMON_EARLY_STOPPING.as_dict(),
+            "early_stopping_state": {
+                "best_epoch": control.best_epoch,
+                "best_validation_auc": control.best_validation_auc,
+                "consecutive_epochs_without_improvement": control.consecutive_epochs_without_improvement,
+            },
         }
     )
     return payload
@@ -142,6 +148,7 @@ def train_baseline(
     *,
     workers: int = 0,
     epoch_ceiling_override: int | None = None,
+    resume: bool = False,
 ) -> dict[str, Any]:
     """Run the full protocol; the override exists only for automated tests."""
 
@@ -175,7 +182,7 @@ def train_baseline(
         weight_decay=float(profile["weight_decay"]),
     )
     total_parameters = sum(parameter.numel() for parameter in model.parameters())
-    configuration: dict[str, Any] = {
+    fresh_configuration: dict[str, Any] = {
         **profile,
         "dataset": dataset_name,
         "seed": PROJECT_SEED,
@@ -196,8 +203,7 @@ def train_baseline(
         "epochs_completed": 0,
     }
     if epoch_ceiling_override is not None:
-        configuration["test_epoch_ceiling_override"] = epoch_ceiling
-    _write_json(output_root / "config.json", configuration)
+        fresh_configuration["test_epoch_ceiling_override"] = epoch_ceiling
     target_counts = {split: len(dataset) for split, dataset in datasets.items()}
     dataset_stats = {
         "dataset": dataset_name,
@@ -211,8 +217,6 @@ def train_baseline(
             split: count / sum(target_counts.values()) for split, count in target_counts.items()
         },
     }
-    _write_json(output_root / "dataset_stats.json", dataset_stats)
-
     metrics_fields = [
         "epoch",
         "split",
@@ -231,12 +235,96 @@ def train_baseline(
     control = ValidationAUCEarlyStopping()
     best_path = output_root / "best_model.pt"
     last_path = output_root / "last_model.pt"
-    started = time.perf_counter()
+    config_path = output_root / "config.json"
+    stats_path = output_root / "dataset_stats.json"
+    start_epoch = 1
     epochs_completed = 0
-    with metrics_path.open("w", newline="") as metrics_file, log_path.open("w") as log:
+    prior_runtime_seconds = 0.0
+    runtime_estimated_before_resume = False
+    if resume:
+        required = (config_path, stats_path, metrics_path, log_path, best_path, last_path)
+        missing = [str(path) for path in required if not path.exists()]
+        if missing:
+            raise ValueError(f"cannot resume; missing artifacts: {missing}")
+        configuration = json.loads(config_path.read_text())
+        for key in ("model", "dataset", "seed", "batch_size", "history_length"):
+            if configuration.get(key) != fresh_configuration.get(key):
+                raise ValueError(f"resume configuration mismatch for {key}")
+        checkpoint = torch.load(last_path, map_location=device, weights_only=True)
+        if checkpoint.get("seed") != PROJECT_SEED:
+            raise ValueError("resume checkpoint seed mismatch")
+        model.load_state_dict(checkpoint["state_dict"], strict=True)
+        optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
+        epochs_completed = int(checkpoint["epoch"])
+        if epochs_completed != int(configuration["epochs_completed"]):
+            raise ValueError("resume epoch mismatch between checkpoint and config")
+        epoch_events = [
+            json.loads(line)
+            for line in log_path.read_text().splitlines()
+            if line and json.loads(line).get("event") == "epoch_complete"
+        ]
+        if not epoch_events or int(epoch_events[-1]["epoch"]) != epochs_completed:
+            raise ValueError("resume log does not end at checkpoint epoch")
+        state = checkpoint.get("early_stopping_state")
+        if state is None:
+            state = {
+                "best_epoch": configuration["best_epoch"],
+                "best_validation_auc": configuration["best_validation_auc"],
+                "consecutive_epochs_without_improvement": epoch_events[-1][
+                    "consecutive_epochs_without_improvement"
+                ],
+            }
+        control.best_epoch = int(state["best_epoch"])
+        control.best_validation_auc = float(state["best_validation_auc"])
+        control.consecutive_epochs_without_improvement = int(
+            state["consecutive_epochs_without_improvement"]
+        )
+        start_epoch = epochs_completed + 1
+        prior_runtime = configuration.get("runtime_seconds_accumulated")
+        if prior_runtime is None:
+            prior_runtime_seconds = max(0.0, config_path.stat().st_mtime - stats_path.stat().st_mtime)
+            runtime_estimated_before_resume = True
+        else:
+            prior_runtime_seconds = float(prior_runtime)
+        configuration.update(
+            {
+                "resume_count": int(configuration.get("resume_count", 0)) + 1,
+                "resumed_from_epoch": epochs_completed,
+                "runtime_before_resume_seconds": prior_runtime_seconds,
+                "runtime_before_resume_estimated_from_artifact_mtimes": runtime_estimated_before_resume,
+            }
+        )
+        if epoch_ceiling_override is not None:
+            configuration["test_epoch_ceiling_override"] = epoch_ceiling
+        _write_json(config_path, configuration)
+    else:
+        configuration = fresh_configuration
+        _write_json(config_path, configuration)
+        _write_json(stats_path, dataset_stats)
+
+    started = time.perf_counter()
+    metrics_mode = "a" if resume else "w"
+    log_mode = "a" if resume else "w"
+    with metrics_path.open(metrics_mode, newline="") as metrics_file, log_path.open(log_mode) as log:
         writer = csv.DictWriter(metrics_file, fieldnames=metrics_fields)
-        writer.writeheader()
-        for epoch in range(1, epoch_ceiling + 1):
+        if not resume:
+            writer.writeheader()
+        else:
+            log.write(
+                json.dumps(
+                    {
+                        "event": "training_resumed",
+                        "seed": PROJECT_SEED,
+                        "resumed_from_epoch": epochs_completed,
+                        "best_epoch": control.best_epoch,
+                        "best_validation_auc": control.best_validation_auc,
+                        "consecutive_epochs_without_improvement": control.consecutive_epochs_without_improvement,
+                    }
+                )
+                + "\n"
+            )
+            log.flush()
+        for epoch in range(start_epoch, epoch_ceiling + 1):
             train_metrics = _run_epoch(
                 model,
                 datasets["train"],
@@ -266,6 +354,7 @@ def train_baseline(
                 optimizer,
                 epoch=epoch,
                 validation_auc=float(validation_metrics["roc_auc"]),
+                control=control,
             )
             torch.save(payload, last_path)
             if decision.improved:
@@ -292,6 +381,9 @@ def train_baseline(
                     "best_epoch": decision.best_epoch,
                     "best_validation_auc": decision.best_validation_auc,
                     "epochs_completed": epochs_completed,
+                    "runtime_seconds_accumulated": prior_runtime_seconds
+                    + time.perf_counter()
+                    - started,
                 }
             )
             _write_json(output_root / "config.json", configuration)
@@ -327,7 +419,7 @@ def train_baseline(
             + "\n"
         )
 
-    runtime_seconds = time.perf_counter() - started
+    runtime_seconds = prior_runtime_seconds + time.perf_counter() - started
     result = {
         "status": "complete",
         "dataset": dataset_name,
@@ -341,6 +433,8 @@ def train_baseline(
         "epoch_ceiling": epoch_ceiling,
         "test": test_metrics,
         "runtime_seconds": runtime_seconds,
+        "resume_count": int(configuration.get("resume_count", 0)),
+        "runtime_before_resume_estimated_from_artifact_mtimes": runtime_estimated_before_resume,
         "total_parameters": total_parameters,
         "trainable_parameters": configuration["trainable_parameters"],
         "best_checkpoint_reloaded": True,
@@ -352,6 +446,7 @@ def train_baseline(
             "best_epoch": control.best_epoch,
             "best_validation_auc": control.best_validation_auc,
             "epochs_completed": epochs_completed,
+            "runtime_seconds_accumulated": runtime_seconds,
         }
     )
     _write_json(output_root / "config.json", configuration)
@@ -366,6 +461,7 @@ def main() -> None:
     parser.add_argument("store_root", type=Path)
     parser.add_argument("output_root", type=Path)
     parser.add_argument("--workers", type=int, default=0)
+    parser.add_argument("--resume", action="store_true")
     args = parser.parse_args()
     result = train_baseline(
         args.model,
@@ -373,6 +469,7 @@ def main() -> None:
         SessionStore(args.store_root),
         args.output_root,
         workers=args.workers,
+        resume=args.resume,
     )
     print(json.dumps(result, indent=2, sort_keys=True))
 

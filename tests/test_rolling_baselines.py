@@ -1,3 +1,4 @@
+import csv
 import json
 from pathlib import Path
 
@@ -203,4 +204,44 @@ def test_production_runner_writes_and_reloads_best_checkpoint(tmp_path: Path) ->
     assert config["early_stopping_min_delta"] == 0
     assert (output / "best_model.pt").exists()
     assert (output / "final_results.json").exists()
+    assert (output / "_SUCCESS").exists()
+
+
+def test_production_runner_resumes_model_optimizer_and_patience_state(
+    tmp_path: Path,
+) -> None:
+    store = _store(tmp_path / "data", long_session=False)
+    output = tmp_path / "experiment"
+    train_baseline("dkt", "fixture", store, output, epoch_ceiling_override=1)
+
+    (output / "_SUCCESS").unlink()
+    (output / "final_results.json").unlink()
+    epoch_lines = [
+        line
+        for line in (output / "training.jsonl").read_text().splitlines()
+        if json.loads(line)["event"] == "epoch_complete"
+    ]
+    (output / "training.jsonl").write_text("\n".join(epoch_lines) + "\n")
+    with (output / "metrics.csv").open(newline="") as source:
+        rows = list(csv.DictReader(source))
+        fieldnames = source.seek(0) or next(csv.reader(source))
+    with (output / "metrics.csv").open("w", newline="") as destination:
+        writer = csv.DictWriter(destination, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(row for row in rows if row["split"] != "test")
+
+    result = train_baseline(
+        "dkt",
+        "fixture",
+        store,
+        output,
+        epoch_ceiling_override=2,
+        resume=True,
+    )
+    events = [json.loads(line) for line in (output / "training.jsonl").read_text().splitlines()]
+    assert [event["epoch"] for event in events if event["event"] == "epoch_complete"] == [1, 2]
+    resume_event = next(event for event in events if event["event"] == "training_resumed")
+    assert resume_event["resumed_from_epoch"] == 1
+    assert result["epochs_completed"] == 2
+    assert result["resume_count"] == 1
     assert (output / "_SUCCESS").exists()
