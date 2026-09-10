@@ -101,6 +101,22 @@ row of the actual final-results table must also carry `seed=42`. No multiple
 seed aggregate is part of the primary benchmark unless separately approved and
 documented.
 
+### Common early stopping
+
+All five models use the same checkpoint-selection rule. After every completed
+training epoch, validation ROC-AUC is compared with the best prior value. A
+checkpoint is saved only when AUC strictly improves (`min_delta=0`). Five
+consecutive epochs without improvement stop training immediately; the counter
+resets after an improvement. The best validation-AUC checkpoint is reloaded
+before the one final test evaluation.
+
+Patience is 5 for DKT, DKVMN, SAKT, RKT, and HiTSKT. Early stopping operates
+inside, and never extends, the established epoch ceilings: DKT 200, DKVMN 100,
+SAKT 300, RKT 300, and HiTSKT 100/50/40 for ASSIST2017/Junyi/EdNet. Every
+experiment config/result records patience, `min_delta`, best epoch, best
+validation AUC, and total epochs completed. The reusable strict controller is
+implemented in [`ktbench/training.py`](ktbench/training.py).
+
 The accepted ASSIST2017 and full Junyi sources use the same rebuilt session and
 split contract:
 

@@ -117,10 +117,11 @@ rolling caps, chronology, future exclusion, deterministic complete batching,
 PAD invariance, target-label exclusion, backward propagation, metric target
 counts, and checkpoint loading.
 
-Full experiments will select checkpoints and stop on validation ROC-AUC. The
-legacy repository does not define a validation-AUC patience value, so the smoke
-configuration records patience as not applicable rather than inventing a full
-training value.
+Full experiments select checkpoints and stop on validation ROC-AUC using the
+common approved protocol: patience 5, `min_delta=0`, and strict improvement.
+The best checkpoint is reloaded before final test evaluation. Early stopping
+never extends the DKT/DKVMN/SAKT ceilings of 200/100/300 epochs. Smoke configs
+record the same protocol even though a one-step smoke cannot trigger it.
 
 ## Full-scale throughput gate
 

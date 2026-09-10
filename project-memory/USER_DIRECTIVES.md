@@ -135,3 +135,16 @@ The user approved all of the following as binding implementation decisions:
 - Smoke-test target counts, caps, chronology, future exclusion, loss/metric
   masking, and checkpoint loading before large runs. Stop before changing any
   incompatible context or hyperparameter on Junyi/EdNet.
+
+## 2026-09-10 — Common early stopping
+
+- For DKT, DKVMN, SAKT, RKT, and HiTSKT, select on validation ROC-AUC with
+  patience 5 and `min_delta=0`. Save only on strict improvement, stop
+  immediately after five consecutive non-improving epochs, and reload that
+  best checkpoint before final test evaluation.
+- Preserve every existing model-specific epoch ceiling; early stopping may
+  shorten but never extend it. Do not add model-specific patience without
+  stopping for approval.
+- Every experiment must persist patience, min delta, best epoch, best
+  validation AUC, and total completed epochs. Avoid any unnecessary epoch after
+  the stopping condition.

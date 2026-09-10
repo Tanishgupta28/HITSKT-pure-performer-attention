@@ -12,5 +12,23 @@
     "HiTSKT"
   ],
   "primary_benchmark_seed": 42,
+  "early_stopping": {
+    "metric": "validation_roc_auc",
+    "min_delta": 0,
+    "patience": 5,
+    "reload_best_checkpoint_before_test": true,
+    "strict_improvement": true
+  },
+  "epoch_ceilings": {
+    "DKT": 200,
+    "DKVMN": 100,
+    "RKT": 300,
+    "SAKT": 300,
+    "HiTSKT": {
+      "assist2017": 100,
+      "ednet_kt1": 40,
+      "junyi": 50
+    }
+  },
   "seed_policy": "One centralized seed is used for all primary experiments; every final-results row must record seed=42."
 }

@@ -130,6 +130,11 @@ class RollingTargetBatch:
             **{name: value.to(device) for name, value in vars(self).items()}
         )
 
+    def pin_memory(self) -> "RollingTargetBatch":
+        return RollingTargetBatch(
+            **{name: value.pin_memory() for name, value in vars(self).items()}
+        )
+
 
 def collate_rolling_targets(examples: Sequence[RollingTarget]) -> RollingTargetBatch:
     """Dynamically left-pad histories to the longest history in this batch."""

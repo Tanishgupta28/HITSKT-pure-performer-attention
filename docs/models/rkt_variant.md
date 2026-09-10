@@ -194,3 +194,8 @@ Automated tests cover timestamp conversion, fold determinism and exclusion,
 causal/latest-prior Phi construction, undefined Phi, target uniqueness,
 rolling length, tensor shapes, positive and train-only `S_u`, lambda
 initialization/freeze, metrics, forward/backward, and checkpoint loading.
+
+Full RKT training uses the project-wide validation ROC-AUC controller:
+patience 5, `min_delta=0`, strict improvement, and best-checkpoint reload before
+test. The controller may stop RKT early but cannot extend the authors'
+repository ceiling of 300 epochs.

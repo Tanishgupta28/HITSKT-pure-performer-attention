@@ -11,73 +11,15 @@ from typing import Any
 import numpy as np
 import torch
 
+from ktbench.baseline_registry import BASELINE_TRAINING_CONFIGS, make_baseline_model
 from ktbench.config import PROJECT_SEED, seed_everything
 from ktbench.data.rolling_targets import RollingTargetDataset, collate_rolling_targets
 from ktbench.data.session_store import SessionStore
 from ktbench.metrics import binary_metrics
 from ktbench.models import (
-    DKT,
-    DKVMN,
-    SAKT,
-    DKTConfig,
-    DKVMNConfig,
-    SAKTConfig,
     load_baseline_checkpoint,
 )
-
-
-TRAINING_CONFIGS: dict[str, dict[str, Any]] = {
-    "dkt": {
-        "model": "DKT",
-        "context_length": 200,
-        "history_length": 199,
-        "batch_size": 20,
-        "optimizer": "Adam",
-        "learning_rate": 2e-4,
-        "weight_decay": 0.0,
-        "repository_epochs": 200,
-        "gradient_clip": None,
-        "dropout": 0.1,
-        "embedding_size": 64,
-        "hidden_size": 64,
-        "layers": 1,
-        "effective_recurrent_dropout": 0.0,
-    },
-    "dkvmn": {
-        "model": "DKVMN",
-        "context_length": 200,
-        "history_length": 199,
-        "batch_size": 32,
-        "optimizer": "Adam",
-        "learning_rate": 1e-3,
-        "weight_decay": 0.0,
-        "repository_epochs": 100,
-        "gradient_clip": 50.0,
-        "dropout": 0.0,
-        "question_embedding_size": 50,
-        "interaction_embedding_size": 100,
-        "memory_size": 20,
-        "key_state_size": 50,
-        "value_state_size": 100,
-        "final_size": 50,
-    },
-    "sakt": {
-        "model": "SAKT",
-        "context_length": 100,
-        "history_length": 99,
-        "batch_size": 10,
-        "optimizer": "Adam",
-        "learning_rate": 1e-5,
-        "weight_decay": 0.0,
-        "repository_epochs": 300,
-        "gradient_clip": 10.0,
-        "dropout": 0.2,
-        "width": 200,
-        "layers": 1,
-        "heads": 5,
-        "maximum_relative_position": 10,
-    },
-}
+from ktbench.training import COMMON_EARLY_STOPPING
 
 
 def _selected_students(store: SessionStore, count: int) -> list[int]:
@@ -116,15 +58,11 @@ def _indices(dataset: RollingTargetDataset, size: int) -> tuple[np.ndarray, int]
 
 
 def _make_model(name: str, store: SessionStore) -> torch.nn.Module:
-    skills = int(store.metadata["num_skills"])
-    questions = int(store.metadata["num_questions"])
-    if name == "dkt":
-        return DKT(DKTConfig(num_skills=skills))
-    if name == "dkvmn":
-        return DKVMN(DKVMNConfig(num_skills=skills))
-    if name == "sakt":
-        return SAKT(SAKTConfig(num_questions=questions, num_skills=skills))
-    raise ValueError(name)
+    return make_baseline_model(
+        name,
+        num_questions=int(store.metadata["num_questions"]),
+        num_skills=int(store.metadata["num_skills"]),
+    )
 
 
 def _split_counts(store: SessionStore) -> dict[str, int]:
@@ -143,7 +81,7 @@ def smoke_model(
     selected_students: list[int],
 ) -> dict[str, Any]:
     seed_everything()
-    profile = dict(TRAINING_CONFIGS[name])
+    profile = dict(BASELINE_TRAINING_CONFIGS[name])
     history_length = int(profile["history_length"])
     datasets = {
         split: RollingTargetDataset(
@@ -229,10 +167,14 @@ def smoke_model(
         "target_construction": "rolling target-once; strictly prior chronological history",
         "padding": "dynamic per batch; masked from model state, loss, and metrics",
         "checkpoint_selection": "validation ROC-AUC for full experiments",
-        "early_stopping_patience": None,
-        "early_stopping_note": "not applied in one-step smoke; full-run value requires explicit protocol",
+        "early_stopping_metric": COMMON_EARLY_STOPPING.metric,
+        "early_stopping_patience": COMMON_EARLY_STOPPING.patience,
+        "early_stopping_min_delta": COMMON_EARLY_STOPPING.min_delta,
+        "early_stopping_strict_improvement": COMMON_EARLY_STOPPING.strict_improvement,
+        "early_stopping_note": "configured but not triggered in the one-step smoke",
         "epochs_completed": 1,
         "best_epoch": 1,
+        "best_validation_auc": smoke_metrics["validation"]["roc_auc"],
         "total_parameters": total_parameters,
         "trainable_parameters": sum(
             parameter.numel() for parameter in restored.parameters() if parameter.requires_grad
@@ -309,7 +251,7 @@ def main() -> None:
     parser.add_argument("dataset", choices=("assist2017", "junyi", "ednet_kt1"))
     parser.add_argument("store_root", type=Path)
     parser.add_argument("experiment_root", type=Path)
-    parser.add_argument("--models", nargs="+", choices=sorted(TRAINING_CONFIGS), default=sorted(TRAINING_CONFIGS))
+    parser.add_argument("--models", nargs="+", choices=sorted(BASELINE_TRAINING_CONFIGS), default=sorted(BASELINE_TRAINING_CONFIGS))
     parser.add_argument("--students", type=int, default=4)
     args = parser.parse_args()
     if args.students < 2:

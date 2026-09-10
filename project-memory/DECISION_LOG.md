@@ -212,3 +212,14 @@
   compilation in over three minutes and was interrupted.
 - Consequence: memory is not a blocker and no methodology was changed. The
   estimates exclude loading, validation, and I/O, so they are lower bounds.
+
+## 2026-09-10 — Fix one validation-AUC early-stopping protocol
+
+- Decision: all five models use patience 5, `min_delta=0`, strict validation
+  ROC-AUC improvement, immediate stop at five consecutive misses, and best
+  checkpoint reload before test. Existing epoch ceilings remain upper bounds.
+- Evidence: explicit user decision, `ktbench/training.py`, controller tests,
+  `reports/benchmark_config.json`, README, and updated experiment configs.
+- Consequence: no runner may add a sixth non-improving epoch or use a
+  model-specific patience. Every final artifact records best epoch/AUC and
+  actual completed epochs.

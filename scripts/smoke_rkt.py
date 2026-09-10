@@ -20,6 +20,7 @@ from ktbench.models import PaperFaithfulRKT, RKTConfig
 from ktbench.models.rkt import RKT_LABEL
 from ktbench.rkt.data import RKTTargetDataset, collate_rkt
 from ktbench.rkt.phi import CrossFittedPhiRepository
+from ktbench.training import COMMON_EARLY_STOPPING
 
 
 def _evaluate(
@@ -144,6 +145,15 @@ def main() -> None:
         "learning_rate": 0.001,
         "weight_decay": 0.00001,
         "batch_size": 128,
+        "epoch_ceiling": 300,
+        "early_stopping_metric": COMMON_EARLY_STOPPING.metric,
+        "early_stopping_patience": COMMON_EARLY_STOPPING.patience,
+        "early_stopping_min_delta": COMMON_EARLY_STOPPING.min_delta,
+        "early_stopping_strict_improvement": COMMON_EARLY_STOPPING.strict_improvement,
+        "early_stopping_note": "configured but not triggered in the one-step smoke",
+        "epochs_completed": 1,
+        "best_epoch": 1,
+        "best_validation_auc": metrics["validation"]["roc_auc"],
         "device": str(device),
         "parameters": parameter_count,
         "training_trainable_parameters": training_trainable_parameter_count,

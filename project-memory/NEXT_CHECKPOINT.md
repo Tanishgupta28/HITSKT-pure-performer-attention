@@ -14,10 +14,9 @@ or complete.
 
 ## Exact next bounded action
 
-Obtain one common validation-AUC early-stopping patience for the full benchmark.
-Then build the common seeded training/evaluation artifact runner around the
-now-validated DKT/DKVMN/SAKT rolling adapters. Before launching full runs,
-account for the measured compute-only lower bounds, particularly DKVMN's
+Build matching RKT and HiTSKT production runners around the same common
+controller. Benchmark full RKT Phi preparation before launching full runs.
+Account for the measured compute-only lower bounds, particularly DKVMN's
 81.614-hour EdNet epoch, without silently changing batch size, context,
 targets, or dataset scope.
 
@@ -29,5 +28,4 @@ targets, or dataset scope.
 - Do not report the RKT smoke diagnostics as scientific results.
 - Stop if full Phi preparation exposes a material scalability issue that would
   require changing cross-fitting, history semantics, or retained targets.
-- Do not invent an early-stopping patience: it materially controls total
-  runtime and is absent from the legacy repository.
+- Do not change the approved common patience 5 or `min_delta=0`.

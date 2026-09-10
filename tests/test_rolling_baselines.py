@@ -25,15 +25,16 @@ from ktbench.models import (
     SAKTConfig,
     load_baseline_checkpoint,
 )
+from scripts.train_baseline import train_baseline
 
 
-def _store(root: Path) -> SessionStore:
+def _store(root: Path, *, long_session: bool = True) -> SessionStore:
     rows = []
     timestamp = 1_600_000_000_000
     for student in range(1, 7):
         for session in range(1, 6):
             split = 0 if session <= 3 else session - 3
-            length = 230 if student == 1 and session == 1 else 3
+            length = 230 if long_session and student == 1 and session == 1 else 3
             for position in range(1, length + 1):
                 timestamp += 1_000
                 rows.append(
@@ -152,3 +153,24 @@ def test_baseline_forward_backward_pad_and_target_masking(
     restored = load_baseline_checkpoint(checkpoint).eval()
     with torch.no_grad():
         assert torch.equal(expected, restored(batch))
+
+
+def test_production_runner_writes_and_reloads_best_checkpoint(tmp_path: Path) -> None:
+    store = _store(tmp_path / "data", long_session=False)
+    output = tmp_path / "experiment"
+    result = train_baseline(
+        "dkt",
+        "fixture",
+        store,
+        output,
+        epoch_ceiling_override=1,
+    )
+    config = json.loads((output / "config.json").read_text())
+    assert result["best_checkpoint_reloaded"] is True
+    assert result["best_epoch"] == config["best_epoch"] == 1
+    assert result["epochs_completed"] == config["epochs_completed"] == 1
+    assert config["early_stopping_patience"] == 5
+    assert config["early_stopping_min_delta"] == 0
+    assert (output / "best_model.pt").exists()
+    assert (output / "final_results.json").exists()
+    assert (output / "_SUCCESS").exists()

@@ -158,9 +158,17 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
   DKVMN: EdNet lower bounds are 8.169 h/epoch DKT, 81.614 h/epoch DKVMN, and
   4.953 h/epoch SAKT. Exact results and exclusions are in
   `../reports/batching/baseline_rolling_throughput.json`.
-- The repository has no validation-AUC patience value. Full-run patience is a
-  remaining material hyperparameter and has not been guessed; smoke configs
-  record it as not applicable.
+- The user fixed a common early-stopping protocol for all five models:
+  validation ROC-AUC, patience 5, `min_delta=0`, strict improvement, and best
+  checkpoint reload before test. `ktbench/training.py` enforces it and exact
+  stop/reset behavior is tested. Existing smoke configs now record it.
+- A production DKT/DKVMN/SAKT runner now writes per-epoch metrics/logs,
+  best/last checkpoints, updated config state, dataset statistics, and final
+  results while stopping within the preserved epoch ceiling. It has not been
+  launched on a full dataset.
+- The baseline production runner passed an end-to-end bounded-fixture test,
+  including artifact writing and best-checkpoint reload.
+- All 44 automated tests pass. No full scientific experiment has started.
 
 ## Known implementation risks requiring evidence
 

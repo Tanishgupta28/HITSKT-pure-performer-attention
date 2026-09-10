@@ -13,9 +13,9 @@ import numpy as np
 import torch
 
 from ktbench.config import PROJECT_SEED, seed_everything
+from ktbench.baseline_registry import BASELINE_TRAINING_CONFIGS, make_baseline_model
 from ktbench.data.rolling_targets import RollingTargetDataset, collate_rolling_targets
 from ktbench.data.session_store import SessionStore
-from scripts.smoke_baselines import TRAINING_CONFIGS, _make_model
 
 
 def _full_history_start(dataset: RollingTargetDataset) -> int:
@@ -36,14 +36,18 @@ def _benchmark(
     measured_steps: int,
 ) -> dict[str, object]:
     seed_everything()
-    profile = TRAINING_CONFIGS[model_name]
+    profile = BASELINE_TRAINING_CONFIGS[model_name]
     dataset = RollingTargetDataset(
         store, "train", history_length=int(profile["history_length"])
     )
     start = _full_history_start(dataset)
     indices = [(start + offset) % len(dataset) for offset in range(int(profile["batch_size"]))]
     batch = collate_rolling_targets([dataset[index] for index in indices]).to("cuda")
-    model = _make_model(model_name, store).cuda().train()
+    model = make_baseline_model(
+        model_name,
+        num_questions=int(store.metadata["num_questions"]),
+        num_skills=int(store.metadata["num_skills"]),
+    ).cuda().train()
     optimizer = torch.optim.Adam(
         model.parameters(),
         lr=float(profile["learning_rate"]),
