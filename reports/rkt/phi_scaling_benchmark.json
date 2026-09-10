@@ -1,0 +1,78 @@
+{
+  "label": "RKT paper-faithful performance-only Phi-relation variant with 5-fold student-level cross-fitting.",
+  "seed": 42,
+  "history_length": 49,
+  "protocol": {
+    "assist2017": "complete population",
+    "junyi": "complete population; preceded by a deterministic 1000-student sample with 200 students from each persisted fold",
+    "ednet_kt1": "deterministic 1000-student sample: 200 students from each persisted fold"
+  },
+  "measurements": {
+    "assist2017": {
+      "population_students": 1388,
+      "cache_students": 1388,
+      "full_training_targets": 647283,
+      "sample_training_targets": 647283,
+      "phi_pair_contributions": 13530869,
+      "all_train_unique_directed_pairs": 1569938,
+      "construction_seconds": 14.170314042363316,
+      "scratch_bytes_before_cleanup": 75867852,
+      "peak_process_rss_bytes": 1084522496,
+      "finished_cache_bytes": 36599942,
+      "full_construction_complete": true
+    },
+    "junyi": {
+      "population_students": 29865,
+      "cache_students": 29865,
+      "full_training_targets": 9647042,
+      "sample_training_targets": 9647042,
+      "phi_pair_contributions": 410926464,
+      "all_train_unique_directed_pairs": 78744364,
+      "construction_seconds": 734.9948862898163,
+      "scratch_bytes_before_cleanup": 5536817868,
+      "peak_process_rss_bytes": 19337568256,
+      "finished_cache_bytes": 1831337352,
+      "full_construction_complete": true,
+      "prelaunch_sample": {
+        "students": 1000,
+        "training_targets": 332247,
+        "phi_pair_contributions": 14131309,
+        "all_train_unique_directed_pairs": 8679478,
+        "construction_seconds": 50.44158332422376,
+        "scratch_bytes_before_cleanup": 199033084,
+        "peak_process_rss_bytes": 2589810688,
+        "finished_cache_bytes": 151370369
+      },
+      "prelaunch_linear_target_ratio_estimate": {
+        "multiplier": 29.03575352072404,
+        "phi_pair_contributions": 410313205,
+        "construction_seconds": 1464.609380597225,
+        "scratch_bytes_before_cleanup": 5779075569,
+        "finished_cache_bytes": 4395442217
+      }
+    },
+    "ednet_kt1": {
+      "population_students": 116548,
+      "cache_students": 1000,
+      "full_training_targets": 53990022,
+      "sample_training_targets": 445519,
+      "phi_pair_contributions": 20031493,
+      "all_train_unique_directed_pairs": 12994154,
+      "construction_seconds": 84.73383206687868,
+      "scratch_bytes_before_cleanup": 290736124,
+      "peak_process_rss_bytes": 3633831936,
+      "finished_cache_bytes": 222591221,
+      "full_construction_complete": false,
+      "linear_target_ratio_estimate": {
+        "multiplier": 121.18455554084113,
+        "phi_pair_contributions": 2427507576,
+        "construction_seconds": 10268.431778296965,
+        "scratch_bytes_before_cleanup": 35232727967,
+        "finished_cache_bytes": 26975790766
+      }
+    }
+  },
+  "estimate_warning": "EdNet linear target-ratio figures and Junyi's retained prelaunch estimate are planning estimates, not measurements. Unique directed-pair growth is sublinear and bounded by the square of the question vocabulary, while sort/merge runtime may be nonlinear. Completed full-population fields are measured.",
+  "leakage_semantics_changed": false,
+  "validation_or_test_data_used": false
+}

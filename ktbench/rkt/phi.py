@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 import json
+import resource
 import shutil
+import time
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable
@@ -162,6 +164,7 @@ def build_cross_fitted_phi_cache(
 ) -> dict[str, object]:
     """Build five fold-own counts and cache complements plus all-train Phi."""
 
+    started = time.perf_counter()
     output_root = Path(output_root)
     output_root.mkdir(parents=True, exist_ok=True)
     (output_root / "_SUCCESS").unlink(missing_ok=True)
@@ -177,6 +180,7 @@ def build_cross_fitted_phi_cache(
     accumulators = [_SparseAccumulator(scratch / f"fold-{fold}", chunk_values) for fold in range(FOLD_COUNT)]
     included_students = 0
     training_targets = 0
+    pair_contributions = 0
     vocabulary_size = int(store.metadata["num_questions"])
     for student_index, student in enumerate(student_ids):
         student_value = int(student)
@@ -194,8 +198,13 @@ def build_cross_fitted_phi_cache(
         accumulators[int(fold_by_student[student_value])].add(codes)
         included_students += 1
         training_targets += stop - start
+        pair_contributions += len(codes)
 
     fold_data = [accumulator.finish() for accumulator in accumulators]
+    scratch_parts = sum(len(accumulator.parts) for accumulator in accumulators)
+    scratch_bytes = sum(
+        path.stat().st_size for accumulator in accumulators for path in accumulator.parts
+    )
     for fold, (keys, counts) in enumerate(fold_data):
         np.savez_compressed(output_root / f"counts_fold_{fold}.npz", keys=keys, counts=counts)
     all_keys, all_counts = _merge_fold_counts(fold_data, None)
@@ -220,6 +229,16 @@ def build_cross_fitted_phi_cache(
         "folds_balanced_within_one": int(fold_counts.max() - fold_counts.min()) <= 1,
         "cache_students": included_students,
         "training_targets_cross_fitted": training_targets,
+        "phi_pair_contributions": pair_contributions,
+        "all_train_unique_directed_pairs": len(all_keys),
+        "fold_unique_directed_pairs": {
+            str(fold): len(keys) for fold, (keys, _) in enumerate(fold_data)
+        },
+        "chunk_values": chunk_values,
+        "scratch_parts": scratch_parts,
+        "scratch_bytes_before_cleanup": scratch_bytes,
+        "construction_seconds": time.perf_counter() - started,
+        "peak_process_rss_bytes": int(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss * 1024),
         "all_dataset_targets": split_targets,
         "history_length": HISTORY_LENGTH,
         "phi_source": "training-partition histories only",
