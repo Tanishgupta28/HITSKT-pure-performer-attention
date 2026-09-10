@@ -151,14 +151,19 @@ histories only: each training student's complete deterministic fold is
 excluded from that target's Phi cache, while validation/test use an all-train
 cache and never contribute to it. `S_u=softplus(rho_u)+epsilon` and
 `lambda=sigmoid(eta)` are learned only during training, then explicitly frozen.
-All timestamp deltas are verified and converted to hours.
+All timestamp deltas are verified and converted to hours. Training clips the
+gradient norm at 10, the authors' released-trainer setting; the paper does not
+specify this detail, so that provenance is explicit in every RKT configuration.
 
 The exact formulas, timestamp evidence, seed-42 fold counts, paper-versus-code
 deviations, cache semantics, and successful ASSIST2017 smoke gate are recorded
 in [the RKT methodology and provenance report](docs/models/rkt_variant.md).
 Smoke outputs live under
 [`experiments/rkt/assist2017/smoke/`](experiments/rkt/assist2017/smoke/); they
-are diagnostic and must not be reported as final benchmark results.
+are diagnostic and must not be reported as final benchmark results. The
+production entry point is `scripts/train_rkt.py`; its artifact and
+best-checkpoint-reload contract has passed a bounded end-to-end test, but no
+full scientific RKT run is yet reported.
 
 ### DKT, DKVMN, and SAKT baselines
 
@@ -221,7 +226,11 @@ padded independently. A session that is itself larger than the budget remains
 whole in a singleton batch. PAD positions are excluded by explicit attention
 and metric masks; EOS participates in sequence encoding but never in loss or
 metrics; target correctness is shifted with BOS so the target response is not
-visible to its own prediction.
+visible to its own prediction. The production entry point is
+`scripts/train_hitskt.py`; it uses the common validation-AUC early-stopping
+controller and the dataset-specific HiTSKT epoch ceilings above. Its artifact
+and best-checkpoint-reload path has passed a bounded end-to-end test; no full
+scientific HiTSKT run is yet reported.
 
 The consolidated implementation remains
 `ActionEncoder -> SessionEncoder -> CorrectPaddingEncoder -> Decoder ->

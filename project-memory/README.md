@@ -25,6 +25,7 @@ truth; this memory never substitutes for code, logs, checkpoints, or results.
 Full preprocessing and lossless HiTSKT batching are validated for all three
 datasets. The pure Performer HiTSKT gate and the approved paper-faithful,
 cross-fitted performance-only RKT smoke gate pass. Project seed 42 is
-centralized and verified. No full scientific benchmark experiment has begun;
-the next bounded task is the common DKT/DKVMN/SAKT/HiTSKT experiment runner and
-remaining baseline smoke gates before the 15 full runs.
+centralized and verified. Production runners for all five models now pass their
+bounded end-to-end gates under the common validation-AUC controller. No full
+scientific benchmark experiment has begun; the next bounded task is the
+full-scale RKT Phi-preparation benchmark before the 15 full runs.

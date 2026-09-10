@@ -11,6 +11,7 @@ from ktbench.data.session_store import (
     build_session_store,
     make_session_dataloader,
 )
+from scripts.train_hitskt import train_hitskt
 
 
 def _processed_fixture(root: Path) -> Path:
@@ -91,3 +92,25 @@ def test_history_window_never_truncates_actions_within_session(tmp_path: Path) -
     assert batch.target_metric_mask.sum().item() == 8
     assert batch.history_mask.sum().item() == 14
     sampler.set_epoch(1)
+
+
+def test_hitskt_production_runner_uses_common_stop_and_reloads_best(tmp_path: Path) -> None:
+    processed = _processed_fixture(tmp_path / "processed")
+    build_session_store(processed, tmp_path / "store")
+    output = tmp_path / "experiment"
+    result = train_hitskt(
+        "assist2017",
+        SessionStore(tmp_path / "store"),
+        output,
+        epoch_ceiling_override=1,
+    )
+
+    config = json.loads((output / "config.json").read_text())
+    assert config["attention"] == "pure causal ELU+1 Performer linear attention"
+    assert config["action_truncation"] is False
+    assert config["action_chunking"] is False
+    assert config["early_stopping_patience"] == 5
+    assert config["early_stopping_min_delta"] == 0
+    assert result["best_epoch"] == result["epochs_completed"] == 1
+    assert result["best_checkpoint_reloaded"] is True
+    assert (output / "_SUCCESS").exists()

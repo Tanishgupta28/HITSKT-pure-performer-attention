@@ -201,6 +201,13 @@ class HiTSKTBatch:
         }
         return HiTSKTBatch(**values)
 
+    def pin_memory(self) -> "HiTSKTBatch":
+        values = {
+            name: value.pin_memory() if isinstance(value, torch.Tensor) else value
+            for name, value in vars(self).items()
+        }
+        return HiTSKTBatch(**values)
+
 
 def collate_hitskt(
     examples: Sequence[SessionExample], *, num_questions: int, num_skills: int

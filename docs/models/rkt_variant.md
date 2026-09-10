@@ -164,6 +164,10 @@ code conflicts with them:
    comparable authoritative text is unavailable for all three datasets.
 9. **Threshold:** the 0.8 Phi-plus-text threshold is not used in this
    performance-only variant.
+10. **Gradient clipping:** the paper does not state a clipping threshold. The
+   authors' released trainer uses a maximum gradient norm of 10; this value is
+   retained with explicit approval and is recorded in every RKT experiment
+   configuration.
 
 The residual/layer-normalization and width-64 feed-forward path described in
 the paper are retained even though the released single-layer executable does
@@ -198,4 +202,5 @@ initialization/freeze, metrics, forward/backward, and checkpoint loading.
 Full RKT training uses the project-wide validation ROC-AUC controller:
 patience 5, `min_delta=0`, strict improvement, and best-checkpoint reload before
 test. The controller may stop RKT early but cannot extend the authors'
-repository ceiling of 300 epochs.
+repository ceiling of 300 epochs. Training uses Adam with learning rate
+`0.001`, weight decay `0.00001`, batch size 128, and maximum gradient norm 10.

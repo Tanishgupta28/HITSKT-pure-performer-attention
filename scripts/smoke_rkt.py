@@ -20,6 +20,13 @@ from ktbench.models import PaperFaithfulRKT, RKTConfig
 from ktbench.models.rkt import RKT_LABEL
 from ktbench.rkt.data import RKTTargetDataset, collate_rkt
 from ktbench.rkt.phi import CrossFittedPhiRepository
+from ktbench.rkt.settings import (
+    RKT_BATCH_SIZE,
+    RKT_EPOCH_CEILING,
+    RKT_GRADIENT_CLIP,
+    RKT_LEARNING_RATE,
+    RKT_WEIGHT_DECAY,
+)
 from ktbench.training import COMMON_EARLY_STOPPING
 
 
@@ -31,7 +38,7 @@ def _evaluate(
 ) -> dict[str, float | int]:
     loader = DataLoader(
         dataset,
-        batch_size=128,
+        batch_size=RKT_BATCH_SIZE,
         shuffle=False,
         collate_fn=partial(collate_rkt, phi_repository=repository),
     )
@@ -105,13 +112,16 @@ def main() -> None:
         [datasets["train"][int(index)] for index in train_indices],
         phi_repository=repository,
     ).to(device)
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.001, weight_decay=0.00001)
+    optimizer = torch.optim.Adam(
+        model.parameters(), lr=RKT_LEARNING_RATE, weight_decay=RKT_WEIGHT_DECAY
+    )
     optimizer.zero_grad(set_to_none=True)
     logits = model(train_batch)
     train_loss = torch.nn.functional.binary_cross_entropy_with_logits(
         logits, train_batch.target_labels.float()
     )
     train_loss.backward()
+    torch.nn.utils.clip_grad_norm_(model.parameters(), RKT_GRADIENT_CLIP)
     optimizer.step()
 
     args.experiment_root.mkdir(parents=True, exist_ok=True)
@@ -142,10 +152,12 @@ def main() -> None:
         "history_interactions": 49,
         "maximum_context_including_target": 50,
         "optimizer": "Adam",
-        "learning_rate": 0.001,
-        "weight_decay": 0.00001,
-        "batch_size": 128,
-        "epoch_ceiling": 300,
+        "learning_rate": RKT_LEARNING_RATE,
+        "weight_decay": RKT_WEIGHT_DECAY,
+        "gradient_clip": RKT_GRADIENT_CLIP,
+        "gradient_clip_provenance": "authors' released trainer default; paper unspecified; explicitly approved",
+        "batch_size": RKT_BATCH_SIZE,
+        "epoch_ceiling": RKT_EPOCH_CEILING,
         "early_stopping_metric": COMMON_EARLY_STOPPING.metric,
         "early_stopping_patience": COMMON_EARLY_STOPPING.patience,
         "early_stopping_min_delta": COMMON_EARLY_STOPPING.min_delta,

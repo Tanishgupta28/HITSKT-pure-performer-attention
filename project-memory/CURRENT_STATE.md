@@ -144,8 +144,8 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
   `[128,49]` shapes, unique-target accounting, checkpoint round-trip, frozen
   evaluation relation parameters, and all required metrics. Its results are
   diagnostic only.
-- All 40 automated tests pass. No full model/dataset experiment ran; there are
-  no valid final benchmark results.
+- No full model/dataset experiment has run; there are no valid final benchmark
+  results.
 - The user fixed baseline contexts/hyperparameters across datasets. Clean DKT,
   DKVMN, and SAKT adapters now use rolling target-once histories of 199, 199,
   and 99 prior interactions respectively, with dynamic PAD masking and the
@@ -168,14 +168,24 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
   launched on a full dataset.
 - The baseline production runner passed an end-to-end bounded-fixture test,
   including artifact writing and best-checkpoint reload.
-- All 44 automated tests pass. No full scientific experiment has started.
+- Matching production RKT and HiTSKT runners now use the common validation-AUC
+  controller, save best/last checkpoints and complete configs/logs/metrics,
+  reload the best checkpoint before test, and pass bounded end-to-end tests.
+- RKT uses maximum gradient norm 10. The paper is silent on clipping; this is
+  the authors' released-trainer default and was retained with explicit user
+  approval. The setting and its provenance are persisted in RKT configs.
+- A CUDA-only implicit indexed-broadcast failure for the learned HiTSKT
+  session-EOS vector was fixed by explicitly expanding the same vector across
+  batch rows. EOS placement and the research architecture are unchanged.
+- All 46 automated tests pass. PyTorch warns that the CUDA cumulative-sum
+  kernel used by Performer attention has no deterministic implementation in
+  this installed build; seeding and deterministic warn-only mode remain on so
+  this limitation is visible. No full scientific experiment has started.
 
 ## Known implementation risks requiring evidence
 
 - The supplied Drive “EdNet” data is Riiid and cannot be used; genuine full
   EdNet-KT1 must be acquired and provenance-verified.
-- Existing DKT, DKVMN, and SAKT scripts are dataset-hardcoded and do not yet
-  provide the accepted full common evaluation/artifact contract.
 - Full-scale sparse Phi construction has not yet been benchmarked. Any
   scalability issue requiring changed cross-fitting or history semantics is a
   stop condition.

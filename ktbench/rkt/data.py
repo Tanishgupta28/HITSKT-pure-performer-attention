@@ -64,15 +64,29 @@ class RKTTargetDataset(Dataset[RKTExample]):
     def __len__(self) -> int:
         return int(self.cumulative_targets[-1]) if len(self.cumulative_targets) else 0
 
+    def _events_for_indices(self, indices: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+        segments = np.searchsorted(self.cumulative_targets, indices, side="right")
+        previous = np.zeros(len(indices), dtype=np.int64)
+        nonzero = segments > 0
+        previous[nonzero] = self.cumulative_targets[segments[nonzero] - 1]
+        sessions = self.sessions[segments]
+        events = self.store.session_offsets[sessions] + indices - previous
+        return sessions.astype(np.int64), events.astype(np.int64)
+
+    def history_lengths(self, indices: np.ndarray) -> np.ndarray:
+        sessions, events = self._events_for_indices(np.asarray(indices, dtype=np.int64))
+        first_sessions = sessions - self.store.session_number[sessions].astype(np.int64) + 1
+        first_events = self.store.session_offsets[first_sessions]
+        return np.minimum(events - first_events, HISTORY_LENGTH).astype(np.int32)
+
     def __getitem__(self, index: int) -> RKTExample:
         if index < 0:
             index += len(self)
         if index < 0 or index >= len(self):
             raise IndexError(index)
-        segment = int(np.searchsorted(self.cumulative_targets, index, side="right"))
-        previous = int(self.cumulative_targets[segment - 1]) if segment else 0
-        session = int(self.sessions[segment])
-        event = int(self.store.session_offsets[session]) + index - previous
+        sessions, events = self._events_for_indices(np.asarray([index], dtype=np.int64))
+        session = int(sessions[0])
+        event = int(events[0])
         student = int(self.store.session_student[session])
         student_first_session = session - int(self.store.session_number[session]) + 1
         student_first_event = int(self.store.session_offsets[student_first_session])

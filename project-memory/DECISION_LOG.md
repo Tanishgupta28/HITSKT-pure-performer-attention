@@ -223,3 +223,22 @@
 - Consequence: no runner may add a sixth non-improving epoch or use a
   model-specific patience. Every final artifact records best epoch/AUC and
   actual completed epochs.
+
+## 2026-09-10 — Retain the authors' RKT gradient clipping
+
+- Decision: use maximum gradient norm 10 for the RKT paper-faithful
+  performance-only Phi variant.
+- Evidence: the RKT paper is silent on this detail, the authors' released
+  trainer uses 10, and the user explicitly approved retaining it.
+- Consequence: smoke and production RKT paths share this setting and record its
+  provenance in each configuration; it is not presented as paper-specified.
+
+## 2026-09-10 — Complete all five production runner contracts
+
+- Decision: use the common validation-AUC early-stopping/checkpoint controller
+  in dedicated production paths for DKT, DKVMN, SAKT, RKT, and HiTSKT.
+- Evidence: 46 passing tests, including bounded end-to-end RKT and HiTSKT runs,
+  strict checkpoint reload, artifact fields, and the prior baseline fixture.
+- Consequence: implementation gates are complete. The remaining pre-launch
+  scalability gate is full RKT Phi preparation; smoke outputs remain
+  diagnostic and no scientific run is yet claimed.

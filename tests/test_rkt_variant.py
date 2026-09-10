@@ -24,6 +24,8 @@ from ktbench.rkt.phi import (
     assign_student_folds,
     build_cross_fitted_phi_cache,
 )
+from ktbench.rkt.settings import RKT_GRADIENT_CLIP
+from scripts.train_rkt import train_rkt
 
 
 def _make_store(root: Path, *, mutate_heldout: bool = False) -> SessionStore:
@@ -32,13 +34,16 @@ def _make_store(root: Path, *, mutate_heldout: bool = False) -> SessionStore:
     # Each student has five sessions; first three are train, then val/test.
     # Student 10 has no positive training gap and therefore exercises fallback.
     for student in range(1, 11):
+        running_timestamp = 1_600_000_000_000 + student * 1_000_000_000
         for session in range(1, 6):
             split = 0 if session <= 3 else session - 3
             length = 60 if student == 1 and session == 1 else 2
             for position in range(1, length + 1):
-                timestamp = 1_600_000_000_000 + session * 40_000_000 + position * 3_600_000
                 if student == 10 and split == 0:
-                    timestamp = 1_600_000_000_000
+                    timestamp = 1_600_000_000_000 + student * 1_000_000_000
+                else:
+                    running_timestamp += 3_600_000
+                    timestamp = running_timestamp
                 label = (student + session + position) % 2
                 if mutate_heldout and split > 0:
                     label = 1 - label
@@ -55,6 +60,8 @@ def _make_store(root: Path, *, mutate_heldout: bool = False) -> SessionStore:
                     }
                 )
                 event += 1
+            if not (student == 10 and split == 0):
+                running_timestamp += 40_000_000
     processed = root / "processed"
     (processed / "events").mkdir(parents=True)
     (processed / "reports").mkdir()
@@ -232,3 +239,26 @@ def test_s_u_lambda_temporal_learning_freeze_metrics_and_checkpoint(tmp_path: Pa
     restored.set_relation_parameters_trainable(False)
     with torch.no_grad():
         assert torch.equal(model(batch), restored(batch))
+
+
+def test_rkt_production_runner_uses_common_stop_and_reloads_best(tmp_path: Path) -> None:
+    store = _make_store(tmp_path / "data")
+    prepared = tmp_path / "prepared"
+    build_cross_fitted_phi_cache(store, prepared, chunk_values=20)
+    build_memory_strength_initialization(store, prepared)
+    output = tmp_path / "experiment"
+    result = train_rkt(
+        "fixture",
+        store,
+        prepared,
+        output,
+        epoch_ceiling_override=1,
+    )
+    config = json.loads((output / "config.json").read_text())
+    assert RKT_GRADIENT_CLIP == 10.0
+    assert config["gradient_clip"] == 10.0
+    assert config["early_stopping_patience"] == 5
+    assert config["early_stopping_min_delta"] == 0
+    assert result["best_epoch"] == result["epochs_completed"] == 1
+    assert result["best_checkpoint_reloaded"] is True
+    assert (output / "_SUCCESS").exists()

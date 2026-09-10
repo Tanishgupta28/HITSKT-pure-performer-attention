@@ -98,4 +98,6 @@ target padding masks, direct causal-prefix invariance, BOS/EOS target alignment,
 long-session singleton behavior, no PAD/EOS contribution to loss or metrics,
 forward/backward gradients through every hierarchy stage, chronological rolling
 history, complete-session persistence, output shapes, and strict checkpoint
-round-trip loading. `python -m pytest -q` passes all 28 tests.
+round-trip loading. The production runner is additionally tested end to end for
+common validation-AUC checkpoint selection and best-checkpoint reload.
+`python -m pytest -q` passes the complete 46-test project suite.

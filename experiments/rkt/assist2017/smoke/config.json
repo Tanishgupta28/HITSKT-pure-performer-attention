@@ -1,7 +1,7 @@
 {
   "batch_size": 128,
   "best_epoch": 1,
-  "best_validation_auc": 0.5058375145864492,
+  "best_validation_auc": 0.5057723598233426,
   "device": "cuda",
   "dropout": 0.1,
   "early_stopping_metric": "validation_roc_auc",
@@ -12,6 +12,8 @@
   "epoch_ceiling": 300,
   "epochs_completed": 1,
   "evaluation_trainable_parameters": 237953,
+  "gradient_clip": 10.0,
+  "gradient_clip_provenance": "authors' released trainer default; paper unspecified; explicitly approved",
   "heads": 1,
   "history_interactions": 49,
   "label": "RKT paper-faithful performance-only Phi-relation variant with 5-fold student-level cross-fitting.",

@@ -8,14 +8,17 @@ Full ASSIST2017, Junyi, and EdNet preprocessing is validated. Lossless session
 stores, variable-length token-budgeted batching, the hierarchical pure
 Performer HiTSKT path, and its CUDA smoke gate are complete. The approved RKT
 variant, train-only/cross-fitted Phi cache, timestamp normalization, `S_u` and
-lambda behavior, all metrics, and ASSIST smoke gate are implemented. All 40
-tests pass. Seed 42 is centralized. No full scientific training run is active
-or complete.
+lambda behavior, all metrics, and ASSIST smoke gate are implemented. Production
+runners for all five models share the common validation-AUC controller and pass
+end-to-end fixture tests. RKT clipping at maximum norm 10 is explicitly
+approved and recorded. All 46 tests pass. Seed 42 is centralized. No full
+scientific training run is active or complete.
 
 ## Exact next bounded action
 
-Build matching RKT and HiTSKT production runners around the same common
-controller. Benchmark full RKT Phi preparation before launching full runs.
+Benchmark full RKT Phi preparation before launching full runs, beginning with
+the bounded full ASSIST2017 cache and then measuring/extrapolating Junyi and
+EdNet construction without changing the approved leakage semantics.
 Account for the measured compute-only lower bounds, particularly DKVMN's
 81.614-hour EdNet epoch, without silently changing batch size, context,
 targets, or dataset scope.

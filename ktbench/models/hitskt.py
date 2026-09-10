@@ -80,13 +80,14 @@ class SessionEncoder(nn.Module):
         packed = session_vectors.new_zeros(batch_size, maximum, session_vectors.shape[-1])
         packed[batch.history_owner, batch.history_order] = session_vectors
         eos_positions = batch.history_count
-        packed[torch.arange(batch_size, device=packed.device), eos_positions] = self.session_eos
+        eos_rows = torch.arange(batch_size, device=packed.device)
+        packed[eos_rows, eos_positions] = self.session_eos.unsqueeze(0).expand(batch_size, -1)
         positions = torch.arange(maximum, device=packed.device).unsqueeze(0)
         mask = positions <= eos_positions.unsqueeze(1)
         packed = packed + sinusoidal_positions(maximum, packed.shape[-1], packed.device, packed.dtype)
         for layer in self.layers:
             packed = layer(packed, mask)
-        return packed[torch.arange(batch_size, device=packed.device), eos_positions]
+        return packed[eos_rows, eos_positions]
 
 
 class CorrectPaddingEncoder(nn.Module):
