@@ -12,12 +12,12 @@ training run is active or complete.
 
 ## Exact next bounded action
 
-Obtain the user's RKT decisions: relation construction without comparable
-authoritative exercise text, and whether author-standard length-50 rolling
-context is allowed while retaining every target. Then add the common
-training/evaluation runner and complete DKT, DKVMN, SAKT, RKT, and HiTSKT
-forward/backward/checkpoint/metric smoke gates before starting the 15 full
-scientific experiments.
+Obtain the user's RKT paper/code conflict decision for time decay, positional
+encoding/model dimensions, and performance-only Phi thresholding. The user has
+already approved training-only Phi and rolling 49-interaction history. Then add
+the common training/evaluation runner and complete DKT, DKVMN, SAKT, RKT, and
+HiTSKT forward/backward/checkpoint/metric smoke gates before starting the 15
+full scientific experiments.
 
 ## Stop conditions
 

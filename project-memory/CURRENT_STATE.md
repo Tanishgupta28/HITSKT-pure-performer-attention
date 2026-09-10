@@ -156,6 +156,23 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
 - No RKT implementation has been changed. User direction is required on the
   no-text relation variant and whether author-standard bounded rolling context
   is permitted for RKT while retaining every supervised target exactly once.
+- The user approved performance-only Phi relations from training information
+  and rolling 49-interaction history. A second fail-closed audit found further
+  material paper/code incompatibilities before implementation:
+  - paper time weight is `exp(-delta_t / S_u)` with trainable student strength;
+    released code uses `exp(-abs(raw_delta_t))`, has no `S_u`, and does not
+    normalize seconds versus EdNet milliseconds, causing practical underflow;
+  - paper settings state width 64, dropout 0.1, batch 128, and positional
+    embeddings; executable defaults are width 200, five heads, dropout 0.2,
+    batch 200, and positional encoding disabled. Width 64 is not divisible by
+    the released five-head default;
+  - paper performance-only ablation says to use Phi (Equation 2), while the
+    full relation applies a 0.8 threshold only after adding text similarity;
+    released code consumes an external precomputed relation file and does not
+    implement Phi construction, so it does not resolve thresholding for the
+    no-text variant.
+- RKT remains unchanged pending a user choice between paper-faithful repairs
+  and literal released-code behavior for these conflicts.
 
 Local-only inspection material is under `../.inspection/`; it is untracked and
 contains downloaded dataset copies and source variants. It is evidence staging,
