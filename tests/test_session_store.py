@@ -27,6 +27,7 @@ def _processed_fixture(root: Path) -> Path:
                         "question_id": cursor % 9 + 1,
                         "skill_id": cursor % 4 + 1,
                         "correct": cursor % 2,
+                        "timestamp": 1_600_000_000_000 + cursor * 1_000,
                         "session_id": session_id,
                         "session_position": position,
                         "split": split,

@@ -1,0 +1,50 @@
+{
+  "checkpoint_round_trip": true,
+  "metrics": {
+    "test": {
+      "accuracy": 0.6594134342478714,
+      "f1": 0.0,
+      "loss": 0.6431129747894201,
+      "mse": 0.22536531248307834,
+      "precision": 0.0,
+      "recall": 0.0,
+      "roc_auc": 0.5005185915829746,
+      "targets": 2114,
+      "threshold": 0.5
+    },
+    "validation": {
+      "accuracy": 0.6468151216986018,
+      "f1": 0.0,
+      "loss": 0.6498215629423547,
+      "mse": 0.22864188495054472,
+      "precision": 0.0,
+      "recall": 0.0,
+      "roc_auc": 0.5058375145864492,
+      "targets": 1931,
+      "threshold": 0.5
+    }
+  },
+  "relation_parameters_frozen_for_evaluation": true,
+  "seed": 42,
+  "status": "smoke_complete",
+  "target_ids_unique": true,
+  "targets": {
+    "test": 2114,
+    "train": 10409,
+    "validation": 1931
+  },
+  "tensor_shapes": {
+    "history_question": [
+      128,
+      49
+    ],
+    "logits": [
+      128
+    ],
+    "phi": [
+      128,
+      49
+    ]
+  },
+  "train_step_loss": 0.6939349174499512
+}

@@ -6,21 +6,25 @@ Updated: 2026-09-10 UTC
 
 Full ASSIST2017, Junyi, and EdNet preprocessing is validated. Lossless session
 stores, variable-length token-budgeted batching, the hierarchical pure
-Performer HiTSKT path, mask-safe loss/counts, and the full real-data batching
-and CUDA benchmark are implemented locally. All 28 tests pass. No scientific
-training run is active or complete.
+Performer HiTSKT path, and its CUDA smoke gate are complete. The approved RKT
+variant, train-only/cross-fitted Phi cache, timestamp normalization, `S_u` and
+lambda behavior, all metrics, and ASSIST smoke gate are implemented. All 35
+tests pass. Seed 42 is centralized. No full scientific training run is active
+or complete.
 
 ## Exact next bounded action
 
-Obtain the user's RKT paper/code conflict decision for time decay, positional
-encoding/model dimensions, and performance-only Phi thresholding. The user has
-already approved training-only Phi and rolling 49-interaction history. Then add
-the common training/evaluation runner and complete DKT, DKVMN, SAKT, RKT, and
-HiTSKT forward/backward/checkpoint/metric smoke gates before starting the 15
-full scientific experiments.
+Build the common seeded training/evaluation artifact runner and adapt DKT,
+DKVMN, and SAKT to the accepted lossless target/split contract. Complete their
+forward/backward/checkpoint/metric smoke gates, then implement full RKT cache
+preparation with an efficiency benchmark before starting any of the 15 full
+scientific experiments.
 
 ## Stop conditions
 
 - Do not start the 15 experiments before the smoke-test gates pass.
 - Do not substitute the supplied Riiid file or reduced `ednetnew.csv`.
 - Do not silently sample EdNet or alter HiTSKT's Performer architecture.
+- Do not report the RKT smoke diagnostics as scientific results.
+- Stop if full Phi preparation exposes a material scalability issue that would
+  require changing cross-fitting, history semantics, or retained targets.

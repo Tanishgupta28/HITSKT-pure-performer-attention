@@ -143,3 +143,49 @@
   up to 15 chronological earlier sessions plus one complete target. The full
   EdNet worst case fits the available 40 GiB device at 24.989 GiB allocated and
   30.861 GiB reserved, so no methodological exception is needed.
+
+## 2026-09-10 — Implement the paper-faithful performance-only RKT variant
+
+- Decision: reproduce the authors' RKT architecture where supported, using raw
+  directed performance Phi, paper width/dropout/positions, positive trainable
+  student memory strength, learned fusion initialized at 0.5, and rolling 49
+  prior interactions. Omit only the unavailable comparable text relation and
+  its 0.8 combined-relation threshold.
+- Evidence: authors' repository commit `cac60f512f`, arXiv `2008.12736`, the
+  formulas and deviation table in `../docs/models/rkt_variant.md`, and passing
+  component/smoke tests.
+- Consequence: this experiment must carry the exact approved variant label. It
+  is not interchangeable with the released executable defaults or a generic
+  Transformer.
+
+## 2026-09-10 — Cross-fit Phi at student level
+
+- Decision: deterministically assign students to five seed-42 folds. For a
+  training target, use cached contingency counts from the other four folds;
+  for validation/test, use only the all-training cache. Keep each target once,
+  cap history at 49, use latest prior occurrences, and map undefined Phi to
+  zero.
+- Evidence: `ktbench/rkt/phi.py`, `tests/test_rkt_variant.py`, and persisted
+  ASSIST smoke artifacts. Full fold sizes are documented in the RKT report.
+- Consequence: a target student's own fold and all validation/test interactions
+  are structurally absent from the relevant Phi cache. Cached sparse counts
+  preserve the exact leakage rule without recomputing a dense question matrix.
+
+## 2026-09-10 — Centralize the benchmark seed at 42
+
+- Decision: `ktbench.config.PROJECT_SEED` is the only primary benchmark seed.
+  Seed Python, NumPy, PyTorch CPU/CUDA, fold assignment, sampling, and batching
+  from it, and record it in configurations, logs, and result summaries.
+- Evidence: seed tests, `reports/benchmark_config.json`, experiment config/log,
+  and deterministic full-population fold audit.
+- Consequence: the batching default is no longer zero and retained legacy
+  training entry points call the centralized seeding function.
+
+## 2026-09-10 — Pass the bounded RKT smoke gate
+
+- Decision: accept the 20-student ASSIST2017 run only as a pre-training smoke
+  validation, not as a benchmark result.
+- Evidence: `../experiments/rkt/assist2017/smoke/` and 35 passing tests.
+- Consequence: tensor shapes, one forward/backward update, target uniqueness,
+  relation freezing, checkpoint round-trip, and all required metrics are
+  verified. Full RKT Phi preparation/training has not begun.

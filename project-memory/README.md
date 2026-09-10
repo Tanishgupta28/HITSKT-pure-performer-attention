@@ -17,12 +17,14 @@ truth; this memory never substitutes for code, logs, checkpoints, or results.
 - Project repository: `/workspace/capstone`
 - Project specification: `../prompt.txt`
 - Upstream continuation point: `origin/main` from `pokerme7777/HiTSKT`
-- Experiment outputs: not yet established
+- Experiment outputs: `../experiments/` (smoke diagnostics currently; no final
+  benchmark result yet)
 
 ## Current short status
 
-The mandatory initial assessment is complete and recorded in
-[ASSESSMENT_2026-09-09.md](ASSESSMENT_2026-09-09.md). Work is paused before
-implementation because the supplied full file called EdNet is actually in the
-Riiid schema and several dataset/protocol/model choices require the user's
-decision. No benchmark experiment has begun.
+Full preprocessing and lossless HiTSKT batching are validated for all three
+datasets. The pure Performer HiTSKT gate and the approved paper-faithful,
+cross-fitted performance-only RKT smoke gate pass. Project seed 42 is
+centralized and verified. No full scientific benchmark experiment has begun;
+the next bounded task is the common DKT/DKVMN/SAKT/HiTSKT experiment runner and
+remaining baseline smoke gates before the 15 full runs.

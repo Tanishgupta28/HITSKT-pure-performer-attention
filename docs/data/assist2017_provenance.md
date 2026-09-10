@@ -15,6 +15,10 @@ interaction-level skills.
 - Missing required values: none
 - Authoritative within-student event order: `action_num`; original CSV row is
   retained as the final deterministic fallback.
+- Native `startTime` unit: Unix seconds, verified from the accepted file (for
+  example `1096470301`). Preprocessing stores
+  `timestamp_ms = startTime * 1000`; model elapsed times use
+  `delta_hours = delta_timestamp_ms / 3,600,000`.
 
 ## Interaction-level skill decision
 
@@ -43,7 +47,8 @@ all aggregate totals. Versioned outputs are under
 
 ## Downstream variable-length representation
 
-The validated events were rebuilt into a lossless memory-mapped session store:
+The validated events were rebuilt into a lossless memory-mapped session store
+that persists normalized `timestamp_ms` for every event:
 885,335 interactions, 12,402 sessions, and a maximum complete session length of
 938. No action is truncated and no session is chunked. Every post-first session
 is a target using up to 15 strictly earlier complete sessions. Length-bucketed,

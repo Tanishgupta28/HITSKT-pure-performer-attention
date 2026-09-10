@@ -13,6 +13,10 @@ validated.
 - Missing required values or target labels: none
 - Equal-timestamp ordering: original CSV row order, because the accepted source
   has no authoritative unique interaction index.
+- Native `startTime` unit: Unix seconds, verified from the accepted file (for
+  example `1536849900`). Preprocessing stores
+  `timestamp_ms = startTime * 1000`; model elapsed times use
+  `delta_hours = delta_timestamp_ms / 3,600,000`.
 
 ## Complete tag-set mapping
 
@@ -39,8 +43,9 @@ chronology, composite mappings, and aggregate distributions.
 ## Downstream variable-length representation
 
 The validated 14,660,217 interactions were rebuilt into a lossless
-memory-mapped store of 600,154 sessions. The maximum complete session has 3,924
-actions. No action is truncated and no session is chunked. Every post-first
+memory-mapped store of 600,154 sessions with normalized `timestamp_ms` retained
+for every event. The maximum complete session has 3,924 actions. No action is
+truncated and no session is chunked. Every post-first
 session is a target using up to 15 strictly earlier complete sessions.
 Length-bucketed, dynamically padded batches use a 32,768-token budget and
 maximum batch size 64; indivisible longer examples use singleton batches. See

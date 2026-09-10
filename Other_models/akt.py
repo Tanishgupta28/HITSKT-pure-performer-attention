@@ -15,6 +15,7 @@ import math
 import os
 import os.path
 import glob
+from ktbench.config import PROJECT_SEED, seed_everything
 
 
 def split_dataset(df):
@@ -590,6 +591,7 @@ def main():
     '''
     The main function of the training script
     '''
+    seed_everything()
     df = pd.read_csv('./dataset/2017.csv', low_memory=False)
 
     df_train, df_val, df_test = split_dataset(df)
@@ -608,20 +610,10 @@ def main():
     seqlen = 200
 
     epoch_num = 200
-    seed_no = 123
+    seed_no = PROJECT_SEED
 
     # model path
     model_path = './aktmodel1'
-
-    # seed
-    # np.random.seed(seed_no)
-    # torch.backends.cudnn.deterministic = True
-    # torch.backends.cudnn.benchmark = False
-    # torch.manual_seed(seed_no)
-    # np.random.seed(seed_no)
-    # random.seed(seed_no)
-    # torch.cuda.manual_seed(seed_no)
-    # torch.cuda.manual_seed_all(seed_no)
 
     train_q_data, train_qa_data, train_pid = akt_load_data(df1=df_train, n_question=n_question, seqlen=seqlen)
     val_q_data, val_qa_data, val_pid = akt_load_data(df1=df_val, n_question=n_question, seqlen=seqlen)

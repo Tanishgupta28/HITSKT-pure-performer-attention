@@ -33,7 +33,10 @@ timestamp,solving_id,question_id,user_answer,elapsed_time
 ```
 
 - `timestamp`: Unix timestamp in milliseconds, shifted for privacy by the
-  dataset publisher.
+  dataset publisher. This native unit was verified against the actual KT1
+  files (for example `1565096190868`) and preprocessing preserves it as
+  `timestamp_ms`; model elapsed times use
+  `delta_hours = delta_timestamp_ms / 3,600,000`.
 - `solving_id`: one-based identifier for a delivered question bundle. The
   official documentation calls this a learning session, but it is not the
   project's inactivity-derived session ID and is not a unique event index.

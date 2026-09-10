@@ -10,6 +10,8 @@ import numpy as np
 import torch
 from torch.utils.data import Sampler
 
+from ktbench.config import PROJECT_SEED
+
 
 PAD_ID = 0
 CORRECT_PAD_ID = 2
@@ -97,7 +99,7 @@ class LengthBucketTokenBatchSampler(Sampler[list[int]]):
         max_batch_size: int,
         bucket_size: int = 512,
         shuffle: bool = True,
-        seed: int = 0,
+        seed: int = PROJECT_SEED,
     ) -> None:
         if not shapes:
             raise ValueError("shapes cannot be empty")

@@ -15,12 +15,15 @@ import argparse
 from loading_array import read_data_into_array
 from model_layers import HiTSKT
 from train_test import train, test
+from ktbench.config import PROJECT_SEED, seed_everything
 
 
 def main():
 	'''
 	The main function of the training script
 	'''
+
+	seed_everything()
 
 	# Parse Arguments
 	parser = argparse.ArgumentParser(description='Script for KT experiment')
@@ -104,18 +107,7 @@ def main():
 	model_path = './model1'
 
 	epoch_num = params.epoch_num
-	seed_no = 123
-
-	# seed
-	# np.random.seed(seed_no)
-	# torch.backends.cudnn.deterministic = True
-	# torch.backends.cudnn.benchmark = False
-	# torch.manual_seed(seed_no)
-	# np.random.seed(seed_no)
-	# random.seed(seed_no)
-	# torch.cuda.manual_seed(seed_no)
-	# torch.cuda.manual_seed_all(seed_no)
-
+	seed_no = PROJECT_SEED
 
 	print("File loaded")
 

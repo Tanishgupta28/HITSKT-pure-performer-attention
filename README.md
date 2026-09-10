@@ -83,6 +83,24 @@ Run all preprocessing, batching, masking, model, and checkpoint tests with:
 python -m pytest -q
 ```
 
+### Reproducibility seed
+
+The single project-wide seed is **42**, defined once as `PROJECT_SEED` in
+[`ktbench/config.py`](ktbench/config.py). `seed_everything()` applies it to
+Python `random`, NumPy, PyTorch CPU, and every available PyTorch CUDA generator;
+it also enables deterministic PyTorch/cuDNN behavior. Data sampling,
+student-fold assignment, length-bucket shuffling, split generation whenever it
+uses randomness, and all primary DKT, DKVMN, SAKT, RKT, and HiTSKT experiments
+must use this value. The former batching default of zero and legacy inactive
+seed 123 snippets are no longer part of the accepted benchmark path.
+
+Every experiment `config.json` and training-log event records `"seed": 42`.
+The benchmark-wide summary contract is persisted in
+[`reports/benchmark_config.json`](reports/benchmark_config.json); each future
+row of the actual final-results table must also carry `seed=42`. No multiple
+seed aggregate is part of the primary benchmark unless separately approved and
+documented.
+
 The accepted ASSIST2017 and full Junyi sources use the same rebuilt session and
 split contract:
 
@@ -100,6 +118,31 @@ sorted set of tags observed for each question in the accepted full source. In
 both cases one source interaction remains one row. Versioned mappings and full
 aggregate reports are under [`reports/datasets/assist2017/`](reports/datasets/assist2017/)
 and [`reports/datasets/junyi/`](reports/datasets/junyi/).
+
+### RKT reproduction
+
+The implemented baseline is explicitly labeled **RKT paper-faithful
+performance-only Phi-relation variant with 5-fold student-level
+cross-fitting.** It follows the paper and the authors' reference repository at
+<https://github.com/shalini1194/RKT> while omitting the exercise-text relation,
+because comparable authoritative question text is unavailable across all
+three accepted datasets.
+
+RKT uses width 64, dropout 0.1, one attention head, learned positions, and the
+latest 49 strictly prior interactions for each target. Every interaction is a
+target exactly once. The directed raw Phi relation is computed from training
+histories only: each training student's complete deterministic fold is
+excluded from that target's Phi cache, while validation/test use an all-train
+cache and never contribute to it. `S_u=softplus(rho_u)+epsilon` and
+`lambda=sigmoid(eta)` are learned only during training, then explicitly frozen.
+All timestamp deltas are verified and converted to hours.
+
+The exact formulas, timestamp evidence, seed-42 fold counts, paper-versus-code
+deviations, cache semantics, and successful ASSIST2017 smoke gate are recorded
+in [the RKT methodology and provenance report](docs/models/rkt_variant.md).
+Smoke outputs live under
+[`experiments/rkt/assist2017/smoke/`](experiments/rkt/assist2017/smoke/); they
+are diagnostic and must not be reported as final benchmark results.
 
 ### Variable-length HiTSKT batching
 

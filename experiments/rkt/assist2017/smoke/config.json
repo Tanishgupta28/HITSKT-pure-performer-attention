@@ -1,0 +1,19 @@
+{
+  "batch_size": 128,
+  "device": "cuda",
+  "dropout": 0.1,
+  "evaluation_trainable_parameters": 237953,
+  "heads": 1,
+  "history_interactions": 49,
+  "label": "RKT paper-faithful performance-only Phi-relation variant with 5-fold student-level cross-fitting.",
+  "learning_rate": 0.001,
+  "maximum_context_including_target": 50,
+  "optimizer": "Adam",
+  "parameters": 239343,
+  "phi": "directed raw performance Phi; 5-fold student cross-fit for train; all-train for validation/test",
+  "seed": 42,
+  "timestamp": "processed milliseconds converted to hours by division by 3,600,000",
+  "training_trainable_parameters": 239343,
+  "weight_decay": 1e-05,
+  "width": 64
+}

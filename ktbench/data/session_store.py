@@ -20,6 +20,7 @@ from ktbench.batching import (
     SessionExample,
     collate_hitskt,
 )
+from ktbench.config import PROJECT_SEED
 
 
 SPLIT_NAMES = {"train": 0, "validation": 1, "test": 2}
@@ -35,6 +36,8 @@ class SessionStoreMetadata:
     num_skills: int
     maximum_session_length: int
     split_sessions: dict[str, int]
+    processed_timestamp_unit: str = "milliseconds"
+    timestamp_hours_divisor: int = 3_600_000
     action_truncation: bool = False
     action_chunking: bool = False
 
@@ -61,6 +64,7 @@ def build_session_store(processed_root: str | Path, output_root: str | Path) -> 
     question = _open_array(output_root / "question.npy", "int32", (interactions,))
     skill = _open_array(output_root / "skill.npy", "int32", (interactions,))
     correct = _open_array(output_root / "correct.npy", "uint8", (interactions,))
+    timestamp_ms = _open_array(output_root / "timestamp_ms.npy", "int64", (interactions,))
     session_offsets = _open_array(output_root / "session_offsets.npy", "int64", (sessions + 1,))
     session_student = _open_array(output_root / "session_student.npy", "int32", (sessions,))
     session_number = _open_array(output_root / "session_number.npy", "int32", (sessions,))
@@ -80,6 +84,7 @@ def build_session_store(processed_root: str | Path, output_root: str | Path) -> 
         "question_id",
         "skill_id",
         "correct",
+        "timestamp",
         "session_id",
         "session_position",
         "split",
@@ -95,9 +100,11 @@ def build_session_store(processed_root: str | Path, output_root: str | Path) -> 
             q_values = np.asarray(values["question_id"], dtype=np.int32)
             s_values = np.asarray(values["skill_id"], dtype=np.int32)
             c_values = np.asarray(values["correct"], dtype=np.uint8)
+            t_values = np.asarray(values["timestamp"], dtype=np.int64)
             question[event_cursor:stop] = q_values
             skill[event_cursor:stop] = s_values
             correct[event_cursor:stop] = c_values
+            timestamp_ms[event_cursor:stop] = t_values
             maximum_question = max(maximum_question, int(q_values.max(initial=0)))
             maximum_skill = max(maximum_skill, int(s_values.max(initial=0)))
 
@@ -142,7 +149,7 @@ def build_session_store(processed_root: str | Path, output_root: str | Path) -> 
         name: int(np.count_nonzero(session_split == value)) for name, value in SPLIT_NAMES.items()
     }
     metadata = SessionStoreMetadata(
-        format_version=1,
+        format_version=2,
         interactions=interactions,
         sessions=sessions,
         students=students,
@@ -151,12 +158,11 @@ def build_session_store(processed_root: str | Path, output_root: str | Path) -> 
         maximum_session_length=int(session_lengths.max()),
         split_sessions=split_counts,
     )
-    (output_root / "metadata.json").write_text(json.dumps(asdict(metadata), indent=2, sort_keys=True) + "\n")
-    (output_root / "_SUCCESS").write_text("complete\n")
     for array in (
         question,
         skill,
         correct,
+        timestamp_ms,
         session_offsets,
         session_student,
         session_number,
@@ -164,6 +170,8 @@ def build_session_store(processed_root: str | Path, output_root: str | Path) -> 
         student_offsets,
     ):
         array.flush()
+    (output_root / "metadata.json").write_text(json.dumps(asdict(metadata), indent=2, sort_keys=True) + "\n")
+    (output_root / "_SUCCESS").write_text("complete\n")
     return metadata
 
 
@@ -176,6 +184,10 @@ class SessionStore:
         self.question = np.load(self.root / "question.npy", mmap_mode="r")
         self.skill = np.load(self.root / "skill.npy", mmap_mode="r")
         self.correct = np.load(self.root / "correct.npy", mmap_mode="r")
+        timestamp_path = self.root / "timestamp_ms.npy"
+        if not timestamp_path.exists():
+            raise ValueError("session store predates required timestamp provenance; rebuild it")
+        self.timestamp_ms = np.load(timestamp_path, mmap_mode="r")
         self.session_offsets = np.load(self.root / "session_offsets.npy", mmap_mode="r")
         self.session_student = np.load(self.root / "session_student.npy", mmap_mode="r")
         self.session_number = np.load(self.root / "session_number.npy", mmap_mode="r")
@@ -278,7 +290,7 @@ def make_session_dataloader(
     maximum_batch_size: int = 64,
     bucket_size: int = 512,
     shuffle: bool = True,
-    seed: int = 0,
+    seed: int = PROJECT_SEED,
     workers: int = 0,
     pin_memory: bool = False,
 ) -> tuple[DataLoader[SessionExample], LengthBucketTokenBatchSampler]:

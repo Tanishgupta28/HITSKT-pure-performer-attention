@@ -1,0 +1,16 @@
+{
+  "datasets": [
+    "assist2017",
+    "junyi",
+    "ednet_kt1"
+  ],
+  "models": [
+    "DKT",
+    "DKVMN",
+    "SAKT",
+    "RKT",
+    "HiTSKT"
+  ],
+  "primary_benchmark_seed": 42,
+  "seed_policy": "One centralized seed is used for all primary experiments; every final-results row must record seed=42."
+}

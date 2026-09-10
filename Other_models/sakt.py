@@ -18,6 +18,7 @@ from torch.nn.utils import clip_grad_norm_
 import os
 import os.path
 import glob
+from ktbench.config import seed_everything
 
 
 
@@ -374,6 +375,7 @@ def main():
     '''
     The main function of the training script
     '''
+    seed_everything()
     df = pd.read_csv('./dataset/2017.csv', low_memory=False)
 
     df_train, df_val, df_test = split_dataset(df)
@@ -418,17 +420,6 @@ def main():
     val_AUC_list = []
     val_loss_list=[]
     best_valid_auc = 0
-
-    # # seed
-    # seed_no = 123
-    # np.random.seed(seed_no)
-    # torch.backends.cudnn.deterministic = True
-    # torch.backends.cudnn.benchmark = False
-    # torch.manual_seed(seed_no)
-    # np.random.seed(seed_no)
-    # random.seed(seed_no)
-    # torch.cuda.manual_seed(seed_no)
-    # torch.cuda.manual_seed_all(seed_no)
 
     # model path
     model_path = 'sakt_model'

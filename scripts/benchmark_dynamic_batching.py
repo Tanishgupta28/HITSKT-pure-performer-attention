@@ -11,6 +11,7 @@ from pathlib import Path
 import torch
 
 from ktbench.batching import LengthBucketTokenBatchSampler, collate_hitskt, padded_token_cost
+from ktbench.config import PROJECT_SEED, seed_everything
 from ktbench.data.session_store import DatasetShapeSequence, RollingSessionDataset, SessionStore
 from ktbench.metrics import masked_bce_loss
 from ktbench.models import HiTSKT, HiTSKTConfig
@@ -142,6 +143,7 @@ def benchmark_dataset(
     legacy_fixed_tokens = batch_size * (16 * legacy_capacity + 16)
     return {
         "dataset": dataset_name,
+        "seed": PROJECT_SEED,
         "store": str(store_root),
         "history_sessions": 15,
         "configured_token_budget": token_budget,
@@ -163,6 +165,7 @@ def main() -> None:
     parser.add_argument("--max-batch-size", type=int, default=64)
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
+    seed_everything()
     report = benchmark_dataset(
         args.dataset, args.store_root, args.token_budget, args.max_batch_size
     )

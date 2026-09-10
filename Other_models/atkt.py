@@ -14,6 +14,7 @@ import os
 import os.path
 import glob
 from torch.autograd import Variable, grad
+from ktbench.config import PROJECT_SEED, seed_everything
 
 
 def split_dataset(df):
@@ -314,6 +315,7 @@ def main():
     '''
     The main function of the training script
     '''
+    seed_everything()
     df = pd.read_csv('./dataset/2017.csv', low_memory=False)
 
     df_train, df_val, df_test = split_dataset(df)
@@ -324,7 +326,7 @@ def main():
 
     max_length=200
 
-    seed_no=123
+    seed_no=PROJECT_SEED
     epoch_num = 40
     lr = 1e-3
     batch_size = 24
@@ -336,16 +338,6 @@ def main():
 
     # model path
     model_path = './atkt_model'
-
-    # seed
-    # np.random.seed(seed_no)
-    # torch.backends.cudnn.deterministic = True
-    # torch.backends.cudnn.benchmark = False
-    # torch.manual_seed(seed_no)
-    # np.random.seed(seed_no)
-    # random.seed(seed_no)
-    # torch.cuda.manual_seed(seed_no)
-    # torch.cuda.manual_seed_all(seed_no)
 
     train_data = get_data(df=df_train, max_length=max_length)
     val_data = get_data(df=df_val, max_length=max_length)

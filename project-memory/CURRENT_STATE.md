@@ -119,26 +119,45 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
 - Real forward/loss/backward benchmarks passed on the H100 MIG device. Peak
   allocated/reserved CUDA memory was 7.066/8.686 GiB for ASSIST, 4.593/5.621
   GiB for Junyi, and 24.989/30.861 GiB for the worst EdNet singleton.
-- All 28 automated tests pass, covering dynamic shapes/padding, causal and PAD
+- All HiTSKT batching/model tests pass, covering dynamic shapes/padding, causal and PAD
   masks, target shifting, EOS metric exclusion, long singleton batching,
   past-only rolling history, all-stage backward gradients, and strict
   checkpoint loading. Exact evidence is versioned in
   `docs/data/variable_length_batching.md` and
   `reports/batching/dynamic_batching_benchmark.json`.
-- No model/dataset experiment ran; there are no valid benchmark results.
-- The HiTSKT tensor/forward/backward/checkpoint/masking smoke gate has passed;
-  baseline smoke gates and all scientific training experiments remain pending.
+- The centralized project seed is 42. It controls Python, NumPy, PyTorch
+  CPU/CUDA, batch shuffling, data sampling, and deterministic five-fold RKT
+  assignment. Full fold sizes are ASSIST 278/278/278/277/277, Junyi five equal
+  folds of 5,973, and EdNet 23,310/23,310/23,310/23,309/23,309.
+- The approved RKT paper-faithful performance-only variant is implemented from
+  the authors' repository reference at commit `cac60f512f`. It uses width 64,
+  dropout 0.1, one head, learned positions, rolling 49-event histories,
+  directed raw Phi, positive trainable `S_u`, and learned lambda initialized
+  at 0.5. Exact deviations are recorded in `../docs/models/rkt_variant.md`.
+- RKT timestamps are verified per source and normalized to hours. Full-store
+  training-only `S_u` initialization reports zero fallback students in all
+  three datasets; global fallback values are recorded in the RKT report.
+- Sparse Phi caches encode deterministic five-fold student cross-fitting for
+  training and all-training-only lookup for validation/test. Tests prove fold,
+  own-label, future-interaction, and validation/test exclusion.
+- The bounded 20-student ASSIST RKT smoke passed a forward/backward update,
+  `[128,49]` shapes, unique-target accounting, checkpoint round-trip, frozen
+  evaluation relation parameters, and all required metrics. Its results are
+  diagnostic only.
+- All 35 automated tests pass. No full model/dataset experiment ran; there are
+  no valid final benchmark results.
 
 ## Known implementation risks requiring evidence
 
 - The supplied Drive “EdNet” data is Riiid and cannot be used; genuine full
   EdNet-KT1 must be acquired and provenance-verified.
-- Existing baseline scripts are dataset-hardcoded and do not provide the full
-  common evaluation contract.
-- RKT is missing locally; an authors' reference implementation must be located
-  or its absence documented before a reproduction is written.
+- Existing DKT, DKVMN, and SAKT scripts are dataset-hardcoded and do not yet
+  provide the accepted full common evaluation/artifact contract.
+- Full-scale sparse Phi construction has not yet been benchmarked. Any
+  scalability issue requiring changed cross-fitting or history semantics is a
+  stop condition.
 
-## Newly identified RKT protocol ambiguity
+## RKT protocol resolution
 
 - The paper-author repository is available at `shalini1194/RKT`; author Shalini
   Pandey's current reference was inspected at commit `cac60f512f`. The paper is
@@ -148,17 +167,11 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
   embeddings. The paper also reports performance-only Phi and same-KC relation
   ablations. The accepted capstone datasets do not expose authoritative,
   comparable full exercise text for all three datasets.
-- The authors specify maximum interaction length 50 and partition longer
-  sequences. Their released model materializes quadratic attention, relation,
-  and time matrices. Requiring complete 13,080-action EdNet sessions in a
-  single RKT pass would materially depart from the author protocol and carries
-  a substantial GPU-memory risk.
-- No RKT implementation has been changed. User direction is required on the
-  no-text relation variant and whether author-standard bounded rolling context
-  is permitted for RKT while retaining every supervised target exactly once.
+- The authors specify maximum interaction length 50. The user approved a
+  rolling 49-prior-interaction construction that retains every supervised
+  target exactly once without forcing full sessions into one RKT matrix.
 - The user approved performance-only Phi relations from training information
-  and rolling 49-interaction history. A second fail-closed audit found further
-  material paper/code incompatibilities before implementation:
+  and paper-faithful handling of these paper/code incompatibilities:
   - paper time weight is `exp(-delta_t / S_u)` with trainable student strength;
     released code uses `exp(-abs(raw_delta_t))`, has no `S_u`, and does not
     normalize seconds versus EdNet milliseconds, causing practical underflow;
@@ -171,8 +184,10 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
     released code consumes an external precomputed relation file and does not
     implement Phi construction, so it does not resolve thresholding for the
     no-text variant.
-- RKT remains unchanged pending a user choice between paper-faithful repairs
-  and literal released-code behavior for these conflicts.
+- The complete approved formulation, five-fold leakage protocol, timestamp
+  audit, initialization, source citation, and smoke evidence are implemented
+  and documented in `../docs/models/rkt_variant.md`. No current material RKT
+  ambiguity remains.
 
 Local-only inspection material is under `../.inspection/`; it is untracked and
 contains downloaded dataset copies and source variants. It is evidence staging,

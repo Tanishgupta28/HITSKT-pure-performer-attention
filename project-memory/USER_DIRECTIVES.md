@@ -83,3 +83,39 @@ The user approved all of the following as binding implementation decisions:
   Do not infer a complete mapping, merge skills, or expand rows. Record 3,162
   questions, 697 multi-row-skill questions, and 440,761 affected interactions
   (46.75%). Revisit only if authoritative complete metadata is found.
+
+## 2026-09-10 — Variable-length HiTSKT and RKT protocol
+
+- Preserve complete 10-hour sessions. Use length-bucketed, dynamically padded,
+  token-budgeted batches; never truncate or chunk long sessions. Rare long
+  examples use smaller or singleton batches. PAD must be masked in attention,
+  loss, and metrics, and EOS/BOS target alignment must remain valid.
+- Implement the authors' RKT repository as the reference, but use the
+  performance-only Phi variant because comparable authoritative question text
+  is unavailable across all three datasets. Never fabricate text features.
+- Label it “RKT paper-faithful performance-only Phi-relation variant with
+  5-fold student-level cross-fitting.” Use width 64, dropout 0.1, learned
+  positions through context 50, one head, and rolling 49 prior interactions;
+  retain every target once.
+- Use directed raw Phi from training histories only. Assign deterministic
+  seed-42 student folds. Training targets use Phi from the other four complete
+  student folds; validation/test use all training folds. No target label,
+  same-student future, or validation/test interaction may enter Phi. Undefined
+  relations map to zero and no 0.8 threshold/text relation is used.
+- Normalize verified source timestamps to hours. Use
+  `S_u=softplus(rho_u)+epsilon`, initialized from the student's median positive
+  training gap or a global training-only fallback. Use
+  `lambda=sigmoid(eta)`, initialized at 0.5. Learn both during training only and
+  freeze them for validation/test.
+- Stop on any further material RKT ambiguity instead of copying an arbitrary
+  released-code default.
+
+## 2026-09-10 — Project-wide seed
+
+- Use 42 as the one centralized seed for Python, NumPy, PyTorch CPU/CUDA,
+  student folds, data sampling, randomized split generation, length-bucket
+  shuffling, and every primary DKT, DKVMN, SAKT, RKT, and HiTSKT run across all
+  three datasets. Do not retain zero as the batching default.
+- Persist seed 42 in every experiment config and training log and in every
+  final-results row/equivalent benchmark summary. The primary benchmark is
+  single-seed unless a separately documented multi-seed run is approved.
