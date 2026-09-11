@@ -207,7 +207,7 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
   first student session and retain all 125,800/112,252 targets. No session was
   truncated or chunked.
 - The aggregate `reports/final_results.{csv,json}` is generated from completed
-  experiment artifacts and currently contains 5/15 rows; no smoke or
+  experiment artifacts and currently contains 6/15 rows; no smoke or
   throughput result enters it.
 - Full DKT on ASSIST2017 completed in 6,233.07 s with the unchanged batch-20,
   context-200 configuration. Strict early stopping selected epoch 12 at
@@ -251,6 +251,12 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
   uninterrupted run tensor-for-tensor and metric-for-metric. A seven-epoch
   Junyi attempt whose older checkpoint lacked RNG state is preserved as an
   excluded audit artifact and will be restarted from seed 42.
+- Full RKT on Junyi completed across one exact RNG-safe resume in 9,365.18 s.
+  Strict early stopping selected epoch 8 at validation AUC 0.7954429584 and
+  stopped at epoch 13. Best-checkpoint test metrics over all 2,456,402 targets
+  are: AUC 0.7912548487, accuracy 0.7523398043, precision 0.7789090882, recall
+  0.8872965298, F1 0.8295774825, MSE 0.1670380883, and loss 0.5036462177.
+  Independent full test evaluation reproduced every value exactly.
 
 ## Known implementation risks requiring evidence
 

@@ -343,3 +343,15 @@
 - Consequence: the externally interrupted seven-epoch RKT/Junyi attempt is
   excluded and preserved for audit. It is restarted cleanly from seed 42 using
   the new resumable checkpoint format; no partial result enters aggregation.
+
+## 2026-09-11 — Accept the full RKT/Junyi result
+
+- Decision: accept the completed seed-42 paper-faithful performance-only,
+  five-fold cross-fitted RKT run as the sixth scientific benchmark result.
+- Evidence: exact RNG-safe continuation after epoch 4; 13 total epoch records;
+  best validation AUC 0.7954429584 at epoch 8; exactly five subsequent misses;
+  best-checkpoint reload; all 2,456,402 test targets; independent full test
+  recomputation exactly matching every metric.
+- Consequence: the generated master files contain 6/15 actual rows. The
+  9,365.18-second runtime includes both clean-run segments exactly; no data from
+  the separately preserved excluded seven-epoch attempt enters this result.
