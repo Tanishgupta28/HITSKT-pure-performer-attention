@@ -3,7 +3,11 @@
 from __future__ import annotations
 
 import math
+import random
 from dataclasses import asdict, dataclass
+
+import numpy as np
+import torch
 
 
 @dataclass(frozen=True)
@@ -26,6 +30,47 @@ class EarlyStoppingConfig:
 
     def as_dict(self) -> dict[str, str | int | float | bool]:
         return asdict(self)
+
+def capture_rng_state() -> dict[str, object]:
+    """Capture every project RNG in a weights-only-loadable representation."""
+
+    numpy_state = np.random.get_state()
+    return {
+        "python": random.getstate(),
+        "numpy": {
+            "bit_generator": numpy_state[0],
+            "state": torch.from_numpy(numpy_state[1].astype(np.int64)),
+            "position": int(numpy_state[2]),
+            "has_gauss": int(numpy_state[3]),
+            "cached_gaussian": float(numpy_state[4]),
+        },
+        "torch_cpu": torch.get_rng_state(),
+        "torch_cuda": torch.cuda.get_rng_state_all() if torch.cuda.is_available() else [],
+    }
+
+
+def restore_rng_state(state: dict[str, object]) -> None:
+    """Restore a state produced by :func:`capture_rng_state`."""
+
+    random.setstate(state["python"])
+    numpy_state = state["numpy"]
+    if not isinstance(numpy_state, dict):
+        raise ValueError("invalid NumPy RNG checkpoint state")
+    np.random.set_state(
+        (
+            str(numpy_state["bit_generator"]),
+            numpy_state["state"].cpu().numpy().astype(np.uint32),
+            int(numpy_state["position"]),
+            int(numpy_state["has_gauss"]),
+            float(numpy_state["cached_gaussian"]),
+        )
+    )
+    torch.set_rng_state(state["torch_cpu"].cpu())
+    cuda_states = state["torch_cuda"]
+    if torch.cuda.is_available():
+        if len(cuda_states) != torch.cuda.device_count():
+            raise ValueError("CUDA RNG checkpoint device count mismatch")
+        torch.cuda.set_rng_state_all([value.cpu() for value in cuda_states])
 
 
 COMMON_EARLY_STOPPING = EarlyStoppingConfig()

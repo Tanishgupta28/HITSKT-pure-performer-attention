@@ -130,6 +130,13 @@ last model and optimizer checkpoint plus exact validation-AUC patience state,
 continues at the next epoch's deterministic seed-42 bucket order, and appends
 to existing metrics/logs. Completed runs cannot be resumed or overwritten.
 
+RKT provides the same explicit `--resume` contract and additionally persists
+Python, NumPy, PyTorch CPU, and every CUDA RNG state. This preserves the exact
+dropout trajectory across interruption; resume is refused if either RNG or
+early-stopping state is absent. An automated test proves an interrupted/resumed
+two-epoch RKT run is tensor-for-tensor and metric-for-metric identical to its
+uninterrupted counterpart.
+
 The accepted ASSIST2017 and full Junyi sources use the same rebuilt session and
 split contract:
 

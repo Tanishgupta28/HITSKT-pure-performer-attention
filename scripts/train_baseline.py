@@ -24,7 +24,12 @@ from ktbench.data.rolling_targets import (
 from ktbench.data.session_store import SessionStore
 from ktbench.metrics import binary_metrics
 from ktbench.models import load_baseline_checkpoint
-from ktbench.training import COMMON_EARLY_STOPPING, ValidationAUCEarlyStopping
+from ktbench.training import (
+    COMMON_EARLY_STOPPING,
+    ValidationAUCEarlyStopping,
+    capture_rng_state,
+    restore_rng_state,
+)
 
 
 def _write_json(path: Path, value: object) -> None:
@@ -135,6 +140,7 @@ def _checkpoint_payload(
                 "best_validation_auc": control.best_validation_auc,
                 "consecutive_epochs_without_improvement": control.consecutive_epochs_without_improvement,
             },
+            "rng_state": capture_rng_state(),
         }
     )
     return payload
@@ -255,6 +261,10 @@ def train_baseline(
             raise ValueError("resume checkpoint seed mismatch")
         model.load_state_dict(checkpoint["state_dict"], strict=True)
         optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
+        if "rng_state" in checkpoint:
+            restore_rng_state(checkpoint["rng_state"])
+        elif float(configuration.get("dropout", 0.0)) != 0.0:
+            raise ValueError("cannot exactly resume stochastic model without RNG state")
         epochs_completed = int(checkpoint["epoch"])
         if epochs_completed != int(configuration["epochs_completed"]):
             raise ValueError("resume epoch mismatch between checkpoint and config")

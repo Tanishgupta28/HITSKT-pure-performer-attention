@@ -330,3 +330,16 @@
   combined runtime is 3,888.21 s, with the pre-resume portion explicitly
   identified as an artifact-mtime estimate; model results themselves are
   exact and unaffected by the interruption.
+
+## 2026-09-11 — Require exact RNG state for stochastic-run resume
+
+- Decision: persist and restore Python, NumPy, PyTorch CPU, and all CUDA RNG
+  states with model, optimizer, and validation-AUC patience state. Refuse RKT
+  resume when an older checkpoint lacks RNG state.
+- Evidence: RKT uses dropout 0.1, so model/optimizer restoration alone cannot
+  preserve its stochastic trajectory. A new interruption test proves every
+  final model tensor and all metrics after two epochs exactly equal the
+  uninterrupted seed-42 run. All 51 project tests pass.
+- Consequence: the externally interrupted seven-epoch RKT/Junyi attempt is
+  excluded and preserved for audit. It is restarted cleanly from seed 42 using
+  the new resumable checkpoint format; no partial result enters aggregation.

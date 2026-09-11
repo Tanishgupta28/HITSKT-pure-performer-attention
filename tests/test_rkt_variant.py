@@ -284,3 +284,59 @@ def test_rkt_production_runner_uses_common_stop_and_reloads_best(tmp_path: Path)
     assert result["best_epoch"] == result["epochs_completed"] == 1
     assert result["best_checkpoint_reloaded"] is True
     assert (output / "_SUCCESS").exists()
+
+
+def test_rkt_resume_exactly_matches_uninterrupted_dropout_trajectory(
+    tmp_path: Path,
+) -> None:
+    store = _make_store(tmp_path / "data")
+    prepared = tmp_path / "prepared"
+    build_cross_fitted_phi_cache(store, prepared, chunk_values=20)
+    build_memory_strength_initialization(store, prepared)
+
+    uninterrupted_root = tmp_path / "uninterrupted"
+    uninterrupted = train_rkt(
+        "fixture", store, prepared, uninterrupted_root, epoch_ceiling_override=2
+    )
+
+    resumed_root = tmp_path / "resumed"
+    train_rkt("fixture", store, prepared, resumed_root, epoch_ceiling_override=1)
+    (resumed_root / "_SUCCESS").unlink()
+    (resumed_root / "final_results.json").unlink()
+    epoch_lines = [
+        line
+        for line in (resumed_root / "training.jsonl").read_text().splitlines()
+        if json.loads(line)["event"] == "epoch_complete"
+    ]
+    (resumed_root / "training.jsonl").write_text("\n".join(epoch_lines) + "\n")
+    metrics = pd.read_csv(resumed_root / "metrics.csv")
+    metrics.loc[metrics["split"] != "test"].to_csv(
+        resumed_root / "metrics.csv", index=False
+    )
+    resumed = train_rkt(
+        "fixture",
+        store,
+        prepared,
+        resumed_root,
+        epoch_ceiling_override=2,
+        resume=True,
+    )
+
+    assert resumed["test"] == uninterrupted["test"]
+    assert resumed["best_epoch"] == uninterrupted["best_epoch"]
+    assert resumed["best_validation_auc"] == uninterrupted["best_validation_auc"]
+    assert resumed["resume_count"] == 1
+    expected_checkpoint = torch.load(
+        uninterrupted_root / "last_model.pt", weights_only=True
+    )
+    actual_checkpoint = torch.load(resumed_root / "last_model.pt", weights_only=True)
+    for name, expected in expected_checkpoint["state_dict"].items():
+        assert torch.equal(expected, actual_checkpoint["state_dict"][name])
+    events = [
+        json.loads(line)
+        for line in (resumed_root / "training.jsonl").read_text().splitlines()
+    ]
+    assert [
+        event["epoch"] for event in events if event["event"] == "epoch_complete"
+    ] == [1, 2]
+    assert any(event["event"] == "training_resumed" for event in events)

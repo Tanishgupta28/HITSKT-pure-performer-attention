@@ -30,7 +30,12 @@ from ktbench.rkt.settings import (
     RKT_LEARNING_RATE,
     RKT_WEIGHT_DECAY,
 )
-from ktbench.training import COMMON_EARLY_STOPPING, ValidationAUCEarlyStopping
+from ktbench.training import (
+    COMMON_EARLY_STOPPING,
+    ValidationAUCEarlyStopping,
+    capture_rng_state,
+    restore_rng_state,
+)
 
 
 def _write_json(path: Path, value: object) -> None:
@@ -108,6 +113,7 @@ def train_rkt(
     *,
     workers: int = 0,
     epoch_ceiling_override: int | None = None,
+    resume: bool = False,
 ) -> dict[str, object]:
     seed_everything()
     if (output_root / "_SUCCESS").exists():
@@ -179,39 +185,118 @@ def train_rkt(
     }
     if epoch_ceiling_override is not None:
         configuration["test_epoch_ceiling_override"] = epoch_ceiling
-    _write_json(output_root / "config.json", configuration)
-    targets = {split: len(dataset) for split, dataset in datasets.items()}
-    _write_json(
-        output_root / "dataset_stats.json",
-        {
-            "dataset": dataset_name,
-            "students": int(store.metadata["students"]),
-            "interactions": int(store.metadata["interactions"]),
-            "questions": int(store.metadata["num_questions"]),
-            "skills": int(store.metadata["num_skills"]),
-            "sessions": int(store.metadata["sessions"]),
-            "target_counts": targets,
-            "target_ratios": {
-                split: count / sum(targets.values()) for split, count in targets.items()
+    config_path = output_root / "config.json"
+    stats_path = output_root / "dataset_stats.json"
+    metrics_path = output_root / "metrics.csv"
+    log_path = output_root / "training.jsonl"
+    best_path = output_root / "best_model.pt"
+    last_path = output_root / "last_model.pt"
+    start_epoch = 1
+    epochs_completed = 0
+    prior_runtime_seconds = 0.0
+    runtime_estimated_before_resume = False
+    resume_state = None
+    if resume:
+        required = (config_path, stats_path, metrics_path, log_path, best_path, last_path)
+        missing = [str(path) for path in required if not path.exists()]
+        if missing:
+            raise ValueError(f"cannot resume; missing artifacts: {missing}")
+        stored_configuration = json.loads(config_path.read_text())
+        for key in ("model", "dataset", "seed", "batch_size", "history_length"):
+            if stored_configuration.get(key) != configuration.get(key):
+                raise ValueError(f"resume configuration mismatch for {key}")
+        checkpoint = torch.load(last_path, map_location=device, weights_only=True)
+        if checkpoint.get("seed") != PROJECT_SEED:
+            raise ValueError("resume checkpoint seed mismatch")
+        if "rng_state" not in checkpoint or "early_stopping_state" not in checkpoint:
+            raise ValueError("cannot exactly resume RKT without RNG and patience state")
+        model.load_state_dict(checkpoint["state_dict"], strict=True)
+        optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
+        restore_rng_state(checkpoint["rng_state"])
+        epochs_completed = int(checkpoint["epoch"])
+        if epochs_completed != int(stored_configuration["epochs_completed"]):
+            raise ValueError("resume epoch mismatch between checkpoint and config")
+        epoch_events = [
+            json.loads(line)
+            for line in log_path.read_text().splitlines()
+            if line and json.loads(line).get("event") == "epoch_complete"
+        ]
+        if not epoch_events or int(epoch_events[-1]["epoch"]) != epochs_completed:
+            raise ValueError("resume log does not end at checkpoint epoch")
+        resume_state = checkpoint["early_stopping_state"]
+        start_epoch = epochs_completed + 1
+        prior_runtime = stored_configuration.get("runtime_seconds_accumulated")
+        if prior_runtime is None:
+            prior_runtime_seconds = max(
+                0.0, config_path.stat().st_mtime - stats_path.stat().st_mtime
+            )
+            runtime_estimated_before_resume = True
+        else:
+            prior_runtime_seconds = float(prior_runtime)
+        configuration = stored_configuration
+        configuration.update(
+            resume_count=int(configuration.get("resume_count", 0)) + 1,
+            resumed_from_epoch=epochs_completed,
+            runtime_before_resume_seconds=prior_runtime_seconds,
+            runtime_before_resume_estimated_from_artifact_mtimes=runtime_estimated_before_resume,
+        )
+        if epoch_ceiling_override is not None:
+            configuration["test_epoch_ceiling_override"] = epoch_ceiling
+        _write_json(config_path, configuration)
+    else:
+        _write_json(config_path, configuration)
+        targets = {split: len(dataset) for split, dataset in datasets.items()}
+        _write_json(
+            stats_path,
+            {
+                "dataset": dataset_name,
+                "students": int(store.metadata["students"]),
+                "interactions": int(store.metadata["interactions"]),
+                "questions": int(store.metadata["num_questions"]),
+                "skills": int(store.metadata["num_skills"]),
+                "sessions": int(store.metadata["sessions"]),
+                "target_counts": targets,
+                "target_ratios": {
+                    split: count / sum(targets.values())
+                    for split, count in targets.items()
+                },
             },
-        },
-    )
+        )
 
     fields = [
         "epoch", "split", "targets", "loss", "roc_auc", "accuracy",
         "precision", "recall", "f1", "mse", "threshold",
     ]
     control = ValidationAUCEarlyStopping()
-    best_path = output_root / "best_model.pt"
-    last_path = output_root / "last_model.pt"
+    if resume_state is not None:
+        control.best_epoch = int(resume_state["best_epoch"])
+        control.best_validation_auc = float(resume_state["best_validation_auc"])
+        control.consecutive_epochs_without_improvement = int(
+            resume_state["consecutive_epochs_without_improvement"]
+        )
     started = time.perf_counter()
-    epochs_completed = 0
-    with (output_root / "metrics.csv").open("w", newline="") as metrics_file, (
-        output_root / "training.jsonl"
-    ).open("w") as log:
+    file_mode = "a" if resume else "w"
+    with metrics_path.open(file_mode, newline="") as metrics_file, log_path.open(
+        file_mode
+    ) as log:
         writer = csv.DictWriter(metrics_file, fieldnames=fields)
-        writer.writeheader()
-        for epoch in range(1, epoch_ceiling + 1):
+        if not resume:
+            writer.writeheader()
+        else:
+            log.write(
+                json.dumps(
+                    {
+                        "event": "training_resumed",
+                        "seed": PROJECT_SEED,
+                        "resumed_from_epoch": epochs_completed,
+                        "best_epoch": control.best_epoch,
+                        "best_validation_auc": control.best_validation_auc,
+                        "consecutive_epochs_without_improvement": control.consecutive_epochs_without_improvement,
+                    }
+                ) + "\n"
+            )
+            log.flush()
+        for epoch in range(start_epoch, epoch_ceiling + 1):
             train_metrics = _run_epoch(
                 model, datasets["train"], repository, device=device, epoch=epoch,
                 optimizer=optimizer, workers=workers,
@@ -232,6 +317,12 @@ def train_rkt(
                     "optimizer_state_dict": optimizer.state_dict(),
                     "seed": PROJECT_SEED,
                     "early_stopping": COMMON_EARLY_STOPPING.as_dict(),
+                    "early_stopping_state": {
+                        "best_epoch": control.best_epoch,
+                        "best_validation_auc": control.best_validation_auc,
+                        "consecutive_epochs_without_improvement": control.consecutive_epochs_without_improvement,
+                    },
+                    "rng_state": capture_rng_state(),
                 }
             )
             torch.save(payload, last_path)
@@ -242,6 +333,9 @@ def train_rkt(
                 best_epoch=decision.best_epoch,
                 best_validation_auc=decision.best_validation_auc,
                 epochs_completed=epochs_completed,
+                runtime_seconds_accumulated=prior_runtime_seconds
+                + time.perf_counter()
+                - started,
             )
             _write_json(output_root / "config.json", configuration)
             log.write(
@@ -287,13 +381,18 @@ def train_rkt(
         "best_epoch": control.best_epoch,
         "best_validation_auc": control.best_validation_auc,
         "epochs_completed": epochs_completed, "epoch_ceiling": epoch_ceiling,
-        "test": test_metrics, "runtime_seconds": time.perf_counter() - started,
+        "test": test_metrics,
+        "runtime_seconds": prior_runtime_seconds + time.perf_counter() - started,
+        "resume_count": int(configuration.get("resume_count", 0)),
+        "runtime_before_resume_estimated_from_artifact_mtimes": runtime_estimated_before_resume,
         "total_parameters": total_parameters,
         "trainable_parameters": configuration["trainable_parameters"],
         "best_checkpoint_reloaded": True,
         "gpu": gpu_name,
     }
     _write_json(output_root / "final_results.json", result)
+    configuration["runtime_seconds_accumulated"] = result["runtime_seconds"]
+    _write_json(config_path, configuration)
     (output_root / "_SUCCESS").write_text("complete\n")
     return result
 
@@ -305,10 +404,11 @@ def main() -> None:
     parser.add_argument("prepared_root", type=Path)
     parser.add_argument("output_root", type=Path)
     parser.add_argument("--workers", type=int, default=0)
+    parser.add_argument("--resume", action="store_true")
     args = parser.parse_args()
     result = train_rkt(
         args.dataset, SessionStore(args.store_root), args.prepared_root,
-        args.output_root, workers=args.workers,
+        args.output_root, workers=args.workers, resume=args.resume,
     )
     print(json.dumps(result, indent=2, sort_keys=True))
 

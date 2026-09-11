@@ -183,7 +183,7 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
 - A CUDA-only implicit indexed-broadcast failure for the learned HiTSKT
   session-EOS vector was fixed by explicitly expanding the same vector across
   batch rows. EOS placement and the research architecture are unchanged.
-- All 49 automated tests pass. PyTorch warns that the CUDA cumulative-sum
+- All 51 automated tests pass. PyTorch warns that the CUDA cumulative-sum
   kernel used by Performer attention has no deterministic implementation in
   this installed build; seeding and deterministic warn-only mode remain on so
   this limitation is visible.
@@ -245,6 +245,12 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
   MSE 0.2141332602, and loss 0.6182015214. Independent full test evaluation
   reproduced every value exactly. The pre-resume wall-time component is
   explicitly marked as estimated from artifact mtimes; metrics are exact.
+- RKT and baseline checkpoints now persist Python, NumPy, PyTorch CPU, and all
+  CUDA RNG states alongside model, optimizer, and strict early-stopping state.
+  An exact two-epoch RKT test proves resumed dropout training matches an
+  uninterrupted run tensor-for-tensor and metric-for-metric. A seven-epoch
+  Junyi attempt whose older checkpoint lacked RNG state is preserved as an
+  excluded audit artifact and will be restarted from seed 42.
 
 ## Known implementation risks requiring evidence
 

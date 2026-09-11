@@ -1,0 +1,12 @@
+{
+  "best_epoch": 3,
+  "best_validation_auc": 0.794789936745494,
+  "dataset": "junyi",
+  "epochs_completed": 7,
+  "excluded_from_results": true,
+  "model": "RKT",
+  "reason": "The process was externally interrupted and its legacy checkpoint lacked RNG state required to resume dropout training on the identical stochastic trajectory.",
+  "replacement": "Restart from seed 42 using checkpoints that persist Python, NumPy, PyTorch CPU, and all CUDA RNG states plus optimizer and early-stopping state.",
+  "seed": 42,
+  "status": "aborted_scientifically_nonresumable"
+}
