@@ -207,7 +207,7 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
   first student session and retain all 125,800/112,252 targets. No session was
   truncated or chunked.
 - The aggregate `reports/final_results.{csv,json}` is generated from completed
-  experiment artifacts and currently contains 7/15 rows; no smoke or
+  experiment artifacts and currently contains 8/15 rows; no smoke or
   throughput result enters it.
 - Full DKT on ASSIST2017 completed in 6,233.07 s with the unchanged batch-20,
   context-200 configuration. Strict early stopping selected epoch 12 at
@@ -272,6 +272,14 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
   test targets. A fresh-process independent evaluation reproduced every stored
   metric exactly. The run retained all complete target sessions with dynamic
   token-budgeted padding and no truncation or chunking.
+- Full DKVMN on Junyi completed in 15,310.30 s with the unchanged batch-32,
+  context-200/history-199 repository configuration and optimized equivalent
+  affine-write execution. Strict early stopping selected epoch 1 at validation
+  AUC 0.7450961224 and stopped at epoch 6 after exactly five misses. Reloading
+  `best_model.pt` produced test AUC 0.7415784625, accuracy 0.7234760434,
+  precision 0.7394883095, recall 0.9154544196, F1 0.8181163363, MSE
+  0.1836369781, and loss 0.5455991907 across all 2,456,402 test targets. A
+  fresh-process independent evaluation reproduced every stored metric exactly.
 
 ## Known implementation risks requiring evidence
 

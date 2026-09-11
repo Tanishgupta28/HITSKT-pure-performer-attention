@@ -374,3 +374,18 @@
   0.7850452676, recall 0.8815436622, F1 0.8305007526, MSE 0.1647862988, and loss
   0.4975778811. No session was truncated or chunked, and no legacy softmax
   attention entered the active benchmark path.
+
+## 2026-09-11 — Accept the full DKVMN/Junyi result
+
+- Decision: accept the completed seed-42 rolling target-once DKVMN/Junyi run as
+  the eighth scientific benchmark result.
+- Evidence: unchanged batch 32 and context/history 200/199; six contiguous epoch
+  records; best validation AUC 0.7450961224 at epoch 1; exactly five subsequent
+  misses; best-checkpoint reload; all 2,456,402 test targets; checkpoint/config
+  invariants passed; and a fresh-process full test evaluation reproduced every
+  stored metric exactly.
+- Consequence: `reports/final_results.{csv,json}` now contains 8/15 actual rows.
+  Junyi test AUC is 0.7415784625, accuracy 0.7234760434, precision
+  0.7394883095, recall 0.9154544196, F1 0.8181163363, MSE 0.1836369781, and loss
+  0.5455991907. The optimized chronological affine-write execution retained the
+  original DKVMN recurrence, parameters, targets, and hyperparameters.
