@@ -1,6 +1,6 @@
 # Current state
 
-Updated: 2026-09-10 UTC
+Updated: 2026-09-11 UTC
 
 ## Established
 
@@ -207,7 +207,7 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
   first student session and retain all 125,800/112,252 targets. No session was
   truncated or chunked.
 - The aggregate `reports/final_results.{csv,json}` is generated from completed
-  experiment artifacts and currently contains 6/15 rows; no smoke or
+  experiment artifacts and currently contains 7/15 rows; no smoke or
   throughput result enters it.
 - Full DKT on ASSIST2017 completed in 6,233.07 s with the unchanged batch-20,
   context-200 configuration. Strict early stopping selected epoch 12 at
@@ -257,6 +257,21 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
   are: AUC 0.7912548487, accuracy 0.7523398043, precision 0.7789090882, recall
   0.8872965298, F1 0.8295774825, MSE 0.1670380883, and loss 0.5036462177.
   Independent full test evaluation reproduced every value exactly.
+- Immediately before the full Junyi HiTSKT run, a static import/call audit and
+  runtime module enumeration reconfirmed that the production runner reaches
+  four `CausalLinearAttention` modules through the Action, Session,
+  Correct/Padding, and Decoder stages. All use ELU+1 prefix-sum linear
+  attention; no PyTorch Transformer/MultiheadAttention or legacy softmax module
+  is present in the instantiated model. Nine focused causal, PAD, dynamic
+  padding, checkpoint, gradient, and production-runner tests passed.
+- Full HiTSKT on Junyi completed in 14,088.52 s. Strict early stopping selected
+  epoch 32 at validation AUC 0.8008507200 and stopped at epoch 37 after exactly
+  five misses. Reloading `best_model.pt` produced test AUC 0.7978262055,
+  accuracy 0.7555505980, precision 0.7850452676, recall 0.8815436622, F1
+  0.8305007526, MSE 0.1647862988, and loss 0.4975778811 across all 2,456,402
+  test targets. A fresh-process independent evaluation reproduced every stored
+  metric exactly. The run retained all complete target sessions with dynamic
+  token-budgeted padding and no truncation or chunking.
 
 ## Known implementation risks requiring evidence
 

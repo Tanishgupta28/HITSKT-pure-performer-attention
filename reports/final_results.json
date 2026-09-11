@@ -1,5 +1,5 @@
 {
-  "completed_experiments": 6,
+  "completed_experiments": 7,
   "expected_experiments": 15,
   "results": [
     {
@@ -235,6 +235,45 @@
       "trainable_parameters": 6931457,
       "validation_examples": 125800,
       "validation_ratio": 0.1564367245780996
+    },
+    {
+      "GPU": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+      "batch_size": 64,
+      "best_epoch": 32,
+      "best_validation_auc": 0.8008507199510555,
+      "dataset": "junyi",
+      "dropout": 0.1,
+      "epoch_ceiling": 50,
+      "epochs_completed": 37,
+      "experiment_directory": "experiments/hitskt/junyi/full",
+      "history_length": 15,
+      "interactions": 14660217,
+      "learning_rate": 5e-05,
+      "min_delta": 0.0,
+      "model": "HiTSKT",
+      "optimizer": "Adam",
+      "patience": 5,
+      "questions": 25630,
+      "runtime": 14088.52458368102,
+      "seed": 42,
+      "sequence_length": 16,
+      "skills": 1521,
+      "students": 29865,
+      "test_accuracy": 0.75555059798844,
+      "test_auc": 0.7978262055191263,
+      "test_examples": 2456402,
+      "test_f1": 0.83050075255717,
+      "test_loss": 0.49757788112870566,
+      "test_mse": 0.16478629880597911,
+      "test_precision": 0.785045267643441,
+      "test_ratio": 0.17629426793620828,
+      "test_recall": 0.8815436621676446,
+      "total_parameters": 8271105,
+      "train_examples": 8920358,
+      "train_ratio": 0.6402079070685087,
+      "trainable_parameters": 8271105,
+      "validation_examples": 2556773,
+      "validation_ratio": 0.18349782499528297
     }
   ],
   "source": "completed per-experiment artifacts only; no manually entered metrics"

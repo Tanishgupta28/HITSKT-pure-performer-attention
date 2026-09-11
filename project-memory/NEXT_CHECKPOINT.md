@@ -1,6 +1,6 @@
 # Next checkpoint
 
-Updated: 2026-09-10 UTC
+Updated: 2026-09-11 UTC
 
 ## Last valid terminal checkpoint
 
@@ -11,19 +11,20 @@ variant, train-only/cross-fitted Phi cache, timestamp normalization, `S_u` and
 lambda behavior, all metrics, and ASSIST smoke gate are implemented. Production
 runners for all five models share the common validation-AUC controller and pass
 end-to-end fixture tests. RKT clipping at maximum norm 10 is explicitly
-approved and recorded. All 49 tests pass. Seed 42 is centralized. All five ASSIST2017 model runs and full RKT/Junyi are complete and
+approved and recorded. All 51 tests pass. Seed 42 is centralized. All five
+ASSIST2017 model runs plus full RKT/Junyi and HiTSKT/Junyi are complete and
 independently reproduced from their best checkpoints; the generated master
-result has 6/15 rows.
+result has 7/15 rows.
 
 ## Exact next bounded action
 
-Checkpoint the verified full RKT/Junyi result, then benchmark the full Junyi
-HiTSKT epoch path and launch the next lowest-risk full Junyi experiment under
-its approved model-specific configuration and common early-stopping protocol.
-Monitor durable artifacts and independently verify its best checkpoint.
-Account for the measured compute-only lower bounds, particularly DKVMN's
-81.614-hour EdNet epoch, without silently changing batch size, context,
-targets, or dataset scope.
+Checkpoint the verified full HiTSKT/Junyi result, then launch full DKVMN/Junyi
+under its unchanged batch-32/context-200 repository configuration and common
+early-stopping protocol. Its optimized, mathematically equivalent affine-write
+path has a measured 0.6164-hour compute-only training-epoch estimate before
+loading, validation, and checkpoint I/O. Monitor durable resumable artifacts
+and independently verify its best checkpoint. Do not silently change batch
+size, context, targets, or dataset scope.
 
 ## Stop conditions
 

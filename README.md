@@ -120,8 +120,8 @@ implemented in [`ktbench/training.py`](ktbench/training.py).
 Machine-readable benchmark rows are generated only from completed experiment
 directories by `scripts/aggregate_results.py`. The current
 [`reports/final_results.csv`](reports/final_results.csv) and JSON companion
-contain six of 15 expected rows: all five ASSIST2017 results plus full RKT
-on Junyi.
+contain seven of 15 expected rows: all five ASSIST2017 results plus full RKT
+and HiTSKT on Junyi.
 Smoke and throughput diagnostics are excluded automatically.
 
 Long baseline runs can be continued with `scripts/train_baseline.py --resume`.
@@ -258,8 +258,9 @@ metrics; target correctness is shifted with BOS so the target response is not
 visible to its own prediction. The production entry point is
 `scripts/train_hitskt.py`; it uses the common validation-AUC early-stopping
 controller and the dataset-specific HiTSKT epoch ceilings above. Its artifact
-and best-checkpoint-reload path has passed a bounded end-to-end test; no full
-scientific HiTSKT run is yet reported.
+and best-checkpoint-reload path has passed a bounded end-to-end test. Full
+scientific ASSIST2017 and Junyi HiTSKT results are included in the generated
+benchmark tables; EdNet remains pending.
 
 The consolidated implementation remains
 `ActionEncoder -> SessionEncoder -> CorrectPaddingEncoder -> Decoder ->

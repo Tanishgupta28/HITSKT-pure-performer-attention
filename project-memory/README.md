@@ -17,8 +17,8 @@ truth; this memory never substitutes for code, logs, checkpoints, or results.
 - Project repository: `/workspace/capstone`
 - Project specification: `../prompt.txt`
 - Upstream continuation point: `origin/main` from `pokerme7777/HiTSKT`
-- Experiment outputs: `../experiments/` (smoke diagnostics currently; no final
-  benchmark result yet)
+- Experiment outputs: `../experiments/`; only directories carrying `_SUCCESS`
+  are eligible for the generated final benchmark tables
 
 ## Current short status
 
@@ -26,9 +26,9 @@ Full preprocessing and lossless HiTSKT batching are validated for all three
 datasets. The pure Performer HiTSKT gate and the approved paper-faithful,
 cross-fitted performance-only RKT smoke gate pass. Project seed 42 is
 centralized and verified. Production runners for all five models pass their
-bounded end-to-end gates under the common validation-AUC controller. Full
-All five ASSIST2017 model runs and full RKT/Junyi are complete, independently
-reproduced from their best checkpoints, and occupy six of 15 generated
-master-result rows. Full Phi caches and production-cache throughput gates pass
-for all datasets. The next checkpoint is a full Junyi HiTSKT epoch-path
-benchmark followed by the next lowest-risk full Junyi experiment.
+bounded end-to-end gates under the common validation-AUC controller. All five
+ASSIST2017 model runs plus full RKT/Junyi and HiTSKT/Junyi are complete,
+independently reproduced from their best checkpoints, and occupy seven of 15
+generated master-result rows. Full Phi caches and production-cache throughput
+gates pass for all datasets. The next experiment is full DKVMN/Junyi under its
+unchanged repository configuration and optimized equivalent write execution.

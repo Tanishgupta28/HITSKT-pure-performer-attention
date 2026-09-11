@@ -355,3 +355,22 @@
 - Consequence: the generated master files contain 6/15 actual rows. The
   9,365.18-second runtime includes both clean-run segments exactly; no data from
   the separately preserved excluded seven-epoch attempt enters this result.
+
+## 2026-09-11 — Reverify Performer routing and accept full HiTSKT/Junyi
+
+- Decision: accept the completed seed-42, lossless variable-session
+  HiTSKT/Junyi run as the seventh scientific benchmark result.
+- Evidence: immediately before launch, the production import/call path and an
+  instantiated model showed exactly four active
+  `ktbench.models.performer.CausalLinearAttention` modules and zero
+  Transformer/MultiheadAttention modules. The implementation applies ELU+1 to
+  queries and keys, causal prefix sums, and explicit PAD masks; nine focused
+  tests passed. The full run recorded 37 epochs, selected epoch 32 at validation
+  AUC 0.8008507200, stopped after exactly five misses, reloaded the best
+  checkpoint, and evaluated all 2,456,402 test targets. A separate fresh-process
+  best-checkpoint evaluation reproduced every test metric exactly.
+- Consequence: `reports/final_results.{csv,json}` now contains 7/15 actual rows.
+  Junyi test AUC is 0.7978262055, accuracy 0.7555505980, precision
+  0.7850452676, recall 0.8815436622, F1 0.8305007526, MSE 0.1647862988, and loss
+  0.4975778811. No session was truncated or chunked, and no legacy softmax
+  attention entered the active benchmark path.
