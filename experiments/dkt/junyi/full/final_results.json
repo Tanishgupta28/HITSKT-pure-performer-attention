@@ -1,0 +1,30 @@
+{
+  "best_checkpoint_reloaded": true,
+  "best_epoch": 3,
+  "best_validation_auc": 0.7499506386307369,
+  "dataset": "junyi",
+  "epoch_ceiling": 200,
+  "epochs_completed": 8,
+  "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+  "min_delta": 0.0,
+  "model": "DKT",
+  "patience": 5,
+  "resume_count": 1,
+  "runtime_before_resume_estimated_from_artifact_mtimes": false,
+  "runtime_seconds": 46586.79885737272,
+  "seed": 42,
+  "status": "complete",
+  "test": {
+    "accuracy": 0.7257260822943475,
+    "f1": 0.8094759908929949,
+    "loss": 0.5415314254474518,
+    "mse": 0.18200326977544665,
+    "precision": 0.7664082388459961,
+    "recall": 0.8576722579346127,
+    "roc_auc": 0.7476841496612041,
+    "targets": 2456402,
+    "threshold": 0.5
+  },
+  "total_parameters": 424434,
+  "trainable_parameters": 424434
+}

@@ -1,6 +1,6 @@
 # Next checkpoint
 
-Updated: 2026-09-11 UTC
+Updated: 2026-09-12 UTC
 
 ## Last valid terminal checkpoint
 
@@ -12,16 +12,16 @@ lambda behavior, all metrics, and ASSIST smoke gate are implemented. Production
 runners for all five models share the common validation-AUC controller and pass
 end-to-end fixture tests. RKT clipping at maximum norm 10 is explicitly
 approved and recorded. All 51 tests pass. Seed 42 is centralized. All five
-ASSIST2017 model runs plus full RKT/Junyi, HiTSKT/Junyi, and DKVMN/Junyi are
-complete and independently reproduced from their best checkpoints; the
-generated master result has 8/15 rows.
+ASSIST2017 model runs plus full RKT/Junyi, HiTSKT/Junyi, DKVMN/Junyi, and
+DKT/Junyi are complete and independently reproduced from their best
+checkpoints; the generated master result has 9/15 rows.
 
 ## Exact next bounded action
 
-Checkpoint the verified full DKVMN/Junyi result, then launch full DKT/Junyi
-under its unchanged batch-20/context-200 repository configuration and common
+Checkpoint the verified full DKT/Junyi result, then launch full SAKT/Junyi
+under its unchanged batch-10/context-100 repository configuration and common
 early-stopping protocol. Its measured compute-only training-epoch estimate is
-1.4570 hours before loading, validation, and checkpoint I/O. Monitor durable
+0.879 hours before loading, validation, and checkpoint I/O. Monitor durable
 resumable artifacts and independently verify its best checkpoint. Do not
 silently change batch size, context, targets, or dataset scope.
 

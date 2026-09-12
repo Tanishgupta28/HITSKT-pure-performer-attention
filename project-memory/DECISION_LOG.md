@@ -389,3 +389,19 @@
   0.7394883095, recall 0.9154544196, F1 0.8181163363, MSE 0.1836369781, and loss
   0.5455991907. The optimized chronological affine-write execution retained the
   original DKVMN recurrence, parameters, targets, and hyperparameters.
+
+## 2026-09-12 — Accept the full DKT/Junyi result
+
+- Decision: accept the completed seed-42 rolling target-once DKT/Junyi run as
+  the ninth scientific benchmark result.
+- Evidence: unchanged batch 20 and context/history 200/199; eight contiguous
+  epoch records; best validation AUC 0.7499506386 at epoch 3; exactly five
+  subsequent misses; exact RNG-safe continuation after an external stop at an
+  epoch boundary; best-checkpoint reload; all 2,456,402 test targets; artifact
+  invariants passed; and a fresh-process full test evaluation reproduced every
+  stored metric exactly.
+- Consequence: `reports/final_results.{csv,json}` now contains 9/15 actual
+  rows. Junyi test AUC is 0.7476841497, accuracy 0.7257260823, precision
+  0.7664082388, recall 0.8576722579, F1 0.8094759909, MSE 0.1820032698, and
+  loss 0.5415314254. The recorded 46,586.80-second runtime includes both exact
+  run segments, and the common patience-5 protocol was not altered.
