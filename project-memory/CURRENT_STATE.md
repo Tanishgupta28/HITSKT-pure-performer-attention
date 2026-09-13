@@ -207,7 +207,7 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
   first student session and retain all 125,800/112,252 targets. No session was
   truncated or chunked.
 - The aggregate `reports/final_results.{csv,json}` is generated from completed
-  experiment artifacts and currently contains 10/15 rows; no smoke or
+  experiment artifacts and currently contains 11/15 rows; no smoke or
   throughput result enters it.
 - Full DKT on ASSIST2017 completed in 6,233.07 s with the unchanged batch-20,
   context-200 configuration. Strict early stopping selected epoch 12 at
@@ -296,6 +296,16 @@ is authorized and is beginning with authoritative EdNet-KT1 acquisition.
   0.8979818821, F1 0.8296411292, MSE 0.1684005803, and loss 0.5071997748
   across all 2,456,402 test targets. A fresh-process independent evaluation
   reproduced every stored metric exactly.
+- Full RKT on EdNet-KT1 completed in 24,318.55 s with the approved
+  paper-faithful performance-only Phi-relation variant and five-fold
+  student-level cross-fitting. Strict early stopping selected epoch 1 at
+  validation AUC 0.7479626872 and stopped at epoch 6 after exactly five
+  misses. Reloading `best_model.pt` produced test AUC 0.7475470203, accuracy
+  0.7257950375, precision 0.7316373002, recall 0.9460949348, F1 0.8251594973,
+  MSE 0.1819252324, and loss 0.5400390939 across all 13,429,870 test targets.
+  A fresh-process independent evaluation reproduced every stored metric
+  exactly. Phi remained training-only/cross-fitted for all 53,990,022 training
+  targets and training-only for validation/test.
 
 ## Known implementation risks requiring evidence
 

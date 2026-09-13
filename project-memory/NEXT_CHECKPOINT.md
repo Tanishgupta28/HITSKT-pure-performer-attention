@@ -12,19 +12,18 @@ lambda behavior, all metrics, and ASSIST smoke gate are implemented. Production
 runners for all five models share the common validation-AUC controller and pass
 end-to-end fixture tests. RKT clipping at maximum norm 10 is explicitly
 approved and recorded. All 51 tests pass. Seed 42 is centralized. All five
-All five ASSIST2017 and all five Junyi model runs are complete and independently
-reproduced from their best checkpoints; the generated master result has 10/15
-rows.
+ASSIST2017 and all five Junyi model runs plus full RKT/EdNet are complete and
+independently reproduced from their best checkpoints; the generated master
+result has 11/15 rows.
 
 ## Exact next bounded action
 
-Checkpoint the verified full SAKT/Junyi result, then launch full RKT/EdNet under
-the approved paper-faithful performance-only Phi-relation variant with 5-fold
-student-level cross-fitting. Use the complete EdNet store and precomputed
-training-only Phi caches, seed 42, rolling history 49, and the common
-validation-AUC early-stopping protocol. Monitor durable resumable artifacts and
-independently verify its best checkpoint. Do not silently change batch size,
-history semantics, targets, Phi construction, or dataset scope.
+Checkpoint the verified full RKT/EdNet result, then reverify the active
+HiTSKT-to-Performer call path and launch full HiTSKT/EdNet. Use the complete
+EdNet store, lossless variable-length token-budgeted batching, seed 42, and the
+common validation-AUC early-stopping protocol. Monitor durable resumable
+artifacts and independently verify its best checkpoint. Do not silently alter
+the Performer architecture, batching semantics, targets, or dataset scope.
 
 ## Stop conditions
 

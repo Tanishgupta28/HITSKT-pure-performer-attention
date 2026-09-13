@@ -419,3 +419,18 @@
   rows. Junyi test AUC is 0.7887961777, accuracy 0.7494701600, precision
   0.7709668341, recall 0.8979818821, F1 0.8296411292, MSE 0.1684005803, and
   loss 0.5071997748. All five full Junyi benchmarks are now complete.
+
+## 2026-09-13 — Accept the full RKT/EdNet result
+
+- Decision: accept the completed seed-42 RKT/EdNet-KT1 run as the eleventh
+  scientific benchmark result.
+- Evidence: approved width-64, one-head, history-49 performance-only variant;
+  exact five-fold student cross-fitting over 53,990,022 training targets; six
+  contiguous epochs; best validation AUC 0.7479626872 at epoch 1; exactly five
+  subsequent misses; all 13,429,870 test targets; artifact invariants passed;
+  and a fresh-process full test evaluation reproduced every metric exactly.
+- Consequence: `reports/final_results.{csv,json}` now contains 11/15 actual
+  rows. EdNet test AUC is 0.7475470203, accuracy 0.7257950375, precision
+  0.7316373002, recall 0.9460949348, F1 0.8251594973, MSE 0.1819252324, and
+  loss 0.5400390939. No validation/test interaction entered Phi or memory
+  initialization.
