@@ -120,8 +120,8 @@ implemented in [`ktbench/training.py`](ktbench/training.py).
 Machine-readable benchmark rows are generated only from completed experiment
 directories by `scripts/aggregate_results.py`. The current
 [`reports/final_results.csv`](reports/final_results.csv) and JSON companion
-contain nine of 15 expected rows: all five ASSIST2017 results plus full RKT,
-HiTSKT, DKVMN, and DKT on Junyi.
+contain ten of 15 expected rows: all five ASSIST2017 results and all five full
+Junyi results.
 Smoke and throughput diagnostics are excluded automatically.
 
 Long baseline runs can be continued with `scripts/train_baseline.py --resume`.

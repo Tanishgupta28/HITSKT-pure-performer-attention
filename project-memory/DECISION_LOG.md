@@ -405,3 +405,17 @@
   0.7664082388, recall 0.8576722579, F1 0.8094759909, MSE 0.1820032698, and
   loss 0.5415314254. The recorded 46,586.80-second runtime includes both exact
   run segments, and the common patience-5 protocol was not altered.
+
+## 2026-09-13 — Accept the full SAKT/Junyi result
+
+- Decision: accept the completed seed-42 rolling target-once SAKT/Junyi run as
+  the tenth scientific benchmark result.
+- Evidence: unchanged batch 10 and context/history 100/99; 18 contiguous epoch
+  records; best validation AUC 0.7928608706 at epoch 13; exactly five
+  subsequent misses; best-checkpoint reload; all 2,456,402 test targets;
+  artifact invariants passed; and a fresh-process full test evaluation
+  reproduced every stored metric exactly.
+- Consequence: `reports/final_results.{csv,json}` now contains 10/15 actual
+  rows. Junyi test AUC is 0.7887961777, accuracy 0.7494701600, precision
+  0.7709668341, recall 0.8979818821, F1 0.8296411292, MSE 0.1684005803, and
+  loss 0.5071997748. All five full Junyi benchmarks are now complete.
