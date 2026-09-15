@@ -137,6 +137,36 @@ early-stopping state is absent. An automated test proves an interrupted/resumed
 two-epoch RKT run is tensor-for-tensor and metric-for-metric identical to its
 uninterrupted counterpart.
 
+HiTSKT now implements the same explicit `--resume` contract, including model,
+Adam optimizer, all project RNGs, and exact validation-AUC patience state.
+An automated interruption/resume test matches every model tensor and final
+metric against an uninterrupted two-epoch fixture. Legacy HiTSKT checkpoints
+without RNG/patience state are rejected rather than silently reseeded. CUDA
+`cumsum` still emits PyTorch's existing warn-only determinism warning; saving
+RNG state does not remove that backend limitation.
+
+The interrupted EdNet HiTSKT run ended after epoch 20 without final evaluation;
+its metadata is preserved under
+`experiments/hitskt/ednet_kt1/interrupted_no_rng_resume_epoch20_20260914/`
+and is excluded from final results. Its replacement uses the unchanged full
+dataset, pure Performer architecture, and approved hyperparameters. The
+replacement is launched in a separate process session, so terminal-monitor
+interruption does not kill training. This launch command has been tested:
+
+```bash
+setsid nohup env PYTHONPATH=. PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True \
+  python scripts/train_hitskt.py ednet_kt1 \
+  data/processed/ednet_kt1/full/session_store \
+  experiments/hitskt/ednet_kt1/full --workers 8 \
+  > experiments/hitskt/ednet_kt1/full/console.log 2>&1 < /dev/null &
+echo $! > experiments/hitskt/ednet_kt1/full/runner.pid
+```
+
+If a future run exits before completion, use the same runner arguments plus
+`--resume`; this resumes at the next completed-epoch boundary, not within an
+unfinished epoch. Monitor process health and persisted epoch events every
+20 minutes. Only `_SUCCESS` plus verified final results establishes completion.
+
 The accepted ASSIST2017 and full Junyi sources use the same rebuilt session and
 split contract:
 

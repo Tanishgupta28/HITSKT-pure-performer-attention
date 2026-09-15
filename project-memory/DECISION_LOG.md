@@ -1,5 +1,27 @@
 # Decision log
 
+## 2026-09-15 — Make HiTSKT interruption-safe and restart the incomplete run
+
+- Decision: archive the incomplete full EdNet run after epoch 20, add exact
+  model/optimizer/RNG/patience checkpoint resume support, and restart cleanly.
+- Evidence: no live original trainer, no `_SUCCESS` or final_results.json;
+  legacy payload omitted RNG state. User accepted the restart. Exact two-epoch
+  dropout-trajectory resume test passes; all 52 tests pass. Architecture and
+  research configuration are unchanged.
+- Consequence: the archived run is excluded from scientific aggregates.
+  Separate-session `setsid nohup` launch survives command-runner cleanup;
+  replacement is live on CUDA. Monitor every 20 minutes per user request.
+
+## 2026-09-15 — Defer pushes while retaining the original publication target
+
+- Decision: retain Tanish Gupta's configured author identity and the original
+  capstone-gpu remote; continue local commits and defer network publication.
+- Evidence: gh now authenticates as Fyxod; push returned repository-not-found.
+  User explicitly said to keep committing with the original Tanish identity
+  and that they will log in later so pushes can happen afterward.
+- Consequence: do not create another repo, switch the publication remote, or
+  claim a local commit has been pushed. Commit `2b7c904` is local-only so far.
+
 ## 2026-09-09 — Restore the continuation repository in place
 
 - Decision: initialize `/workspace/capstone` as a Git worktree and check out a

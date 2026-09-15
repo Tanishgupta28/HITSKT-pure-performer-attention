@@ -1,6 +1,31 @@
 # Current state
 
-Updated: 2026-09-11 UTC
+Updated: 2026-09-15 UTC
+
+## Active checkpoint — 2026-09-15
+
+- 11/15 verified scientific runs remain complete. The original full
+  HiTSKT/EdNet process stopped after epoch 20 during a terminal interruption,
+  before the patience-5 stopping point or final test. Its best epoch was 17,
+  validation AUC 0.7672589703242605, with three subsequent misses. Its legacy
+  model/optimizer checkpoints omitted RNG state, so it was archived without
+  claiming a final result. See the archive's audit.json.
+- HiTSKT runner exact resume support is committed as `2b7c904`; a new test
+  proves interrupted/resumed and uninterrupted two-epoch model tensors and
+  test metrics are identical. All 52 tests pass. The active model/attention
+  architecture is unchanged, with four pure ELU+1 CausalLinearAttention stages.
+- The user approved the clean rerun after the interruption. A plain-nohup
+  launch was cleaned up before initialization; the replacement separate-session
+  launch is live as PID 2267845, parent PID 1, SID 2267845. Correct config:
+  width 128, heads 2, FF 1024, LR 8e-5, seed 42, token budget 32768,
+  maximum batch 64, patience 5, epoch ceiling 40, no truncation/chunking.
+- Monitor every 20 minutes and automatically verify/aggregate/commit after
+  completion, then advance to remaining EdNet baselines. Read current runner
+  PID/artifacts rather than trusting this historical PID blindly.
+- GitHub authentication changed to Fyxod, and push to the original private
+  remote returned repository-not-found. The user instructed preserving Tanish
+  commit identity and remote, continuing local commits, and pushing later
+  after they restore the original login. No remote/repository change is allowed.
 
 ## Established
 
