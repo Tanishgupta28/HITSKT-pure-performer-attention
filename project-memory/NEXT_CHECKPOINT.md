@@ -41,7 +41,10 @@ improved to best AUC 0.7668270365637668. Latest 17:41 UTC snapshot: best
 epoch 17 at AUC 0.7672589703242605, patience zero; epoch 18 is running.
 Latest 19:01 UTC snapshot: epoch 19 AUC 0.7672127018589197 did not improve;
 best remains epoch 17, patience 2/5, and epoch 20 is running. The actual
-best_model.pt is included in local commit 2d8ce3e; last_model.pt
+best_model.pt was included in local commit 2d8ce3e. Latest 20:21 UTC snapshot:
+epoch 21 improved to AUC 0.7675438123942788, resetting patience to zero;
+epoch 22 is running. The new actual best checkpoint is committed locally;
+last_model.pt
 remains an ignored local exact-resume artifact and must not be removed.
 Monitor terminal session 66396 emits process/epoch snapshots every
 20 minutes; if that monitor exits, the detached trainer remains independent.

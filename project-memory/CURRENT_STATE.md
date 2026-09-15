@@ -72,6 +72,11 @@ Updated: 2026-09-15 UTC
   Detached trainer PID 2267845 is healthy and training epoch 20. No final
   test or success marker exists yet. Updated logs/config are committed locally
   under the original Tanish identity; pushes remain explicitly deferred.
+- 2026-09-15 20:21 UTC monitor: epoch 21 improved validation AUC to
+  0.7675438123942788, becoming the new best checkpoint and resetting patience
+  to zero. Epoch 20 had been the third miss, but the approved controller
+  correctly continues after this improvement. Epoch 22 is running. The
+  actual new best checkpoint, logs/config, and memory are checkpointed locally.
 
 ## Established
 
