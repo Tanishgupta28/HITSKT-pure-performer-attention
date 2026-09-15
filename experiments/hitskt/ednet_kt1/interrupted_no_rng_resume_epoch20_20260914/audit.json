@@ -1,0 +1,13 @@
+{
+  "status": "interrupted_not_final",
+  "dataset": "ednet_kt1",
+  "model": "HiTSKT",
+  "seed": 42,
+  "epochs_completed": 20,
+  "best_epoch": 17,
+  "best_validation_auc": 0.7672589703242605,
+  "consecutive_epochs_without_improvement": 3,
+  "reason_excluded_from_final_benchmark": "The terminal session was interrupted before early stopping and final test evaluation. The legacy checkpoint contained model and optimizer state but not RNG state, so the stochastic dropout/shuffle trajectory could not be resumed exactly.",
+  "replacement_action": "Added exact model/optimizer/RNG/patience resume support and restarted the primary run from epoch 1.",
+  "scientific_result": false
+}
