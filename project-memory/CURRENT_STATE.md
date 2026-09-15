@@ -49,6 +49,11 @@ Updated: 2026-09-15 UTC
   Epoch 7 is best at AUC 0.7622619624598154. Epoch 8 AUC
   0.7599432662688099 did not improve, so patience is 1/5; detached trainer
   is healthy and in epoch 9.
+- 2026-09-15 13:01 UTC monitor: epoch 10 completed, best AUC
+  0.764228728194286, patience zero; detached trainer is in epoch 11.
+  A full read-only comparison of all ten epoch JSON records against the
+  archived run's first ten records passed exact equality, including every
+  train/validation metric and checkpoint/patience decision.
 - GitHub authentication changed to Fyxod, and push to the original private
   remote returned repository-not-found. The user instructed preserving Tanish
   commit identity and remote, continuing local commits, and pushing later

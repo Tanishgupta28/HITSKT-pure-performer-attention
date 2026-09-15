@@ -32,7 +32,11 @@ at validation AUC 0.7588930018050819 (also identical), checkpoint saved,
 patience zero. Latest 09:41 UTC snapshot: epochs 4 and 5 also matched the
 archived run exactly. Latest 11:41 UTC snapshot: epochs 6–8 also matched;
 best epoch 7 at AUC 0.7622619624598154. Epoch 8 AUC 0.7599432662688099
-was the first non-improvement, patience 1/5. Epoch 9 is running.
+was the first non-improvement. Latest 13:01 UTC snapshot: best epoch 10
+at AUC 0.764228728194286, patience zero; epoch 11 is running. A read-only
+comparison proves all ten complete epoch JSON records (train/validation
+metrics, target counts, seed, and checkpoint/patience flags) exactly equal
+the archived run's first ten records.
 Monitor terminal session 66396 emits process/epoch snapshots every
 20 minutes; if that monitor exits, the detached trainer remains independent.
 The earlier
