@@ -54,6 +54,10 @@ Updated: 2026-09-15 UTC
   A full read-only comparison of all ten epoch JSON records against the
   archived run's first ten records passed exact equality, including every
   train/validation metric and checkpoint/patience decision.
+- 2026-09-15 16:21 UTC monitor: epoch 15 completed, best AUC
+  0.7668270365637668, patience zero after recovery from the epoch-14 miss.
+  Detached trainer remains healthy and is training epoch 16. Metrics and
+  exact resume artifacts are intact; no final test has run yet.
 - GitHub authentication changed to Fyxod, and push to the original private
   remote returned repository-not-found. The user instructed preserving Tanish
   commit identity and remote, continuing local commits, and pushing later

@@ -36,7 +36,8 @@ was the first non-improvement. Latest 13:01 UTC snapshot: best epoch 10
 at AUC 0.764228728194286, patience zero; epoch 11 is running. A read-only
 comparison proves all ten complete epoch JSON records (train/validation
 metrics, target counts, seed, and checkpoint/patience flags) exactly equal
-the archived run's first ten records.
+the archived run's first ten records. Latest 16:21 UTC snapshot: epoch 15
+improved to best AUC 0.7668270365637668, patience zero; epoch 16 is running.
 Monitor terminal session 66396 emits process/epoch snapshots every
 20 minutes; if that monitor exits, the detached trainer remains independent.
 The earlier
