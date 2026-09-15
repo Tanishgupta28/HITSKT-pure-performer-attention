@@ -58,6 +58,10 @@ Updated: 2026-09-15 UTC
   0.7668270365637668, patience zero after recovery from the epoch-14 miss.
   Detached trainer remains healthy and is training epoch 16. Metrics and
   exact resume artifacts are intact; no final test has run yet.
+- 2026-09-15 17:41 UTC monitor: epoch 17 completed, best AUC
+  0.7672589703242605, patience zero; detached trainer is in epoch 18.
+  A fuller local checkpoint includes the actual best_model.pt, epoch logs,
+  config, and memory. Ignored last_model.pt remains intact for exact resume.
 - GitHub authentication changed to Fyxod, and push to the original private
   remote returned repository-not-found. The user instructed preserving Tanish
   commit identity and remote, continuing local commits, and pushing later
