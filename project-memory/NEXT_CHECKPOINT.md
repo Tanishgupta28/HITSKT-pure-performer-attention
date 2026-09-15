@@ -22,7 +22,13 @@ Monitor the clean full HiTSKT/EdNet rerun every 20 minutes. It was launched
 2026-09-15 UTC in a separate session with `setsid nohup`, PID 2267845; read
 `experiments/hitskt/ednet_kt1/full/runner.pid` and verify the actual process.
 The first plain-nohup launch exited before initialization; the separate-session
-launch is live and has emitted the correct CUDA/seed-42 config. The earlier
+launch is live. At 07:01 UTC, epoch 1 completed with validation AUC
+0.7527808881272077 (identical to the old first epoch), checkpoint saved,
+patience zero. The actual checkpoint was loaded and verified to include all
+four RNG families, Adam state, and exact early-stopping state. Epoch 2 is
+running. Monitor terminal session 66396 emits process/epoch snapshots every
+20 minutes; if that monitor exits, the detached trainer remains independent.
+The earlier
 epoch-20 run is archived under
 `experiments/hitskt/ednet_kt1/interrupted_no_rng_resume_epoch20_20260914/`;
 it has no final test or success marker and is not a scientific result.
