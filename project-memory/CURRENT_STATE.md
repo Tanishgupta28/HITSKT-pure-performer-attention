@@ -91,6 +91,9 @@ Updated: 2026-09-15 UTC
   0.7676484582020142. Best remains epoch 22 at 0.7677329409251583;
   epochs 23–25 are three consecutive misses, patience 3/5. Epoch 26 is
   running on the healthy detached trainer. No final test/result is available.
+- 2026-09-15 23:41 UTC monitor: epoch 26 improved to validation AUC
+  0.7677920121661311, becoming best and resetting patience to zero.
+  Epoch 27 is running; the actual new best checkpoint is committed locally.
 
 ## Established
 
