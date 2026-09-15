@@ -77,6 +77,16 @@ Updated: 2026-09-15 UTC
   to zero. Epoch 20 had been the third miss, but the approved controller
   correctly continues after this improvement. Epoch 22 is running. The
   actual new best checkpoint, logs/config, and memory are checkpointed locally.
+- 2026-09-15 21:21 UTC monitor: epoch 22 remains the new best with validation
+  AUC 0.7677329409251583, patience zero; epoch 23 is running. Local checkpoint
+  now includes the actual epoch-22 best_model.pt.
+- A restart edge case is fixed in all five model runners: if interruption
+  occurs after the fifth miss but before final test evaluation, restored
+  patience now skips further training/validation and directly reloads the
+  best checkpoint for test. Five explicitly mocked protocol tests exercise
+  the real save/restore path and verify no extra epoch/checkpoint mutation.
+  All 60 tests pass, including real stochastic-resume/forward-backward tests.
+  The already-running trainer is unaffected; no model/attention changes were made.
 
 ## Established
 

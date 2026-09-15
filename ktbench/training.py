@@ -94,6 +94,12 @@ class ValidationAUCEarlyStopping:
         self.best_epoch: int | None = None
         self.consecutive_epochs_without_improvement = 0
 
+    @property
+    def should_stop(self) -> bool:
+        """Also honor a stopping state restored before final test evaluation."""
+
+        return self.consecutive_epochs_without_improvement >= self.config.patience
+
     def step(self, epoch: int, validation_auc: float) -> EarlyStoppingDecision:
         if epoch < 1:
             raise ValueError("epochs are one-based")
@@ -110,9 +116,7 @@ class ValidationAUCEarlyStopping:
             self.consecutive_epochs_without_improvement += 1
         return EarlyStoppingDecision(
             improved=improved,
-            should_stop=(
-                self.consecutive_epochs_without_improvement >= self.config.patience
-            ),
+            should_stop=self.should_stop,
             best_epoch=self.best_epoch,
             best_validation_auc=self.best_validation_auc,
             consecutive_epochs_without_improvement=self.consecutive_epochs_without_improvement,

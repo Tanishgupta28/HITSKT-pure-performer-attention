@@ -33,7 +33,9 @@ eleven of 15 generated master-result rows. Full Phi caches and production-cache
 throughput gates pass for all datasets. Full HiTSKT/EdNet is running as a clean
 restart in a detached process session after its interrupted epoch-20 legacy
 run lacked RNG state. Exact resume support now passes a tensor/metric equality
-test; all 55 tests pass. Final table/plot generation and independent checkpoint
+test; all 60 tests pass. Already stopped runs resume directly into final test
+without an extra epoch, verified across all five models. Final table/plot
+generation and independent checkpoint
 replay commands are implemented/tested, and all 11 real completed artifacts
 pass report validation. Keep 20-minute monitoring, original Tanish commit
 identity, and the existing remote. Pushes are deferred by user instruction

@@ -11,7 +11,7 @@ variant, train-only/cross-fitted Phi cache, timestamp normalization, `S_u` and
 lambda behavior, all metrics, and ASSIST smoke gate are implemented. Production
 runners for all five models share the common validation-AUC controller and pass
 end-to-end fixture tests. RKT clipping at maximum norm 10 is explicitly
-approved and recorded. All 55 tests pass. Seed 42 is centralized. All five
+approved and recorded. All 60 tests pass. Seed 42 is centralized. All five
 ASSIST2017 and all five Junyi model runs plus full RKT/EdNet are complete and
 independently reproduced from their best checkpoints; the generated master
 result has 11/15 rows.
@@ -46,6 +46,10 @@ epoch 21 improved to AUC 0.7675438123942788, resetting patience to zero;
 epoch 22 is running. The new actual best checkpoint is committed locally;
 last_model.pt
 remains an ignored local exact-resume artifact and must not be removed.
+Latest 21:21 UTC snapshot: epoch 22 is best at AUC 0.7677329409251583,
+patience zero; epoch 23 is running. New tests and guards ensure an already
+stopped checkpoint resumes directly into final best-checkpoint test evaluation,
+without any extra train/validation epoch, across all five models.
 Monitor terminal session 66396 emits process/epoch snapshots every
 20 minutes; if that monitor exits, the detached trainer remains independent.
 The earlier
@@ -57,7 +61,7 @@ The active Performer call path was reverified with four CausalLinearAttention
 modules, no quadratic-attention modules, and nine focused tests before the
 original launch. The restart changes only runner durability: model, optimizer,
 RNG, and patience state are now saved. An exact interruption/resume equality
-  test passes; the full suite now has 55 passing tests. Use `--resume` after an
+  test passes; the full suite now has 60 passing tests. Use `--resume` after an
 unexpected process exit; never silently overwrite an incomplete directory.
 
 When HiTSKT completes, independently replay the best-checkpoint test metrics,

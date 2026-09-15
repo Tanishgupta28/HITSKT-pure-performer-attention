@@ -335,6 +335,8 @@ def train_baseline(
             )
             log.flush()
         for epoch in range(start_epoch, epoch_ceiling + 1):
+            if control.should_stop:
+                break
             train_metrics = _run_epoch(
                 model,
                 datasets["train"],

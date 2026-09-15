@@ -151,6 +151,9 @@ Resume validates the stored model/dataset/seed/batching contract, restores the
 last model and optimizer checkpoint plus exact validation-AUC patience state,
 continues at the next epoch's deterministic seed-42 bucket order, and appends
 to existing metrics/logs. Completed runs cannot be resumed or overwritten.
+For all five models, a restart after patience already reached 5 skips all
+further training and validation epochs and proceeds directly to best-checkpoint
+test evaluation. Five parameterized interruption tests verify this edge case.
 
 RKT provides the same explicit `--resume` contract and additionally persists
 Python, NumPy, PyTorch CPU, and every CUDA RNG state. This preserves the exact
