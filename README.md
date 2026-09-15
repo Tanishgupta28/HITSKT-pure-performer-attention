@@ -124,6 +124,28 @@ contain eleven of 15 expected rows: all five ASSIST2017 results, all five full
 Junyi results, and full RKT/EdNet-KT1.
 Smoke and throughput diagnostics are excluded automatically.
 
+`scripts/generate_report.py` builds all seven model-by-dataset metric tables,
+15 per-experiment loss/AUC curve figures, and cross-model AUC/accuracy/F1
+plots from completed artifacts. It validates contiguous epoch records, the
+best validation epoch/AUC, and equality between CSV and JSON test metrics
+before writing. Final generation refuses an incomplete 15-run matrix;
+`--allow-partial` is an explicit diagnostic mode that labels missing cells
+and never invents values. Plotting uses matplotlib (the `plots` dependency
+extra). The final report entry point, CLI, and all figure/table paths are
+tested with complete synthetic fixtures; all 11 currently completed real
+run artifacts also pass its validation. Source SHA-256 hashes are recorded
+in `reports/report_manifest.json`.
+
+`scripts/evaluate_checkpoint.py` is the independent best-checkpoint replay
+entry point. Its CLI accepts the experiment directory, lossless session store,
+`--workers`, an RKT-only `--prepared-root`, and optional `--output` for a JSON
+verification record. It rejects incomplete runs and wrong seeds/stores/Phi
+metadata, reloads the actual best checkpoint, uses the same target-once test
+and masking path, and requires exact equality of all stored metrics. The
+baseline, RKT, and HiTSKT entry paths have passed end-to-end fixture replay
+tests. Run it as a fresh process after each production completion; the output
+records target count, seed, checkpoint hash, and store-metadata hash.
+
 Long baseline runs can be continued with `scripts/train_baseline.py --resume`.
 Resume validates the stored model/dataset/seed/batching contract, restores the
 last model and optimizer checkpoint plus exact validation-AUC patience state,

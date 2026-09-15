@@ -116,13 +116,19 @@ def _row(root: Path) -> dict[str, Any]:
     }
 
 
-def aggregate(experiments_root: Path, output_root: Path) -> list[dict[str, Any]]:
+def collect_results(experiments_root: Path) -> list[dict[str, Any]]:
+    """Read canonical full-run artifacts without changing any files."""
     rows = []
     for model in MODELS:
         for dataset in DATASETS:
             root = experiments_root / model.lower() / dataset / "full"
             if (root / "_SUCCESS").exists():
                 rows.append(_row(root))
+    return rows
+
+
+def aggregate(experiments_root: Path, output_root: Path) -> list[dict[str, Any]]:
+    rows = collect_results(experiments_root)
     output_root.mkdir(parents=True, exist_ok=True)
     with (output_root / "final_results.csv").open("w", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=FIELDS, lineterminator="\n")

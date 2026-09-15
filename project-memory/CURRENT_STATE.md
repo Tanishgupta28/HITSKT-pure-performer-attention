@@ -22,6 +22,15 @@ Updated: 2026-09-15 UTC
 - Monitor every 20 minutes and automatically verify/aggregate/commit after
   completion, then advance to remaining EdNet baselines. Read current runner
   PID/artifacts rather than trusting this historical PID blindly.
+- Reporting and replay tooling is now implemented while the replacement
+  trainer runs. `scripts/evaluate_checkpoint.py` validates and independently
+  replays completed best checkpoints with exact metrics and hashes; its three
+  model-family fixture paths pass. `scripts/generate_report.py` requires the
+  complete 15-run matrix, validates curves/results before writing seven tables,
+  15 training-curve plots and three comparisons, and records source hashes.
+  All 11 existing production runs pass read-only artifact validation; no
+  incomplete scientific report or invented result has been generated.
+  The full suite now has 55 passing tests.
 - GitHub authentication changed to Fyxod, and push to the original private
   remote returned repository-not-found. The user instructed preserving Tanish
   commit identity and remote, continuing local commits, and pushing later

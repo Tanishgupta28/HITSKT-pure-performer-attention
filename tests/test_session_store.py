@@ -116,6 +116,11 @@ def test_hitskt_production_runner_uses_common_stop_and_reloads_best(tmp_path: Pa
     assert result["best_epoch"] == result["epochs_completed"] == 1
     assert result["best_checkpoint_reloaded"] is True
     assert (output / "_SUCCESS").exists()
+    from scripts.evaluate_checkpoint import evaluate_checkpoint
+
+    replay = evaluate_checkpoint(output, SessionStore(tmp_path / "store"))
+    assert replay["verified"] is True
+    assert replay["test"] == result["test"]
 
 
 def test_hitskt_resume_exactly_matches_uninterrupted_dropout_trajectory(

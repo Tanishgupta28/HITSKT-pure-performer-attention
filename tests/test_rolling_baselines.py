@@ -205,6 +205,11 @@ def test_production_runner_writes_and_reloads_best_checkpoint(tmp_path: Path) ->
     assert (output / "best_model.pt").exists()
     assert (output / "final_results.json").exists()
     assert (output / "_SUCCESS").exists()
+    from scripts.evaluate_checkpoint import evaluate_checkpoint
+
+    replay = evaluate_checkpoint(output, store)
+    assert replay["verified"] is True
+    assert replay["test"] == result["test"]
 
 
 def test_production_runner_resumes_model_optimizer_and_patience_state(
