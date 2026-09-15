@@ -50,6 +50,9 @@ Latest 21:21 UTC snapshot: epoch 22 is best at AUC 0.7677329409251583,
 patience zero; epoch 23 is running. New tests and guards ensure an already
 stopped checkpoint resumes directly into final best-checkpoint test evaluation,
 without any extra train/validation epoch, across all five models.
+Latest 23:01 UTC snapshot: epoch 25 AUC 0.7676484582020142 did not improve.
+Best remains epoch 22, patience 3/5, and epoch 26 is running. Actual best
+checkpoint is in local commit 1fee049; updated epoch-25 logs/memory are local.
 Monitor terminal session 66396 emits process/epoch snapshots every
 20 minutes; if that monitor exits, the detached trainer remains independent.
 The earlier

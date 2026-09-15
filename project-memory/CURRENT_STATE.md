@@ -87,6 +87,10 @@ Updated: 2026-09-15 UTC
   the real save/restore path and verify no extra epoch/checkpoint mutation.
   All 60 tests pass, including real stochastic-resume/forward-backward tests.
   The already-running trainer is unaffected; no model/attention changes were made.
+- 2026-09-15 23:01 UTC monitor: epoch 25 completed at validation AUC
+  0.7676484582020142. Best remains epoch 22 at 0.7677329409251583;
+  epochs 23–25 are three consecutive misses, patience 3/5. Epoch 26 is
+  running on the healthy detached trainer. No final test/result is available.
 
 ## Established
 
