@@ -25,8 +25,10 @@ The first plain-nohup launch exited before initialization; the separate-session
 launch is live. At 07:01 UTC, epoch 1 completed with validation AUC
 0.7527808881272077 (identical to the old first epoch), checkpoint saved,
 patience zero. The actual checkpoint was loaded and verified to include all
-four RNG families, Adam state, and exact early-stopping state. Epoch 2 is
-running. Monitor terminal session 66396 emits process/epoch snapshots every
+four RNG families, Adam state, and exact early-stopping state. At 07:41 UTC,
+epoch 2 completed with validation AUC 0.7573268796700343 (also identical to
+the old run), checkpoint saved, patience zero. Epoch 3 is running.
+Monitor terminal session 66396 emits process/epoch snapshots every
 20 minutes; if that monitor exits, the detached trainer remains independent.
 The earlier
 epoch-20 run is archived under
