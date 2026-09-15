@@ -29,7 +29,9 @@ four RNG families, Adam state, and exact early-stopping state. At 07:41 UTC,
 epoch 2 completed with validation AUC 0.7573268796700343 (also identical to
 the old run), checkpoint saved, patience zero. At 08:21 UTC, epoch 3 completed
 at validation AUC 0.7588930018050819 (also identical), checkpoint saved,
-patience zero. Epoch 4 is running.
+patience zero. Latest 09:41 UTC snapshot: epochs 4 and 5 also matched the
+archived run exactly, latest best epoch 5 at AUC 0.7612169898244615,
+patience zero. Epoch 6 is running.
 Monitor terminal session 66396 emits process/epoch snapshots every
 20 minutes; if that monitor exits, the detached trainer remains independent.
 The earlier
