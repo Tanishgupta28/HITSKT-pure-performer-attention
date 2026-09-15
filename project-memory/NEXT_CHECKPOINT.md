@@ -27,7 +27,9 @@ launch is live. At 07:01 UTC, epoch 1 completed with validation AUC
 patience zero. The actual checkpoint was loaded and verified to include all
 four RNG families, Adam state, and exact early-stopping state. At 07:41 UTC,
 epoch 2 completed with validation AUC 0.7573268796700343 (also identical to
-the old run), checkpoint saved, patience zero. Epoch 3 is running.
+the old run), checkpoint saved, patience zero. At 08:21 UTC, epoch 3 completed
+at validation AUC 0.7588930018050819 (also identical), checkpoint saved,
+patience zero. Epoch 4 is running.
 Monitor terminal session 66396 emits process/epoch snapshots every
 20 minutes; if that monitor exits, the detached trainer remains independent.
 The earlier
