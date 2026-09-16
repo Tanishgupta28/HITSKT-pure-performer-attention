@@ -99,6 +99,10 @@ Updated: 2026-09-16 UTC
   two non-improving epochs. Epoch 30 is running. The actual new best
   checkpoint, epoch-29 artifacts, and project memory are committed locally
   under the original Tanish identity. Pushes remain deferred by instruction.
+- 2026-09-16 03:01 UTC monitor: epoch 30 improved to best validation AUC
+  0.7681769525193056. Epoch 31 AUC 0.7679458417050529 did not improve,
+  giving patience 1/5; epoch 32 is running. A local checkpoint now includes
+  the actual epoch-30 best_model.pt and complete logs/config through epoch 31.
 
 ## Established
 
