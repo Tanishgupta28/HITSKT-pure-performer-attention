@@ -16,6 +16,11 @@ Updated: 2026-09-16 UTC
   `58d4b1f393d0fa8ec372ba8bcc00cc8b7168d37817d4badfd26ee42abffd03c8`.
   Strict curve/artifact validation passed, and generated master results now
   contain 12/15 verified scientific rows. Remaining: EdNet DKT, DKVMN, SAKT.
+- Full DKVMN/EdNet-KT1 launched in a separate detached process session as PID
+  and SID 2443018 (parent PID 1). Its initialized config was asserted before
+  continuing: context/history 200/199, batch 32, Adam LR 0.001, memory/key/value
+  20/50/100, dropout 0, seed 42, ceiling 100, strict patience 5/min_delta 0,
+  and best-checkpoint reload. No profile or methodology change was made.
 - The prior interrupted epoch-20 directory remains preserved only as audit
   provenance. It is not included in the master results. The clean completed
   run is the accepted full EdNet HiTSKT result.

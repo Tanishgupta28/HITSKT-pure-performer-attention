@@ -32,6 +32,10 @@ validation-AUC patience 5. On completion, run `scripts/evaluate_checkpoint.py`
 against the same store, validate curves, aggregate to 13/15, document, and
 commit. Then run SAKT and DKT EdNet with their already-approved unchanged
 profiles. Pushes remain deferred until the user restores the Tanish login.
+The run is now active as PID/SID 2443018 with parent 1. Its initialized config
+passed every assertion above. Read `experiments/dkvmn/ednet_kt1/full/runner.pid`
+rather than trusting the historical PID, and preserve ignored `last_model.pt`
+for exact resume once epoch checkpoints begin.
 
 ## Completed HiTSKT/EdNet audit trail
 
