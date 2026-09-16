@@ -148,3 +148,10 @@ The user approved all of the following as binding implementation decisions:
 - Every experiment must persist patience, min delta, best epoch, best
   validation AUC, and total completed epochs. Avoid any unnecessary epoch after
   the stopping condition.
+
+## 2026-09-16 — Monitoring cadence
+
+- Check active training every 30 minutes, superseding the earlier 20-minute
+  cadence. Continue automatically with verification and subsequent runs.
+- Keep committing under the original Tanish identity and defer pushes until
+  the user logs in to the original GitHub account.

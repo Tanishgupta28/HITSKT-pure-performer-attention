@@ -38,6 +38,6 @@ without an extra epoch, verified across all five models. Final table/plot
 generation and independent checkpoint
 replay commands are implemented/tested, and all 12 real completed artifacts
 pass report validation. Continue with the remaining EdNet DKVMN, SAKT, and DKT
-runs using 20-minute monitoring, original Tanish commit
+runs using 30-minute monitoring, original Tanish commit
 identity, and the existing remote. Pushes are deferred by user instruction
 until the original GitHub account is logged in again.

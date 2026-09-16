@@ -4,6 +4,9 @@ Updated: 2026-09-16 UTC
 
 ## Active checkpoint — 2026-09-16
 
+- Latest user instruction: check training status every 30 minutes, superseding
+  the previous 20-minute cadence. Continue local commits under Tanish's identity
+  and defer pushes until the user restores GitHub authentication.
 - Full HiTSKT/EdNet-KT1 completed successfully after 35 epochs under the
   common patience-5 rule. Best epoch 30 validation AUC is
   0.7681769525193056. Its best-checkpoint final test evaluated exactly

@@ -22,7 +22,7 @@ matched all seven metrics exactly and strict report validation passed.
 ## Exact next bounded action
 
 Run full DKVMN/EdNet-KT1 using the unchanged repository profile, detached from
-the controlling terminal, and monitor it every 20 minutes. Command:
+the controlling terminal, and monitor it every 30 minutes. Command:
 
 `PYTHONPATH=. python scripts/train_baseline.py dkvmn ednet_kt1 data/processed/ednet_kt1/full/session_store experiments/dkvmn/ednet_kt1/full --workers 8`
 
@@ -38,7 +38,7 @@ rather than trusting the historical PID, and preserve ignored `last_model.pt`
 for exact resume once epoch checkpoints begin.
 At 2026-09-16 09:40 UTC, epoch 1 completed with validation AUC
 0.6719177243615195, checkpoint saved, patience zero. Its exact-resume payload
-was verified and committed locally; epoch 2 is running. Continue 20-minute
+was verified and committed locally; epoch 2 is running. Continue 30-minute
 checks through strict early stopping/ceiling, then independently replay test.
 At 2026-09-16 14:00 UTC, epoch 2 validation AUC 0.6656104984379707 did not
 improve. Best remains epoch 1, patience 1/5; epoch 3 is running. The epoch-2
