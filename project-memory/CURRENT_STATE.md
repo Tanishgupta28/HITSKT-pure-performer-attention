@@ -27,6 +27,11 @@ Updated: 2026-09-16 UTC
   running. The actual last checkpoint was loaded read-only and verified to
   contain model/optimizer state, seed 42, all four RNG families, and exact
   best/patience state. The actual best checkpoint and epoch logs are committed.
+- 2026-09-16 14:00 UTC: DKVMN/EdNet epoch 2 completed with validation AUC
+  0.6656104984379707, below epoch 1. Epoch 1 remains best at
+  0.6719177243615195; patience is 1/5 and epoch 3 is running. Updated
+  config/logs are committed locally; ignored last_model.pt remains available
+  for exact continuation from epoch 2.
 - The prior interrupted epoch-20 directory remains preserved only as audit
   provenance. It is not included in the master results. The clean completed
   run is the accepted full EdNet HiTSKT result.
