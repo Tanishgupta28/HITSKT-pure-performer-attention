@@ -1,6 +1,6 @@
 # Next checkpoint
 
-Updated: 2026-09-15 UTC
+Updated: 2026-09-16 UTC
 
 ## Last valid terminal checkpoint
 
@@ -56,6 +56,10 @@ checkpoint is in local commit 1fee049; updated epoch-25 logs/memory are local.
 Latest 23:41 UTC snapshot: epoch 26 improved to best AUC 0.7677920121661311,
 patience zero; epoch 27 is running. New actual best checkpoint is committed
 locally under Tanish identity. Continue the same ceiling-40/patience-5 protocol.
+Latest 2026-09-16 01:41 UTC snapshot: epoch 29 improved to best AUC
+0.7678508108666452, patience zero; epoch 30 is running. The actual new best
+checkpoint and updated artifacts/memory are committed locally. Monitor
+session 66396 remains active; continue its 20-minute process/epoch snapshots.
 Monitor terminal session 66396 emits process/epoch snapshots every
 20 minutes; if that monitor exits, the detached trainer remains independent.
 The earlier

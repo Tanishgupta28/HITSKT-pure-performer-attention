@@ -1,6 +1,6 @@
 # Current state
 
-Updated: 2026-09-15 UTC
+Updated: 2026-09-16 UTC
 
 ## Active checkpoint — 2026-09-15
 
@@ -94,6 +94,11 @@ Updated: 2026-09-15 UTC
 - 2026-09-15 23:41 UTC monitor: epoch 26 improved to validation AUC
   0.7677920121661311, becoming best and resetting patience to zero.
   Epoch 27 is running; the actual new best checkpoint is committed locally.
+- 2026-09-16 01:41 UTC monitor: epoch 29 improved to validation AUC
+  0.7678508108666452, becoming best and resetting patience to zero after
+  two non-improving epochs. Epoch 30 is running. The actual new best
+  checkpoint, epoch-29 artifacts, and project memory are committed locally
+  under the original Tanish identity. Pushes remain deferred by instruction.
 
 ## Established
 
