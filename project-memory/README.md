@@ -27,16 +27,17 @@ datasets. The pure Performer HiTSKT gate and the approved paper-faithful,
 cross-fitted performance-only RKT smoke gate pass. Project seed 42 is
 centralized and verified. Production runners for all five models pass their
 bounded end-to-end gates under the common validation-AUC controller. All five
-ASSIST2017 and all five Junyi model runs plus full RKT/EdNet are
-complete, independently reproduced from their best checkpoints, and occupy
-eleven of 15 generated master-result rows. Full Phi caches and production-cache
-throughput gates pass for all datasets. Full HiTSKT/EdNet is running as a clean
-restart in a detached process session after its interrupted epoch-20 legacy
-run lacked RNG state. Exact resume support now passes a tensor/metric equality
+ASSIST2017 and all five Junyi model runs plus full RKT/EdNet and HiTSKT/EdNet
+are complete, independently reproduced from their best checkpoints, and occupy
+twelve of 15 generated master-result rows. Full Phi caches and production-cache
+throughput gates pass for all datasets. Full HiTSKT/EdNet stopped at epoch 35,
+selected epoch 30, and achieved test AUC 0.7693648364413692 over 13,429,870
+targets; exact fresh-process metric replay passed. Exact resume support passes a tensor/metric equality
 test; all 60 tests pass. Already stopped runs resume directly into final test
 without an extra epoch, verified across all five models. Final table/plot
 generation and independent checkpoint
-replay commands are implemented/tested, and all 11 real completed artifacts
-pass report validation. Keep 20-minute monitoring, original Tanish commit
+replay commands are implemented/tested, and all 12 real completed artifacts
+pass report validation. Continue with the remaining EdNet DKVMN, SAKT, and DKT
+runs using 20-minute monitoring, original Tanish commit
 identity, and the existing remote. Pushes are deferred by user instruction
 until the original GitHub account is logged in again.

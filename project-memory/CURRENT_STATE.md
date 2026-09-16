@@ -2,9 +2,25 @@
 
 Updated: 2026-09-16 UTC
 
-## Active checkpoint — 2026-09-15
+## Active checkpoint — 2026-09-16
 
-- 11/15 verified scientific runs remain complete. The original full
+- Full HiTSKT/EdNet-KT1 completed successfully after 35 epochs under the
+  common patience-5 rule. Best epoch 30 validation AUC is
+  0.7681769525193056. Its best-checkpoint final test evaluated exactly
+  13,429,870 targets: AUC 0.7693648364413692, accuracy 0.7388606144363273,
+  precision 0.7639387403579302, recall 0.8946143710041425,
+  F1 0.8241286589004618, MSE 0.17371257418130398, and loss
+  0.5185181172959707. Runtime was 83,399.66895867884 seconds on the H100 MIG.
+- Fresh-process independent replay loaded the actual epoch-30 checkpoint and
+  reproduced every test metric exactly; checkpoint SHA-256 is
+  `58d4b1f393d0fa8ec372ba8bcc00cc8b7168d37817d4badfd26ee42abffd03c8`.
+  Strict curve/artifact validation passed, and generated master results now
+  contain 12/15 verified scientific rows. Remaining: EdNet DKT, DKVMN, SAKT.
+- The prior interrupted epoch-20 directory remains preserved only as audit
+  provenance. It is not included in the master results. The clean completed
+  run is the accepted full EdNet HiTSKT result.
+
+- Historical run log follows. The original full
   HiTSKT/EdNet process stopped after epoch 20 during a terminal interruption,
   before the patience-5 stopping point or final test. Its best epoch was 17,
   validation AUC 0.7672589703242605, with three subsequent misses. Its legacy

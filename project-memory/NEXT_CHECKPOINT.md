@@ -14,9 +14,26 @@ end-to-end fixture tests. RKT clipping at maximum norm 10 is explicitly
 approved and recorded. All 60 tests pass. Seed 42 is centralized. All five
 ASSIST2017 and all five Junyi model runs plus full RKT/EdNet are complete and
 independently reproduced from their best checkpoints; the generated master
-result has 11/15 rows.
+result has 12/15 rows. Full HiTSKT/EdNet completed at epoch 35, selected epoch
+30 (validation AUC 0.7681769525193056), and produced test AUC
+0.7693648364413692 over 13,429,870 targets. Fresh-process checkpoint replay
+matched all seven metrics exactly and strict report validation passed.
 
 ## Exact next bounded action
+
+Run full DKVMN/EdNet-KT1 using the unchanged repository profile, detached from
+the controlling terminal, and monitor it every 20 minutes. Command:
+
+`PYTHONPATH=. python scripts/train_baseline.py dkvmn ednet_kt1 data/processed/ednet_kt1/full/session_store experiments/dkvmn/ednet_kt1/full --workers 8`
+
+It must retain context/history 200/199, batch size 32, Adam LR 0.001,
+memory/key/value sizes 20/50/100, seed 42, ceiling 100, and common strict
+validation-AUC patience 5. On completion, run `scripts/evaluate_checkpoint.py`
+against the same store, validate curves, aggregate to 13/15, document, and
+commit. Then run SAKT and DKT EdNet with their already-approved unchanged
+profiles. Pushes remain deferred until the user restores the Tanish login.
+
+## Completed HiTSKT/EdNet audit trail
 
 Monitor the clean full HiTSKT/EdNet rerun every 20 minutes. It was launched
 2026-09-15 UTC in a separate session with `setsid nohup`, PID 2267845; read

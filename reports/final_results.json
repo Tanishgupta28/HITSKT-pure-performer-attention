@@ -1,5 +1,5 @@
 {
-  "completed_experiments": 11,
+  "completed_experiments": 12,
   "expected_experiments": 15,
   "results": [
     {
@@ -430,6 +430,45 @@
       "trainable_parameters": 8271105,
       "validation_examples": 2556773,
       "validation_ratio": 0.18349782499528297
+    },
+    {
+      "GPU": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+      "batch_size": 64,
+      "best_epoch": 30,
+      "best_validation_auc": 0.7681769525193056,
+      "dataset": "ednet_kt1",
+      "dropout": 0.1,
+      "epoch_ceiling": 40,
+      "epochs_completed": 35,
+      "experiment_directory": "experiments/hitskt/ednet_kt1/full",
+      "history_length": 15,
+      "interactions": 81940867,
+      "learning_rate": 8e-05,
+      "min_delta": 0.0,
+      "model": "HiTSKT",
+      "optimizer": "Adam",
+      "patience": 5,
+      "questions": 13169,
+      "runtime": 83399.66895867884,
+      "seed": 42,
+      "sequence_length": 16,
+      "skills": 1495,
+      "students": 116548,
+      "test_accuracy": 0.7388606144363273,
+      "test_auc": 0.7693648364413692,
+      "test_examples": 13429870,
+      "test_f1": 0.8241286589004618,
+      "test_loss": 0.5185181172959707,
+      "test_mse": 0.17371257418130398,
+      "test_precision": 0.7639387403579302,
+      "test_ratio": 0.17349171105292027,
+      "test_recall": 0.8946143710041425,
+      "total_parameters": 5074433,
+      "train_examples": 49458444,
+      "train_ratio": 0.6389213056846447,
+      "trainable_parameters": 5074433,
+      "validation_examples": 14520975,
+      "validation_ratio": 0.1875869832624351
     }
   ],
   "source": "completed per-experiment artifacts only; no manually entered metrics"
