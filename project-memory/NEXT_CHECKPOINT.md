@@ -36,6 +36,10 @@ The run is now active as PID/SID 2443018 with parent 1. Its initialized config
 passed every assertion above. Read `experiments/dkvmn/ednet_kt1/full/runner.pid`
 rather than trusting the historical PID, and preserve ignored `last_model.pt`
 for exact resume once epoch checkpoints begin.
+At 2026-09-16 09:40 UTC, epoch 1 completed with validation AUC
+0.6719177243615195, checkpoint saved, patience zero. Its exact-resume payload
+was verified and committed locally; epoch 2 is running. Continue 20-minute
+checks through strict early stopping/ceiling, then independently replay test.
 
 ## Completed HiTSKT/EdNet audit trail
 

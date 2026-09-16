@@ -21,6 +21,12 @@ Updated: 2026-09-16 UTC
   continuing: context/history 200/199, batch 32, Adam LR 0.001, memory/key/value
   20/50/100, dropout 0, seed 42, ceiling 100, strict patience 5/min_delta 0,
   and best-checkpoint reload. No profile or methodology change was made.
+- 2026-09-16 09:40 UTC: DKVMN/EdNet epoch 1 completed after roughly four
+  wall-clock hours with train AUC 0.6816267576040387 and validation AUC
+  0.6719177243615195. It is the current best, patience 0/5; epoch 2 is
+  running. The actual last checkpoint was loaded read-only and verified to
+  contain model/optimizer state, seed 42, all four RNG families, and exact
+  best/patience state. The actual best checkpoint and epoch logs are committed.
 - The prior interrupted epoch-20 directory remains preserved only as audit
   provenance. It is not included in the master results. The clean completed
   run is the accepted full EdNet HiTSKT result.
