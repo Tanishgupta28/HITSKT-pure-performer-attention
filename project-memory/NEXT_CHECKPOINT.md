@@ -1,6 +1,6 @@
 # Next checkpoint
 
-Updated: 2026-09-16 UTC
+Updated: 2026-09-17 UTC
 
 ## Last valid terminal checkpoint
 
@@ -49,6 +49,9 @@ and epoch 4 is running. Monitor session 19124 now checks every 30 minutes.
 Latest 2026-09-16 22:01 UTC check: epoch 4 validation AUC
 0.6500716087367917 did not improve; best remains epoch 1, patience 3/5,
 and epoch 5 is running. Keep monitoring session 19124 every 30 minutes.
+Latest 2026-09-17 02:01 UTC check: epoch 5 validation AUC
+0.648117614809817 did not improve; best remains epoch 1, patience 4/5,
+and epoch 6 is running. Another miss must trigger final best-checkpoint test.
 
 ## Completed HiTSKT/EdNet audit trail
 

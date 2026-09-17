@@ -1,8 +1,8 @@
 # Current state
 
-Updated: 2026-09-16 UTC
+Updated: 2026-09-17 UTC
 
-## Active checkpoint — 2026-09-16
+## Active checkpoint — 2026-09-17
 
 - Latest user instruction: check training status every 30 minutes, superseding
   the previous 20-minute cadence. Continue local commits under Tanish's identity
@@ -43,6 +43,10 @@ Updated: 2026-09-16 UTC
   0.6500716087367917. Best remains epoch 1 at 0.6719177243615195;
   patience is 3/5 and epoch 5 is running. Logs/config and memory are
   checkpointed locally under the original Tanish identity.
+- 2026-09-17 02:01 UTC: DKVMN/EdNet epoch 5 validation AUC is
+  0.648117614809817. Best remains epoch 1 at 0.6719177243615195;
+  patience is 4/5 and epoch 6 is running. If epoch 6 does not improve,
+  the common controller must stop and test the epoch-1 checkpoint.
 - The prior interrupted epoch-20 directory remains preserved only as audit
   provenance. It is not included in the master results. The clean completed
   run is the accepted full EdNet HiTSKT result.
