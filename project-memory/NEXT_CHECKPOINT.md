@@ -28,6 +28,9 @@ Run full SAKT/EdNet next, followed by DKT/EdNet, then generate the complete
 15-run report. Keep 30-minute checks and defer pushes. SAKT must retain
 context/history 100/99, batch 10, width 200, heads 5, dropout 0.2, Adam
 LR 1e-5, gradient clip 10, ceiling 300, seed 42, patience 5/min_delta 0.
+SAKT is now running as PID/SID 2535997 (parent 1); the saved configuration
+passed assertions and is committed locally. Read its runner.pid at
+`experiments/sakt/ednet_kt1/full/runner.pid` and continue 30-minute monitoring.
 
 ## Completed DKVMN/EdNet audit trail
 

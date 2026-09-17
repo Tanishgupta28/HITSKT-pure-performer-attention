@@ -13,6 +13,12 @@ Updated: 2026-09-17 UTC
   exactly; SHA-256 `23e5ea19fd63c23647869012197d93159b87cc1c76399e6d7136bedcd26bd4e2`.
   All six checkpoint/patience decisions and 13 CSV rows passed validation.
   Aggregate now has 13/15 verified results. Remaining runs: SAKT and DKT EdNet.
+- Full SAKT/EdNet launched 2026-09-17 around 06:52 UTC, detached PID/SID
+  2535997, parent 1. Its saved config passed assertions: context/history
+  100/99, batch 10, width 200, heads 5, dropout 0.2, LR 1e-5, clip 10,
+  ceiling 300, seed 42, strict validation-AUC patience 5/min_delta 0.
+  Parameter count 1,668,401. Monitor every 30 minutes; commit locally and
+  continue to independent replay/aggregation, then DKT, when complete.
 - Latest user instruction: check training status every 30 minutes, superseding
   the previous 20-minute cadence. Continue local commits under Tanish's identity
   and defer pushes until the user restores GitHub authentication.
