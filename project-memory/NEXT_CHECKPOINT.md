@@ -12,9 +12,9 @@ lambda behavior, all metrics, and ASSIST smoke gate are implemented. Production
 runners for all five models share the common validation-AUC controller and pass
 end-to-end fixture tests. RKT clipping at maximum norm 10 is explicitly
 approved and recorded. All 60 tests pass. Seed 42 is centralized. All five
-ASSIST2017 and all five Junyi model runs plus full RKT/EdNet are complete and
+ASSIST2017 and all five Junyi model runs plus full DKVMN, RKT, and HiTSKT/EdNet are complete and
 independently reproduced from their best checkpoints; the generated master
-result has 12/15 rows. Full HiTSKT/EdNet completed at epoch 35, selected epoch
+result has 13/15 rows. Full HiTSKT/EdNet completed at epoch 35, selected epoch
 30 (validation AUC 0.7681769525193056), and produced test AUC
 0.7693648364413692 over 13,429,870 targets. Fresh-process checkpoint replay
 matched all seven metrics exactly and strict report validation passed.
@@ -31,6 +31,10 @@ LR 1e-5, gradient clip 10, ceiling 300, seed 42, patience 5/min_delta 0.
 SAKT is now running as PID/SID 2535997 (parent 1); the saved configuration
 passed assertions and is committed locally. Read its runner.pid at
 `experiments/sakt/ednet_kt1/full/runner.pid` and continue 30-minute monitoring.
+At 2026-09-17 07:52 UTC the SAKT process remained active, elapsed 61 minutes,
+with no completed epoch. Monitor terminal session 65227 emits snapshots every
+30 minutes; it is separate from the detached training process. DKT must wait
+for SAKT completion and independent best-checkpoint replay.
 
 ## Completed DKVMN/EdNet audit trail
 

@@ -19,9 +19,16 @@ Updated: 2026-09-17 UTC
   ceiling 300, seed 42, strict validation-AUC patience 5/min_delta 0.
   Parameter count 1,668,401. Monitor every 30 minutes; commit locally and
   continue to independent replay/aggregation, then DKT, when complete.
+  At the 07:52 UTC check the process was active after 61 minutes, with no
+  completed epoch. Monitor terminal session 65227 is independent of training.
 - Latest user instruction: check training status every 30 minutes, superseding
   the previous 20-minute cadence. Continue local commits under Tanish's identity
   and defer pushes until the user restores GitHub authentication.
+## Completed-run monitoring history (historical snapshots)
+
+The counts, process IDs, and active-run descriptions below record their stated
+times. The active checkpoint above supersedes them.
+
 - Full HiTSKT/EdNet-KT1 completed successfully after 35 epochs under the
   common patience-5 rule. Best epoch 30 validation AUC is
   0.7681769525193056. Its best-checkpoint final test evaluated exactly
