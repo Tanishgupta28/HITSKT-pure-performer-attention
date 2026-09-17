@@ -120,8 +120,8 @@ implemented in [`ktbench/training.py`](ktbench/training.py).
 Machine-readable benchmark rows are generated only from completed experiment
 directories by `scripts/aggregate_results.py`. The current
 [`reports/final_results.csv`](reports/final_results.csv) and JSON companion
-contain twelve of 15 expected rows: all five ASSIST2017 results, all five full
-Junyi results, and full RKT and HiTSKT results on EdNet-KT1.
+contain thirteen of 15 expected rows: all five ASSIST2017 results, all five full
+Junyi results, and full DKVMN, RKT, and HiTSKT results on EdNet-KT1.
 Smoke and throughput diagnostics are excluded automatically.
 
 `scripts/generate_report.py` builds all seven model-by-dataset metric tables,

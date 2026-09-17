@@ -4,6 +4,15 @@ Updated: 2026-09-17 UTC
 
 ## Active checkpoint — 2026-09-17
 
+- Full DKVMN/EdNet completed after six epochs, best epoch 1 validation AUC
+  0.6719177243615195. Test AUC 0.6741059915424829, accuracy
+  0.6988751938775283, precision 0.7053461512590434, recall
+  0.9612753689964084, F1 0.8136602984915351, MSE 0.19920125153954787,
+  loss 0.5833078272692482, targets 13,429,870. Runtime 88,075.51393550122
+  seconds; 404,801 parameters. Fresh-process replay matched all metrics
+  exactly; SHA-256 `23e5ea19fd63c23647869012197d93159b87cc1c76399e6d7136bedcd26bd4e2`.
+  All six checkpoint/patience decisions and 13 CSV rows passed validation.
+  Aggregate now has 13/15 verified results. Remaining runs: SAKT and DKT EdNet.
 - Latest user instruction: check training status every 30 minutes, superseding
   the previous 20-minute cadence. Continue local commits under Tanish's identity
   and defer pushes until the user restores GitHub authentication.

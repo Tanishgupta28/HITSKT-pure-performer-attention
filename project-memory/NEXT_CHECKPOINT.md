@@ -21,6 +21,16 @@ matched all seven metrics exactly and strict report validation passed.
 
 ## Exact next bounded action
 
+DKVMN/EdNet has now completed and passed independent replay. The master
+results contain 13/15 runs. Best epoch 1, validation AUC 0.6719177243615195,
+test AUC 0.6741059915424829; stopped after epoch 6 with exactly five misses.
+Run full SAKT/EdNet next, followed by DKT/EdNet, then generate the complete
+15-run report. Keep 30-minute checks and defer pushes. SAKT must retain
+context/history 100/99, batch 10, width 200, heads 5, dropout 0.2, Adam
+LR 1e-5, gradient clip 10, ceiling 300, seed 42, patience 5/min_delta 0.
+
+## Completed DKVMN/EdNet audit trail
+
 Run full DKVMN/EdNet-KT1 using the unchanged repository profile, detached from
 the controlling terminal, and monitor it every 30 minutes. Command:
 
