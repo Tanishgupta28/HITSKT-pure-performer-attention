@@ -19,8 +19,13 @@ Updated: 2026-09-17 UTC
   ceiling 300, seed 42, strict validation-AUC patience 5/min_delta 0.
   Parameter count 1,668,401. Monitor every 30 minutes; commit locally and
   continue to independent replay/aggregation, then DKT, when complete.
-  At the 07:52 UTC check the process was active after 61 minutes, with no
-  completed epoch. Monitor terminal session 65227 is independent of training.
+  At the 14:52 UTC check epoch 1 was complete, validation AUC
+  0.7470684949420671, best epoch 1, patience zero; epoch 2 is running.
+  The actual best/last checkpoints agree, with seed 42, Adam state, all four
+  RNG families, and the exact early-stopping state verified. Epoch 1 runtime
+  was 27,432.569405004382 seconds. Best checkpoint SHA-256:
+  `b4933dd40f888ed9cd1df5a4ec8c67d12eb3c19c20ee260a52ce49d6dcf9223e`.
+  Monitor terminal session 65227 is independent of training.
 - Latest user instruction: check training status every 30 minutes, superseding
   the previous 20-minute cadence. Continue local commits under Tanish's identity
   and defer pushes until the user restores GitHub authentication.

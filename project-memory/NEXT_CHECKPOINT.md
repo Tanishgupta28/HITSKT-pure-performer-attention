@@ -31,10 +31,13 @@ LR 1e-5, gradient clip 10, ceiling 300, seed 42, patience 5/min_delta 0.
 SAKT is now running as PID/SID 2535997 (parent 1); the saved configuration
 passed assertions and is committed locally. Read its runner.pid at
 `experiments/sakt/ednet_kt1/full/runner.pid` and continue 30-minute monitoring.
-At 2026-09-17 07:52 UTC the SAKT process remained active, elapsed 61 minutes,
-with no completed epoch. Monitor terminal session 65227 emits snapshots every
-30 minutes; it is separate from the detached training process. DKT must wait
-for SAKT completion and independent best-checkpoint replay.
+At 2026-09-17 14:52 UTC SAKT epoch 1 was complete, validation AUC
+0.7470684949420671, checkpoint saved, patience zero; epoch 2 is running.
+The actual best/last checkpoint state, optimizer, all four RNG families, seed,
+target counts, and early-stopping state passed read-only verification.
+Monitor terminal session 65227 emits snapshots every 30 minutes; it is separate
+from the detached training process. DKT must wait for SAKT completion and
+independent best-checkpoint replay.
 
 ## Completed DKVMN/EdNet audit trail
 
