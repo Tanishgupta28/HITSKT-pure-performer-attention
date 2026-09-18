@@ -1,8 +1,17 @@
 # Current state
 
-Updated: 2026-09-17 UTC
+Updated: 2026-09-18 UTC
 
-## Active checkpoint — 2026-09-17
+## Active checkpoint — 2026-09-18
+
+- Latest SAKT/EdNet snapshot, 2026-09-18 05:52 UTC: epoch 3 improved
+  validation AUC to 0.7542712165233839, best epoch 3, patience 0/5;
+  epoch 4 is running. Both actual best/last checkpoints, optimizer, seed,
+  RNG, early-stopping state, and all three epochs' target counts passed
+  read-only verification. Accumulated runtime: 82,062.76307904115 seconds.
+  Best checkpoint SHA-256:
+  `306dffde3b2286a3b8a6b8aafdf0077ebaa2018e69fb43c093b173b1842ddae0`.
+  Continue 30-minute monitoring of the same detached PID/SID 2535997.
 
 - Full DKVMN/EdNet completed after six epochs, best epoch 1 validation AUC
   0.6719177243615195. Test AUC 0.6741059915424829, accuracy
