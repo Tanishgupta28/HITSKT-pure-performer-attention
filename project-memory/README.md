@@ -39,5 +39,6 @@ generation and independent checkpoint
 replay commands are implemented/tested, and all 13 real completed artifacts
 pass report validation. Continue with the remaining EdNet SAKT and DKT
 runs using 30-minute monitoring, original Tanish commit
-identity, and the existing remote. Pushes are deferred by user instruction
-until the original GitHub account is logged in again.
+identity, and the existing remote. GitHub authentication was restored and
+verified on 2026-09-19; resume checkpoint pushes to the existing private
+Tanishgupta28/capstone-gpu repository.

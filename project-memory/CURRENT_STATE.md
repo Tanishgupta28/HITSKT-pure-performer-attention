@@ -4,6 +4,9 @@ Updated: 2026-09-19 UTC
 
 ## Active checkpoint — 2026-09-19
 
+- GitHub authentication restored: active account Tanishgupta28 and access to
+  the existing private capstone-gpu repository verified. Push deferral is
+  lifted; resume checkpoint pushes under the original Tanish identity.
 - Latest SAKT/EdNet snapshot, 2026-09-19 07:09 UTC: epoch 6 improved
   validation AUC to 0.7592312015241357, best epoch 6, patience 0/5;
   epoch 7 is running. Actual best/last checkpoint state, optimizer, all RNG
@@ -64,9 +67,8 @@ Updated: 2026-09-19 UTC
   seed, RNG, and patience state passed read-only verification. Accumulated
   runtime: 54,548.55061540101 seconds. New best checkpoint SHA-256:
   `26d8394bca51329e1e3521570e83fb73b9d1130f821961e3e559335fba80bb76`.
-- Latest user instruction: check training status every 30 minutes, superseding
-  the previous 20-minute cadence. Continue local commits under Tanish's identity
-  and defer pushes until the user restores GitHub authentication.
+- Check training status every 30 minutes, superseding the previous 20-minute
+  cadence. Keep Tanish's commit identity; authentication is now restored.
 ## Completed-run monitoring history (historical snapshots)
 
 The counts, process IDs, and active-run descriptions below record their stated

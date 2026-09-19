@@ -155,3 +155,10 @@ The user approved all of the following as binding implementation decisions:
   cadence. Continue automatically with verification and subsequent runs.
 - Keep committing under the original Tanish identity and defer pushes until
   the user logs in to the original GitHub account.
+
+## 2026-09-19 — GitHub authentication restored
+
+- User confirmed `gh authorized`. Verified the active account is Tanishgupta28
+  and the existing Tanishgupta28/capstone-gpu repository is private and accessible.
+- Resume checkpoint pushes to the existing remote, retaining Tanish commit
+  identity. This supersedes the temporary push deferral above.

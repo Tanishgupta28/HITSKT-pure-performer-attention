@@ -25,7 +25,7 @@ DKVMN/EdNet has now completed and passed independent replay. The master
 results contain 13/15 runs. Best epoch 1, validation AUC 0.6719177243615195,
 test AUC 0.6741059915424829; stopped after epoch 6 with exactly five misses.
 Run full SAKT/EdNet next, followed by DKT/EdNet, then generate the complete
-15-run report. Keep 30-minute checks and defer pushes. SAKT must retain
+15-run report. Keep 30-minute checks and checkpoint pushes. SAKT must retain
 context/history 100/99, batch 10, width 200, heads 5, dropout 0.2, Adam
 LR 1e-5, gradient clip 10, ceiling 300, seed 42, patience 5/min_delta 0.
 SAKT is now running as PID/SID 2535997 (parent 1); the saved configuration
@@ -179,10 +179,10 @@ matrix is complete. Its synthetic full-matrix tests verify seven CSV tables,
 15 curve figures plus three comparison figures (PNG/SVG), and source hashes.
 
 Original commit identity is Tanish Gupta / GitHub noreply ID 148684341.
-The current gh login is Fyxod and cannot access the original private remote;
-the user explicitly instructed retaining Tanish identity and remote, continuing
-local commits, and deferring pushes until they log in. Do not change remotes,
-create another repository, or repeatedly retry pushes before that change.
+On 2026-09-19 the user restored GitHub authentication. Active account
+Tanishgupta28 and access to the existing private remote are verified; resume
+checkpoint pushes. Retain the original identity and remote, and do not create
+a replacement repository. Earlier push-deferral notes are historical.
 
 ## Stop conditions
 
