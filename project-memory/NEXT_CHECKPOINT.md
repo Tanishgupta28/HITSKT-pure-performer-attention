@@ -21,6 +21,14 @@ matched all seven metrics exactly and strict report validation passed.
 
 ## Exact next bounded action
 
+Latest 2026-09-20 21:47 UTC snapshot: SAKT epoch 11 validation AUC
+0.761805075443002 did not improve; best remains epoch 10 at
+0.7621860047840096, patience 1/5, epoch 12 is running. Eleven epoch target
+counts, actual last checkpoint/RNG/optimizer/patience, and unchanged best
+checkpoint SHA passed verification. Continue two-hour monitor terminal 39203;
+commit/push updated logs and memory. Do not start DKT before SAKT completes
+and its final best-checkpoint metrics are independently reproduced.
+
 **Latest instruction, 2026-09-20 19:47 UTC:** check once every two hours,
 superseding all earlier cadences below. SAKT PID/SID 2535997 is still active
 in epoch 11, best epoch 10, validation AUC 0.7621860047840096, patience 0/5.
