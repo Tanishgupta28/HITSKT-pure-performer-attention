@@ -1,9 +1,17 @@
 # Current state
 
-Updated: 2026-09-19 UTC
+Updated: 2026-09-20 UTC
 
-## Active checkpoint — 2026-09-19
+## Active checkpoint — 2026-09-20
 
+- Latest SAKT/EdNet snapshot, 2026-09-20 03:40 UTC: epoch 9 improved
+  validation AUC to 0.7620343712659119, best epoch 9, patience 0/5;
+  epoch 10 is running. All nine target counts and actual best/last checkpoint,
+  optimizer, RNG, seed, and early-stopping state passed verification.
+  Accumulated runtime: 245,997.1484295642 seconds. Best SHA-256:
+  `1b530feef87d5c3b94bf6cc7ae7fb75a61d4afd404caca2f49e136932a2ef0d1`.
+  The preceding epoch-8 commit 30364cc is verified on the private GitHub remote.
+  Continue monitoring session 10273 every 30 minutes without changing the run.
 - Latest SAKT/EdNet snapshot, 2026-09-19 19:40 UTC: epoch 8 improved
   validation AUC to 0.7612905096381523, best epoch 8, patience 0/5;
   epoch 9 is running. All eight target counts and actual best/last checkpoint,
