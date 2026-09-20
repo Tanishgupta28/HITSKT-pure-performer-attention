@@ -4,6 +4,17 @@ Updated: 2026-09-20 UTC
 
 ## Active checkpoint — 2026-09-20
 
+- Monitoring cadence is now **one hour**, explicitly requested on 2026-09-20;
+  this supersedes all historical 30-minute/20-minute instructions below.
+  The old monitor process group 2573137 was stopped without touching trainer
+  PID/SID 2535997. New monitor terminal 70233 checks every 60 minutes.
+- Latest SAKT/EdNet snapshot, 2026-09-20 15:57 UTC: epoch 10 improved
+  validation AUC to 0.7621860047840096, best epoch 10, patience 0/5;
+  epoch 11 is running. All ten target counts and actual best/last checkpoint,
+  optimizer, RNG, seed, and early-stopping state passed verification.
+  Accumulated runtime: 275,302.1220032424 seconds. Best SHA-256:
+  `983bc5b818786bdd60e27f97cb958e5fc8ada378265891d0bccb1d7d143c7747`.
+  The preceding epoch-9 commit 29af803 is verified on the private GitHub remote.
 - Latest SAKT/EdNet snapshot, 2026-09-20 03:40 UTC: epoch 9 improved
   validation AUC to 0.7620343712659119, best epoch 9, patience 0/5;
   epoch 10 is running. All nine target counts and actual best/last checkpoint,

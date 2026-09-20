@@ -162,3 +162,11 @@ The user approved all of the following as binding implementation decisions:
   and the existing Tanishgupta28/capstone-gpu repository is private and accessible.
 - Resume checkpoint pushes to the existing remote, retaining Tanish commit
   identity. This supersedes the temporary push deferral above.
+
+## 2026-09-20 — Hourly monitoring
+
+- Check active training once per hour, superseding the earlier 30-minute
+  cadence. Continue automatically with checkpoint verification, commits/pushes,
+  independent final evaluation, and subsequent approved runs.
+- This changes monitoring frequency only, not the running experiment or any
+  scientific configuration.

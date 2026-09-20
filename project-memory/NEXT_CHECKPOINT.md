@@ -21,6 +21,16 @@ matched all seven metrics exactly and strict report validation passed.
 
 ## Exact next bounded action
 
+**Current instruction, 2026-09-20:** check once per hour, superseding earlier
+cadences in the historical notes below. Use monitor terminal 70233; old monitor
+10273 was stopped independently of the unchanged trainer PID/SID 2535997.
+Latest 15:57 UTC snapshot: SAKT epoch 10 improved validation AUC to
+0.7621860047840096, best epoch 10, patience 0/5; epoch 11 is running.
+All ten target counts and checkpoint/RNG/optimizer/early-stopping state passed
+verification. Commit/push the new checkpoint, artifacts, and memory, then
+continue hourly checks. DKT still waits for SAKT completion and independent
+best-checkpoint replay; no model, batch size, or stopping-rule change is allowed.
+
 DKVMN/EdNet has now completed and passed independent replay. The master
 results contain 13/15 runs. Best epoch 1, validation AUC 0.6719177243615195,
 test AUC 0.6741059915424829; stopped after epoch 6 with exactly five misses.
