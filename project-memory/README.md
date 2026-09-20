@@ -38,7 +38,7 @@ without an extra epoch, verified across all five models. Final table/plot
 generation and independent checkpoint
 replay commands are implemented/tested, and all 13 real completed artifacts
 pass report validation. Continue with the remaining EdNet SAKT and DKT
-runs using hourly monitoring (approved 2026-09-20), original Tanish commit
+runs using two-hour monitoring (latest approval 2026-09-20), original Tanish commit
 identity, and the existing remote. GitHub authentication was restored and
 verified on 2026-09-19; resume checkpoint pushes to the existing private
 Tanishgupta28/capstone-gpu repository.

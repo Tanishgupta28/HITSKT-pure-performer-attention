@@ -4,7 +4,13 @@ Updated: 2026-09-20 UTC
 
 ## Active checkpoint — 2026-09-20
 
-- Monitoring cadence is now **one hour**, explicitly requested on 2026-09-20;
+- Monitoring cadence is now **two hours**, last requested on 2026-09-20;
+  this supersedes the hourly and all earlier cadences below. At 19:47 UTC,
+  trainer PID/SID 2535997 remained active in epoch 11; best epoch 10 validation
+  AUC 0.7621860047840096, patience 0/5. Previous checkpoint af54f1a is pushed.
+  The old hourly monitor no longer exists; two-hour monitor terminal 39203
+  replaces it (first scheduled check around 21:48 UTC).
+- Historical monitoring change: **one hour**, requested earlier on 2026-09-20;
   this supersedes all historical 30-minute/20-minute instructions below.
   The old monitor process group 2573137 was stopped without touching trainer
   PID/SID 2535997. New monitor terminal 70233 checks every 60 minutes.

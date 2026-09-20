@@ -170,3 +170,9 @@ The user approved all of the following as binding implementation decisions:
   independent final evaluation, and subsequent approved runs.
 - This changes monitoring frequency only, not the running experiment or any
   scientific configuration.
+
+## 2026-09-20 — Two-hour monitoring (latest)
+
+- User requested checks every two hours, superseding the hourly cadence above.
+- Continue the unchanged training run and automatic verification, checkpoint
+  commits/pushes, and subsequent approved experiments.

@@ -21,7 +21,14 @@ matched all seven metrics exactly and strict report validation passed.
 
 ## Exact next bounded action
 
-**Current instruction, 2026-09-20:** check once per hour, superseding earlier
+**Latest instruction, 2026-09-20 19:47 UTC:** check once every two hours,
+superseding all earlier cadences below. SAKT PID/SID 2535997 is still active
+in epoch 11, best epoch 10, validation AUC 0.7621860047840096, patience 0/5.
+The old hourly monitor has exited; use two-hour monitor terminal 39203. Preserve the
+unchanged CUDA run, verify/push new epoch artifacts, independently replay on
+completion, then proceed to DKT and the complete 15-run report.
+
+**Historical instruction, earlier 2026-09-20:** check once per hour, superseding earlier
 cadences in the historical notes below. Use monitor terminal 70233; old monitor
 10273 was stopped independently of the unchanged trainer PID/SID 2535997.
 Latest 15:57 UTC snapshot: SAKT epoch 10 improved validation AUC to
