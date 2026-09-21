@@ -41,4 +41,7 @@ pass report validation. Continue with the remaining EdNet SAKT and DKT
 runs using two-hour monitoring (latest approval 2026-09-20), original Tanish commit
 identity, and the existing remote. GitHub authentication was restored and
 verified on 2026-09-19; resume checkpoint pushes to the existing private
-Tanishgupta28/capstone-gpu repository.
+Tanishgupta28/capstone-gpu repository. **2026-09-21 update:** that remote now
+redirects to public `Tanishgupta28/HITSKT-pure-performer-attention`; further
+pushes are held pending the user's visibility decision. Keep local commits and
+the active training run intact.

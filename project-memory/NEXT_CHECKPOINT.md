@@ -21,6 +21,17 @@ matched all seven metrics exactly and strict report validation passed.
 
 ## Exact next bounded action
 
+**New visibility decision required:** the existing GitHub redirect resolves to
+`Tanishgupta28/HITSKT-pure-performer-attention`, now verified public. Earlier
+authorization specified private. Hold pushes and ask whether to use the public
+repository or restore private visibility; do not change visibility unilaterally.
+Keep local commits and the existing CUDA trainer intact.
+
+Latest 2026-09-21 13:47 UTC: SAKT epoch 13 improved validation AUC to
+0.7623242165859992; best epoch 13, patience 0/5, epoch 14 running.
+Thirteen epoch target counts and actual best/last checkpoint, optimizer, RNG,
+and patience passed verification. Continue two-hour monitor terminal 39203.
+
 Latest 2026-09-21 05:47 UTC snapshot: SAKT epoch 12 validation AUC
 0.7620451155493354 did not improve; best remains epoch 10 at
 0.7621860047840096, patience 2/5, epoch 13 is running. Twelve epoch target

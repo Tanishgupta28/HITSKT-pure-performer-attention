@@ -4,6 +4,20 @@ Updated: 2026-09-21 UTC
 
 ## Active checkpoint — 2026-09-21
 
+- **Push hold:** GitHub now reports the renamed repository
+  `Tanishgupta28/HITSKT-pure-performer-attention` as public (`isPrivate=false`,
+  verified with `gh repo view` after the 13:47 UTC snapshot). Earlier user
+  authorization specified a private repository. Do not change visibility or
+  push further artifacts until the user confirms the intended visibility.
+  Prior epoch-12 push 9b081ee succeeded through the old redirect; visibility
+  at the time of that push was not checked. Local commits and training continue.
+- Latest SAKT/EdNet snapshot, 2026-09-21 13:47 UTC: epoch 13 improved
+  validation AUC to 0.7623242165859992, best epoch 13, patience 0/5;
+  epoch 14 is running. All thirteen target counts and actual best/last
+  checkpoint/RNG/optimizer/patience and model equality passed verification.
+  Accumulated runtime: 368,394.98422291316 seconds. Best SHA-256:
+  `1de01970ef3ebf8a3b136347f4db21f7a746ec610eaa95a86051ddc84a5497ea`.
+  Continue two-hour monitor terminal 39203; preserve the unchanged CUDA run.
 - Latest SAKT/EdNet snapshot, 2026-09-21 05:47 UTC: epoch 12 validation
   AUC 0.7620451155493354 did not improve. Best remains epoch 10 at
   0.7621860047840096; patience 2/5, epoch 13 is running. All twelve epoch
