@@ -1,9 +1,15 @@
 # Current state
 
-Updated: 2026-09-20 UTC
+Updated: 2026-09-21 UTC
 
-## Active checkpoint — 2026-09-20
+## Active checkpoint — 2026-09-21
 
+- Latest SAKT/EdNet snapshot, 2026-09-21 05:47 UTC: epoch 12 validation
+  AUC 0.7620451155493354 did not improve. Best remains epoch 10 at
+  0.7621860047840096; patience 2/5, epoch 13 is running. All twelve epoch
+  target counts, last checkpoint/RNG/optimizer/patience, and unchanged best
+  checkpoint SHA passed verification. Accumulated runtime is
+  336,003.5465371683 seconds. Continue two-hour monitor terminal 39203.
 - Latest SAKT/EdNet snapshot, 2026-09-20 21:47 UTC: epoch 11 validation
   AUC 0.761805075443002 did not improve. Best remains epoch 10 at
   0.7621860047840096; patience 1/5, epoch 12 is running. All eleven epoch
