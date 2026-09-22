@@ -1,9 +1,17 @@
 # Current state
 
-Updated: 2026-09-21 UTC
+Updated: 2026-09-22 UTC
 
-## Active checkpoint — 2026-09-21
+## Active checkpoint — 2026-09-22
 
+- Latest SAKT/EdNet snapshot, 2026-09-22 04:11 UTC: epochs 14 and 15
+  completed without improvement (validation AUC 0.758903934020328 and
+  0.761176496772544). Best remains epoch 13 at 0.7623242165859992;
+  patience 2/5, epoch 16 is running. All fifteen target counts, actual last
+  checkpoint/RNG/optimizer/patience, and unchanged best checkpoint SHA passed
+  verification. Accumulated runtime: 422,212.81850605225 seconds.
+  Continue two-hour monitor terminal 39203 and local commits; visibility
+  decision is still pending. Preserve the unrelated working-tree README edit.
 - **Push hold:** GitHub now reports the renamed repository
   `Tanishgupta28/HITSKT-pure-performer-attention` as public (`isPrivate=false`,
   verified with `gh repo view` after the 13:47 UTC snapshot). Earlier user

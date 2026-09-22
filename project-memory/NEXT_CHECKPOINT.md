@@ -1,6 +1,6 @@
 # Next checkpoint
 
-Updated: 2026-09-21 UTC
+Updated: 2026-09-22 UTC
 
 ## Last valid terminal checkpoint
 
@@ -20,6 +20,14 @@ result has 13/15 rows. Full HiTSKT/EdNet completed at epoch 35, selected epoch
 matched all seven metrics exactly and strict report validation passed.
 
 ## Exact next bounded action
+
+Latest 2026-09-22 04:11 UTC: SAKT has completed epochs 14 and 15 without
+improvement, best epoch 13 at validation AUC 0.7623242165859992, patience 2/5;
+epoch 16 is running. All fifteen target counts and actual checkpoint/RNG/
+optimizer/patience state passed verification. Continue two-hour monitor 39203
+and local checkpoint commits. The user's latest "continue" does not resolve
+public/private visibility; retain the push hold below. Preserve the unrelated
+README working-tree edit. DKT and final report remain pending as before.
 
 **New visibility decision required:** the existing GitHub redirect resolves to
 `Tanishgupta28/HITSKT-pure-performer-attention`, now verified public. Earlier
