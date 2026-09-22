@@ -138,3 +138,22 @@ minutes of unfinished-epoch wall time were discarded (04:08:33 checkpoint to
 05:40:39 termination); the runner's accumulated runtime excludes that abandoned
 attempt, which is recorded here separately. No final scientific result exists
 for this active run yet. Full-epoch speedup remains to be measured.
+
+## First full-epoch observation — epoch 16
+
+Completed 2026-09-22 11:47 UTC. The saved accumulated runtime increased from
+422,212.81850605225 to 444,183.89093260746 seconds: **21,971.072426555213
+seconds (6.103075674 hours)** for the first optimized training+validation epoch.
+The original fifteen completed epochs averaged **28,147.521233736818 seconds
+(7.818755898 hours)**. Observed ratio: **1.281117x**, approximately 22% less
+elapsed time, saving 1 hour 43 minutes relative to that prior average.
+This is an observational comparison of one new epoch against a historical
+average, not a controlled full-epoch A/B test or guaranteed future speedup.
+It includes loading, metrics and checkpoint work; short-window benchmark gains
+must not be presented as the actual end-to-end gain.
+
+Epoch 16 retained all 53,990,022 train and 14,520,975 validation targets.
+Validation AUC 0.760941857184205 did not improve epoch13's 0.7623242165859992;
+patience is 3/5. Actual last checkpoint, Adam/RNG/early-stopping state and
+unchanged best-checkpoint SHA passed read-only verification. Epoch17 is active.
+The 15:41 monitor's ten-hour process uptime spans both epochs, not one epoch.

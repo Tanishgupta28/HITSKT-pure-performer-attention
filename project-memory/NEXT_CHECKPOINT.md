@@ -21,6 +21,13 @@ matched all seven metrics exactly and strict report validation passed.
 
 ## Exact next bounded action
 
+Latest 2026-09-22 15:55 UTC: epoch16 verified complete, val AUC
+0.760941857184205, best13/patience3. Epoch17 running PID3100394. Actual first
+optimized full-epoch duration6.1031h vs original average7.8188h; user informed
+that ten-hour uptime includes two epochs. Report documents observed1.2811x
+speedup caveats. Continue monitor87358, next scheduled ~17:41 UTC; verify and
+commit subsequent epochs, independent final replay on success, DKT afterward.
+
 **Latest 2026-09-22 05:40 UTC:** user authorized discarding the unfinished epoch.
 Optimized packed64 transport is now running on CUDA, PID/SID 3100394, resumed
 from completed epoch 15; epoch 16 restarted, best13/patience2 preserved. All75

@@ -4,6 +4,17 @@ Updated: 2026-09-22 UTC
 
 ## Active checkpoint — 2026-09-22
 
+- Latest 15:55 UTC: optimized epoch16 completed at 11:47 UTC, validation AUC
+  0.760941857184205; best13 remains 0.7623242165859992, patience3/5. Epoch17
+  active on CUDA PID3100394. All sixteen epoch target counts, last checkpoint
+  Adam/RNG/patience and unchanged best SHA verified. First packed64 full epoch
+  took 21,971.072426555213 seconds (6.1031h), versus original fifteen-epoch
+  average 7.8188h: observed1.2811x / ~22% less time, not the short-window1.84x.
+  Ten-hour uptime covers completed16 plus in-progress17, not a slower epoch.
+  User asked about slowdown; explained measured timing and monitoring delay.
+  Continue terminal87358 two-hour checks (next ~17:41 UTC), local commits;
+  push hold and unrelated README edit remain.
+
 - **Latest, 05:40 UTC: packed64 deployed.** User explicitly approved discarding
   the unfinished epoch. Full suite 75 passed, including bit-exact production
   DKT/SAKT transport and stochastic SAKT reference-to-packed resume tests.
