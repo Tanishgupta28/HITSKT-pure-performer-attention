@@ -16,6 +16,7 @@ from torch.utils.data import DataLoader
 
 from ktbench.baseline_registry import BASELINE_TRAINING_CONFIGS, make_baseline_model
 from ktbench.config import PROJECT_SEED, seed_everything
+from ktbench.data.fast_rolling import PackedBatchSampler, PackedRollingDataset
 from ktbench.data.rolling_targets import (
     RollingLengthBatchSampler,
     RollingTargetDataset,
@@ -43,7 +44,10 @@ def _loader(
     shuffle: bool,
     epoch: int,
     workers: int,
+    transport: str = "reference",
 ) -> tuple[DataLoader, RollingLengthBatchSampler]:
+    if transport not in ("reference", "packed64"):
+        raise ValueError(f"unknown transport: {transport}")
     sampler = RollingLengthBatchSampler(
         dataset,
         batch_size=batch_size,
@@ -52,6 +56,15 @@ def _loader(
         seed=PROJECT_SEED,
     )
     sampler.set_epoch(epoch if shuffle else 0)
+    if transport == "packed64":
+        return DataLoader(
+            PackedRollingDataset(dataset),
+            sampler=PackedBatchSampler(sampler, block_size=64),
+            batch_size=None,
+            num_workers=workers,
+            pin_memory=torch.cuda.is_available(),
+            persistent_workers=workers > 0,
+        ), sampler
     loader = DataLoader(
         dataset,
         batch_sampler=sampler,
@@ -73,6 +86,7 @@ def _run_epoch(
     epoch: int,
     optimizer: torch.optim.Optimizer | None,
     gradient_clip: float | None,
+    transport: str = "reference",
 ) -> dict[str, float | int]:
     training = optimizer is not None
     model.train(training)
@@ -82,13 +96,37 @@ def _run_epoch(
         shuffle=training,
         epoch=epoch,
         workers=workers,
+        transport=transport,
     )
     probabilities = np.empty(len(dataset), dtype=np.float32)
     labels = np.empty(len(dataset), dtype=np.uint8)
     cursor = 0
     loss_sum = 0.0
-    for host_batch in loader:
-        batch = host_batch.to(device)
+    records = []
+
+    def flush():
+        nonlocal cursor, loss_sum
+        if not records:
+            return
+        losses = torch.stack([r[0] for r in records]).cpu().numpy()
+        probs = torch.cat([r[1] for r in records]).cpu().numpy()
+        targets = torch.cat([r[2] for r in records]).cpu().numpy()
+        for value, record in zip(losses, records, strict=True):
+            loss_sum += float(value) * len(record[2])
+        count = len(targets)
+        probabilities[cursor:cursor + count] = probs
+        labels[cursor:cursor + count] = targets
+        cursor += count
+        records.clear()
+
+    def batches():
+        for item in loader:
+            if transport == "packed64":
+                yield from item.to_batches(device)
+            else:
+                yield item.to(device)
+
+    for batch in batches():
         if training:
             optimizer.zero_grad(set_to_none=True)
             logits = model(batch)
@@ -106,10 +144,16 @@ def _run_epoch(
                     logits, batch.target_labels.float(), reduction="mean"
                 )
         count = len(batch.target_labels)
-        loss_sum += float(loss.detach().cpu()) * count
-        probabilities[cursor : cursor + count] = torch.sigmoid(logits).detach().cpu().numpy()
-        labels[cursor : cursor + count] = batch.target_labels.detach().cpu().numpy()
-        cursor += count
+        if transport == "packed64":
+            records.append((loss.detach(), torch.sigmoid(logits).detach(), batch.target_labels))
+            if len(records) == 64:
+                flush()
+        else:
+            loss_sum += float(loss.detach().cpu()) * count
+            probabilities[cursor : cursor + count] = torch.sigmoid(logits).detach().cpu().numpy()
+            labels[cursor : cursor + count] = batch.target_labels.detach().cpu().numpy()
+            cursor += count
+    flush()
     if cursor != len(dataset):
         raise RuntimeError(f"evaluated {cursor} targets but expected {len(dataset)}")
     return binary_metrics(
@@ -155,9 +199,12 @@ def train_baseline(
     workers: int = 0,
     epoch_ceiling_override: int | None = None,
     resume: bool = False,
+    transport: str = "reference",
 ) -> dict[str, Any]:
     """Run the full protocol; the override exists only for automated tests."""
 
+    if transport not in ("reference", "packed64"):
+        raise ValueError(f"unknown transport: {transport}")
     seed_everything()
     if (output_root / "_SUCCESS").exists():
         raise ValueError(f"completed experiment already exists: {output_root}")
@@ -195,6 +242,8 @@ def train_baseline(
         "device": str(device),
         "gpu": gpu_name,
         "workers": workers,
+        "transport": transport,
+        "transport_block_minibatches": 64 if transport == "packed64" else 1,
         "early_stopping_metric": COMMON_EARLY_STOPPING.metric,
         "early_stopping_patience": COMMON_EARLY_STOPPING.patience,
         "early_stopping_min_delta": COMMON_EARLY_STOPPING.min_delta,
@@ -302,6 +351,10 @@ def train_baseline(
                 "resumed_from_epoch": epochs_completed,
                 "runtime_before_resume_seconds": prior_runtime_seconds,
                 "runtime_before_resume_estimated_from_artifact_mtimes": runtime_estimated_before_resume,
+                "previous_transport": configuration.get("transport", "reference"),
+                "transport": transport,
+                "transport_block_minibatches": 64 if transport == "packed64" else 1,
+                "workers": workers,
             }
         )
         if epoch_ceiling_override is not None:
@@ -326,6 +379,8 @@ def train_baseline(
                         "event": "training_resumed",
                         "seed": PROJECT_SEED,
                         "resumed_from_epoch": epochs_completed,
+                        "transport": transport,
+                        "previous_transport": configuration["previous_transport"],
                         "best_epoch": control.best_epoch,
                         "best_validation_auc": control.best_validation_auc,
                         "consecutive_epochs_without_improvement": control.consecutive_epochs_without_improvement,
@@ -346,6 +401,7 @@ def train_baseline(
                 epoch=epoch,
                 optimizer=optimizer,
                 gradient_clip=profile["gradient_clip"],
+                transport=transport,
             )
             validation_metrics = _run_epoch(
                 model,
@@ -356,6 +412,7 @@ def train_baseline(
                 epoch=epoch,
                 optimizer=None,
                 gradient_clip=None,
+                transport=transport,
             )
             for split, values in (("train", train_metrics), ("validation", validation_metrics)):
                 writer.writerow({"epoch": epoch, "split": split, **values})
@@ -378,6 +435,7 @@ def train_baseline(
                         "event": "epoch_complete",
                         "seed": PROJECT_SEED,
                         "epoch": epoch,
+                        "transport": transport,
                         "train": train_metrics,
                         "validation": validation_metrics,
                         "checkpoint_saved": decision.improved,
@@ -414,6 +472,7 @@ def train_baseline(
             epoch=control.best_epoch,
             optimizer=None,
             gradient_clip=None,
+            transport=transport,
         )
         writer.writerow({"epoch": control.best_epoch, "split": "test", **test_metrics})
         metrics_file.flush()
@@ -451,6 +510,7 @@ def train_baseline(
         "trainable_parameters": configuration["trainable_parameters"],
         "best_checkpoint_reloaded": True,
         "gpu": gpu_name,
+        "transport": transport,
     }
     _write_json(output_root / "final_results.json", result)
     configuration.update(
@@ -474,6 +534,7 @@ def main() -> None:
     parser.add_argument("output_root", type=Path)
     parser.add_argument("--workers", type=int, default=0)
     parser.add_argument("--resume", action="store_true")
+    parser.add_argument("--transport", choices=("reference", "packed64"), default="reference")
     args = parser.parse_args()
     result = train_baseline(
         args.model,
@@ -482,6 +543,7 @@ def main() -> None:
         args.output_root,
         workers=args.workers,
         resume=args.resume,
+        transport=args.transport,
     )
     print(json.dumps(result, indent=2, sort_keys=True))
 

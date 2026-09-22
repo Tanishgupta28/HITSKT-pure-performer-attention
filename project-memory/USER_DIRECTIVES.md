@@ -186,3 +186,12 @@ The user approved all of the following as binding implementation decisions:
 - Preserve batch boundaries/order, FP32 model arithmetic, optimizer updates,
   all RNG states, all targets, and evaluation/early-stopping methodology.
   Do not stop the live trainer or discard an in-progress epoch for deployment.
+
+## 2026-09-22 — Deploy transport optimization; unfinished epoch may be discarded
+
+- User approved switching after the exactness/speedup report, then explicitly
+  authorized discarding the current unfinished epoch. This supersedes only the
+  preceding prohibition on losing unfinished-epoch work.
+- Preserve all completed checkpoints/epochs, model and Adam state, RNG state,
+  best-checkpoint selection and patience. Restart from the last completed epoch
+  with the tested packed64 transport; no scientific configuration changes.

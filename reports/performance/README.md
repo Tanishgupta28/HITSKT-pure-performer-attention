@@ -1,6 +1,6 @@
 # Exact transport optimization experiment — 2026-09-22
 
-Status: **experimental, not enabled in the production runner**. The ongoing
+Initial benchmark status: **experimental, not enabled in the production runner**. The ongoing
 SAKT/EdNet process was neither signaled nor restarted. Its production artifacts
 were not edited. A separate ignored copy of its completed epoch-15 checkpoint
 was used for these tests. This report is a performance diagnostic, not a new
@@ -104,3 +104,37 @@ PYTHONPATH=. python scripts/benchmark_exact_transport.py \
 Choose a new report path for another run. Source files:
 `ktbench/data/fast_rolling.py`, `scripts/benchmark_exact_transport.py`, and
 `tests/test_fast_rolling.py`. No experiment config or primary result is replaced.
+
+## Approved deployment — 2026-09-22 05:40 UTC
+
+After reviewing the benchmark, the user approved switching and explicitly
+permitted discarding the unfinished epoch. Production now supports opt-in
+`--transport packed64`. The existing sampler streams blocks of 64 unchanged
+minibatches to workers (no giant materialized epoch plan). Each original
+minibatch still has its own forward/backward/clip/Adam step. Detached metric
+buffers flush every 64 steps and at the end, with original float-sum ordering.
+Default transport remains `reference`; HiTSKT and RKT are untouched.
+
+All **75 tests passed** (35 existing HiTSKT deterministic-CUDA warnings),
+including production transport equality for SAKT and DKT with zero and two
+workers, train/validation/test metrics, model/Adam/RNG state, and an exact
+reference-to-packed checkpoint continuation with stochastic SAKT dropout.
+
+The old process group 2535997 was stopped, its completed artifacts copied to
+ignored `.inspection/transport_switch_20260922/`, and both checkpoint hashes
+verified before termination. Epoch 16's unfinished work was discarded; the
+last completed epoch remains 15, best 13, patience 2/5. New CUDA process 3100394
+resumed successfully with model, Adam and all RNG states restored. Command:
+
+```bash
+PYTHONPATH=. python scripts/train_baseline.py sakt ednet_kt1 \
+  data/processed/ednet_kt1/full/session_store \
+  experiments/sakt/ednet_kt1/full --workers 8 --resume --transport packed64
+```
+
+Executed detached with `setsid nohup`; console output was appended, not replaced.
+Config and training log record transport change and resume point. About 92
+minutes of unfinished-epoch wall time were discarded (04:08:33 checkpoint to
+05:40:39 termination); the runner's accumulated runtime excludes that abandoned
+attempt, which is recorded here separately. No final scientific result exists
+for this active run yet. Full-epoch speedup remains to be measured.

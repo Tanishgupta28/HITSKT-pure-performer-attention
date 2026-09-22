@@ -22,6 +22,13 @@ truth; this memory never substitutes for code, logs, checkpoints, or results.
 
 ## Current short status
 
+2026-09-22 latest: user approved switch and discarding unfinished epoch16.
+SAKT/EdNet CUDA process3100394 resumed completed epoch15 with packed64 transport;
+best13/patience2 and all completed checkpoints/Adam/RNG preserved. All75 tests
+pass, including exact production-path/checkpoint-continuation comparisons.
+See performance report and CURRENT_STATE for deployment audit; prior candidate
+and no-restart notes below are superseded. Two-hour monitoring remains requested.
+
 Full preprocessing and lossless HiTSKT batching are validated for all three
 datasets. The pure Performer HiTSKT gate and the approved paper-faithful,
 cross-fitted performance-only RKT smoke gate pass. Project seed 42 is

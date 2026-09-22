@@ -21,6 +21,17 @@ matched all seven metrics exactly and strict report validation passed.
 
 ## Exact next bounded action
 
+**Latest 2026-09-22 05:40 UTC:** user authorized discarding the unfinished epoch.
+Optimized packed64 transport is now running on CUDA, PID/SID 3100394, resumed
+from completed epoch 15; epoch 16 restarted, best13/patience2 preserved. All75
+tests passed including exact production transport and checkpoint continuation.
+Backups and audit in `reports/performance/README.md`. Replacement two-hour
+monitor terminal87358 started ~05:42 UTC, first output ~07:42. Observe first completed
+optimized epoch, verify target counts/checkpoint/protocol and actual elapsed
+time, then continue remaining SAKT and independent final evaluation. DKT next;
+packed64 is tested for DKT too. Keep push hold and preserve user README edits.
+The following pre-deployment instructions are historical and superseded.
+
 Report the completed conservative speedup experiment to the user before any
 production switch. `reports/performance/README.md` records actual repeated
 1.84x training / 4.38x validation short-window gains with bitwise-identical

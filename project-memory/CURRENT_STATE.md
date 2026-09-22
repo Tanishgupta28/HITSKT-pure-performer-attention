@@ -4,6 +4,21 @@ Updated: 2026-09-22 UTC
 
 ## Active checkpoint — 2026-09-22
 
+- **Latest, 05:40 UTC: packed64 deployed.** User explicitly approved discarding
+  the unfinished epoch. Full suite 75 passed, including bit-exact production
+  DKT/SAKT transport and stochastic SAKT reference-to-packed resume tests.
+  Old group 2535997 terminated only after backing up/validating epoch-15 model,
+  Adam/RNG/config/logs and best epoch-13 SHA. New CUDA PID/SID **3100394**
+  runs `--workers 8 --resume --transport packed64`; epoch 16 restarted,
+  best 13 / val AUC 0.7623242165859992 / patience 2 unchanged.
+  Backup: `.inspection/transport_switch_20260922/`. About 92 minutes of
+  unfinished-epoch work discarded by authorization, excluded from accumulated
+  runner runtime and documented in performance report. No methodology changed.
+  Old monitor 39203/2741319 is no longer alive; replacement two-hour monitor
+  terminal **87358** started approximately 05:42 UTC (first check ~07:42).
+  Push hold and unrelated README edit remain. Earlier no-deployment notes below
+  describe the pre-approval state, superseded by this entry.
+
 - User authorized an isolated exact-training transport optimization benchmark,
   with no compromise or loss of current progress. Implemented experimental
   `ktbench/data/fast_rolling.py`, `scripts/benchmark_exact_transport.py`, and

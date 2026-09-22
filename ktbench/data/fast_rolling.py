@@ -1,4 +1,4 @@
-"""Experimental transport-only optimizations; not enabled in production runners.
+"""Opt-in transport-only optimizations for the baseline runner.
 
 The existing sampler still defines every minibatch and its exact order/shape.
 Packing groups minibatches for transport only, never for an optimizer update.
@@ -109,3 +109,32 @@ class BatchPlanDataset(Dataset):
         batches = [vectorized_batch(self.dataset, indices)
                    for indices in self.plan[start:start + self.block_size]]
         return pack_batches(batches) if self.packed else batches[0]
+
+
+class PackedRollingDataset(Dataset):
+    """Dataset keys are blocks of unchanged sampler minibatches, not targets."""
+
+    def __init__(self, dataset):
+        self.dataset = dataset
+
+    def __getitem__(self, block):
+        return pack_batches([vectorized_batch(self.dataset, indices) for indices in block])
+
+
+class PackedBatchSampler:
+    """Stream existing minibatches in bounded blocks; never regroup targets."""
+
+    def __init__(self, sampler, block_size=64):
+        if block_size < 1:
+            raise ValueError("block size must be positive")
+        self.sampler, self.block_size = sampler, block_size
+
+    def __iter__(self):
+        block = []
+        for indices in self.sampler:
+            block.append(indices)
+            if len(block) == self.block_size:
+                yield block
+                block = []
+        if block:
+            yield block
