@@ -176,3 +176,13 @@ The user approved all of the following as binding implementation decisions:
 - User requested checks every two hours, superseding the hourly cadence above.
 - Continue the unchanged training run and automatic verification, checkpoint
   commits/pushes, and subsequent approved experiments.
+
+## 2026-09-22 — Exact-training speedup investigation
+
+- User permits implementation/testing of speedups only if training is not
+  compromised or changed in any way, and current progress is not lost.
+- CPU/GPU memory use is not a user constraint. First measure possible speedup
+  and report it before switching the active run.
+- Preserve batch boundaries/order, FP32 model arithmetic, optimizer updates,
+  all RNG states, all targets, and evaluation/early-stopping methodology.
+  Do not stop the live trainer or discard an in-progress epoch for deployment.

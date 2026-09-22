@@ -21,6 +21,17 @@ matched all seven metrics exactly and strict report validation passed.
 
 ## Exact next bounded action
 
+Report the completed conservative speedup experiment to the user before any
+production switch. `reports/performance/README.md` records actual repeated
+1.84x training / 4.38x validation short-window gains with bitwise-identical
+tested model/Adam/RNG/output/metric states. All 70 tests pass. No production
+trainer/model/loader was changed, and the live CUDA job/progress is intact.
+The candidate only batches transport for 64 unchanged size-10 minibatches and
+defers metric copies; it does not enlarge optimizer batches. A production
+handoff without losing the active epoch has not yet been established. Do not
+kill/restart the live job to adopt this candidate. Continue two-hour monitoring
+and local commits; repository visibility decision is still pending.
+
 Latest 2026-09-22 04:11 UTC: SAKT has completed epochs 14 and 15 without
 improvement, best epoch 13 at validation AUC 0.7623242165859992, patience 2/5;
 epoch 16 is running. All fifteen target counts and actual checkpoint/RNG/

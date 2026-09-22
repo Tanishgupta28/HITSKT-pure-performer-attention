@@ -33,7 +33,7 @@ thirteen of 15 generated master-result rows. Full Phi caches and production-cach
 throughput gates pass for all datasets. Full HiTSKT/EdNet stopped at epoch 35,
 selected epoch 30, and achieved test AUC 0.7693648364413692 over 13,429,870
 targets; exact fresh-process metric replay passed. Exact resume support passes a tensor/metric equality
-test; all 60 tests pass. Already stopped runs resume directly into final test
+test; all 70 tests pass. Already stopped runs resume directly into final test
 without an extra epoch, verified across all five models. Final table/plot
 generation and independent checkpoint
 replay commands are implemented/tested, and all 13 real completed artifacts
@@ -45,3 +45,8 @@ Tanishgupta28/capstone-gpu repository. **2026-09-21 update:** that remote now
 redirects to public `Tanishgupta28/HITSKT-pure-performer-attention`; further
 pushes are held pending the user's visibility decision. Keep local commits and
 the active training run intact.
+
+An isolated exact-state transport benchmark (2026-09-22) measured 1.84x
+training and 4.38x validation throughput in repeated short windows, preserving
+all tested model/optimizer/RNG/output/metric states. It is **not deployed**;
+see `../reports/performance/README.md` before proposing any production handoff.

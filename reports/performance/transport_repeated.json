@@ -1,0 +1,443 @@
+{
+  "seed": 42,
+  "checkpoint_epoch": 15,
+  "checkpoint_sha256": "d2bb25fd81908d70a5dc610a74e6877bc96576b069a7949c2b446471df5e7d8b",
+  "device": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+  "pytorch": "2.4.0a0+f70bd71a48.nv24.06",
+  "batch_size": 10,
+  "history_length": 99,
+  "block_size": 64,
+  "workers": 8,
+  "measurements": [
+    {
+      "variant": "reference",
+      "training": true,
+      "measured_seconds": 15.603504173457623,
+      "total_seconds": 16.537413777317852,
+      "measured_steps": 2048,
+      "warmup_steps": 64,
+      "targets": 21100,
+      "peak_cuda_allocated_bytes": 126295552,
+      "peak_cuda_reserved_bytes": 155189248,
+      "repeat": 0,
+      "exact_checks": {
+        "model": true,
+        "optimizer": true,
+        "rng": true,
+        "losses": true,
+        "probabilities": true,
+        "labels": true,
+        "metrics": true
+      },
+      "all_exact": true
+    },
+    {
+      "variant": "vectorized",
+      "training": true,
+      "measured_seconds": 15.410759403835982,
+      "total_seconds": 15.931350821629167,
+      "measured_steps": 2048,
+      "warmup_steps": 64,
+      "targets": 21100,
+      "peak_cuda_allocated_bytes": 126295552,
+      "peak_cuda_reserved_bytes": 155189248,
+      "repeat": 0,
+      "exact_checks": {
+        "model": true,
+        "optimizer": true,
+        "rng": true,
+        "losses": true,
+        "probabilities": true,
+        "labels": true,
+        "metrics": true
+      },
+      "all_exact": true
+    },
+    {
+      "variant": "packed_deferred",
+      "training": true,
+      "measured_seconds": 8.33638102794066,
+      "total_seconds": 8.722007198724896,
+      "measured_steps": 2048,
+      "warmup_steps": 64,
+      "targets": 21100,
+      "peak_cuda_allocated_bytes": 128786432,
+      "peak_cuda_reserved_bytes": 157286400,
+      "repeat": 0,
+      "exact_checks": {
+        "model": true,
+        "optimizer": true,
+        "rng": true,
+        "losses": true,
+        "probabilities": true,
+        "labels": true,
+        "metrics": true
+      },
+      "all_exact": true
+    },
+    {
+      "variant": "packed_deferred",
+      "training": true,
+      "measured_seconds": 8.36666995100677,
+      "total_seconds": 8.656223211903125,
+      "measured_steps": 2048,
+      "warmup_steps": 64,
+      "targets": 21100,
+      "peak_cuda_allocated_bytes": 128786432,
+      "peak_cuda_reserved_bytes": 157286400,
+      "repeat": 1,
+      "exact_checks": {
+        "model": true,
+        "optimizer": true,
+        "rng": true,
+        "losses": true,
+        "probabilities": true,
+        "labels": true,
+        "metrics": true
+      },
+      "all_exact": true
+    },
+    {
+      "variant": "vectorized",
+      "training": true,
+      "measured_seconds": 15.376963248010725,
+      "total_seconds": 15.887705117929727,
+      "measured_steps": 2048,
+      "warmup_steps": 64,
+      "targets": 21100,
+      "peak_cuda_allocated_bytes": 126295552,
+      "peak_cuda_reserved_bytes": 157286400,
+      "repeat": 1,
+      "exact_checks": {
+        "model": true,
+        "optimizer": true,
+        "rng": true,
+        "losses": true,
+        "probabilities": true,
+        "labels": true,
+        "metrics": true
+      },
+      "all_exact": true
+    },
+    {
+      "variant": "reference",
+      "training": true,
+      "measured_seconds": 15.36444323696196,
+      "total_seconds": 15.884514160919935,
+      "measured_steps": 2048,
+      "warmup_steps": 64,
+      "targets": 21100,
+      "peak_cuda_allocated_bytes": 126295552,
+      "peak_cuda_reserved_bytes": 157286400,
+      "repeat": 1,
+      "exact_checks": {
+        "model": true,
+        "optimizer": true,
+        "rng": true,
+        "losses": true,
+        "probabilities": true,
+        "labels": true,
+        "metrics": true
+      },
+      "all_exact": true
+    },
+    {
+      "variant": "reference",
+      "training": true,
+      "measured_seconds": 15.295356617774814,
+      "total_seconds": 15.818667029030621,
+      "measured_steps": 2048,
+      "warmup_steps": 64,
+      "targets": 21100,
+      "peak_cuda_allocated_bytes": 126295552,
+      "peak_cuda_reserved_bytes": 157286400,
+      "repeat": 2,
+      "exact_checks": {
+        "model": true,
+        "optimizer": true,
+        "rng": true,
+        "losses": true,
+        "probabilities": true,
+        "labels": true,
+        "metrics": true
+      },
+      "all_exact": true
+    },
+    {
+      "variant": "vectorized",
+      "training": true,
+      "measured_seconds": 15.117554996162653,
+      "total_seconds": 15.633924044203013,
+      "measured_steps": 2048,
+      "warmup_steps": 64,
+      "targets": 21100,
+      "peak_cuda_allocated_bytes": 126295552,
+      "peak_cuda_reserved_bytes": 157286400,
+      "repeat": 2,
+      "exact_checks": {
+        "model": true,
+        "optimizer": true,
+        "rng": true,
+        "losses": true,
+        "probabilities": true,
+        "labels": true,
+        "metrics": true
+      },
+      "all_exact": true
+    },
+    {
+      "variant": "packed_deferred",
+      "training": true,
+      "measured_seconds": 8.315353875048459,
+      "total_seconds": 8.599443934857845,
+      "measured_steps": 2048,
+      "warmup_steps": 64,
+      "targets": 21100,
+      "peak_cuda_allocated_bytes": 128786432,
+      "peak_cuda_reserved_bytes": 157286400,
+      "repeat": 2,
+      "exact_checks": {
+        "model": true,
+        "optimizer": true,
+        "rng": true,
+        "losses": true,
+        "probabilities": true,
+        "labels": true,
+        "metrics": true
+      },
+      "all_exact": true
+    },
+    {
+      "variant": "reference",
+      "training": false,
+      "measured_seconds": 7.933304463047534,
+      "total_seconds": 8.283065854106098,
+      "measured_steps": 2048,
+      "warmup_steps": 64,
+      "targets": 21100,
+      "peak_cuda_allocated_bytes": 124707328,
+      "peak_cuda_reserved_bytes": 157286400,
+      "repeat": 0,
+      "exact_checks": {
+        "model": true,
+        "optimizer": true,
+        "rng": true,
+        "losses": true,
+        "probabilities": true,
+        "labels": true,
+        "metrics": true
+      },
+      "all_exact": true
+    },
+    {
+      "variant": "vectorized",
+      "training": false,
+      "measured_seconds": 7.917425760067999,
+      "total_seconds": 8.34542030422017,
+      "measured_steps": 2048,
+      "warmup_steps": 64,
+      "targets": 21100,
+      "peak_cuda_allocated_bytes": 124707328,
+      "peak_cuda_reserved_bytes": 157286400,
+      "repeat": 0,
+      "exact_checks": {
+        "model": true,
+        "optimizer": true,
+        "rng": true,
+        "losses": true,
+        "probabilities": true,
+        "labels": true,
+        "metrics": true
+      },
+      "all_exact": true
+    },
+    {
+      "variant": "packed_deferred",
+      "training": false,
+      "measured_seconds": 1.925733549054712,
+      "total_seconds": 2.007849405054003,
+      "measured_steps": 2048,
+      "warmup_steps": 64,
+      "targets": 21100,
+      "peak_cuda_allocated_bytes": 126701056,
+      "peak_cuda_reserved_bytes": 157286400,
+      "repeat": 0,
+      "exact_checks": {
+        "model": true,
+        "optimizer": true,
+        "rng": true,
+        "losses": true,
+        "probabilities": true,
+        "labels": true,
+        "metrics": true
+      },
+      "all_exact": true
+    },
+    {
+      "variant": "packed_deferred",
+      "training": false,
+      "measured_seconds": 1.8082214528694749,
+      "total_seconds": 1.8894105930812657,
+      "measured_steps": 2048,
+      "warmup_steps": 64,
+      "targets": 21100,
+      "peak_cuda_allocated_bytes": 126701056,
+      "peak_cuda_reserved_bytes": 157286400,
+      "repeat": 1,
+      "exact_checks": {
+        "model": true,
+        "optimizer": true,
+        "rng": true,
+        "losses": true,
+        "probabilities": true,
+        "labels": true,
+        "metrics": true
+      },
+      "all_exact": true
+    },
+    {
+      "variant": "vectorized",
+      "training": false,
+      "measured_seconds": 7.8974741557613015,
+      "total_seconds": 8.240369585808367,
+      "measured_steps": 2048,
+      "warmup_steps": 64,
+      "targets": 21100,
+      "peak_cuda_allocated_bytes": 124707328,
+      "peak_cuda_reserved_bytes": 157286400,
+      "repeat": 1,
+      "exact_checks": {
+        "model": true,
+        "optimizer": true,
+        "rng": true,
+        "losses": true,
+        "probabilities": true,
+        "labels": true,
+        "metrics": true
+      },
+      "all_exact": true
+    },
+    {
+      "variant": "reference",
+      "training": false,
+      "measured_seconds": 7.896301362197846,
+      "total_seconds": 8.189223926048726,
+      "measured_steps": 2048,
+      "warmup_steps": 64,
+      "targets": 21100,
+      "peak_cuda_allocated_bytes": 124707328,
+      "peak_cuda_reserved_bytes": 157286400,
+      "repeat": 1,
+      "exact_checks": {
+        "model": true,
+        "optimizer": true,
+        "rng": true,
+        "losses": true,
+        "probabilities": true,
+        "labels": true,
+        "metrics": true
+      },
+      "all_exact": true
+    },
+    {
+      "variant": "reference",
+      "training": false,
+      "measured_seconds": 7.914788960944861,
+      "total_seconds": 8.202351103071123,
+      "measured_steps": 2048,
+      "warmup_steps": 64,
+      "targets": 21100,
+      "peak_cuda_allocated_bytes": 124707328,
+      "peak_cuda_reserved_bytes": 157286400,
+      "repeat": 2,
+      "exact_checks": {
+        "model": true,
+        "optimizer": true,
+        "rng": true,
+        "losses": true,
+        "probabilities": true,
+        "labels": true,
+        "metrics": true
+      },
+      "all_exact": true
+    },
+    {
+      "variant": "vectorized",
+      "training": false,
+      "measured_seconds": 7.967675381805748,
+      "total_seconds": 8.299832830671221,
+      "measured_steps": 2048,
+      "warmup_steps": 64,
+      "targets": 21100,
+      "peak_cuda_allocated_bytes": 124707328,
+      "peak_cuda_reserved_bytes": 157286400,
+      "repeat": 2,
+      "exact_checks": {
+        "model": true,
+        "optimizer": true,
+        "rng": true,
+        "losses": true,
+        "probabilities": true,
+        "labels": true,
+        "metrics": true
+      },
+      "all_exact": true
+    },
+    {
+      "variant": "packed_deferred",
+      "training": false,
+      "measured_seconds": 1.7927420907653868,
+      "total_seconds": 1.8927271757274866,
+      "measured_steps": 2048,
+      "warmup_steps": 64,
+      "targets": 21100,
+      "peak_cuda_allocated_bytes": 126701056,
+      "peak_cuda_reserved_bytes": 157286400,
+      "repeat": 2,
+      "exact_checks": {
+        "model": true,
+        "optimizer": true,
+        "rng": true,
+        "losses": true,
+        "probabilities": true,
+        "labels": true,
+        "metrics": true
+      },
+      "all_exact": true
+    }
+  ],
+  "limitations": [
+    "short-window benchmark, not full-epoch timing",
+    "live trainer shares GPU/CPU; contention affects absolute times",
+    "production runner untouched; not approved for deployment"
+  ],
+  "summary": [
+    {
+      "training": true,
+      "median_seconds": {
+        "reference": 15.36444323696196,
+        "vectorized": 15.376963248010725,
+        "packed_deferred": 8.33638102794066
+      },
+      "speedup": {
+        "reference": 1.0,
+        "vectorized": 0.9991857943049721,
+        "packed_deferred": 1.843059138667687
+      }
+    },
+    {
+      "training": false,
+      "median_seconds": {
+        "reference": 7.914788960944861,
+        "vectorized": 7.917425760067999,
+        "packed_deferred": 1.8082214528694749
+      },
+      "speedup": {
+        "reference": 1.0,
+        "vectorized": 0.9996669625705318,
+        "packed_deferred": 4.377112630969424
+      }
+    }
+  ],
+  "all_exact": true
+}

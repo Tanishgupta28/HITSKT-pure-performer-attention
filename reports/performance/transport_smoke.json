@@ -1,0 +1,179 @@
+{
+  "seed": 42,
+  "checkpoint_epoch": 15,
+  "checkpoint_sha256": "d2bb25fd81908d70a5dc610a74e6877bc96576b069a7949c2b446471df5e7d8b",
+  "device": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+  "pytorch": "2.4.0a0+f70bd71a48.nv24.06",
+  "batch_size": 10,
+  "history_length": 99,
+  "block_size": 64,
+  "workers": 8,
+  "measurements": [
+    {
+      "variant": "reference",
+      "training": true,
+      "measured_seconds": 0.5119226700626314,
+      "total_seconds": 1.4446833869442344,
+      "measured_steps": 64,
+      "warmup_steps": 64,
+      "targets": 1280,
+      "peak_cuda_allocated_bytes": 126295552,
+      "peak_cuda_reserved_bytes": 155189248,
+      "repeat": 0,
+      "exact_checks": {
+        "model": true,
+        "optimizer": true,
+        "rng": true,
+        "losses": true,
+        "probabilities": true,
+        "labels": true,
+        "metrics": true
+      },
+      "all_exact": true
+    },
+    {
+      "variant": "vectorized",
+      "training": true,
+      "measured_seconds": 0.49468520330265164,
+      "total_seconds": 1.0074310451745987,
+      "measured_steps": 64,
+      "warmup_steps": 64,
+      "targets": 1280,
+      "peak_cuda_allocated_bytes": 126295552,
+      "peak_cuda_reserved_bytes": 155189248,
+      "repeat": 0,
+      "exact_checks": {
+        "model": true,
+        "optimizer": true,
+        "rng": true,
+        "losses": true,
+        "probabilities": true,
+        "labels": true,
+        "metrics": true
+      },
+      "all_exact": true
+    },
+    {
+      "variant": "packed_deferred",
+      "training": true,
+      "measured_seconds": 0.2823391919955611,
+      "total_seconds": 0.5613277768716216,
+      "measured_steps": 64,
+      "warmup_steps": 64,
+      "targets": 1280,
+      "peak_cuda_allocated_bytes": 129977856,
+      "peak_cuda_reserved_bytes": 155189248,
+      "repeat": 0,
+      "exact_checks": {
+        "model": true,
+        "optimizer": true,
+        "rng": true,
+        "losses": true,
+        "probabilities": true,
+        "labels": true,
+        "metrics": true
+      },
+      "all_exact": true
+    },
+    {
+      "variant": "reference",
+      "training": false,
+      "measured_seconds": 0.2863610917702317,
+      "total_seconds": 0.7093631606549025,
+      "measured_steps": 64,
+      "warmup_steps": 64,
+      "targets": 1280,
+      "peak_cuda_allocated_bytes": 124707328,
+      "peak_cuda_reserved_bytes": 155189248,
+      "repeat": 0,
+      "exact_checks": {
+        "model": true,
+        "optimizer": true,
+        "rng": true,
+        "losses": true,
+        "probabilities": true,
+        "labels": true,
+        "metrics": true
+      },
+      "all_exact": true
+    },
+    {
+      "variant": "vectorized",
+      "training": false,
+      "measured_seconds": 0.2702264408580959,
+      "total_seconds": 0.5484465612098575,
+      "measured_steps": 64,
+      "warmup_steps": 64,
+      "targets": 1280,
+      "peak_cuda_allocated_bytes": 124707328,
+      "peak_cuda_reserved_bytes": 155189248,
+      "repeat": 0,
+      "exact_checks": {
+        "model": true,
+        "optimizer": true,
+        "rng": true,
+        "losses": true,
+        "probabilities": true,
+        "labels": true,
+        "metrics": true
+      },
+      "all_exact": true
+    },
+    {
+      "variant": "packed_deferred",
+      "training": false,
+      "measured_seconds": 0.07908927695825696,
+      "total_seconds": 0.15844289679080248,
+      "measured_steps": 64,
+      "warmup_steps": 64,
+      "targets": 1280,
+      "peak_cuda_allocated_bytes": 128373248,
+      "peak_cuda_reserved_bytes": 155189248,
+      "repeat": 0,
+      "exact_checks": {
+        "model": true,
+        "optimizer": true,
+        "rng": true,
+        "losses": true,
+        "probabilities": true,
+        "labels": true,
+        "metrics": true
+      },
+      "all_exact": true
+    }
+  ],
+  "limitations": [
+    "short-window benchmark, not full-epoch timing",
+    "live trainer shares GPU/CPU; contention affects absolute times",
+    "production runner untouched; not approved for deployment"
+  ],
+  "summary": [
+    {
+      "training": true,
+      "median_seconds": {
+        "reference": 0.5119226700626314,
+        "vectorized": 0.49468520330265164,
+        "packed_deferred": 0.2823391919955611
+      },
+      "speedup": {
+        "reference": 1.0,
+        "vectorized": 1.034845325158096,
+        "packed_deferred": 1.8131477477298996
+      }
+    },
+    {
+      "training": false,
+      "median_seconds": {
+        "reference": 0.2863610917702317,
+        "vectorized": 0.2702264408580959,
+        "packed_deferred": 0.07908927695825696
+      },
+      "speedup": {
+        "reference": 1.0,
+        "vectorized": 1.0597078911334536,
+        "packed_deferred": 3.6207322001612443
+      }
+    }
+  ],
+  "all_exact": true
+}

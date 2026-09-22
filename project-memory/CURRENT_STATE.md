@@ -4,6 +4,24 @@ Updated: 2026-09-22 UTC
 
 ## Active checkpoint — 2026-09-22
 
+- User authorized an isolated exact-training transport optimization benchmark,
+  with no compromise or loss of current progress. Implemented experimental
+  `ktbench/data/fast_rolling.py`, `scripts/benchmark_exact_transport.py`, and
+  ten new fixture tests; production trainer/model/loader remain untouched.
+  Actual EdNet epoch-15 checkpoint copy: SHA-256
+  `d2bb25fd81908d70a5dc610a74e6877bc96576b069a7949c2b446471df5e7d8b`.
+  Three repeated 2,048-step comparisons plus 64 warmup steps measured 1.843059x
+  training and 4.377113x validation throughput with packed transfers and
+  64-step deferred metric copies. All 18 executions matched reference model,
+  Adam, RNG, per-step loss/probabilities/labels, and all seven metrics exactly;
+  all planned input tensors/IDs/shapes/masks matched too. CPU vectorization
+  alone offered no measurable gain. See `reports/performance/README.md` and
+  generated `transport_repeated.json` for measured times and limitations.
+  Shared-device short-window result, not a full-epoch guarantee. Full suite:
+  **70 passed**, 35 existing deterministic-CUDA warnings, 15.76 seconds.
+  At approximately 05:21 UTC trainer 2535997 was still active in epoch 16.
+  Do not deploy mid-epoch or restart it; a lossless handoff and optimized-runner
+  integration/resume tests are not yet implemented. Report results to user first.
 - Latest SAKT/EdNet snapshot, 2026-09-22 04:11 UTC: epochs 14 and 15
   completed without improvement (validation AUC 0.758903934020328 and
   0.761176496772544). Best remains epoch 13 at 0.7623242165859992;
