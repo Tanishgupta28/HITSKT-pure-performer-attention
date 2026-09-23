@@ -2,6 +2,16 @@
 
 Updated: 2026-09-23 UTC
 
+## Latest checkpoint — 2026-09-23 01:41 UTC
+
+- Epoch17 completed at01:00 UTC: val AUC0.7614665404487208, best13 remains
+  0.7623242165859992, patience4/5. Epoch18 running CUDA PID3100394.
+  All17 target counts, actual last Adam/RNG/patience state and unchanged best
+  SHA verified. Runtime491772.0535945357s, epoch17 duration47588.16266192822s
+  (13.2189h). User-reported additionalGPU workloads are a possible, unconfirmed
+  timing confound. No methodological/settings changes. Continue monitor87358
+  every2h; another miss must stop training and reload best for final test.
+
 ## Latest monitoring — 2026-09-23 00:38 UTC
 
 - CUDA trainer3100394 remains active; no console error, last complete epoch16

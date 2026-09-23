@@ -21,6 +21,12 @@ matched all seven metrics exactly and strict report validation passed.
 
 ## Exact next bounded action
 
+Latest Sep23 01:41UTC: epoch17 complete/verified, val0.7614665404487208,
+best13/patience4. Epoch18 runs unchanged PID3100394. Epoch17 took13.2189h
+(shared-workload caveat). Wait on monitor87358, next03:41UTC. If epoch18 fails
+to improve, ensure stop at5misses and best-checkpoint test, then independent
+replay and14/15 aggregation before DKT. No extra training after stop criterion.
+
 Latest Sep23 00:38 UTC: still epoch17, now >12h, process3100394 active/no
 console error. Epoch16 checkpoint remains intact. User reports additionalGPU
 workloads; contention plausible, not measurable with current telemetry access.

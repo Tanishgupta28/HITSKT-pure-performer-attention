@@ -165,3 +165,10 @@ telemetry returned insufficient permissions). Epoch16's observed gain must not
 be generalized to this changing workload. No other processes were modified,
 and the trainer remains active without console errors. A full epoch17 duration
 cannot be reported until it completes.
+
+Epoch17 subsequently completed at2026-09-23 01:00UTC: accumulated runtime
+491,772.0535945357 seconds, a **47,588.16266192822-second (13.218934h)**
+increment. Thus the second optimized epoch was slower than both the first
+optimized epoch and historical average under changing concurrent workload;
+the cause is not isolated. All target counts and checkpoint state verified.
+Validation AUC0.7614665404487208, best13 unchanged, patience4/5; epoch18 active.
