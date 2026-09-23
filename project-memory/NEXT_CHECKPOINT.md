@@ -24,6 +24,7 @@ matched all seven metrics exactly and strict report validation passed.
 Latest Sep23 07:42UTC: SAKT_SUCCESS after18epochs, best13/testAUC0.7630078573122142;
 all epoch/stop/checkpoint/target records verified. Detached independent replay
 PID3368228 is running with reference transport; output independent_evaluation.json.
+Wait on two-hour replay monitor81202, first check~09:43UTC.
 Wait on replay before14/15 aggregation and DKT launch. SAKT monitor87358 finished
 normally. Preserve two-hour check cadence, all scientific settings and push hold.
 

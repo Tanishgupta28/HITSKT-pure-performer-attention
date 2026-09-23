@@ -19,7 +19,8 @@ Updated: 2026-09-23 UTC
   experiments/sakt/ednet_kt1/full/independent_evaluation.json`.
   Uses original reference transport, testing exact agreement with packed64
   final metrics. Wait for verification, aggregate14/15, then launch DKT.
-  SAKT monitor87358 exited normally on SUCCESS. Push hold remains.
+  SAKT monitor87358 exited normally on SUCCESS. Replay two-hour monitor terminal
+  **81202** started~07:43UTC; next check~09:43UTC. Push hold remains.
 
 ## Latest checkpoint — 2026-09-23 01:41 UTC
 
