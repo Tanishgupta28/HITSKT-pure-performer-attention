@@ -22,6 +22,10 @@ truth; this memory never substitutes for code, logs, checkpoints, or results.
 
 ## Current short status
 
+Latest Sep23 12:11UTC: user approved parallel scheduling; final DKT/EdNet run
+started CUDA PID3412383, approved profile verified, packed64 transport, monitor
+66426 every2h. SAKT independent replay continues PID3368228/monitor81202.
+
 Latest Sep23 07:42UTC: SAKT/EdNet training+test complete (_SUCCESS), stopped18,
 best13, testAUC0.7630078573122142. Independent reference-transport replay running
 PID3368228; aggregate14/15 only after verified. DKT/EdNet remains the final run.

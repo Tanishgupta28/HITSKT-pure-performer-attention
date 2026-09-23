@@ -195,3 +195,11 @@ The user approved all of the following as binding implementation decisions:
 - Preserve all completed checkpoints/epochs, model and Adam state, RNG state,
   best-checkpoint selection and patience. Restart from the last completed epoch
   with the tested packed64 transport; no scientific configuration changes.
+
+## 2026-09-23 — Run DKT concurrently with SAKT verification
+
+- User explicitly requested starting the next experiment in parallel with the
+  ongoing SAKT independent replay. Do not wait for replay before launching DKT.
+- Keep both protocols/settings unchanged, preserve other GPU workloads, and
+  continue two-hour monitoring without ending the monitoring turn merely to
+  answer a status question. Concurrent runtime is not an isolated speed test.

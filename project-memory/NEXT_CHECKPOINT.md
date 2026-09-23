@@ -21,6 +21,14 @@ matched all seven metrics exactly and strict report validation passed.
 
 ## Exact next bounded action
 
+Latest Sep23 12:11UTC: user explicitly overrode sequential scheduling; DKT full
+EdNet now runs CUDA PID3412383 with validated original profile and packed64.
+Monitor66426 checks every2h (next14:11UTC). SAKT replay3368228 still active;
+monitor81202 checks next13:43UTC, active functions cell39 waits on it. Continue
+both without ending the turn for informational questions. On successful replay,
+aggregate14/15 and commit verification; keep DKT running through standard stop.
+Prior instructions to wait for replay before DKT are superseded.
+
 Latest Sep23 07:42UTC: SAKT_SUCCESS after18epochs, best13/testAUC0.7630078573122142;
 all epoch/stop/checkpoint/target records verified. Detached independent replay
 PID3368228 is running with reference transport; output independent_evaluation.json.

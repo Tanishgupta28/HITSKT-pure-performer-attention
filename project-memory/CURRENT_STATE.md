@@ -2,6 +2,25 @@
 
 Updated: 2026-09-23 UTC
 
+## Parallel DKT launched — 2026-09-23 12:11 UTC
+
+- User explicitly approved starting DKT before the SAKT replay finishes.
+  Full DKT/EdNet is now detached CUDA PID/SID **3412383**, parent1, directory
+  `experiments/dkt/ednet_kt1/full`; command `PYTHONPATH=. python
+  scripts/train_baseline.py dkt ednet_kt1
+  data/processed/ednet_kt1/full/session_store experiments/dkt/ednet_kt1/full
+  --workers 8 --transport packed64` (setsid/nohup, console.log).
+- Actual saved config matches every repository DKT profile field: batch20,
+  context/history200/199, embedding/hidden64, one layer, stated dropout0.1
+  (effective recurrent0), AdamLR0.0002/wd0, no clipping, ceiling200,
+  seed42, patience5/min_delta0, parameters417752. All full target counts
+  verified. No completed epoch yet.
+- DKT two-hour monitor terminal **66426**, next~14:11UTC. SAKT independent
+  reference replay PID3368228 is still active; its monitor **81202** remains,
+  next13:43UTC; functions exec cell39 currently waits on that monitor.
+  No processes were stopped. Preserve user workloads. Parallel timing is
+  confounded, not an isolated throughput benchmark. Push hold/README edit intact.
+
 ## SAKT complete; independent replay running — 2026-09-23 07:42 UTC
 
 - SAKT/EdNet stopped correctly after epoch18 (five consecutive misses), best13
