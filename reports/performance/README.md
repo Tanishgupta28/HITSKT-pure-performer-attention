@@ -172,3 +172,11 @@ increment. Thus the second optimized epoch was slower than both the first
 optimized epoch and historical average under changing concurrent workload;
 the cause is not isolated. All target counts and checkpoint state verified.
 Validation AUC0.7614665404487208, best13 unchanged, patience4/5; epoch18 active.
+
+SAKT completed on2026-09-23 07:09UTC after epoch18 and final best13 test.
+Epoch18 plus final test took22,137.231776336674 seconds (about6.15h), showing
+epoch17's much longer timing was not constant. Total retained-run runtime is
+513,909.28537087236 seconds, excluding the documented discarded attempt.
+Common patience5 stopping was honored without an extra training epoch.
+Independent replay with the original reference transport started at07:42UTC
+to verify all packed64 final-test metrics against a fresh checkpoint load.

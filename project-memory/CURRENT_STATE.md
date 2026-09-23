@@ -2,6 +2,25 @@
 
 Updated: 2026-09-23 UTC
 
+## SAKT complete; independent replay running — 2026-09-23 07:42 UTC
+
+- SAKT/EdNet stopped correctly after epoch18 (five consecutive misses), best13
+  val AUC0.7623242165859992. Final best-checkpoint test AUC0.7630078573122142,
+  targets13,429,870, loss0.5245477522701514, accuracy0.7392807972080147,
+  precision0.7565031146532126, recall0.9124938853983476,
+  F1=0.8272087563782752, MSE=0.1752942014962786. _SUCCESS at07:09UTC.
+- All18 epoch counts/stop decisions, one final test, last Adam/RNG/patience5,
+  and unchanged best13 SHA verified. Runtime513909.28537087236s excludes
+  authorized discarded attempt (documented separately). Epoch18+test consumed
+  22137.231776336674s; epoch17's longer timing did not persist unchanged.
+- Fresh independent replay started detached PID/SID3368228 at~07:42UTC,
+  `scripts/evaluate_checkpoint.py experiments/sakt/ednet_kt1/full
+  data/processed/ednet_kt1/full/session_store --workers 8 --output
+  experiments/sakt/ednet_kt1/full/independent_evaluation.json`.
+  Uses original reference transport, testing exact agreement with packed64
+  final metrics. Wait for verification, aggregate14/15, then launch DKT.
+  SAKT monitor87358 exited normally on SUCCESS. Push hold remains.
+
 ## Latest checkpoint — 2026-09-23 01:41 UTC
 
 - Epoch17 completed at01:00 UTC: val AUC0.7614665404487208, best13 remains

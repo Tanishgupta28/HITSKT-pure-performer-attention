@@ -22,6 +22,10 @@ truth; this memory never substitutes for code, logs, checkpoints, or results.
 
 ## Current short status
 
+Latest Sep23 07:42UTC: SAKT/EdNet training+test complete (_SUCCESS), stopped18,
+best13, testAUC0.7630078573122142. Independent reference-transport replay running
+PID3368228; aggregate14/15 only after verified. DKT/EdNet remains the final run.
+
 2026-09-22 latest: user approved switch and discarding unfinished epoch16.
 SAKT/EdNet CUDA process3100394 resumed completed epoch15 with packed64 transport;
 best13/patience2 and all completed checkpoints/Adam/RNG preserved. All75 tests
