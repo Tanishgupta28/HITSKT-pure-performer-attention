@@ -1,6 +1,19 @@
 # Current state
 
-Updated: 2026-09-22 UTC
+Updated: 2026-09-23 UTC
+
+## Latest monitoring — 2026-09-23 00:38 UTC
+
+- CUDA trainer3100394 remains active; no console error, last complete epoch16
+  unchanged, best13/patience3. Epoch17 has exceeded12h since epoch16 completed
+  at Sep22 11:47 UTC. This is slower than the first optimized epoch and prior
+  average; do not extrapolate epoch16's1.281x observation to current workload.
+- User reported launching additional GPU processes. Contention is plausible
+  if resources overlap, not proven; nvidia-smi per-process telemetry returned
+  insufficient permissions. Do not stop/modify other workloads. CPU process
+  time is not GPU-utilization evidence. Running model/optimizer/settings intact.
+- Monitor87358 delivered Sep22 19:41,21:41,23:41 snapshots. Continue waiting
+  for its two-hour checks (next Sep23 01:41 UTC); no new epoch to commit yet.
 
 ## Active checkpoint — 2026-09-22
 

@@ -157,3 +157,11 @@ Validation AUC 0.760941857184205 did not improve epoch13's 0.7623242165859992;
 patience is 3/5. Actual last checkpoint, Adam/RNG/early-stopping state and
 unchanged best-checkpoint SHA passed read-only verification. Epoch17 is active.
 The 15:41 monitor's ten-hour process uptime spans both epochs, not one epoch.
+
+Subsequent monitoring at 2026-09-23 00:38 UTC found epoch17 still incomplete,
+more than12h after epoch16. The user reported starting additional GPU workloads;
+overlapping-resource contention is plausible but unverified (per-process GPU
+telemetry returned insufficient permissions). Epoch16's observed gain must not
+be generalized to this changing workload. No other processes were modified,
+and the trainer remains active without console errors. A full epoch17 duration
+cannot be reported until it completes.

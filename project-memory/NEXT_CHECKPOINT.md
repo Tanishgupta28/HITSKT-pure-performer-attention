@@ -1,6 +1,6 @@
 # Next checkpoint
 
-Updated: 2026-09-22 UTC
+Updated: 2026-09-23 UTC
 
 ## Last valid terminal checkpoint
 
@@ -20,6 +20,12 @@ result has 13/15 rows. Full HiTSKT/EdNet completed at epoch 35, selected epoch
 matched all seven metrics exactly and strict report validation passed.
 
 ## Exact next bounded action
+
+Latest Sep23 00:38 UTC: still epoch17, now >12h, process3100394 active/no
+console error. Epoch16 checkpoint remains intact. User reports additionalGPU
+workloads; contention plausible, not measurable with current telemetry access.
+Preserve current progress and other jobs. Continue monitor87358 (next01:41UTC),
+verify new checkpoints when available. No training/settings changes authorized.
 
 Latest 2026-09-22 15:55 UTC: epoch16 verified complete, val AUC
 0.760941857184205, best13/patience3. Epoch17 running PID3100394. Actual first
