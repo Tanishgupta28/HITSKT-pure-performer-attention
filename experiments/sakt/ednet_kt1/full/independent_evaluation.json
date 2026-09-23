@@ -1,0 +1,23 @@
+{
+  "best_epoch": 13,
+  "checkpoint_sha256": "1de01970ef3ebf8a3b136347f4db21f7a746ec610eaa95a86051ddc84a5497ea",
+  "dataset": "ednet_kt1",
+  "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+  "model": "SAKT",
+  "runtime_seconds": 35364.1847898094,
+  "seed": 42,
+  "session_store_metadata_sha256": "c08ac9eb1b2154de42b5faffd5b0914e635aab97a6e0adec0aeb568676f598f4",
+  "test": {
+    "accuracy": 0.7392807972080147,
+    "f1": 0.8272087563782752,
+    "loss": 0.5245477522701514,
+    "mse": 0.1752942014962786,
+    "precision": 0.7565031146532126,
+    "recall": 0.9124938853983476,
+    "roc_auc": 0.7630078573122142,
+    "targets": 13429870,
+    "threshold": 0.5
+  },
+  "verification": "fresh model loaded from best checkpoint; exact equality of all test metrics",
+  "verified": true
+}

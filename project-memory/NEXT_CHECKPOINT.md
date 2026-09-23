@@ -21,6 +21,12 @@ matched all seven metrics exactly and strict report validation passed.
 
 ## Exact next bounded action
 
+Latest Sep23 17:43UTC: SAKT independent reference replay PASSED exactly; generated
+master results now14/15. Replay monitor81202 complete. DKT3412383 is the only
+remaining active experiment, still epoch1. Wait on monitor66426 (next18:11UTC),
+verify/push checkpoints, independent best replay after completion, then generate
+15/15 tables/plots and final documentation per prompt.txt. Public pushes approved.
+
 Latest user decision: **Keep it public and push**. Public/private hold lifted;
 push queued and future relevant commits to capstone-gpu (redirects to canonical
 Tanishgupta28/HITSKT-pure-performer-attention). Do not change visibility or

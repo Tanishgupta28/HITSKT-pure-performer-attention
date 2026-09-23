@@ -22,6 +22,10 @@ truth; this memory never substitutes for code, logs, checkpoints, or results.
 
 ## Current short status
 
+Latest Sep23 17:43UTC: **14/15 experiments independently verified**. SAKT/EdNet
+reference replay exactly matched every final packed64 metric and target count;
+master CSV/JSON updated. Only full DKT/EdNet remains, PID3412383, monitor66426.
+
 Latest Sep23: user explicitly approved keeping the renamed repository public
 and pushing. Previous visibility hold is lifted. Continue relevant checkpoint,
 code and memory pushes with the original Tanish commit identity.

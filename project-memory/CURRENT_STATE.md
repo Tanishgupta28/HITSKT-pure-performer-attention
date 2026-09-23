@@ -2,6 +2,18 @@
 
 Updated: 2026-09-23 UTC
 
+## SAKT replay verified; 14/15 complete — 2026-09-23 17:43 UTC
+
+- Independent SAKT/EdNet reference-transport replay succeeded: all seven test
+  metrics and13,429,870 targets exactly match packed64 final evaluation. Best13
+  SHA1de01970ef3ebf8a3b136347f4db21f7a746ec610eaa95a86051ddc84a5497ea.
+  Replay runtime35364.1847898094s under concurrent workloads; monitor81202
+  ended normally. Generated reports/final_results.csv,json now contain14/15.
+- Final DKT/EdNet PID3412383 remains active in epoch1. Continue its two-hour
+  monitor66426 (next18:11UTC), verify new checkpoints, commit/push artifacts.
+- GitHub push through2b141cc was verified against remote main; public visibility
+  explicitly approved. User README edit remains untouched.
+
 ## Public push authorized — 2026-09-23
 
 - User explicitly chose **Keep it public and push**. Reverified GitHub's

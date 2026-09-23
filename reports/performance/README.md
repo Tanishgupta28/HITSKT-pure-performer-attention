@@ -180,3 +180,10 @@ epoch17's much longer timing was not constant. Total retained-run runtime is
 Common patience5 stopping was honored without an extra training epoch.
 Independent replay with the original reference transport started at07:42UTC
 to verify all packed64 final-test metrics against a fresh checkpoint load.
+
+At2026-09-23 17:43UTC the independent reference-transport replay was verified
+successful: all seven final-test metrics and13,429,870 targets match exactly,
+without rounding/tolerance. Report:
+`experiments/sakt/ednet_kt1/full/independent_evaluation.json`.
+Replay elapsed35,364.1847898094s under changing concurrent workloads (DKT was
+explicitly approved to run in parallel), not an isolated performance comparison.
