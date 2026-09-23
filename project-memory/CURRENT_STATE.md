@@ -2,6 +2,16 @@
 
 Updated: 2026-09-23 UTC
 
+## Public push authorized — 2026-09-23
+
+- User explicitly chose **Keep it public and push**. Reverified GitHub's
+  canonical repository `Tanishgupta28/HITSKT-pure-performer-attention` is public;
+  old capstone-gpu remote redirects there. Push hold is lifted; synchronize
+  queued and subsequent relevant commits without changing visibility.
+- Preserve original Tanish identity and unrelated root README working-tree
+  changes. DKT3412383 and SAKT replay3368228 continue unchanged; monitors66426
+  and81202. Previous hold instructions below are historical and superseded.
+
 ## Parallel DKT launched — 2026-09-23 12:11 UTC
 
 - User explicitly approved starting DKT before the SAKT replay finishes.

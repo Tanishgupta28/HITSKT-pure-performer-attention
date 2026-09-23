@@ -22,6 +22,10 @@ truth; this memory never substitutes for code, logs, checkpoints, or results.
 
 ## Current short status
 
+Latest Sep23: user explicitly approved keeping the renamed repository public
+and pushing. Previous visibility hold is lifted. Continue relevant checkpoint,
+code and memory pushes with the original Tanish commit identity.
+
 Latest Sep23 12:11UTC: user approved parallel scheduling; final DKT/EdNet run
 started CUDA PID3412383, approved profile verified, packed64 transport, monitor
 66426 every2h. SAKT independent replay continues PID3368228/monitor81202.

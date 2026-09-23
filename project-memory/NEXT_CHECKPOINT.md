@@ -21,6 +21,11 @@ matched all seven metrics exactly and strict report validation passed.
 
 ## Exact next bounded action
 
+Latest user decision: **Keep it public and push**. Public/private hold lifted;
+push queued and future relevant commits to capstone-gpu (redirects to canonical
+Tanishgupta28/HITSKT-pure-performer-attention). Do not change visibility or
+stage unrelated README edits. Continue DKT66426 and SAKT replay81202 monitors.
+
 Latest Sep23 12:11UTC: user explicitly overrode sequential scheduling; DKT full
 EdNet now runs CUDA PID3412383 with validated original profile and packed64.
 Monitor66426 checks every2h (next14:11UTC). SAKT replay3368228 still active;

@@ -203,3 +203,11 @@ The user approved all of the following as binding implementation decisions:
 - Keep both protocols/settings unchanged, preserve other GPU workloads, and
   continue two-hour monitoring without ending the monitoring turn merely to
   answer a status question. Concurrent runtime is not an isolated speed test.
+
+## 2026-09-23 — Public repository explicitly approved
+
+- User answered the visibility question: **Keep it public and push**.
+- Keep `Tanishgupta28/HITSKT-pure-performer-attention` public and push queued
+  and subsequent relevant checkpoint/code/memory commits through capstone-gpu.
+  This resolves the previous private/public ambiguity and lifts the push hold.
+- Preserve the original Tanish commit identity and unrelated local README edit.
