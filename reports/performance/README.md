@@ -209,3 +209,9 @@ User asked whether16h for epoch1 is excessive. Read-only inspection found:
   Log writes follow both training and validation, so no exact within-epoch
   completion percentage is available. No live process or training settings were
   changed during this diagnostic. Preserve current progress.
+
+DKT epoch1 subsequently completed: saved runtime60,443.006547887344 seconds
+(16.789724h), validation AUC0.6845717850759062, all53,990,022 training and
+14,520,975 validation targets retained. Verified at Sep24 05:39UTC with model,
+Adam/RNG and best-checkpoint equality checks; epoch2 continued without restart.
+This is actual full-epoch elapsed time, not an estimate or isolated speed test.

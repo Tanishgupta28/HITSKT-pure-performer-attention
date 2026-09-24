@@ -2,6 +2,18 @@
 
 Updated: 2026-09-24 UTC
 
+## DKT epoch1 verified — 2026-09-24 05:39 UTC
+
+- Epoch1 completed with val AUC0.6845717850759062, best1, patience0/5;
+  full train53,990,022 and validation14,520,975 targets verified. Runtime
+  60443.006547887344s (16.789724h). Actual last/best model equality,
+  Adam/RNG/seed/early-stopping state verified. Best SHA256
+  56a911479a2c0b53edd457e4179a942be6f652717e7322c35b41e45194e90215.
+- Epoch2 running unchanged CUDA PID3412383. Old monitor66426 expired after
+  interrupted turn; read-only process check found no remaining monitor.
+  Replacement two-hour monitor **90580**, first output~07:40UTC. Trainer was
+  not interrupted or restarted. Commit/push checkpoint and continue monitoring.
+
 ## Latest monitor — 2026-09-24 04:44 UTC
 
 - User asked about16h epoch time. Read-only diagnosis:2,702,138 train batches
