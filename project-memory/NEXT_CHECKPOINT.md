@@ -1,6 +1,6 @@
 # Next checkpoint
 
-Updated: 2026-09-23 UTC
+Updated: 2026-09-24 UTC
 
 ## Last valid terminal checkpoint
 
@@ -20,6 +20,11 @@ result has 13/15 rows. Full HiTSKT/EdNet completed at epoch 35, selected epoch
 matched all seven metrics exactly and strict report validation passed.
 
 ## Exact next bounded action
+
+Latest Sep24 04:44UTC: DKT3412383 active,16h33m uptime, no console errors,
+still no completed epoch1. Wait on monitor66426 (next06:11UTC), unchanged
+CUDA packed64 model/profile; do not restart/discard work. SAKT replay and14/15
+summary already pushed as e0c3c95. Verify/push new DKT epoch artifacts on arrival.
 
 Latest Sep23 17:43UTC: SAKT independent reference replay PASSED exactly; generated
 master results now14/15. Replay monitor81202 complete. DKT3412383 is the only

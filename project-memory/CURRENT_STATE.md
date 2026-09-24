@@ -1,6 +1,16 @@
 # Current state
 
-Updated: 2026-09-23 UTC
+Updated: 2026-09-24 UTC
+
+## Latest monitor — 2026-09-24 04:44 UTC
+
+- Final DKT/EdNet PID/SID3412383 remains active at16h33m uptime, epoch1
+  not yet logged complete. Console has no errors; saved CUDA packed64 profile
+  and all scientific settings unchanged. No restart/signals/config changes.
+- Monitor66426 delivered Sep23 20:11/22:11 and Sep24 00:11/02:11/04:11
+  snapshots. Continue its two-hour waits (next06:11UTC), verify/push first
+  completed checkpoint when available. Last pushed commit e0c3c95 contains
+  SAKT exact replay and14/15 generated results. Other user GPU jobs untouched.
 
 ## SAKT replay verified; 14/15 complete — 2026-09-23 17:43 UTC
 
