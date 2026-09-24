@@ -187,3 +187,25 @@ without rounding/tolerance. Report:
 `experiments/sakt/ednet_kt1/full/independent_evaluation.json`.
 Replay elapsed35,364.1847898094s under changing concurrent workloads (DKT was
 explicitly approved to run in parallel), not an isolated performance comparison.
+
+## DKT runtime diagnostic — 2026-09-24
+
+User asked whether16h for epoch1 is excessive. Read-only inspection found:
+
+- Original bucket4096/batch20 sampler emits2,702,138 training minibatches and
+  726,758 validation minibatches per full EdNet epoch, preserving every target.
+- Historical Junyi total46,586.79885737272s /8epochs is1.6176h; multiplying by
+  train+validation target ratio5.6139 gives9.081h. This is only a rough scale
+  comparison (includes Junyi final test and ignores history/workload differences),
+  not an ETA or controlled comparison. EdNet epoch1 has exceeded16h.
+- `ktbench/models/baselines.py:DKT.forward` still uses CUDA nonzero, .tolist(),
+  per-student boolean indexing, pad_sequence and lengths.cpu() before the packed
+  LSTM. The deployed optimization changes transport, not this model-internal
+  preparation. Synchronization overhead is a plausible optimization target,
+  not yet profiled/quantified or changed. PyTorch documents synchronization for
+  CUDA nonzero/boolean indexing in its official eager-performance documentation.
+- Additional GPU workloads are user-reported; their contention share remains
+  unverified. Actual CUDA device handles exist, no console errors, process active.
+  Log writes follow both training and validation, so no exact within-epoch
+  completion percentage is available. No live process or training settings were
+  changed during this diagnostic. Preserve current progress.

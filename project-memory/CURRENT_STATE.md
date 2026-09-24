@@ -4,6 +4,13 @@ Updated: 2026-09-24 UTC
 
 ## Latest monitor — 2026-09-24 04:44 UTC
 
+- User asked about16h epoch time. Read-only diagnosis:2,702,138 train batches
+  +726,758 val batches; rough Junyi target-scaled comparison9.08h, not ETA.
+  DKT.forward retains model-internal CUDA synchronization/per-student preparation
+  overhead unaffected by packed transport. Other GPU contention plausible but
+  unverified. Reported honestly as unusually long vs history, not a proven hang
+  or isolated optimization regression. No training changes; details in report.
+
 - Final DKT/EdNet PID/SID3412383 remains active at16h33m uptime, epoch1
   not yet logged complete. Console has no errors; saved CUDA packed64 profile
   and all scientific settings unchanged. No restart/signals/config changes.
