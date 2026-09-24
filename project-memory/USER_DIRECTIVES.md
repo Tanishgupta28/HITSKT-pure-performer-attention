@@ -1,5 +1,11 @@
 # Durable user directives
 
+## 2026-09-24 — Four-hour monitoring (latest)
+
+- User requested checks every four hours. This supersedes every earlier
+  monitoring cadence, including two hours. Training and scientific settings
+  are unchanged. Continue automatic waiting, verification, commits and pushes.
+
 ## 2026-09-09 — Capstone specification
 
 The complete authoritative specification is `../prompt.txt`.

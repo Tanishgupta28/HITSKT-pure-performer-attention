@@ -2,6 +2,15 @@
 
 Updated: 2026-09-24 UTC
 
+## Four-hour cadence — 2026-09-24 21:49 UTC
+
+- User requested four-hour checks. Replaced only the old monitor process
+  group3585361 (terminal90580) with four-hour terminal **56561**. Trainer
+  PID/SID3412383 was not signaled or restarted. First check~Sep25 01:50UTC.
+- Latest scheduled snapshot21:39UTC: DKT still active in epoch2, elapsed
+  33h29m, best1/patience0 unchanged; no new completed checkpoint. Prior project
+  memory update was committed and pushed as0b984b8. Continue waiting on56561.
+
 ## Latest monitor — 2026-09-24 15:39 UTC
 
 - Two-hour monitor90580 delivered 07:39, 09:39, 11:39, 13:39 and15:39UTC

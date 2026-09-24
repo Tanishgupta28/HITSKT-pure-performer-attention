@@ -21,6 +21,12 @@ matched all seven metrics exactly and strict report validation passed.
 
 ## Exact next bounded action
 
+Latest Sep24 21:49UTC: user changed cadence to FOUR HOURS. Old monitor90580
+stopped; use terminal56561, first check~Sep25 01:50UTC. Trainer3412383 stays
+unchanged in epoch2 (latest21:39 snapshot). Verify/push new checkpoints,
+independent best replay on completion, then final15/15 reporting. All previous
+two-hour instructions below are superseded by the latest user request.
+
 Latest Sep24 15:39UTC: DKT PID3412383 still active in epoch2, console empty,
 best1/patience0 unchanged. Epoch1 checkpoint pushed as1b55e1a. Continue
 two-hour monitor90580, next17:39UTC; verify and push each newly completed epoch.
