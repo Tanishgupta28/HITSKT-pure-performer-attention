@@ -226,3 +226,9 @@ host-side work, but GPU utilization/contention and remaining epoch work cannot
 be determined from available telemetry. This is an unusually long second epoch,
 not evidence of completion or a measured ETA. The run and settings remain
 unchanged; six-hour monitoring resumes from Sep25 11:13UTC.
+
+The scheduled Sep25 17:15UTC check still found epoch2 active (`Rsl`), with no
+new epoch record or `_SUCCESS`; process elapsed time was2d05h04m and CPU time
+2d04h54m. Epoch2 had therefore run about36h17m from the epoch1 checkpoint
+timestamp (about2.16× epoch1's measured duration). The six-hour monitor does not
+produce within-epoch progress, so no completion percentage or ETA is available.

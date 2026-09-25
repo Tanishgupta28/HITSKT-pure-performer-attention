@@ -34,6 +34,11 @@ utilization/memory telemetry unavailable (`N/A`/insufficient permissions).
 This is unusually slow but not a proven hang; no ETA is logged. Keep the six-hour
 monitor and run untouched.
 
+Scheduled check Sep25 17:15UTC still finds epoch2 active; elapsed~36h17m
+(2.16× epoch1), latest event epoch1, no `_SUCCESS`. Continue monitor3845441;
+next check~23:15UTC. Preserve the live trainer and follow standard completion,
+checkpoint replay, and report-generation steps after it exits successfully.
+
 Latest Sep24 21:49UTC: user changed cadence to FOUR HOURS. Old monitor90580
 stopped; use terminal56561, first check~Sep25 01:50UTC. Trainer3412383 stays
 unchanged in epoch2 (latest21:39 snapshot). Verify/push new checkpoints,

@@ -2,6 +2,16 @@
 
 Updated: 2026-09-25 UTC
 
+## Scheduled six-hour check — 2026-09-25 17:15 UTC
+
+- Monitor3845441 reports DKT PID3412383 still active (`Rsl`), uptime2d05h04m,
+  CPU2d04h54m, RSS1844444KiB. Latest training event remains epoch1; no
+  `_SUCCESS`. Epoch2 has run about36h17m since the epoch1 checkpoint timestamp,
+  around2.16× epoch1's16h47m runtime. No within-epoch progress or ETA is logged.
+- No trainer restart, signal, or methodology/configuration change. Next
+  six-hour snapshot is due~23:15UTC. Previous 11:56 diagnostic and telemetry
+  limitation are recorded below and in reports/performance/README.md.
+
 ## DKT epoch2 runtime check — 2026-09-25 11:56 UTC
 
 - User asked whether epoch2 should have completed. Latest event remains epoch1.
