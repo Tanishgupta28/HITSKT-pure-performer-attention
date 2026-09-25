@@ -1,6 +1,6 @@
 # Next checkpoint
 
-Updated: 2026-09-24 UTC
+Updated: 2026-09-25 UTC
 
 ## Last valid terminal checkpoint
 
@@ -20,6 +20,13 @@ result has 13/15 rows. Full HiTSKT/EdNet completed at epoch 35, selected epoch
 matched all seven metrics exactly and strict report validation passed.
 
 ## Exact next bounded action
+
+Latest Sep25 11:13UTC: cadence now SIX HOURS. Detached monitor3845441 runs
+independently of this conversation; first snapshot due~17:13UTC. DKT/EdNet
+trainer3412383 remains in epoch2 (only epoch1 logged, best1/patience0). Do not
+interrupt it. At each check verify and push any new complete checkpoint; on
+_SUCCESS verify stop/checkpoints, replay best independently, generate final
+15/15 results and finish prompt.txt documentation.
 
 Latest Sep24 21:49UTC: user changed cadence to FOUR HOURS. Old monitor90580
 stopped; use terminal56561, first check~Sep25 01:50UTC. Trainer3412383 stays

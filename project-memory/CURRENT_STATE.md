@@ -1,8 +1,20 @@
 # Current state
 
-Updated: 2026-09-24 UTC
+Updated: 2026-09-25 UTC
 
-## Four-hour cadence — 2026-09-24 21:49 UTC
+## Six-hour cadence — 2026-09-25 11:13 UTC
+
+- User changed the cadence from four to six hours. Prior monitor56561 was no
+  longer present at this check; the DKT trainer remained live as PID/SID3412383
+  with its eight dataloader workers. It has been running epoch2 since the
+  verified epoch1 at Sep24 05:39UTC. At11:13UTC uptime was1d23h03m, CPU
+  1d22h53m, RSS1844472KiB; CPU time does not establish GPU utilization.
+- Started detached six-hour monitor PID/SID3845441. First scheduled snapshot
+  is~17:13UTC Sep25. No training process was signaled/restarted. Last completed
+  record remains epoch1, best1/patience0; no _SUCCESS file. Project memory has
+  not yet been committed for this cadence change.
+
+## Four-hour cadence — 2026-09-24 21:49 UTC (superseded)
 
 - User requested four-hour checks. Replaced only the old monitor process
   group3585361 (terminal90580) with four-hour terminal **56561**. Trainer

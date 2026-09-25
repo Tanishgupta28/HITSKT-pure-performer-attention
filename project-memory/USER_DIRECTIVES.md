@@ -1,5 +1,12 @@
 # Durable user directives
 
+## 2026-09-25 — Six-hour monitoring (latest)
+
+- User changed monitoring cadence to every six hours. This supersedes the
+  four-hour and all earlier intervals. Keep automatic monitoring active and
+  continue checkpoint verification, publication, independent evaluation and
+  final reporting when DKT/EdNet finishes.
+
 ## 2026-09-24 — Four-hour monitoring (latest)
 
 - User requested checks every four hours. This supersedes every earlier
