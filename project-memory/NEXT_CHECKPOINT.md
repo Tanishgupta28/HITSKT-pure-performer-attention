@@ -28,6 +28,12 @@ interrupt it. At each check verify and push any new complete checkpoint; on
 _SUCCESS verify stop/checkpoints, replay best independently, generate final
 15/15 results and finish prompt.txt documentation.
 
+Latest live diagnostic Sep25 11:56UTC: epoch2 had elapsed~30h59m, versus
+epoch1's16h47m. Trainer was alive at99.6% CPU, with eight workers; GPU
+utilization/memory telemetry unavailable (`N/A`/insufficient permissions).
+This is unusually slow but not a proven hang; no ETA is logged. Keep the six-hour
+monitor and run untouched.
+
 Latest Sep24 21:49UTC: user changed cadence to FOUR HOURS. Old monitor90580
 stopped; use terminal56561, first check~Sep25 01:50UTC. Trainer3412383 stays
 unchanged in epoch2 (latest21:39 snapshot). Verify/push new checkpoints,

@@ -2,6 +2,20 @@
 
 Updated: 2026-09-25 UTC
 
+## DKT epoch2 runtime check — 2026-09-25 11:56 UTC
+
+- User asked whether epoch2 should have completed. Latest event remains epoch1.
+  Epoch2 elapsed about30h59m from the epoch1 checkpoint file timestamp at
+  2026-09-24 04:58:18UTC, versus epoch1's measured16h47m. This is unusually
+  slow relative to epoch1, with no within-epoch percentage/ETA in the logger.
+- Trainer3412383 is alive, stateRsl, CPU99.6% (about one core), uptime
+  1d23h46m, accumulated CPU1d23h36m; eight worker processes are alive. This
+  supports active host work, not a simple dead process. `nvidia-smi` returns
+  utilizationN/A and insufficient-permission memory values, so GPU contention
+  cannot be verified. No process or training settings were changed.
+- Six-hour monitor3845441 remains active, next snapshot~17:13UTC. The cadence
+  change and follow-up memory commit are pushed through`ee2312a`.
+
 ## Six-hour cadence — 2026-09-25 11:13 UTC
 
 - User changed the cadence from four to six hours. Prior monitor56561 was no
@@ -11,8 +25,8 @@ Updated: 2026-09-25 UTC
   1d22h53m, RSS1844472KiB; CPU time does not establish GPU utilization.
 - Started detached six-hour monitor PID/SID3845441. First scheduled snapshot
   is~17:13UTC Sep25. No training process was signaled/restarted. Last completed
-  record remains epoch1, best1/patience0; no _SUCCESS file. Project memory has
-  cadence change was committed and pushed as`cacd5fd`.
+  record remains epoch1, best1/patience0; no _SUCCESS file. The cadence update
+  is committed and pushed as`cacd5fd` and`ee2312a`.
 
 ## Four-hour cadence — 2026-09-24 21:49 UTC (superseded)
 

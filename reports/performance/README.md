@@ -215,3 +215,14 @@ DKT epoch1 subsequently completed: saved runtime60,443.006547887344 seconds
 14,520,975 validation targets retained. Verified at Sep24 05:39UTC with model,
 Adam/RNG and best-checkpoint equality checks; epoch2 continued without restart.
 This is actual full-epoch elapsed time, not an estimate or isolated speed test.
+
+At Sep25 11:56UTC, epoch2 was still active with no additional epoch event;
+the latest checkpoint/log file timestamp implies about30h59m elapsed since the
+epoch1 checkpoint, roughly1.85 times epoch1's duration. The trainer was alive
+(`Rsl`) at99.6% CPU, with eight dataloader workers alive and near-zero sampled
+CPU utilization. A bounded `nvidia-smi` query returned GPU utilization `N/A`
+and insufficient permission for memory readings. Thus the process is doing
+host-side work, but GPU utilization/contention and remaining epoch work cannot
+be determined from available telemetry. This is an unusually long second epoch,
+not evidence of completion or a measured ETA. The run and settings remain
+unchanged; six-hour monitoring resumes from Sep25 11:13UTC.
