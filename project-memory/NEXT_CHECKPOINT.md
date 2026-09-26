@@ -2,6 +2,22 @@
 
 Updated: 2026-09-25 UTC
 
+## Latest exact next action — 2026-09-26 23:15 UTC
+
+The recurring six-hour monitor3845441 reports DKT/EdNet trainer3412383 active
+in epoch2 (`Rsl`, elapsed3d11h04m, CPU3d10h50m). The epoch1 log/checkpoint is
+still the latest; `_SUCCESS` is absent. Epoch2 has run about66h17m (3.95×
+epoch1). CPU time advanced5h59m20s during the preceding six-hour interval,
+showing sustained host execution but not useful batch/target advancement; the
+runner has no within-epoch counter. A second process still has CUDA descriptors
+to `/dev/nvidia2`, but its actual utilization/impact is unavailable. Leave the
+run and settings untouched. Monitor3845441 repeats at about05:15UTC Sep27.
+
+At each check verify process, latest epoch event, checkpoint, and success
+marker. If `_SUCCESS` appears, validate stop/checkpoint state, run independent
+best-checkpoint evaluation, aggregate 15/15 results, complete remaining prompt
+documentation, and push verified outputs.
+
 ## Latest exact next action — 2026-09-26 17:15 UTC
 
 The recurring six-hour monitor3845441 reports DKT/EdNet trainer3412383 still

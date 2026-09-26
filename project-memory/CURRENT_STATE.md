@@ -2,6 +2,20 @@
 
 Updated: 2026-09-26 UTC
 
+## Scheduled six-hour check — 2026-09-26 23:15 UTC
+
+- Monitor3845441 confirms DKT trainer3412383 is still active (`Rsl`), elapsed
+  3d11h04m, CPU3d10h50m, RSS1844444KiB. CPU time increased by5h59m20s since
+  17:15UTC. The training log/checkpoint still end at epoch1 (Sep24 04:58UTC),
+  and `_SUCCESS` is absent. Epoch2 has now run about66h17m, approximately
+  3.95× epoch1's16.79h duration.
+- This demonstrates sustained CPU execution, not target/batch progress; the
+  logger has no in-epoch counter. PID4015824 still has CUDA descriptors open
+  on the same `/dev/nvidia2` device, but available telemetry cannot quantify
+  active GPU contention or attribute the long epoch to it.
+- Trainer and scientific settings remain untouched. Recurring monitor3845441
+  remains active; the next snapshot is due~2026-09-27 05:15UTC.
+
 ## Scheduled six-hour check — 2026-09-26 17:15 UTC
 
 - Monitor3845441 confirms DKT trainer3412383 remains active (`Rsl`), elapsed

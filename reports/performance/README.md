@@ -270,3 +270,16 @@ confirming device co-residency; available telemetry cannot quantify its GPU
 activity, and it cannot account for the full epoch2 duration. No process,
 scientific setting, or training behavior was changed. The recurring six-hour
 monitor3845441 remains active, next due~23:15UTC.
+
+The scheduled Sep26 23:15UTC check still found DKT trainer3412383 active
+(`Rsl`): elapsed3d11h04m, CPU3d10h50m, RSS1844444KiB. Accumulated CPU time
+advanced5h59m20s over the preceding six-hour interval. Epoch2 has elapsed
+about66h17m since the epoch1 checkpoint at Sep24 04:58UTC (approximately
+3.95× epoch1's measured16.7897h), while the log and `last_model.pt` remain at
+epoch1 and `_SUCCESS` is absent. This confirms ongoing CPU execution, but the
+boundary-only logger gives no minibatch count, so useful target progress,
+completion percentage, and ETA remain unknown. Another live process
+(PID4015824) still holds CUDA descriptors to the same `/dev/nvidia2` device;
+utilization telemetry cannot quantify its activity or explain the full delay.
+The run and settings were not changed. Recurring monitor3845441 remains active,
+next due~Sep27 05:15UTC.
