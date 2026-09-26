@@ -257,3 +257,16 @@ The next scheduled check at Sep26 11:15UTC still found the trainer active
 (`Rsl`): process elapsed2d23h04m, CPU2d22h51m. Epoch2 had elapsed about54h17m
 (3.23× epoch1) and the log still contained only epoch1. No new settings or
 process intervention was made; the next six-hour observation is due~17:15UTC.
+
+The scheduled Sep26 17:15UTC check still found trainer3412383 active (`Rsl`),
+with elapsed time3d05h04m and accumulated CPU time3d04h51m. CPU time advanced
+by nearly the entire six-hour interval, showing sustained CPU execution, but
+not proving useful minibatch/target advancement. The latest training record
+and checkpoint remain epoch1 (Sep24 04:58UTC); no `_SUCCESS` exists. Epoch2 has
+run about60h17m, approximately3.59× epoch1's measured16.7897h. The boundary-
+only logger has no in-epoch counter, so completion percentage/ETA remain
+unknown. A second live process still holds CUDA descriptors to `/dev/nvidia2`,
+confirming device co-residency; available telemetry cannot quantify its GPU
+activity, and it cannot account for the full epoch2 duration. No process,
+scientific setting, or training behavior was changed. The recurring six-hour
+monitor3845441 remains active, next due~23:15UTC.

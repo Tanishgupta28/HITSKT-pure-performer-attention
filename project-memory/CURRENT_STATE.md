@@ -2,6 +2,21 @@
 
 Updated: 2026-09-26 UTC
 
+## Scheduled six-hour check — 2026-09-26 17:15 UTC
+
+- Monitor3845441 confirms DKT trainer3412383 remains active (`Rsl`), elapsed
+  3d05h04m, CPU3d04h51m, RSS1844444KiB. CPU time advanced by essentially the
+  full six hours since11:15UTC, confirming ongoing CPU execution but not
+  target/batch advancement. `training.jsonl` and `last_model.pt` remain at
+  epoch1 (timestamp Sep24 04:58UTC); `_SUCCESS` is absent. Epoch2 has now run
+  about60h17m, around3.59× epoch1's16.79h. No epoch-level error is logged.
+- Current progress remains unquantifiable because the runner emits records
+  only at epoch boundaries. Another live workload (PID4015824) still holds
+  CUDA descriptors for the same `/dev/nvidia2` MIG device; accessible GPU
+  utilization remains unavailable, and this does not explain the full delay.
+- No process/configuration changes. Recurring six-hour monitor3845441 remains
+  active; next snapshot is due~23:15UTC. Preserve the trainer unchanged.
+
 ## Scheduled six-hour check — 2026-09-26 11:15 UTC
 
 - Monitor3845441 confirms trainer3412383 remains active (`Rsl`), process
