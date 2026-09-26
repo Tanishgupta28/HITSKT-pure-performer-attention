@@ -252,3 +252,8 @@ account for all of its duration. `nvidia-smi` does not expose utilization or
 memory for this process context. An attempted nonblocking `py-spy` sample was
 blocked by kernel ptrace permissions. No error or obvious infinite loop was
 found, but the absent batch counter prevents ruling out a training-loop stall.
+
+The next scheduled check at Sep26 11:15UTC still found the trainer active
+(`Rsl`): process elapsed2d23h04m, CPU2d22h51m. Epoch2 had elapsed about54h17m
+(3.23× epoch1) and the log still contained only epoch1. No new settings or
+process intervention was made; the next six-hour observation is due~17:15UTC.

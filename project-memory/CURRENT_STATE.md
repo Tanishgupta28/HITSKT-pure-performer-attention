@@ -2,6 +2,16 @@
 
 Updated: 2026-09-26 UTC
 
+## Scheduled six-hour check — 2026-09-26 11:15 UTC
+
+- Monitor3845441 confirms trainer3412383 remains active (`Rsl`), process
+  elapsed2d23h04m, CPU2d22h51m, RSS1844444KiB. Training JSONL still ends at
+  epoch1 and there is no `_SUCCESS`; epoch2 elapsed~54h17m since the epoch1
+  checkpoint timestamp (about3.23× epoch1). No within-epoch batch counter.
+- No settings or live process changes. Next six-hour check is~17:15UTC.
+  Detailed slowdown, host-overhead, co-resident-GPU and observability findings
+  are documented/pushed in commit5630f50.
+
 ## DKT stall/progress diagnosis — 2026-09-26 10:57 UTC
 
 - DKT PID3412383 is still alive (`Rsl`), at99.7% CPU; latest JSONL/checkpoint
