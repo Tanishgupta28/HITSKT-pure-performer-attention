@@ -232,3 +232,23 @@ new epoch record or `_SUCCESS`; process elapsed time was2d05h04m and CPU time
 2d04h54m. Epoch2 had therefore run about36h17m from the epoch1 checkpoint
 timestamp (about2.16× epoch1's measured duration). The six-hour monitor does not
 produce within-epoch progress, so no completion percentage or ETA is available.
+
+At Sep26 10:57UTC, the trainer remained alive (`Rsl`) at99.7% CPU, while
+`training.jsonl`, `metrics.csv`, and the last checkpoint still ended at epoch1.
+Epoch2 had elapsed about53h59m (3.22× the measured epoch1 runtime). This is
+active CPU computation, but the boundary-only logger provides no batch count,
+so useful target-level advancement cannot be certified. The full pass has
+2,702,138 training plus726,758 validation minibatches at batch size20. The
+active DKT code performs device-synchronized nonzero/host conversion, per-row
+Python gathers, repacking, and CPU length transfer in `DKT.forward`, repeated
+for millions of batches; this is a likely CPU overhead source, not a direct
+profile of the live process.
+
+Read-only `/proc` inspection found another live PT process and a child with
+open `/dev/nvidia2` CUDA descriptors, the same node used by DKT; the parent
+still held the device at10:57UTC. This confirms current device co-residency,
+but the competing processes appeared late in the measured epoch and cannot
+account for all of its duration. `nvidia-smi` does not expose utilization or
+memory for this process context. An attempted nonblocking `py-spy` sample was
+blocked by kernel ptrace permissions. No error or obvious infinite loop was
+found, but the absent batch counter prevents ruling out a training-loop stall.

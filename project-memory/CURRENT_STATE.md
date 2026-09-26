@@ -1,6 +1,25 @@
 # Current state
 
-Updated: 2026-09-25 UTC
+Updated: 2026-09-26 UTC
+
+## DKT stall/progress diagnosis — 2026-09-26 10:57 UTC
+
+- DKT PID3412383 is still alive (`Rsl`), at99.7% CPU; latest JSONL/checkpoint
+  records remain epoch1 and `_SUCCESS` is absent. Epoch2 has elapsed about
+  53h59m since the epoch1 checkpoint, roughly3.22× epoch1's16h47m duration.
+  The code logs only at epoch boundaries, so batch/target progress is not
+  directly observable. Repeated process snapshots show CPU time increasing,
+  proving active computation but not proving useful batch advancement.
+- The full pass includes about3,428,896 train+validation minibatches
+  (2,702,138+726,758). `DKT.forward` has per-batch CUDA synchronization and
+  Python per-student packing work. At10:53UTC, another active workload had
+  CUDA descriptors for the same `/dev/nvidia2` device; its parent still had
+  device handles at10:57UTC. This confirms current co-residency, but cannot
+  explain the whole epoch. Device utilization/memory telemetry is unavailable.
+- A nonblocking `py-spy` stack sample was denied by kernel ptrace permissions.
+  No clear exception, deadlock, or source-level infinite loop was found; a
+  malfunction cannot be conclusively ruled out without batch-level evidence.
+  Six-hour monitor3845441 remains active; next snapshot~11:15UTC. Run untouched.
 
 ## Scheduled six-hour check — 2026-09-25 17:15 UTC
 

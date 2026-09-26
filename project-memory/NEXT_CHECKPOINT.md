@@ -21,6 +21,14 @@ matched all seven metrics exactly and strict report validation passed.
 
 ## Exact next bounded action
 
+Live inspection Sep26 10:57UTC: epoch2 elapsed~53h59m (3.22× epoch1), no
+epoch2 log/checkpoint. Main process remains active at99.7% CPU; this proves
+computation, not target-level advancement. About3.43M train+validation batches
+and per-batch sync/packing overhead are structural cost factors. A second
+active CUDA workload shares `/dev/nvidia2`, confirming present resource sharing;
+the telemetry cannot attribute the full slowdown. Nonblocking Python stack
+sampling was denied. Keep the six-hour monitor, next~11:15UTC.
+
 Latest Sep25 11:13UTC: cadence now SIX HOURS. Detached monitor3845441 runs
 independently of this conversation; first snapshot due~17:13UTC. DKT/EdNet
 trainer3412383 remains in epoch2 (only epoch1 logged, best1/patience0). Do not
