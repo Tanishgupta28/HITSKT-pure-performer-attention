@@ -2,6 +2,20 @@
 
 Updated: 2026-09-27 UTC
 
+## Scheduled six-hour check — 2026-09-27 11:15 UTC
+
+- Monitor3845441 confirms trainer3412383 remains active (`Rsl`), elapsed
+  3d23h04m, CPU3d22h49m, RSS1844444KiB. CPU time advanced5h59m23s since
+  05:15UTC. The log/checkpoint still end at epoch1 (Sep24 04:58UTC), with no
+  `_SUCCESS`; epoch2 has run about78h17m, roughly4.66× epoch1's16.79h.
+- At11:15UTC, PID31781 remained active at100% CPU with CUDA descriptors for
+  `/dev/nvidia2`. `nvidia-smi` reports7129MiB MIG allocation but utilization
+  and process attribution are `N/A`. This confirms concurrent GPU access, not
+  its utilization or causal share. There is still no batch-level counter, so
+  sustained CPU time does not prove minibatch/target advancement.
+- No changes to trainer or configuration. Monitor3845441 remains active; next
+  snapshot is due~17:15UTC. Preserve the run.
+
 ## Scheduled six-hour check — 2026-09-27 05:15 UTC
 
 - Monitor3845441 confirms DKT trainer3412383 remains active (`Rsl`), elapsed

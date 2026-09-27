@@ -2,6 +2,21 @@
 
 Updated: 2026-09-27 UTC
 
+## Latest exact next action — 2026-09-27 11:15 UTC
+
+Recurring monitor3845441 reports DKT/EdNet PID3412383 active in epoch2
+(`Rsl`, elapsed3d23h04m, CPU3d22h49m). Epoch1 remains the only recorded
+checkpoint; `_SUCCESS` is absent. Epoch2 elapsed~78h17m (4.66× epoch1). CPU
+time advanced5h59m23s over the preceding six-hour interval, but there is no
+batch/target progress counter. PID31781 is also active and holds CUDA handles
+on `/dev/nvidia2`; `nvidia-smi` cannot expose utilization or process usage.
+Leave training/settings unchanged. Monitor3845441 repeats at~17:15UTC.
+
+At each check verify process, epoch event, checkpoint, and success marker. If
+`_SUCCESS` appears, validate stopping/checkpoint state, independently evaluate
+the best checkpoint, aggregate 15/15 results, finish remaining prompt docs,
+and push verified outputs.
+
 ## Latest exact next action — 2026-09-27 05:15 UTC
 
 Recurring monitor3845441 reports DKT/EdNet trainer3412383 still active in

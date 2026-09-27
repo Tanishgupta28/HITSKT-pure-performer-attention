@@ -297,3 +297,16 @@ but utilization and per-process attribution were unavailable. Its current
 co-residency may reduce throughput, but it began late in the current epoch and
 does not explain the entire delay. The trainer and method were not changed.
 Recurring monitor3845441 remains active, next due~11:15UTC Sep27.
+
+At the scheduled Sep27 11:15UTC check, trainer3412383 remained active (`Rsl`),
+elapsed3d23h04m and CPU3d22h49m. CPU advanced5h59m23s during the six-hour
+interval, while `training.jsonl` and `last_model.pt` remained at epoch1 and
+`_SUCCESS` was absent. Epoch2 elapsed about78h17m since Sep24 04:58UTC,
+approximately4.66× epoch1's measured16.7897h. The runner logs only epoch
+boundaries, so CPU activity does not prove useful minibatch advancement and no
+completion percentage/ETA can be stated. Concurrent workload PID31781 still
+had CUDA handles on `/dev/nvidia2`; `nvidia-smi` showed7129MiB MIG allocation,
+but GPU utilization/process attribution were unavailable. This confirms
+co-residency, not the workload's utilization or how much it affects DKT. No
+training change was made. Recurring monitor3845441 remains active, next due
+~17:15UTC Sep27.
