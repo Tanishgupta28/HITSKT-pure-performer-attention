@@ -2,6 +2,22 @@
 
 Updated: 2026-09-27 UTC
 
+## Scheduled six-hour check — 2026-09-27 17:15 UTC
+
+- Monitor3845441 confirms trainer3412383 remains active (`Rsl`), elapsed
+  4d05h04m, CPU4d04h48m, RSS1844444KiB. CPU advanced5h59m22s since11:15UTC.
+  The training log/checkpoint still end at epoch1 (Sep24 04:58UTC), and
+  `_SUCCESS` is absent. Epoch2 has now run about84h17m, approximately5.02×
+  epoch1's16.79h duration.
+- Sustained CPU use confirms an active execution loop, not successful
+  minibatch/target advancement; no in-epoch counter exists. At17:16UTC the
+  previously observed co-resident process was absent; `nvidia-smi` showed
+  578MiB allocated on the MIG device but utilization/process details were
+  `N/A`. Current GPU contention therefore cannot be assessed. The slowdown
+  remains anomalous and unexplained by the available telemetry.
+- No changes to the trainer or configuration. Monitor3845441 remains active;
+  next check is due~23:15UTC. Preserve the run.
+
 ## Scheduled six-hour check — 2026-09-27 11:15 UTC
 
 - Monitor3845441 confirms trainer3412383 remains active (`Rsl`), elapsed

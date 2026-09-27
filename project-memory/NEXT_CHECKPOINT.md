@@ -2,6 +2,21 @@
 
 Updated: 2026-09-27 UTC
 
+## Latest exact next action — 2026-09-27 17:15 UTC
+
+Recurring monitor3845441 reports DKT/EdNet PID3412383 active in epoch2
+(`Rsl`, elapsed4d05h04m, CPU4d04h48m). Only epoch1 is logged/checkpointed;
+`_SUCCESS` is absent. Epoch2 elapsed~84h17m (5.02× epoch1). CPU time advanced
+5h59m22s in the preceding interval, but there is no in-epoch batch counter.
+The previously observed co-tenant was absent at17:16UTC; GPU telemetry remains
+`N/A`, so the now-extreme delay has no verified cause. Keep the process and
+settings unchanged. Monitor3845441 repeats at~23:15UTC.
+
+At each check verify process, epoch event, checkpoint, and success marker. If
+`_SUCCESS` appears, validate stopping/checkpoint state, replay the best
+checkpoint, aggregate15/15 results, finish remaining prompt documentation,
+and push verified outputs.
+
 ## Latest exact next action — 2026-09-27 11:15 UTC
 
 Recurring monitor3845441 reports DKT/EdNet PID3412383 active in epoch2

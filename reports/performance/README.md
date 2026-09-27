@@ -298,6 +298,19 @@ co-residency may reduce throughput, but it began late in the current epoch and
 does not explain the entire delay. The trainer and method were not changed.
 Recurring monitor3845441 remains active, next due~11:15UTC Sep27.
 
+At the scheduled Sep27 17:15UTC check, trainer3412383 remained active (`Rsl`),
+elapsed4d05h04m and CPU4d04h48m. CPU advanced5h59m22s during the six-hour
+interval, but the latest log/checkpoint still ended at epoch1 and `_SUCCESS`
+was absent. Epoch2 elapsed about84h17m since the Sep24 04:58UTC epoch1
+checkpoint, approximately5.02× epoch1's measured16.7897h. The boundary-only
+logger does not expose useful minibatch advancement or ETA. At17:16UTC the
+previously observed co-resident workload PID31781 was absent; `nvidia-smi`
+reported578MiB MIG allocation, but utilization/process information remained
+unavailable. Thus current GPU contention is unverified and does not explain
+the accumulated duration; the slowdown remains anomalous with no established
+malfunction or root cause. The live run/settings were not changed. The
+recurring monitor3845441 remains active, next due~23:15UTC Sep27.
+
 At the scheduled Sep27 11:15UTC check, trainer3412383 remained active (`Rsl`),
 elapsed3d23h04m and CPU3d22h49m. CPU advanced5h59m23s during the six-hour
 interval, while `training.jsonl` and `last_model.pt` remained at epoch1 and
