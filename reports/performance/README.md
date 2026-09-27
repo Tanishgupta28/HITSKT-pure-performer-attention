@@ -283,3 +283,17 @@ completion percentage, and ETA remain unknown. Another live process
 utilization telemetry cannot quantify its activity or explain the full delay.
 The run and settings were not changed. Recurring monitor3845441 remains active,
 next due~Sep27 05:15UTC.
+
+The scheduled Sep27 05:15UTC check still found DKT trainer3412383 active
+(`Rsl`), elapsed3d17h04m and CPU3d16h49m. CPU time advanced5h59m23s during
+the previous six-hour interval. The latest epoch record/checkpoint remain at
+epoch1, and `_SUCCESS` is absent. Epoch2 has elapsed about72h17m since the
+Sep24 04:58UTC epoch1 checkpoint (approximately4.31× epoch1's measured
+16.7897h). Continuous CPU activity establishes execution, not useful batch
+advancement; the runner logs only at epoch boundaries and reports no ETA.
+At05:16UTC, separate workload PID31781 was at100% CPU with open CUDA handles
+on the same `/dev/nvidia2` device. `nvidia-smi` showed7129MiB MIG allocation,
+but utilization and per-process attribution were unavailable. Its current
+co-residency may reduce throughput, but it began late in the current epoch and
+does not explain the entire delay. The trainer and method were not changed.
+Recurring monitor3845441 remains active, next due~11:15UTC Sep27.

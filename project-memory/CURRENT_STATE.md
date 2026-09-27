@@ -1,6 +1,22 @@
 # Current state
 
-Updated: 2026-09-26 UTC
+Updated: 2026-09-27 UTC
+
+## Scheduled six-hour check — 2026-09-27 05:15 UTC
+
+- Monitor3845441 confirms DKT trainer3412383 remains active (`Rsl`), elapsed
+  3d17h04m, CPU3d16h49m, RSS1844444KiB. CPU advanced5h59m23s since23:15UTC.
+  The latest training log/checkpoint remain at epoch1 (Sep24 04:58UTC); there
+  is no `_SUCCESS`. Epoch2 has now run about72h17m, roughly4.31× epoch1's
+  16.79h duration.
+- This is sustained CPU execution, but not proof of target/batch progression;
+  no in-epoch counter is written. At05:16UTC, PID31781 was also active at
+  100% CPU and held `/dev/nvidia2` CUDA descriptors; `nvidia-smi` showed
+  7129MiB MIG allocation but utilization and process attribution were `N/A`.
+  This current co-residency may affect throughput, but began far into epoch2
+  and does not establish the cause of the overall delay.
+- No run/configuration changes. Recurring monitor3845441 remains active; the
+  next snapshot is due~2026-09-27 11:15UTC.
 
 ## Scheduled six-hour check — 2026-09-26 23:15 UTC
 

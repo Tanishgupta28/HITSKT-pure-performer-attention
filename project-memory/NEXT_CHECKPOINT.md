@@ -1,6 +1,21 @@
 # Next checkpoint
 
-Updated: 2026-09-25 UTC
+Updated: 2026-09-27 UTC
+
+## Latest exact next action — 2026-09-27 05:15 UTC
+
+Recurring monitor3845441 reports DKT/EdNet trainer3412383 still active in
+epoch2 (`Rsl`, elapsed3d17h04m, CPU3d16h49m). Only epoch1 is logged/checkpointed;
+`_SUCCESS` is absent. Epoch2 elapsed about72h17m (4.31× epoch1). CPU time
+advanced5h59m23s in the last six-hour interval; this shows execution but not
+useful minibatch progress. At05:16UTC, a separate CPU/GPU workload PID31781
+had CUDA handles on `/dev/nvidia2`; GPU utilization/process telemetry is
+unavailable. The run is unchanged. Keep monitor3845441; next check~11:15UTC.
+
+At each check verify process, latest epoch event, checkpoint, and success
+marker. If `_SUCCESS` appears, validate stop/checkpoint state, independently
+evaluate the best checkpoint, aggregate 15/15 results, finish remaining prompt
+documentation, and push verified outputs.
 
 ## Latest exact next action — 2026-09-26 23:15 UTC
 
