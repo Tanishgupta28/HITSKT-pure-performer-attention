@@ -2,13 +2,13 @@
 
 Updated: 2026-10-08 UTC
 
-## Actual three-hour assistant check — 2026-10-08 15:09 UTC
+## Actual three-hour assistant check — 2026-10-08 18:11 UTC
 
-- Primary assistant completed the three-hour sleep and directly checked the run. Epoch1/train: 48,858,514/53,990,022 targets (90.50% of this phase), 2,445,312 minibatches, as of2026-10-08T15:09:06Z.
+- Primary assistant completed the three-hour sleep and directly checked the run. Epoch2/train: 12,685,216/53,990,022 targets (23.50% of this phase), 634,880 minibatches, as of2026-10-08T18:11:19Z.
 - Trainer506822 is active with unchanged start identity. Profile/source match. Console errors found: 0. _SUCCESS: False.
-- No completed epoch and no new best/last checkpoint yet.
+- Verified 1 completed epoch(s), all train/validation target counts, strict validation-AUC selection and patience. Last1/best1, best validation AUC0.6845717850759062, patience0/5. Actual best/last checkpoints, saved Adam state and RNG were checked; hashes are in the ledger.
 - Benchmark remains14/15 until DKT is complete and independently verified. No scientific settings changed.
-- Remain in the active turn, sleep another three hours, and personally check around2026-10-08 18:09:14 UTC. The detached supervisor remains stopped; do not relaunch any trainer or supervisor.
+- Remain in the active turn, sleep another three hours, and personally check around2026-10-08 21:11:30 UTC. The detached supervisor remains stopped; do not relaunch any trainer or supervisor.
 - At completed epochs verify and push actual artifacts. On _SUCCESS independently replay best, generate strict15/15 reports, and finish prompt documentation/publication.
 - Evidence: `reports/performance/dkt_assistant_monitoring_2026-10-08.jsonl` and `.inspection/dkt_restart_20261008/assistant_monitoring.json`.
 

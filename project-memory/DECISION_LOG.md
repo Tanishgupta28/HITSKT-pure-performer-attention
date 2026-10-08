@@ -565,3 +565,9 @@
   passed in15.8s. Final images were reviewed; no page errors, font-CDN requests or
   horizontal overflow. Evidence:`reports/platform/design_validation.json`.
   Strict memory validation passed; publication is indexed in`PLATFORM_STATE.md`.
+
+## 2026-10-08 18:11 UTC — Direct three-hour DKT check
+
+- Epoch2/train: 12,685,216/53,990,022 targets (23.50% of this phase), 634,880 minibatches, as of2026-10-08T18:11:19Z.
+- Trainer506822 is active with unchanged start identity. Profile/source match. Console errors found: 0. _SUCCESS: False. Verified 1 completed epoch(s), all train/validation target counts, strict validation-AUC selection and patience. Last1/best1, best validation AUC0.6845717850759062, patience0/5. Actual best/last checkpoints, saved Adam state and RNG were checked; hashes are in the ledger.
+- Continue active-turn three-hour sleeps/checks. Evidence: `reports/performance/dkt_assistant_monitoring_2026-10-08.jsonl`.
