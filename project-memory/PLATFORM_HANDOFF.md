@@ -31,14 +31,17 @@ The platform already labels its Bayesian cold-start estimates separately.
 Backend, adapter, trained-checkpoint compatibility, final production build and
 desktop/mobile Edge checks on the production bundle have passed. Windows
 production start/stop/restart also passed. Details are in `PLATFORM_STATE.md`
-and `reports/platform/validation.json`. Synchronize and publish the coherent
-milestone, then integrate matching content only when its provenance is reviewed.
+and `reports/platform/validation.json`. The next bounded action is to review the
+matching-content/checkpoint provenance requested above, then integrate that
+content and compare serving output against a genuine GPU-workstream fixture.
 After model/content evidence is available, integrate reviewed matching content
 as a platform-only change and validate trained inference parity.
 
 ## Current publication state
 
-Implementation is validated locally on `codex/adaptive-learning-platform`;
-publication is the remaining delivery step. Existing checkpoint compatibility
-and complete production-browser/runtime checks passed. No new benchmark result
-is claimed. Record the exact published implementation commit after push succeeds.
+**Published implementation: `a2c27b8`**, atomically pushed to canonical `main`
+and `codex/adaptive-learning-platform` on 2026-10-08, using Achin's configured
+identity. Training/research source and scientific artifacts remain unchanged.
+The production site is running on the local Windows host, with ignored runtime
+logs/process identities under `.platform-runtime/`. Checkpoint compatibility and
+production-browser/runtime checks passed. No new benchmark result is claimed.

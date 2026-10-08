@@ -89,3 +89,22 @@ storage migration.
 Read [PLATFORM_HANDOFF.md](PLATFORM_HANDOFF.md) before integrating checkpoint
 assets. Keep platform edits under its new folders/docs; coordinate through
 this memory, fetch current remote changes before pushing, and never force-push.
+
+## Published implementation checkpoint
+
+- Implementation commit **`a2c27b8`** was atomically pushed to canonical remote
+  `main` and `codex/adaptive-learning-platform` on 2026-10-08. Both advanced
+  from the inspected scientific base `08838ec`; no force push was used.
+- All existing research/training code, benchmark tests, root `pyproject.toml`,
+  root README and experiment artifacts were preserved. Existing-file edits
+  are `.gitignore` and additive project-memory entries; other files are new.
+- The Windows checkout is clean after the implementation commit. Local-only
+  dependencies, model cache, screenshots, process records and logs stay ignored.
+- The production app runs at `http://localhost:3000` on this Windows host,
+  with API at `http://127.0.0.1:8000`. It can be stopped with
+  `scripts/stop-platform.ps1` and restarted using
+  `scripts/run-platform.ps1 -Mode production`.
+- Latest valid evidence is `reports/platform/validation.json` and
+  `reports/platform/inference_smoke.json` at implementation commit `a2c27b8`.
+  The next bounded action is the reviewed matching-content/checkpoint handoff;
+  no GPU run interruption or scientific protocol change is requested.
