@@ -571,3 +571,19 @@
 - Epoch2/train: 12,685,216/53,990,022 targets (23.50% of this phase), 634,880 minibatches, as of2026-10-08T18:11:19Z.
 - Trainer506822 is active with unchanged start identity. Profile/source match. Console errors found: 0. _SUCCESS: False. Verified 1 completed epoch(s), all train/validation target counts, strict validation-AUC selection and patience. Last1/best1, best validation AUC0.6845717850759062, patience0/5. Actual best/last checkpoints, saved Adam state and RNG were checked; hashes are in the ledger.
 - Continue active-turn three-hour sleeps/checks. Evidence: `reports/performance/dkt_assistant_monitoring_2026-10-08.jsonl`.
+
+## 2026-10-08 19:43 UTC — Recover interrupted assistant sleep
+
+- Server restart interrupted the active three-hour sleep. Inspected live
+  trainer506822 and unchanged start identity; training survived.
+- Epoch2/train at24,388,344/53,990,022 targets,
+  with no new completed epoch or terminal result. No training action repeated.
+- Preserve scheduled assistant check at2026-10-08 21:12:53 UTC; sleep
+  only the remaining interval. No supervisor/subagent is started.
+- Evidence: `.inspection/dkt_restart_20261008/daemon_recovery_20261008_1942.json`.
+
+## 2026-10-08 21:13 UTC — Direct three-hour DKT check
+
+- Epoch2/train: 36,009,622/53,990,022 targets (66.70% of this phase), 1,802,240 minibatches, as of2026-10-08T21:13:21Z.
+- Trainer506822 is active with unchanged start identity. Profile/source match. Console errors found: 0. _SUCCESS: False. Verified 1 completed epoch(s), all train/validation target counts, strict validation-AUC selection and patience. Last1/best1, best validation AUC0.6845717850759062, patience0/5. Actual best/last checkpoints, saved Adam state and RNG were checked; hashes are in the ledger.
+- Continue active-turn three-hour sleeps/checks. Evidence: `reports/performance/dkt_assistant_monitoring_2026-10-08.jsonl`.

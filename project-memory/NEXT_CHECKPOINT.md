@@ -2,6 +2,28 @@
 
 Updated: 2026-10-08 UTC
 
+## Actual three-hour assistant check — 2026-10-08 21:13 UTC
+
+- Primary assistant completed the three-hour sleep and directly checked the run. Epoch2/train: 36,009,622/53,990,022 targets (66.70% of this phase), 1,802,240 minibatches, as of2026-10-08T21:13:21Z.
+- Trainer506822 is active with unchanged start identity. Profile/source match. Console errors found: 0. _SUCCESS: False.
+- Verified 1 completed epoch(s), all train/validation target counts, strict validation-AUC selection and patience. Last1/best1, best validation AUC0.6845717850759062, patience0/5. Actual best/last checkpoints, saved Adam state and RNG were checked; hashes are in the ledger.
+- Benchmark remains14/15 until DKT is complete and independently verified. No scientific settings changed.
+- Remain in the active turn, sleep another three hours, and personally check around2026-10-09 00:13:37 UTC. The detached supervisor remains stopped; do not relaunch any trainer or supervisor.
+- At completed epochs verify and push actual artifacts. On _SUCCESS independently replay best, generate strict15/15 reports, and finish prompt documentation/publication.
+- Evidence: `reports/performance/dkt_assistant_monitoring_2026-10-08.jsonl` and `.inspection/dkt_restart_20261008/assistant_monitoring.json`.
+
+## Sleep recovery inspection — 2026-10-08 19:43 UTC
+
+The server restarted during the assistant's three-hour wait. Trainer506822
+survived with unchanged start identity; epoch2/train is advancing,
+24,388,344/53,990,022 targets as of2026-10-08T19:43:05Z.
+No training process was restarted. Epoch1 remains the latest verified checkpoint.
+
+Keep the existing next assistant check at2026-10-08 21:12:53 UTC, sleeping only the
+remaining interval. Then continue normal three-hour personal checks in the active
+turn. No detached supervisor or subagent. Evidence:
+`.inspection/dkt_restart_20261008/daemon_recovery_20261008_1942.json`.
+
 ## Actual three-hour assistant check — 2026-10-08 18:11 UTC
 
 - Primary assistant completed the three-hour sleep and directly checked the run. Epoch2/train: 12,685,216/53,990,022 targets (23.50% of this phase), 634,880 minibatches, as of2026-10-08T18:11:19Z.
