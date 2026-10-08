@@ -87,8 +87,10 @@ def _run_epoch(
     optimizer: torch.optim.Optimizer | None,
     gradient_clip: float | None,
     transport: str = "reference",
+    progress_path: Path | None = None,
 ) -> dict[str, float | int]:
     training = optimizer is not None
+    started = time.perf_counter()
     model.train(training)
     loader, _ = _loader(
         dataset,
@@ -103,6 +105,29 @@ def _run_epoch(
     cursor = 0
     loss_sum = 0.0
     records = []
+    batches_processed = 0
+    targets_processed = 0
+
+    def progress(status: str) -> None:
+        if progress_path is None:
+            return
+        value = {
+            "event": "epoch_progress",
+            "updated_at_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+            "epoch": epoch,
+            "split": {0: "train", 1: "validation", 2: "test"}[dataset.split],
+            "status": status,
+            "minibatches_processed": batches_processed,
+            "targets_processed": targets_processed,
+            "targets_total": len(dataset),
+            "elapsed_seconds": time.perf_counter() - started,
+        }
+        temporary = progress_path.with_suffix(".json.tmp")
+        _write_json(temporary, value)
+        temporary.replace(progress_path)
+        print(json.dumps(value, sort_keys=True), flush=True)
+
+    progress("running")
 
     def flush():
         nonlocal cursor, loss_sum
@@ -153,14 +178,21 @@ def _run_epoch(
             probabilities[cursor : cursor + count] = torch.sigmoid(logits).detach().cpu().numpy()
             labels[cursor : cursor + count] = batch.target_labels.detach().cpu().numpy()
             cursor += count
+        batches_processed += 1
+        targets_processed += count
+        if batches_processed == 1 or batches_processed % 4096 == 0:
+            progress("running")
     flush()
     if cursor != len(dataset):
         raise RuntimeError(f"evaluated {cursor} targets but expected {len(dataset)}")
-    return binary_metrics(
+    progress("computing_metrics")
+    metrics = binary_metrics(
         torch.from_numpy(probabilities),
         torch.from_numpy(labels),
         loss=loss_sum / cursor,
     )
+    progress("complete")
+    return metrics
 
 
 def _checkpoint_payload(
@@ -402,6 +434,7 @@ def train_baseline(
                 optimizer=optimizer,
                 gradient_clip=profile["gradient_clip"],
                 transport=transport,
+                progress_path=output_root / "progress.json",
             )
             validation_metrics = _run_epoch(
                 model,
@@ -413,6 +446,7 @@ def train_baseline(
                 optimizer=None,
                 gradient_clip=None,
                 transport=transport,
+                progress_path=output_root / "progress.json",
             )
             for split, values in (("train", train_metrics), ("validation", validation_metrics)):
                 writer.writerow({"epoch": epoch, "split": split, **values})
@@ -473,6 +507,7 @@ def train_baseline(
             optimizer=None,
             gradient_clip=None,
             transport=transport,
+            progress_path=output_root / "progress.json",
         )
         writer.writerow({"epoch": control.best_epoch, "split": "test", **test_metrics})
         metrics_file.flush()

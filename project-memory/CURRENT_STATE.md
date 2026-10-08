@@ -1,6 +1,53 @@
 # Current state
 
-Updated: 2026-09-27 UTC
+Updated: 2026-10-08 UTC
+
+## Authoritative current state — 2026-10-08 fresh restart
+
+This section supersedes all older live-process and continuation statements below.
+
+- Extracted `/workspace/tanish-capstone.zip` into `/workspace/capstone`; archive
+  paths and CRCs validated. Fetch from the user-specified canonical GitHub remote
+  matched archived HEAD `a54fc0c`; no newer remote commits existed.
+- Verified **14/15 completed full benchmark pairs** from current artifacts. DKT
+  on full EdNet is the only remaining pair. All previous trainer/monitor PIDs
+  were stale; no DKT trainer was active before the restart.
+- Per the explicit latest instruction, abandoned the incomplete DKT run rather
+  than restoring it. Its epoch-1 artifacts are preserved in
+  `.inspection/dkt_ednet_abandoned_before_restart_20261008/` and Git history.
+  `reports/performance/dkt_restart_2026-10-08.json` records artifact hashes,
+  instruction, dataset metadata hash, code hash, launch IDs, and runtime evidence.
+- **Fresh DKT/EdNet is running on CUDA from epoch 1**, trainer PID `506822`,
+  detached supervisor PID/SID `506821`. It uses fresh model/Adam state,
+  seed42, batch20, context200/history199, width64, one-layer LSTM,
+  AdamLR0.0002, patience5/min_delta0, ceiling200, workers8, packed64 transport.
+  Config starts at epochs_completed0/best_epochnull with no resume fields.
+- Full target counts verified: train53,990,022; validation14,520,975;
+  test13,429,870. At `2026-10-08T08:48:25Z`, epoch1/train had advanced
+  through 16,384 minibatches / 327,364 targets.
+  This is measured batch advancement, not a completed epoch or final result.
+- Added atomic `experiments/dkt/ednet_kt1/full/progress.json`, updated on the
+  first minibatch, every4096 minibatches, and at metric/completion boundaries.
+  Exact observational-equivalence tests pass for reference and packed64 DKT;
+  model/Adam/RNG/metrics match bitwise with logging off/on. **All77 tests pass**
+  (17.82s); pre-existing Performer CUDA deterministic-warning messages remain.
+- The local-only supervisor `.inspection/supervise_dkt_restart_20261008.py`
+  records six-hour snapshots in `.inspection/dkt_restart_20261008/monitor.jsonl`.
+  On trainer success it automatically runs the existing fresh-process,
+  reference-transport best-checkpoint replay, then strict15/15 report generation.
+  It records `_FAILED` on any stage failure and `_SUCCESS` only after exact
+  independent replay plus complete reporting. It does not publish Git changes.
+- Root README working-tree edits and the old untracked SAKT replay console log
+  are preserved. Dataset files, live progress, old artifacts, and supervisor
+  remain local/ignored. New memory/code/provenance milestones are eligible for
+  the previously authorized commits/pushes.
+
+### Current limitations
+
+No new DKT epoch has completed yet. No trustworthy finish-time estimate is
+available; previous epoch2's excessive runtime remains unexplained. Training
+will select/reload its newly trained best checkpoint according to the approved
+protocol. DKT and the final15/15 result remain unverified until those stages finish.
 
 ## Scheduled six-hour check — 2026-09-27 17:15 UTC
 

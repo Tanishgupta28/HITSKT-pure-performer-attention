@@ -68,3 +68,32 @@ def test_reference_to_packed_resume_exact(tmp_path, monkeypatch):
     config = json.loads((resumed / "config.json").read_text())
     assert config["transport"] == "packed64"
     assert config["previous_transport"] == "reference"
+
+
+@pytest.mark.parametrize("transport", ["reference", "packed64"])
+def test_progress_preserves_dkt_training_state(tmp_path, transport):
+    store = _store(tmp_path)
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    seed_everything()
+    model = make_baseline_model("dkt", num_questions=11, num_skills=5).to(device)
+    initial = cpu_tree(model.state_dict())
+    rng = capture_rng_state()
+    dataset = RollingTargetDataset(store, "train", history_length=199)
+    outputs = []
+    progress_path = tmp_path / "progress.json"
+    for destination in (None, progress_path):
+        model.load_state_dict(initial)
+        optimizer = torch.optim.Adam(model.parameters(), lr=0.0002)
+        restore_rng_state(rng)
+        metrics = _run_epoch(model, dataset, batch_size=20, device=device,
+            workers=0, epoch=1, optimizer=optimizer, gradient_clip=None,
+            transport=transport, progress_path=destination)
+        outputs.append((cpu_tree(model.state_dict()), cpu_tree(optimizer.state_dict()),
+                        capture_rng_state(), metrics))
+    assert exact(*outputs)
+    progress = json.loads(progress_path.read_text())
+    assert progress["status"] == "complete"
+    assert progress["targets_processed"] == progress["targets_total"] == len(dataset)
+    assert progress["epoch"] == 1
+    assert progress["split"] == "train"
+    assert not progress_path.with_suffix(".json.tmp").exists()

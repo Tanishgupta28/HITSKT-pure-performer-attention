@@ -456,3 +456,22 @@
   0.7316373002, recall 0.9460949348, F1 0.8251594973, MSE 0.1819252324, and
   loss 0.5400390939. No validation/test interaction entered Phi or memory
   initialization.
+
+## 2026-10-08 — Abandon interrupted DKT/EdNet and restart from scratch
+
+- User explicitly requested a fresh fifteenth training run without restoring
+  old checkpoints. This supersedes the prior preserve/resume instruction for
+  that run; all established scientific settings are unchanged.
+- Extracted archive and fetched canonical repository; both were at `a54fc0c`.
+  Current artifacts confirmed14 completed pairs and no live old DKT process.
+- Moved incomplete DKT artifacts into
+  `.inspection/dkt_ednet_abandoned_before_restart_20261008/`; no prior checkpoint
+  is loaded by the fresh command. Old evidence and hashes remain addressable.
+- Started fresh CUDA trainer `506822` with detached local supervisor
+  `506821`. Added batch progress with exact DKT state/RNG/metric-equivalence
+  tests; all77 tests pass. Verified epoch1 actual minibatch advancement.
+- Six-hour monitor and gated independent replay/strict15/15 reporting run
+  locally. Existing14 results remain unchanged; no new outcome is claimed.
+- Evidence: `reports/performance/dkt_restart_2026-10-08.json`,
+  `experiments/dkt/ednet_kt1/full/config.json`, live `progress.json`, and
+  `.inspection/dkt_restart_20261008/` supervision records.

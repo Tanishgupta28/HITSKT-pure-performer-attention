@@ -1,0 +1,41 @@
+{
+  "archive_directory": ".inspection/dkt_ednet_abandoned_before_restart_20261008",
+  "checkpoint_restoration": false,
+  "date_utc": "2026-10-08T08:45:47Z",
+  "directive": "Restart 15th training from scratch; do not restore old checkpoints",
+  "first_verified_progress": {
+    "elapsed_seconds": 155.1208202529233,
+    "epoch": 1,
+    "event": "epoch_progress",
+    "minibatches_processed": 16384,
+    "split": "train",
+    "status": "running",
+    "targets_processed": 327364,
+    "targets_total": 53990022,
+    "updated_at_utc": "2026-10-08T08:48:25Z"
+  },
+  "monitoring_interval_seconds": 21600,
+  "old_artifacts_sha256": {
+    "best_model.pt": "56a911479a2c0b53edd457e4179a942be6f652717e7322c35b41e45194e90215",
+    "config.json": "01ff2ac6054a02ce63d0ec21566b1e04910e9c097a9b564451c6778d14d372ea",
+    "console.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "dataset_stats.json": "b5b488cc00bf49c557e9dcf71410f92e7a1532d2ecd4d0be1c95acc9e790a8aa",
+    "last_model.pt": "83d9e8a1ccb536fbc04ac4ccd78bfb423ffabc00bea82d3b21467c877a35d211",
+    "metrics.csv": "013b69a1d0a6ba9169a253b08d50404f26dfe980c20e8f119bdeb9b0364d73c8",
+    "runner.pid": "b7f593d37b3c087b0a943be8a704cf9d84993734118dfc1ba179534569f988ba",
+    "training.jsonl": "1863af294e75efdc19229ce6e432a4622e0aac9579f349ef7a2fd3997c07868d"
+  },
+  "previous_head": "a54fc0c31a8ee651a092a6c021d20c95f44ab28e",
+  "prior_run_status": "abandoned; excluded from final benchmark",
+  "scientific_configuration_changed": false,
+  "session_store_metadata_sha256": "c08ac9eb1b2154de42b5faffd5b0914e635aab97a6e0adec0aeb568676f598f4",
+  "supervisor_pid": 506821,
+  "supervisor_script": ".inspection/supervise_dkt_restart_20261008.py",
+  "supervisor_status": ".inspection/dkt_restart_20261008/status.json",
+  "tests": {
+    "passed": 77,
+    "seconds": 17.82
+  },
+  "trainer_pid": 506822,
+  "trainer_source_sha256": "8555da33fa241e70c0c99fc6a69339c40e53daa9d8c459041b1265f6ee57efd3"
+}

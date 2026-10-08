@@ -1,6 +1,37 @@
 # Next checkpoint
 
-Updated: 2026-09-27 UTC
+Updated: 2026-10-08 UTC
+
+## Authoritative next action — 2026-10-08 fresh restart
+
+This supersedes every older resume, PID, monitor, and wait instruction below.
+
+1. Inspect `.inspection/dkt_restart_20261008/status.json`, trainer `506822`,
+   supervisor `506821`, and `experiments/dkt/ednet_kt1/full/progress.json`.
+   The fresh epoch1 run is already advancing. Do not relaunch or restore the
+   abandoned checkpoint. Six-hour monitor snapshots are automatic; first due
+   about14:45UTC Oct8, unless a stage finishes earlier.
+2. At the first completed epoch, verify all train/validation target counts,
+   seed/profile, best-checkpoint selection, and patience state. Commit/push the
+   new experiment artifacts and memory using Tanish's configured identity and
+   `capstone-gpu` remote. Preserve unrelated README edits; never stage raw data.
+3. The detached local supervisor automatically starts independent reference-
+   transport replay only after `_SUCCESS`, then calls strict report generation
+   only after exact metric agreement. Inspect `.inspection/dkt_restart_20261008/`
+   stage logs and terminal markers before declaring15/15 complete.
+4. After verified15/15, reconcile prompt.txt's remaining documentation and
+   interpretation requirements, update current memory, review generated tables/
+   plots, and commit/push all verified outputs. Automatic supervision does not
+   create commits or finish remaining explanatory prose.
+5. If `_FAILED` appears or either process disappears unexpectedly, inspect the
+   last progress/config/log/terminal artifacts and record the interruption.
+   Do not automatically restore the abandoned pre-Oct8 checkpoint. The latest
+   restart instruction governs; do not change scientific settings silently.
+
+Evidence: `reports/performance/dkt_restart_2026-10-08.json`. The abandoned run
+is `.inspection/dkt_ednet_abandoned_before_restart_20261008/`; its best checkpoint
+also remains addressable at prior Git commit `a54fc0c`. Current session has
+77 passing tests; live progress is runtime evidence, not final evaluation.
 
 ## Latest exact next action — 2026-09-27 17:15 UTC
 

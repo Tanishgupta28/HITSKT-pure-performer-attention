@@ -1,5 +1,23 @@
 # Durable user directives
 
+Updated: 2026-10-08 UTC
+
+## 2026-10-08 — Fresh restart of the fifteenth experiment (latest)
+
+- User requested extraction of `/workspace/tanish-capstone.zip`, use of the
+  installed durable agent memory skill, repository synchronization, and continuation
+  of the 15-experiment benchmark. Canonical repository explicitly supplied:
+  `https://github.com/Tanishgupta28/HITSKT-pure-performer-attention`.
+- User then explicitly requested: **“restart the 15th training, fuck the
+  checkpoints.”** Start DKT/full EdNet from epoch 1 with fresh model and Adam
+  state; do not restore the previous checkpoint. This supersedes historical
+  instructions to preserve/resume that unfinished DKT run.
+- Keep the established scientific settings and other 14 completed experiments.
+  Saving new best checkpoints remains part of the approved validation-AUC/test
+  protocol. The old run is preserved for audit and excluded from results.
+- No new monitoring cadence was requested; the latest six-hour cadence remains.
+  Existing public-repository publication authorization and Tanish identity remain.
+
 ## 2026-09-25 — Six-hour monitoring (latest)
 
 - User changed monitoring cadence to every six hours. This supersedes the
