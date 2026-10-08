@@ -35,7 +35,7 @@ export function StudyPlan({
           <p>{data.profile.learning_goal}</p>
         </div>
         <button className="text-button" onClick={onConfigure}>
-          Edit my plan <ArrowRight size={15} />
+          Edit my plan <ArrowRight size={20} />
         </button>
       </div>
       {data.profile.source === "sample" && (
@@ -47,7 +47,7 @@ export function StudyPlan({
       <div className="plan-layout">
         <div className="goal-summary">
           <span className="eyebrow">
-            <Target size={15} /> PAST 7 DAYS
+            <Target size={20} /> PAST 7 DAYS
           </span>
           <strong>
             {answered}
@@ -73,7 +73,7 @@ export function StudyPlan({
         </div>
         <div className="plan-sessions">
           <span className="eyebrow">
-            <CalendarDays size={15} /> YOUR SUGGESTED RHYTHM
+            <CalendarDays size={20} /> YOUR SUGGESTED RHYTHM
           </span>
           <div className="plan-days">
             {data.study_plan.map((session) => (
@@ -88,7 +88,7 @@ export function StudyPlan({
                     {session.questions} focused questions · review & practice
                   </small>
                 </span>
-                <ArrowRight size={16} />
+                <ArrowRight size={21} />
               </button>
             ))}
           </div>
@@ -298,12 +298,12 @@ export function LearnerProfileForm({
         )}
         <div className="profile-actions">
           <button className="button primary" disabled={busy}>
-            <Save size={17} />
+            <Save size={22} />
             {busy ? "Saving…" : "Save my preferences"}
           </button>
           {saved && (
             <span role="status">
-              <Check size={17} />
+              <Check size={22} />
               Preferences saved
             </span>
           )}

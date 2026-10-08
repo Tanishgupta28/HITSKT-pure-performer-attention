@@ -1,15 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Manrope:wght@400;500;600;650;700;750;800&display=swap");
 :root {
-  --ink: #243b32;
-  --muted: #859087;
-  --green: #325d46;
+  --ink: #193c31;
+  --muted: #63786c;
+  --green: #245c43;
   --border: #e7eae3;
-  --paper: #fafbf7;
+  --paper: #f5f7f2;
   --sage: #edf3e8;
   --lilac: #eeebf7;
   --peach: #fbefdf;
   --blue: #e9f0f3;
-  --font: "DM Sans", Arial, sans-serif;
+  --font: var(--font-body), Arial, sans-serif;
 }
 * {
   box-sizing: border-box;
@@ -19,7 +18,7 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font);
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.5;
 }
 button,
@@ -57,7 +56,7 @@ p {
 h1,
 h2,
 h3 {
-  font-family: "Manrope", var(--font);
+  font-family: var(--font-heading), var(--font);
   letter-spacing: -0.045em;
 }
 button:focus-visible,
@@ -71,8 +70,8 @@ textarea:focus-visible {
 .brand {
   display: inline-flex;
   align-items: center;
-  font-family: "Manrope", sans-serif;
-  font-size: 30px;
+  font-family: var(--font-heading), sans-serif;
+  font-size: 36px;
   font-weight: 800;
   letter-spacing: -1.8px;
   line-height: 1;
@@ -92,10 +91,10 @@ textarea:focus-visible {
   color: #7f9f62;
 }
 .eyebrow {
-  font-size: 10px;
+  font-size: 14px;
   letter-spacing: 1.9px;
   font-weight: 700;
-  color: #879180;
+  color: var(--muted);
 }
 .pill {
   display: inline-flex;
@@ -105,7 +104,7 @@ textarea:focus-visible {
   border: 1px solid #e2e7dc;
   border-radius: 6px;
   background: #f5f7f0;
-  font-size: 9px;
+  font-size: 13px;
   letter-spacing: 1px;
   font-weight: 650;
   white-space: nowrap;
@@ -125,7 +124,7 @@ textarea:focus-visible {
   padding: 12px 19px;
   border-radius: 8px;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 16px;
   transition:
     background 0.15s,
     transform 0.15s;
@@ -151,7 +150,7 @@ textarea:focus-visible {
   display: flex;
   gap: 7px;
   align-items: center;
-  font-size: 12px;
+  font-size: 16px;
   color: #6f7b70;
 }
 .error {
@@ -182,9 +181,9 @@ textarea:focus-visible {
   margin-left: 10px;
 }
 .fine-print {
-  font-size: 11px;
+  font-size: 15px;
   line-height: 1.7;
-  color: #9ba198;
+  color: var(--muted);
 }
 .muted {
   color: var(--muted);
@@ -230,9 +229,9 @@ textarea:focus-visible {
   margin: 0 9px 46px;
 }
 .workspace-label {
-  font-size: 9px;
+  font-size: 13px;
   letter-spacing: 1.8px;
-  color: #a0a69a;
+  color: var(--muted);
   margin: 0 12px 14px;
   font-weight: 600;
 }
@@ -246,9 +245,9 @@ textarea:focus-visible {
   gap: 12px;
   padding: 12px 13px;
   border-radius: 7px;
-  color: #7b857d;
+  color: var(--muted);
   text-align: left;
-  font-size: 12px;
+  font-size: 16px;
 }
 .sidebar nav button.active {
   background: #eef3e8;
@@ -274,29 +273,29 @@ textarea:focus-visible {
   position: absolute;
   right: 14px;
   top: 14px;
-  font-size: 32px;
+  font-size: 38px;
   color: #b5bd93;
 }
 .sidebar-note strong {
-  font-family: "Manrope", sans-serif;
-  font-size: 17px;
+  font-family: var(--font-heading), sans-serif;
+  font-size: 22px;
   font-weight: 650;
   letter-spacing: -0.5px;
   line-height: 1.45;
 }
 .sidebar-note p {
-  font-size: 11px;
+  font-size: 15px;
   line-height: 1.75;
-  color: #8b9181;
+  color: var(--muted);
   margin: 11px 0 18px;
 }
 .sidebar-note > span:last-child {
   display: flex;
   gap: 8px;
   align-items: center;
-  font-size: 8px;
+  font-size: 12px;
   letter-spacing: 1.6px;
-  color: #92997f;
+  color: var(--muted);
   font-weight: 700;
 }
 .sidebar-bottom {
@@ -308,8 +307,8 @@ textarea:focus-visible {
   align-items: center;
   gap: 12px;
   padding: 10px 11px;
-  color: #879085;
-  font-size: 11px;
+  color: var(--muted);
+  font-size: 15px;
   width: 100%;
   text-align: left;
 }
@@ -328,12 +327,12 @@ textarea:focus-visible {
   place-items: center;
   background: #efece4;
   border-radius: 50%;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 600;
 }
 .profile strong {
   display: block;
-  font-size: 11px;
+  font-size: 15px;
   max-width: 118px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -341,8 +340,8 @@ textarea:focus-visible {
 }
 .profile small {
   display: block;
-  font-size: 9px;
-  color: #92998c;
+  font-size: 13px;
+  color: var(--muted);
   margin-top: 3px;
 }
 .profile > svg {
@@ -366,8 +365,8 @@ textarea:focus-visible {
   display: flex;
   align-items: center;
   gap: 15px;
-  font-size: 10px;
-  color: #929b90;
+  font-size: 14px;
+  color: var(--muted);
 }
 .breadcrumb span {
   color: #c4c9c0;
@@ -377,8 +376,8 @@ textarea:focus-visible {
   color: #596a5c;
 }
 .top-date {
-  font-size: 10px;
-  color: #929b90;
+  font-size: 14px;
+  color: var(--muted);
 }
 .dashboard {
   max-width: 1380px;
@@ -393,19 +392,19 @@ textarea:focus-visible {
   gap: 15px;
 }
 .page-heading h1 {
-  font-size: 31px;
+  font-size: 42px;
   font-weight: 600;
   margin: 7px 0 4px;
   line-height: 1.45;
 }
 .heading-spark {
-  font-size: 28px;
+  font-size: 34px;
   color: #c6bc8f;
   margin-left: 11px;
 }
 .page-heading p {
-  font-size: 11px;
-  color: #899384;
+  font-size: 15px;
+  color: var(--muted);
 }
 .hero-card {
   border: 1px solid #e1e7d5;
@@ -427,35 +426,35 @@ textarea:focus-visible {
   display: flex;
   gap: 7px;
   align-items: center;
-  font-size: 8px;
+  font-size: 12px;
   letter-spacing: 1.6px;
-  color: #7c8b6e;
+  color: var(--muted);
   font-weight: 650;
 }
 .hero-copy h2 {
-  font-size: 33px;
+  font-size: 44px;
   line-height: 1.25;
   font-weight: 600;
   margin: 14px 0 12px;
   max-width: 370px;
 }
 .hero-copy p {
-  font-size: 11px;
-  color: #7f8d74;
+  font-size: 15px;
+  color: var(--muted);
   max-width: 340px;
   line-height: 1.8;
   margin-bottom: 19px;
 }
 .hero-copy .button {
-  font-size: 11px;
+  font-size: 15px;
   min-height: 41px;
 }
 .hero-meta {
   display: flex;
   gap: 6px;
   align-items: center;
-  font-size: 9px;
-  color: #94a084;
+  font-size: 13px;
+  color: var(--muted);
   margin-top: 15px;
 }
 .hero-meta > span {
@@ -578,7 +577,7 @@ textarea:focus-visible {
   display: flex;
   align-items: center;
   gap: 7px;
-  font-size: 10px;
+  font-size: 14px;
   color: #668056;
   transform: rotate(-6deg);
 }
@@ -630,14 +629,14 @@ textarea:focus-visible {
   color: #7898ab;
 }
 .stat-card > div > span {
-  font-size: 10px;
-  color: #93998d;
+  font-size: 14px;
+  color: var(--muted);
 }
 .stat-card strong {
   display: block;
-  font-size: 26px;
+  font-size: 32px;
   line-height: 1.1;
-  font-family: "Manrope", sans-serif;
+  font-family: var(--font-heading), sans-serif;
   font-weight: 600;
   margin-top: 8px;
   letter-spacing: -1px;
@@ -646,10 +645,10 @@ textarea:focus-visible {
   display: block;
   margin-top: 7px;
   font-family: var(--font);
-  font-size: 9px;
+  font-size: 13px;
   font-weight: 400;
   letter-spacing: 0;
-  color: #a0a597;
+  color: var(--muted);
 }
 .section-heading {
   display: flex;
@@ -659,18 +658,18 @@ textarea:focus-visible {
   margin-bottom: 18px;
 }
 .section-heading h2 {
-  font-size: 17px;
+  font-size: 22px;
   font-weight: 650;
 }
 .section-heading p {
-  font-size: 10px;
-  color: #9aa090;
+  font-size: 14px;
+  color: var(--muted);
   margin-top: 5px;
 }
 .subtle-label {
-  font-size: 8px;
+  font-size: 12px;
   letter-spacing: 1.2px;
-  color: #9aa18e;
+  color: var(--muted);
 }
 .subject-section {
   margin-bottom: 29px;
@@ -701,17 +700,17 @@ textarea:focus-visible {
   flex: 1;
 }
 .subject-details .eyebrow {
-  font-size: 8px;
+  font-size: 12px;
   letter-spacing: 1.4px;
-  color: #a69e82;
+  color: var(--muted);
 }
 .subject-details h3 {
-  font-size: 20px;
+  font-size: 25px;
   margin: 3px 0 4px;
   font-weight: 600;
 }
 .subject-details p {
-  font-size: 10px;
+  font-size: 14px;
   color: #979d8f;
 }
 .subject-progress {
@@ -737,11 +736,11 @@ textarea:focus-visible {
   width: 150px;
 }
 .subject-progress > span {
-  font-size: 8px;
+  font-size: 12px;
   color: #99a08b;
 }
 .subject-card .button {
-  font-size: 10px;
+  font-size: 14px;
 }
 .content-grid {
   display: grid;
@@ -791,12 +790,12 @@ textarea:focus-visible {
   flex: 1;
 }
 .concept-info strong {
-  font-size: 11px;
+  font-size: 15px;
   font-weight: 550;
 }
 .concept-info > span {
   display: block;
-  font-size: 8px;
+  font-size: 12px;
   color: #a1a693;
   margin-top: 3px;
 }
@@ -807,7 +806,7 @@ textarea:focus-visible {
 }
 .concept-value {
   text-align: right;
-  font-size: 13px;
+  font-size: 16px;
   min-width: 72px;
   color: #8b9480;
 }
@@ -816,7 +815,7 @@ textarea:focus-visible {
 }
 .concept-value small {
   display: block;
-  font-size: 8px;
+  font-size: 12px;
   color: #a1a695;
   margin-top: 4px;
 }
@@ -825,7 +824,7 @@ textarea:focus-visible {
   display: flex;
   gap: 6px;
   align-items: center;
-  font-size: 9px;
+  font-size: 13px;
   color: #a2a894;
   padding: 14px 0;
   margin-top: 4px;
@@ -852,7 +851,7 @@ textarea:focus-visible {
 .rec-meta {
   display: flex;
   justify-content: space-between;
-  font-size: 8px;
+  font-size: 12px;
   letter-spacing: 1.1px;
   color: #9d8ead;
   font-weight: 600;
@@ -861,7 +860,7 @@ textarea:focus-visible {
   display: flex;
   align-items: center;
   gap: 5px;
-  font-size: 8px;
+  font-size: 12px;
   font-weight: 400;
   letter-spacing: 0;
 }
@@ -874,7 +873,7 @@ textarea:focus-visible {
   margin: 11px 0 8px;
 }
 .recommendation p {
-  font-size: 10px;
+  font-size: 14px;
   color: #9b91a3;
   line-height: 1.75;
   max-width: 260px;
@@ -890,7 +889,7 @@ textarea:focus-visible {
   border-top: 1px solid #e1dbe9;
   padding: 15px 0 0;
   margin-top: 18px;
-  font-size: 10px;
+  font-size: 14px;
   color: #8b789d;
   font-weight: 500;
 }
@@ -911,13 +910,13 @@ textarea:focus-visible {
   color: #b1bba5;
 }
 .chart-empty strong {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 500;
   color: #89977b;
   margin-top: 4px;
 }
 .chart-empty span {
-  font-size: 10px;
+  font-size: 14px;
   color: #a2aa98;
 }
 .chart svg {
@@ -925,7 +924,7 @@ textarea:focus-visible {
   max-height: 220px;
 }
 .chart-caption {
-  font-size: 9px;
+  font-size: 13px;
   color: #9aa48d;
   display: flex;
   align-items: center;
@@ -944,7 +943,7 @@ textarea:focus-visible {
   align-items: center;
   justify-content: space-between;
   color: #a9b09b;
-  font-size: 9px;
+  font-size: 13px;
   padding: 10px 0 0;
 }
 .dashboard-footer > span:first-child {
@@ -975,22 +974,22 @@ textarea:focus-visible {
   color: #ad9b74;
 }
 .history-list strong {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 500;
 }
 .history-list small {
   display: block;
-  font-size: 9px;
+  font-size: 13px;
   color: var(--muted);
   margin-top: 3px;
 }
 .history-list > div > span:nth-last-child(2) {
   margin-left: auto;
-  font-size: 10px;
+  font-size: 14px;
   color: var(--muted);
 }
 .history-list time {
-  font-size: 9px;
+  font-size: 13px;
   color: var(--muted);
 }
 .mobile-menu {
@@ -1030,7 +1029,7 @@ textarea:focus-visible {
   align-items: center;
   gap: 8px;
   color: var(--green);
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 650;
   flex-shrink: 0;
 }
@@ -1052,20 +1051,20 @@ textarea:focus-visible {
 }
 .goal-summary > strong {
   display: block;
-  font-size: 34px;
-  font-family: "Manrope", sans-serif;
+  font-size: 42px;
+  font-family: var(--font-heading), sans-serif;
   margin: 14px 0;
   letter-spacing: -1px;
 }
 .goal-summary strong small {
   color: #788776;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 500;
   letter-spacing: 0;
 }
 .goal-summary > p,
 .plan-caption {
-  font-size: 12px;
+  font-size: 16px;
   color: #71816e;
   margin-top: 12px;
 }
@@ -1090,11 +1089,11 @@ textarea:focus-visible {
   display: block;
 }
 .plan-days strong {
-  font-size: 13px;
+  font-size: 16px;
 }
 .plan-days small {
   color: #7b8778;
-  font-size: 11px;
+  font-size: 15px;
   margin-top: 2px;
 }
 .day-badge {
@@ -1104,7 +1103,7 @@ textarea:focus-visible {
   height: 39px;
   border-radius: 10px;
   background: var(--lilac);
-  font-size: 11px;
+  font-size: 15px;
   font-weight: 650;
   flex-shrink: 0;
 }
@@ -1115,7 +1114,7 @@ textarea:focus-visible {
   border: 1px solid #efdfc7;
   border-radius: 8px;
   color: #84653e;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1.7;
 }
 .profile-card {
@@ -1136,7 +1135,7 @@ textarea:focus-visible {
 }
 .account-summary div > span {
   color: #7e8c78;
-  font-size: 12px;
+  font-size: 16px;
   margin-top: 2px;
 }
 .profile-fields {
@@ -1148,7 +1147,7 @@ textarea:focus-visible {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 600;
   min-width: 0;
 }
@@ -1170,7 +1169,7 @@ textarea:focus-visible {
   resize: vertical;
 }
 .profile-fields small {
-  font-size: 11px;
+  font-size: 15px;
   color: #778773;
   font-weight: 400;
   line-height: 1.7;
@@ -1182,12 +1181,12 @@ textarea:focus-visible {
   min-width: 0;
 }
 .profile-form legend {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 600;
   margin-bottom: 10px;
 }
 .profile-form fieldset > p {
-  font-size: 12px;
+  font-size: 16px;
   margin-bottom: 12px;
 }
 .preference-choices {
@@ -1202,7 +1201,7 @@ textarea:focus-visible {
   border: 1px solid #e0e6da;
   padding: 9px 12px;
   border-radius: 8px;
-  font-size: 12px;
+  font-size: 16px;
   cursor: pointer;
 }
 .preference-choices label:has(input:checked) {
@@ -1216,7 +1215,7 @@ textarea:focus-visible {
   margin: 0;
 }
 .profile-disclosure {
-  font-size: 11px;
+  font-size: 15px;
   color: #7a8875;
   margin: 22px 0;
 }
@@ -1232,11 +1231,11 @@ textarea:focus-visible {
   align-items: center;
   gap: 6px;
   color: var(--green);
-  font-size: 12px;
+  font-size: 16px;
 }
 .lesson-steps {
   color: #65785d;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1.8;
   padding-left: 20px;
   margin: 20px 0;
@@ -1256,7 +1255,7 @@ textarea:focus-visible {
 }
 .lesson-example > strong,
 .lesson-tip > strong {
-  font-size: 12px;
+  font-size: 16px;
 }
 .lesson-example p,
 .lesson-tip p {
@@ -1277,7 +1276,7 @@ textarea:focus-visible {
     gap: 12px;
   }
   .goal-summary > strong {
-    font-size: 30px;
+    font-size: 36px;
   }
   .lesson-modal {
     padding: 30px 22px;
@@ -1287,16 +1286,16 @@ textarea:focus-visible {
   position: absolute;
   right: 16px;
   top: 16px;
-  color: #8c9784;
+  color: var(--muted);
 }
 .lesson-modal h2 {
-  font-size: 26px;
+  font-size: 32px;
   margin: 21px 0 17px;
 }
 .lesson-modal p {
-  color: #7e8b75;
+  color: var(--muted);
   line-height: 1.9;
-  font-size: 13px;
+  font-size: 16px;
 }
 .lesson-modal .button {
   margin-top: 25px;
@@ -1306,7 +1305,7 @@ textarea:focus-visible {
   align-items: center;
   gap: 8px;
   background: #f5f7f0;
-  font-size: 11px;
+  font-size: 15px;
   color: #8e9a7e;
   padding: 12px;
   margin-top: 18px;
@@ -1343,7 +1342,7 @@ textarea:focus-visible {
   font-weight: 400;
 }
 .auth-story > p {
-  font-size: 13px;
+  font-size: 16px;
   color: #8b987d;
   max-width: 330px;
   line-height: 1.9;
@@ -1376,8 +1375,8 @@ textarea:focus-visible {
   position: absolute;
   top: 70px;
   left: 83px;
-  font-family: "Manrope", sans-serif;
-  font-size: 24px;
+  font-family: var(--font-heading), sans-serif;
+  font-size: 28px;
   color: #879d70;
   line-height: 1.4;
   letter-spacing: -1px;
@@ -1397,7 +1396,7 @@ textarea:focus-visible {
   position: absolute;
   bottom: 32px;
   right: 0;
-  font-size: 10px;
+  font-size: 14px;
   background: #fafff3;
   padding: 12px;
   border: 1px solid #dce4cc;
@@ -1410,7 +1409,7 @@ textarea:focus-visible {
   padding-top: 30px;
   display: flex;
   gap: 20px;
-  font-size: 9px;
+  font-size: 13px;
   color: #8b997b;
 }
 .story-footer span {
@@ -1429,12 +1428,12 @@ textarea:focus-visible {
   max-width: 350px;
 }
 .auth-form h2 {
-  font-size: 29px;
+  font-size: 36px;
   font-weight: 600;
   margin: 20px 0 9px;
 }
 .auth-form > p:not(.fine-print) {
-  font-size: 12px;
+  font-size: 16px;
   color: #909b84;
   line-height: 1.7;
 }
@@ -1450,7 +1449,7 @@ textarea:focus-visible {
   flex: 1;
   border-radius: 5px;
   padding: 10px;
-  font-size: 11px;
+  font-size: 15px;
   color: #8f9a83;
 }
 .auth-tabs button.selected {
@@ -1462,7 +1461,7 @@ textarea:focus-visible {
 .auth-form form label {
   display: flex;
   flex-direction: column;
-  font-size: 11px;
+  font-size: 15px;
   color: #6f7e62;
   gap: 8px;
   margin-bottom: 17px;
@@ -1472,7 +1471,7 @@ textarea:focus-visible {
   background: white;
   border-radius: 7px;
   padding: 13px 14px;
-  font-size: 12px;
+  font-size: 16px;
   color: var(--ink);
   width: 100%;
 }
@@ -1510,7 +1509,7 @@ textarea:focus-visible {
   align-items: center;
   justify-content: space-between;
   color: #98a18b;
-  font-size: 10px;
+  font-size: 14px;
 }
 .assessment-progress {
   height: 4px;
@@ -1531,7 +1530,7 @@ textarea:focus-visible {
 .question-meta {
   display: flex;
   justify-content: space-between;
-  font-size: 10px;
+  font-size: 14px;
   text-transform: capitalize;
   color: #96a085;
 }
@@ -1554,13 +1553,13 @@ textarea:focus-visible {
   background: #9fb588;
 }
 .question-card h1 {
-  font-size: 26px;
+  font-size: 32px;
   font-weight: 550;
   line-height: 1.55;
   margin: 24px 0 7px;
 }
 .question-hint {
-  font-size: 11px;
+  font-size: 15px;
   color: #a0a993;
 }
 .choices {
@@ -1576,7 +1575,7 @@ textarea:focus-visible {
   background: #fff;
   padding: 15px 17px;
   border-radius: 9px;
-  font-size: 15px;
+  font-size: 18px;
   text-align: left;
   transition: all 0.15s;
 }
@@ -1598,7 +1597,7 @@ textarea:focus-visible {
   border-radius: 6px;
   display: grid;
   place-items: center;
-  font-size: 10px;
+  font-size: 14px;
   color: #93a080;
 }
 .choice-radio {
@@ -1632,14 +1631,14 @@ textarea:focus-visible {
   gap: 15px;
 }
 .question-actions > span {
-  font-size: 9px;
+  font-size: 13px;
   color: #9da68d;
   display: flex;
   align-items: center;
   gap: 6px;
 }
 .question-actions .button {
-  font-size: 11px;
+  font-size: 15px;
   flex-shrink: 0;
 }
 .answer-feedback {
@@ -1653,18 +1652,18 @@ textarea:focus-visible {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 550;
   color: #698354;
 }
 .answer-feedback p {
-  font-size: 12px;
+  font-size: 16px;
   margin: 9px 0;
   color: #7c8e69;
   line-height: 1.8;
 }
 .answer-feedback > span {
-  font-size: 9px;
+  font-size: 13px;
   color: #98a586;
 }
 .answer-feedback.reflect {
@@ -1681,7 +1680,7 @@ textarea:focus-visible {
   justify-content: center;
   gap: 8px;
   color: #a3ad93;
-  font-size: 10px;
+  font-size: 14px;
   text-align: center;
   margin-top: 24px;
 }
@@ -1700,13 +1699,13 @@ textarea:focus-visible {
   margin: 0 auto 24px;
 }
 .completion h1 {
-  font-size: 40px;
+  font-size: 48px;
   font-weight: 500;
   margin: 11px 0 9px;
 }
 .completion > p:not(.fine-print) {
   color: #98a38a;
-  font-size: 12px;
+  font-size: 16px;
 }
 .completion-stats {
   display: grid;
@@ -1722,17 +1721,17 @@ textarea:focus-visible {
 }
 .completion-stats strong {
   display: block;
-  font-size: 28px;
+  font-size: 34px;
   letter-spacing: -1px;
   font-weight: 500;
 }
 .completion-stats span {
   color: #9ca68f;
-  font-size: 10px;
+  font-size: 14px;
 }
 .completion h3 {
   text-align: left;
-  font-size: 16px;
+  font-size: 19px;
   font-weight: 550;
 }
 .completion-recs {
@@ -1747,13 +1746,13 @@ textarea:focus-visible {
   border-bottom: 1px solid #edf0e7;
 }
 .completion-recs strong {
-  font-size: 11px;
+  font-size: 15px;
   font-weight: 550;
 }
 .completion-recs small {
   display: block;
   color: #9fa78f;
-  font-size: 10px;
+  font-size: 14px;
   margin-top: 4px;
 }
 .completion .fine-print {
@@ -1770,7 +1769,7 @@ textarea:focus-visible {
     padding: 35px;
   }
   .hero-copy h2 {
-    font-size: 38px;
+    font-size: 48px;
   }
   .plant-art {
     right: 70px;
@@ -1811,7 +1810,7 @@ textarea:focus-visible {
     transform: scale(0.85);
   }
   .hero-copy h2 {
-    font-size: 29px;
+    font-size: 36px;
   }
   .hero-copy p {
     max-width: 260px;
@@ -1854,7 +1853,7 @@ textarea:focus-visible {
     padding: 19px;
   }
   .subtle-label {
-    font-size: 7px;
+    font-size: 12px;
   }
 }
 @media (max-width: 850px) {
@@ -1882,7 +1881,7 @@ textarea:focus-visible {
     padding: 17px;
   }
   .stat-card strong {
-    font-size: 24px;
+    font-size: 28px;
   }
   .hero-card {
     min-height: 310px;
@@ -1899,7 +1898,7 @@ textarea:focus-visible {
     max-width: 280px;
   }
   .hero-meta {
-    font-size: 8px;
+    font-size: 12px;
     gap: 4px;
   }
   .hero-meta > span {
@@ -1940,7 +1939,7 @@ textarea:focus-visible {
     padding: 35px;
   }
   .auth-form h2 {
-    font-size: 25px;
+    font-size: 30px;
   }
 }
 @media (max-width: 650px) {
@@ -1975,10 +1974,10 @@ textarea:focus-visible {
   }
   .breadcrumb {
     gap: 9px;
-    font-size: 9px;
+    font-size: 13px;
   }
   .top-date {
-    font-size: 9px;
+    font-size: 13px;
   }
   .dashboard {
     padding: 24px 19px 19px;
@@ -1987,13 +1986,13 @@ textarea:focus-visible {
     margin-bottom: 21px;
   }
   .page-heading h1 {
-    font-size: 27px;
+    font-size: 34px;
   }
   .eyebrow {
-    font-size: 8px;
+    font-size: 12px;
   }
   .page-heading p {
-    font-size: 10px;
+    font-size: 14px;
   }
   .hero-card {
     min-height: 300px;
@@ -2003,12 +2002,12 @@ textarea:focus-visible {
     max-width: 100%;
   }
   .hero-copy h2 {
-    font-size: 28px;
+    font-size: 34px;
     max-width: 290px;
   }
   .hero-copy p {
     max-width: 225px;
-    font-size: 10px;
+    font-size: 14px;
   }
   .plant-art {
     right: -99px;
@@ -2017,7 +2016,7 @@ textarea:focus-visible {
     opacity: 0.65;
   }
   .hero-meta {
-    font-size: 7px;
+    font-size: 12px;
     position: relative;
     z-index: 2;
   }
@@ -2026,7 +2025,7 @@ textarea:focus-visible {
     z-index: 2;
   }
   .hero-tag {
-    font-size: 7px;
+    font-size: 12px;
     letter-spacing: 1.2px;
   }
   .stats-grid {
@@ -2046,20 +2045,20 @@ textarea:focus-visible {
     width: 16px;
   }
   .stat-card > div > span {
-    font-size: 8px;
+    font-size: 12px;
   }
   .stat-card strong {
-    font-size: 23px;
+    font-size: 28px;
   }
   .stat-card strong small {
-    font-size: 7px;
+    font-size: 12px;
     line-height: 1.6;
   }
   .section-heading h2 {
-    font-size: 16px;
+    font-size: 19px;
   }
   .section-heading p {
-    font-size: 9px;
+    font-size: 13px;
   }
   .subject-card {
     padding: 18px;
@@ -2068,13 +2067,13 @@ textarea:focus-visible {
   .subject-symbol {
     width: 55px;
     height: 70px;
-    font-size: 37px;
+    font-size: 44px;
   }
   .subject-details h3 {
-    font-size: 18px;
+    font-size: 22px;
   }
   .subject-details p {
-    font-size: 9px;
+    font-size: 13px;
   }
   .subject-progress {
     margin-top: 10px;
@@ -2090,20 +2089,20 @@ textarea:focus-visible {
     padding: 17px;
   }
   .recommendation h3 {
-    font-size: 17px;
+    font-size: 22px;
   }
   .recommendation p {
-    font-size: 9px;
+    font-size: 13px;
   }
   .rec-meta {
-    font-size: 6px;
+    font-size: 11px;
     letter-spacing: 0.7px;
   }
   .rec-meta > span:last-child {
-    font-size: 7px;
+    font-size: 12px;
   }
   .recommendation button {
-    font-size: 9px;
+    font-size: 13px;
   }
   .card {
     padding: 20px;
@@ -2112,14 +2111,14 @@ textarea:focus-visible {
     padding: 20px 20px 0;
   }
   .subtle-label {
-    font-size: 6px;
+    font-size: 11px;
     letter-spacing: 0.6px;
   }
   .history-list > div > span:nth-last-child(2) {
     display: none;
   }
   .chart-empty span {
-    font-size: 9px;
+    font-size: 13px;
   }
   .auth-page {
     grid-template-columns: 1fr;
@@ -2130,10 +2129,10 @@ textarea:focus-visible {
   }
   .auth-story > .brand {
     margin-bottom: 28px;
-    font-size: 27px;
+    font-size: 34px;
   }
   .auth-story h1 {
-    font-size: 39px;
+    font-size: 46px;
     letter-spacing: -1.8px;
     margin: 12px 0 14px;
   }
@@ -2141,7 +2140,7 @@ textarea:focus-visible {
     display: none;
   }
   .auth-story > p {
-    font-size: 11px;
+    font-size: 15px;
     max-width: 380px;
   }
   .orbit-art,
@@ -2155,14 +2154,14 @@ textarea:focus-visible {
     max-width: 390px;
   }
   .auth-form h2 {
-    font-size: 26px;
+    font-size: 32px;
   }
   .assessment-header {
     height: 70px;
     padding: 0 22px;
   }
   .assessment-header .brand {
-    font-size: 24px;
+    font-size: 28px;
   }
   .assessment-header .brand-mark {
     width: 32px;
@@ -2172,13 +2171,13 @@ textarea:focus-visible {
     padding: 28px 17px;
   }
   .assessment-top .pill {
-    font-size: 7px;
+    font-size: 12px;
   }
   .question-card {
     padding: 23px;
   }
   .question-card h1 {
-    font-size: 23px;
+    font-size: 28px;
     margin-top: 21px;
   }
   .choices {
@@ -2201,16 +2200,16 @@ textarea:focus-visible {
     width: 100%;
   }
   .assessment-note {
-    font-size: 8px;
+    font-size: 12px;
   }
   .completion {
     padding: 30px 23px;
   }
   .completion h1 {
-    font-size: 34px;
+    font-size: 42px;
   }
   .completion-recs small {
-    font-size: 9px;
+    font-size: 13px;
   }
 }
 @media (prefers-reduced-motion: reduce) {

@@ -36,6 +36,8 @@ import {
 } from "@/lib/api";
 import { Auth } from "@/components/auth";
 import { Brand } from "@/components/brand";
+import { GrowthScene } from "@/components/growth-scene";
+import { MotionToggle } from "@/components/motion";
 import { LearnerProfileForm, StudyPlan } from "@/components/learner-profile";
 
 type Tab = "overview" | "path" | "progress" | "profile";
@@ -45,7 +47,7 @@ function ProgressChart({ data }: { data: Dashboard["progress"] }) {
   if (!data.length)
     return (
       <div className="chart-empty">
-        <ChartNoAxesCombined size={30} />
+        <ChartNoAxesCombined size={36} />
         <strong>Your story starts here</strong>
         <span>Finish an assessment to see your progress over time.</span>
       </div>
@@ -79,7 +81,7 @@ function ProgressChart({ data }: { data: Dashboard["progress"] }) {
               stroke="#eceee8"
               strokeDasharray="4 5"
             />
-            <text x="0" y={149 - n * 120} fill="#8b928b" fontSize="11">
+            <text x="0" y={149 - n * 120} fill="#8b928b" fontSize="13">
               {percent(n)}
             </text>
           </g>
@@ -113,7 +115,7 @@ function ProgressChart({ data }: { data: Dashboard["progress"] }) {
               x={x}
               y="173"
               fill="#8b928b"
-              fontSize="11"
+              fontSize="13"
               textAnchor="middle"
             >
               Test {data.length - points.length + i + 1}
@@ -236,7 +238,7 @@ export default function Home() {
                 setMobile(false);
               }}
             >
-              <Icon size={19} />
+              <Icon size={24} />
               {name}
               {tab === id && <span className="nav-dot" />}
             </button>
@@ -251,7 +253,7 @@ export default function Home() {
           </strong>
           <p>A few thoughtful minutes today can make tomorrow feel easier.</p>
           <span>
-            YOU’VE GOT THIS <ArrowUpRight size={14} />
+            YOU’VE GOT THIS <ArrowUpRight size={19} />
           </span>
         </div>
         <div className="sidebar-bottom">
@@ -265,11 +267,11 @@ export default function Home() {
               } as Concept)
             }
           >
-            <CircleHelp size={18} />
+            <CircleHelp size={23} />
             How it works
           </button>
           <button onClick={logout}>
-            <LogOut size={18} />
+            <LogOut size={23} />
             Sign out
           </button>
           <div className="profile">
@@ -284,7 +286,7 @@ export default function Home() {
                   : user.profile.grade_level}
               </small>
             </span>
-            <Sprout size={17} />
+            <Sprout size={22} />
           </div>
         </div>
       </aside>
@@ -296,20 +298,23 @@ export default function Home() {
               onClick={() => setMobile(true)}
               aria-label="Open navigation"
             >
-              <Menu size={20} />
+              <Menu size={25} />
             </button>
             My workspace <span>/</span>
             <strong>{navigation.find((n) => n.id === tab)?.name}</strong>
           </div>
-          <span className="top-date">
-            {new Date().toLocaleDateString("en-IN", {
-              day: "numeric",
-              month: "long",
-              year: "numeric",
-            })}
-          </span>
+          <div className="topbar-tools">
+            <span className="top-date">
+              {new Date().toLocaleDateString("en-IN", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              })}
+            </span>
+            <MotionToggle />
+          </div>
         </header>
-        <main className="dashboard">
+        <main className="dashboard" key={tab}>
           <div className="page-heading">
             <div>
               <div className="eyebrow">LET’S MAKE A LITTLE PROGRESS</div>
@@ -321,9 +326,7 @@ export default function Home() {
                     : tab === "profile"
                       ? "Your goals, your pace"
                       : "Look how far you’ve come"}
-                <span className="heading-spark">
-                  {tab === "overview" ? "✳" : ""}
-                </span>
+                {tab === "overview" && <span className="heading-spark">✳</span>}
               </h1>
               <p>
                 {tab === "overview"
@@ -366,7 +369,7 @@ export default function Home() {
                   <section className="hero-card">
                     <div className="hero-copy">
                       <span className="hero-tag">
-                        <Sparkles size={14} />
+                        <Sparkles size={19} />
                         {data.diagnostic_complete
                           ? "YOUR NEXT LEARNING MOMENT"
                           : "A GOOD PLACE TO START"}
@@ -413,38 +416,22 @@ export default function Home() {
                             : data.diagnostic_complete
                               ? "Start adaptive practice"
                               : "Find my starting point"}
-                        <ArrowRight size={18} />
+                        <ArrowRight size={23} />
                       </button>
                       <span className="hero-meta">
-                        <Clock3 size={13} />
+                        <Clock3 size={18} />
                         {data.active_assessment
                           ? `${data.active_assessment.answered} of ${data.active_assessment.total} answered`
                           : `${data.diagnostic_complete ? data.profile.adaptive_session_questions : 12} questions · At your own pace`}
                         <span>•</span>Go at your own pace
                       </span>
                     </div>
-                    <div className="plant-art" aria-hidden="true">
-                      <span className="art-orbit" />
-                      <span className="art-orbit inner" />
-                      <span className="plant-stem" />
-                      <span className="leaf leaf-a" />
-                      <span className="leaf leaf-b" />
-                      <span className="leaf leaf-c" />
-                      <span className="leaf leaf-d" />
-                      <span className="plant-pot" />
-                      <span className="art-dot dot-a" />
-                      <span className="art-dot dot-b" />
-                      <span className="float-note">
-                        <CheckCircle2 size={18} />
-                        Room to grow
-                      </span>
-                      <span className="float-spark">✧</span>
-                    </div>
+                    <GrowthScene />
                   </section>
                   <div className="stats-grid">
                     <div className="stat-card">
                       <span className="stat-icon sage">
-                        <BookOpen size={20} />
+                        <BookOpen size={25} />
                       </span>
                       <div>
                         <span>Questions explored</span>
@@ -456,7 +443,7 @@ export default function Home() {
                     </div>
                     <div className="stat-card">
                       <span className="stat-icon lilac">
-                        <Target size={20} />
+                        <Target size={25} />
                       </span>
                       <div>
                         <span>Answer accuracy</span>
@@ -474,7 +461,7 @@ export default function Home() {
                     </div>
                     <div className="stat-card">
                       <span className="stat-icon peach">
-                        <Sprout size={20} />
+                        <Sprout size={25} />
                       </span>
                       <div>
                         <span>Strong foundations</span>
@@ -533,7 +520,7 @@ export default function Home() {
                         }
                       >
                         Let’s explore
-                        <ArrowUpRight size={16} />
+                        <ArrowUpRight size={21} />
                       </button>
                     </div>
                   </section>
@@ -555,7 +542,7 @@ export default function Home() {
                         <p>A snapshot of what’s taking shape.</p>
                       </div>
                       <span className="round-icon">
-                        <Layers3 size={17} />
+                        <Layers3 size={22} />
                       </span>
                     </div>
                     <div className="concept-list">
@@ -601,7 +588,7 @@ export default function Home() {
                       ))}
                     </div>
                     <div className="card-footnote">
-                      <CircleHelp size={14} />
+                      <CircleHelp size={19} />
                       Estimates grow more reliable with practice.
                     </div>
                   </section>
@@ -611,7 +598,7 @@ export default function Home() {
                         <h2>A good next step</h2>
                         <p>A little direction, just for you.</p>
                       </div>
-                      <Sparkles size={18} />
+                      <Sparkles size={23} />
                     </div>
                     {data.recommendations
                       .slice(0, tab === "path" ? 3 : 2)
@@ -625,7 +612,7 @@ export default function Home() {
                               {i === 0 ? "START HERE" : "THEN EXPLORE"}
                             </span>
                             <span>
-                              <Clock3 size={12} />
+                              <Clock3 size={18} />
                               {item.minutes} min
                             </span>
                           </div>
@@ -642,7 +629,7 @@ export default function Home() {
                             }
                           >
                             Review & practice
-                            <ArrowRight size={16} />
+                            <ArrowRight size={21} />
                           </button>
                         </article>
                       ))}
@@ -683,9 +670,9 @@ export default function Home() {
                             className={`history-dot ${answer.correct ? "correct" : "incorrect"}`}
                           >
                             {answer.correct ? (
-                              <Check size={15} />
+                              <Check size={20} />
                             ) : (
-                              <ArrowRight size={15} />
+                              <ArrowRight size={20} />
                             )}
                           </span>
                           <span>
@@ -722,7 +709,7 @@ export default function Home() {
               )}
               <footer className="dashboard-footer">
                 <span>
-                  <Sprout size={15} />
+                  <Sprout size={20} />
                   Made for your pace. Built for your growth.
                 </span>
                 <span>
@@ -749,7 +736,7 @@ export default function Home() {
               onClick={() => setLesson(null)}
               aria-label="Close lesson"
             >
-              <X size={20} />
+              <X size={25} />
             </button>
             <span className="pill">A MOMENT TO UNDERSTAND</span>
             <h2 id="lesson-title">{lesson.name}</h2>
@@ -780,7 +767,7 @@ export default function Home() {
             )}
             {lesson.prerequisites?.length > 0 && (
               <div className="prerequisite">
-                <Layers3 size={17} />
+                <Layers3 size={22} />
                 Build on:{" "}
                 {lesson.prerequisites
                   .map((p) => data?.concepts.find((c) => c.id === p)?.name)
@@ -794,7 +781,7 @@ export default function Home() {
                 onClick={() => start("practice", lesson.id)}
               >
                 Practice this concept
-                <ArrowRight size={18} />
+                <ArrowRight size={23} />
               </button>
             )}
           </section>

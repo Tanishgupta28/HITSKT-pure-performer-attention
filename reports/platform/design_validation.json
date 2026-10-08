@@ -1,0 +1,15 @@
+{
+  "validated_on": "2026-10-08",
+  "scope": "Lumen visual refresh across account entry, workspace, profiles, lessons and assessments",
+  "frontend": {"typecheck": "passed", "production_build": "passed", "runtime": "standalone production"},
+  "development_browser": {"passed": 2, "failed": 0, "total_seconds": 56.3},
+  "production_browser": {"status": "passed", "passed": 3, "failed": 0, "total_runtime_reported": "1.7m", "channel": "msedge", "command": "PLAYWRIGHT_CHANNEL=msedge npx playwright test", "checks": ["local fonts and actual icon/type sizes", "Lottie rendering and persistent pause", "system reduced motion", "responsive layouts", "profile edit/save/reload", "diagnostic and save/resume", "progress and lessons", "mobile targeted practice"], "page_errors": 0, "page_horizontal_overflow": false},
+  "final_visual_polish": {"changes": ["removed an empty heading decoration that created excess mobile spacing", "restored the intended mobile account-headline line break"], "final_production_build": "passed", "final_design_checks": {"passed": 2, "failed": 0, "total_seconds": 15.8}, "screenshots_reviewed": true},
+  "typography": {"body_font": "DM Sans variable", "heading_font": "Plus Jakarta Sans variable", "main_copy_px": 16, "desktop_navigation_px": 16, "navigation_icon_px": 23, "primary_control_min_height_px": 52, "delivery": "next/font/local; licensed assets and notices bundled in source", "external_font_requests_in_browser_check": 0},
+  "motion": {"lottie_version": "5.13.0", "asset": "frontend/src/assets/lumen-orbit.json", "asset_origin": "original project-authored orbital particles", "logo": "layered CSS and SVG with perspective, extrusion, highlights and shadows", "pause_preference": "persistent browser local storage; controls in page headers", "system_reduced_motion": "still artwork; CSS motion disabled; Lottie paused", "lifecycle": "lazy player import, offscreen/hidden-tab pause, destroy on unmount"},
+  "research_and_backend_logic_changes": false,
+  "personal_account_data_changes": false,
+  "memory_strict_validation": "passed without errors or warnings",
+  "gpu_memory_base_merged": "81ee41a",
+  "evidence": {"design_test": "frontend/tests/design.spec.ts", "learning_cycle_test": "frontend/tests/learning.spec.ts", "asset_provenance": "docs/platform/design.md", "screenshots": ".platform-runtime/redesign-*.png (local only)"}
+}

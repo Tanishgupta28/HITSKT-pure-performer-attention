@@ -19,7 +19,48 @@ code was being altered; the platform preserves all research/training source.
 Platform commit identity is the locally configured Achin-Agarwal identity;
 historic Tanish identity instructions apply to the GPU workstream.
 
-## Latest platform enrichment — 2026-10-08
+## Latest design refresh — 2026-10-08
+
+Achin requested larger typography/icons, a more polished design, animations,
+possible Lottie artwork and a3D-style logo. The frontend now uses locally bundled
+DM Sans and Plus Jakarta Sans through `next/font/local`; font licenses and exact
+hashes are documented in `docs/platform/design.md`. Core copy/inputs are16px,
+desktop nav16px with23px icons, and primary controls52px high. Cards, navigation,
+profiles, lessons, assessment choices and feedback share the refreshed styling.
+
+`BrandMark` is an SVG sprout on a layered CSS tile with perspective, highlights,
+extrusion and gentle floating motion in the hero. `GrowthScene` lazy-loads
+`lottie-web@5.13.0` with original local orbital animation data. Players pause off
+screen/in hidden tabs and are destroyed on unmount. Header motion controls persist
+the pause preference and stop CSS motion and Lottie; system reduced motion always
+takes precedence. Decorative art is hidden from assistive technology.
+
+Development checks passed: TypeScript and two design browser tests, including
+local fonts, real icon/type sizes, playback/pause/reload, system reduced motion,
+and widths1440/1024/768/390/360 without page overflow. Desktop/mobile screenshots
+were reviewed. The motion control was moved into headers after visual review to
+avoid overlaying page controls. The production build and all three production
+browser tests passed (reported1.7m), including the complete learning cycle.
+Final screenshot review prompted two small mobile text-spacing fixes. The final
+production rebuild passed, and both focused final design checks passed in15.8s.
+Corrected screenshots were reviewed. Local production health is`ok`, and strict
+memory validation passed without errors or warnings. No external font requests,
+page errors or horizontal page overflow were observed in the design checks.
+
+Fetched/merged the GPU agent's latest memory commit`81ee41a` before the visual
+work. Backend/research logic and student data are unchanged. The matching-content
+checkpoint request remains the next model-integration action after this design
+delivery. Assets and UI instructions are in `docs/platform/design.md`; the
+validation index is `reports/platform/design_validation.json`.
+
+Design implementation **`0aa74cf`** was atomically pushed to canonical `main`
+and `codex/adaptive-learning-platform`, preserving the GPU agent's merged memory
+updates. The final standalone production app remains running locally. Fonts,
+licenses and original animation data are committed; screenshots and runtime
+records stay local and ignored. Next bounded model action remains the reviewed
+matching-content/checkpoint handoff, with no training interruption requested.
+
+## Profile enrichment — 2026-10-08
 
 Achin requested more data and fields after account creation. `backend/app/profile.py`
 and `frontend/src/components/learner-profile.tsx` add validated, editable grade,

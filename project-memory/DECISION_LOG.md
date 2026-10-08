@@ -547,3 +547,21 @@
 - Epoch1/train: 48,858,514/53,990,022 targets (90.50% of this phase), 2,445,312 minibatches, as of2026-10-08T15:09:06Z.
 - Trainer506822 is active with unchanged start identity. Profile/source match. Console errors found: 0. _SUCCESS: False. No completed epoch and no new best/last checkpoint yet.
 - Continue active-turn three-hour sleeps/checks. Evidence: `reports/performance/dkt_assistant_monitoring_2026-10-08.jsonl`.
+
+## 2026-10-08 — Refresh Lumen's visual design and motion
+
+- User requested larger fonts/icons, animations/transitions and a3D-style logo,
+  with Lottie as an option. Added a shared type/spacing/surface refresh, locally
+  hosted licensed variable fonts, a dimensional CSS/SVG sprout and original
+  orbital animation played with pinned `lottie-web@5.13.0`.
+- Motion is decorative, can be paused persistently from page headers, respects
+  system reduced motion, pauses outside the viewport/in hidden tabs and cleans
+  up players. Assessment/account logic and research source remain unchanged.
+- Merged GPU memory update`81ee41a` before implementation. Initial development
+  design tests passed; reviewed screenshots prompted moving the motion toggle
+  into headers so it cannot cover page controls. All three production tests then
+  passed, including the full learning cycle. Two mobile text-spacing fixes from
+  final screenshot review were rebuilt and both focused production design tests
+  passed in15.8s. Final images were reviewed; no page errors, font-CDN requests or
+  horizontal overflow. Evidence:`reports/platform/design_validation.json`.
+  Strict memory validation passed; publication is indexed in`PLATFORM_STATE.md`.
