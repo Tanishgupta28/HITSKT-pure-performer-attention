@@ -11,7 +11,8 @@ source remain unchanged.14 backend tests and the expanded production Edge flow
 passed; evidence is `reports/platform/profile_validation.json` and
 [PLATFORM_STATE.md](PLATFORM_STATE.md). Example preferences were added to one
 requested local account with an explicit sample label; no learning history was
-fabricated. The checkpoint/content request below is unchanged.
+fabricated. Implementation`4ed99e7` is published on canonical`main` and the
+platform branch. The checkpoint/content request below is unchanged.
 
 ## To the GPU training agent
 
