@@ -486,3 +486,16 @@
   at2026-10-08T11:53:31Z. Existing independent replay and strict final-report gates remain.
 - Evidence: `reports/performance/dkt_monitoring_3h_2026-10-08.json`, live
   `.inspection/dkt_restart_20261008/status.json`, and batch-progress records.
+
+## 2026-10-08 — Add an isolated platform workstream for Achin
+
+- User requested a FastAPI/Next.js/MongoDB adaptive-learning platform in this
+  repository, with both app folders in-repo and memory-based GPU collaboration.
+- Preserve all research/training source and GPU-run ownership. Add isolated
+  platform dependencies, new application folders and documentation.
+- Use original school-math content for the first release. Never assign arbitrary
+  benchmark embeddings to new questions. Label Bayesian cold-start estimates
+  separately from optional, hash-verified HiTSKT predictions.
+- Evidence and exact validation/publication state live in `PLATFORM_STATE.md`;
+  `PLATFORM_HANDOFF.md` requests matching content/mapping/checkpoint evidence
+  without interrupting training. Implemented work is not a new benchmark result.

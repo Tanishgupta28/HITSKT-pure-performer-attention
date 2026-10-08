@@ -1,0 +1,35 @@
+services:
+  mongodb:
+    image: mongo:8.0
+    volumes:
+      - platform_mongodb:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand({ping:1}).ok"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    environment:
+      MONGODB_URI: mongodb://mongodb:27017
+      MONGODB_DATABASE: hitskt_learning
+      FRONTEND_ORIGIN: http://localhost:3000
+    ports:
+      - "127.0.0.1:8000:8000"
+    depends_on:
+      mongodb:
+        condition: service_healthy
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+      args:
+        BACKEND_URL: http://backend:8000
+    ports:
+      - "127.0.0.1:3000:3000"
+    depends_on:
+      - backend
+volumes:
+  platform_mongodb:

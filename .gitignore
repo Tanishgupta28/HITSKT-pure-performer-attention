@@ -16,3 +16,20 @@ experiments/**/console.log
 experiments/**/runner.pid
 experiments/**/progress.json
 experiments/**/progress.json.tmp
+
+# Full-stack platform local dependencies, credentials, and serving artifacts.
+backend/.venv/
+backend/.env
+backend/.env.*
+!backend/.env.example
+backend/model-assets/
+frontend/node_modules/
+frontend/.next/
+frontend/.env.local
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
+frontend/tsconfig.tsbuildinfo
+.platform-runtime/
+frontend/test-results/
+frontend/playwright-report/

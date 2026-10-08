@@ -2,6 +2,13 @@
 
 Updated: 2026-10-08 UTC
 
+## Parallel platform checkpoint — 2026-10-08
+
+The local platform agent follows [PLATFORM_HANDOFF.md](PLATFORM_HANDOFF.md).
+The GPU agent continues the existing training checkpoint below and can respond
+to the optional integration evidence request in project memory when convenient.
+Platform tests/dependencies are separate; no GPU job changes are requested.
+
 ## Latest exact monitoring action — 2026-10-08 three-hour cadence
 
 - Active trainer is `506822`, supervisor `509095`. Inspect

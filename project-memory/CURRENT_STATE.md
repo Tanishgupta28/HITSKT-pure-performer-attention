@@ -2,6 +2,13 @@
 
 Updated: 2026-10-08 UTC
 
+## Separate platform workstream — 2026-10-08
+
+Achin's FastAPI/Next.js/MongoDB platform is being implemented in new repo folders.
+See [PLATFORM_STATE.md](PLATFORM_STATE.md) for current code and validation, and
+[PLATFORM_HANDOFF.md](PLATFORM_HANDOFF.md) for the checkpoint/content request.
+This does not supersede any GPU run state or scientific protocol below.
+
 ## Latest monitoring configuration — 2026-10-08 08:53 UTC
 
 This supersedes the six-hour cadence and supervisor identity in older entries.

@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "check": "trained checkpoint serving adapter equals direct repository model on a synthetic, mapped multi-session interface fixture",
+  "dataset": "ednet_kt1",
+  "checkpoint_sha256": "58d4b1f393d0fa8ec372ba8bcc00cc8b7168d37817d4badfd26ee42abffd03c8",
+  "probability": 0.38643354177474976,
+  "torch_version": "2.14.1+cpu",
+  "session_gap_hours": 10,
+  "candidate_label_excluded": true,
+  "limitation": "Synthetic labels test serving parity only. No claim of model quality, calibrated mastery, real-student validation or HiTSKT inference on the original platform content."
+}

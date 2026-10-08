@@ -4,6 +4,14 @@ This directory is a compact, evidence-backed continuation index for the HiTSKT
 capstone. The Git working tree and experiment artifacts remain the source of
 truth; this memory never substitutes for code, logs, checkpoints, or results.
 
+## Parallel platform workstream — 2026-10-08
+
+Achin is building FastAPI/Next.js/MongoDB under `D:\CS\HITSKT-platform` in
+this same repo. Read [PLATFORM_STATE.md](PLATFORM_STATE.md) and
+[PLATFORM_HANDOFF.md](PLATFORM_HANDOFF.md) for its scope, validation and model
+integration request. Existing GPU training ownership and scientific rules
+remain intact; platform changes do not alter research source or live runs.
+
 ## Resume order
 
 1. Read [USER_DIRECTIVES.md](USER_DIRECTIVES.md).
