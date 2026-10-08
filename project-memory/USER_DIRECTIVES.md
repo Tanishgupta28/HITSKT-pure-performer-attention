@@ -33,6 +33,11 @@ Updated: 2026-10-08 UTC
   labeled example profile data for the requested local account. Preserve its
   credentials, submitted answers and evidence-derived progress. Keep account
   identifiers and personal database values out of Git and project memory.
+- Achin then requested a visual redesign: larger fonts/icons, better styling,
+  animations/transitions, possible Lottie artwork and a3D-style logo. Apply this
+  across the existing platform while preserving account/assessment behavior and
+  the GPU research workstream. Local fonts, motion controls and reduced-motion
+  support are implementation choices within that request.
 
 ## 2026-10-08 — Three-hour monitoring (latest)
 

@@ -1,8 +1,10 @@
 "use client";
 import { FormEvent, useState } from "react";
-import { ArrowRight, Check, MoveUpRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { api, User } from "@/lib/api";
 import { Brand } from "./brand";
+import { GrowthScene } from "./growth-scene";
+import { MotionToggle } from "./motion";
 
 export function Auth({ onSuccess }: { onSuccess: (user: User) => void }) {
   const [register, setRegister] = useState(true);
@@ -30,6 +32,9 @@ export function Auth({ onSuccess }: { onSuccess: (user: User) => void }) {
     <main className="auth-page">
       <section className="auth-story">
         <Brand />
+        <div className="auth-motion">
+          <MotionToggle />
+        </div>
         <div className="eyebrow">A LITTLE PROGRESS. EVERY DAY.</div>
         <h1>
           Your potential.
@@ -39,24 +44,14 @@ export function Auth({ onSuccess }: { onSuccess: (user: User) => void }) {
           Learning feels better when the next step is the right one. Discover
           your strengths, close the gaps, and grow at your own pace.
         </p>
-        <div className="orbit-art" aria-hidden="true">
-          <div className="orbit orbit-one" />
-          <div className="orbit orbit-two" />
-          <div className="orbit-core">
-            a little
-            <br />
-            <strong>brighter.</strong>
-            <MoveUpRight size={32} />
-          </div>
-          <span className="orbit-badge">+ understanding</span>
-        </div>
+        <GrowthScene variant="auth" />
         <div className="story-footer">
           <span>
-            <Check size={16} />
+            <Check size={21} />
             Practice that adapts to you
           </span>
           <span>
-            <Check size={16} />
+            <Check size={21} />
             Progress you can see
           </span>
         </div>
@@ -139,7 +134,7 @@ export function Auth({ onSuccess }: { onSuccess: (user: User) => void }) {
                 : register
                   ? "Create my learning space"
                   : "Sign in"}
-              <ArrowRight size={18} />
+              <ArrowRight size={23} />
             </button>
           </form>
           <p className="fine-print">

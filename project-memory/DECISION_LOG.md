@@ -541,3 +541,21 @@
   screenshots were reviewed. Evidence: `reports/platform/profile_validation.json`
   and `backend/tests/test_profile.py`. Existing research/training source and GPU
   ownership remain unchanged. Publication status is indexed in `PLATFORM_STATE.md`.
+
+## 2026-10-08 — Refresh Lumen's visual design and motion
+
+- User requested larger fonts/icons, animations/transitions and a3D-style logo,
+  with Lottie as an option. Added a shared type/spacing/surface refresh, locally
+  hosted licensed variable fonts, a dimensional CSS/SVG sprout and original
+  orbital animation played with pinned `lottie-web@5.13.0`.
+- Motion is decorative, can be paused persistently from page headers, respects
+  system reduced motion, pauses outside the viewport/in hidden tabs and cleans
+  up players. Assessment/account logic and research source remain unchanged.
+- Merged GPU memory update`81ee41a` before implementation. Initial development
+  design tests passed; reviewed screenshots prompted moving the motion toggle
+  into headers so it cannot cover page controls. All three production tests then
+  passed, including the full learning cycle. Two mobile text-spacing fixes from
+  final screenshot review were rebuilt and both focused production design tests
+  passed in15.8s. Final images were reviewed; no page errors, font-CDN requests or
+  horizontal overflow. Evidence:`reports/platform/design_validation.json`.
+  Strict memory validation passed; publication is indexed in`PLATFORM_STATE.md`.

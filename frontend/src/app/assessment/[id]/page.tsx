@@ -18,7 +18,8 @@ import {
   percent,
   Question,
 } from "@/lib/api";
-import { Brand } from "@/components/brand";
+import { Brand, BrandMark } from "@/components/brand";
+import { MotionToggle } from "@/components/motion";
 
 export default function AssessmentPage() {
   const { id } = useParams<{ id: string }>();
@@ -84,10 +85,13 @@ export default function AssessmentPage() {
         <a href="/" aria-label="Lumen home">
           <Brand />
         </a>
-        <button className="text-button" onClick={() => router.push("/")}>
-          <X size={17} />
-          Save & leave
-        </button>
+        <div className="assessment-toolbar">
+          <MotionToggle />
+          <button className="text-button" onClick={() => router.push("/")}>
+            <X size={22} />
+            Save & leave
+          </button>
+        </div>
       </header>
       <div className="assessment-container">
         {error && (
@@ -103,7 +107,7 @@ export default function AssessmentPage() {
         ) : completed ? (
           <section className="completion card">
             <span className="completion-icon">
-              <Sprout size={35} />
+              <BrandMark />
             </span>
             <div className="eyebrow">A LITTLE FURTHER THAN BEFORE</div>
             <h1>That’s progress.</h1>
@@ -125,7 +129,7 @@ export default function AssessmentPage() {
               {assessment.summary?.recommendations.map((r) => (
                 <div key={r.concept_id}>
                   <span className="round-icon">
-                    <ArrowRight size={17} />
+                    <ArrowRight size={22} />
                   </span>
                   <span>
                     <strong>{r.name}</strong>
@@ -139,7 +143,7 @@ export default function AssessmentPage() {
               onClick={() => router.push("/")}
             >
               Back to my learning space
-              <ArrowRight size={18} />
+              <ArrowRight size={23} />
             </button>
             <p className="fine-print">
               Concept estimates are a guide for practice. They are not grades.
@@ -168,7 +172,7 @@ export default function AssessmentPage() {
               />
             </div>
             {shown && (
-              <section className="question-card card">
+              <section className="question-card card" key={shown.id}>
                 <div className="question-meta">
                   <span>{shown.concept_id.replaceAll("_", " ")}</span>
                   <span>
@@ -208,7 +212,7 @@ export default function AssessmentPage() {
                       </span>
                       <span>{text}</span>
                       {feedback?.answer_index === i ? (
-                        <Check size={19} />
+                        <Check size={24} />
                       ) : (
                         <span className="choice-radio" />
                       )}
@@ -222,9 +226,9 @@ export default function AssessmentPage() {
                   >
                     <strong>
                       {feedback.correct ? (
-                        <CheckCircle2 size={19} />
+                        <CheckCircle2 size={24} />
                       ) : (
-                        <CircleHelp size={19} />
+                        <CircleHelp size={24} />
                       )}{" "}
                       {feedback.correct
                         ? "Nicely understood."
@@ -239,7 +243,7 @@ export default function AssessmentPage() {
                 ) : null}
                 <div className="question-actions">
                   <span>
-                    <Sprout size={15} />
+                    <Sprout size={20} />
                     {feedback
                       ? "Your progress has been saved."
                       : "Every answer helps shape your path."}
@@ -249,7 +253,7 @@ export default function AssessmentPage() {
                       {assessment.status === "completed"
                         ? "See my discoveries"
                         : "Next question"}
-                      <ArrowRight size={18} />
+                      <ArrowRight size={23} />
                     </button>
                   ) : (
                     <button
@@ -258,14 +262,14 @@ export default function AssessmentPage() {
                       onClick={submit}
                     >
                       {busy ? "Saving…" : "Check my answer"}
-                      <ArrowRight size={18} />
+                      <ArrowRight size={23} />
                     </button>
                   )}
                 </div>
               </section>
             )}
             <div className="assessment-note">
-              <CircleHelp size={15} />
+              <CircleHelp size={20} />
               {assessment.prediction?.provider === "hitskt"
                 ? "HiTSKT uses your earlier sessions to help select your next question."
                 : "Questions adapt to your answers as your concept estimates take shape."}

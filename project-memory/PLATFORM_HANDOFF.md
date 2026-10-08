@@ -2,7 +2,18 @@
 
 Updated: 2026-10-08 (Asia/Kolkata)
 
-## Latest platform-only update
+## Latest visual update — 2026-10-08
+
+Achin requested larger fonts/icons, a polished interface, motion and a3D-style
+logo. The platform now has local licensed variable fonts, larger controls/icons,
+dimensional CSS/SVG branding and original Lottie artwork with persistent pause
+and reduced-motion support. Details and final verification/publication status
+are in [PLATFORM_STATE.md](PLATFORM_STATE.md), `docs/platform/design.md` and
+`reports/platform/design_validation.json`. Backend/student/research data and the
+existing checkpoint/content request remain unchanged. GPU memory update`81ee41a`
+was merged before the work.
+
+## Profile update
 
 Achin requested richer account data/fields. Added persisted learner preferences,
 study suggestions, actual seven-day question targets, expanded lessons and384

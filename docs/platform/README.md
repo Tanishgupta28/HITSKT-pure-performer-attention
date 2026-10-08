@@ -150,6 +150,10 @@ decisions, a protected MongoDB deployment, HTTPS and production operational revi
 
 ## Verification
 
+The refreshed visual system, locally bundled font licenses and motion behavior
+are documented in [design and motion](design.md). Header controls pause animation;
+system reduced-motion preferences render still artwork automatically.
+
 ```powershell
 ./backend/.venv/Scripts/python.exe -m pytest backend/tests -q
 cd frontend
