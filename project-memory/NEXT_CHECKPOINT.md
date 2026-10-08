@@ -2,6 +2,27 @@
 
 Updated: 2026-10-08 UTC
 
+## Latest exact monitoring action — 2026-10-08 three-hour cadence
+
+- Active trainer is `506822`, supervisor `509095`. Inspect
+  `.inspection/dkt_restart_20261008/status.json` and the actual batch counter in
+  `experiments/dkt/ednet_kt1/full/progress.json`.
+- Next automatic snapshot is **2026-10-08T11:53:31Z**; subsequent checks occur every
+  three hours. Dynamic cadence lives in
+  `.inspection/dkt_restart_20261008/monitoring_config.json`.
+- The training process continues from its existing in-memory state. Do not
+  relaunch it or run the old fresh-launch supervisor. Supervisor v2 adopts this
+  specific existing PID/start identity and owns the pending replay/report stages.
+- At a completed epoch, verify target/profile/best/patience artifacts and perform
+  the already-authorized checkpoint/memory commit/push. On terminal completion,
+  inspect independent replay/report artifacts before claiming15/15; complete
+  remaining prompt documentation and publish verified results.
+- On `_FAILED` or unexpected process disappearance, preserve the actual last
+  progress/terminal evidence before making a recovery decision. Historical
+  six-hour monitoring instructions below are superseded.
+
+Cadence/handoff evidence: `reports/performance/dkt_monitoring_3h_2026-10-08.json`.
+
 ## Authoritative next action — 2026-10-08 fresh restart
 
 This supersedes every older resume, PID, monitor, and wait instruction below.

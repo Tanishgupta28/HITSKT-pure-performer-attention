@@ -25,7 +25,7 @@ truth; this memory never substitutes for code, logs, checkpoints, or results.
 2026-10-08: **14/15 completed pairs**. The user explicitly requested a fresh
 restart of the fifteenth experiment, DKT/full EdNet, without restoring its old
 checkpoint. Fresh CUDA trainer `506822` is advancing in epoch1; detached
-supervisor `506821` records six-hour checks and automatically performs
+supervisor `509095` records three-hour checks and automatically performs
 independent replay and strict15/15 report generation after training succeeds.
 All77 tests pass, including exact equivalence of progress logging.
 
@@ -34,5 +34,7 @@ Read [CURRENT_STATE.md](CURRENT_STATE.md) and
 Historical PID/resume instructions in older entries are superseded.
 `reports/performance/dkt_restart_2026-10-08.json` records this restart's evidence.
 Live runtime files and the old abandoned artifacts remain local and ignored.
+The latest three-hour cadence and supervisor handoff are recorded in
+`reports/performance/dkt_monitoring_3h_2026-10-08.json`.
 The unrelated root README edit is preserved. Public pushes remain authorized
 using the configured original Tanish identity.

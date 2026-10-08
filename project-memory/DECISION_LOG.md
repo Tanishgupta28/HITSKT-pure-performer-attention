@@ -475,3 +475,14 @@
 - Evidence: `reports/performance/dkt_restart_2026-10-08.json`,
   `experiments/dkt/ednet_kt1/full/config.json`, live `progress.json`, and
   `.inspection/dkt_restart_20261008/` supervision records.
+
+## 2026-10-08 — Change live DKT monitoring to three hours
+
+- User requested continuing three-hour checks, superseding six-hour monitoring.
+- Replaced only supervisor506821 with detached supervisor509095, adopting
+  existing trainer506822. Verified unchanged process start identity/session
+  and unchanged training source; no training interruption or checkpoint reload.
+- New supervisor reads interval10800s dynamically and records its next check
+  at2026-10-08T11:53:31Z. Existing independent replay and strict final-report gates remain.
+- Evidence: `reports/performance/dkt_monitoring_3h_2026-10-08.json`, live
+  `.inspection/dkt_restart_20261008/status.json`, and batch-progress records.

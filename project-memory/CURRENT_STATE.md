@@ -2,6 +2,31 @@
 
 Updated: 2026-10-08 UTC
 
+## Latest monitoring configuration — 2026-10-08 08:53 UTC
+
+This supersedes the six-hour cadence and supervisor identity in older entries.
+
+- User requested checks every **three hours**. Effective interval10800s is
+  stored in `.inspection/dkt_restart_20261008/monitoring_config.json`.
+- Replaced only the monitoring supervisor: old506821 exited; new detached
+  supervisor `509095` adopted existing trainer `506822`. The trainer's
+  process start ticks remain76394006 and its session remains506821. Training
+  was not restarted, signaled, or resumed; scientific settings/code are unchanged.
+- Supervisor v2 reads cadence dynamically, so later interval changes can be
+  made through the atomic control file without replacing another supervisor.
+  Source: `.inspection/supervise_dkt_restart_20261008_v2.py`. Its source hash,
+  process identities, directive, and progress evidence are persisted in
+  `reports/performance/dkt_monitoring_3h_2026-10-08.json`.
+- Immediate verified snapshot `2026-10-08T08:53:30Z`: epoch1/train,
+  49,152 minibatches, 982,084/53,990,022 targets.
+  No epoch or new benchmark result has completed. **14/15** pairs remain complete.
+- Next scheduled check: **2026-10-08T11:53:31Z**, then every three hours while the
+  stage runs. Snapshots append to `.inspection/dkt_restart_20261008/monitor.jsonl`;
+  status and next-check time are in its `status.json`. Successful trainer exit
+  still triggers exact independent replay and gated15/15 report generation.
+- Restart milestone `5aad7b0` was pushed and verified against remote main.
+  The new cadence milestone is ready for the authorized memory/provenance push.
+
 ## Authoritative current state — 2026-10-08 fresh restart
 
 This section supersedes all older live-process and continuation statements below.

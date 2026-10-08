@@ -2,6 +2,14 @@
 
 Updated: 2026-10-08 UTC
 
+## 2026-10-08 — Three-hour monitoring (latest)
+
+- User explicitly requested: **“continue 3 hour monitoring.”** Monitor the
+  active fifteenth experiment every three hours. This supersedes the six-hour
+  cadence and every older interval.
+- This changes monitoring frequency only. Continue the existing fresh
+  DKT/EdNet training and the established verification/reporting workflow.
+
 ## 2026-10-08 — Fresh restart of the fifteenth experiment (latest)
 
 - User requested extraction of `/workspace/tanish-capstone.zip`, use of the

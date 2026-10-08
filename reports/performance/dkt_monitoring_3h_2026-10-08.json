@@ -1,0 +1,37 @@
+{
+  "directive": "Continue three-hour monitoring; supersedes six-hour cadence",
+  "monitoring_interval_seconds": 10800,
+  "new_supervisor_pid": 509095,
+  "next_check_utc": "2026-10-08T11:53:31Z",
+  "old_supervisor_pid": 506821,
+  "progress": {
+    "elapsed_seconds": 460.06637975398917,
+    "epoch": 1,
+    "event": "epoch_progress",
+    "minibatches_processed": 49152,
+    "split": "train",
+    "status": "running",
+    "targets_processed": 982084,
+    "targets_total": 53990022,
+    "updated_at_utc": "2026-10-08T08:53:30Z"
+  },
+  "supervisor_script": ".inspection/supervise_dkt_restart_20261008_v2.py",
+  "supervisor_sha256": "8f6914a3b90d868de2c4ea4f3d89c7143d46e8a86d33617316454af7f60b4a3d",
+  "trainer_after": {
+    "ppid": 1,
+    "session": 506821,
+    "start_ticks": 76394006,
+    "state": "S"
+  },
+  "trainer_before": {
+    "ppid": 506821,
+    "session": 506821,
+    "start_ticks": 76394006,
+    "state": "R"
+  },
+  "trainer_pid": 506822,
+  "trainer_restarted": false,
+  "trainer_source_sha256": "8555da33fa241e70c0c99fc6a69339c40e53daa9d8c459041b1265f6ee57efd3",
+  "training_configuration_changed": false,
+  "updated_at_utc": "2026-10-08T08:53:31Z"
+}
