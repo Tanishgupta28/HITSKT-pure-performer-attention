@@ -22,6 +22,7 @@ import {
   Sparkles,
   Sprout,
   Target,
+  UserRound,
   X,
 } from "lucide-react";
 import {
@@ -35,8 +36,9 @@ import {
 } from "@/lib/api";
 import { Auth } from "@/components/auth";
 import { Brand } from "@/components/brand";
+import { LearnerProfileForm, StudyPlan } from "@/components/learner-profile";
 
-type Tab = "overview" | "path" | "progress";
+type Tab = "overview" | "path" | "progress" | "profile";
 const colors = ["sage", "lilac", "peach", "blue"];
 
 function ProgressChart({ data }: { data: Dashboard["progress"] }) {
@@ -210,6 +212,7 @@ export default function Home() {
     { id: "overview" as Tab, name: "Overview", icon: LayoutDashboard },
     { id: "path" as Tab, name: "My learning path", icon: Compass },
     { id: "progress" as Tab, name: "My progress", icon: ChartNoAxesCombined },
+    { id: "profile" as Tab, name: "My profile", icon: UserRound },
   ];
   return (
     <div className="app-shell">
@@ -275,7 +278,11 @@ export default function Home() {
             </span>
             <span>
               <strong>{user.name}</strong>
-              <small>Growing learner</small>
+              <small>
+                {user.profile.grade_level === "Not set"
+                  ? "Growing learner"
+                  : user.profile.grade_level}
+              </small>
             </span>
             <Sprout size={17} />
           </div>
@@ -311,7 +318,9 @@ export default function Home() {
                   ? `Hello, ${user.name.split(" ")[0]}`
                   : tab === "path"
                     ? "A path that grows with you"
-                    : "Look how far you’ve come"}
+                    : tab === "profile"
+                      ? "Your goals, your pace"
+                      : "Look how far you’ve come"}
                 <span className="heading-spark">
                   {tab === "overview" ? "✳" : ""}
                 </span>
@@ -321,7 +330,9 @@ export default function Home() {
                   ? "Every question is a chance to understand a little more."
                   : tab === "path"
                     ? "Start with a foundation. Take the next step when you’re ready."
-                    : "Learning takes time. Your effort is becoming a story."}
+                    : tab === "profile"
+                      ? "Tell us how you like to learn. Make a plan that fits your week."
+                      : "Learning takes time. Your effort is becoming a story."}
               </p>
             </div>
             <span className="pill">
@@ -343,6 +354,13 @@ export default function Home() {
             </div>
           ) : (
             <>
+              {tab === "profile" && (
+                <LearnerProfileForm
+                  user={user}
+                  concepts={data.concepts}
+                  onSaved={setUser}
+                />
+              )}
               {tab === "overview" && (
                 <>
                   <section className="hero-card">
@@ -401,7 +419,7 @@ export default function Home() {
                         <Clock3 size={13} />
                         {data.active_assessment
                           ? `${data.active_assessment.answered} of ${data.active_assessment.total} answered`
-                          : "12 questions · About 8 minutes"}
+                          : `${data.diagnostic_complete ? data.profile.adaptive_session_questions : 12} questions · At your own pace`}
                         <span>•</span>Go at your own pace
                       </span>
                     </div>
@@ -476,7 +494,8 @@ export default function Home() {
                         <p>A focused space to build your foundations.</p>
                       </div>
                       <span className="subtle-label">
-                        1 SUBJECT · {data.concepts.length} CONCEPTS
+                        {data.content.question_count} QUESTIONS ·{" "}
+                        {data.concepts.length} CONCEPTS
                       </span>
                     </div>
                     <div className="subject-card">
@@ -518,6 +537,13 @@ export default function Home() {
                       </button>
                     </div>
                   </section>
+                  <StudyPlan
+                    data={data}
+                    onConfigure={() => setTab("profile")}
+                    onReview={(id) =>
+                      setLesson(data.concepts.find((c) => c.id === id)!)
+                    }
+                  />
                 </>
               )}
               {(tab === "overview" || tab === "path") && (
@@ -728,6 +754,30 @@ export default function Home() {
             <span className="pill">A MOMENT TO UNDERSTAND</span>
             <h2 id="lesson-title">{lesson.name}</h2>
             <p>{lesson.lesson}</p>
+            {lesson.steps && (
+              <ol className="lesson-steps">
+                {lesson.steps.map((step) => (
+                  <li key={step}>{step}</li>
+                ))}
+              </ol>
+            )}
+            {lesson.worked_example && (
+              <div className="lesson-example">
+                <strong>Work through an example</strong>
+                <p>{lesson.worked_example}</p>
+              </div>
+            )}
+            {lesson.common_mistake && (
+              <div className="lesson-tip">
+                <strong>A useful check</strong>
+                <p>{lesson.common_mistake}</p>
+              </div>
+            )}
+            {lesson.application && (
+              <p className="lesson-application">
+                <strong>Use it in everyday life:</strong> {lesson.application}
+              </p>
+            )}
             {lesson.prerequisites?.length > 0 && (
               <div className="prerequisite">
                 <Layers3 size={17} />

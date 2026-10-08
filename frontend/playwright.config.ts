@@ -5,6 +5,7 @@ export default defineConfig({
   timeout: 180_000,
   expect: { timeout: 20_000 },
   use: {
+    actionTimeout: 20_000,
     baseURL: "http://localhost:3000",
     browserName: "chromium",
     channel: process.env.PLAYWRIGHT_CHANNEL || "chromium",

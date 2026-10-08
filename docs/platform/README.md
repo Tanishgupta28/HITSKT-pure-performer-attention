@@ -59,12 +59,36 @@ same ports. Docker is an optional portable path, not required for local developm
 7. Take another adaptive assessment. Completed assessment snapshots form the
    progress chart. An active assessment can be resumed after a browser/server restart.
 
-There are 192 original, deterministic multiple-choice items across fractions,
-percentages, linear equations and rectangle area/perimeter. Every concept has
-three difficulty levels with 16 variants. Personalized practice selects content
+There are 384 original, deterministic multiple-choice items across fractions,
+percentages, linear equations and geometry. Every concept has three difficulty
+levels with 32 variants, including discounts, savings, price equations, square
+perimeters and triangle areas. The original 192 items retain their exact IDs,
+answers and content version; the added items use `math-original-v2`.
+Personalized practice selects content
 from this bank; it does not use an LLM to invent unvalidated questions. The first
 release offers one selectable subject; arbitrary new subjects/content authoring
 and teacher/admin dashboards are future work, not completed features.
+
+The **My profile** page saves grade/learning stage, curriculum, learning goal,
+7-day question target, adaptive session length, study days and focus concepts.
+These preferences persist in MongoDB. New adaptive assessments use the selected
+6/12/18-question length; diagnostics remain 12 and focused practice remains 6.
+An active assessment keeps its original length. Grade and curriculum are
+descriptive preferences, not a claim of full board-syllabus coverage.
+
+The overview's study plan uses chosen focus concepts, or current assessment
+recommendations when no focus is selected. Its target counts actual responses
+in the rolling past seven days. Days are flexible suggestions; no notifications
+or scheduled jobs are created. Lessons include steps, worked examples, practical
+applications and common mistakes.
+
+For an explicitly selected local account with no saved profile,
+`backend/tools/seed_sample_profile.py --user-id <uuid>` previews example
+preferences. Add `--apply` to populate that account once. The script backs up
+only its previous profile state under ignored `.platform-runtime/`, labels the
+new preferences as sample data, preserves existing profiles and never creates
+responses or learning outcomes. Saving preferences in the UI changes the label
+to user-provided data. No personal account identifiers belong in Git or memory.
 
 ## What the estimates mean
 
@@ -104,6 +128,9 @@ platform does not alter that experiment or claim it is finished.
 - `POST /api/auth/register`, `POST /api/auth/login`, `GET /api/auth/me`,
   `POST /api/auth/logout`.
 - `GET /api/subjects`, `GET /api/learning/{subject_id}`.
+- `POST /api/profile` updates only the authenticated learner's validated preferences.
+  Auth responses include the current profile; existing accounts receive defaults
+  until they save preferences. Unknown fields and invalid concept IDs are rejected.
 - `POST /api/assessments`, `GET /api/assessments/{id}`,
   `POST /api/assessments/{id}/answers`.
 - `GET /api/health` reports MongoDB and model-provider readiness.

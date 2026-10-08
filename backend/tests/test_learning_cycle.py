@@ -117,7 +117,7 @@ def test_auth_ownership_logout_and_origin(student):
 
 
 def test_question_bank_has_valid_unique_answers():
-    assert len(BANK) == 192
+    assert len(BANK) == 384
     for q in BANK.values():
         assert len(q["choices"]) == 4 and len(set(q["choices"])) == 4
         assert 0 <= q["answer_index"] < 4

@@ -19,6 +19,11 @@ Updated: 2026-10-08 UTC
 - Platform status and checkpoint/content handoff are in `PLATFORM_STATE.md`
   and `PLATFORM_HANDOFF.md`. Do not treat this request as a change to the
   scientific specification or an instruction to restart a GPU run.
+- After creating an account, Achin asked to add more data and more fields.
+  Add editable learner preferences, useful practice/lesson content and clearly
+  labeled example profile data for the requested local account. Preserve its
+  credentials, submitted answers and evidence-derived progress. Keep account
+  identifiers and personal database values out of Git and project memory.
 
 ## 2026-10-08 — Three-hour monitoring (latest)
 

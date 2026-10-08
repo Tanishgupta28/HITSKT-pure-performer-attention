@@ -18,6 +18,7 @@ from app.catalog import BANK, CONCEPTS, SUBJECT, public_question
 from app.config import Settings
 from app.engine import concept_rows, initial_concept, recommendations, select_question, update_knowledge
 from app.inference import Predictor
+from app.profile import LearnerProfile, profile_view, public_user
 
 passwords = PasswordHash.recommended()
 DUMMY_HASH = passwords.hash("dummy-password-for-constant-work")
@@ -111,7 +112,7 @@ def create_app(settings=None):
                                                 "expires_at": now() + timedelta(days=settings.session_days)})
         response.set_cookie(COOKIE, token, httponly=True, secure=settings.cookie_secure, samesite="lax",
                             max_age=settings.session_days * 86400, path="/")
-        return {"id": user["_id"], "name": user["name"], "email": user["email"]}
+        return public_user(user)
 
     async def learning(user, subject_id="mathematics"):
         if subject_id != SUBJECT["id"]:
@@ -179,7 +180,15 @@ def create_app(settings=None):
 
     @app.get("/api/auth/me")
     async def me(user=Depends(auth)):
-        return {"id": user["_id"], "name": user["name"], "email": user["email"]}
+        return public_user(user)
+
+    @app.post("/api/profile")
+    async def update_profile(data: LearnerProfile, user=Depends(auth)):
+        updated = await app.state.db.users.find_one_and_update(
+            {"_id": user["_id"]},
+            {"$set": {"profile": data.model_dump(), "profile_source": "user", "profile_updated_at": now()}},
+            return_document=ReturnDocument.AFTER)
+        return public_user(updated)
 
     @app.post("/api/auth/logout", status_code=204)
     async def logout(request: Request, response: Response):
@@ -198,7 +207,20 @@ def create_app(settings=None):
         completed = [a for a in state["assessments"] if a["status"] == "completed"]
         active = next((a for a in state["assessments"] if a["status"] == "active"), None)
         history = state["history"]
+        profile = profile_view(user)
+        recent_count = sum(datetime.fromisoformat(r["answered_at"]) >= now() - timedelta(days=7) for r in history)
+        suggested = recommendations(state)
+        plan_concepts = profile["focus_concepts"] or [r["concept_id"] for r in suggested]
+        plan = [{"day": day, "concept_id": plan_concepts[i % len(plan_concepts)],
+                 "concept_name": next(c["name"] for c in CONCEPTS if c["id"] == plan_concepts[i % len(plan_concepts)]),
+                 "questions": 6} for i, day in enumerate(profile["study_days"])]
         return {"subject": SUBJECT, "concepts": concept_rows(state), "recommendations": recommendations(state),
+                "profile": profile,
+                "study_plan": plan,
+                "weekly_goal": {"answered": recent_count, "target": profile["weekly_question_target"],
+                                "remaining": max(0, profile["weekly_question_target"] - recent_count)},
+                "content": {"question_count": len(BANK), "difficulty_levels": 3,
+                            "concept_question_counts": {c["id"]: sum(q["concept_id"] == c["id"] for q in BANK.values()) for c in CONCEPTS}},
                 "stats": {"answers": len(history), "accuracy": sum(r["correct"] for r in history) / len(history) if history else None,
                           "completed_assessments": len(completed), "study_days": len({r["answered_at"][:10] for r in history})},
                 "active_assessment": assessment_view(active) if active else None,
@@ -218,7 +240,7 @@ def create_app(settings=None):
         active = next((a for a in state["assessments"] if a["status"] == "active"), None)
         if active:
             return assessment_view(active)
-        total = 6 if data.mode == "practice" else 12
+        total = 6 if data.mode == "practice" else 12 if data.mode == "diagnostic" else profile_view(user)["adaptive_session_questions"]
         if len(state["history"]) + total > 5000:
             raise HTTPException(409, "Learning archive capacity reached. Contact the administrator to archive this history.")
         assessment = {"id": str(uuid4()), "mode": data.mode, "concept_id": data.concept_id,

@@ -2,6 +2,17 @@
 
 Updated: 2026-10-08 (Asia/Kolkata)
 
+## Latest platform-only update
+
+Achin requested richer account data/fields. Added persisted learner preferences,
+study suggestions, actual seven-day question targets, expanded lessons and384
+original math questions. All original192 question records and all research
+source remain unchanged.14 backend tests and the expanded production Edge flow
+passed; evidence is `reports/platform/profile_validation.json` and
+[PLATFORM_STATE.md](PLATFORM_STATE.md). Example preferences were added to one
+requested local account with an explicit sample label; no learning history was
+fabricated. The checkpoint/content request below is unchanged.
+
 ## To the GPU training agent
 
 Achin has authorized a parallel platform workstream in this same repo. It adds

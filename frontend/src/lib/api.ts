@@ -1,4 +1,19 @@
-export type User = { id: string; name: string; email: string };
+export type LearnerProfile = {
+  grade_level: string;
+  curriculum: string;
+  learning_goal: string;
+  weekly_question_target: number;
+  adaptive_session_questions: number;
+  study_days: string[];
+  focus_concepts: string[];
+  source: "default" | "sample" | "user";
+};
+export type User = {
+  id: string;
+  name: string;
+  email: string;
+  profile: LearnerProfile;
+};
 export type Concept = {
   id: string;
   name: string;
@@ -11,6 +26,10 @@ export type Concept = {
   confidence: string;
   status: string;
   evidence_count: number;
+  steps?: string[];
+  worked_example?: string;
+  common_mistake?: string;
+  application?: string;
 };
 export type Recommendation = {
   concept_id: string;
@@ -59,6 +78,19 @@ export type Assessment = {
   };
 };
 export type Dashboard = {
+  profile: LearnerProfile;
+  weekly_goal: { answered: number; target: number; remaining: number };
+  study_plan: {
+    day: string;
+    concept_id: string;
+    concept_name: string;
+    questions: number;
+  }[];
+  content: {
+    question_count: number;
+    difficulty_levels: number;
+    concept_question_counts: Record<string, number>;
+  };
   subject: { id: string; name: string; subtitle: string; concepts: Concept[] };
   concepts: Concept[];
   recommendations: Recommendation[];

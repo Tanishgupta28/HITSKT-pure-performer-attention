@@ -19,6 +19,45 @@ code was being altered; the platform preserves all research/training source.
 Platform commit identity is the locally configured Achin-Agarwal identity;
 historic Tanish identity instructions apply to the GPU workstream.
 
+## Latest platform enrichment — 2026-10-08
+
+Achin requested more data and fields after account creation. `backend/app/profile.py`
+and `frontend/src/components/learner-profile.tsx` add validated, editable grade,
+curriculum, goal, rolling seven-day question target, adaptive session length,
+study days and focus concepts. MongoDB stores preferences separately from
+assessment evidence. The overview derives a study suggestion and real answer
+counts; new adaptive sessions use the saved6/12/18-question length, while active
+sessions retain their original length. Grade/curriculum describe preferences,
+not full syllabus coverage.
+
+The bank now contains384 original questions, with expanded lessons, practical
+word problems and geometry. A UTF-8 source comparison confirmed all original192
+question records remain exactly equal, including IDs, grading and versions.
+Added items use `math-original-v2`; the original items stay `math-original-v1`.
+
+One requested local account received example preferences marked `sample` via
+`backend/tools/seed_sample_profile.py`. The tool preserves saved profiles and
+creates a profile-only backup under ignored `.platform-runtime/`. Credential and
+learning-document fingerprints were equal before/after; repeat seeding made no
+change. No account identifier, credential or private profile data is published.
+No synthetic response, mastery or completed assessment was inserted. Saving
+preferences through the UI marks them as user-provided.
+
+All14 backend tests and TypeScript/production build passed. The updated local
+production runtime is healthy. The expanded Edge production-browser flow passed
+in29.5s (34.9s total), including profile save/reload, real target counts, the full
+diagnostic cycle, expanded lesson and focused practice. Desktop1440x1080 and
+mobile390x844 screenshots were reviewed; no page errors or horizontal overflow.
+The first browser run had an exact-label test-selector mismatch on the
+curriculum dropdown. Its trace/context are preserved locally under
+`.platform-runtime/profile-selector-failure/`; the corrected selector and bounded
+action timeout passed. This failure was in the test locator, not profile storage.
+Latest evidence: `reports/platform/profile_validation.json` and
+`backend/tests/test_profile.py`. Initial validation below remains historical.
+
+Next bounded action is still the matching-content/checkpoint review in
+[PLATFORM_HANDOFF.md](PLATFORM_HANDOFF.md). No GPU-run change is requested.
+
 ## Implemented platform
 
 - `backend/app/`: FastAPI accounts, Argon2 passwords, hashed opaque session
@@ -35,7 +74,7 @@ historic Tanish identity instructions apply to the GPU workstream.
 - `docs/platform/`: reproducible setup, practical applications, API/storage
   documentation and model/content integration contract.
 
-## Validation milestone — 2026-10-08
+## Initial validation milestone — 2026-10-08
 
 - All **10 platform backend tests passed** against real local MongoDB, including
   diagnostic-to-practice, adaptation, persistence across app restart, concurrency,
@@ -74,7 +113,7 @@ historic Tanish identity instructions apply to the GPU workstream.
 ## Established limitation
 
 Benchmark question embeddings cannot be assigned to newly authored math
-questions. The 192 original platform items use an explicitly labeled Bayesian
+questions. The 384 original platform items use an explicitly labeled Bayesian
 cold-start estimator. Trained HiTSKT integration requires licensed matching
 question content, exact model IDs, checkpoint provenance and a real history
 fixture. No user-facing claim of trained HiTSKT inference on original content.
