@@ -12,6 +12,9 @@ are in [PLATFORM_STATE.md](PLATFORM_STATE.md), `docs/platform/design.md` and
 `reports/platform/design_validation.json`. Backend/student/research data and the
 existing checkpoint/content request remain unchanged. GPU memory update`81ee41a`
 was merged before the work.
+Design implementation`0aa74cf` is published on canonical`main` and the platform
+branch. The final production build and focused design checks passed; the complete
+production learning flow also passed before the final text-spacing polish.
 
 ## Profile update
 

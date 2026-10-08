@@ -53,6 +53,13 @@ checkpoint request remains the next model-integration action after this design
 delivery. Assets and UI instructions are in `docs/platform/design.md`; the
 validation index is `reports/platform/design_validation.json`.
 
+Design implementation **`0aa74cf`** was atomically pushed to canonical `main`
+and `codex/adaptive-learning-platform`, preserving the GPU agent's merged memory
+updates. The final standalone production app remains running locally. Fonts,
+licenses and original animation data are committed; screenshots and runtime
+records stay local and ignored. Next bounded model action remains the reviewed
+matching-content/checkpoint handoff, with no training interruption requested.
+
 ## Profile enrichment — 2026-10-08
 
 Achin requested more data and fields after account creation. `backend/app/profile.py`
