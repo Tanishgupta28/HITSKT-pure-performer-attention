@@ -11,6 +11,29 @@ Updated: 2026-10-08 UTC
   The primary assistant now owns checkpoint verification, independent final
   replay, reporting, and authorized memory/commit/push milestones.
 
+## 2026-10-08 — Achin's parallel platform request
+
+- Build the educational platform in this same canonical repository, under
+  `D:\CS`, with new `backend/` and `frontend/` folders using FastAPI, Next.js
+  and MongoDB. Implement the real assessment/response/knowledge/adaptation/
+  recommendation/practice/progress cycle.
+- Reuse the existing durable-agent-memory skill and project memory. Collaborate
+  through memory with the other agent that owns GPU training and keeps pushing.
+- First subject: school mathematics (selected in this conversation).
+- User identifies as Achin and confirms Git is configured. Use the local
+  configured Achin identity for platform commits; retain GPU-agent ownership
+  and historical training identity for that separate workstream.
+- User asked whether existing code was being altered. Keep all research and
+  training source intact; import the existing model from a new serving adapter.
+- Platform status and checkpoint/content handoff are in `PLATFORM_STATE.md`
+  and `PLATFORM_HANDOFF.md`. Do not treat this request as a change to the
+  scientific specification or an instruction to restart a GPU run.
+- After creating an account, Achin asked to add more data and more fields.
+  Add editable learner preferences, useful practice/lesson content and clearly
+  labeled example profile data for the requested local account. Preserve its
+  credentials, submitted answers and evidence-derived progress. Keep account
+  identifiers and personal database values out of Git and project memory.
+
 ## 2026-10-08 — Three-hour monitoring (latest)
 
 - User explicitly requested: **“continue 3 hour monitoring.”** Monitor the

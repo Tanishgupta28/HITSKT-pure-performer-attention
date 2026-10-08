@@ -1,0 +1,11 @@
+{
+  "validated_on": "2026-10-08",
+  "scope": "Lumen platform; existing scientific training code unchanged",
+  "backend": {"command": "backend/.venv/Scripts/python.exe -m pytest backend/tests -q", "passed": 10, "failed": 0, "skipped": 0, "database": "real local MongoDB; isolated generated test databases"},
+  "frontend": {"next_version": "16.4.0", "typecheck": "passed with next typegen and tsc --noEmit", "production_build": "passed", "production_assets": "icon.svg HTTP 200; full browser flow served successfully"},
+  "browser": {"command": "PLAYWRIGHT_CHANNEL=msedge npx playwright test", "passed": 1, "runtime": "standalone production build", "desktop_viewport": [1440, 1080], "mobile_viewport": [390, 844], "flow": ["register", "diagnostic", "save and resume after reload", "complete assessment", "progress", "lesson", "targeted practice"], "page_errors": 0, "horizontal_overflow": false, "screenshots_visually_reviewed": true},
+  "model": {"report": "reports/platform/inference_smoke.json", "trained_checkpoint_adapter_parity": "exact on an explicitly synthetic mapped multi-session fixture", "checkpoint_sha256": "58d4b1f393d0fa8ec372ba8bcc00cc8b7168d37817d4badfd26ee42abffd03c8", "production_math_provider": "bayesian_knowledge_tracing", "original_math_items_have_benchmark_ids": false},
+  "windows_helpers": {"production_start": "passed", "stop_owned_process_trees": "passed; both app ports released and MongoDB remained running", "production_restart": "passed; proxied API health returned ok"},
+  "memory": {"strict_validation": "passed without errors or warnings"},
+  "limitations": ["Trained HiTSKT needs exact matching question content and mappings for student-facing use", "Synthetic checkpoint fixture proves compatibility, not model efficacy or calibrated mastery", "Only the first mathematics subject is implemented", "No teacher/admin authoring, email verification/reset, or history archival workflow", "Docker packaging was not runtime-tested on this host", "Bundled Chromium could not launch on this Windows host; installed Edge passed desktop and mobile viewport checks"]
+}

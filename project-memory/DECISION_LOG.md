@@ -504,3 +504,40 @@
 - No completed epoch/result;14/15 completed pairs unchanged. Continue another
   three-hour active-turn sleep/check. Evidence:
   `reports/performance/dkt_assistant_monitoring_2026-10-08.jsonl`.
+
+## 2026-10-08 — Add an isolated platform workstream for Achin
+
+- User requested a FastAPI/Next.js/MongoDB adaptive-learning platform in this
+  repository, with both app folders in-repo and memory-based GPU collaboration.
+- Preserve all research/training source and GPU-run ownership. Add isolated
+  platform dependencies, new application folders and documentation.
+- Use original school-math content for the first release. Never assign arbitrary
+  benchmark embeddings to new questions. Label Bayesian cold-start estimates
+  separately from optional, hash-verified HiTSKT predictions.
+- Evidence and exact validation/publication state live in `PLATFORM_STATE.md`;
+  `PLATFORM_HANDOFF.md` requests matching content/mapping/checkpoint evidence
+  without interrupting training. Implemented work is not a new benchmark result.
+
+## 2026-10-08 — Enrich the platform profile and original mathematics content
+
+- User requested more data and fields after creating an account. Added grade,
+  curriculum, learning goal, seven-day question target, adaptive session length,
+  study days and focus concepts. Preferences persist in MongoDB with ownership
+  and validation; adaptive length applies only to newly created sessions.
+- Added a study suggestion and a target based on real rolling seven-day answer
+  counts. No synthetic answers, mastery or completed assessments were inserted.
+- Expanded the original bank from192 to384 questions, retaining exact equality
+  of every original question record. Added worked examples, lesson steps,
+  common mistakes and everyday applications. Content still uses labeled BKT;
+  trained HiTSKT requires the outstanding matching-content handoff.
+- Populated one explicitly selected local account only when its profile was
+  absent, with example preferences marked `sample`. Repeated seeding preserved
+  the existing profile. Credential and learning-document fingerprints stayed
+  unchanged. A profile-only backup is ignored under `.platform-runtime/`.
+- All14 backend tests, TypeScript and production build passed. The expanded
+  production Edge browser flow passed in29.5s, including saved-profile reload,
+  real goal counts, diagnostic/resume, progress, lessons and mobile practice.
+  Initial exact-label selector failure is preserved locally and corrected;
+  screenshots were reviewed. Evidence: `reports/platform/profile_validation.json`
+  and `backend/tests/test_profile.py`. Existing research/training source and GPU
+  ownership remain unchanged. Publication status is indexed in `PLATFORM_STATE.md`.
