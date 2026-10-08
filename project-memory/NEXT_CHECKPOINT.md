@@ -2,19 +2,15 @@
 
 Updated: 2026-10-08 UTC
 
-## Latest actual assistant check — 2026-10-08 12:05 UTC
+## Actual three-hour assistant check — 2026-10-08 15:09 UTC
 
-Epoch1/train is advancing: 25,452,254/53,990,022 targets
-(47.14% of this phase). Trainer506822 retains its original identity;
-config/source match, no logged errors, no completed epoch or terminal result.
-
-Remain in the active turn and sleep another three hours, then personally check
-at approximately2026-10-08 15:05:08 UTC. Do not relaunch training or monitoring
-supervisors. Verify/push new completed-epoch artifacts when available. On trainer
-_SUCCESS independently replay best, generate strict15/15 reporting, finish
-remaining prompt documentation, update memory, and publish verified results.
-
-Evidence: `reports/performance/dkt_assistant_monitoring_2026-10-08.jsonl`.
+- Primary assistant completed the three-hour sleep and directly checked the run. Epoch1/train: 48,858,514/53,990,022 targets (90.50% of this phase), 2,445,312 minibatches, as of2026-10-08T15:09:06Z.
+- Trainer506822 is active with unchanged start identity. Profile/source match. Console errors found: 0. _SUCCESS: False.
+- No completed epoch and no new best/last checkpoint yet.
+- Benchmark remains14/15 until DKT is complete and independently verified. No scientific settings changed.
+- Remain in the active turn, sleep another three hours, and personally check around2026-10-08 18:09:14 UTC. The detached supervisor remains stopped; do not relaunch any trainer or supervisor.
+- At completed epochs verify and push actual artifacts. On _SUCCESS independently replay best, generate strict15/15 reports, and finish prompt documentation/publication.
+- Evidence: `reports/performance/dkt_assistant_monitoring_2026-10-08.jsonl` and `.inspection/dkt_restart_20261008/assistant_monitoring.json`.
 
 ## Authoritative monitoring mode — 2026-10-08 09:03 UTC
 
