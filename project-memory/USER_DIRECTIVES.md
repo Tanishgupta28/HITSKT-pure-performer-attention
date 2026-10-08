@@ -2,6 +2,15 @@
 
 Updated: 2026-10-08 UTC
 
+## 2026-10-08 — Primary assistant must sleep and check (latest)
+
+- User explicitly rejected relying on a background monitor and requested the
+  assistant sleep for three-hour intervals, then personally check progress in
+  the active turn. Keep that turn open; perform actual checks after each wait.
+- This supersedes the detached-supervisor monitoring mode. No subagent is used.
+  The primary assistant now owns checkpoint verification, independent final
+  replay, reporting, and authorized memory/commit/push milestones.
+
 ## 2026-10-08 — Three-hour monitoring (latest)
 
 - User explicitly requested: **“continue 3 hour monitoring.”** Monitor the

@@ -2,6 +2,35 @@
 
 Updated: 2026-10-08 UTC
 
+## Latest actual assistant check — 2026-10-08 12:05 UTC
+
+Epoch1/train is advancing: 25,452,254/53,990,022 targets
+(47.14% of this phase). Trainer506822 retains its original identity;
+config/source match, no logged errors, no completed epoch or terminal result.
+
+Remain in the active turn and sleep another three hours, then personally check
+at approximately2026-10-08 15:05:08 UTC. Do not relaunch training or monitoring
+supervisors. Verify/push new completed-epoch artifacts when available. On trainer
+_SUCCESS independently replay best, generate strict15/15 reporting, finish
+remaining prompt documentation, update memory, and publish verified results.
+
+Evidence: `reports/performance/dkt_assistant_monitoring_2026-10-08.jsonl`.
+
+## Authoritative monitoring mode — 2026-10-08 09:03 UTC
+
+- User requested primary-assistant checks after three-hour sleeps in the active
+  turn. Detached monitoring supervisor509095 was stopped by individual
+  PID; trainer506822 continues with unchanged start identity and settings.
+- Next actual assistant check: 2026-10-08 12:03:10 UTC.
+  Evidence and timing: `.inspection/dkt_restart_20261008/assistant_monitoring.json`.
+- Do not relaunch any supervisor or trainer. The primary assistant must inspect
+  process identity, actual batch progress, completed epoch logs/config/checkpoints,
+  console errors, and terminal markers at each check; continue the three-hour
+  waiting/check loop. On successful completion, run independent best-checkpoint
+  replay, strict15/15 reporting, and remaining documentation/publication work.
+- Older detached-supervisor next-check times and automatic completion claims
+  below are superseded. Background monitoring no longer owns this workflow.
+
 ## Latest exact monitoring action — 2026-10-08 three-hour cadence
 
 - Active trainer is `506822`, supervisor `509095`. Inspect

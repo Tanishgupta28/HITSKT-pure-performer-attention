@@ -22,19 +22,14 @@ truth; this memory never substitutes for code, logs, checkpoints, or results.
 
 ## Current short status
 
-2026-10-08: **14/15 completed pairs**. The user explicitly requested a fresh
-restart of the fifteenth experiment, DKT/full EdNet, without restoring its old
-checkpoint. Fresh CUDA trainer `506822` is advancing in epoch1; detached
-supervisor `509095` records three-hour checks and automatically performs
-independent replay and strict15/15 report generation after training succeeds.
-All77 tests pass, including exact equivalence of progress logging.
+2026-10-08:14/15 completed pairs; DKT/full EdNet trainer506822 continues
+fresh epoch1. User requested the primary assistant remain in the active turn,
+sleep three hours, and personally inspect progress after each wait. The detached
+supervisor is stopped. No subagent is used. The primary assistant owns remaining
+verification, final independent replay, reporting, and publication.
 
-Read [CURRENT_STATE.md](CURRENT_STATE.md) and
-[NEXT_CHECKPOINT.md](NEXT_CHECKPOINT.md) for authoritative current actions.
-Historical PID/resume instructions in older entries are superseded.
-`reports/performance/dkt_restart_2026-10-08.json` records this restart's evidence.
-Live runtime files and the old abandoned artifacts remain local and ignored.
-The latest three-hour cadence and supervisor handoff are recorded in
-`reports/performance/dkt_monitoring_3h_2026-10-08.json`.
-The unrelated root README edit is preserved. Public pushes remain authorized
-using the configured original Tanish identity.
+Latest timing is `.inspection/dkt_restart_20261008/assistant_monitoring.json`.
+Read [CURRENT_STATE.md](CURRENT_STATE.md), [USER_DIRECTIVES.md](USER_DIRECTIVES.md),
+and [NEXT_CHECKPOINT.md](NEXT_CHECKPOINT.md) for the authoritative instructions.
+Older background-supervision instructions are superseded. All77 tests passed;
+Tanish identity/public pushes remain authorized. Unrelated README edit is preserved.

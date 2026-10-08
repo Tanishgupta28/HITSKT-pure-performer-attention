@@ -2,6 +2,37 @@
 
 Updated: 2026-10-08 UTC
 
+## Actual three-hour assistant check — 2026-10-08 12:05 UTC
+
+- Completed the requested three-hour sleep and personally inspected trainer
+  506822, process start identity, actual batch progress, config, logs, and markers.
+- Epoch1/train: 25,452,254/53,990,022 targets
+  (47.14% of the training pass), 1,273,856 minibatches,
+  as of2026-10-08T12:04:36Z. Advanced23,242,570 targets
+  since the prior check, proving useful minibatch advancement.
+- Trainer remains active with the original process identity. Approved profile
+  and trainer source hash match; no console errors or completion marker. No
+  epoch has completed; no best/last checkpoint yet. Benchmark remains14/15.
+- Primary assistant remains in the active waiting/checking turn. Next check
+  approximately2026-10-08 15:05:08 UTC. Detached supervisor remains stopped.
+- Evidence: `reports/performance/dkt_assistant_monitoring_2026-10-08.jsonl` and
+  `.inspection/dkt_restart_20261008/assistant_monitoring.json`.
+
+## Authoritative monitoring mode — 2026-10-08 09:03 UTC
+
+- User requested primary-assistant checks after three-hour sleeps in the active
+  turn. Detached monitoring supervisor509095 was stopped by individual
+  PID; trainer506822 continues with unchanged start identity and settings.
+- Next actual assistant check: 2026-10-08 12:03:10 UTC.
+  Evidence and timing: `.inspection/dkt_restart_20261008/assistant_monitoring.json`.
+- Do not relaunch any supervisor or trainer. The primary assistant must inspect
+  process identity, actual batch progress, completed epoch logs/config/checkpoints,
+  console errors, and terminal markers at each check; continue the three-hour
+  waiting/check loop. On successful completion, run independent best-checkpoint
+  replay, strict15/15 reporting, and remaining documentation/publication work.
+- Older detached-supervisor next-check times and automatic completion claims
+  below are superseded. Background monitoring no longer owns this workflow.
+
 ## Latest monitoring configuration — 2026-10-08 08:53 UTC
 
 This supersedes the six-hour cadence and supervisor identity in older entries.

@@ -486,3 +486,21 @@
   at2026-10-08T11:53:31Z. Existing independent replay and strict final-report gates remain.
 - Evidence: `reports/performance/dkt_monitoring_3h_2026-10-08.json`, live
   `.inspection/dkt_restart_20261008/status.json`, and batch-progress records.
+
+## 2026-10-08 — Primary assistant replaces background monitoring
+
+- User explicitly instructed three-hour sleeps followed by actual assistant
+  checks in the active turn. Stopped only supervisor509095; trainer
+  506822 retains start ticks76394006 and continues unchanged.
+- Next assistant check2026-10-08 12:03:10 UTC. The assistant
+  owns verification/replay/reporting. No subagent was launched.
+- Evidence: `.inspection/dkt_restart_20261008/assistant_monitoring.json`.
+
+## 2026-10-08 12:05 UTC — First actual three-hour assistant check
+
+- Waited three hours, then directly verified trainer506822 and epoch1/train
+  progress25,452,254/53,990,022; advancement since prior check
+  23,242,570 targets. Config/source match and no console errors.
+- No completed epoch/result;14/15 completed pairs unchanged. Continue another
+  three-hour active-turn sleep/check. Evidence:
+  `reports/performance/dkt_assistant_monitoring_2026-10-08.jsonl`.
