@@ -30,14 +30,15 @@ remain intact; platform changes do not alter research source or live runs.
 
 ## Current short status
 
-2026-10-08:14/15 completed pairs; DKT/full EdNet trainer506822 continues
-fresh epoch1. User requested the primary assistant remain in the active turn,
-sleep three hours, and personally inspect progress after each wait. The detached
-supervisor is stopped. No subagent is used. The primary assistant owns remaining
-verification, final independent replay, reporting, and publication.
+2026-10-09:14/15 completed pairs. DKT/full EdNet has two verified completed
+epochs. Epoch3 is stalled at88.52% of its training pass, with no batch update
+since06:30UTC despite a live process. Fresh CUDA and saved epoch2 execution pass;
+the exact live-process cause is unknown because stack inspection is denied.
 
-Latest timing is `.inspection/dkt_restart_20261008/assistant_monitoring.json`.
-Read [CURRENT_STATE.md](CURRENT_STATE.md), [USER_DIRECTIVES.md](USER_DIRECTIVES.md),
-and [NEXT_CHECKPOINT.md](NEXT_CHECKPOINT.md) for the authoritative instructions.
-Older background-supervision instructions are superseded. All77 tests passed;
-Tanish identity/public pushes remain authorized. Unrelated README edit is preserved.
+The primary assistant personally checks after three-hour sleeps in the active
+turn. No subagent or detached monitoring supervisor. A user decision is pending
+before discarding unfinished epoch3 and resuming from verified epoch2; no restart
+has occurred. Read [CURRENT_STATE.md](CURRENT_STATE.md),
+[USER_DIRECTIVES.md](USER_DIRECTIVES.md), and [NEXT_CHECKPOINT.md](NEXT_CHECKPOINT.md).
+Evidence: `reports/performance/dkt_stall_2026-10-09.json` and the monitoring ledger.
+Public pushes/Tanish identity remain authorized; unrelated README edit is preserved.

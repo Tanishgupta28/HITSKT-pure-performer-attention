@@ -605,3 +605,20 @@
 - Epoch3/train: 46,485,154/53,990,022 targets (86.10% of this phase), 2,326,528 minibatches, as of2026-10-09T06:20:03Z.
 - Trainer506822 is active with unchanged start identity. Profile/source match. Console errors found: 0. _SUCCESS: False. Verified 2 completed epoch(s), all train/validation target counts, strict validation-AUC selection and patience. Last2/best1, best validation AUC0.6845717850759062, patience1/5. Actual best/last checkpoints, saved Adam state and RNG were checked; hashes are in the ledger.
 - Continue active-turn three-hour sleeps/checks. Evidence: `reports/performance/dkt_assistant_monitoring_2026-10-08.jsonl`.
+
+## 2026-10-09 09:36 UTC — Direct three-hour DKT check
+
+- Epoch3/train: 47,794,594/53,990,022 targets (88.52% of this phase), 2,392,064 minibatches, as of2026-10-09T06:30:15Z.
+- Trainer506822 is active with unchanged start identity. Profile/source match. Console errors found: 0. _SUCCESS: False. Batch progress is stale for 186.6 minutes; this is a suspected execution stall, not verified useful advancement. Verified 2 completed epoch(s), all train/validation target counts, strict validation-AUC selection and patience. Last2/best1, best validation AUC0.6845717850759062, patience1/5. Actual best/last checkpoints, saved Adam state and RNG were checked; hashes are in the ledger.
+- Continue active-turn three-hour sleeps/checks. Evidence: `reports/performance/dkt_assistant_monitoring_2026-10-08.jsonl`.
+
+## 2026-10-09 09:38 UTC — Diagnose live epoch3 stall; request recovery decision
+
+- Observed last batch update at06:30UTC, unchanged across further checks while
+  main-thread CPU increased. Existing8 workers wait; no autograd advancement.
+- Fresh CUDA and saved epoch2 forward/backward/Adam smoke tests pass. Nonblocking
+  stack inspection is denied by host permissions; exact cause is unknown.
+- Prepared exact epoch2-state recovery and non-invasive stack-dump wrapper.
+  Asked user approval because stopping the current process discards6.2h of
+  unfinished epoch3 work. Decision is pending; trainer was not stopped/restarted.
+- No new benchmark outcome. Evidence: `reports/performance/dkt_stall_2026-10-09.json`.

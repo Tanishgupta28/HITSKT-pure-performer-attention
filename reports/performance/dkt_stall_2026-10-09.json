@@ -1,0 +1,62 @@
+{
+  "actions_taken": "diagnosis only; trainer was not stopped or restarted",
+  "best_epoch": 1,
+  "best_sha256": "56a911479a2c0b53edd457e4179a942be6f652717e7322c35b41e45194e90215",
+  "best_validation_auc": 0.6845717850759062,
+  "cause": "unconfirmed; global CUDA execution and fresh saved-model operations work",
+  "fresh_cuda_probe": {
+    "elapsed_seconds": 1.555,
+    "passed": true
+  },
+  "fresh_saved_model_smoke": {
+    "batch_offsets": [
+      1000000,
+      30000000,
+      47000000
+    ],
+    "elapsed_seconds": 3.406,
+    "epoch": 2,
+    "forward_backward_adam_passed": true,
+    "limitation": "not a replay of the stalled in-memory epoch3 state; no benchmark outcome"
+  },
+  "last_progress": {
+    "elapsed_seconds": 22437.271750165964,
+    "epoch": 3,
+    "event": "epoch_progress",
+    "minibatches_processed": 2392064,
+    "split": "train",
+    "status": "running",
+    "targets_processed": 47794594,
+    "targets_total": 53990022,
+    "updated_at_utc": "2026-10-09T06:30:15Z"
+  },
+  "last_sha256": "f169e774ce8b2e7d7af33678ceec68b439dac658d0f49684106909e207c68cff",
+  "last_verified_epoch": 2,
+  "live_stack_inspection": "py-spy nonblocking dump and proc stack denied by host permissions",
+  "observed_at_utc": "2026-10-09T09:36:04.909249+00:00",
+  "patience_used": 1,
+  "progress_age_seconds": 11149.909249,
+  "proposed_recovery": {
+    "approval": "required before stopping trainer/discarding unfinished epoch3",
+    "command": [
+      "python",
+      "-u",
+      ".inspection/resume_dkt_with_stacks.py",
+      "dkt",
+      "ednet_kt1",
+      "data/processed/ednet_kt1/full/session_store",
+      "experiments/dkt/ednet_kt1/full",
+      "--workers",
+      "8",
+      "--transport",
+      "packed64",
+      "--resume"
+    ],
+    "discard": "unfinished epoch3 in-memory work, approximately6.2h before stall",
+    "new_diagnostics": "registered SIGUSR1 Python stack dump; scientific trainer unchanged",
+    "restore": "verified epoch2 model, Adam and RNG; retained best1 and patience1"
+  },
+  "status": "live trainer stalled; recovery decision pending",
+  "trainer_pid": 506822,
+  "worker_observation": "all eight data workers waiting; main CPU advances; autograd CPU unchanged"
+}

@@ -2,13 +2,37 @@
 
 Updated: 2026-10-09 UTC
 
-## Actual three-hour assistant check — 2026-10-09 06:20 UTC
+## Execution stall; recovery approval pending — 2026-10-09 09:38 UTC
 
-- Primary assistant completed the three-hour sleep and directly checked the run. Epoch3/train: 46,485,154/53,990,022 targets (86.10% of this phase), 2,326,528 minibatches, as of2026-10-09T06:20:03Z.
-- Trainer506822 is active with unchanged start identity. Profile/source match. Console errors found: 0. _SUCCESS: False.
+- Epoch3/train last recorded47,794,594/53,990,022 targets (88.52%) at06:30:15UTC.
+  Trainer506822 remains alive, but progress has not updated for over three hours.
+  Main-thread CPU advances; autograd CPU and batch counter do not. All eight
+  data workers are waiting; no exception is logged. Cause remains unconfirmed.
+- Fresh CUDA execution succeeds. A separate epoch2 checkpoint copy completed
+  three finite forward/backward/Adam steps. This is only diagnostic validation,
+  not reproduction of the stalled in-memory epoch3 state or a benchmark result.
+- Host permissions denied nonblocking py-spy and kernel stack inspection.
+  Last fully verified checkpoint is epoch2; best1/AUC0.6845717851/patience1 remain.
+- An explicit approval question is pending before stopping the trainer and
+  discarding approximately6.2h of unfinished epoch3 work. Proposed recovery:
+  restore verified epoch2 model/Adam/RNG, preserve best1/patience1, replay epoch3,
+  and register a Python stack-dump signal through a local wrapper. Trainer and
+  scientific source/settings have not been changed. Do not interpret silence
+  as approval or execute the recovery until the user answers.
+- Keep the primary assistant active for personal monitoring. If approval is
+  absent, continue checks/waits without relaunching the trainer. New replies
+  may interrupt the wait. No subagent/background monitoring supervisor.
+- Evidence: `reports/performance/dkt_stall_2026-10-09.json`, monitoring ledger,
+  `.inspection/dkt_restart_20261008/stall_diagnosis_20261009_0921.json`, and the
+  prepared `.inspection/resume_dkt_with_stacks.py` wrapper.
+
+## Actual three-hour assistant check — 2026-10-09 09:36 UTC
+
+- Primary assistant completed the three-hour sleep and directly checked the run. Epoch3/train: 47,794,594/53,990,022 targets (88.52% of this phase), 2,392,064 minibatches, as of2026-10-09T06:30:15Z.
+- Trainer506822 is active with unchanged start identity. Profile/source match. Console errors found: 0. _SUCCESS: False. Batch progress is stale for 186.6 minutes; this is a suspected execution stall, not verified useful advancement.
 - Verified 2 completed epoch(s), all train/validation target counts, strict validation-AUC selection and patience. Last2/best1, best validation AUC0.6845717850759062, patience1/5. Actual best/last checkpoints, saved Adam state and RNG were checked; hashes are in the ledger.
 - Benchmark remains14/15 until DKT is complete and independently verified. No scientific settings changed.
-- Remain in the active turn, sleep another three hours, and personally check around2026-10-09 09:20:16 UTC. The detached supervisor remains stopped; do not relaunch any trainer or supervisor.
+- Remain in the active turn, sleep another three hours, and personally check around2026-10-09 12:36:52 UTC. The detached supervisor remains stopped; do not relaunch any trainer or supervisor.
 - At completed epochs verify and push actual artifacts. On _SUCCESS independently replay best, generate strict15/15 reports, and finish prompt documentation/publication.
 - Evidence: `reports/performance/dkt_assistant_monitoring_2026-10-08.jsonl` and `.inspection/dkt_restart_20261008/assistant_monitoring.json`.
 
