@@ -628,3 +628,9 @@
 - Epoch3/train: 47,794,594/53,990,022 targets (88.52% of this phase), 2,392,064 minibatches, as of2026-10-09T06:30:15Z.
 - Trainer506822 is active with unchanged start identity. Profile/source match. Console errors found: 0. _SUCCESS: False. Batch progress is stale for 372.2 minutes; this is a suspected execution stall, not verified useful advancement. Recovery decision: pending; do not discard unfinished epoch3 or restart without the user decision. Verified 2 completed epoch(s), all train/validation target counts, strict validation-AUC selection and patience. Last2/best1, best validation AUC0.6845717850759062, patience1/5. Actual best/last checkpoints, saved Adam state and RNG were checked; hashes are in the ledger.
 - Continue active-turn three-hour sleeps/checks. Evidence: `reports/performance/dkt_assistant_monitoring_2026-10-08.jsonl`.
+
+## 2026-10-09 15:45 UTC — Direct three-hour DKT check
+
+- Epoch3/train: 47,794,594/53,990,022 targets (88.52% of this phase), 2,392,064 minibatches, as of2026-10-09T06:30:15Z.
+- Trainer506822 is active with unchanged start identity. Profile/source match. Console errors found: 0. _SUCCESS: False. Batch progress is stale for 555.7 minutes; this is a suspected execution stall, not verified useful advancement. Recovery decision: pending; do not discard unfinished epoch3 or restart without the user decision. Verified 2 completed epoch(s), all train/validation target counts, strict validation-AUC selection and patience. Last2/best1, best validation AUC0.6845717850759062, patience1/5. Actual best/last checkpoints, saved Adam state and RNG were checked; hashes are in the ledger.
+- Continue active-turn three-hour sleeps/checks. Evidence: `reports/performance/dkt_assistant_monitoring_2026-10-08.jsonl`.
