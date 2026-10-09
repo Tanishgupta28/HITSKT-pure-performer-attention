@@ -1,0 +1,154 @@
+{
+  "event": "user_approved_stall_recovery",
+  "recorded_at_utc": "2026-10-09T16:28:19.456505+00:00",
+  "user_approval": "Resume from epoch 2 (Recommended)",
+  "last_valid_completed_epoch": 2,
+  "best_epoch": 1,
+  "best_validation_auc": 0.6845717850759062,
+  "patience_used": 1,
+  "preserved_checkpoint_sha256": {
+    "best_model.pt": "56a911479a2c0b53edd457e4179a942be6f652717e7322c35b41e45194e90215",
+    "last_model.pt": "f169e774ce8b2e7d7af33678ceec68b439dac658d0f49684106909e207c68cff"
+  },
+  "interrupted_progress": {
+    "elapsed_seconds": 22437.271750165964,
+    "epoch": 3,
+    "event": "epoch_progress",
+    "minibatches_processed": 2392064,
+    "split": "train",
+    "status": "running",
+    "targets_processed": 47794594,
+    "targets_total": 53990022,
+    "updated_at_utc": "2026-10-09T06:30:15Z"
+  },
+  "stale_seconds_at_recovery": 35884.456505,
+  "unfinished_epoch_useful_elapsed_seconds": 22437.271750165964,
+  "runtime_before_resume_seconds": 55827.80562557804,
+  "runtime_accounting": "Trainer accumulated runtime retains completed epochs and resumed work; discarded unfinished epoch3 and stall time are excluded and separately preserved here.",
+  "previous_processes": [
+    {
+      "pid": 506822,
+      "state": "R",
+      "ppid": 1,
+      "pgid": 506821,
+      "sid": 506821,
+      "start_ticks": 76394006
+    },
+    {
+      "pid": 643220,
+      "state": "S",
+      "ppid": 506822,
+      "pgid": 506821,
+      "sid": 506821,
+      "start_ticks": 81977088
+    },
+    {
+      "pid": 643221,
+      "state": "S",
+      "ppid": 506822,
+      "pgid": 506821,
+      "sid": 506821,
+      "start_ticks": 81977089
+    },
+    {
+      "pid": 643222,
+      "state": "S",
+      "ppid": 506822,
+      "pgid": 506821,
+      "sid": 506821,
+      "start_ticks": 81977091
+    },
+    {
+      "pid": 643223,
+      "state": "S",
+      "ppid": 506822,
+      "pgid": 506821,
+      "sid": 506821,
+      "start_ticks": 81977092
+    },
+    {
+      "pid": 643224,
+      "state": "S",
+      "ppid": 506822,
+      "pgid": 506821,
+      "sid": 506821,
+      "start_ticks": 81977093
+    },
+    {
+      "pid": 643225,
+      "state": "S",
+      "ppid": 506822,
+      "pgid": 506821,
+      "sid": 506821,
+      "start_ticks": 81977094
+    },
+    {
+      "pid": 643226,
+      "state": "S",
+      "ppid": 506822,
+      "pgid": 506821,
+      "sid": 506821,
+      "start_ticks": 81977095
+    },
+    {
+      "pid": 643227,
+      "state": "S",
+      "ppid": 506822,
+      "pgid": 506821,
+      "sid": 506821,
+      "start_ticks": 81977095
+    }
+  ],
+  "local_preserved_run": ".inspection/dkt_epoch3_stalled_before_resume_20261009_162819",
+  "recovery_contract": "Restore completed epoch2 model, Adam, RNG and selection state; repeat entire epoch3 using unchanged seed42, packed64 transport, workers8 and scientific protocol. No completed epoch discarded.",
+  "exact_stall_cause": "unconfirmed",
+  "recovery_status": "verified resumed epoch3 batches advancing; epoch2 model/Adam/RNG/controller restored and original checkpoints unchanged",
+  "old_processes_stopped_at_utc": "2026-10-09T16:28:20.221021+00:00",
+  "sigkill_required_pids": [],
+  "launched_at_utc": "2026-10-09T16:28:40.273077+00:00",
+  "new_trainer_pid": 787181,
+  "new_trainer_start_ticks": 87811318,
+  "new_session_id": 787181,
+  "command": [
+    "/usr/bin/python",
+    "-u",
+    "/workspace/capstone/.inspection/resume_dkt_with_stacks.py",
+    "dkt",
+    "ednet_kt1",
+    "data/processed/ednet_kt1/full/session_store",
+    "experiments/dkt/ednet_kt1/full",
+    "--workers",
+    "8",
+    "--transport",
+    "packed64",
+    "--resume"
+  ],
+  "stack_wrapper_local_path": ".inspection/resume_dkt_with_stacks.py",
+  "stack_wrapper_sha256": "eb3d6ce68f23548b91454230b662ff36a9cf08e584d0d95f27cbd232a78f139d",
+  "stack_log_local_path": ".inspection/dkt_restart_20261008/python_stacks.log",
+  "trainer_source_sha256": "8555da33fa241e70c0c99fc6a69339c40e53daa9d8c459041b1265f6ee57efd3",
+  "monitoring_mode": "primary assistant sleep/check in active turn; detached trainer only, no detached monitor or subagent",
+  "verified_at_utc": "2026-10-09T16:35:24.098002+00:00",
+  "verified_progress": {
+    "elapsed_seconds": 234.21028866490815,
+    "epoch": 3,
+    "event": "epoch_progress",
+    "minibatches_processed": 24576,
+    "split": "train",
+    "status": "running",
+    "targets_processed": 491044,
+    "targets_total": 53990022,
+    "updated_at_utc": "2026-10-09T16:32:37Z"
+  },
+  "verified_resume_event": {
+    "event": "training_resumed",
+    "resumed_from_epoch": 2,
+    "best_epoch": 1,
+    "consecutive_epochs_without_improvement": 1
+  },
+  "stack_dump_signal_tested": true,
+  "stack_log_sha256_at_verification": "ddcb77af373b5aa431765dc96f4deaeccd8ee0d09d9348105a68f2c9670509c3",
+  "stack_dump_test_interpretation": "A sampled healthy execution stack proves diagnostic handler works; it does not establish the cause of the old stall.",
+  "future_stall_recovery_authorization": "2026-10-09 user: you have full authorization to restart it if it gets stuck for more than 2 hours",
+  "future_stall_recovery_threshold_seconds": 7200
+}

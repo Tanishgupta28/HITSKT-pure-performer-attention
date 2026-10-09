@@ -634,3 +634,19 @@
 - Epoch3/train: 47,794,594/53,990,022 targets (88.52% of this phase), 2,392,064 minibatches, as of2026-10-09T06:30:15Z.
 - Trainer506822 is active with unchanged start identity. Profile/source match. Console errors found: 0. _SUCCESS: False. Batch progress is stale for 555.7 minutes; this is a suspected execution stall, not verified useful advancement. Recovery decision: pending; do not discard unfinished epoch3 or restart without the user decision. Verified 2 completed epoch(s), all train/validation target counts, strict validation-AUC selection and patience. Last2/best1, best validation AUC0.6845717850759062, patience1/5. Actual best/last checkpoints, saved Adam state and RNG were checked; hashes are in the ledger.
 - Continue active-turn three-hour sleeps/checks. Evidence: `reports/performance/dkt_assistant_monitoring_2026-10-08.jsonl`.
+
+## 2026-10-09 16:35 UTC — Approved epoch2 recovery verified; future stalled recovery authorized
+
+- User approved epoch2 resume, then granted full authority to restart after a
+  stall exceeding two hours. Future personal three-hour checks use >7200s stale
+  batch progress and recover the latest verified completed epoch without asking.
+- Verified original best1/last2 hashes and complete targets/selection/Adam/RNG;
+  archived unfinished epoch3 and stopped only trainer506822/eight own workers.
+  New trainer787181/start87811318 restored epoch2 and advanced24,576 minibatches.
+- Diagnostic signal handler exercised successfully; scientific source/settings
+  unchanged. The old exact stall cause remains unknown. Discarded unfinished work
+  and stalled time are accounted separately from resumed accumulated runtime.
+- Evidence: `reports/performance/dkt_resume_epoch2_2026-10-09.json`; actual logs
+  and checkpoints remain canonical. No _SUCCESS or final DKT outcome yet.
+- Condensed current state/handoff and preserved old full snapshots in dedicated
+  historical files so stale pending-approval instructions are no longer current.

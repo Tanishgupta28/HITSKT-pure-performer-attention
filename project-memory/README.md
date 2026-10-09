@@ -30,15 +30,19 @@ remain intact; platform changes do not alter research source or live runs.
 
 ## Current short status
 
-2026-10-09:14/15 completed pairs. DKT/full EdNet has two verified completed
-epochs. Epoch3 is stalled at88.52% of its training pass, with no batch update
-since06:30UTC despite a live process. Fresh CUDA and saved epoch2 execution pass;
-the exact live-process cause is unknown because stack inspection is denied.
+2026-10-09:14/15 pairs complete and independently verified. DKT/full EdNet
+has two verified completed epochs. The user-approved recovery resumed epoch3
+from epoch2 at16:28UTC; actual batches are advancing, completed checkpoints
+unchanged, best1/AUC0.6845717851/patience1 preserved. New trainerPID787181.
 
 The primary assistant personally checks after three-hour sleeps in the active
-turn. No subagent or detached monitoring supervisor. A user decision is pending
-before discarding unfinished epoch3 and resuming from verified epoch2; no restart
-has occurred. Read [CURRENT_STATE.md](CURRENT_STATE.md),
-[USER_DIRECTIVES.md](USER_DIRECTIVES.md), and [NEXT_CHECKPOINT.md](NEXT_CHECKPOINT.md).
-Evidence: `reports/performance/dkt_stall_2026-10-09.json` and the monitoring ledger.
-Public pushes/Tanish identity remain authorized; unrelated README edit is preserved.
+turn. The user authorizes recovery whenever verified progress is stalled for
+more than two hours; no further confirmation is needed. No detached monitor
+or subagent. Scientific settings remain frozen; exact old stall cause unknown.
+Read [CURRENT_STATE.md](CURRENT_STATE.md), [USER_DIRECTIVES.md](USER_DIRECTIVES.md),
+and [NEXT_CHECKPOINT.md](NEXT_CHECKPOINT.md). Recovery provenance is
+`../reports/performance/dkt_resume_epoch2_2026-10-09.json`; scheduled checks are
+in the monitoring ledger. Historical state/handoffs are retained in
+[previous state](CURRENT_STATE_history_before_2026-10-09_resume.md) and
+[previous handoff](NEXT_CHECKPOINT_history_before_2026-10-09_resume.md).
+Public pushes/Tanish identity remain authorized; unrelated README edit preserved.

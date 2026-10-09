@@ -1,6 +1,19 @@
 # Durable user directives
 
-Updated: 2026-10-08 UTC
+Updated: 2026-10-09 UTC
+
+## 2026-10-09 — Approved stall recovery and standing restart authority (latest)
+
+- User explicitly selected “Resume from epoch 2 (Recommended)” for the stalled
+  epoch3. Restore epoch2 model/Adam/RNG/selection state and repeat unfinished
+  epoch3, preserving both completed epochs, best1 and patience1.
+- User subsequently instructed: **“you have full authorization to restart it if
+  it gets stuck for more than 2 hours.”** No further confirmation is required
+  for such recoveries. Resume the latest verified completed epoch, preserve
+  incomplete evidence, and retain the frozen scientific protocol.
+- The primary assistant still personally sleeps/checks every three hours.
+  Assess the >7200s progress-stall threshold at each check; no detached monitor
+  or subagent. This supersedes the old pending recovery approval requirement.
 
 ## 2026-10-08 — Primary assistant must sleep and check (latest)
 
