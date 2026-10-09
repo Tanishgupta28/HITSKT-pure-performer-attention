@@ -650,3 +650,9 @@
   and checkpoints remain canonical. No _SUCCESS or final DKT outcome yet.
 - Condensed current state/handoff and preserved old full snapshots in dedicated
   historical files so stale pending-approval instructions are no longer current.
+
+## 2026-10-09 19:36 UTC — Direct three-hour DKT check
+
+- Epoch3/train: 23,569,930/53,990,022 targets (43.66% of this phase), 1,179,648 minibatches, as of2026-10-09T19:36:35Z.
+- Trainer787181 is active with unchanged start identity. Profile/source match. Console errors found: 0. _SUCCESS: False. Recovery decision: 2026-10-09 user: you have full authorization to restart it if it gets stuck for more than 2 hours. Verified 2 completed epoch(s), all train/validation target counts, strict validation-AUC selection and patience. Last2/best1, best validation AUC0.6845717850759062, patience1/5. Actual best/last checkpoints, saved Adam state and RNG were checked; hashes are in the ledger.
+- Continue active-turn three-hour sleeps/checks. Evidence: `reports/performance/dkt_assistant_monitoring_2026-10-08.jsonl`.

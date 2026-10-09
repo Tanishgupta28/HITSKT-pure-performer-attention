@@ -1,17 +1,16 @@
 # Next checkpoint
 
-Updated:2026-10-09 UTC
+Updated: 2026-10-09 UTC
 
-## Latest actual assistant check — 2026-10-09 16:33 UTC
+## Actual three-hour assistant check — 2026-10-09 19:36 UTC
 
-- Direct verification following the user-approved recovery. Epoch3/train has advanced to 491,044/53,990,022 targets (0.91%), 24,576 minibatches, updated 2026-10-09T16:32:37Z.
-- Trainer787181, start ticks87811318, is advancing. No logged exception or _SUCCESS.
-- Completed epochs1–2 verified. Last2, best1; best validation AUC0.6845717850759062;
-  patience1/5. Original best/last hashes unchanged; model, Adam, RNG and selection
-  state restored by the tested resume path. Seed42 and scientific settings unchanged.
-- Next personal check around 2026-10-09 19:33:09 UTC, after an actual three-hour sleep.
-  No detached monitoring supervisor or subagent. Only the trainer runs detached.
-- Check evidence: `../reports/performance/dkt_assistant_monitoring_2026-10-08.jsonl`.
+- Primary assistant completed the three-hour sleep and directly checked the run. Epoch3/train: 23,569,930/53,990,022 targets (43.66% of this phase), 1,179,648 minibatches, as of2026-10-09T19:36:35Z.
+- Trainer787181 is active with unchanged start identity. Profile/source match. Console errors found: 0. _SUCCESS: False. Recovery decision: 2026-10-09 user: you have full authorization to restart it if it gets stuck for more than 2 hours.
+- Verified 2 completed epoch(s), all train/validation target counts, strict validation-AUC selection and patience. Last2/best1, best validation AUC0.6845717850759062, patience1/5. Actual best/last checkpoints, saved Adam state and RNG were checked; hashes are in the ledger.
+- Benchmark remains14/15 until DKT is complete and independently verified. No scientific settings changed.
+- Remain in the active turn, sleep another three hours, and personally check around2026-10-09 22:36:36 UTC. The detached supervisor remains stopped. If batch progress is stalled for more than two hours, use the standing user authorization to preserve evidence and resume the latest verified completed epoch.
+- At completed epochs verify and push actual artifacts. On _SUCCESS independently replay best, generate strict15/15 reports, and finish prompt documentation/publication.
+- Evidence: `reports/performance/dkt_assistant_monitoring_2026-10-08.jsonl` and `.inspection/dkt_restart_20261008/assistant_monitoring.json`.
 
 ## Approved recovery and standing authorization — 2026-10-09
 
