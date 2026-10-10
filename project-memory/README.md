@@ -31,9 +31,9 @@ remain intact; platform changes do not alter research source or live runs.
 ## Current short status
 
 2026-10-10:14/15 pairs complete and independently verified. DKT/full EdNet
-has three verified completed epochs. The user-approved epoch2 recovery
-completed epoch3 (validation AUC0.6785532792), and epoch4 is advancing.
-Best1/AUC0.6845717851 remains selected; patience2/5. TrainerPID787181.
+has four verified completed epochs. Epoch4 validation AUC0.6767640756;
+epoch5 is advancing after the successful epoch2 recovery. Best1/AUC0.6845717851
+remains selected; patience3/5. TrainerPID787181.
 
 The primary assistant personally checks after three-hour sleeps in the active
 turn. The user authorizes recovery whenever verified progress is stalled for
