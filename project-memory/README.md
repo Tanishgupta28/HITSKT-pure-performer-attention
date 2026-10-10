@@ -38,7 +38,9 @@ remains selected; patience3/5. TrainerPID787181.
 The primary assistant personally checks after three-hour sleeps in the active
 turn. The user authorizes recovery whenever verified progress is stalled for
 more than two hours; no further confirmation is needed. No detached monitor
-or subagent. Scientific settings remain frozen; exact old stall cause unknown.
+or subagent. Only this DKT/full EdNet run has an approved patience10 exception, prepared and
+tested but pending the completed epoch5 boundary. Other settings/defaults remain
+frozen; exact old stall cause unknown.
 Read [CURRENT_STATE.md](CURRENT_STATE.md), [USER_DIRECTIVES.md](USER_DIRECTIVES.md),
 and [NEXT_CHECKPOINT.md](NEXT_CHECKPOINT.md). Recovery provenance is
 `../reports/performance/dkt_resume_epoch2_2026-10-09.json`; scheduled checks are

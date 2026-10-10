@@ -77,6 +77,19 @@ COMMON_EARLY_STOPPING = EarlyStoppingConfig()
 
 
 @dataclass(frozen=True)
+class DKTEdNetEarlyStoppingConfig(EarlyStoppingConfig):
+    """Explicit user-authorized patience exception for DKT/full EdNet only."""
+
+    patience: int = 10
+
+    def __post_init__(self) -> None:
+        values = self.as_dict()
+        values["patience"] = 5
+        if self.patience != 10 or values != COMMON_EARLY_STOPPING.as_dict():
+            raise ValueError("the DKT/EdNet exception changes only patience to 10")
+
+
+@dataclass(frozen=True)
 class EarlyStoppingDecision:
     improved: bool
     should_stop: bool
@@ -86,7 +99,7 @@ class EarlyStoppingDecision:
 
 
 class ValidationAUCEarlyStopping:
-    """Stop after exactly five consecutive non-improving validation epochs."""
+    """Select strict validation-AUC improvement using the experiment's patience."""
 
     def __init__(self, config: EarlyStoppingConfig = COMMON_EARLY_STOPPING) -> None:
         self.config = config

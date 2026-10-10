@@ -2,6 +2,18 @@
 
 Updated: 2026-10-09 UTC
 
+## 2026-10-10 — Patience10 for this DKT/full EdNet run only (latest)
+
+- User explicitly requested: **“make patience 10 for this training case only.”**
+  Apply only to the fifteenth DKT/full EdNet training. Every other run/default
+  retains5. This supersedes the frozen common patience5 requirement only for
+  this one run; record the exception in config/results/benchmark documentation.
+- Retain the current non-improvement count and best checkpoint; no counter reset.
+  Preserve model/Adam/RNG, all targets and optimizer steps, strict validation-AUC
+  improvement/min_delta0 and epoch ceiling200. Apply at the next complete epoch
+  checkpoint to preserve the healthy current epoch5.
+- Three-hour personal monitoring and >2h stalled recovery authority remain.
+
 ## 2026-10-09 — Approved stall recovery and standing restart authority (latest)
 
 - User explicitly selected “Resume from epoch 2 (Recommended)” for the stalled

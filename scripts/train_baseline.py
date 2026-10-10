@@ -27,10 +27,22 @@ from ktbench.metrics import binary_metrics
 from ktbench.models import load_baseline_checkpoint
 from ktbench.training import (
     COMMON_EARLY_STOPPING,
+    DKTEdNetEarlyStoppingConfig,
+    EarlyStoppingConfig,
     ValidationAUCEarlyStopping,
     capture_rng_state,
     restore_rng_state,
 )
+
+
+def _early_stopping_config(
+    model_name: str, dataset_name: str, patience: int
+) -> EarlyStoppingConfig:
+    if patience == COMMON_EARLY_STOPPING.patience:
+        return COMMON_EARLY_STOPPING
+    if model_name == "dkt" and dataset_name == "ednet_kt1" and patience == 10:
+        return DKTEdNetEarlyStoppingConfig()
+    raise ValueError("patience 10 is authorized only for DKT/full EdNet")
 
 
 def _write_json(path: Path, value: object) -> None:
@@ -232,11 +244,26 @@ def train_baseline(
     epoch_ceiling_override: int | None = None,
     resume: bool = False,
     transport: str = "reference",
+    early_stopping_patience_override: int | None = None,
 ) -> dict[str, Any]:
-    """Run the full protocol; the override exists only for automated tests."""
+    """Run the protocol, including the explicit DKT/EdNet patience exception."""
 
     if transport not in ("reference", "packed64"):
         raise ValueError(f"unknown transport: {transport}")
+    saved_configuration = (
+        json.loads((output_root / "config.json").read_text())
+        if resume and (output_root / "config.json").exists()
+        else None
+    )
+    saved_patience = (
+        int(saved_configuration["early_stopping_patience"])
+        if saved_configuration is not None
+        else COMMON_EARLY_STOPPING.patience
+    )
+    patience = saved_patience if early_stopping_patience_override is None else early_stopping_patience_override
+    if saved_configuration is not None and patience < saved_patience:
+        raise ValueError("cannot reduce an existing experiment's patience")
+    early_stopping = _early_stopping_config(model_name, dataset_name, patience)
     seed_everything()
     if (output_root / "_SUCCESS").exists():
         raise ValueError(f"completed experiment already exists: {output_root}")
@@ -276,9 +303,9 @@ def train_baseline(
         "workers": workers,
         "transport": transport,
         "transport_block_minibatches": 64 if transport == "packed64" else 1,
-        "early_stopping_metric": COMMON_EARLY_STOPPING.metric,
-        "early_stopping_patience": COMMON_EARLY_STOPPING.patience,
-        "early_stopping_min_delta": COMMON_EARLY_STOPPING.min_delta,
+        "early_stopping_metric": early_stopping.metric,
+        "early_stopping_patience": early_stopping.patience,
+        "early_stopping_min_delta": early_stopping.min_delta,
         "early_stopping_strict_improvement": True,
         "reload_best_checkpoint_before_test": True,
         "total_parameters": total_parameters,
@@ -291,6 +318,8 @@ def train_baseline(
     }
     if epoch_ceiling_override is not None:
         fresh_configuration["test_epoch_ceiling_override"] = epoch_ceiling
+    if early_stopping.patience == 10:
+        fresh_configuration["early_stopping_protocol_exception"] = "user-authorized DKT/full EdNet patience 10"
     target_counts = {split: len(dataset) for split, dataset in datasets.items()}
     dataset_stats = {
         "dataset": dataset_name,
@@ -319,7 +348,7 @@ def train_baseline(
     ]
     metrics_path = output_root / "metrics.csv"
     log_path = output_root / "training.jsonl"
-    control = ValidationAUCEarlyStopping()
+    control = ValidationAUCEarlyStopping(early_stopping)
     best_path = output_root / "best_model.pt"
     last_path = output_root / "last_model.pt"
     config_path = output_root / "config.json"
@@ -389,6 +418,12 @@ def train_baseline(
                 "workers": workers,
             }
         )
+        configuration["early_stopping_patience"] = early_stopping.patience
+        if early_stopping.patience == 10:
+            configuration["early_stopping_protocol_exception"] = fresh_configuration["early_stopping_protocol_exception"]
+        if saved_patience != early_stopping.patience:
+            configuration["early_stopping_patience_previous"] = saved_patience
+            configuration["early_stopping_patience_changed_after_epoch"] = epochs_completed
         if epoch_ceiling_override is not None:
             configuration["test_epoch_ceiling_override"] = epoch_ceiling
         _write_json(config_path, configuration)
@@ -416,6 +451,8 @@ def train_baseline(
                         "best_epoch": control.best_epoch,
                         "best_validation_auc": control.best_validation_auc,
                         "consecutive_epochs_without_improvement": control.consecutive_epochs_without_improvement,
+                        "early_stopping_patience": early_stopping.patience,
+                        "previous_early_stopping_patience": saved_patience,
                     }
                 )
                 + "\n"
@@ -475,6 +512,7 @@ def train_baseline(
                         "checkpoint_saved": decision.improved,
                         "consecutive_epochs_without_improvement": decision.consecutive_epochs_without_improvement,
                         "early_stop": decision.should_stop,
+                        "early_stopping_patience": early_stopping.patience,
                     }
                 )
                 + "\n"
@@ -531,8 +569,8 @@ def train_baseline(
         "dataset": dataset_name,
         "model": profile["model"],
         "seed": PROJECT_SEED,
-        "patience": COMMON_EARLY_STOPPING.patience,
-        "min_delta": COMMON_EARLY_STOPPING.min_delta,
+        "patience": early_stopping.patience,
+        "min_delta": early_stopping.min_delta,
         "best_epoch": control.best_epoch,
         "best_validation_auc": control.best_validation_auc,
         "epochs_completed": epochs_completed,
@@ -547,6 +585,8 @@ def train_baseline(
         "gpu": gpu_name,
         "transport": transport,
     }
+    if early_stopping.patience == 10:
+        result["early_stopping_protocol_exception"] = fresh_configuration["early_stopping_protocol_exception"]
     _write_json(output_root / "final_results.json", result)
     configuration.update(
         {
@@ -570,6 +610,8 @@ def main() -> None:
     parser.add_argument("--workers", type=int, default=0)
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--transport", choices=("reference", "packed64"), default="reference")
+    parser.add_argument("--early-stopping-patience", type=int, choices=(5, 10), default=None,
+                        help="explicit DKT/full EdNet exception; saved patience is retained on resume")
     args = parser.parse_args()
     result = train_baseline(
         args.model,
@@ -579,6 +621,7 @@ def main() -> None:
         workers=args.workers,
         resume=args.resume,
         transport=args.transport,
+        early_stopping_patience_override=args.early_stopping_patience,
     )
     print(json.dumps(result, indent=2, sort_keys=True))
 

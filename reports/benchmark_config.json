@@ -30,5 +30,15 @@
       "junyi": 50
     }
   },
-  "seed_policy": "One centralized seed is used for all primary experiments; every final-results row must record seed=42."
+  "seed_policy": "One centralized seed is used for all primary experiments; every final-results row must record seed=42.",
+  "experiment_overrides": {
+    "DKT/ednet_kt1/full": {
+      "early_stopping_patience": 10,
+      "min_delta": 0,
+      "strict_improvement": true,
+      "user_authorized_on": "2026-10-10",
+      "directive": "make patience 10 for this training case only",
+      "deployment_provenance": "reports/performance/dkt_patience10_2026-10-10.json"
+    }
+  }
 }
