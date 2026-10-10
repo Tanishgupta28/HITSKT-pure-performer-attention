@@ -2,13 +2,13 @@
 
 Updated: 2026-10-10 UTC
 
-## Actual three-hour assistant check — 2026-10-10 10:39 UTC
+## Actual three-hour assistant check — 2026-10-10 13:40 UTC
 
-- Primary assistant completed the three-hour sleep and directly checked the run. Epoch5/train: 18,250,340/53,990,022 targets (33.80% of this phase), 913,408 minibatches, as of2026-10-10T10:39:39Z.
+- Primary assistant completed the three-hour sleep and directly checked the run. Epoch5/train: 40,756,360/53,990,022 targets (75.49% of this phase), 2,039,808 minibatches, as of2026-10-10T13:40:14Z.
 - Trainer787181 is active with unchanged start identity. Profile/source match. Console errors found: 0. _SUCCESS: False. Recovery decision: 2026-10-09 user: you have full authorization to restart it if it gets stuck for more than 2 hours.
 - Verified 4 completed epoch(s), all train/validation target counts, strict validation-AUC selection and patience. Last4/best1, best validation AUC0.6845717850759062, patience3/5. Actual best/last checkpoints, saved Adam state and RNG were checked; hashes are in the ledger.
 - Benchmark remains14/15 until DKT is complete and independently verified. Scientific settings match the recorded protocol and any explicit user-authorized DKT/EdNet patience exception.
-- Remain in the active turn, sleep another three hours, and personally check around2026-10-10 13:39:46 UTC. The detached supervisor remains stopped. If batch progress is stalled for more than two hours, use the standing user authorization to preserve evidence and resume the latest verified completed epoch.
+- Remain in the active turn and sleep to an additional16:00UTC deployment-boundary check, then apply patience10 when epoch5 is fully saved. Return to three-hour monitoring afterward. The detached supervisor remains stopped. If batch progress is stalled for more than two hours, use the standing user authorization to preserve evidence and resume the latest verified completed epoch.
 - At completed epochs verify and push actual artifacts. On _SUCCESS independently replay best, generate strict15/15 reports, and finish prompt documentation/publication.
 - Evidence: `reports/performance/dkt_assistant_monitoring_2026-10-08.jsonl` and `.inspection/dkt_restart_20261008/assistant_monitoring.json`.
 
