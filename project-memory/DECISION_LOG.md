@@ -680,3 +680,9 @@
 - Epoch4/train: 32,163,152/53,990,022 targets (59.57% of this phase), 1,609,728 minibatches, as of2026-10-10T04:38:10Z.
 - Trainer787181 is active with unchanged start identity. Profile/source match. Console errors found: 0. _SUCCESS: False. Recovery decision: 2026-10-09 user: you have full authorization to restart it if it gets stuck for more than 2 hours. Verified 3 completed epoch(s), all train/validation target counts, strict validation-AUC selection and patience. Last3/best1, best validation AUC0.6845717850759062, patience2/5. Actual best/last checkpoints, saved Adam state and RNG were checked; hashes are in the ledger.
 - Continue active-turn three-hour sleeps/checks. Evidence: `reports/performance/dkt_assistant_monitoring_2026-10-08.jsonl`.
+
+## 2026-10-10 07:39 UTC — Direct three-hour DKT check
+
+- Epoch4/validation: 2,209,684/14,520,975 targets (15.22% of this phase), 110,592 minibatches, as of2026-10-10T07:38:55Z.
+- Trainer787181 is active with unchanged start identity. Profile/source match. Console errors found: 0. _SUCCESS: False. Recovery decision: 2026-10-09 user: you have full authorization to restart it if it gets stuck for more than 2 hours. Verified 3 completed epoch(s), all train/validation target counts, strict validation-AUC selection and patience. Last3/best1, best validation AUC0.6845717850759062, patience2/5. Actual best/last checkpoints, saved Adam state and RNG were checked; hashes are in the ledger.
+- Continue active-turn three-hour sleeps/checks. Evidence: `reports/performance/dkt_assistant_monitoring_2026-10-08.jsonl`.
