@@ -734,3 +734,9 @@
 -47 relevant tests passed before deployment; scientific arithmetic and other14
   outcomes unchanged. No DKT endpoint yet. Continue personal three-hour monitoring.
 - Evidence: `reports/performance/dkt_patience10_2026-10-10.json` and canonical run.
+
+## 2026-10-10 19:10 UTC — Direct three-hour DKT check
+
+- Epoch6/train: 23,242,570/53,990,022 targets (43.05% of this phase), 1,163,264 minibatches, as of2026-10-10T19:10:46Z.
+- Trainer999437 is active with unchanged start identity. Profile/source match. Console errors found: 0. _SUCCESS: False. Recovery decision: 2026-10-09 user: you have full authorization to restart it if it gets stuck for more than 2 hours. Verified 5 completed epoch(s), all train/validation target counts, strict validation-AUC selection and patience. Last5/best1, best validation AUC0.6845717850759062, patience4/10. Actual best/last checkpoints, saved Adam state and RNG were checked; hashes are in the ledger.
+- Continue active-turn three-hour sleeps/checks. Evidence: `reports/performance/dkt_assistant_monitoring_2026-10-08.jsonl`.
