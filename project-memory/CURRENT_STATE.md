@@ -2,45 +2,46 @@
 
 Updated: 2026-10-10 UTC
 
-## Actual three-hour assistant check — 2026-10-10 13:40 UTC
+## Latest actual assistant check — 2026-10-10 16:09 UTC
 
-- Primary assistant completed the three-hour sleep and directly checked the run. Epoch5/train: 40,756,360/53,990,022 targets (75.49% of this phase), 2,039,808 minibatches, as of2026-10-10T13:40:14Z.
-- Trainer787181 is active with unchanged start identity. Profile/source match. Console errors found: 0. _SUCCESS: False. Recovery decision: 2026-10-09 user: you have full authorization to restart it if it gets stuck for more than 2 hours.
-- Verified 4 completed epoch(s), all train/validation target counts, strict validation-AUC selection and patience. Last4/best1, best validation AUC0.6845717850759062, patience3/5. Actual best/last checkpoints, saved Adam state and RNG were checked; hashes are in the ledger.
+- Primary assistant directly verified the completed epoch5 boundary and live patience10 deployment. Epoch6/train: 245,524/53,990,022 targets (0.45% of this phase), 12,288 minibatches, as of2026-10-10T16:08:59Z.
+- Trainer999437 is active with unchanged start identity. Profile/source match. Console errors found: 0. _SUCCESS: False. Recovery decision: 2026-10-09 user: you have full authorization to restart it if it gets stuck for more than 2 hours.
+- Verified 5 completed epoch(s), all train/validation target counts, strict validation-AUC selection and patience. Last5/best1, best validation AUC0.6845717850759062, patience4/10. Actual best/last checkpoints, saved Adam state and RNG were checked; hashes are in the ledger.
 - Benchmark remains14/15 until DKT is complete and independently verified. Scientific settings match the recorded protocol and any explicit user-authorized DKT/EdNet patience exception.
-- Remain in the active turn and sleep to an additional16:00UTC deployment-boundary check, then apply patience10 when epoch5 is fully saved. Return to three-hour monitoring afterward. The detached supervisor remains stopped. If batch progress is stalled for more than two hours, use the standing user authorization to preserve evidence and resume the latest verified completed epoch.
+- Remain in the active turn, sleep another three hours, and personally check around2026-10-10 19:09:36 UTC. The detached supervisor remains stopped. If batch progress is stalled for more than two hours, use the standing user authorization to preserve evidence and resume the latest verified completed epoch.
 - At completed epochs verify and push actual artifacts. On _SUCCESS independently replay best, generate strict15/15 reports, and finish prompt documentation/publication.
 - Evidence: `reports/performance/dkt_assistant_monitoring_2026-10-08.jsonl` and `.inspection/dkt_restart_20261008/assistant_monitoring.json`.
 
-## Patience10 exception prepared; apply at epoch5 boundary — 2026-10-10
+## Patience10 applied and verified — 2026-10-10 16:07 UTC
 
 - Latest user directive: **“make patience 10 for this training case only.”**
-  Scope: DKT/full EdNet only. Other14 completed runs and common default remain5.
-- Implemented an explicit scoped CLI flag `--early-stopping-patience 10` with
-  rejection for other model/dataset pairs. Subsequent resumes retain saved10
-  automatically. Strict improvement, min_delta0, best reload, epoch ceiling200,
-  data/model/optimizer/FP32 arithmetic/RNG and current consecutive count stay intact.
--47 relevant tests passed, including real DKT model/Adam/RNG resume equality and
-  mocked stopping tests proving exact stop after10 non-improving epochs without
-  resetting the restored counter. These test fixtures are not benchmark results.
-- Live trainer787181 already loaded the old source and still uses5 while epoch5
-  runs. Source on disk supports10 but has not yet been loaded into the trainer.
-  Do not claim the live patience changed before deployment evidence exists.
-- Preserve healthy epoch5. At the10:39 and13:39 scheduled checks inspect progress;
-  before epoch5 completes (estimated around16:06UTC from recent timings), sleep
-  to its boundary and personally use short foreground checks. Once config/last
-  checkpoint/log all confirm completed5, pause only the owned trainer with SIGSTOP,
-  snapshot evidence, stop it/its workers, then resume verified5 through the stack
-  wrapper with `--workers 8 --transport packed64 --resume --early-stopping-patience 10`.
-  A few next-epoch batches may need repeating; all completed/current epoch5 work
-  must remain preserved. Capture process identity before signals and verify new
-  configuration/log states, unchanged original checkpoint hashes and real progress.
-- If stalled >2h before that boundary, standing recovery authority permits using
-  the new10 flag when resuming the latest verified completed checkpoint instead.
-- Record applied boundary/newPID/source hashes in
-  `../reports/performance/dkt_patience10_2026-10-10.json`, adjust runner.pid/control
-  identity, update memory and push actual milestone. Maintain personal three-hour
-  monitoring after deployment; no detached monitor/subagent.
+  Live DKT/full EdNet now uses10. Other14 runs and common default remain5.
+- Epoch5 completed all53,990,022 training/14,520,975 validation targets;
+  validation AUC0.6742309456419437. Best remains1/AUC0.6845717850759062;
+  non-improvement count4 is preserved, now4/10. Strict improvement/min_delta0,
+  best reload, ceiling200, all data/model/Adam/FP32/RNG settings unchanged.
+- Paused old trainer787181 immediately after verified5, before any epoch6
+  minibatch ran. Archived boundary: `.inspection/dkt_before_patience10_after_epoch5_20261010_160657/`.
+  Original best/last5 SHA-256 unchanged across resume. No training work repeated.
+- New trainer999437/start96321085 resumed5 with explicit
+  `--early-stopping-patience 10`; epoch6 batches are advancing. New script SHA:
+  `f1a3f89364728a598a67bba9684970ff64709b61a4ecebd15a381ae562192beb`.
+  SIGUSR1 stack diagnostic handler verified on the new trainer.
+- Saved config persists10, previous5 and changed-after-epoch5; every subsequent
+  `--resume` retains10 automatically even without the override flag. The last5
+  and best1 checkpoints retain their original patience5 metadata from creation;
+  model/Adam/RNG/best/counter are restored, while the active limit comes from
+  the saved user-authorized config. Do not mistakenly restore limit5.
+-47 relevant tests passed, including real DKT model/Adam/RNG resume equality,
+  strict ten-epoch stopping/count preservation and rejection of other-run overrides.
+  Common five-epoch stopping tests still pass. Test fixtures are not benchmark results.
+- Evidence: `../reports/performance/dkt_patience10_2026-10-10.json`, actual
+  config/log/checkpoints, monitoring ledger and `../reports/benchmark_config.json`.
+  Preparation/pending-deployment history is preserved in DECISION_LOG and Git56d1da1.
+- Continue primary-assistant three-hour sleeps/checks. Standing >2h stall recovery
+  remains authorized; future recoveries must retain saved patience10 and completed
+  prefixes. No detached monitor or subagent. Benchmark still14/15 pending final test
+  and independent replay; no DKT _SUCCESS yet.
 
 ## Approved recovery and standing authorization — 2026-10-09
 

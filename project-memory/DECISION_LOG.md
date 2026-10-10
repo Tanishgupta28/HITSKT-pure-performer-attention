@@ -715,3 +715,22 @@
 - Epoch5/train: 40,756,360/53,990,022 targets (75.49% of this phase), 2,039,808 minibatches, as of2026-10-10T13:40:14Z.
 - Trainer787181 is active with unchanged start identity. Profile/source match. Console errors found: 0. _SUCCESS: False. Recovery decision: 2026-10-09 user: you have full authorization to restart it if it gets stuck for more than 2 hours. Verified 4 completed epoch(s), all train/validation target counts, strict validation-AUC selection and patience. Last4/best1, best validation AUC0.6845717850759062, patience3/5. Actual best/last checkpoints, saved Adam state and RNG were checked; hashes are in the ledger.
 - Continue active-turn three-hour sleeps/checks. Evidence: `reports/performance/dkt_assistant_monitoring_2026-10-08.jsonl`.
+
+## 2026-10-10 16:09 UTC — Direct three-hour DKT check
+
+- Epoch6/train: 245,524/53,990,022 targets (0.45% of this phase), 12,288 minibatches, as of2026-10-10T16:08:59Z.
+- Trainer999437 is active with unchanged start identity. Profile/source match. Console errors found: 0. _SUCCESS: False. Recovery decision: 2026-10-09 user: you have full authorization to restart it if it gets stuck for more than 2 hours. Verified 5 completed epoch(s), all train/validation target counts, strict validation-AUC selection and patience. Last5/best1, best validation AUC0.6845717850759062, patience4/10. Actual best/last checkpoints, saved Adam state and RNG were checked; hashes are in the ledger.
+- Continue active-turn three-hour sleeps/checks. Evidence: `reports/performance/dkt_assistant_monitoring_2026-10-08.jsonl`.
+
+## 2026-10-10 16:09 UTC — Patience10 deployed at completed epoch5 with no repeated work
+
+- Verified5 complete epochs/all targets. Epoch5 validation AUC0.6742309456;
+  best1 remains, counter4 retained and active limit increased from5 to10.
+- Paused787181 before any epoch6 minibatch, preserved boundary snapshot, stopped
+  only own trainer/workers, then resumed5 in999437/start96321085. Best/last hashes
+  unchanged; new batches advance and the stack signal handler works.
+- Live config/log persist approved10 and after-epoch5 transition. Future automatic
+  resumes retain10; the original best1/last5 checkpoint metadata stays historical.
+-47 relevant tests passed before deployment; scientific arithmetic and other14
+  outcomes unchanged. No DKT endpoint yet. Continue personal three-hour monitoring.
+- Evidence: `reports/performance/dkt_patience10_2026-10-10.json` and canonical run.

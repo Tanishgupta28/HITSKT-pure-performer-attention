@@ -31,15 +31,14 @@ remain intact; platform changes do not alter research source or live runs.
 ## Current short status
 
 2026-10-10:14/15 pairs complete and independently verified. DKT/full EdNet
-has four verified completed epochs. Epoch4 validation AUC0.6767640756;
-epoch5 is advancing after the successful epoch2 recovery. Best1/AUC0.6845717851
-remains selected; patience3/5. TrainerPID787181.
+has five verified completed epochs. Epoch6 is advancing under the user-authorized
+patience10 exception, applied at the completed epoch5 boundary without repeating
+any training work. Best1/AUC0.6845717851; counter4/10. TrainerPID999437.
 
 The primary assistant personally checks after three-hour sleeps in the active
 turn. The user authorizes recovery whenever verified progress is stalled for
 more than two hours; no further confirmation is needed. No detached monitor
-or subagent. Only this DKT/full EdNet run has an approved patience10 exception, prepared and
-tested but pending the completed epoch5 boundary. Other settings/defaults remain
+or subagent. Only this DKT/full EdNet run has the applied and verified patience10 exception. Other settings/defaults remain
 frozen; exact old stall cause unknown.
 Read [CURRENT_STATE.md](CURRENT_STATE.md), [USER_DIRECTIVES.md](USER_DIRECTIVES.md),
 and [NEXT_CHECKPOINT.md](NEXT_CHECKPOINT.md). Recovery provenance is

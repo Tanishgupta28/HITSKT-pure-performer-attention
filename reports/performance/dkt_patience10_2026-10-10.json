@@ -12,7 +12,7 @@
   "active_trainer_loaded_source_sha256": "8555da33fa241e70c0c99fc6a69339c40e53daa9d8c459041b1265f6ee57efd3",
   "prepared_trainer_source_sha256": "f1a3f89364728a598a67bba9684970ff64709b61a4ecebd15a381ae562192beb",
   "prepared_controls_source_sha256": "ead48df5fd636d7a6e715f9c16eedbd562a7063e3f30a588401844d302eb6859",
-  "deployment_status": "implemented and 47 relevant tests passed; live epoch5 still uses patience5; deploy approved patience10 at its completed checkpoint boundary",
+  "deployment_status": "applied and verified: live DKT/full EdNet patience10; completed epoch5 and saved state preserved; epoch6 batches advancing",
   "planned_deployment_after_epoch": 5,
   "resume_flag": "--early-stopping-patience 10",
   "recovery_interaction": "If the running trainer stalls >2h before epoch5 completes, standing authority permits recovery from latest completed epoch with the approved patience10 flag. Otherwise preserve healthy epoch5 and switch at its boundary.",
@@ -68,5 +68,169 @@
       "real DKT updates on resumed patience change exactly match uninterrupted model/Adam/RNG and test metrics"
     ],
     "warnings": "Existing Performer CUDA deterministic-cumsum warnings; no test failures"
-  }
+  },
+  "boundary_verified_at_utc": "2026-10-10T16:06:57.730752+00:00",
+  "applied_after_completed_epoch": 5,
+  "preserved_checkpoint_sha256": {
+    "best_model.pt": "56a911479a2c0b53edd457e4179a942be6f652717e7322c35b41e45194e90215",
+    "last_model.pt": "1c421330c178925bacc7bd73fabc9fdf3414295a20b0c948af4d0732f6549b21"
+  },
+  "preserved_best_epoch": 1,
+  "preserved_best_validation_auc": 0.6845717850759062,
+  "preserved_consecutive_count": 4,
+  "preserved_epoch5_event": {
+    "event": "epoch_complete",
+    "seed": 42,
+    "epoch": 5,
+    "transport": "packed64",
+    "train": {
+      "targets": 53990022,
+      "loss": 0.6773834647592653,
+      "roc_auc": 0.6690143697688722,
+      "accuracy": 0.6870086661568687,
+      "precision": 0.7083010139312048,
+      "recall": 0.9047647998914722,
+      "f1": 0.794568727005259,
+      "mse": 0.20785709545664,
+      "threshold": 0.5
+    },
+    "validation": {
+      "targets": 14520975,
+      "loss": 0.5913531045961753,
+      "roc_auc": 0.6742309456419437,
+      "accuracy": 0.6994871900819332,
+      "precision": 0.7071139693625894,
+      "recall": 0.9573834485251701,
+      "f1": 0.8134337767225391,
+      "mse": 0.19919338589589192,
+      "threshold": 0.5
+    },
+    "checkpoint_saved": false,
+    "consecutive_epochs_without_improvement": 4,
+    "early_stop": false
+  },
+  "old_processes": [
+    {
+      "pid": 787181,
+      "state": "T",
+      "ppid": 1,
+      "pgid": 787181,
+      "sid": 787181,
+      "start_ticks": 87811318
+    },
+    {
+      "pid": 999354,
+      "state": "S",
+      "ppid": 787181,
+      "pgid": 787181,
+      "sid": 787181,
+      "start_ticks": 96320948
+    },
+    {
+      "pid": 999355,
+      "state": "S",
+      "ppid": 787181,
+      "pgid": 787181,
+      "sid": 787181,
+      "start_ticks": 96320949
+    },
+    {
+      "pid": 999356,
+      "state": "S",
+      "ppid": 787181,
+      "pgid": 787181,
+      "sid": 787181,
+      "start_ticks": 96320950
+    },
+    {
+      "pid": 999357,
+      "state": "S",
+      "ppid": 787181,
+      "pgid": 787181,
+      "sid": 787181,
+      "start_ticks": 96320951
+    },
+    {
+      "pid": 999358,
+      "state": "S",
+      "ppid": 787181,
+      "pgid": 787181,
+      "sid": 787181,
+      "start_ticks": 96320952
+    },
+    {
+      "pid": 999359,
+      "state": "S",
+      "ppid": 787181,
+      "pgid": 787181,
+      "sid": 787181,
+      "start_ticks": 96320953
+    },
+    {
+      "pid": 999360,
+      "state": "S",
+      "ppid": 787181,
+      "pgid": 787181,
+      "sid": 787181,
+      "start_ticks": 96320954
+    },
+    {
+      "pid": 999361,
+      "state": "S",
+      "ppid": 787181,
+      "pgid": 787181,
+      "sid": 787181,
+      "start_ticks": 96320955
+    }
+  ],
+  "interrupted_next_phase": {
+    "elapsed_seconds": 0.0002165240002796054,
+    "epoch": 6,
+    "event": "epoch_progress",
+    "minibatches_processed": 0,
+    "split": "train",
+    "status": "running",
+    "targets_processed": 0,
+    "targets_total": 53990022,
+    "updated_at_utc": "2026-10-10T16:06:56Z"
+  },
+  "local_preserved_boundary": ".inspection/dkt_before_patience10_after_epoch5_20261010_160657",
+  "runtime_before_deployment_seconds": 140921.11826095905,
+  "runtime_accounting": "All five completed epochs retained. Any milliseconds of unfinished epoch6 before pause are repeated and excluded from accumulated runtime; snapshot records that phase.",
+  "launched_at_utc": "2026-10-10T16:06:57.945699+00:00",
+  "new_trainer_pid": 999437,
+  "new_trainer_start_ticks": 96321085,
+  "command": [
+    "/usr/bin/python",
+    "-u",
+    "/workspace/capstone/.inspection/resume_dkt_with_stacks.py",
+    "dkt",
+    "ednet_kt1",
+    "data/processed/ednet_kt1/full/session_store",
+    "experiments/dkt/ednet_kt1/full",
+    "--workers",
+    "8",
+    "--transport",
+    "packed64",
+    "--resume",
+    "--early-stopping-patience",
+    "10"
+  ],
+  "sigkill_required_pids": [],
+  "old_trainer_stopped": true,
+  "verified_at_utc": "2026-10-10T16:08:02.285652+00:00",
+  "verified_progress": {
+    "elapsed_seconds": 39.56153758009896,
+    "epoch": 6,
+    "event": "epoch_progress",
+    "minibatches_processed": 4096,
+    "split": "train",
+    "status": "running",
+    "targets_processed": 81844,
+    "targets_total": 53990022,
+    "updated_at_utc": "2026-10-10T16:07:40Z"
+  },
+  "new_trainer_stack_handler_verified": true,
+  "all_completed_epoch_target_counts_verified": true,
+  "preserved_checkpoints_unchanged_after_resume": true
 }
