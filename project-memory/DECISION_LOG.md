@@ -746,3 +746,44 @@
 - Epoch6/train: 46,239,634/53,990,022 targets (85.64% of this phase), 2,314,240 minibatches, as of2026-10-10T22:11:32Z.
 - Trainer999437 is active with unchanged start identity. Profile/source match. Console errors found: 0. _SUCCESS: False. Recovery decision: 2026-10-09 user: you have full authorization to restart it if it gets stuck for more than 2 hours. Verified 5 completed epoch(s), all train/validation target counts, strict validation-AUC selection and patience. Last5/best1, best validation AUC0.6845717850759062, patience4/10. Actual best/last checkpoints, saved Adam state and RNG were checked; hashes are in the ledger.
 - Continue active-turn three-hour sleeps/checks. Evidence: `reports/performance/dkt_assistant_monitoring_2026-10-08.jsonl`.
+
+
+## 2026-10-18 UTC — GPU reset reconciliation; training held by current user instruction
+
+- User requested memory/skill review, `gh` verification and pending-commit sync,
+  then waiting; explicitly said not to start the fifteenth training. Recorded
+  this before replacing the stale automatic-monitor/restart handoff. No training,
+  evaluation, detached monitor or long sleep/check cycle was started.
+- `gh` authentication, repository API/push permission and canonical fetch passed
+  as Tanishgupta28. Local `work` and remote`main` matched`0964a33` before this
+  milestone; the remaining DKT config/CSV/JSONL edits represented epochs6–9.
+  Git LFS was absent, so restored3.0.2 for the existing pre-push hook.
+- The requested memory skill was absent in searched skill locations. Installed
+  `Fyxod/durable-agent-memory` at `/root/.codex/skills/durable-agent-memory`, read
+  its resume/update/evidence contract and applied it to this reconciliation.
+- Verified nine contiguous complete epochs, full target counts, exact CSV/JSON
+  equality and strict AUC selection/counter8. Best remains epoch1, AUC
+  0.6845717850759062; saved config retains DKT/EdNet-only patience10.
+  Epoch10 was interrupted at36,418,836/53,990,022 train targets (67.454753%),
+  last update2026-10-12T04:40:41Z. No trainer now; no DKT endpoint output.
+- Initial all-finite checkpoint audit failed on last9 Adam state:21,749 positive
+  infinities across five `exp_avg_sq` tensors. Model weights remain finite;
+  best1 model/Adam are finite. Cause and recovery policy remain open. No
+  optimizer reset/checkpoint rewrite/protocol change was attempted. Do not
+  label last9 fully ready for resumption. Counts/hashes are in the evidence JSON.
+- Checkpoint payloads embed common patience5 due the unchanged serializer;
+  active config/events retain10 and source resume reads that config before
+  restoring best/counter8. Record this discrepancy without changing source.
+- Fourteen success directories match the master report. Prior independent
+  verification is retained from earlier evidence, not rerun. Scientific source
+  diff remains empty. H100/MIG inventory is visible; no CUDA work was attempted.
+- Preserved interruption snapshot `.inspection/dkt_reset_20261018/` locally;
+  `last_model.pt` stays ignored. Unrelated README edit and SAKT console log are
+  preserved and excluded from the scoped sync. Achin's platform remains intact.
+- Archived old current-state/next-checkpoint files as the October18 pre-reset
+  histories, refreshed concise memory and corrected repository-local prompt and
+  experiment roots. Next bounded action after scoped publication is waiting.
+- Evidence: `reports/performance/dkt_reset_reconciliation_2026-10-18.json`, actual
+  full-run config/CSV/JSONL/checkpoints/progress and
+  [CURRENT_STATE.md](CURRENT_STATE.md). Git commit containing this entry is the
+  reconciliation milestone; verify its remote equality after pushing.

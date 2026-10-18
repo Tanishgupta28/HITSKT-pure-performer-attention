@@ -1,94 +1,103 @@
 # Current state
 
-Updated: 2026-10-10 UTC
+Updated: 2026-10-18 UTC
 
-## Actual three-hour assistant check — 2026-10-10 22:11 UTC
+## Current instruction and established outcome
 
-- Primary assistant completed the three-hour sleep and directly checked the run. Epoch6/train: 46,239,634/53,990,022 targets (85.64% of this phase), 2,314,240 minibatches, as of2026-10-10T22:11:32Z.
-- Trainer999437 is active with unchanged start identity. Profile/source match. Console errors found: 0. _SUCCESS: False. Recovery decision: 2026-10-09 user: you have full authorization to restart it if it gets stuck for more than 2 hours.
-- Verified 5 completed epoch(s), all train/validation target counts, strict validation-AUC selection and patience. Last5/best1, best validation AUC0.6845717850759062, patience4/10. Actual best/last checkpoints, saved Adam state and RNG were checked; hashes are in the ledger.
-- Benchmark remains14/15 until DKT is complete and independently verified. Scientific settings match the recorded protocol and any explicit user-authorized DKT/EdNet patience exception.
-- Remain in the active turn, sleep another three hours, and personally check around2026-10-11 01:11:45 UTC. The detached supervisor remains stopped. If batch progress is stalled for more than two hours, use the standing user authorization to preserve evidence and resume the latest verified completed epoch.
-- At completed epochs verify and push actual artifacts. On _SUCCESS independently replay best, generate strict15/15 reports, and finish prompt documentation/publication.
-- Evidence: `reports/performance/dkt_assistant_monitoring_2026-10-08.jsonl` and `.inspection/dkt_restart_20261008/assistant_monitoring.json`.
+The GPU was reset. The user requested memory reconciliation, GitHub verification
+and pending-commit synchronization only, then waiting. **Do not start the 15th
+training.** Historical three-hour checks and >2h automatic recovery are on hold
+under the latest [user directive](USER_DIRECTIVES.md). No trainer, evaluation
+runner or monitor was launched in this session; no training process was found.
 
-## Patience10 applied and verified — 2026-10-10 16:07 UTC
+The benchmark remains **14/15**. All 14 canonical completed directories have
+`_SUCCESS` and match `reports/final_results.json`. Prior independent verification
+is retained from memory, not rerun here. DKT/full EdNet has neither `_SUCCESS`
+nor `final_results.json`; no DKT EdNet test outcome is available.
 
-- Latest user directive: **“make patience 10 for this training case only.”**
-  Live DKT/full EdNet now uses10. Other14 runs and common default remain5.
-- Epoch5 completed all53,990,022 training/14,520,975 validation targets;
-  validation AUC0.6742309456419437. Best remains1/AUC0.6845717850759062;
-  non-improvement count4 is preserved, now4/10. Strict improvement/min_delta0,
-  best reload, ceiling200, all data/model/Adam/FP32/RNG settings unchanged.
-- Paused old trainer787181 immediately after verified5, before any epoch6
-  minibatch ran. Archived boundary: `.inspection/dkt_before_patience10_after_epoch5_20261010_160657/`.
-  Original best/last5 SHA-256 unchanged across resume. No training work repeated.
-- New trainer999437/start96321085 resumed5 with explicit
-  `--early-stopping-patience 10`; epoch6 batches are advancing. New script SHA:
-  `f1a3f89364728a598a67bba9684970ff64709b61a4ecebd15a381ae562192beb`.
-  SIGUSR1 stack diagnostic handler verified on the new trainer.
-- Saved config persists10, previous5 and changed-after-epoch5; every subsequent
-  `--resume` retains10 automatically even without the override flag. The last5
-  and best1 checkpoints retain their original patience5 metadata from creation;
-  model/Adam/RNG/best/counter are restored, while the active limit comes from
-  the saved user-authorized config. Do not mistakenly restore limit5.
--47 relevant tests passed, including real DKT model/Adam/RNG resume equality,
-  strict ten-epoch stopping/count preservation and rejection of other-run overrides.
-  Common five-epoch stopping tests still pass. Test fixtures are not benchmark results.
-- Evidence: `../reports/performance/dkt_patience10_2026-10-10.json`, actual
-  config/log/checkpoints, monitoring ledger and `../reports/benchmark_config.json`.
-  Preparation/pending-deployment history is preserved in DECISION_LOG and Git56d1da1.
-- Continue primary-assistant three-hour sleeps/checks. Standing >2h stall recovery
-  remains authorized; future recoveries must retain saved patience10 and completed
-  prefixes. No detached monitor or subagent. Benchmark still14/15 pending final test
-  and independent replay; no DKT _SUCCESS yet.
+## Reconciled DKT/full EdNet interruption
 
-## Approved recovery and standing authorization — 2026-10-09
+The October 10 handoff was stale: it described five complete epochs and live
+epoch6. Actual `experiments/dkt/ednet_kt1/full/` artifacts contain:
 
-- User answered “Resume from epoch 2 (Recommended).” Stopped trainer506822 and its
-  eight verified workers with SIGTERM at16:28UTC; no unrelated process was targeted.
-- Repeated unfinished epoch3 from epoch2. Completed epochs, best1 and patience1
-  preserved. The discarded prefix was47,794,594 training targets (88.52%), with
-  approximately6.23h useful unfinished work followed by approximately9.97h stalled.
-- Historical run snapshot: `.inspection/dkt_epoch3_stalled_before_resume_20261009_162819/`.
-  Recovery evidence: `../reports/performance/dkt_resume_epoch2_2026-10-09.json`.
-- Exact cause remains unconfirmed. Fresh CUDA/checkpoint execution succeeded.
-  New local wrapper `.inspection/resume_dkt_with_stacks.py` registers SIGUSR1
-  to `.inspection/dkt_restart_20261008/python_stacks.log`; handler exercised
-  successfully on the new trainer. Never send this signal to a trainer without
-  verifying registration. Trainer scientific source was not modified.
-- Latest user directive: **“you have full authorization to restart it if it gets
-  stuck for more than 2 hours.”** At each personal three-hour check, recover
-  without further permission if verified batch progress is stalled for >7200s.
-  Preserve stack evidence and incomplete-run snapshot, verify the latest completed
-  checkpoint/control/RNG/optimizer, stop only owned processes, and resume that
-  completed epoch. A recovery repeats only the unfinished epoch.
-- Runtime reporting excludes the discarded unfinished/stalled interval from
-  trainer accumulated runtime; excluded overhead is recorded separately in
-  recovery provenance. Do not present accumulated runtime as total wall time.
+- Nine contiguous complete epochs, with exact CSV/JSON metric equality and all
+  53,990,022 training / 14,520,975 validation targets in every epoch.
+- Best checkpoint: epoch1, validation AUC **0.6845717850759062**, byte-identical
+  to the already committed best. SHA256:
+  `56a911479a2c0b53edd457e4179a942be6f652717e7322c35b41e45194e90215`.
+- Last completed checkpoint: epoch9, validation AUC0.6108838021742428,
+  best1 and non-improvement counter **8/10**. SHA256:
+  `ae9f8248669c3800064020cbbb64c4e82ade108cac0cef27e1a23c74f208842b`.
+- Stale `progress.json` / console tail: epoch10 training, 36,418,836 of
+  53,990,022 targets (**67.454753%**), 1,822,720 minibatches, last update
+  **2026-10-12T04:40:41Z**. This is unfinished work, not a complete epoch.
+  Old `runner.pid`999437 is historical; there is no matching trainer now.
+- Saved accumulated completed-epoch runtime255,195.88471189688 seconds.
+  It excludes unfinished epoch10 and previously documented discarded/stalled
+  intervals; do not report it as total elapsed wall time.
 
-## Benchmark and remaining outcome
+Primary evidence is `reports/performance/dkt_reset_reconciliation_2026-10-18.json`.
+The frozen config remains seed42, width64, context200/history199, batch20,
+Adam0.0002, FP32, workers8, packed64 transport, ceiling200, strict validation-AUC
+improvement/min_delta0 and best reload before test. Patience10 is authorized
+only for DKT/full EdNet; every other run/default remains5.
 
--14/15 full-data model/dataset pairs complete and independently verified; DKT/full
-  EdNet is the last pending pair. Final DKT test results have not been produced.
-- EdNet phase target counts: train53,990,022; validation14,520,975; test13,429,870.
-- Training uses the frozen seed42/width64/context200/batch20/Adam0.0002 protocol,
-  workers8 and packed64 transport. Strict validation-AUC improvement and min_delta0;
-  default patience5 with the approved DKT/EdNet10 exception above; reload best for test.
-- Meaningful existing verification:77 tests passed after progress instrumentation
-  and exact packed/reference resume checks. No new scientific code change.
-- On completion independently replay best, verify exact test metric equality,
-  generate strict15/15 reports, finish prompt documentation and publish.
+## Checkpoint integrity finding — unresolved
 
-## Repository and parallel work
+CPU inspection loaded both checkpoints and verified finite model weights,
+saved Adam state and Python/NumPy/CPU/CUDA RNG entries. The **epoch9 Adam state
+contains 21,749 positive infinities in five `exp_avg_sq` tensors** (embedding,
+both LSTM weights and both LSTM biases). The best epoch1 checkpoint has finite
+model and optimizer tensors. The initial all-finite integrity check therefore
+failed on the last checkpoint. Detailed counts are in the reconciliation JSON.
 
-- Canonical remote `capstone-gpu` is
+Do not describe epoch9 as fully validated for resumption. Cause and appropriate
+recovery remain unresolved; no training, state reset, clipping, checkpoint
+rewrite or scientific change was attempted. A future continuation must address
+this finding with the user before choosing a consequential recovery policy.
+
+Both checkpoint payloads also embed common patience5 metadata because
+`scripts/train_baseline.py:_checkpoint_payload` serializes
+`COMMON_EARLY_STOPPING`. Actual config and epochs6–9 retain approved10. Source
+inspection confirms resume creates the controller from saved config10, then
+restores best/counter8. Do not reduce patience or reset the counter based on
+embedded metadata. This was recorded without changing source/checkpoints.
+
+## GitHub, skill and retained local state
+
+- `gh auth status`, authenticated repository API and fetch succeeded as
+  **Tanishgupta28** with push permission on canonical `capstone-gpu`:
   `https://github.com/Tanishgupta28/HITSKT-pure-performer-attention.git`.
-  Public pushes and configured Tanish identity remain authorized.
-- Preserve the unrelated root README working-tree edit and SAKT console file.
-  Preserve Achin's platform work; see [PLATFORM_STATE.md](PLATFORM_STATE.md) and
-  [PLATFORM_HANDOFF.md](PLATFORM_HANDOFF.md). Fetch/merge normal; never force push.
-- Historical detail is preserved in
-  [previous state snapshots](CURRENT_STATE_history_before_2026-10-09_resume.md)
-  and [DECISION_LOG.md](DECISION_LOG.md). Old pending-approval/PID/monitoring
-  entries are explicitly superseded by the recovery above.
+  Before this sync, local `work` and fetched `main` both pointed to`0964a33`;
+  no existing commits were ahead or behind. Epoch6–9 config/CSV/JSONL were
+  uncommitted and are included in this reconciliation milestone.
+- Git LFS was absent after reset and required by the existing pre-push hook.
+  Restored git-lfs3.0.2; hook retained. Never force push.
+- Durable memory skill was absent in searched skill roots; restored from the
+  user-supplied repository to `/root/.codex/skills/durable-agent-memory` and
+  applied in resume/update mode. It will be discoverable on the next turn.
+- Scientific source remains unchanged. Trainer SHA256:
+  `f1a3f89364728a598a67bba9684970ff64709b61a4ecebd15a381ae562192beb`.
+- Preserved unrelated local `README.md` modification and untracked
+  `experiments/sakt/ednet_kt1/full/independent_evaluation.console.log`;
+  exclude both from this scoped commit.
+- `last_model.pt`, raw/processed data, console/progress/PID and inspection
+  snapshots remain local/ignored. Interruption snapshot:
+  `.inspection/dkt_reset_20261018/` (best/last, config/stats, CSV/JSONL, progress).
+  The last checkpoint is not recoverable from the public commit alone.
+- H100/MIG3g.40gb inventory is visible. GPU memory queries lack permissions;
+  CUDA training/readiness was not exercised. The full EdNet session-store
+  metadata is present; its hash is recorded in the reconciliation JSON.
+
+## Platform and continuation
+
+Achin's FastAPI/Next.js/MongoDB platform work remains intact. The matching
+content/checkpoint evidence request is still pending; see
+[PLATFORM_STATE.md](PLATFORM_STATE.md) and [PLATFORM_HANDOFF.md](PLATFORM_HANDOFF.md).
+No platform implementation or serving work is part of this reset reconciliation.
+
+After publishing this scoped milestone, wait for the user. Exact future gates
+are in [NEXT_CHECKPOINT.md](NEXT_CHECKPOINT.md). Prior beliefs and instructions
+are retained in [October 10 state](CURRENT_STATE_history_before_2026-10-18_reset.md),
+[earlier state](CURRENT_STATE_history_before_2026-10-09_resume.md) and
+[DECISION_LOG.md](DECISION_LOG.md); their live PIDs/schedules are historical.

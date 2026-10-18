@@ -1,0 +1,162 @@
+{
+  "accumulated_completed_epoch_runtime_seconds": 255195.88471189688,
+  "active_patience_limit": 10,
+  "active_training_pids": [],
+  "activity": "CPU artifact reconciliation only; no training or evaluation launched",
+  "benchmark_completed": 14,
+  "benchmark_expected": 15,
+  "best_epoch": 1,
+  "best_validation_auc": 0.6845717850759062,
+  "canonical_remote": "https://github.com/Tanishgupta28/HITSKT-pure-performer-attention.git",
+  "checked_at_utc": "2026-10-18T08:47:18.943820+00:00",
+  "checkpoint_integrity_conclusion": "Last checkpoint loads and has finite model weights plus saved Adam/RNG, but Adam second moments contain infinities. Do not describe it as fully validated for resumption. Cause and recovery choice remain unresolved; no repair attempted.",
+  "checkpoint_patience_metadata_caveat": "Both payloads embed common patience5 because _checkpoint_payload writes COMMON_EARLY_STOPPING. Saved config and epoch6-9 events retain authorized10. Resume constructs its controller from saved config and restores best/counter. Retain config10 and counter8; no code or checkpoint rewritten.",
+  "checkpoints": {
+    "best_model.pt": {
+      "early_stopping_state": {
+        "best_epoch": 1,
+        "best_validation_auc": 0.6845717850759062,
+        "consecutive_epochs_without_improvement": 0
+      },
+      "embedded_patience_metadata": 5,
+      "epoch": 1,
+      "model_tensors_finite": true,
+      "nonfinite_optimizer_states": [],
+      "optimizer_parameter_states": 7,
+      "optimizer_tensors_finite": true,
+      "rng_keys": [
+        "numpy",
+        "python",
+        "torch_cpu",
+        "torch_cuda"
+      ],
+      "seed": 42,
+      "sha256": "56a911479a2c0b53edd457e4179a942be6f652717e7322c35b41e45194e90215",
+      "validation_auc": 0.6845717850759062
+    },
+    "last_model.pt": {
+      "early_stopping_state": {
+        "best_epoch": 1,
+        "best_validation_auc": 0.6845717850759062,
+        "consecutive_epochs_without_improvement": 8
+      },
+      "embedded_patience_metadata": 5,
+      "epoch": 9,
+      "model_tensors_finite": true,
+      "nonfinite_optimizer_states": [
+        {
+          "elements": 287232,
+          "nan_count": 0,
+          "negative_infinities": 0,
+          "parameter_index": 0,
+          "parameter_name": "interaction_embedding.weight",
+          "positive_infinities": 4306,
+          "state_key": "exp_avg_sq"
+        },
+        {
+          "elements": 16384,
+          "nan_count": 0,
+          "negative_infinities": 0,
+          "parameter_index": 1,
+          "parameter_name": "rnn.weight_ih_l0",
+          "positive_infinities": 11673,
+          "state_key": "exp_avg_sq"
+        },
+        {
+          "elements": 16384,
+          "nan_count": 0,
+          "negative_infinities": 0,
+          "parameter_index": 2,
+          "parameter_name": "rnn.weight_hh_l0",
+          "positive_infinities": 5406,
+          "state_key": "exp_avg_sq"
+        },
+        {
+          "elements": 256,
+          "nan_count": 0,
+          "negative_infinities": 0,
+          "parameter_index": 3,
+          "parameter_name": "rnn.bias_ih_l0",
+          "positive_infinities": 182,
+          "state_key": "exp_avg_sq"
+        },
+        {
+          "elements": 256,
+          "nan_count": 0,
+          "negative_infinities": 0,
+          "parameter_index": 4,
+          "parameter_name": "rnn.bias_hh_l0",
+          "positive_infinities": 182,
+          "state_key": "exp_avg_sq"
+        }
+      ],
+      "optimizer_parameter_states": 7,
+      "optimizer_tensors_finite": false,
+      "rng_keys": [
+        "numpy",
+        "python",
+        "torch_cpu",
+        "torch_cuda"
+      ],
+      "seed": 42,
+      "sha256": "ae9f8248669c3800064020cbbb64c4e82ade108cac0cef27e1a23c74f208842b",
+      "validation_auc": 0.6108838021742428
+    }
+  },
+  "completed_experiment_directories": [
+    "experiments/dkt/assist2017/full",
+    "experiments/dkt/junyi/full",
+    "experiments/dkvmn/assist2017/full",
+    "experiments/dkvmn/ednet_kt1/full",
+    "experiments/dkvmn/junyi/full",
+    "experiments/hitskt/assist2017/full",
+    "experiments/hitskt/ednet_kt1/full",
+    "experiments/hitskt/junyi/full",
+    "experiments/rkt/assist2017/full",
+    "experiments/rkt/ednet_kt1/full",
+    "experiments/rkt/junyi/full",
+    "experiments/sakt/assist2017/full",
+    "experiments/sakt/ednet_kt1/full",
+    "experiments/sakt/junyi/full"
+  ],
+  "console_errors_found": [],
+  "csv_json_exact_equality": true,
+  "epochs_completed": 9,
+  "final_test_results_present": false,
+  "git_lfs_restored_version": "git-lfs/3.0.2 (GitHub; linux amd64; go 1.18.1)",
+  "github_authentication": "Tanishgupta28; authenticated API access and push permission verified",
+  "gpu_inventory": "NVIDIA H100 80GB HBM3; MIG 3g.40gb; no CUDA computation attempted",
+  "independent_replay_status": "Prior 14-run verification retained from durable memory; no new replay performed",
+  "interrupted_phase_percent": 67.454753028254,
+  "interrupted_progress": {
+    "elapsed_seconds": 17345.77325266786,
+    "epoch": 10,
+    "event": "epoch_progress",
+    "minibatches_processed": 1822720,
+    "split": "train",
+    "status": "running",
+    "targets_processed": 36418836,
+    "targets_total": 53990022,
+    "updated_at_utc": "2026-10-12T04:40:41Z"
+  },
+  "local_only_snapshot": ".inspection/dkt_reset_20261018",
+  "next_action": "Wait for user instructions; no automatic restart or monitoring schedule",
+  "patience_used": 8,
+  "repository_head_before_sync": "0964a33d3bc58500e4ef8271444a990a184b8b67",
+  "runtime_caveat": "Accumulated runtime excludes unfinished epoch10 and previously documented discarded/stalled intervals; not total wall time",
+  "scientific_source_diff_empty": true,
+  "session_store_metadata_sha256": "c08ac9eb1b2154de42b5faffd5b0914e635aab97a6e0adec0aeb568676f598f4",
+  "success_marker": false,
+  "target_counts": {
+    "test": 13429870,
+    "train": 53990022,
+    "validation": 14520975
+  },
+  "trainer_source_sha256": "f1a3f89364728a598a67bba9684970ff64709b61a4ecebd15a381ae562192beb",
+  "training_status": "interrupted; held pending new user instruction",
+  "unrelated_paths_preserved": [
+    "README.md",
+    "experiments/sakt/ednet_kt1/full/independent_evaluation.console.log"
+  ],
+  "user_instruction": "GPU reset; get up to date and sync pending commits; do not start the 15th training; wait for instructions"
+}

@@ -1,6 +1,21 @@
 # Durable user directives
 
-Updated: 2026-10-09 UTC
+Updated: 2026-10-18 UTC
+
+## 2026-10-18 — GPU reset; reconcile and sync only, then wait (latest)
+
+- User requested work in `/workspace/capstone`: review project memory, use the
+  durable-agent-memory skill, verify `gh`, and sync any pending commits.
+- Explicit instruction: **“15th training is pending, don't start it yet,
+  just get upto date for now.”** Finish reconciliation/sync, then wait for
+  further instructions. Do not start training, independent evaluation, a
+  detached monitor, or automatic three-hour checks during this task.
+- This hold supersedes the older automatic monitoring/restart directions for
+  the current session. Historical >2h recovery authorization does not override
+  this newer instruction. Any later training action requires new direction.
+- If the skill is absent after the reset, the user supplied
+  `https://github.com/Fyxod/durable-agent-memory` for restoration.
+- Preserve existing scientific artifacts/settings and unrelated local edits.
 
 ## 2026-10-10 — Patience10 for this DKT/full EdNet run only (latest)
 

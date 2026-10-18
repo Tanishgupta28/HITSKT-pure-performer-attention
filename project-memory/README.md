@@ -23,27 +23,31 @@ remain intact; platform changes do not alter research source or live runs.
 ## Authoritative roots
 
 - Project repository: `/workspace/capstone`
-- Project specification: `../prompt.txt`
+- Project specification: `/workspace/capstone/prompt.txt`
 - Upstream continuation point: `origin/main` from `pokerme7777/HiTSKT`
-- Experiment outputs: `../experiments/`; only directories carrying `_SUCCESS`
+- Experiment outputs: `/workspace/capstone/experiments/`; only directories carrying `_SUCCESS`
   are eligible for the generated final benchmark tables
 
 ## Current short status
 
-2026-10-10:14/15 pairs complete and independently verified. DKT/full EdNet
-has five verified completed epochs. Epoch6 is advancing under the user-authorized
-patience10 exception, applied at the completed epoch5 boundary without repeating
-any training work. Best1/AUC0.6845717851; counter4/10. TrainerPID999437.
+2026-10-18 reset reconciliation: **14/15** pairs complete. DKT/full EdNet
+has **nine** complete epochs; epoch10 stopped at67.45% of training on October12.
+Best1/AUC0.6845717851, saved counter8/10. No training process is active.
+**User says do not start the 15th training; sync, then wait.** This supersedes
+older automatic monitoring/restart directions for this session.
 
-The primary assistant personally checks after three-hour sleeps in the active
-turn. The user authorizes recovery whenever verified progress is stalled for
-more than two hours; no further confirmation is needed. No detached monitor
-or subagent. Only this DKT/full EdNet run has the applied and verified patience10 exception. Other settings/defaults remain
-frozen; exact old stall cause unknown.
-Read [CURRENT_STATE.md](CURRENT_STATE.md), [USER_DIRECTIVES.md](USER_DIRECTIVES.md),
-and [NEXT_CHECKPOINT.md](NEXT_CHECKPOINT.md). Recovery provenance is
-`../reports/performance/dkt_resume_epoch2_2026-10-09.json`; scheduled checks are
-in the monitoring ledger. Historical state/handoffs are retained in
-[previous state](CURRENT_STATE_history_before_2026-10-09_resume.md) and
-[previous handoff](NEXT_CHECKPOINT_history_before_2026-10-09_resume.md).
-Public pushes/Tanish identity remain authorized; unrelated README edit preserved.
+Epoch9 model weights are finite, but five saved Adam second-moment tensors
+contain21,749 positive infinities. Recovery/readiness is unresolved; no repair
+or training was attempted. Detailed evidence:
+`reports/performance/dkt_reset_reconciliation_2026-10-18.json`.
+
+GitHub authentication/API/fetch work as Tanishgupta28. Restored missing Git LFS
+and the requested durable memory skill after reset. The scoped sync includes
+uncommitted epoch6–9 config/log/metric artifacts and current memory. Preserve
+the unrelated root README edit and SAKT console log; last checkpoint/data and
+inspection snapshots remain local/ignored.
+
+Read [CURRENT_STATE.md](CURRENT_STATE.md), [USER_DIRECTIVES.md](USER_DIRECTIVES.md)
+and [NEXT_CHECKPOINT.md](NEXT_CHECKPOINT.md). Prior live-run handoffs are retained
+in [October 10 state](CURRENT_STATE_history_before_2026-10-18_reset.md) and
+[October 10 checkpoint](NEXT_CHECKPOINT_history_before_2026-10-18_reset.md).
