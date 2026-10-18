@@ -1,0 +1,40 @@
+{"dataset": "ednet_kt1", "targets": 77725, "total": 13429870, "batches": 195, "seconds": 25.36552014807239, "processes": 16}
+{"dataset": "ednet_kt1", "targets": 166689, "total": 13429870, "batches": 373, "seconds": 51.24050939199515, "processes": 16}
+{"dataset": "ednet_kt1", "targets": 260007, "total": 13429870, "batches": 527, "seconds": 77.04954949300736, "processes": 16}
+{"dataset": "ednet_kt1", "targets": 360716, "total": 13429870, "batches": 671, "seconds": 102.14673425804358, "processes": 16}
+{"dataset": "ednet_kt1", "targets": 455159, "total": 13429870, "batches": 816, "seconds": 127.73352849401999, "processes": 16}
+{"dataset": "ednet_kt1", "targets": 531089, "total": 13429870, "batches": 930, "seconds": 153.17037803097628, "processes": 16}
+{"dataset": "ednet_kt1", "targets": 609999, "total": 13429870, "batches": 1042, "seconds": 178.34653307904955, "processes": 16}
+{"dataset": "ednet_kt1", "targets": 689737, "total": 13429870, "batches": 1150, "seconds": 203.53607739601284, "processes": 16}
+{"dataset": "ednet_kt1", "targets": 773345, "total": 13429870, "batches": 1260, "seconds": 228.87151093606371, "processes": 16}
+{"dataset": "ednet_kt1", "targets": 847804, "total": 13429870, "batches": 1356, "seconds": 254.1323698940687, "processes": 16}
+{"dataset": "ednet_kt1", "targets": 925711, "total": 13429870, "batches": 1448, "seconds": 279.2757708770223, "processes": 16}
+{"dataset": "ednet_kt1", "targets": 1008576, "total": 13429870, "batches": 1546, "seconds": 304.3445291930111, "processes": 16}
+{"dataset": "ednet_kt1", "targets": 1086249, "total": 13429870, "batches": 1647, "seconds": 329.9705084019806, "processes": 16}
+{"dataset": "ednet_kt1", "targets": 1145652, "total": 13429870, "batches": 1715, "seconds": 355.6891367720673, "processes": 16}
+{"dataset": "ednet_kt1", "targets": 1206670, "total": 13429870, "batches": 1778, "seconds": 381.5010075219907, "processes": 16}
+{"dataset": "ednet_kt1", "targets": 1258334, "total": 13429870, "batches": 1839, "seconds": 407.0891292010201, "processes": 16}
+{"dataset": "ednet_kt1", "targets": 1303909, "total": 13429870, "batches": 1892, "seconds": 432.18917020305526, "processes": 16}
+{"dataset": "ednet_kt1", "targets": 1355597, "total": 13429870, "batches": 1952, "seconds": 457.24125802202616, "processes": 16}
+{"dataset": "ednet_kt1", "targets": 1404021, "total": 13429870, "batches": 2010, "seconds": 482.37713727599476, "processes": 16}
+{"dataset": "ednet_kt1", "targets": 1449574, "total": 13429870, "batches": 2065, "seconds": 507.4899278030498, "processes": 16}
+{"dataset": "ednet_kt1", "targets": 1502626, "total": 13429870, "batches": 2125, "seconds": 533.3693692010129, "processes": 16}
+{"dataset": "ednet_kt1", "targets": 1555042, "total": 13429870, "batches": 2188, "seconds": 558.8812389560044, "processes": 16}
+{"dataset": "ednet_kt1", "targets": 1604520, "total": 13429870, "batches": 2249, "seconds": 584.5571219139965, "processes": 16}
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/multiprocessing/pool.py", line 856, in next
+    item = self._items.popleft()
+IndexError: pop from an empty deque
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/capstone/scripts/audit_hitskt_replay_parallel.py", line 133, in <module>
+    if __name__=='__main__': main()
+  File "/workspace/capstone/scripts/audit_hitskt_replay_parallel.py", line 93, in main
+    for indices,logits,probability,labels,ids,loss in pool.imap(evaluate_batch,sampler,chunksize=1):
+  File "/usr/lib/python3.10/multiprocessing/pool.py", line 861, in next
+    self._cond.wait(timeout)
+  File "/usr/lib/python3.10/threading.py", line 320, in wait
+    waiter.acquire()
+KeyboardInterrupt

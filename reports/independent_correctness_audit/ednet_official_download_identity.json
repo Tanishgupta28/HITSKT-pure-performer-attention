@@ -1,0 +1,33 @@
+{
+  "checked_at_utc": "2026-10-18T10:14:58.529283+00:00",
+  "local_archives_unchanged": true,
+  "records": [
+    {
+      "downloaded_bytes": 1201163816,
+      "downloaded_sha256": "0d13933f90201c5101c7fe8659e44474fa049e3fb93181a8ba6fb3e63267b535",
+      "drive_file_id": "1AmGcOs5U31wIIqvthn9ARqJMrMTFTcaw",
+      "expected_local_bytes": 1201163816,
+      "expected_local_sha256": "0d13933f90201c5101c7fe8659e44474fa049e3fb93181a8ba6fb3e63267b535",
+      "maximum_transfer_bytes_per_second": 5242880,
+      "name": "KT1",
+      "official_repository": "https://github.com/riiid/ednet#download-links",
+      "resolved_source_page": "https://drive.google.com/file/d/1AmGcOs5U31wIIqvthn9ARqJMrMTFTcaw/view?usp=sharing",
+      "shortcut": "https://bit.ly/ednet_kt1",
+      "shortcut_http_status": 200,
+      "status": "PASS"
+    },
+    {
+      "drive_file_id": "117aYJAWG3GU48suS66NPaB82HwFj6xWS",
+      "error": "HTTPSConnectionPool(host='bit.ly', port=443): Max retries exceeded with url: /ednet-content (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffff6da7940>: Failed to resolve 'bit.ly' ([Errno -3] Temporary failure in name resolution)\"))",
+      "error_type": "ConnectionError",
+      "expected_local_bytes": 173976,
+      "expected_local_sha256": "aa910a0436d9dbac0ba232f55e27b37ad8d39da285fcf15f1c1eb5d064be98e7",
+      "maximum_transfer_bytes_per_second": 5242880,
+      "name": "Contents",
+      "official_repository": "https://github.com/riiid/ednet#download-links",
+      "shortcut": "https://bit.ly/ednet-content",
+      "status": "NOT VERIFIED"
+    }
+  ],
+  "status": "NOT VERIFIED"
+}

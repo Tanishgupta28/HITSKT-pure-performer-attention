@@ -787,3 +787,44 @@
   full-run config/CSV/JSONL/checkpoints/progress and
   [CURRENT_STATE.md](CURRENT_STATE.md). Git commit containing this entry is the
   reconciliation milestone; verify its remote equality after pushing.
+
+
+## 2026-10-18 UTC — Independent correctness audit authorized; training hold retained
+
+- The user requested masking/leakage proofs, exhaustive three-dataset lineage,
+  fresh full HiTSKT checkpoint metrics, architecture terminology and baseline
+  evidence review. Commit/push of verified audit reports is explicitly authorized.
+- Earlier reset-only evaluation hold is superseded for this audit. DKT/EdNet
+  training remains pending; LightSAKT2 must not be modified or interrupted.
+- Durable memory skill used in resume/audit/update modes. Current evidence and
+  bounded CPU replay handoff are in [AUDIT_STATE.md](AUDIT_STATE.md).
+- Independent tests and full data reconstruction pass; ASSIST CPU metric gate
+  fails and is retained as a discrepancy. No model/source/result rewrite or
+  retraining is authorized as a consequence of an audit finding alone.
+
+
+## 2026-10-18 12:55 UTC — Independent audit completed with qualified failures
+
+- All133 distinct tests and exhaustive three-source raw/processed/store checks PASS.
+  All784,309 official EdNet student files /95,293,926 rows were checked, and both
+  fresh official archive hashes match. Flat author CSV identities match upstream.
+- All three best checkpoints freshly replayed on all15,998,524 combined targets.
+  AUC differences pass1e-6, but all three overall CPU metric gates FAIL because
+  classification metrics differ; ASSIST BCE also differs beyond tolerance.
+  Production CPU ASSIST crosscheck exactly matches the independent implementation.
+  No tolerance relaxation, historical overwrite or asserted rounding diagnosis.
+- Active kernel is deterministic ELU+1, not FAVOR+. Physical feedback-arrival
+  timing is unverified; index-causality PASS does not certify real-time availability.
+  All splits are chronological within-student, with earlier held-out labels visible.
+- Baseline artifacts/cache algebra pass scoped checks, but baseline fresh metrics,
+  raw Phi reconstruction, significance and missing DKT/EdNet final remain NOT VERIFIED.
+  DKT's nonfinite last optimizer state is preserved; no training/recovery attempted.
+- Preservation PASS:375 originals, all30 best/last checkpoints; all15 best weights
+  match actual base Git blobs.33 source bindings and12 prediction files verified.
+  The two early audit-only OOM victims were rerun safely, with no further OOM kills.
+  Two protected LightSAKT2 identities remain;1992414 exited for an unverified
+  reason, with current external heartbeat/active jobs. No edits/signals sent to it.
+- Requested report is `reports/HITSKT_INDEPENDENT_CORRECTNESS_AUDIT.md`; per-dataset
+  final manifests and exact comparisons are in `reports/independent_correctness_audit/`.
+  Recommendations were added only after full verification. Publish this scoped
+  audit milestone normally, preserve unrelated edits, then wait for instructions.

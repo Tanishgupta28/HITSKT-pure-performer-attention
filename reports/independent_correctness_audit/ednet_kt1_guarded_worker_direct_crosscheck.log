@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "dataset": "ednet_kt1",
+  "checks": [
+    {
+      "batch_index": 3051,
+      "targets": 1126,
+      "maximum_absolute_logit_difference": 0.0,
+      "maximum_absolute_probability_difference": 0.0,
+      "exact_equal": true
+    },
+    {
+      "batch_index": 3052,
+      "targets": 840,
+      "maximum_absolute_logit_difference": 0.0,
+      "maximum_absolute_probability_difference": 0.0,
+      "exact_equal": true
+    },
+    {
+      "batch_index": 3053,
+      "targets": 820,
+      "maximum_absolute_logit_difference": 0.0,
+      "maximum_absolute_probability_difference": 0.0,
+      "exact_equal": true
+    }
+  ],
+  "source_sha256": "a9a8746b7adc058e3c9ac2d51b18c62aa32fc3a60f3422df1ab8d1115cf44460",
+  "checkpoint_sha256": "58d4b1f393d0fa8ec372ba8bcc00cc8b7168d37817d4badfd26ee42abffd03c8",
+  "description": "Separate fresh process vs actual new guarded-worker cache after the preserved prefix; not merely a default zero parity field"
+}

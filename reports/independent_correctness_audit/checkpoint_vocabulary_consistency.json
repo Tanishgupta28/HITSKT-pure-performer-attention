@@ -1,0 +1,90 @@
+{
+  "implementation_sha256": "9301dfacfa18664ea70e8236788a3d447506ff7901d2229bfe37608b55daa7d9",
+  "records": {
+    "assist2017": {
+      "checkpoint_architecture_and_store_index_bounds_match": true,
+      "checkpoint_config": {
+        "action_layers": 1,
+        "correct_layers": 1,
+        "decoder_layers": 1,
+        "dropout": 0.1,
+        "feedforward_width": 2048,
+        "heads": 4,
+        "num_questions": 3158,
+        "num_skills": 102,
+        "session_layers": 1,
+        "width": 256
+      },
+      "checkpoint_seed_metadata": 42,
+      "vocabularies": {
+        "question": {
+          "distinct_retained_ids": 3112,
+          "metadata_index_upper_bound": 3158,
+          "unused_ids_within_index_bound": 46
+        },
+        "skill": {
+          "distinct_retained_ids": 102,
+          "metadata_index_upper_bound": 102,
+          "unused_ids_within_index_bound": 0
+        }
+      }
+    },
+    "ednet_kt1": {
+      "checkpoint_architecture_and_store_index_bounds_match": true,
+      "checkpoint_config": {
+        "action_layers": 1,
+        "correct_layers": 1,
+        "decoder_layers": 1,
+        "dropout": 0.1,
+        "feedforward_width": 1024,
+        "heads": 2,
+        "num_questions": 13169,
+        "num_skills": 1495,
+        "session_layers": 1,
+        "width": 128
+      },
+      "checkpoint_seed_metadata": 42,
+      "vocabularies": {
+        "question": {
+          "distinct_retained_ids": 12283,
+          "metadata_index_upper_bound": 13169,
+          "unused_ids_within_index_bound": 886
+        },
+        "skill": {
+          "distinct_retained_ids": 1490,
+          "metadata_index_upper_bound": 1495,
+          "unused_ids_within_index_bound": 5
+        }
+      }
+    },
+    "junyi": {
+      "checkpoint_architecture_and_store_index_bounds_match": true,
+      "checkpoint_config": {
+        "action_layers": 1,
+        "correct_layers": 1,
+        "decoder_layers": 1,
+        "dropout": 0.1,
+        "feedforward_width": 1024,
+        "heads": 2,
+        "num_questions": 25630,
+        "num_skills": 1521,
+        "session_layers": 1,
+        "width": 128
+      },
+      "checkpoint_seed_metadata": 42,
+      "vocabularies": {
+        "question": {
+          "distinct_retained_ids": 25630,
+          "metadata_index_upper_bound": 25630,
+          "unused_ids_within_index_bound": 0
+        },
+        "skill": {
+          "distinct_retained_ids": 1521,
+          "metadata_index_upper_bound": 1521,
+          "unused_ids_within_index_bound": 0
+        }
+      }
+    }
+  },
+  "status": "PASS"
+}

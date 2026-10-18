@@ -1,0 +1,30 @@
+{
+  "cgroup_bytes": {
+    "total_active_file": 20078374912,
+    "total_cache": 41364545536,
+    "total_inactive_file": 21253083136,
+    "total_mapped_file": 1349705728,
+    "total_rss": 49965232128,
+    "total_swap": 0
+  },
+  "note": "The 24 GiB guard bounds estimated active inference allocation, not total process RSS or cgroup page cache. No protected process was signalled.",
+  "oom_kills": 2,
+  "protected_process_observations": [
+    {
+      "pid": 182135,
+      "present": true,
+      "start_ticks": "15783617"
+    },
+    {
+      "pid": 1992414,
+      "present": true,
+      "start_ticks": "52004904"
+    },
+    {
+      "pid": 2028941,
+      "present": true,
+      "start_ticks": "53138518"
+    }
+  ],
+  "utc": "2026-10-18T11:15:42.754468+00:00"
+}

@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "description": "Full ASSIST2017 CPU production _run_epoch vs independent evaluator, same checkpoint and batch order",
+  "metrics": {
+    "targets": 112252,
+    "loss": 0.6087236110378144,
+    "roc_auc": 0.709623637214297,
+    "accuracy": 0.6743755122403164,
+    "precision": 0.5865484621861226,
+    "recall": 0.5439805245510082,
+    "f1": 0.5644630856489204,
+    "mse": 0.20984431782624707,
+    "threshold": 0.5
+  },
+  "differences": {
+    "targets": 0.0,
+    "roc_auc": 0.0,
+    "accuracy": 0.0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "mse": 0.0,
+    "threshold": 0.0,
+    "loss": 0.0
+  },
+  "checkpoint_sha256": "085c8d9ae32f4e60892dfb3e4eed93d90a584696d0914456c135dcab7b890164",
+  "source_sha256": "d4b5e1bf32d26065ccc6457cf9fb85dbb4e89274b14aa9d3c55473703837f35b",
+  "production_evaluator_sha256": "d58740964aab529c1b2f3edc92ef3a15dd50bb2f8bd89809b40c56933dd9cc87"
+}

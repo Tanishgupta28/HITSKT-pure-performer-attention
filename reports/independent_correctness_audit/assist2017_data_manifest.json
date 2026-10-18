@@ -1,0 +1,174 @@
+{
+  "completion_utc": "2026-10-18T09:00:26.275173+00:00",
+  "dataset": "assist2017",
+  "implementation_sha256": "b24d5db76468220c947ffb178a6ba2aa5c82cecf4a83d4a8187c94699a434cb4",
+  "processed_file_checksums": [
+    {
+      "bytes": 9092868,
+      "path": "data/processed/assist2017/full/events/part-00000.parquet",
+      "sha256": "3c5e8ef248e2a7ef1aef7240746f626d59a3098dd43fea3af3d5104e186d2772"
+    },
+    {
+      "bytes": 1988,
+      "path": "data/processed/assist2017/full/mappings/composite_skills.csv",
+      "sha256": "bd387b98e59b72de3d9851d7d9f569ed933810427affd14e46339c9db8b30666"
+    },
+    {
+      "bytes": 624,
+      "path": "data/processed/assist2017/full/mappings/original_tags.csv",
+      "sha256": "d124b7dab054bab4737c18a5fa5a3983cbe36bc54e8161399edb25c4bca1a872"
+    },
+    {
+      "bytes": 28982,
+      "path": "data/processed/assist2017/full/mappings/question_skills.csv",
+      "sha256": "9e5fe019dde1a24d522ed65cf0baa4dccf3b040611e59996d36003e1e5e89733"
+    },
+    {
+      "bytes": 29437,
+      "path": "data/processed/assist2017/full/mappings/questions.csv",
+      "sha256": "4c70eec7858fe9601773eed0a43716e04d79bbc0a6c59d67b669c5f4571e97f3"
+    },
+    {
+      "bytes": 11902,
+      "path": "data/processed/assist2017/full/mappings/students.csv",
+      "sha256": "74b75821fbdf0e29736a052fae5fd5e68949646a950eca4dcddbfe548d58471d"
+    },
+    {
+      "bytes": 3037,
+      "path": "data/processed/assist2017/full/reports/composite_skill_distribution.csv",
+      "sha256": "3ea3db42d494724b3bfc410b3db4c94e13388469e2650f090222ae6a1a931990"
+    },
+    {
+      "bytes": 1296,
+      "path": "data/processed/assist2017/full/reports/dataset_report.md",
+      "sha256": "4dca9aa8c26c2ba5fff1cb944b4fcad32c01ff5f71cd2cc1808b55cfd4820afc"
+    },
+    {
+      "bytes": 813,
+      "path": "data/processed/assist2017/full/reports/summary.json",
+      "sha256": "90db9c14c546378e84e51b1fb8edba941557da595bf8999af27c8bbac6c6c685"
+    },
+    {
+      "bytes": 129,
+      "path": "data/processed/assist2017/full/reports/validation.json",
+      "sha256": "c72b3030fbccb1b168e27ea717d0bf4b78d2106d91fc25285a7bc30d2884080d"
+    },
+    {
+      "bytes": 9,
+      "path": "data/processed/assist2017/full/session_store/_SUCCESS",
+      "sha256": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1"
+    },
+    {
+      "bytes": 885463,
+      "path": "data/processed/assist2017/full/session_store/correct.npy",
+      "sha256": "6517980aa4aaab188099102b1084e45039070ca4a41e8821bc156530fcb0354a"
+    },
+    {
+      "bytes": 401,
+      "path": "data/processed/assist2017/full/session_store/metadata.json",
+      "sha256": "c2355cbe82c6a5ec6e3b6e10877e9951039739aadcd63fe74694be2c961f89b3"
+    },
+    {
+      "bytes": 3541468,
+      "path": "data/processed/assist2017/full/session_store/question.npy",
+      "sha256": "0391e7d2e56f48dd413735b70139ad9ed9bcf777b52a6df178a86de077daa67a"
+    },
+    {
+      "bytes": 49736,
+      "path": "data/processed/assist2017/full/session_store/session_number.npy",
+      "sha256": "cfb357844d2a97675067a5014962387bcc92157dde6c2843534a92fc840676a5"
+    },
+    {
+      "bytes": 99352,
+      "path": "data/processed/assist2017/full/session_store/session_offsets.npy",
+      "sha256": "588af771daad2badfecfd9e5c46dbc8d2227829c28be8317253d08b118ef6c89"
+    },
+    {
+      "bytes": 12530,
+      "path": "data/processed/assist2017/full/session_store/session_split.npy",
+      "sha256": "4a1031af04d5afe5c2abb866cfee482410c898a892eeefba523fc88220577b35"
+    },
+    {
+      "bytes": 49736,
+      "path": "data/processed/assist2017/full/session_store/session_student.npy",
+      "sha256": "d83a0c8b43f686cb48b94c7b368fa43216c069902598df62677fc3af824811a5"
+    },
+    {
+      "bytes": 3541468,
+      "path": "data/processed/assist2017/full/session_store/skill.npy",
+      "sha256": "dedbc8ea88bd780c72ab82ead70e3c9a79a43cbb1275e7832bfea129ba42ffd8"
+    },
+    {
+      "bytes": 11240,
+      "path": "data/processed/assist2017/full/session_store/student_offsets.npy",
+      "sha256": "c26731bf541dfc71e5ef30c9fd025e62e0b8859a0aaf650dc4122437b098c473"
+    },
+    {
+      "bytes": 7082808,
+      "path": "data/processed/assist2017/full/session_store/timestamp_ms.npy",
+      "sha256": "53f29de4bd69f788e0851b8df22adf85a6210f820a4d972091949706e240d96c"
+    }
+  ],
+  "raw_source_sha256": "7577287d4ead073fdb9393b586a260043151f27338246bd076ca740e28be8bbb",
+  "recorded_published_artifact_hashes": "PASS",
+  "runtime_seconds": 1.7575125460280105,
+  "scope": "All raw rows and all processed/store rows, not a sample",
+  "source_lineage": {
+    "answer_availability": {
+      "adjacent_equal_start_timestamps": 7752,
+      "ends_before_own_start": 0,
+      "maximum_adjacent_overlap_native_units": 18572780.0,
+      "nonfinite_end_times": 0,
+      "ordered_predecessor_ends_after_next_start": 11167
+    },
+    "answer_availability_native_unit": "seconds; endTime",
+    "excluded_students": 321,
+    "parquet_to_store_all_events": "PASS",
+    "publisher_release_identity": "NOT VERIFIED: accepted user-supplied transformed CSV; no publisher-signed checksum/version chain",
+    "raw_rows": 942807,
+    "raw_students": 1709,
+    "raw_to_parquet_all_fields": "PASS",
+    "retained_rows": 885335,
+    "retained_students": 1388,
+    "source_mapping_policy": "row skill",
+    "supervised_source_row_unique": true
+  },
+  "started_utc": "2026-10-18T09:00:24.515757+00:00",
+  "status": "PASS",
+  "store_contract": {
+    "all_post_first_session_targets_exactly_once": true,
+    "answer_visibility": "Earlier response labels within validation/test are visible in rolling online histories; no label from a later event index is visible.",
+    "baseline_supervised_targets": {
+      "test": 112252,
+      "train": 647283,
+      "validation": 125800
+    },
+    "first_session_interactions_context_only_for_hitskt": 81176,
+    "history_visibility": {
+      "test": {
+        "all_history_bounds_checked": true,
+        "targets": 1977,
+        "targets_with_earlier_same_split_history": 589
+      },
+      "train": {
+        "all_history_bounds_checked": true,
+        "targets": 7060,
+        "targets_with_earlier_same_split_history": 7060
+      },
+      "validation": {
+        "all_history_bounds_checked": true,
+        "targets": 1977,
+        "targets_with_earlier_same_split_history": 589
+      }
+    },
+    "identical_test_population": true,
+    "split_protocol": "chronological WITHIN-STUDENT, not student-disjoint",
+    "status": "PASS",
+    "student_overlap_train_validation_test": 1388,
+    "supervised_targets": {
+      "test": 112252,
+      "train": 566107,
+      "validation": 125800
+    }
+  }
+}

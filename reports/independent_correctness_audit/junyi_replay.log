@@ -1,0 +1,43 @@
+{"dataset": "junyi", "targets": 21385, "total": 2456402, "batches": 51, "seconds": 25.14858388295397}
+{"dataset": "junyi", "targets": 42197, "total": 2456402, "batches": 90, "seconds": 50.619426076998934}
+{"dataset": "junyi", "targets": 63072, "total": 2456402, "batches": 125, "seconds": 76.00888742390089}
+{"dataset": "junyi", "targets": 82050, "total": 2456402, "batches": 155, "seconds": 101.34373646590393}
+{"dataset": "junyi", "targets": 100978, "total": 2456402, "batches": 183, "seconds": 126.5534174758941}
+{"dataset": "junyi", "targets": 120046, "total": 2456402, "batches": 210, "seconds": 152.13984439498745}
+{"dataset": "junyi", "targets": 138489, "total": 2456402, "batches": 236, "seconds": 177.47843602194916}
+{"dataset": "junyi", "targets": 156922, "total": 2456402, "batches": 261, "seconds": 202.91360056190751}
+{"dataset": "junyi", "targets": 175064, "total": 2456402, "batches": 285, "seconds": 228.1640730339568}
+Traceback (most recent call last):
+  File "/workspace/capstone/scripts/audit_hitskt_replay.py", line 229, in <module>
+    main()
+  File "/workspace/capstone/scripts/audit_hitskt_replay.py", line 220, in main
+    replay(args,manifest)
+  File "/workspace/capstone/scripts/audit_hitskt_replay.py", line 164, in replay
+    logits=model(batch)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/workspace/capstone/ktbench/models/hitskt.py", line 142, in forward
+    actions = self.action_encoder(batch)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/workspace/capstone/ktbench/models/hitskt.py", line 63, in forward
+    values = layer(values, batch.history_mask)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/workspace/capstone/ktbench/models/performer.py", line 110, in forward
+    values = values + self.attention(
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/workspace/capstone/ktbench/models/performer.py", line 77, in forward
+    kv = torch.einsum("bhld,bhlv->bhldv", k, v).cumsum(dim=2)
+  File "/usr/local/lib/python3.10/dist-packages/torch/functional.py", line 385, in einsum
+    return _VF.einsum(equation, operands)  # type: ignore[attr-defined]
+KeyboardInterrupt

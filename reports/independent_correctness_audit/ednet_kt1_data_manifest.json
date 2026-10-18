@@ -1,0 +1,587 @@
+{
+  "completion_utc": "2026-10-18T09:08:14.411027+00:00",
+  "dataset": "ednet_kt1",
+  "implementation_sha256": "b24d5db76468220c947ffb178a6ba2aa5c82cecf4a83d4a8187c94699a434cb4",
+  "processed_file_checksums": [
+    {
+      "bytes": 10292774,
+      "path": "data/processed/ednet_kt1/full/events/part-00000.parquet",
+      "sha256": "2400e753ef83b957c627bda14760b4d56bcd59f91d6d8325f5dc4bb945721309"
+    },
+    {
+      "bytes": 10101562,
+      "path": "data/processed/ednet_kt1/full/events/part-00001.parquet",
+      "sha256": "3b093704a4046601b4bccb891a6522debe56a9f85b045d4bb9289f0faf3ff9ac"
+    },
+    {
+      "bytes": 9632420,
+      "path": "data/processed/ednet_kt1/full/events/part-00002.parquet",
+      "sha256": "5db239c7ac4eb0bc9427e02f8931bb36219ca0b9e9ce68adbd7844c5f86e277e"
+    },
+    {
+      "bytes": 9507518,
+      "path": "data/processed/ednet_kt1/full/events/part-00003.parquet",
+      "sha256": "6e79610ed677591557869c9895660ea56ced1f7236d713f8010f51b34c077a6e"
+    },
+    {
+      "bytes": 9549304,
+      "path": "data/processed/ednet_kt1/full/events/part-00004.parquet",
+      "sha256": "2bf22645450df7d8d3055d14c91a39a7c7d68ad2633df38618aa9cfbc9702175"
+    },
+    {
+      "bytes": 9634370,
+      "path": "data/processed/ednet_kt1/full/events/part-00005.parquet",
+      "sha256": "5f155ce1e7468ede696a6d3fabc922d8d4af6eef5b623f447392ce7e67cb0175"
+    },
+    {
+      "bytes": 9343652,
+      "path": "data/processed/ednet_kt1/full/events/part-00006.parquet",
+      "sha256": "c636da805757874e2b7f35de0c7271eeacb298defb6f171b047b1bdc35248e7b"
+    },
+    {
+      "bytes": 9773904,
+      "path": "data/processed/ednet_kt1/full/events/part-00007.parquet",
+      "sha256": "a80ac7663f5c3d77a0f437f354f5be5411fac6e068f28edccae15aa92f465ddd"
+    },
+    {
+      "bytes": 10404635,
+      "path": "data/processed/ednet_kt1/full/events/part-00008.parquet",
+      "sha256": "33cbc661789d89a212621971850a5a60cda5a592d1d3a00668c86e8abbc2f002"
+    },
+    {
+      "bytes": 10104536,
+      "path": "data/processed/ednet_kt1/full/events/part-00009.parquet",
+      "sha256": "64da3f5c1f19c4ab2054a7d3f75cfd9cc77cad2cd6b0fb762a16ac32e5e37616"
+    },
+    {
+      "bytes": 10342427,
+      "path": "data/processed/ednet_kt1/full/events/part-00010.parquet",
+      "sha256": "3973292c53f89d934dd40e73f01c0fb526abbbaeb3d7f0c8e8bbd0a505633749"
+    },
+    {
+      "bytes": 10312576,
+      "path": "data/processed/ednet_kt1/full/events/part-00011.parquet",
+      "sha256": "289b2812760fd93a6aaf329a164ceeed5c6f1e388459f23a83248bb76024904e"
+    },
+    {
+      "bytes": 9984773,
+      "path": "data/processed/ednet_kt1/full/events/part-00012.parquet",
+      "sha256": "315fea09cc8817f21e24cfa8a37f9b80851a5585c958ca95c26baba60958e88a"
+    },
+    {
+      "bytes": 10131502,
+      "path": "data/processed/ednet_kt1/full/events/part-00013.parquet",
+      "sha256": "cb1a75eade986d5c4a273a4064a9eaf14335f6045e7cee0a3314a4ac69be8e66"
+    },
+    {
+      "bytes": 9997285,
+      "path": "data/processed/ednet_kt1/full/events/part-00014.parquet",
+      "sha256": "74e79f6befa0ae0bedb9ae0294accddf2bf6b5820ffcd5417fb41dbe779b465c"
+    },
+    {
+      "bytes": 9871572,
+      "path": "data/processed/ednet_kt1/full/events/part-00015.parquet",
+      "sha256": "8fde9846a0f8a9ab0fd0a531cd531bd4b88be2916f6479dca452199a14df60d6"
+    },
+    {
+      "bytes": 9479758,
+      "path": "data/processed/ednet_kt1/full/events/part-00016.parquet",
+      "sha256": "b52f60d799bfe0d85e9e6d341f330c3ff3e78e2b08dbafadcd071157347fd2be"
+    },
+    {
+      "bytes": 9710135,
+      "path": "data/processed/ednet_kt1/full/events/part-00017.parquet",
+      "sha256": "2380a3844b1e18b2a26decafab1d8f5e5830dafa01935a408ccf28ab0a40fc32"
+    },
+    {
+      "bytes": 9924215,
+      "path": "data/processed/ednet_kt1/full/events/part-00018.parquet",
+      "sha256": "b0fddbed1f6e29b0a295e2b0a253dd73f4be78fd207094d5d05bad4f53ab71d3"
+    },
+    {
+      "bytes": 9645822,
+      "path": "data/processed/ednet_kt1/full/events/part-00019.parquet",
+      "sha256": "5f8425569b9c79fb62913bdbfe5def858e4bbd0ec6650265010b0377d187e32d"
+    },
+    {
+      "bytes": 9945064,
+      "path": "data/processed/ednet_kt1/full/events/part-00020.parquet",
+      "sha256": "0ecdf74264e01ef5028effd7498e2f794c711231047542eefb93d0420cd3266f"
+    },
+    {
+      "bytes": 9791284,
+      "path": "data/processed/ednet_kt1/full/events/part-00021.parquet",
+      "sha256": "daa6a7c097631a254313ccc0342b9214453f92d3a6652caf27dbcd31479a6ecf"
+    },
+    {
+      "bytes": 9327405,
+      "path": "data/processed/ednet_kt1/full/events/part-00022.parquet",
+      "sha256": "6818a42e3726656409008207f179bd091a92e18fc20e1d3e7d05f13b004c1c83"
+    },
+    {
+      "bytes": 9222662,
+      "path": "data/processed/ednet_kt1/full/events/part-00023.parquet",
+      "sha256": "bb46715a888bde3a80ac2b51ef99782be1c48ca370696644cdbbe964c79ef911"
+    },
+    {
+      "bytes": 9348915,
+      "path": "data/processed/ednet_kt1/full/events/part-00024.parquet",
+      "sha256": "510485618717fcadacf5a3306b3348ac655ea9dc85a01ca690544aedc81cc0b4"
+    },
+    {
+      "bytes": 10019827,
+      "path": "data/processed/ednet_kt1/full/events/part-00025.parquet",
+      "sha256": "877f6ab8fc3de745d9802a5629adfa8ce5e2a8db0bd87422e0b8b889ae11bccf"
+    },
+    {
+      "bytes": 9693196,
+      "path": "data/processed/ednet_kt1/full/events/part-00026.parquet",
+      "sha256": "4b6d60fae01e8b4786fc3e42597b5c796064b1edcacbe7362dcef341542d414f"
+    },
+    {
+      "bytes": 9629411,
+      "path": "data/processed/ednet_kt1/full/events/part-00027.parquet",
+      "sha256": "654a7b15d176421acfeb5a2738c77397ac4f3fde50dbd543b6e0697f9398ca94"
+    },
+    {
+      "bytes": 9747381,
+      "path": "data/processed/ednet_kt1/full/events/part-00028.parquet",
+      "sha256": "7da4c087122fcb2242f2abcc447bf92723f3cb4d96237af232b7c6f4dc514868"
+    },
+    {
+      "bytes": 9760111,
+      "path": "data/processed/ednet_kt1/full/events/part-00029.parquet",
+      "sha256": "dca658f7f48d675fadc1e20733f222c0d83605084cec12731d682c3466ac2ae5"
+    },
+    {
+      "bytes": 9533856,
+      "path": "data/processed/ednet_kt1/full/events/part-00030.parquet",
+      "sha256": "b67717fca9feb0b9f41189350cac7755f025b3d2b9de81bee041656b77c6a1a4"
+    },
+    {
+      "bytes": 9584248,
+      "path": "data/processed/ednet_kt1/full/events/part-00031.parquet",
+      "sha256": "08f0aadd6d0e9811e07aa709b74a0bd78a8f447eb56a650da945489955c38293"
+    },
+    {
+      "bytes": 9864804,
+      "path": "data/processed/ednet_kt1/full/events/part-00032.parquet",
+      "sha256": "275567e027b0aeb64f1199188c52fa667d38ee5c1af9633b5d6432388ec6d749"
+    },
+    {
+      "bytes": 9558450,
+      "path": "data/processed/ednet_kt1/full/events/part-00033.parquet",
+      "sha256": "52b309508f98e73efdfc959f85b8c671d0962baf7ee5a7895c3e0696be29aa7f"
+    },
+    {
+      "bytes": 10131949,
+      "path": "data/processed/ednet_kt1/full/events/part-00034.parquet",
+      "sha256": "50aa51cd9795831ab5e2533cd6e0d14a982c46c9be331ef07b583394c40ae20d"
+    },
+    {
+      "bytes": 9703908,
+      "path": "data/processed/ednet_kt1/full/events/part-00035.parquet",
+      "sha256": "ce572c6040310cca1d5ca85feeb9cde5601b5dce43dff00c16165195cbe383b7"
+    },
+    {
+      "bytes": 9750269,
+      "path": "data/processed/ednet_kt1/full/events/part-00036.parquet",
+      "sha256": "15a2e9169bbee243cb1275a15b44eb16b2089d33c896f315a86a3abed7e2241e"
+    },
+    {
+      "bytes": 9584265,
+      "path": "data/processed/ednet_kt1/full/events/part-00037.parquet",
+      "sha256": "b9ab087b6fd990b89faa934a7663980c069463ca58b03148775ec029c233e841"
+    },
+    {
+      "bytes": 9832997,
+      "path": "data/processed/ednet_kt1/full/events/part-00038.parquet",
+      "sha256": "5b6d97c7ae3fa5228cb3ab7aeb80f11a2a13d61bf76048c03998b63c26feaed3"
+    },
+    {
+      "bytes": 9798031,
+      "path": "data/processed/ednet_kt1/full/events/part-00039.parquet",
+      "sha256": "7cc4fe8103619de87a568b37d0e6766031a890fff3c06c97c209201ad7c3a9e8"
+    },
+    {
+      "bytes": 9465171,
+      "path": "data/processed/ednet_kt1/full/events/part-00040.parquet",
+      "sha256": "ae05f9ce0041c7c614dbe5b749d132209888def2ff25e94c314efbb70a0dc6f3"
+    },
+    {
+      "bytes": 9813245,
+      "path": "data/processed/ednet_kt1/full/events/part-00041.parquet",
+      "sha256": "dd4da909a3350d29954fc1cf10827c49e3a48f62e8fb3d56b5cb2ce9fa6b509f"
+    },
+    {
+      "bytes": 9701158,
+      "path": "data/processed/ednet_kt1/full/events/part-00042.parquet",
+      "sha256": "e84dfee33b57a5abb7a215e44f6961df19739b60c5c22eaa40cdd32208361fe1"
+    },
+    {
+      "bytes": 9382490,
+      "path": "data/processed/ednet_kt1/full/events/part-00043.parquet",
+      "sha256": "fc7b46421d10a4c1fce319df7e05600d5f2c930297f42fd0a0b0b2bd5febc859"
+    },
+    {
+      "bytes": 9388262,
+      "path": "data/processed/ednet_kt1/full/events/part-00044.parquet",
+      "sha256": "c9781e36bc84c4088f17e5980f7018b209f9ddae44b98bc26d1038747302dd6e"
+    },
+    {
+      "bytes": 9550592,
+      "path": "data/processed/ednet_kt1/full/events/part-00045.parquet",
+      "sha256": "89611a642affd9ca59f0ff54afe8c12f797a601069d6cf0dc7bab278842ecf69"
+    },
+    {
+      "bytes": 9502894,
+      "path": "data/processed/ednet_kt1/full/events/part-00046.parquet",
+      "sha256": "8e406d55348db99ab28672ff4a6b856487d86f0c6d1696ccccdd5d10293dfc16"
+    },
+    {
+      "bytes": 9483678,
+      "path": "data/processed/ednet_kt1/full/events/part-00047.parquet",
+      "sha256": "c8486d96df2d0e4d2b67a907f6a9e88fb19f2182e7acb5db39416cf5047989bd"
+    },
+    {
+      "bytes": 9408967,
+      "path": "data/processed/ednet_kt1/full/events/part-00048.parquet",
+      "sha256": "a803e86639ff3fa94ac89ddf4e97e5a58a51c6d438d30b0de5a61ba7f182d10b"
+    },
+    {
+      "bytes": 9797975,
+      "path": "data/processed/ednet_kt1/full/events/part-00049.parquet",
+      "sha256": "c21cbbc6280e2e3cc2839821aef4e3739b03899184d0eb27df12130b6180d870"
+    },
+    {
+      "bytes": 9549317,
+      "path": "data/processed/ednet_kt1/full/events/part-00050.parquet",
+      "sha256": "2f74d80dbb80ed9d7ae77b0975960a771450b7bd971481b66d2f529c647f9ebe"
+    },
+    {
+      "bytes": 9324354,
+      "path": "data/processed/ednet_kt1/full/events/part-00051.parquet",
+      "sha256": "461c374320aa77deea2c3781a4b5c4dfe81e64331838e7e1c76e84c973bc80a8"
+    },
+    {
+      "bytes": 9478853,
+      "path": "data/processed/ednet_kt1/full/events/part-00052.parquet",
+      "sha256": "083af27aac745583ce35c5086d8b6d4b5da2a4b6f8a5d2e06cabdf870a95aa15"
+    },
+    {
+      "bytes": 9454728,
+      "path": "data/processed/ednet_kt1/full/events/part-00053.parquet",
+      "sha256": "1323198049be0570c3478b2320bc58bc7d80ee441a93b20758d176708cd87203"
+    },
+    {
+      "bytes": 9568863,
+      "path": "data/processed/ednet_kt1/full/events/part-00054.parquet",
+      "sha256": "aca534304b61448b4a0f83a03177465aca0035ec9df591b23088e07febe18564"
+    },
+    {
+      "bytes": 9787969,
+      "path": "data/processed/ednet_kt1/full/events/part-00055.parquet",
+      "sha256": "7ffb8290febedf510641b0ab24e0bfee075c6f899ff3e9524353425046e26671"
+    },
+    {
+      "bytes": 9950972,
+      "path": "data/processed/ednet_kt1/full/events/part-00056.parquet",
+      "sha256": "bca274be54e668808433baaeee9f141ff6f2f1eb7a7399b507b85bab75410668"
+    },
+    {
+      "bytes": 9599095,
+      "path": "data/processed/ednet_kt1/full/events/part-00057.parquet",
+      "sha256": "bc16c25925cc7380a8df9375d3428012f7d7e625687741fc316fd75aac35824c"
+    },
+    {
+      "bytes": 9516156,
+      "path": "data/processed/ednet_kt1/full/events/part-00058.parquet",
+      "sha256": "125cf87d0adb4705ff03d32c9113e8af8fc6042b9e2e024c4ca8dc4ce3ed637e"
+    },
+    {
+      "bytes": 9623209,
+      "path": "data/processed/ednet_kt1/full/events/part-00059.parquet",
+      "sha256": "a57b445e942b3eb7eea129e34b51101f324aa256d8a6be1b983320960eba7d03"
+    },
+    {
+      "bytes": 9867538,
+      "path": "data/processed/ednet_kt1/full/events/part-00060.parquet",
+      "sha256": "87f25fa7c5f8c6a8b599bde3f05762d512e0ea0a49d632fdded5590e1827378f"
+    },
+    {
+      "bytes": 9686393,
+      "path": "data/processed/ednet_kt1/full/events/part-00061.parquet",
+      "sha256": "4aca6abf6c3f47a690d250cb4fd5fc5afc220ba7df4149e3ff29703b73f2387d"
+    },
+    {
+      "bytes": 9635221,
+      "path": "data/processed/ednet_kt1/full/events/part-00062.parquet",
+      "sha256": "eb2711560954b264e6c805508d94ea7345b0ca30d284a1d200ec424698eb2a7c"
+    },
+    {
+      "bytes": 9857252,
+      "path": "data/processed/ednet_kt1/full/events/part-00063.parquet",
+      "sha256": "af0d9f9fff1cff87bdec4be92229d3d354f0ca0f541a26bba7f2eea68dca1282"
+    },
+    {
+      "bytes": 9760811,
+      "path": "data/processed/ednet_kt1/full/events/part-00064.parquet",
+      "sha256": "87891560b7ef7b529acdeb47c336ba905722654e05a43913e90858b511082e5a"
+    },
+    {
+      "bytes": 9750216,
+      "path": "data/processed/ednet_kt1/full/events/part-00065.parquet",
+      "sha256": "45d279ed008a9461dbd1c9bd8a2a3906ee59cff05de0933751e3edf1b7a84cee"
+    },
+    {
+      "bytes": 9714779,
+      "path": "data/processed/ednet_kt1/full/events/part-00066.parquet",
+      "sha256": "12428d277b4d52956327c048aae8ce484c437fb24271e1b79807862d199c5652"
+    },
+    {
+      "bytes": 9689525,
+      "path": "data/processed/ednet_kt1/full/events/part-00067.parquet",
+      "sha256": "ca8c91f5397a38cbf8a4e82df12be8f7f0d55c59c2d5ca720f34e30df8a458bd"
+    },
+    {
+      "bytes": 9520647,
+      "path": "data/processed/ednet_kt1/full/events/part-00068.parquet",
+      "sha256": "909539c0d6493586c3d6af09a09c24eba27dc5f0016937d60cf795c26fca2ba5"
+    },
+    {
+      "bytes": 9442171,
+      "path": "data/processed/ednet_kt1/full/events/part-00069.parquet",
+      "sha256": "d2069e49b4ac5c721300f5733c78d1aec1e052ec012bd306a239fa3d6656d626"
+    },
+    {
+      "bytes": 9631374,
+      "path": "data/processed/ednet_kt1/full/events/part-00070.parquet",
+      "sha256": "39e0e5afb6cf3662d4d749d05931f3eff674b9a68c4ec232771b21c56c8a6863"
+    },
+    {
+      "bytes": 9373238,
+      "path": "data/processed/ednet_kt1/full/events/part-00071.parquet",
+      "sha256": "1d23d022c6f7e28b8128c61b16a3c5000522faae5c085773a36cf7484bf6c0b5"
+    },
+    {
+      "bytes": 9523814,
+      "path": "data/processed/ednet_kt1/full/events/part-00072.parquet",
+      "sha256": "7f911fccde427d59d56b44f02e948e2b4d6f039e8b6c477925c235c6a234349a"
+    },
+    {
+      "bytes": 9369444,
+      "path": "data/processed/ednet_kt1/full/events/part-00073.parquet",
+      "sha256": "d303db50587f34c17cb60430353e4e4664492d5e7e7e1e2972ebc40f307d3044"
+    },
+    {
+      "bytes": 9126592,
+      "path": "data/processed/ednet_kt1/full/events/part-00074.parquet",
+      "sha256": "80c6ae341cbf9546f0f3481cdac10bddb90eaa1c1e3456c4aca89868194cc0cb"
+    },
+    {
+      "bytes": 9252798,
+      "path": "data/processed/ednet_kt1/full/events/part-00075.parquet",
+      "sha256": "6d3a83df825c1a9155dd51c082f757cb5ed7cdeaa705b65db5da0df0014137a6"
+    },
+    {
+      "bytes": 9139940,
+      "path": "data/processed/ednet_kt1/full/events/part-00076.parquet",
+      "sha256": "2fcaeddb3ec4b0597e0d1e9990aca0f1b1561ddd6ec466131f0fa031016d1bdc"
+    },
+    {
+      "bytes": 9157618,
+      "path": "data/processed/ednet_kt1/full/events/part-00077.parquet",
+      "sha256": "7233ac719918718320c5875cd5203c5c3a3ff3bd1c2d91d63fb80996ea54f709"
+    },
+    {
+      "bytes": 9296999,
+      "path": "data/processed/ednet_kt1/full/events/part-00078.parquet",
+      "sha256": "c581781b1916fc2558046969017d87221a685395b184fedf6d82ee729f49c81c"
+    },
+    {
+      "bytes": 9208866,
+      "path": "data/processed/ednet_kt1/full/events/part-00079.parquet",
+      "sha256": "e30acdd3c992a59733c06a13d021ff64937b709d4b33fbf60fcca40a963391db"
+    },
+    {
+      "bytes": 9168196,
+      "path": "data/processed/ednet_kt1/full/events/part-00080.parquet",
+      "sha256": "a2352d421cb966cf91633e6aca3fc7b14be2d0e15ccf4bb8342830ef0ca02cf7"
+    },
+    {
+      "bytes": 8596655,
+      "path": "data/processed/ednet_kt1/full/events/part-00081.parquet",
+      "sha256": "7df1cb49373d25aa5b5c9ca6f19ad9444311b15158c617a566c28380a28d8f17"
+    },
+    {
+      "bytes": 68233,
+      "path": "data/processed/ednet_kt1/full/mappings/composite_skills.csv",
+      "sha256": "820d3e2b38ce71c3ab79e180a5bb999f9575d6304166ee8c9b0e8f4b7a5ae7af"
+    },
+    {
+      "bytes": 1314,
+      "path": "data/processed/ednet_kt1/full/mappings/original_tags.csv",
+      "sha256": "728f36706a56cd8cbe5deea382ae94394d647972cf63d6e09d4af3388cacd98c"
+    },
+    {
+      "bytes": 664825,
+      "path": "data/processed/ednet_kt1/full/mappings/questions.csv",
+      "sha256": "430a0125231835fbecace4fd670603a92fcfb27824767368ee58832dd1e391b8"
+    },
+    {
+      "bytes": 2259181,
+      "path": "data/processed/ednet_kt1/full/mappings/students.csv",
+      "sha256": "987580cea7e7a8f3c8251c3234ba699b944fdd8a216f18a6281cd85a57189700"
+    },
+    {
+      "bytes": 94157,
+      "path": "data/processed/ednet_kt1/full/reports/composite_skill_distribution.csv",
+      "sha256": "48a479b9c6bb546fabf2fdd9a5a6ba1653c45ff414ab82feaf9ff9b33e09c9d6"
+    },
+    {
+      "bytes": 2956,
+      "path": "data/processed/ednet_kt1/full/reports/dataset_report.md",
+      "sha256": "7e707befeefc7cd19772582661104ee5d90709cc716e594971628ea9d5378b87"
+    },
+    {
+      "bytes": 1562,
+      "path": "data/processed/ednet_kt1/full/reports/summary.json",
+      "sha256": "29baa583a50955e60430ca3ba2c0d63444fb3cb57da46cb38cc176b8af166035"
+    },
+    {
+      "bytes": 174,
+      "path": "data/processed/ednet_kt1/full/reports/validation.json",
+      "sha256": "2cccf333de169744f38a026716a5855f540d3dae59f2a52115a366d412f4cf52"
+    },
+    {
+      "bytes": 113316,
+      "path": "data/processed/ednet_kt1/full/audit/session_impacts.csv",
+      "sha256": "7e9540cbc0947fa0442250c9e41f34136e2f80eb09d7084f5001340a83acff35"
+    },
+    {
+      "bytes": 424218,
+      "path": "data/processed/ednet_kt1/full/audit/unanswered_events/part-00000.parquet",
+      "sha256": "6dfcc5339af3bdd3f23365e44865b80ce385e7be86b867e4a47536fd6e88ff16"
+    },
+    {
+      "bytes": 9,
+      "path": "data/processed/ednet_kt1/full/session_store/_SUCCESS",
+      "sha256": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1"
+    },
+    {
+      "bytes": 81940995,
+      "path": "data/processed/ednet_kt1/full/session_store/correct.npy",
+      "sha256": "3d4a23992d3c1edeee7375e13ba11ad48e74a69b2a3cb58b8cc9c456064394ef"
+    },
+    {
+      "bytes": 418,
+      "path": "data/processed/ednet_kt1/full/session_store/metadata.json",
+      "sha256": "c08ac9eb1b2154de42b5faffd5b0914e635aab97a6e0adec0aeb568676f598f4"
+    },
+    {
+      "bytes": 327763596,
+      "path": "data/processed/ednet_kt1/full/session_store/question.npy",
+      "sha256": "d530490876b57e532173326bf2f2680f3de5fadb9ee26d6ef92bcfd4458b1cec"
+    },
+    {
+      "bytes": 10312080,
+      "path": "data/processed/ednet_kt1/full/session_store/session_number.npy",
+      "sha256": "35bd7cbb07fe445901b1462b2bfcdfc6c0a0a4aaffd11a5fc848c7b4c74dd2c1"
+    },
+    {
+      "bytes": 20624040,
+      "path": "data/processed/ednet_kt1/full/session_store/session_offsets.npy",
+      "sha256": "6b414035ce02c1c32b5ccfcca3bc1b7f11cb475888c73501c29b6f69a8c835aa"
+    },
+    {
+      "bytes": 2578116,
+      "path": "data/processed/ednet_kt1/full/session_store/session_split.npy",
+      "sha256": "c74589f18041de9c79b3ddfa33ed9edc27af1d87bea645043f37441e0d668e5e"
+    },
+    {
+      "bytes": 10312080,
+      "path": "data/processed/ednet_kt1/full/session_store/session_student.npy",
+      "sha256": "f1d3348bc0727e23818844435544c82ac93098898cb7241f778a072ad049b367"
+    },
+    {
+      "bytes": 327763596,
+      "path": "data/processed/ednet_kt1/full/session_store/skill.npy",
+      "sha256": "6be1c6c29d3877a98f4d31d073df9fe356d72b18ecc6fdf529363d6bcf434ab1"
+    },
+    {
+      "bytes": 932520,
+      "path": "data/processed/ednet_kt1/full/session_store/student_offsets.npy",
+      "sha256": "45aff5bb5622d5e64a45812c8047a65a968a2225dbe967c31c01bb7cc6699d21"
+    },
+    {
+      "bytes": 655527064,
+      "path": "data/processed/ednet_kt1/full/session_store/timestamp_ms.npy",
+      "sha256": "37ef32b2fd921fa1a1e9f021c52517bbed2d9ae8c2e4048c4ad2cfd6c9c6eac8"
+    }
+  ],
+  "raw_source_sha256": "0d13933f90201c5101c7fe8659e44474fa049e3fb93181a8ba6fb3e63267b535",
+  "recorded_published_artifact_hashes": "PASS",
+  "runtime_seconds": 469.894926012028,
+  "scope": "All raw rows and all processed/store rows, not a sample",
+  "source_lineage": {
+    "all_zip_student_members_read_with_crc": true,
+    "answer_availability": {
+      "adjacent_equal_start_timestamps": 1255154,
+      "ends_before_own_start": 0,
+      "maximum_adjacent_overlap_native_units": 285846876.0,
+      "nonfinite_end_times": 0,
+      "ordered_predecessor_ends_after_next_start": 23650380
+    },
+    "answer_availability_native_unit": "milliseconds; timestamp + elapsed_time proxy",
+    "answered_rows": 95266280,
+    "contents_zip_sha256": "aa910a0436d9dbac0ba232f55e27b37ad8d39da285fcf15f1c1eb5d064be98e7",
+    "parquet_to_store_all_events": "PASS",
+    "publisher_release_identity": "Official repository acquisition chain documented; local archives match recorded acquisition SHA256. No publisher-signed checksum available.",
+    "raw_rows": 95293926,
+    "raw_students": 784309,
+    "raw_to_parquet_all_fields": "PASS",
+    "retained_rows": 81940867,
+    "retained_students": 116548,
+    "supervised_source_row_unique_within_student": true,
+    "unanswered_audit_count_match": true,
+    "unanswered_rows": 27646
+  },
+  "started_utc": "2026-10-18T09:00:24.514536+00:00",
+  "status": "PASS",
+  "store_contract": {
+    "all_post_first_session_targets_exactly_once": true,
+    "answer_visibility": "Earlier response labels within validation/test are visible in rolling online histories; no label from a later event index is visible.",
+    "baseline_supervised_targets": {
+      "test": 13429870,
+      "train": 53990022,
+      "validation": 14520975
+    },
+    "first_session_interactions_context_only_for_hitskt": 4531578,
+    "history_visibility": {
+      "test": {
+        "all_history_bounds_checked": true,
+        "targets": 474827,
+        "targets_with_earlier_same_split_history": 358279
+      },
+      "train": {
+        "all_history_bounds_checked": true,
+        "targets": 1511786,
+        "targets_with_earlier_same_split_history": 1511786
+      },
+      "validation": {
+        "all_history_bounds_checked": true,
+        "targets": 474827,
+        "targets_with_earlier_same_split_history": 358279
+      }
+    },
+    "identical_test_population": true,
+    "split_protocol": "chronological WITHIN-STUDENT, not student-disjoint",
+    "status": "PASS",
+    "student_overlap_train_validation_test": 116548,
+    "supervised_targets": {
+      "test": 13429870,
+      "train": 49458444,
+      "validation": 14520975
+    }
+  }
+}

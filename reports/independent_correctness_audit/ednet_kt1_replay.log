@@ -1,0 +1,47 @@
+{"dataset": "ednet_kt1", "targets": 24948, "total": 13429870, "batches": 74, "seconds": 25.14421866007615}
+{"dataset": "ednet_kt1", "targets": 55583, "total": 13429870, "batches": 143, "seconds": 50.266376905026846}
+{"dataset": "ednet_kt1", "targets": 77295, "total": 13429870, "batches": 194, "seconds": 75.5715273580281}
+{"dataset": "ednet_kt1", "targets": 97308, "total": 13429870, "batches": 236, "seconds": 100.77914154506288}
+{"dataset": "ednet_kt1", "targets": 116217, "total": 13429870, "batches": 276, "seconds": 125.81682387099136}
+{"dataset": "ednet_kt1", "targets": 136589, "total": 13429870, "batches": 314, "seconds": 151.0035883350065}
+{"dataset": "ednet_kt1", "targets": 156900, "total": 13429870, "batches": 353, "seconds": 176.33382431406062}
+{"dataset": "ednet_kt1", "targets": 176836, "total": 13429870, "batches": 393, "seconds": 201.50989179697353}
+{"dataset": "ednet_kt1", "targets": 195939, "total": 13429870, "batches": 430, "seconds": 227.03397633205168}
+Traceback (most recent call last):
+  File "/workspace/capstone/scripts/audit_hitskt_replay.py", line 229, in <module>
+    main()
+  File "/workspace/capstone/scripts/audit_hitskt_replay.py", line 220, in main
+    replay(args,manifest)
+  File "/workspace/capstone/scripts/audit_hitskt_replay.py", line 164, in replay
+    logits=model(batch)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/workspace/capstone/ktbench/models/hitskt.py", line 142, in forward
+    actions = self.action_encoder(batch)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/workspace/capstone/ktbench/models/hitskt.py", line 63, in forward
+    values = layer(values, batch.history_mask)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/workspace/capstone/ktbench/models/performer.py", line 118, in forward
+    values = values + self.feedforward(self.feedforward_norm(values))
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/container.py", line 217, in forward
+    input = module(input)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/linear.py", line 116, in forward
+    return F.linear(input, self.weight, self.bias)
+KeyboardInterrupt

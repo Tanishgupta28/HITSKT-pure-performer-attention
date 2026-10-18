@@ -2,7 +2,25 @@
 
 Updated: 2026-10-18 UTC
 
-## 2026-10-18 — GPU reset; reconcile and sync only, then wait (latest)
+## 2026-10-18 — Independent HiTSKT correctness audit (latest)
+
+- Audit masking/leakage, all three full datasets, actual HiTSKT checkpoint
+  replays, attention terminology, baseline comparability and publication claims.
+  Existing passing tests and completed markers are evidence to inspect, not proof.
+- Create independent future-response and explicit-attention/gradient tests.
+  Recalculate all seven test metrics in fresh processes and save separate
+  per-dataset evaluation manifests. Mark missing evidence NOT VERIFIED.
+- **Do not modify LightSAKT2 or interrupt its ongoing training.** Execution decision:
+  audit jobs use low-priority CPU execution with GPU visibility disabled.
+- Preserve all original checkpoints, experiment outputs and Git history. Do
+  not alter architecture while verifying historical results or restart DKT.
+- Report PASS/FAIL/NOT VERIFIED, severity, affected results and justified
+  retraining implications in `reports/HITSKT_INDEPENDENT_CORRECTNESS_AUDIT.md`.
+  Recommend additional experiments only after verification. Commit/push the
+  verified audit reports. This authorizes audit evaluation after the earlier
+  reconciliation-only hold; production training remains on hold.
+
+## 2026-10-18 — GPU reset; reconciliation-only scope superseded for audit evaluation
 
 - User requested work in `/workspace/capstone`: review project memory, use the
   durable-agent-memory skill, verify `gh`, and sync any pending commits.

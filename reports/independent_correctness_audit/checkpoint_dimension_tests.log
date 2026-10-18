@@ -1,0 +1,15 @@
+=================================================================== test session starts ====================================================================
+platform linux -- Python 3.10.12, pytest-8.1.1, pluggy-1.5.0 -- /usr/bin/python
+cachedir: .pytest_cache
+hypothesis profile 'default' -> database=DirectoryBasedExampleDatabase('/workspace/capstone/.hypothesis/examples')
+rootdir: /workspace/capstone
+configfile: pyproject.toml
+plugins: shard-0.1.2, flakefinder-1.1.0, xdist-3.6.1, xdoctest-1.0.2, hypothesis-5.35.1, rerunfailures-14.0
+collecting ... collected 44 items / 42 deselected / 2 selected
+Running 2 items in this shard: tests/test_independent_hitskt_audit.py::test_attention_actual_checkpoint_dimensions_against_explicit_reference[128-2], tests/test_independent_hitskt_audit.py::test_attention_actual_checkpoint_dimensions_against_explicit_reference[256-4]
+
+tests/test_independent_hitskt_audit.py::test_attention_actual_checkpoint_dimensions_against_explicit_reference[128-2] PASSED                         [ 50%]
+tests/test_independent_hitskt_audit.py::test_attention_actual_checkpoint_dimensions_against_explicit_reference[256-4] PASSED                         [100%]
+
+----------------------- generated xml file: /workspace/capstone/reports/independent_correctness_audit/checkpoint_dimension_tests.xml -----------------------
+============================================================= 2 passed, 42 deselected in 1.83s =============================================================

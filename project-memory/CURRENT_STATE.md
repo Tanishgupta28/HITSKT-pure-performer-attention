@@ -2,13 +2,28 @@
 
 Updated: 2026-10-18 UTC
 
-## Current instruction and established outcome
+## Completed independent audit — latest
+
+The audit completed all three full CPU replays and exhaustive data reconstruction.
+**133 tests PASS; all three metric reproduction gates FAIL** at declared 1e-6,
+while all AUC differences pass that tolerance. Response-arrival timing, exact CUDA
+reproduction and significance remain NOT VERIFIED. The active kernel is ELU+1,
+not FAVOR+. 375 original file hashes and all 30 checkpoints are preserved.
+See [AUDIT_STATE.md](AUDIT_STATE.md) and the
+`reports/HITSKT_INDEPENDENT_CORRECTNESS_AUDIT.md`.
+
+No production training was resumed. LightSAKT2 was not edited or signalled.
+After scoped commit/push, wait for user instructions. Reset-only notes below
+are historical; their evaluation hold was superseded for this completed audit.
+
+## Historical reset reconciliation and established outcome
 
 The GPU was reset. The user requested memory reconciliation, GitHub verification
 and pending-commit synchronization only, then waiting. **Do not start the 15th
 training.** Historical three-hour checks and >2h automatic recovery are on hold
 under the latest [user directive](USER_DIRECTIVES.md). No trainer, evaluation
-runner or monitor was launched in this session; no training process was found.
+runner or monitor was launched during that reset-only stage; no capstone training
+process was found.
 
 The benchmark remains **14/15**. All 14 canonical completed directories have
 `_SUCCESS` and match `reports/final_results.json`. Prior independent verification

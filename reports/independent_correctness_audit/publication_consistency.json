@@ -1,0 +1,94 @@
+{
+  "status": "PASS",
+  "master_csv_json_actual_results_exact": [
+    {
+      "model": "dkt",
+      "dataset": "assist2017",
+      "status": "PASS"
+    },
+    {
+      "model": "dkt",
+      "dataset": "junyi",
+      "status": "PASS"
+    },
+    {
+      "model": "dkvmn",
+      "dataset": "assist2017",
+      "status": "PASS"
+    },
+    {
+      "model": "dkvmn",
+      "dataset": "junyi",
+      "status": "PASS"
+    },
+    {
+      "model": "dkvmn",
+      "dataset": "ednet_kt1",
+      "status": "PASS"
+    },
+    {
+      "model": "sakt",
+      "dataset": "assist2017",
+      "status": "PASS"
+    },
+    {
+      "model": "sakt",
+      "dataset": "junyi",
+      "status": "PASS"
+    },
+    {
+      "model": "sakt",
+      "dataset": "ednet_kt1",
+      "status": "PASS"
+    },
+    {
+      "model": "rkt",
+      "dataset": "assist2017",
+      "status": "PASS"
+    },
+    {
+      "model": "rkt",
+      "dataset": "junyi",
+      "status": "PASS"
+    },
+    {
+      "model": "rkt",
+      "dataset": "ednet_kt1",
+      "status": "PASS"
+    },
+    {
+      "model": "hitskt",
+      "dataset": "assist2017",
+      "status": "PASS"
+    },
+    {
+      "model": "hitskt",
+      "dataset": "junyi",
+      "status": "PASS"
+    },
+    {
+      "model": "hitskt",
+      "dataset": "ednet_kt1",
+      "status": "PASS"
+    }
+  ],
+  "missing_pair": [
+    "dkt",
+    "ednet_kt1"
+  ],
+  "historical_public_readme_notes": [
+    {
+      "line": 123,
+      "text": "contain thirteen of 15 expected rows: all five ASSIST2017 results, all five full"
+    },
+    {
+      "line": 135,
+      "text": "tested with complete synthetic fixtures; all 11 currently completed real"
+    },
+    {
+      "line": 177,
+      "text": "dataset, pure Performer architecture, and approved hyperparameters. The"
+    }
+  ],
+  "readme_scope": "Committed README at audit base; unrelated local README edit preserved"
+}

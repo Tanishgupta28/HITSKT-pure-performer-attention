@@ -30,9 +30,16 @@ remain intact; platform changes do not alter research source or live runs.
 
 ## Current short status
 
+The independent correctness audit is complete; see [AUDIT_STATE.md](AUDIT_STATE.md)
+and `reports/HITSKT_INDEPENDENT_CORRECTNESS_AUDIT.md`. 133 tests and
+full data reconstruction pass; all three CPU metric reproduction gates fail.
+Exact CUDA/timing/significance evidence remains incomplete. Publish the scoped
+audit commit, then wait; production training remains on hold and LightSAKT2 stays
+outside scope.
+
 2026-10-18 reset reconciliation: **14/15** pairs complete. DKT/full EdNet
 has **nine** complete epochs; epoch10 stopped at67.45% of training on October12.
-Best1/AUC0.6845717851, saved counter8/10. No training process is active.
+Best1/AUC0.6845717851, saved counter8/10. No DKT trainer is active.
 **User says do not start the 15th training; sync, then wait.** This supersedes
 older automatic monitoring/restart directions for this session.
 

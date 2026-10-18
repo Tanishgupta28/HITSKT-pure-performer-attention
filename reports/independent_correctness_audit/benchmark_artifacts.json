@@ -1,0 +1,2124 @@
+{
+  "checked_at_utc": "2026-10-18T09:05:01.387716+00:00",
+  "original_artifact_hashes": [
+    {
+      "bytes": 9,
+      "path": "experiments/dkt/assist2017/full/_SUCCESS",
+      "sha256": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1"
+    },
+    {
+      "bytes": 725538,
+      "path": "experiments/dkt/assist2017/full/best_model.pt",
+      "sha256": "a57e93d381d7b717cc759f4a958dd80bb33cc506424493c20dda6e743949e107"
+    },
+    {
+      "bytes": 812,
+      "path": "experiments/dkt/assist2017/full/config.json",
+      "sha256": "f758ff9b4fd5019610dbf10f2ff10d9e463ee88b7ffc14e77a8cc223caa6116c"
+    },
+    {
+      "bytes": 357,
+      "path": "experiments/dkt/assist2017/full/dataset_stats.json",
+      "sha256": "76f81ab2be5fc6e8b62facc9ec9f9c133adbaad45e5f333d0a048b6f290d6f3e"
+    },
+    {
+      "bytes": 721,
+      "path": "experiments/dkt/assist2017/full/final_results.json",
+      "sha256": "93af4310fdda08b234417a2c9e2c27f0fc989fe946f3114916cf8cd83150af15"
+    },
+    {
+      "bytes": 725538,
+      "path": "experiments/dkt/assist2017/full/last_model.pt",
+      "sha256": "a0cf1a6128ce0a8d11ed17d5016e76b33afe985d3653c0962ef629c12b3350ed"
+    },
+    {
+      "bytes": 5561,
+      "path": "experiments/dkt/assist2017/full/metrics.csv",
+      "sha256": "5f7986579911db8364d5d32a977f7142ed33264d402d75745d30bab4fc8ed1c6"
+    },
+    {
+      "bytes": 11640,
+      "path": "experiments/dkt/assist2017/full/training.jsonl",
+      "sha256": "40af494669af1b70e3ad1b2f93fd83ae2af31fc439628c811d3467549e57dcbd"
+    },
+    {
+      "bytes": 9,
+      "path": "experiments/dkt/junyi/full/_SUCCESS",
+      "sha256": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1"
+    },
+    {
+      "bytes": 5116962,
+      "path": "experiments/dkt/junyi/full/best_model.pt",
+      "sha256": "024f89a1ec66c503aa9c1e255b68c320003b334f25b99031cef94fedb4d7693d"
+    },
+    {
+      "bytes": 1027,
+      "path": "experiments/dkt/junyi/full/config.json",
+      "sha256": "38da12048eaeb749ae9f1e5b595ce01933bf0c99e673be525146a6ee05f48dfd"
+    },
+    {
+      "bytes": 361,
+      "path": "experiments/dkt/junyi/full/dataset_stats.json",
+      "sha256": "ddefc4f8b400d0cff9b784bded8574c076f8434c07cbe05c9b1776de7b7f1c16"
+    },
+    {
+      "bytes": 801,
+      "path": "experiments/dkt/junyi/full/final_results.json",
+      "sha256": "9e9608ed6df06c812378fff07d21b24671714c50cd9719bf68395eb01b94aa89"
+    },
+    {
+      "bytes": 5116962,
+      "path": "experiments/dkt/junyi/full/last_model.pt",
+      "sha256": "242f04a8b6c9564d8c86f6e40148f19669a3c8014d0957f9d290b8b14fbbefd8"
+    },
+    {
+      "bytes": 2716,
+      "path": "experiments/dkt/junyi/full/metrics.csv",
+      "sha256": "8e850a324a5916a8a50d754e12684faa1257a6d55f3566c0888daa38ae3b05cd"
+    },
+    {
+      "bytes": 8,
+      "path": "experiments/dkt/junyi/full/runner.pid",
+      "sha256": "d0f9a82e9c73c54beda4a587ddb2b4f20944349c2509b78caef10a23dcb9cd48"
+    },
+    {
+      "bytes": 5858,
+      "path": "experiments/dkt/junyi/full/training.jsonl",
+      "sha256": "0ce441efad9fc18a98e328abf9eb1eb9bc5e28eece71b166365f34cd7a436ab6"
+    },
+    {
+      "bytes": 5036578,
+      "path": "experiments/dkt/ednet_kt1/full/best_model.pt",
+      "sha256": "56a911479a2c0b53edd457e4179a942be6f652717e7322c35b41e45194e90215"
+    },
+    {
+      "bytes": 1311,
+      "path": "experiments/dkt/ednet_kt1/full/config.json",
+      "sha256": "c32d491749d61e39fd1998c1df0a95f84409a4aa083bd38d51ec3bff78f51433"
+    },
+    {
+      "bytes": 2171085,
+      "path": "experiments/dkt/ednet_kt1/full/console.log",
+      "sha256": "8e7fe29a978dddce87e411a0d9c39677a5494455bcf78bd46f8ca67623009849"
+    },
+    {
+      "bytes": 368,
+      "path": "experiments/dkt/ednet_kt1/full/dataset_stats.json",
+      "sha256": "b5b488cc00bf49c557e9dcf71410f92e7a1532d2ecd4d0be1c95acc9e790a8aa"
+    },
+    {
+      "bytes": 5036706,
+      "path": "experiments/dkt/ednet_kt1/full/last_model.pt",
+      "sha256": "ae9f8248669c3800064020cbbb64c4e82ade108cac0cef27e1a23c74f208842b"
+    },
+    {
+      "bytes": 2906,
+      "path": "experiments/dkt/ednet_kt1/full/metrics.csv",
+      "sha256": "31c2ccaccbce04e7d463d5fb0860cef35e78a23eda5e5c66a3ad62014eb41f56"
+    },
+    {
+      "bytes": 272,
+      "path": "experiments/dkt/ednet_kt1/full/progress.json",
+      "sha256": "689064f8826b0c6cd822348c0b7c6697128cba708ca74e1f83a3c9c85f983c65"
+    },
+    {
+      "bytes": 7,
+      "path": "experiments/dkt/ednet_kt1/full/runner.pid",
+      "sha256": "4287824ad66ac2c69728d468f5977dca205d3ec43e7fb096782d1ea681886ed0"
+    },
+    {
+      "bytes": 6850,
+      "path": "experiments/dkt/ednet_kt1/full/training.jsonl",
+      "sha256": "1413329486752dbbdc3aea70d5cd792c1f09cc8a827c07eab154db45cde982c1"
+    },
+    {
+      "bytes": 9,
+      "path": "experiments/dkvmn/assist2017/full/_SUCCESS",
+      "sha256": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1"
+    },
+    {
+      "bytes": 693026,
+      "path": "experiments/dkvmn/assist2017/full/best_model.pt",
+      "sha256": "784456c227af03b2c89918d9297d2702a5183b343bdd03b99db1b0190ac8c69e"
+    },
+    {
+      "bytes": 1097,
+      "path": "experiments/dkvmn/assist2017/full/config.json",
+      "sha256": "58392f2f049534466f5a4c536ce2e6a6efc14d46fe9c699d87781d646adfc169"
+    },
+    {
+      "bytes": 357,
+      "path": "experiments/dkvmn/assist2017/full/dataset_stats.json",
+      "sha256": "76f81ab2be5fc6e8b62facc9ec9f9c133adbaad45e5f333d0a048b6f290d6f3e"
+    },
+    {
+      "bytes": 806,
+      "path": "experiments/dkvmn/assist2017/full/final_results.json",
+      "sha256": "f6e2bdd5bc0258d57f7bc716a244ef8a32fb5c9b1a22c6c44d63adaacf6d1dd2"
+    },
+    {
+      "bytes": 693282,
+      "path": "experiments/dkvmn/assist2017/full/last_model.pt",
+      "sha256": "2d96ab1ad7056fb022b953b39e97069290a03faf05361639dd8e84d929c29bfa"
+    },
+    {
+      "bytes": 7459,
+      "path": "experiments/dkvmn/assist2017/full/metrics.csv",
+      "sha256": "fea07a060efe690bc8b6f0390b99c742f2722971aea6e264b76f1cb6f01391bd"
+    },
+    {
+      "bytes": 15801,
+      "path": "experiments/dkvmn/assist2017/full/training.jsonl",
+      "sha256": "c4287e2e68a2d6152477a45231487ae7f2f090b6b9d2756f9cbb49a27415be6c"
+    },
+    {
+      "bytes": 9,
+      "path": "experiments/dkvmn/junyi/full/_SUCCESS",
+      "sha256": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1"
+    },
+    {
+      "bytes": 4965282,
+      "path": "experiments/dkvmn/junyi/full/best_model.pt",
+      "sha256": "b4d7d80366a0c2c27404fae9e35d47c36ee58e69bdb9150be0e40d90365d146a"
+    },
+    {
+      "bytes": 925,
+      "path": "experiments/dkvmn/junyi/full/config.json",
+      "sha256": "56271569b6bf496eacdaec0d695ae7ea1ffc59d13ed94bd103845f7c09d848ed"
+    },
+    {
+      "bytes": 0,
+      "path": "experiments/dkvmn/junyi/full/console.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 361,
+      "path": "experiments/dkvmn/junyi/full/dataset_stats.json",
+      "sha256": "ddefc4f8b400d0cff9b784bded8574c076f8434c07cbe05c9b1776de7b7f1c16"
+    },
+    {
+      "bytes": 804,
+      "path": "experiments/dkvmn/junyi/full/final_results.json",
+      "sha256": "f4e6d58db854d0ed5b05ee2f1c0fb7f306b37b79307cf10739cf7b0b8cc812c2"
+    },
+    {
+      "bytes": 4965282,
+      "path": "experiments/dkvmn/junyi/full/last_model.pt",
+      "sha256": "89739dfbc3bcdb9477331c89fa11166d59ebf3f42072b3924c50ba159fc315fe"
+    },
+    {
+      "bytes": 2093,
+      "path": "experiments/dkvmn/junyi/full/metrics.csv",
+      "sha256": "b3c9af873531f841806ad6716a7c2f0769f164715a32157865e554c40ca75dfb"
+    },
+    {
+      "bytes": 8,
+      "path": "experiments/dkvmn/junyi/full/runner.pid",
+      "sha256": "bec553dc76a6b62e42ecdd308cc96bc35a5a9f59e981056de9a5f6fb21e4e9aa"
+    },
+    {
+      "bytes": 4364,
+      "path": "experiments/dkvmn/junyi/full/training.jsonl",
+      "sha256": "545606b64bfc2d654cf6ab76fdfc98c06783f75b845a33cd2a68ec0aab39c35e"
+    },
+    {
+      "bytes": 9,
+      "path": "experiments/dkvmn/ednet_kt1/full/_SUCCESS",
+      "sha256": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1"
+    },
+    {
+      "bytes": 4887330,
+      "path": "experiments/dkvmn/ednet_kt1/full/best_model.pt",
+      "sha256": "23e5ea19fd63c23647869012197d93159b87cc1c76399e6d7136bedcd26bd4e2"
+    },
+    {
+      "bytes": 928,
+      "path": "experiments/dkvmn/ednet_kt1/full/config.json",
+      "sha256": "548bda591ba3e72a5cf9a3ea44925672eb5e8c5b687cf7302b5161f8293b968f"
+    },
+    {
+      "bytes": 808,
+      "path": "experiments/dkvmn/ednet_kt1/full/console.log",
+      "sha256": "c83e9c4579dbf82d60c5b1d44938183986a14ba6c7188e11d2b11d568b19f614"
+    },
+    {
+      "bytes": 368,
+      "path": "experiments/dkvmn/ednet_kt1/full/dataset_stats.json",
+      "sha256": "b5b488cc00bf49c557e9dcf71410f92e7a1532d2ecd4d0be1c95acc9e790a8aa"
+    },
+    {
+      "bytes": 808,
+      "path": "experiments/dkvmn/ednet_kt1/full/final_results.json",
+      "sha256": "c83e9c4579dbf82d60c5b1d44938183986a14ba6c7188e11d2b11d568b19f614"
+    },
+    {
+      "bytes": 779,
+      "path": "experiments/dkvmn/ednet_kt1/full/independent_evaluation.json",
+      "sha256": "c0a71bb765e7b1b0c8d4f56af6f4d3b430e86c7f55ef3348a69e7bca983d0a0c"
+    },
+    {
+      "bytes": 4887330,
+      "path": "experiments/dkvmn/ednet_kt1/full/last_model.pt",
+      "sha256": "9373551e68d89762ad1f99e0cad03a259c9f89c47b1918316cc1c06fb7f22f45"
+    },
+    {
+      "bytes": 2124,
+      "path": "experiments/dkvmn/ednet_kt1/full/metrics.csv",
+      "sha256": "7bb9c4fbd3183e9ebfc0de412fc6ddf9547277e6ee7498fb5d8a1e83a4cf859a"
+    },
+    {
+      "bytes": 8,
+      "path": "experiments/dkvmn/ednet_kt1/full/runner.pid",
+      "sha256": "93c2bb26860b4dabc27fea895d4192d38b478bcd1debeaa1844032d41b1a0ae0"
+    },
+    {
+      "bytes": 4381,
+      "path": "experiments/dkvmn/ednet_kt1/full/training.jsonl",
+      "sha256": "35bfaf25c8fa5f8f2639e2af1ccfdee1f40f017cf80b8627d0b5b38faa7da9ad"
+    },
+    {
+      "bytes": 9,
+      "path": "experiments/sakt/assist2017/full/_SUCCESS",
+      "sha256": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1"
+    },
+    {
+      "bytes": 6352738,
+      "path": "experiments/sakt/assist2017/full/best_model.pt",
+      "sha256": "9f39018589a9498276172ba82f6884cad53a5c1a7ef4379de1a124d523ce6b0a"
+    },
+    {
+      "bytes": 795,
+      "path": "experiments/sakt/assist2017/full/config.json",
+      "sha256": "b9e81fc08d0e8a7e2ef4914ed82f2277caa251cadeb5dfc1b5b8d3587a2be026"
+    },
+    {
+      "bytes": 357,
+      "path": "experiments/sakt/assist2017/full/dataset_stats.json",
+      "sha256": "76f81ab2be5fc6e8b62facc9ec9f9c133adbaad45e5f333d0a048b6f290d6f3e"
+    },
+    {
+      "bytes": 721,
+      "path": "experiments/sakt/assist2017/full/final_results.json",
+      "sha256": "e84430c657210757181dc4556d0198b15d521ccff800cb079faca4578293a73d"
+    },
+    {
+      "bytes": 6352738,
+      "path": "experiments/sakt/assist2017/full/last_model.pt",
+      "sha256": "7a8d7ceff2e42e015cd73d427eb43805ec392fc3c834d348af3abec947fa50ce"
+    },
+    {
+      "bytes": 11183,
+      "path": "experiments/sakt/assist2017/full/metrics.csv",
+      "sha256": "96c73af262ca34ff153502cdc4d375e9dcf8d9485aebfa18b8f8e26ed0e44587"
+    },
+    {
+      "bytes": 23509,
+      "path": "experiments/sakt/assist2017/full/training.jsonl",
+      "sha256": "b8df04ec2372a85417138445314cde8fe03889c439dab9ad37ab354d5f04f443"
+    },
+    {
+      "bytes": 9,
+      "path": "experiments/sakt/junyi/full/_SUCCESS",
+      "sha256": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1"
+    },
+    {
+      "bytes": 35037026,
+      "path": "experiments/sakt/junyi/full/best_model.pt",
+      "sha256": "6490d2fc947f64c6d0c86e3fd8cdf39ab4a3f5b725a607dbc5ad07215e2225f3"
+    },
+    {
+      "bytes": 844,
+      "path": "experiments/sakt/junyi/full/config.json",
+      "sha256": "02eadceea138cf9e968701a8bc652d2fbd9ec4be24c69bbd87100078157b769b"
+    },
+    {
+      "bytes": 361,
+      "path": "experiments/sakt/junyi/full/dataset_stats.json",
+      "sha256": "ddefc4f8b400d0cff9b784bded8574c076f8434c07cbe05c9b1776de7b7f1c16"
+    },
+    {
+      "bytes": 806,
+      "path": "experiments/sakt/junyi/full/final_results.json",
+      "sha256": "e008be9e4ba982a20a8cc947ba21c2290dd6c165cc6cf079e97872086128cff3"
+    },
+    {
+      "bytes": 35037026,
+      "path": "experiments/sakt/junyi/full/last_model.pt",
+      "sha256": "dfc8fc9e1b81094675561c355fc79122df0142637d5408329588f482574c38ba"
+    },
+    {
+      "bytes": 5849,
+      "path": "experiments/sakt/junyi/full/metrics.csv",
+      "sha256": "7bb85d3461ecc63a3e55eb09ac014eb850fb389f23dc9ca5bc3bb3c2e99001f5"
+    },
+    {
+      "bytes": 12313,
+      "path": "experiments/sakt/junyi/full/training.jsonl",
+      "sha256": "69476126bb0266656db95a983f5cfc50121684279cd1c7d9f76719f8a185bab5"
+    },
+    {
+      "bytes": 9,
+      "path": "experiments/sakt/ednet_kt1/full/_SUCCESS",
+      "sha256": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1"
+    },
+    {
+      "bytes": 20052770,
+      "path": "experiments/sakt/ednet_kt1/full/best_model.pt",
+      "sha256": "1de01970ef3ebf8a3b136347f4db21f7a746ec610eaa95a86051ddc84a5497ea"
+    },
+    {
+      "bytes": 1119,
+      "path": "experiments/sakt/ednet_kt1/full/config.json",
+      "sha256": "3ccf08f56f5abae106e545ac78b5959094326ce7a89ed5ef2ffa8d6b118bc51e"
+    },
+    {
+      "bytes": 838,
+      "path": "experiments/sakt/ednet_kt1/full/console.log",
+      "sha256": "954fa60831f59d8ad3438beabbbed2c2e13c5913c7b57cfcbad2cc8dea7cd48f"
+    },
+    {
+      "bytes": 368,
+      "path": "experiments/sakt/ednet_kt1/full/dataset_stats.json",
+      "sha256": "b5b488cc00bf49c557e9dcf71410f92e7a1532d2ecd4d0be1c95acc9e790a8aa"
+    },
+    {
+      "bytes": 838,
+      "path": "experiments/sakt/ednet_kt1/full/final_results.json",
+      "sha256": "954fa60831f59d8ad3438beabbbed2c2e13c5913c7b57cfcbad2cc8dea7cd48f"
+    },
+    {
+      "bytes": 777,
+      "path": "experiments/sakt/ednet_kt1/full/independent_evaluation.console.log",
+      "sha256": "0f5546314e0911001954ca04e2fccdad7be7e09dce685fb8d61f5fe7a7af76ff"
+    },
+    {
+      "bytes": 776,
+      "path": "experiments/sakt/ednet_kt1/full/independent_evaluation.json",
+      "sha256": "5038675013213b8195cd728b56cd8bcc73a79831b70271612455ece3f52dd732"
+    },
+    {
+      "bytes": 20053026,
+      "path": "experiments/sakt/ednet_kt1/full/last_model.pt",
+      "sha256": "9f5fd63fc51ae3304687dfe243a58212c6d96fc04a724dce98adb82ab067e878"
+    },
+    {
+      "bytes": 5906,
+      "path": "experiments/sakt/ednet_kt1/full/metrics.csv",
+      "sha256": "7046ff2b69128a9195a2c7a1a51e8852ac28eeb7c36ca5cf6dc71cd5d435d620"
+    },
+    {
+      "bytes": 8,
+      "path": "experiments/sakt/ednet_kt1/full/runner.pid",
+      "sha256": "2dc213036ffb1da96e54064744d1cf87d09f6a4e5ca37c63af6fe82b82db126a"
+    },
+    {
+      "bytes": 12642,
+      "path": "experiments/sakt/ednet_kt1/full/training.jsonl",
+      "sha256": "8255f80321fe6017ab886ad0380b366d89a8c4fe8d2f9cbc48edde42b32867bc"
+    },
+    {
+      "bytes": 9,
+      "path": "experiments/rkt/assist2017/full/_SUCCESS",
+      "sha256": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1"
+    },
+    {
+      "bytes": 2898850,
+      "path": "experiments/rkt/assist2017/full/best_model.pt",
+      "sha256": "f771e82dc60ae440af46dc69f770a1931d4cacbdab3a352fa1b6a5358c9a88ab"
+    },
+    {
+      "bytes": 2315,
+      "path": "experiments/rkt/assist2017/full/config.json",
+      "sha256": "4658d963bae451a27e2f11ce75b4fdb575210f6ced426437bc562000d1434ab0"
+    },
+    {
+      "bytes": 357,
+      "path": "experiments/rkt/assist2017/full/dataset_stats.json",
+      "sha256": "76f81ab2be5fc6e8b62facc9ec9f9c133adbaad45e5f333d0a048b6f290d6f3e"
+    },
+    {
+      "bytes": 835,
+      "path": "experiments/rkt/assist2017/full/final_results.json",
+      "sha256": "861ec20a8ab5de26bfcadd0e3bb35416d7a8943d0fb77f9b7dbb7630cff02743"
+    },
+    {
+      "bytes": 2898850,
+      "path": "experiments/rkt/assist2017/full/last_model.pt",
+      "sha256": "9ed9785d7e332de0496a096e147b55a9baa63b241c754ff45327e88e450b7b45"
+    },
+    {
+      "bytes": 6172,
+      "path": "experiments/rkt/assist2017/full/metrics.csv",
+      "sha256": "fe8d1c677e44b475c2a801c838fb0fdebc8f038feeaf3b9dd631f8daf07d206b"
+    },
+    {
+      "bytes": 12947,
+      "path": "experiments/rkt/assist2017/full/training.jsonl",
+      "sha256": "730fda7929a1212b212cc5e0a624cfb66899aefe7b1b799b4e32d3e38d38c585"
+    },
+    {
+      "bytes": 9,
+      "path": "experiments/rkt/junyi/full/_SUCCESS",
+      "sha256": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1"
+    },
+    {
+      "bytes": 20514402,
+      "path": "experiments/rkt/junyi/full/best_model.pt",
+      "sha256": "842e859509357c855545f86941dd5bcfc85614559c9335d121410eee9c112d7c"
+    },
+    {
+      "bytes": 2556,
+      "path": "experiments/rkt/junyi/full/config.json",
+      "sha256": "03e31189022f8b957971b86e5d0a8a6dd0373239f6423887db0466aef88e67a8"
+    },
+    {
+      "bytes": 915,
+      "path": "experiments/rkt/junyi/full/console.log",
+      "sha256": "11d5ed083dc928c4f873ddc275da8891576cfab8b3b588fe8b303a229f95d78a"
+    },
+    {
+      "bytes": 361,
+      "path": "experiments/rkt/junyi/full/dataset_stats.json",
+      "sha256": "ddefc4f8b400d0cff9b784bded8574c076f8434c07cbe05c9b1776de7b7f1c16"
+    },
+    {
+      "bytes": 915,
+      "path": "experiments/rkt/junyi/full/final_results.json",
+      "sha256": "11d5ed083dc928c4f873ddc275da8891576cfab8b3b588fe8b303a229f95d78a"
+    },
+    {
+      "bytes": 20514402,
+      "path": "experiments/rkt/junyi/full/last_model.pt",
+      "sha256": "7af299eccbd0827f397b197cf55b38ebfad4c51980482d1c7b615c58d5dc4be7"
+    },
+    {
+      "bytes": 4316,
+      "path": "experiments/rkt/junyi/full/metrics.csv",
+      "sha256": "6218aad12ba0cc2d1e90326c7864f1045cde9df1c5c006eeefccd2e1b2d57105"
+    },
+    {
+      "bytes": 8,
+      "path": "experiments/rkt/junyi/full/runner.pid",
+      "sha256": "ab890db8f283c60eef3bc33b2109aee640fa9cbcf1eca175d78525f99d52cba7"
+    },
+    {
+      "bytes": 9183,
+      "path": "experiments/rkt/junyi/full/training.jsonl",
+      "sha256": "98e6817996ee6dfccc968e3b22a93383d1a709606c1a410609f19c8f30708bf7"
+    },
+    {
+      "bytes": 9,
+      "path": "experiments/rkt/ednet_kt1/full/_SUCCESS",
+      "sha256": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1"
+    },
+    {
+      "bytes": 11984418,
+      "path": "experiments/rkt/ednet_kt1/full/best_model.pt",
+      "sha256": "676fecb19061b35dd6f8050788875cadfc0de58a345145495190f772e752b8d4"
+    },
+    {
+      "bytes": 2403,
+      "path": "experiments/rkt/ednet_kt1/full/config.json",
+      "sha256": "0f0dc2363a13f03ee35e1edc3377c4f8f4eaa78147bfd316fada8b4136ae5320"
+    },
+    {
+      "bytes": 368,
+      "path": "experiments/rkt/ednet_kt1/full/dataset_stats.json",
+      "sha256": "b5b488cc00bf49c557e9dcf71410f92e7a1532d2ecd4d0be1c95acc9e790a8aa"
+    },
+    {
+      "bytes": 916,
+      "path": "experiments/rkt/ednet_kt1/full/final_results.json",
+      "sha256": "4356e3adc5ee61401292bb84dcdd95541e6ef624424c6d5139ecc0d7ff79f4b4"
+    },
+    {
+      "bytes": 11984418,
+      "path": "experiments/rkt/ednet_kt1/full/last_model.pt",
+      "sha256": "dfbd850cb9f9096c175eb3a5277f2b1156532c7eadc4c116eeecc0e37f5459cb"
+    },
+    {
+      "bytes": 2108,
+      "path": "experiments/rkt/ednet_kt1/full/metrics.csv",
+      "sha256": "de296981bf88fcf689918dd5475249b7e22f5979aaf62d810a2d2d7bf280c20a"
+    },
+    {
+      "bytes": 4379,
+      "path": "experiments/rkt/ednet_kt1/full/training.jsonl",
+      "sha256": "96e0f1ef71e3ce3db68b0a5352ab413352af70bc243c72f87ea39a07f924ea13"
+    },
+    {
+      "bytes": 9,
+      "path": "experiments/hitskt/assist2017/full/_SUCCESS",
+      "sha256": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1"
+    },
+    {
+      "bytes": 83255282,
+      "path": "experiments/hitskt/assist2017/full/best_model.pt",
+      "sha256": "085c8d9ae32f4e60892dfb3e4eed93d90a584696d0914456c135dcab7b890164"
+    },
+    {
+      "bytes": 1039,
+      "path": "experiments/hitskt/assist2017/full/config.json",
+      "sha256": "99cc9a19504128d303fb4c6d66ef728e3daeaac420aaa3cb33fecca556730d4a"
+    },
+    {
+      "bytes": 443,
+      "path": "experiments/hitskt/assist2017/full/dataset_stats.json",
+      "sha256": "07fd902e28ed85eb9597432656aaa476522bae13753c84718500199b94e74dd7"
+    },
+    {
+      "bytes": 725,
+      "path": "experiments/hitskt/assist2017/full/final_results.json",
+      "sha256": "25758283a96663245788e45fbd517372ae1f72e39fab91ff491ca79ea8a2d75b"
+    },
+    {
+      "bytes": 83255282,
+      "path": "experiments/hitskt/assist2017/full/last_model.pt",
+      "sha256": "a1b38845bc52c7e736141eff009cf6b20f72dbdeeed86f59500776fa54fb0422"
+    },
+    {
+      "bytes": 14320,
+      "path": "experiments/hitskt/assist2017/full/metrics.csv",
+      "sha256": "47a116760aef2bde7f67d3b871c266b14ec762c9fc81b2c5c67344dad60641c0"
+    },
+    {
+      "bytes": 30130,
+      "path": "experiments/hitskt/assist2017/full/training.jsonl",
+      "sha256": "276854e94c60c8f9549e4ce5f10fb07d121ea49d32917cfd89557cf520d06dc1"
+    },
+    {
+      "bytes": 9,
+      "path": "experiments/hitskt/junyi/full/_SUCCESS",
+      "sha256": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1"
+    },
+    {
+      "bytes": 99330610,
+      "path": "experiments/hitskt/junyi/full/best_model.pt",
+      "sha256": "2308c5bf0c850da1e55daf802a0853a30fac45eeed071c7162c68fc17bfa3bdd"
+    },
+    {
+      "bytes": 1034,
+      "path": "experiments/hitskt/junyi/full/config.json",
+      "sha256": "f44dc08302831724efa8f94a0506fe2e95dce40ce52222b8fbea89628f3d55f5"
+    },
+    {
+      "bytes": 455,
+      "path": "experiments/hitskt/junyi/full/dataset_stats.json",
+      "sha256": "85da73a724f4b33dec59426b4047cae111543f29ee8bbcbbe64a9866e2bd3924"
+    },
+    {
+      "bytes": 717,
+      "path": "experiments/hitskt/junyi/full/final_results.json",
+      "sha256": "680f2d624e00591606a29379f3b9dbbdfe3d358a6d26173290e7f330e91e8faa"
+    },
+    {
+      "bytes": 99330610,
+      "path": "experiments/hitskt/junyi/full/last_model.pt",
+      "sha256": "5f9a8b4fe8dc1d0ad14c6da234e88876cf1435f4639b0765527e282f5aeae2f7"
+    },
+    {
+      "bytes": 11876,
+      "path": "experiments/hitskt/junyi/full/metrics.csv",
+      "sha256": "4580c0db64c647f8a9a96195e39df4a3e6e54e833fd78c625baeeb4390b873d3"
+    },
+    {
+      "bytes": 8,
+      "path": "experiments/hitskt/junyi/full/runner.pid",
+      "sha256": "0712910a988499ecfc943e0496fa275a556eec2026c932bfa2437375bed85eee"
+    },
+    {
+      "bytes": 24902,
+      "path": "experiments/hitskt/junyi/full/training.jsonl",
+      "sha256": "dfc5294afcb73ff67d795dd8ced0d9feeaf26e7516c10b39cdc23374c5415e7b"
+    },
+    {
+      "bytes": 9,
+      "path": "experiments/hitskt/ednet_kt1/full/_SUCCESS",
+      "sha256": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1"
+    },
+    {
+      "bytes": 60985589,
+      "path": "experiments/hitskt/ednet_kt1/full/best_model.pt",
+      "sha256": "58d4b1f393d0fa8ec372ba8bcc00cc8b7168d37817d4badfd26ee42abffd03c8"
+    },
+    {
+      "bytes": 1090,
+      "path": "experiments/hitskt/ednet_kt1/full/config.json",
+      "sha256": "838c254c72de7c32bd5982a8785c20456317b00cdca49a6be86f8adc039cfcca"
+    },
+    {
+      "bytes": 85175,
+      "path": "experiments/hitskt/ednet_kt1/full/console.log",
+      "sha256": "aef0d9e031ce3138fad7ca8ec2216c2fd75c357c8e09d1aa1ec91b1c7e1428bc"
+    },
+    {
+      "bytes": 464,
+      "path": "experiments/hitskt/ednet_kt1/full/dataset_stats.json",
+      "sha256": "60c219f32bb875cdf34d220a86282b7dab47e3cb55dcf2aa2b57eaed225064fe"
+    },
+    {
+      "bytes": 812,
+      "path": "experiments/hitskt/ednet_kt1/full/final_results.json",
+      "sha256": "1c76d8848c4085dccbad55ab8d7bde0a8b7e1bb5def9032aaf5d3550d9196a57"
+    },
+    {
+      "bytes": 780,
+      "path": "experiments/hitskt/ednet_kt1/full/independent_evaluation.json",
+      "sha256": "e8b22ddeb59f4457500b4c9b3a422cf9c1c1f2ffc78833485ea1964dd305c0c8"
+    },
+    {
+      "bytes": 60985589,
+      "path": "experiments/hitskt/ednet_kt1/full/last_model.pt",
+      "sha256": "ac25f6f4330fbc9c048fe696c3a59faeefac117dfc71c4861787599051a7f6d4"
+    },
+    {
+      "bytes": 11303,
+      "path": "experiments/hitskt/ednet_kt1/full/metrics.csv",
+      "sha256": "70d8016d660e7f5eae851b1ab3fae53365a5f58618298162ecaeb12148ca682c"
+    },
+    {
+      "bytes": 8,
+      "path": "experiments/hitskt/ednet_kt1/full/runner.pid",
+      "sha256": "09c520265540883684906f4e148debd52938269657e88277f57f4133d577c08c"
+    },
+    {
+      "bytes": 23637,
+      "path": "experiments/hitskt/ednet_kt1/full/training.jsonl",
+      "sha256": "30c90eb77b2b31361c1e3a0ef2e42617f5caf3b40bec6cb8cc1b5d123f8284c1"
+    }
+  ],
+  "recorded_gains": {
+    "assist2017": {
+      "auc_difference": -0.03900247395955292,
+      "best_available_baseline": "rkt",
+      "best_available_baseline_auc": 0.7486264898793284,
+      "completed_baseline_count": 4,
+      "hitskt_auc": 0.7096240159197755,
+      "primary_seed": 42,
+      "primary_seed_count": 1,
+      "statistical_significance": "NOT VERIFIED"
+    },
+    "ednet_kt1": {
+      "auc_difference": 0.006356979129155005,
+      "best_available_baseline": "sakt",
+      "best_available_baseline_auc": 0.7630078573122142,
+      "completed_baseline_count": 3,
+      "hitskt_auc": 0.7693648364413692,
+      "primary_seed": 42,
+      "primary_seed_count": 1,
+      "statistical_significance": "NOT VERIFIED"
+    },
+    "junyi": {
+      "auc_difference": 0.006571356857316912,
+      "best_available_baseline": "rkt",
+      "best_available_baseline_auc": 0.7912548486618094,
+      "completed_baseline_count": 4,
+      "hitskt_auc": 0.7978262055191263,
+      "primary_seed": 42,
+      "primary_seed_count": 1,
+      "statistical_significance": "NOT VERIFIED"
+    }
+  },
+  "records": [
+    {
+      "best_checkpoint": {
+        "all_model_tensors_finite": true,
+        "config": {
+          "context_length": 200,
+          "dropout": 0.1,
+          "embedding_size": 64,
+          "hidden_size": 64,
+          "history_length": 199,
+          "layers": 1,
+          "num_skills": 102
+        },
+        "epoch": 12,
+        "seed_in_payload": 42,
+        "sha256": "a57e93d381d7b717cc759f4a958dd80bb33cc506424493c20dda6e743949e107",
+        "validation_auc": 0.7213696055764979
+      },
+      "best_optimizer_nonfinite_states": [],
+      "checks": {
+        "best_checkpoint_selection_matches": true,
+        "completion_metadata": true,
+        "contiguous_completed_epoch_prefix": true,
+        "csv_test_matches_json": true,
+        "result_selection_matches": true,
+        "stopped_at_rule": true,
+        "strict_validation_auc_selection": true
+      },
+      "complete": true,
+      "config": {
+        "batch_size": 20,
+        "best_epoch": 12,
+        "best_validation_auc": 0.7213696055764979,
+        "context_length": 200,
+        "dataset": "assist2017",
+        "device": "cuda",
+        "dropout": 0.1,
+        "early_stopping_metric": "validation_roc_auc",
+        "early_stopping_min_delta": 0.0,
+        "early_stopping_patience": 5,
+        "early_stopping_strict_improvement": true,
+        "effective_recurrent_dropout": 0.0,
+        "embedding_size": 64,
+        "epoch_ceiling": 200,
+        "epochs_completed": 17,
+        "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+        "gradient_clip": null,
+        "hidden_size": 64,
+        "history_length": 199,
+        "layers": 1,
+        "learning_rate": 0.0002,
+        "model": "DKT",
+        "optimizer": "Adam",
+        "reload_best_checkpoint_before_test": true,
+        "seed": 42,
+        "total_parameters": 59751,
+        "trainable_parameters": 59751,
+        "weight_decay": 0.0,
+        "workers": 8
+      },
+      "dataset": "assist2017",
+      "fresh_baseline_metric_reproduction": "NOT VERIFIED in this audit; artifact consistency and relevant tests only",
+      "issues": [],
+      "model": "dkt",
+      "non_improvement_count": 5,
+      "path": "experiments/dkt/assist2017/full",
+      "seed": 42,
+      "status": "PASS",
+      "stored_test_metrics": {
+        "accuracy": 0.6750258347290026,
+        "f1": 0.5151970230580105,
+        "loss": 0.6057200541985488,
+        "mse": 0.20838042806546592,
+        "precision": 0.6113932435416206,
+        "recall": 0.44515640071654955,
+        "roc_auc": 0.7069997420457494,
+        "targets": 112252,
+        "threshold": 0.5
+      }
+    },
+    {
+      "best_checkpoint": {
+        "all_model_tensors_finite": true,
+        "config": {
+          "context_length": 200,
+          "dropout": 0.1,
+          "embedding_size": 64,
+          "hidden_size": 64,
+          "history_length": 199,
+          "layers": 1,
+          "num_skills": 1521
+        },
+        "epoch": 3,
+        "seed_in_payload": 42,
+        "sha256": "024f89a1ec66c503aa9c1e255b68c320003b334f25b99031cef94fedb4d7693d",
+        "validation_auc": 0.7499506386307369
+      },
+      "best_optimizer_nonfinite_states": [],
+      "checks": {
+        "best_checkpoint_selection_matches": true,
+        "completion_metadata": true,
+        "contiguous_completed_epoch_prefix": true,
+        "csv_test_matches_json": true,
+        "result_selection_matches": true,
+        "stopped_at_rule": true,
+        "strict_validation_auc_selection": true
+      },
+      "complete": true,
+      "config": {
+        "batch_size": 20,
+        "best_epoch": 3,
+        "best_validation_auc": 0.7499506386307369,
+        "context_length": 200,
+        "dataset": "junyi",
+        "device": "cuda",
+        "dropout": 0.1,
+        "early_stopping_metric": "validation_roc_auc",
+        "early_stopping_min_delta": 0.0,
+        "early_stopping_patience": 5,
+        "early_stopping_strict_improvement": true,
+        "effective_recurrent_dropout": 0.0,
+        "embedding_size": 64,
+        "epoch_ceiling": 200,
+        "epochs_completed": 8,
+        "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+        "gradient_clip": null,
+        "hidden_size": 64,
+        "history_length": 199,
+        "layers": 1,
+        "learning_rate": 0.0002,
+        "model": "DKT",
+        "optimizer": "Adam",
+        "reload_best_checkpoint_before_test": true,
+        "resume_count": 1,
+        "resumed_from_epoch": 2,
+        "runtime_before_resume_estimated_from_artifact_mtimes": false,
+        "runtime_before_resume_seconds": 11445.598711088765,
+        "runtime_seconds_accumulated": 46586.79885737272,
+        "seed": 42,
+        "total_parameters": 424434,
+        "trainable_parameters": 424434,
+        "weight_decay": 0.0,
+        "workers": 8
+      },
+      "dataset": "junyi",
+      "fresh_baseline_metric_reproduction": "NOT VERIFIED in this audit; artifact consistency and relevant tests only",
+      "issues": [],
+      "model": "dkt",
+      "non_improvement_count": 5,
+      "path": "experiments/dkt/junyi/full",
+      "seed": 42,
+      "status": "PASS",
+      "stored_test_metrics": {
+        "accuracy": 0.7257260822943475,
+        "f1": 0.8094759908929949,
+        "loss": 0.5415314254474518,
+        "mse": 0.18200326977544665,
+        "precision": 0.7664082388459961,
+        "recall": 0.8576722579346127,
+        "roc_auc": 0.7476841496612041,
+        "targets": 2456402,
+        "threshold": 0.5
+      }
+    },
+    {
+      "best_checkpoint": {
+        "all_model_tensors_finite": true,
+        "config": {
+          "context_length": 200,
+          "dropout": 0.1,
+          "embedding_size": 64,
+          "hidden_size": 64,
+          "history_length": 199,
+          "layers": 1,
+          "num_skills": 1495
+        },
+        "epoch": 1,
+        "seed_in_payload": 42,
+        "sha256": "56a911479a2c0b53edd457e4179a942be6f652717e7322c35b41e45194e90215",
+        "validation_auc": 0.6845717850759062
+      },
+      "best_optimizer_nonfinite_states": [],
+      "checks": {
+        "best_checkpoint_selection_matches": true,
+        "contiguous_completed_epoch_prefix": true,
+        "strict_validation_auc_selection": true
+      },
+      "complete": false,
+      "config": {
+        "batch_size": 20,
+        "best_epoch": 1,
+        "best_validation_auc": 0.6845717850759062,
+        "context_length": 200,
+        "dataset": "ednet_kt1",
+        "device": "cuda",
+        "dropout": 0.1,
+        "early_stopping_metric": "validation_roc_auc",
+        "early_stopping_min_delta": 0.0,
+        "early_stopping_patience": 10,
+        "early_stopping_patience_changed_after_epoch": 5,
+        "early_stopping_patience_previous": 5,
+        "early_stopping_protocol_exception": "user-authorized DKT/full EdNet patience 10",
+        "early_stopping_strict_improvement": true,
+        "effective_recurrent_dropout": 0.0,
+        "embedding_size": 64,
+        "epoch_ceiling": 200,
+        "epochs_completed": 9,
+        "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+        "gradient_clip": null,
+        "hidden_size": 64,
+        "history_length": 199,
+        "layers": 1,
+        "learning_rate": 0.0002,
+        "model": "DKT",
+        "optimizer": "Adam",
+        "previous_transport": "packed64",
+        "reload_best_checkpoint_before_test": true,
+        "resume_count": 2,
+        "resumed_from_epoch": 5,
+        "runtime_before_resume_estimated_from_artifact_mtimes": false,
+        "runtime_before_resume_seconds": 140921.11826095905,
+        "runtime_seconds_accumulated": 255195.88471189688,
+        "seed": 42,
+        "total_parameters": 417752,
+        "trainable_parameters": 417752,
+        "transport": "packed64",
+        "transport_block_minibatches": 64,
+        "weight_decay": 0.0,
+        "workers": 8
+      },
+      "dataset": "ednet_kt1",
+      "issues": [
+        "No completed final test result; excluded from reported gains"
+      ],
+      "model": "dkt",
+      "non_improvement_count": 8,
+      "path": "experiments/dkt/ednet_kt1/full",
+      "seed": 42,
+      "status": "NOT VERIFIED"
+    },
+    {
+      "best_checkpoint": {
+        "all_model_tensors_finite": true,
+        "config": {
+          "context_length": 200,
+          "dropout": 0.0,
+          "final_size": 50,
+          "history_length": 199,
+          "interaction_embedding_size": 100,
+          "key_state_size": 50,
+          "memory_size": 20,
+          "num_skills": 102,
+          "question_embedding_size": 50,
+          "value_state_size": 100
+        },
+        "epoch": 18,
+        "seed_in_payload": 42,
+        "sha256": "784456c227af03b2c89918d9297d2702a5183b343bdd03b99db1b0190ac8c69e",
+        "validation_auc": 0.6962520470412956
+      },
+      "best_optimizer_nonfinite_states": [],
+      "checks": {
+        "best_checkpoint_selection_matches": true,
+        "completion_metadata": true,
+        "contiguous_completed_epoch_prefix": true,
+        "csv_test_matches_json": true,
+        "result_selection_matches": true,
+        "stopped_at_rule": true,
+        "strict_validation_auc_selection": true
+      },
+      "complete": true,
+      "config": {
+        "batch_size": 32,
+        "best_epoch": 18,
+        "best_validation_auc": 0.6962520470412956,
+        "context_length": 200,
+        "dataset": "assist2017",
+        "device": "cuda",
+        "dropout": 0.0,
+        "early_stopping_metric": "validation_roc_auc",
+        "early_stopping_min_delta": 0.0,
+        "early_stopping_patience": 5,
+        "early_stopping_strict_improvement": true,
+        "epoch_ceiling": 100,
+        "epochs_completed": 23,
+        "final_size": 50,
+        "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+        "gradient_clip": 50.0,
+        "history_length": 199,
+        "interaction_embedding_size": 100,
+        "key_state_size": 50,
+        "learning_rate": 0.001,
+        "memory_size": 20,
+        "model": "DKVMN",
+        "optimizer": "Adam",
+        "question_embedding_size": 50,
+        "reload_best_checkpoint_before_test": true,
+        "resume_count": 1,
+        "resumed_from_epoch": 19,
+        "runtime_before_resume_estimated_from_artifact_mtimes": true,
+        "runtime_before_resume_seconds": 3182.1975951194763,
+        "runtime_seconds_accumulated": 3888.214234677609,
+        "seed": 42,
+        "total_parameters": 56551,
+        "trainable_parameters": 56551,
+        "value_state_size": 100,
+        "weight_decay": 0.0,
+        "workers": 8
+      },
+      "dataset": "assist2017",
+      "fresh_baseline_metric_reproduction": "NOT VERIFIED in this audit; artifact consistency and relevant tests only",
+      "issues": [],
+      "model": "dkvmn",
+      "non_improvement_count": 5,
+      "path": "experiments/dkvmn/assist2017/full",
+      "seed": 42,
+      "status": "PASS",
+      "stored_test_metrics": {
+        "accuracy": 0.6635961942771621,
+        "f1": 0.44671062271062273,
+        "loss": 0.618201521382347,
+        "mse": 0.21413326015219722,
+        "precision": 0.6169661648049215,
+        "recall": 0.3500987552248404,
+        "roc_auc": 0.6822527020970142,
+        "targets": 112252,
+        "threshold": 0.5
+      }
+    },
+    {
+      "best_checkpoint": {
+        "all_model_tensors_finite": true,
+        "config": {
+          "context_length": 200,
+          "dropout": 0.0,
+          "final_size": 50,
+          "history_length": 199,
+          "interaction_embedding_size": 100,
+          "key_state_size": 50,
+          "memory_size": 20,
+          "num_skills": 1521,
+          "question_embedding_size": 50,
+          "value_state_size": 100
+        },
+        "epoch": 1,
+        "seed_in_payload": 42,
+        "sha256": "b4d7d80366a0c2c27404fae9e35d47c36ee58e69bdb9150be0e40d90365d146a",
+        "validation_auc": 0.7450961223634319
+      },
+      "best_optimizer_nonfinite_states": [],
+      "checks": {
+        "best_checkpoint_selection_matches": true,
+        "completion_metadata": true,
+        "contiguous_completed_epoch_prefix": true,
+        "csv_test_matches_json": true,
+        "result_selection_matches": true,
+        "stopped_at_rule": true,
+        "strict_validation_auc_selection": true
+      },
+      "complete": true,
+      "config": {
+        "batch_size": 32,
+        "best_epoch": 1,
+        "best_validation_auc": 0.7450961223634319,
+        "context_length": 200,
+        "dataset": "junyi",
+        "device": "cuda",
+        "dropout": 0.0,
+        "early_stopping_metric": "validation_roc_auc",
+        "early_stopping_min_delta": 0.0,
+        "early_stopping_patience": 5,
+        "early_stopping_strict_improvement": true,
+        "epoch_ceiling": 100,
+        "epochs_completed": 6,
+        "final_size": 50,
+        "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+        "gradient_clip": 50.0,
+        "history_length": 199,
+        "interaction_embedding_size": 100,
+        "key_state_size": 50,
+        "learning_rate": 0.001,
+        "memory_size": 20,
+        "model": "DKVMN",
+        "optimizer": "Adam",
+        "question_embedding_size": 50,
+        "reload_best_checkpoint_before_test": true,
+        "runtime_seconds_accumulated": 15310.303397977259,
+        "seed": 42,
+        "total_parameters": 411301,
+        "trainable_parameters": 411301,
+        "value_state_size": 100,
+        "weight_decay": 0.0,
+        "workers": 8
+      },
+      "dataset": "junyi",
+      "fresh_baseline_metric_reproduction": "NOT VERIFIED in this audit; artifact consistency and relevant tests only",
+      "issues": [],
+      "model": "dkvmn",
+      "non_improvement_count": 5,
+      "path": "experiments/dkvmn/junyi/full",
+      "seed": 42,
+      "status": "PASS",
+      "stored_test_metrics": {
+        "accuracy": 0.7234760434163463,
+        "f1": 0.8181163363102187,
+        "loss": 0.5455991906689351,
+        "mse": 0.18363697807826554,
+        "precision": 0.7394883094791944,
+        "recall": 0.9154544196105668,
+        "roc_auc": 0.7415784624691203,
+        "targets": 2456402,
+        "threshold": 0.5
+      }
+    },
+    {
+      "best_checkpoint": {
+        "all_model_tensors_finite": true,
+        "config": {
+          "context_length": 200,
+          "dropout": 0.0,
+          "final_size": 50,
+          "history_length": 199,
+          "interaction_embedding_size": 100,
+          "key_state_size": 50,
+          "memory_size": 20,
+          "num_skills": 1495,
+          "question_embedding_size": 50,
+          "value_state_size": 100
+        },
+        "epoch": 1,
+        "seed_in_payload": 42,
+        "sha256": "23e5ea19fd63c23647869012197d93159b87cc1c76399e6d7136bedcd26bd4e2",
+        "validation_auc": 0.6719177243615195
+      },
+      "best_optimizer_nonfinite_states": [],
+      "checks": {
+        "best_checkpoint_selection_matches": true,
+        "completion_metadata": true,
+        "contiguous_completed_epoch_prefix": true,
+        "csv_test_matches_json": true,
+        "result_selection_matches": true,
+        "stopped_at_rule": true,
+        "strict_validation_auc_selection": true
+      },
+      "complete": true,
+      "config": {
+        "batch_size": 32,
+        "best_epoch": 1,
+        "best_validation_auc": 0.6719177243615195,
+        "context_length": 200,
+        "dataset": "ednet_kt1",
+        "device": "cuda",
+        "dropout": 0.0,
+        "early_stopping_metric": "validation_roc_auc",
+        "early_stopping_min_delta": 0.0,
+        "early_stopping_patience": 5,
+        "early_stopping_strict_improvement": true,
+        "epoch_ceiling": 100,
+        "epochs_completed": 6,
+        "final_size": 50,
+        "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+        "gradient_clip": 50.0,
+        "history_length": 199,
+        "interaction_embedding_size": 100,
+        "key_state_size": 50,
+        "learning_rate": 0.001,
+        "memory_size": 20,
+        "model": "DKVMN",
+        "optimizer": "Adam",
+        "question_embedding_size": 50,
+        "reload_best_checkpoint_before_test": true,
+        "runtime_seconds_accumulated": 88075.51393550122,
+        "seed": 42,
+        "total_parameters": 404801,
+        "trainable_parameters": 404801,
+        "value_state_size": 100,
+        "weight_decay": 0.0,
+        "workers": 8
+      },
+      "dataset": "ednet_kt1",
+      "fresh_baseline_metric_reproduction": "NOT VERIFIED in this audit; artifact consistency and relevant tests only",
+      "issues": [],
+      "model": "dkvmn",
+      "non_improvement_count": 5,
+      "path": "experiments/dkvmn/ednet_kt1/full",
+      "seed": 42,
+      "status": "PASS",
+      "stored_test_metrics": {
+        "accuracy": 0.6988751938775283,
+        "f1": 0.8136602984915351,
+        "loss": 0.5833078272692482,
+        "mse": 0.19920125153954787,
+        "precision": 0.7053461512590434,
+        "recall": 0.9612753689964084,
+        "roc_auc": 0.6741059915424829,
+        "targets": 13429870,
+        "threshold": 0.5
+      }
+    },
+    {
+      "best_checkpoint": {
+        "all_model_tensors_finite": true,
+        "config": {
+          "context_length": 100,
+          "dropout": 0.2,
+          "heads": 5,
+          "history_length": 99,
+          "layers": 1,
+          "maximum_relative_position": 10,
+          "num_questions": 3158,
+          "num_skills": 102,
+          "width": 200
+        },
+        "epoch": 30,
+        "seed_in_payload": 42,
+        "sha256": "9f39018589a9498276172ba82f6884cad53a5c1a7ef4379de1a124d523ce6b0a",
+        "validation_auc": 0.7577061438567358
+      },
+      "best_optimizer_nonfinite_states": [],
+      "checks": {
+        "best_checkpoint_selection_matches": true,
+        "completion_metadata": true,
+        "contiguous_completed_epoch_prefix": true,
+        "csv_test_matches_json": true,
+        "result_selection_matches": true,
+        "stopped_at_rule": true,
+        "strict_validation_auc_selection": true
+      },
+      "complete": true,
+      "config": {
+        "batch_size": 10,
+        "best_epoch": 30,
+        "best_validation_auc": 0.7577061438567358,
+        "context_length": 100,
+        "dataset": "assist2017",
+        "device": "cuda",
+        "dropout": 0.2,
+        "early_stopping_metric": "validation_roc_auc",
+        "early_stopping_min_delta": 0.0,
+        "early_stopping_patience": 5,
+        "early_stopping_strict_improvement": true,
+        "epoch_ceiling": 300,
+        "epochs_completed": 35,
+        "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+        "gradient_clip": 10.0,
+        "heads": 5,
+        "history_length": 99,
+        "layers": 1,
+        "learning_rate": 1e-05,
+        "maximum_relative_position": 10,
+        "model": "SAKT",
+        "optimizer": "Adam",
+        "reload_best_checkpoint_before_test": true,
+        "seed": 42,
+        "total_parameters": 528001,
+        "trainable_parameters": 528001,
+        "weight_decay": 0.0,
+        "width": 200,
+        "workers": 8
+      },
+      "dataset": "assist2017",
+      "fresh_baseline_metric_reproduction": "NOT VERIFIED in this audit; artifact consistency and relevant tests only",
+      "issues": [],
+      "model": "sakt",
+      "non_improvement_count": 5,
+      "path": "experiments/sakt/assist2017/full",
+      "seed": 42,
+      "status": "PASS",
+      "stored_test_metrics": {
+        "accuracy": 0.6902950504222642,
+        "f1": 0.559540853171838,
+        "loss": 0.5853560605634534,
+        "mse": 0.19987193044611914,
+        "precision": 0.6240144685901602,
+        "recall": 0.5071425290524092,
+        "roc_auc": 0.7384655653536991,
+        "targets": 112252,
+        "threshold": 0.5
+      }
+    },
+    {
+      "best_checkpoint": {
+        "all_model_tensors_finite": true,
+        "config": {
+          "context_length": 100,
+          "dropout": 0.2,
+          "heads": 5,
+          "history_length": 99,
+          "layers": 1,
+          "maximum_relative_position": 10,
+          "num_questions": 25630,
+          "num_skills": 1521,
+          "width": 200
+        },
+        "epoch": 13,
+        "seed_in_payload": 42,
+        "sha256": "6490d2fc947f64c6d0c86e3fd8cdf39ab4a3f5b725a607dbc5ad07215e2225f3",
+        "validation_auc": 0.7928608705706457
+      },
+      "best_optimizer_nonfinite_states": [],
+      "checks": {
+        "best_checkpoint_selection_matches": true,
+        "completion_metadata": true,
+        "contiguous_completed_epoch_prefix": true,
+        "csv_test_matches_json": true,
+        "result_selection_matches": true,
+        "stopped_at_rule": true,
+        "strict_validation_auc_selection": true
+      },
+      "complete": true,
+      "config": {
+        "batch_size": 10,
+        "best_epoch": 13,
+        "best_validation_auc": 0.7928608705706457,
+        "context_length": 100,
+        "dataset": "junyi",
+        "device": "cuda",
+        "dropout": 0.2,
+        "early_stopping_metric": "validation_roc_auc",
+        "early_stopping_min_delta": 0.0,
+        "early_stopping_patience": 5,
+        "early_stopping_strict_improvement": true,
+        "epoch_ceiling": 300,
+        "epochs_completed": 18,
+        "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+        "gradient_clip": 10.0,
+        "heads": 5,
+        "history_length": 99,
+        "layers": 1,
+        "learning_rate": 1e-05,
+        "maximum_relative_position": 10,
+        "model": "SAKT",
+        "optimizer": "Adam",
+        "reload_best_checkpoint_before_test": true,
+        "runtime_seconds_accumulated": 88701.94215974584,
+        "seed": 42,
+        "total_parameters": 2917101,
+        "trainable_parameters": 2917101,
+        "weight_decay": 0.0,
+        "width": 200,
+        "workers": 8
+      },
+      "dataset": "junyi",
+      "fresh_baseline_metric_reproduction": "NOT VERIFIED in this audit; artifact consistency and relevant tests only",
+      "issues": [],
+      "model": "sakt",
+      "non_improvement_count": 5,
+      "path": "experiments/sakt/junyi/full",
+      "seed": 42,
+      "status": "PASS",
+      "stored_test_metrics": {
+        "accuracy": 0.7494701600145253,
+        "f1": 0.8296411291595084,
+        "loss": 0.5071997748354633,
+        "mse": 0.16840058034014826,
+        "precision": 0.7709668341005314,
+        "recall": 0.8979818820626188,
+        "roc_auc": 0.7887961776898904,
+        "targets": 2456402,
+        "threshold": 0.5
+      }
+    },
+    {
+      "best_checkpoint": {
+        "all_model_tensors_finite": true,
+        "config": {
+          "context_length": 100,
+          "dropout": 0.2,
+          "heads": 5,
+          "history_length": 99,
+          "layers": 1,
+          "maximum_relative_position": 10,
+          "num_questions": 13169,
+          "num_skills": 1495,
+          "width": 200
+        },
+        "epoch": 13,
+        "seed_in_payload": 42,
+        "sha256": "1de01970ef3ebf8a3b136347f4db21f7a746ec610eaa95a86051ddc84a5497ea",
+        "validation_auc": 0.7623242165859992
+      },
+      "best_optimizer_nonfinite_states": [],
+      "checks": {
+        "best_checkpoint_selection_matches": true,
+        "completion_metadata": true,
+        "contiguous_completed_epoch_prefix": true,
+        "csv_test_matches_json": true,
+        "result_selection_matches": true,
+        "stopped_at_rule": true,
+        "strict_validation_auc_selection": true
+      },
+      "complete": true,
+      "config": {
+        "batch_size": 10,
+        "best_epoch": 13,
+        "best_validation_auc": 0.7623242165859992,
+        "context_length": 100,
+        "dataset": "ednet_kt1",
+        "device": "cuda",
+        "dropout": 0.2,
+        "early_stopping_metric": "validation_roc_auc",
+        "early_stopping_min_delta": 0.0,
+        "early_stopping_patience": 5,
+        "early_stopping_strict_improvement": true,
+        "epoch_ceiling": 300,
+        "epochs_completed": 18,
+        "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+        "gradient_clip": 10.0,
+        "heads": 5,
+        "history_length": 99,
+        "layers": 1,
+        "learning_rate": 1e-05,
+        "maximum_relative_position": 10,
+        "model": "SAKT",
+        "optimizer": "Adam",
+        "previous_transport": "reference",
+        "reload_best_checkpoint_before_test": true,
+        "resume_count": 1,
+        "resumed_from_epoch": 15,
+        "runtime_before_resume_estimated_from_artifact_mtimes": false,
+        "runtime_before_resume_seconds": 422212.81850605225,
+        "runtime_seconds_accumulated": 513909.28537087236,
+        "seed": 42,
+        "total_parameters": 1668401,
+        "trainable_parameters": 1668401,
+        "transport": "packed64",
+        "transport_block_minibatches": 64,
+        "weight_decay": 0.0,
+        "width": 200,
+        "workers": 8
+      },
+      "dataset": "ednet_kt1",
+      "fresh_baseline_metric_reproduction": "NOT VERIFIED in this audit; artifact consistency and relevant tests only",
+      "issues": [],
+      "model": "sakt",
+      "non_improvement_count": 5,
+      "path": "experiments/sakt/ednet_kt1/full",
+      "seed": 42,
+      "status": "PASS",
+      "stored_test_metrics": {
+        "accuracy": 0.7392807972080147,
+        "f1": 0.8272087563782752,
+        "loss": 0.5245477522701514,
+        "mse": 0.1752942014962786,
+        "precision": 0.7565031146532126,
+        "recall": 0.9124938853983476,
+        "roc_auc": 0.7630078573122142,
+        "targets": 13429870,
+        "threshold": 0.5
+      }
+    },
+    {
+      "best_checkpoint": {
+        "all_model_tensors_finite": true,
+        "config": {
+          "dropout": 0.1,
+          "epsilon": 1e-06,
+          "heads": 1,
+          "history_length": 49,
+          "num_questions": 3158,
+          "num_students": 1388,
+          "width": 64
+        },
+        "epoch": 14,
+        "seed_in_payload": 42,
+        "sha256": "f771e82dc60ae440af46dc69f770a1931d4cacbdab3a352fa1b6a5358c9a88ab",
+        "validation_auc": 0.7712554524089533
+      },
+      "best_optimizer_nonfinite_states": [],
+      "checks": {
+        "best_checkpoint_selection_matches": true,
+        "completion_metadata": true,
+        "contiguous_completed_epoch_prefix": true,
+        "csv_test_matches_json": true,
+        "result_selection_matches": true,
+        "rkt_metadata_matches_config": true,
+        "stopped_at_rule": true,
+        "strict_validation_auc_selection": true
+      },
+      "complete": true,
+      "config": {
+        "batch_size": 128,
+        "best_epoch": 14,
+        "best_validation_auc": 0.7712554524089533,
+        "context_length": 50,
+        "dataset": "assist2017",
+        "device": "cuda",
+        "dropout": 0.1,
+        "early_stopping_metric": "validation_roc_auc",
+        "early_stopping_min_delta": 0.0,
+        "early_stopping_patience": 5,
+        "early_stopping_strict_improvement": true,
+        "epoch_ceiling": 300,
+        "epochs_completed": 19,
+        "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+        "gradient_clip": 10.0,
+        "gradient_clip_provenance": "authors' released trainer default; paper unspecified; explicitly approved",
+        "heads": 1,
+        "history_length": 49,
+        "label": "RKT paper-faithful performance-only Phi-relation variant with 5-fold student-level cross-fitting.",
+        "learning_rate": 0.001,
+        "model": "RKT",
+        "optimizer": "Adam",
+        "phi": {
+          "all_dataset_targets": {
+            "test": 112252,
+            "train": 647283,
+            "validation": 125800
+          },
+          "all_train_unique_directed_pairs": 1569938,
+          "cache_students": 1388,
+          "chunk_values": 5000000,
+          "construction_seconds": 14.170314042363316,
+          "fold_assignment": "seeded NumPy permutation of sorted student IDs, then round-robin index modulo 5",
+          "fold_count": 5,
+          "fold_unique_directed_pairs": {
+            "0": 595330,
+            "1": 642493,
+            "2": 578147,
+            "3": 603923,
+            "4": 615365
+          },
+          "folds_balanced_within_one": true,
+          "format_version": 1,
+          "history_length": 49,
+          "label": "RKT paper-faithful performance-only Phi-relation variant with 5-fold student-level cross-fitting.",
+          "peak_process_rss_bytes": 1084522496,
+          "phi_pair_contributions": 13530869,
+          "phi_source": "training-partition histories only",
+          "scratch_bytes_before_cleanup": 75867852,
+          "scratch_parts": 5,
+          "seed": 42,
+          "students_per_fold": {
+            "0": 278,
+            "1": 278,
+            "2": 278,
+            "3": 277,
+            "4": 277
+          },
+          "text_relation": null,
+          "threshold": null,
+          "training_rule": "target student's entire fold excluded",
+          "training_targets_cross_fitted": 647283,
+          "undefined_relation": 0.0,
+          "validation_test_rule": "all training folds; no validation/test interactions"
+        },
+        "reload_best_checkpoint_before_test": true,
+        "seed": 42,
+        "total_parameters": 239343,
+        "trainable_parameters": 239343,
+        "weight_decay": 1e-05,
+        "width": 64,
+        "workers": 0
+      },
+      "dataset": "assist2017",
+      "fresh_baseline_metric_reproduction": "NOT VERIFIED in this audit; artifact consistency and relevant tests only",
+      "issues": [],
+      "model": "rkt",
+      "non_improvement_count": 5,
+      "path": "experiments/rkt/assist2017/full",
+      "rkt_cache_metadata_sha256": "15e71936a761b6aa846c9030991e4e694889c7f934b4f14a1e0aee74f1b4255b",
+      "rkt_full_cache_counts_reconstructed": "NOT VERIFIED: source/test inspection, metadata and complement algebra checked separately; not a raw-label rebuild of all cached pair counts",
+      "seed": 42,
+      "status": "PASS",
+      "stored_test_metrics": {
+        "accuracy": 0.6965399280190999,
+        "f1": 0.5598625216425046,
+        "loss": 0.5771361223686124,
+        "mse": 0.19633600745846114,
+        "precision": 0.6399917287014061,
+        "recall": 0.49756556887602776,
+        "roc_auc": 0.7486264898793284,
+        "targets": 112252,
+        "threshold": 0.5
+      }
+    },
+    {
+      "best_checkpoint": {
+        "all_model_tensors_finite": true,
+        "config": {
+          "dropout": 0.1,
+          "epsilon": 1e-06,
+          "heads": 1,
+          "history_length": 49,
+          "num_questions": 25630,
+          "num_students": 29865,
+          "width": 64
+        },
+        "epoch": 8,
+        "seed_in_payload": 42,
+        "sha256": "842e859509357c855545f86941dd5bcfc85614559c9335d121410eee9c112d7c",
+        "validation_auc": 0.7954429583997085
+      },
+      "best_optimizer_nonfinite_states": [],
+      "checks": {
+        "best_checkpoint_selection_matches": true,
+        "completion_metadata": true,
+        "contiguous_completed_epoch_prefix": true,
+        "csv_test_matches_json": true,
+        "result_selection_matches": true,
+        "rkt_metadata_matches_config": true,
+        "stopped_at_rule": true,
+        "strict_validation_auc_selection": true
+      },
+      "complete": true,
+      "config": {
+        "batch_size": 128,
+        "best_epoch": 8,
+        "best_validation_auc": 0.7954429583997085,
+        "context_length": 50,
+        "dataset": "junyi",
+        "device": "cuda",
+        "dropout": 0.1,
+        "early_stopping_metric": "validation_roc_auc",
+        "early_stopping_min_delta": 0.0,
+        "early_stopping_patience": 5,
+        "early_stopping_strict_improvement": true,
+        "epoch_ceiling": 300,
+        "epochs_completed": 13,
+        "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+        "gradient_clip": 10.0,
+        "gradient_clip_provenance": "authors' released trainer default; paper unspecified; explicitly approved",
+        "heads": 1,
+        "history_length": 49,
+        "label": "RKT paper-faithful performance-only Phi-relation variant with 5-fold student-level cross-fitting.",
+        "learning_rate": 0.001,
+        "model": "RKT",
+        "optimizer": "Adam",
+        "phi": {
+          "all_dataset_targets": {
+            "test": 2456402,
+            "train": 9647042,
+            "validation": 2556773
+          },
+          "all_train_unique_directed_pairs": 78744364,
+          "cache_students": 29865,
+          "chunk_values": 5000000,
+          "construction_seconds": 734.9948862898163,
+          "fold_assignment": "seeded NumPy permutation of sorted student IDs, then round-robin index modulo 5",
+          "fold_count": 5,
+          "fold_unique_directed_pairs": {
+            "0": 30504929,
+            "1": 31068925,
+            "2": 31571991,
+            "3": 31692627,
+            "4": 30388475
+          },
+          "folds_balanced_within_one": true,
+          "format_version": 1,
+          "history_length": 49,
+          "label": "RKT paper-faithful performance-only Phi-relation variant with 5-fold student-level cross-fitting.",
+          "peak_process_rss_bytes": 19337568256,
+          "phi_pair_contributions": 410926464,
+          "phi_source": "training-partition histories only",
+          "scratch_bytes_before_cleanup": 5536817868,
+          "scratch_parts": 85,
+          "seed": 42,
+          "students_per_fold": {
+            "0": 5973,
+            "1": 5973,
+            "2": 5973,
+            "3": 5973,
+            "4": 5973
+          },
+          "text_relation": null,
+          "threshold": null,
+          "training_rule": "target student's entire fold excluded",
+          "training_targets_cross_fitted": 9647042,
+          "undefined_relation": 0.0,
+          "validation_test_rule": "all training folds; no validation/test interactions"
+        },
+        "reload_best_checkpoint_before_test": true,
+        "resume_count": 1,
+        "resumed_from_epoch": 4,
+        "runtime_before_resume_estimated_from_artifact_mtimes": false,
+        "runtime_before_resume_seconds": 2779.0482645551674,
+        "runtime_seconds_accumulated": 9365.178776797373,
+        "seed": 42,
+        "total_parameters": 1706028,
+        "trainable_parameters": 1706028,
+        "weight_decay": 1e-05,
+        "width": 64,
+        "workers": 8
+      },
+      "dataset": "junyi",
+      "fresh_baseline_metric_reproduction": "NOT VERIFIED in this audit; artifact consistency and relevant tests only",
+      "issues": [],
+      "model": "rkt",
+      "non_improvement_count": 5,
+      "path": "experiments/rkt/junyi/full",
+      "rkt_cache_metadata_sha256": "4f5097d98ddb9e06cf5289f2bec68ab068d1840a6268f43339d4adbb2ae8f302",
+      "rkt_full_cache_counts_reconstructed": "NOT VERIFIED: source/test inspection, metadata and complement algebra checked separately; not a raw-label rebuild of all cached pair counts",
+      "seed": 42,
+      "status": "PASS",
+      "stored_test_metrics": {
+        "accuracy": 0.7523398043154175,
+        "f1": 0.829577482543929,
+        "loss": 0.5036462176741294,
+        "mse": 0.16703808830906774,
+        "precision": 0.7789090882309928,
+        "recall": 0.8872965297624006,
+        "roc_auc": 0.7912548486618094,
+        "targets": 2456402,
+        "threshold": 0.5
+      }
+    },
+    {
+      "best_checkpoint": {
+        "all_model_tensors_finite": true,
+        "config": {
+          "dropout": 0.1,
+          "epsilon": 1e-06,
+          "heads": 1,
+          "history_length": 49,
+          "num_questions": 13169,
+          "num_students": 116548,
+          "width": 64
+        },
+        "epoch": 1,
+        "seed_in_payload": 42,
+        "sha256": "676fecb19061b35dd6f8050788875cadfc0de58a345145495190f772e752b8d4",
+        "validation_auc": 0.7479626872280917
+      },
+      "best_optimizer_nonfinite_states": [],
+      "checks": {
+        "best_checkpoint_selection_matches": true,
+        "completion_metadata": true,
+        "contiguous_completed_epoch_prefix": true,
+        "csv_test_matches_json": true,
+        "result_selection_matches": true,
+        "rkt_metadata_matches_config": true,
+        "stopped_at_rule": true,
+        "strict_validation_auc_selection": true
+      },
+      "complete": true,
+      "config": {
+        "batch_size": 128,
+        "best_epoch": 1,
+        "best_validation_auc": 0.7479626872280917,
+        "context_length": 50,
+        "dataset": "ednet_kt1",
+        "device": "cuda",
+        "dropout": 0.1,
+        "early_stopping_metric": "validation_roc_auc",
+        "early_stopping_min_delta": 0.0,
+        "early_stopping_patience": 5,
+        "early_stopping_strict_improvement": true,
+        "epoch_ceiling": 300,
+        "epochs_completed": 6,
+        "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+        "gradient_clip": 10.0,
+        "gradient_clip_provenance": "authors' released trainer default; paper unspecified; explicitly approved",
+        "heads": 1,
+        "history_length": 49,
+        "label": "RKT paper-faithful performance-only Phi-relation variant with 5-fold student-level cross-fitting.",
+        "learning_rate": 0.001,
+        "model": "RKT",
+        "optimizer": "Adam",
+        "phi": {
+          "all_dataset_targets": {
+            "test": 13429870,
+            "train": 53990022,
+            "validation": 14520975
+          },
+          "all_train_unique_directed_pairs": 119228083,
+          "cache_students": 116548,
+          "chunk_values": 5000000,
+          "construction_seconds": 1984.266173526179,
+          "fold_assignment": "seeded NumPy permutation of sorted student IDs, then round-robin index modulo 5",
+          "fold_count": 5,
+          "fold_unique_directed_pairs": {
+            "0": 80902082,
+            "1": 82324902,
+            "2": 82282632,
+            "3": 83381793,
+            "4": 83238092
+          },
+          "folds_balanced_within_one": true,
+          "format_version": 1,
+          "history_length": 49,
+          "label": "RKT paper-faithful performance-only Phi-relation variant with 5-fold student-level cross-fitting.",
+          "peak_process_rss_bytes": 45160529920,
+          "phi_pair_contributions": 2430771986,
+          "phi_source": "training-partition histories only",
+          "scratch_bytes_before_cleanup": 34436862208,
+          "scratch_parts": 484,
+          "seed": 42,
+          "students_per_fold": {
+            "0": 23310,
+            "1": 23310,
+            "2": 23310,
+            "3": 23309,
+            "4": 23309
+          },
+          "text_relation": null,
+          "threshold": null,
+          "training_rule": "target student's entire fold excluded",
+          "training_targets_cross_fitted": 53990022,
+          "undefined_relation": 0.0,
+          "validation_test_rule": "all training folds; no validation/test interactions"
+        },
+        "reload_best_checkpoint_before_test": true,
+        "runtime_seconds_accumulated": 24318.55420594476,
+        "seed": 42,
+        "total_parameters": 995207,
+        "trainable_parameters": 995207,
+        "weight_decay": 1e-05,
+        "width": 64,
+        "workers": 8
+      },
+      "dataset": "ednet_kt1",
+      "fresh_baseline_metric_reproduction": "NOT VERIFIED in this audit; artifact consistency and relevant tests only",
+      "issues": [],
+      "model": "rkt",
+      "non_improvement_count": 5,
+      "path": "experiments/rkt/ednet_kt1/full",
+      "rkt_cache_metadata_sha256": "e7acbf266310cedb1aa3f556c09441da1f8aa3e3e0d742cb8ee55000d2e2df10",
+      "rkt_full_cache_counts_reconstructed": "NOT VERIFIED: source/test inspection, metadata and complement algebra checked separately; not a raw-label rebuild of all cached pair counts",
+      "seed": 42,
+      "status": "PASS",
+      "stored_test_metrics": {
+        "accuracy": 0.7257950374798863,
+        "f1": 0.8251594973285162,
+        "loss": 0.5400390938822336,
+        "mse": 0.1819252324325963,
+        "precision": 0.731637300244736,
+        "recall": 0.9460949347636103,
+        "roc_auc": 0.7475470202501552,
+        "targets": 13429870,
+        "threshold": 0.5
+      }
+    },
+    {
+      "best_checkpoint": {
+        "all_model_tensors_finite": true,
+        "config": {
+          "action_layers": 1,
+          "correct_layers": 1,
+          "decoder_layers": 1,
+          "dropout": 0.1,
+          "feedforward_width": 2048,
+          "heads": 4,
+          "num_questions": 3158,
+          "num_skills": 102,
+          "session_layers": 1,
+          "width": 256
+        },
+        "epoch": 40,
+        "seed_in_payload": 42,
+        "sha256": "085c8d9ae32f4e60892dfb3e4eed93d90a584696d0914456c135dcab7b890164",
+        "validation_auc": 0.719757256068911
+      },
+      "best_optimizer_nonfinite_states": [],
+      "checks": {
+        "best_checkpoint_selection_matches": true,
+        "completion_metadata": true,
+        "contiguous_completed_epoch_prefix": true,
+        "csv_test_matches_json": true,
+        "result_selection_matches": true,
+        "stopped_at_rule": true,
+        "strict_validation_auc_selection": true
+      },
+      "complete": true,
+      "config": {
+        "action_chunking": false,
+        "action_layers": 1,
+        "action_truncation": false,
+        "attention": "pure causal ELU+1 Performer linear attention",
+        "best_epoch": 40,
+        "best_validation_auc": 0.719757256068911,
+        "bucket_size": 512,
+        "context_sessions_including_target": 16,
+        "correct_layers": 1,
+        "dataset": "assist2017",
+        "decoder_layers": 1,
+        "device": "cuda",
+        "dropout": 0.1,
+        "early_stopping_metric": "validation_roc_auc",
+        "early_stopping_min_delta": 0.0,
+        "early_stopping_patience": 5,
+        "early_stopping_strict_improvement": true,
+        "epoch_ceiling": 100,
+        "epochs_completed": 45,
+        "feedforward_width": 2048,
+        "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+        "heads": 4,
+        "history_sessions": 15,
+        "learning_rate": 5e-05,
+        "maximum_batch_size": 64,
+        "model": "HiTSKT",
+        "optimizer": "Adam",
+        "reload_best_checkpoint_before_test": true,
+        "seed": 42,
+        "session_layers": 1,
+        "token_budget": 32768,
+        "total_parameters": 6931457,
+        "trainable_parameters": 6931457,
+        "weight_decay": 0.0,
+        "width": 256,
+        "workers": 0
+      },
+      "dataset": "assist2017",
+      "fresh_baseline_metric_reproduction": "Separate independent replay manifests",
+      "issues": [],
+      "model": "hitskt",
+      "non_improvement_count": 5,
+      "path": "experiments/hitskt/assist2017/full",
+      "seed": 42,
+      "status": "PASS",
+      "stored_test_metrics": {
+        "accuracy": 0.6744200548765278,
+        "f1": 0.5645278522490319,
+        "loss": 0.6087257417328864,
+        "mse": 0.20984520173382062,
+        "precision": 0.5866082262338113,
+        "recall": 0.5440494235450829,
+        "roc_auc": 0.7096240159197755,
+        "targets": 112252,
+        "threshold": 0.5
+      }
+    },
+    {
+      "best_checkpoint": {
+        "all_model_tensors_finite": true,
+        "config": {
+          "action_layers": 1,
+          "correct_layers": 1,
+          "decoder_layers": 1,
+          "dropout": 0.1,
+          "feedforward_width": 1024,
+          "heads": 2,
+          "num_questions": 25630,
+          "num_skills": 1521,
+          "session_layers": 1,
+          "width": 128
+        },
+        "epoch": 32,
+        "seed_in_payload": 42,
+        "sha256": "2308c5bf0c850da1e55daf802a0853a30fac45eeed071c7162c68fc17bfa3bdd",
+        "validation_auc": 0.8008507199510555
+      },
+      "best_optimizer_nonfinite_states": [],
+      "checks": {
+        "best_checkpoint_selection_matches": true,
+        "completion_metadata": true,
+        "contiguous_completed_epoch_prefix": true,
+        "csv_test_matches_json": true,
+        "result_selection_matches": true,
+        "stopped_at_rule": true,
+        "strict_validation_auc_selection": true
+      },
+      "complete": true,
+      "config": {
+        "action_chunking": false,
+        "action_layers": 1,
+        "action_truncation": false,
+        "attention": "pure causal ELU+1 Performer linear attention",
+        "best_epoch": 32,
+        "best_validation_auc": 0.8008507199510555,
+        "bucket_size": 512,
+        "context_sessions_including_target": 16,
+        "correct_layers": 1,
+        "dataset": "junyi",
+        "decoder_layers": 1,
+        "device": "cuda",
+        "dropout": 0.1,
+        "early_stopping_metric": "validation_roc_auc",
+        "early_stopping_min_delta": 0.0,
+        "early_stopping_patience": 5,
+        "early_stopping_strict_improvement": true,
+        "epoch_ceiling": 50,
+        "epochs_completed": 37,
+        "feedforward_width": 1024,
+        "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+        "heads": 2,
+        "history_sessions": 15,
+        "learning_rate": 5e-05,
+        "maximum_batch_size": 64,
+        "model": "HiTSKT",
+        "optimizer": "Adam",
+        "reload_best_checkpoint_before_test": true,
+        "seed": 42,
+        "session_layers": 1,
+        "token_budget": 32768,
+        "total_parameters": 8271105,
+        "trainable_parameters": 8271105,
+        "weight_decay": 0.0,
+        "width": 128,
+        "workers": 8
+      },
+      "dataset": "junyi",
+      "fresh_baseline_metric_reproduction": "Separate independent replay manifests",
+      "issues": [],
+      "model": "hitskt",
+      "non_improvement_count": 5,
+      "path": "experiments/hitskt/junyi/full",
+      "seed": 42,
+      "status": "PASS",
+      "stored_test_metrics": {
+        "accuracy": 0.75555059798844,
+        "f1": 0.83050075255717,
+        "loss": 0.49757788112870566,
+        "mse": 0.16478629880597911,
+        "precision": 0.785045267643441,
+        "recall": 0.8815436621676446,
+        "roc_auc": 0.7978262055191263,
+        "targets": 2456402,
+        "threshold": 0.5
+      }
+    },
+    {
+      "best_checkpoint": {
+        "all_model_tensors_finite": true,
+        "config": {
+          "action_layers": 1,
+          "correct_layers": 1,
+          "decoder_layers": 1,
+          "dropout": 0.1,
+          "feedforward_width": 1024,
+          "heads": 2,
+          "num_questions": 13169,
+          "num_skills": 1495,
+          "session_layers": 1,
+          "width": 128
+        },
+        "epoch": 30,
+        "seed_in_payload": 42,
+        "sha256": "58d4b1f393d0fa8ec372ba8bcc00cc8b7168d37817d4badfd26ee42abffd03c8",
+        "validation_auc": 0.7681769525193056
+      },
+      "best_optimizer_nonfinite_states": [],
+      "checks": {
+        "best_checkpoint_selection_matches": true,
+        "completion_metadata": true,
+        "contiguous_completed_epoch_prefix": true,
+        "csv_test_matches_json": true,
+        "result_selection_matches": true,
+        "stopped_at_rule": true,
+        "strict_validation_auc_selection": true
+      },
+      "complete": true,
+      "config": {
+        "action_chunking": false,
+        "action_layers": 1,
+        "action_truncation": false,
+        "attention": "pure causal ELU+1 Performer linear attention",
+        "best_epoch": 30,
+        "best_validation_auc": 0.7681769525193056,
+        "bucket_size": 512,
+        "context_sessions_including_target": 16,
+        "correct_layers": 1,
+        "dataset": "ednet_kt1",
+        "decoder_layers": 1,
+        "device": "cuda",
+        "dropout": 0.1,
+        "early_stopping_metric": "validation_roc_auc",
+        "early_stopping_min_delta": 0.0,
+        "early_stopping_patience": 5,
+        "early_stopping_strict_improvement": true,
+        "epoch_ceiling": 40,
+        "epochs_completed": 35,
+        "feedforward_width": 1024,
+        "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+        "heads": 2,
+        "history_sessions": 15,
+        "learning_rate": 8e-05,
+        "maximum_batch_size": 64,
+        "model": "HiTSKT",
+        "optimizer": "Adam",
+        "reload_best_checkpoint_before_test": true,
+        "runtime_seconds_accumulated": 83399.66895867884,
+        "seed": 42,
+        "session_layers": 1,
+        "token_budget": 32768,
+        "total_parameters": 5074433,
+        "trainable_parameters": 5074433,
+        "weight_decay": 0.0,
+        "width": 128,
+        "workers": 8
+      },
+      "dataset": "ednet_kt1",
+      "fresh_baseline_metric_reproduction": "Separate independent replay manifests",
+      "issues": [],
+      "model": "hitskt",
+      "non_improvement_count": 5,
+      "path": "experiments/hitskt/ednet_kt1/full",
+      "seed": 42,
+      "status": "PASS",
+      "stored_test_metrics": {
+        "accuracy": 0.7388606144363273,
+        "f1": 0.8241286589004618,
+        "loss": 0.5185181172959707,
+        "mse": 0.17371257418130398,
+        "precision": 0.7639387403579302,
+        "recall": 0.8946143710041425,
+        "roc_auc": 0.7693648364413692,
+        "targets": 13429870,
+        "threshold": 0.5
+      }
+    }
+  ],
+  "scope": "All 15 canonical experiment artifact directories; baseline metrics not replayed"
+}

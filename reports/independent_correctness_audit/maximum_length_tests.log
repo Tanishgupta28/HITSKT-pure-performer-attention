@@ -1,0 +1,16 @@
+=================================================================== test session starts ====================================================================
+platform linux -- Python 3.10.12, pytest-8.1.1, pluggy-1.5.0 -- /usr/bin/python
+cachedir: .pytest_cache
+hypothesis profile 'default' -> database=DirectoryBasedExampleDatabase('/workspace/capstone/.hypothesis/examples')
+rootdir: /workspace/capstone
+configfile: pyproject.toml
+plugins: shard-0.1.2, flakefinder-1.1.0, xdist-3.6.1, xdoctest-1.0.2, hypothesis-5.35.1, rerunfailures-14.0
+collecting ... collected 42 items / 39 deselected / 3 selected
+Running 3 items in this shard: tests/test_independent_hitskt_audit.py::test_maximum_length_attention_selected_outputs_and_gradients[939], tests/test_independent_hitskt_audit.py::test_maximum_length_attention_selected_outputs_and_gradients[3925], tests/test_independent_hitskt_audit.py::test_maximum_length_attention_selected_outputs_and_gradients[13081]
+
+tests/test_independent_hitskt_audit.py::test_maximum_length_attention_selected_outputs_and_gradients[939] PASSED                                     [ 33%]
+tests/test_independent_hitskt_audit.py::test_maximum_length_attention_selected_outputs_and_gradients[3925] PASSED                                    [ 66%]
+tests/test_independent_hitskt_audit.py::test_maximum_length_attention_selected_outputs_and_gradients[13081] PASSED                                   [100%]
+
+-------------------------- generated xml file: /workspace/capstone/reports/independent_correctness_audit/maximum_length_tests.xml --------------------------
+============================================================= 3 passed, 39 deselected in 2.05s =============================================================

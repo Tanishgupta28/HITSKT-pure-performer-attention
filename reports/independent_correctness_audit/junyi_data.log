@@ -1,0 +1,60 @@
+{
+  "dataset": "junyi",
+  "status": "PASS",
+  "lineage": {
+    "raw_rows": 14660217,
+    "raw_students": 29865,
+    "retained_rows": 14660217,
+    "retained_students": 29865,
+    "excluded_students": 0,
+    "raw_to_parquet_all_fields": "PASS",
+    "parquet_to_store_all_events": "PASS",
+    "supervised_source_row_unique": true,
+    "source_mapping_policy": "full-source question tag-set metadata (transductive, label-free)",
+    "publisher_release_identity": "NOT VERIFIED: accepted user-supplied transformed CSV; no publisher-signed checksum/version chain",
+    "answer_availability_native_unit": "seconds; endTime",
+    "answer_availability": {
+      "ordered_predecessor_ends_after_next_start": 0,
+      "adjacent_equal_start_timestamps": 12933808,
+      "nonfinite_end_times": 0,
+      "ends_before_own_start": 0,
+      "maximum_adjacent_overlap_native_units": 0.0
+    }
+  },
+  "store_contract": {
+    "status": "PASS",
+    "split_protocol": "chronological WITHIN-STUDENT, not student-disjoint",
+    "student_overlap_train_validation_test": 29865,
+    "supervised_targets": {
+      "train": 8920358,
+      "validation": 2556773,
+      "test": 2456402
+    },
+    "baseline_supervised_targets": {
+      "train": 9647042,
+      "validation": 2556773,
+      "test": 2456402
+    },
+    "first_session_interactions_context_only_for_hitskt": 726684,
+    "all_post_first_session_targets_exactly_once": true,
+    "history_visibility": {
+      "train": {
+        "all_history_bounds_checked": true,
+        "targets": 351277,
+        "targets_with_earlier_same_split_history": 351277
+      },
+      "validation": {
+        "all_history_bounds_checked": true,
+        "targets": 109506,
+        "targets_with_earlier_same_split_history": 79641
+      },
+      "test": {
+        "all_history_bounds_checked": true,
+        "targets": 109506,
+        "targets_with_earlier_same_split_history": 79641
+      }
+    },
+    "answer_visibility": "Earlier response labels within validation/test are visible in rolling online histories; no label from a later event index is visible.",
+    "identical_test_population": true
+  }
+}

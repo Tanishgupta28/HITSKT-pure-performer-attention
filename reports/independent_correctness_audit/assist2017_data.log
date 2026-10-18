@@ -1,0 +1,60 @@
+{
+  "dataset": "assist2017",
+  "status": "PASS",
+  "lineage": {
+    "raw_rows": 942807,
+    "raw_students": 1709,
+    "retained_rows": 885335,
+    "retained_students": 1388,
+    "excluded_students": 321,
+    "raw_to_parquet_all_fields": "PASS",
+    "parquet_to_store_all_events": "PASS",
+    "supervised_source_row_unique": true,
+    "source_mapping_policy": "row skill",
+    "publisher_release_identity": "NOT VERIFIED: accepted user-supplied transformed CSV; no publisher-signed checksum/version chain",
+    "answer_availability_native_unit": "seconds; endTime",
+    "answer_availability": {
+      "ordered_predecessor_ends_after_next_start": 11167,
+      "adjacent_equal_start_timestamps": 7752,
+      "nonfinite_end_times": 0,
+      "ends_before_own_start": 0,
+      "maximum_adjacent_overlap_native_units": 18572780.0
+    }
+  },
+  "store_contract": {
+    "status": "PASS",
+    "split_protocol": "chronological WITHIN-STUDENT, not student-disjoint",
+    "student_overlap_train_validation_test": 1388,
+    "supervised_targets": {
+      "train": 566107,
+      "validation": 125800,
+      "test": 112252
+    },
+    "baseline_supervised_targets": {
+      "train": 647283,
+      "validation": 125800,
+      "test": 112252
+    },
+    "first_session_interactions_context_only_for_hitskt": 81176,
+    "all_post_first_session_targets_exactly_once": true,
+    "history_visibility": {
+      "train": {
+        "all_history_bounds_checked": true,
+        "targets": 7060,
+        "targets_with_earlier_same_split_history": 7060
+      },
+      "validation": {
+        "all_history_bounds_checked": true,
+        "targets": 1977,
+        "targets_with_earlier_same_split_history": 589
+      },
+      "test": {
+        "all_history_bounds_checked": true,
+        "targets": 1977,
+        "targets_with_earlier_same_split_history": 589
+      }
+    },
+    "answer_visibility": "Earlier response labels within validation/test are visible in rolling online histories; no label from a later event index is visible.",
+    "identical_test_population": true
+  }
+}

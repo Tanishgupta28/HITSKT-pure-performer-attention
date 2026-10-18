@@ -1,0 +1,89 @@
+{
+  "assist2017": {
+    "by_target_split": {
+      "train": {
+        "targets": 647283,
+        "previous_response_end_after_target_start": 6151,
+        "overlapping_targets_in_same_session": 6148,
+        "equal_start_to_previous": 5422,
+        "equal_start_in_same_solving_bundle": 0
+      },
+      "validation": {
+        "targets": 125800,
+        "previous_response_end_after_target_start": 2590,
+        "overlapping_targets_in_same_session": 2589,
+        "equal_start_to_previous": 1228,
+        "equal_start_in_same_solving_bundle": 0
+      },
+      "test": {
+        "targets": 112252,
+        "previous_response_end_after_target_start": 2426,
+        "overlapping_targets_in_same_session": 2412,
+        "equal_start_to_previous": 1102,
+        "equal_start_in_same_solving_bundle": 0
+      }
+    },
+    "check_status": "FAIL",
+    "interpretation": "Recorded endTime overlaps show that earlier sequence labels are not all available at the next presentation timestamp.",
+    "sequence_index_causality": "Separately tested; these observations do not assert an acausal attention graph",
+    "all_retained_event_rows_checked": true
+  },
+  "junyi": {
+    "by_target_split": {
+      "train": {
+        "targets": 9647042,
+        "previous_response_end_after_target_start": 0,
+        "overlapping_targets_in_same_session": 0,
+        "equal_start_to_previous": 8515952,
+        "equal_start_in_same_solving_bundle": 0
+      },
+      "validation": {
+        "targets": 2556773,
+        "previous_response_end_after_target_start": 0,
+        "overlapping_targets_in_same_session": 0,
+        "equal_start_to_previous": 2252262,
+        "equal_start_in_same_solving_bundle": 0
+      },
+      "test": {
+        "targets": 2456402,
+        "previous_response_end_after_target_start": 0,
+        "overlapping_targets_in_same_session": 0,
+        "equal_start_to_previous": 2165594,
+        "equal_start_in_same_solving_bundle": 0
+      }
+    },
+    "check_status": "NOT VERIFIED",
+    "interpretation": "Timestamp ties and transformed source lack an independently established response-arrival order.",
+    "sequence_index_causality": "Separately tested; these observations do not assert an acausal attention graph",
+    "all_retained_event_rows_checked": true
+  },
+  "ednet_kt1": {
+    "by_target_split": {
+      "train": {
+        "targets": 53990022,
+        "previous_response_end_after_target_start": 15345177,
+        "overlapping_targets_in_same_session": 15345177,
+        "equal_start_to_previous": 537000,
+        "equal_start_in_same_solving_bundle": 536997
+      },
+      "validation": {
+        "targets": 14520975,
+        "previous_response_end_after_target_start": 4301739,
+        "overlapping_targets_in_same_session": 4301738,
+        "equal_start_to_previous": 287104,
+        "equal_start_in_same_solving_bundle": 287104
+      },
+      "test": {
+        "targets": 13429870,
+        "previous_response_end_after_target_start": 4003464,
+        "overlapping_targets_in_same_session": 4003463,
+        "equal_start_to_previous": 431050,
+        "equal_start_in_same_solving_bundle": 431049
+      }
+    },
+    "check_status": "FAIL",
+    "interpretation": "timestamp+elapsed_time is a response-completion proxy from official field meanings, not a verified submission timestamp; overlap challenges immediate-feedback availability, especially bundles.",
+    "sequence_index_causality": "Separately tested; these observations do not assert an acausal attention graph",
+    "all_retained_event_rows_checked": true
+  }
+}

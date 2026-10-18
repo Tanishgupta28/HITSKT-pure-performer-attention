@@ -1,0 +1,34 @@
+{
+  "absent_previously_observed_pid": {
+    "pid": 1992414,
+    "reason": "NOT VERIFIED; no audit signal/edit and no additional cgroup OOM kills. Other protected identities and active external jobs observed."
+  },
+  "all_required_replays_terminal": true,
+  "dkt_ednet_training_started": false,
+  "light_sakt2_read_only_status_observation": {
+    "all_training_slots_completed": false,
+    "observed_utc": "2026-10-18T12:57:42.859854+00:00",
+    "running_jobs_count": 1,
+    "source": "/workspace/LightSAKT2/reports/progress.json",
+    "updated_utc": "2026-10-18T12:57:20.413805+00:00"
+  },
+  "oom_kills": 2,
+  "protected_process_observations": [
+    {
+      "pid": 182135,
+      "present": true,
+      "start_ticks": "15783617"
+    },
+    {
+      "pid": 1992414,
+      "present": false
+    },
+    {
+      "pid": 2028941,
+      "present": true,
+      "start_ticks": "53138518"
+    }
+  ],
+  "protected_processes_edited_or_signalled": false,
+  "utc": "2026-10-18T12:56:02.123143+00:00"
+}

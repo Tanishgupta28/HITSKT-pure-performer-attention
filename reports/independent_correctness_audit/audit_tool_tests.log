@@ -1,0 +1,18 @@
+=================================================================== test session starts ====================================================================
+platform linux -- Python 3.10.12, pytest-8.1.1, pluggy-1.5.0 -- /usr/bin/python
+cachedir: .pytest_cache
+hypothesis profile 'default' -> database=DirectoryBasedExampleDatabase('/workspace/capstone/.hypothesis/examples')
+rootdir: /workspace/capstone
+configfile: pyproject.toml
+plugins: shard-0.1.2, flakefinder-1.1.0, xdist-3.6.1, xdoctest-1.0.2, hypothesis-5.35.1, rerunfailures-14.0
+collecting ... collected 5 items
+Running 5 items in this shard: tests/test_audit_tool_oracles.py::test_independent_session_oracle_exact_ten_hour_boundary_and_student_reset, tests/test_audit_tool_oracles.py::test_rkt_chunk_oracle_uses_exact_sparse_key_positions, tests/test_audit_tool_oracles.py::test_memory_admission_serializes_requests_that_cannot_fit_together, tests/test_audit_tool_oracles.py::test_memory_admission_rejects_oversized_batch_without_allocation, tests/test_audit_tool_oracles.py::test_memory_admission_removes_dead_process_reservation
+
+tests/test_audit_tool_oracles.py::test_independent_session_oracle_exact_ten_hour_boundary_and_student_reset PASSED                                   [ 20%]
+tests/test_audit_tool_oracles.py::test_rkt_chunk_oracle_uses_exact_sparse_key_positions PASSED                                                       [ 40%]
+tests/test_audit_tool_oracles.py::test_memory_admission_serializes_requests_that_cannot_fit_together PASSED                                          [ 60%]
+tests/test_audit_tool_oracles.py::test_memory_admission_rejects_oversized_batch_without_allocation PASSED                                            [ 80%]
+tests/test_audit_tool_oracles.py::test_memory_admission_removes_dead_process_reservation PASSED                                                      [100%]
+
+---------------------------- generated xml file: /workspace/capstone/reports/independent_correctness_audit/audit_tool_tests.xml ----------------------------
+==================================================================== 5 passed in 1.92s =====================================================================

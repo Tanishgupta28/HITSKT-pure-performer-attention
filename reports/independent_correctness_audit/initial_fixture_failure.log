@@ -1,0 +1,202 @@
+=================================================================== test session starts ====================================================================
+platform linux -- Python 3.10.12, pytest-8.1.1, pluggy-1.5.0 -- /usr/bin/python
+cachedir: .pytest_cache
+hypothesis profile 'default' -> database=DirectoryBasedExampleDatabase('/workspace/capstone/.hypothesis/examples')
+rootdir: /workspace/capstone
+configfile: pyproject.toml
+plugins: shard-0.1.2, flakefinder-1.1.0, xdist-3.6.1, xdoctest-1.0.2, hypothesis-5.35.1, rerunfailures-14.0
+collecting ... collected 31 items
+Running 31 items in this shard: tests/test_independent_hitskt_audit.py::test_attention_values_and_all_gradients_against_explicit_oracle[dense-1], tests/test_independent_hitskt_audit.py::test_attention_values_and_all_gradients_against_explicit_oracle[dense-2], tests/test_independent_hitskt_audit.py::test_attention_values_and_all_gradients_against_explicit_oracle[dense-5], tests/test_independent_hitskt_audit.py::test_attention_values_and_all_gradients_against_explicit_oracle[dense-11], tests/test_independent_hitskt_audit.py::test_attention_values_and_all_gradients_against_explicit_oracle[right-1], tests/test_independent_hitskt_audit.py::test_attention_values_and_all_gradients_against_explicit_oracle[right-2], tests/test_independent_hitskt_audit.py::test_attention_values_and_all_gradients_against_explicit_oracle[right-5], tests/test_independent_hitskt_audit.py::test_attention_values_and_all_gradients_against_explicit_oracle[right-11], tests/test_independent_hitskt_audit.py::test_attention_values_and_all_gradients_against_explicit_oracle[holes-1], tests/test_independent_hitskt_audit.py::test_attention_values_and_all_gradients_against_explicit_oracle[holes-2], tests/test_independent_hitskt_audit.py::test_attention_values_and_all_gradients_against_explicit_oracle[holes-5], tests/test_independent_hitskt_audit.py::test_attention_values_and_all_gradients_against_explicit_oracle[holes-11], tests/test_independent_hitskt_audit.py::test_attention_values_and_all_gradients_against_explicit_oracle[empty-1], tests/test_independent_hitskt_audit.py::test_attention_values_and_all_gradients_against_explicit_oracle[empty-2], tests/test_independent_hitskt_audit.py::test_attention_values_and_all_gradients_against_explicit_oracle[empty-5], tests/test_independent_hitskt_audit.py::test_attention_values_and_all_gradients_against_explicit_oracle[empty-11], tests/test_independent_hitskt_audit.py::test_attention_future_cross_batch_and_masked_key_jacobian_is_zero, tests/test_independent_hitskt_audit.py::test_recollated_raw_own_and_future_responses_cannot_change_earlier_predictions[1-1-1], tests/test_independent_hitskt_audit.py::test_recollated_raw_own_and_future_responses_cannot_change_earlier_predictions[1-2-3], tests/test_independent_hitskt_audit.py::test_recollated_raw_own_and_future_responses_cannot_change_earlier_predictions[1-7-15], tests/test_independent_hitskt_audit.py::test_recollated_raw_own_and_future_responses_cannot_change_earlier_predictions[1-17-4], tests/test_independent_hitskt_audit.py::test_recollated_raw_own_and_future_responses_cannot_change_earlier_predictions[2-1-1], tests/test_independent_hitskt_audit.py::test_recollated_raw_own_and_future_responses_cannot_change_earlier_predictions[2-2-3], tests/test_independent_hitskt_audit.py::test_recollated_raw_own_and_future_responses_cannot_change_earlier_predictions[2-7-15], tests/test_independent_hitskt_audit.py::test_recollated_raw_own_and_future_responses_cannot_change_earlier_predictions[2-17-4], tests/test_independent_hitskt_audit.py::test_future_questions_eos_and_finite_padding_cannot_contaminate_real_targets[1], tests/test_independent_hitskt_audit.py::test_future_questions_eos_and_finite_padding_cannot_contaminate_real_targets[4], tests/test_independent_hitskt_audit.py::test_future_questions_eos_and_finite_padding_cannot_contaminate_real_targets[13], tests/test_independent_hitskt_audit.py::test_each_encoder_and_decoder_block_obeys_its_causal_prefix, tests/test_independent_hitskt_audit.py::test_full_model_response_embedding_jacobian_excludes_own_future_and_other_batch, tests/test_independent_hitskt_audit.py::test_pad_and_eos_loss_counts_and_gradients_against_manual_real_target_oracle
+
+tests/test_independent_hitskt_audit.py::test_attention_values_and_all_gradients_against_explicit_oracle[dense-1] PASSED                              [  3%]
+tests/test_independent_hitskt_audit.py::test_attention_values_and_all_gradients_against_explicit_oracle[dense-2] PASSED                              [  6%]
+tests/test_independent_hitskt_audit.py::test_attention_values_and_all_gradients_against_explicit_oracle[dense-5] PASSED                              [  9%]
+tests/test_independent_hitskt_audit.py::test_attention_values_and_all_gradients_against_explicit_oracle[dense-11] PASSED                             [ 12%]
+tests/test_independent_hitskt_audit.py::test_attention_values_and_all_gradients_against_explicit_oracle[right-1] PASSED                              [ 16%]
+tests/test_independent_hitskt_audit.py::test_attention_values_and_all_gradients_against_explicit_oracle[right-2] PASSED                              [ 19%]
+tests/test_independent_hitskt_audit.py::test_attention_values_and_all_gradients_against_explicit_oracle[right-5] PASSED                              [ 22%]
+tests/test_independent_hitskt_audit.py::test_attention_values_and_all_gradients_against_explicit_oracle[right-11] PASSED                             [ 25%]
+tests/test_independent_hitskt_audit.py::test_attention_values_and_all_gradients_against_explicit_oracle[holes-1] PASSED                              [ 29%]
+tests/test_independent_hitskt_audit.py::test_attention_values_and_all_gradients_against_explicit_oracle[holes-2] PASSED                              [ 32%]
+tests/test_independent_hitskt_audit.py::test_attention_values_and_all_gradients_against_explicit_oracle[holes-5] PASSED                              [ 35%]
+tests/test_independent_hitskt_audit.py::test_attention_values_and_all_gradients_against_explicit_oracle[holes-11] PASSED                             [ 38%]
+tests/test_independent_hitskt_audit.py::test_attention_values_and_all_gradients_against_explicit_oracle[empty-1] PASSED                              [ 41%]
+tests/test_independent_hitskt_audit.py::test_attention_values_and_all_gradients_against_explicit_oracle[empty-2] PASSED                              [ 45%]
+tests/test_independent_hitskt_audit.py::test_attention_values_and_all_gradients_against_explicit_oracle[empty-5] PASSED                              [ 48%]
+tests/test_independent_hitskt_audit.py::test_attention_values_and_all_gradients_against_explicit_oracle[empty-11] PASSED                             [ 51%]
+tests/test_independent_hitskt_audit.py::test_attention_future_cross_batch_and_masked_key_jacobian_is_zero PASSED                                     [ 54%]
+tests/test_independent_hitskt_audit.py::test_recollated_raw_own_and_future_responses_cannot_change_earlier_predictions[1-1-1] PASSED                 [ 58%]
+tests/test_independent_hitskt_audit.py::test_recollated_raw_own_and_future_responses_cannot_change_earlier_predictions[1-2-3] PASSED                 [ 61%]
+tests/test_independent_hitskt_audit.py::test_recollated_raw_own_and_future_responses_cannot_change_earlier_predictions[1-7-15] PASSED                [ 64%]
+tests/test_independent_hitskt_audit.py::test_recollated_raw_own_and_future_responses_cannot_change_earlier_predictions[1-17-4] PASSED                [ 67%]
+tests/test_independent_hitskt_audit.py::test_recollated_raw_own_and_future_responses_cannot_change_earlier_predictions[2-1-1] PASSED                 [ 70%]
+tests/test_independent_hitskt_audit.py::test_recollated_raw_own_and_future_responses_cannot_change_earlier_predictions[2-2-3] PASSED                 [ 74%]
+tests/test_independent_hitskt_audit.py::test_recollated_raw_own_and_future_responses_cannot_change_earlier_predictions[2-7-15] PASSED                [ 77%]
+tests/test_independent_hitskt_audit.py::test_recollated_raw_own_and_future_responses_cannot_change_earlier_predictions[2-17-4] PASSED                [ 80%]
+tests/test_independent_hitskt_audit.py::test_future_questions_eos_and_finite_padding_cannot_contaminate_real_targets[1] PASSED                       [ 83%]
+tests/test_independent_hitskt_audit.py::test_future_questions_eos_and_finite_padding_cannot_contaminate_real_targets[4] PASSED                       [ 87%]
+tests/test_independent_hitskt_audit.py::test_future_questions_eos_and_finite_padding_cannot_contaminate_real_targets[13] PASSED                      [ 90%]
+tests/test_independent_hitskt_audit.py::test_each_encoder_and_decoder_block_obeys_its_causal_prefix FAILED                                           [ 93%]
+tests/test_independent_hitskt_audit.py::test_full_model_response_embedding_jacobian_excludes_own_future_and_other_batch PASSED                       [ 96%]
+tests/test_independent_hitskt_audit.py::test_pad_and_eos_loss_counts_and_gradients_against_manual_real_target_oracle PASSED                          [100%]
+
+========================================================================= FAILURES =========================================================================
+_______________________________________________ test_each_encoder_and_decoder_block_obeys_its_causal_prefix ________________________________________________
+
+    def test_each_encoder_and_decoder_block_obeys_its_causal_prefix():
+        net = model(2)
+        batch = collate([example(9,4),example(12,2,5)])
+        layer = net.action_encoder.layers[0]
+        captured=[]
+        handle=layer.register_forward_hook(lambda m,i,o: captured.append(o.detach().clone()))
+        with torch.no_grad():
+            net.action_encoder(batch)
+            changed=deepcopy(batch); changed.history_correct[0,1] = 1-changed.history_correct[0,1]
+>           net.action_encoder(changed)
+
+tests/test_independent_hitskt_audit.py:170: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py:1532: in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py:1541: in _call_impl
+    return forward_call(*args, **kwargs)
+ktbench/models/hitskt.py:57: in forward
+    + self.correct(batch.history_correct)
+/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py:1532: in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py:1541: in _call_impl
+    return forward_call(*args, **kwargs)
+/usr/local/lib/python3.10/dist-packages/torch/nn/modules/sparse.py:163: in forward
+    return F.embedding(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input = tensor([[ 0, -2,  2,  2,  2,  2,  2,  2,  2,  2,  2],
+        [ 1,  0,  1,  0,  3,  2,  2,  2,  2,  2,  2],
+        [ ...,  0,  3],
+        [ 1,  0,  1,  0,  1,  0,  3,  2,  2,  2,  2],
+        [ 0,  1,  0,  1,  0,  1,  0,  1,  0,  3,  2]])
+weight = Parameter containing:
+tensor([[-0.6384,  0.7719,  2.3322, -0.4266,  0.0745,  0.3182, -0.1293, -0.4328,
+         -0.592....8745,  2.0383,  0.6243,
+         -1.7065,  0.6694,  0.2687, -2.0929]], dtype=torch.float64,
+       requires_grad=True)
+padding_idx = 2, max_norm = None, norm_type = 2.0, scale_grad_by_freq = False, sparse = False
+
+    def embedding(
+        input: Tensor,
+        weight: Tensor,
+        padding_idx: Optional[int] = None,
+        max_norm: Optional[float] = None,
+        norm_type: float = 2.0,
+        scale_grad_by_freq: bool = False,
+        sparse: bool = False,
+    ) -> Tensor:
+        r"""Generate a simple lookup table that looks up embeddings in a fixed dictionary and size.
+    
+        This module is often used to retrieve word embeddings using indices.
+        The input to the module is a list of indices, and the embedding matrix,
+        and the output is the corresponding word embeddings.
+    
+        See :class:`torch.nn.Embedding` for more details.
+    
+        .. note::
+            Note that the analytical gradients of this function with respect to
+            entries in :attr:`weight` at the row specified by :attr:`padding_idx`
+            are expected to differ from the numerical ones.
+    
+        .. note::
+            Note that `:class:`torch.nn.Embedding` differs from this function in
+            that it initializes the row of :attr:`weight` specified by
+            :attr:`padding_idx` to all zeros on construction.
+    
+        Args:
+            input (LongTensor): Tensor containing indices into the embedding matrix
+            weight (Tensor): The embedding matrix with number of rows equal to the maximum possible index + 1,
+                and number of columns equal to the embedding size
+            padding_idx (int, optional): If specified, the entries at :attr:`padding_idx` do not contribute to the gradient;
+                                         therefore, the embedding vector at :attr:`padding_idx` is not updated during training,
+                                         i.e. it remains as a fixed "pad".
+            max_norm (float, optional): If given, each embedding vector with norm larger than :attr:`max_norm`
+                                        is renormalized to have norm :attr:`max_norm`.
+                                        Note: this will modify :attr:`weight` in-place.
+            norm_type (float, optional): The p of the p-norm to compute for the :attr:`max_norm` option. Default ``2``.
+            scale_grad_by_freq (bool, optional): If given, this will scale gradients by the inverse of frequency of
+                                                    the words in the mini-batch. Default ``False``.
+            sparse (bool, optional): If ``True``, gradient w.r.t. :attr:`weight` will be a sparse tensor. See Notes under
+                                     :class:`torch.nn.Embedding` for more details regarding sparse gradients.
+    
+        Shape:
+            - Input: LongTensor of arbitrary shape containing the indices to extract
+            - Weight: Embedding matrix of floating point type with shape `(V, embedding_dim)`,
+              where V = maximum index + 1 and embedding_dim = the embedding size
+            - Output: `(*, embedding_dim)`, where `*` is the input shape
+    
+        Examples::
+    
+            >>> # a batch of 2 samples of 4 indices each
+            >>> input = torch.tensor([[1, 2, 4, 5], [4, 3, 2, 9]])
+            >>> # an embedding matrix containing 10 tensors of size 3
+            >>> embedding_matrix = torch.rand(10, 3)
+            >>> # xdoctest: +IGNORE_WANT("non-deterministic")
+            >>> F.embedding(input, embedding_matrix)
+            tensor([[[ 0.8490,  0.9625,  0.6753],
+                     [ 0.9666,  0.7761,  0.6108],
+                     [ 0.6246,  0.9751,  0.3618],
+                     [ 0.4161,  0.2419,  0.7383]],
+    
+                    [[ 0.6246,  0.9751,  0.3618],
+                     [ 0.0237,  0.7794,  0.0528],
+                     [ 0.9666,  0.7761,  0.6108],
+                     [ 0.3385,  0.8612,  0.1867]]])
+    
+            >>> # example with padding_idx
+            >>> weights = torch.rand(10, 3)
+            >>> weights[0, :].zero_()
+            >>> embedding_matrix = weights
+            >>> input = torch.tensor([[0, 2, 0, 5]])
+            >>> F.embedding(input, embedding_matrix, padding_idx=0)
+            tensor([[[ 0.0000,  0.0000,  0.0000],
+                     [ 0.5609,  0.5384,  0.8720],
+                     [ 0.0000,  0.0000,  0.0000],
+                     [ 0.6262,  0.2438,  0.7471]]])
+        """
+        if has_torch_function_variadic(input, weight):
+            return handle_torch_function(
+                embedding,
+                (input, weight),
+                input,
+                weight,
+                padding_idx=padding_idx,
+                max_norm=max_norm,
+                norm_type=norm_type,
+                scale_grad_by_freq=scale_grad_by_freq,
+                sparse=sparse,
+            )
+        if padding_idx is not None:
+            if padding_idx > 0:
+                assert padding_idx < weight.size(0), "Padding_idx must be within num_embeddings"
+            elif padding_idx < 0:
+                assert padding_idx >= -weight.size(0), "Padding_idx must be within num_embeddings"
+                padding_idx = weight.size(0) + padding_idx
+        else:
+            padding_idx = -1
+        if max_norm is not None:
+            # Note [embedding_renorm contiguous]
+            # `embedding_renorm_` will call .contiguous() on input anyways, so we
+            # call it here and take advantage of the improved locality in the
+            # `embedding` call below too.
+            input = input.contiguous()
+            # Note [embedding_renorm set_grad_enabled]
+            # XXX: equivalent to
+            # with torch.no_grad():
+            #   torch.embedding_renorm_
+            # remove once script supports set_grad_enabled
+            _no_grad_embedding_renorm_(weight, input, max_norm, norm_type)
+>       return torch.embedding(weight, input, padding_idx, scale_grad_by_freq, sparse)
+E       IndexError: index out of range in self
+
+/usr/local/lib/python3.10/dist-packages/torch/nn/functional.py:2266: IndexError
+--------------------------- generated xml file: /workspace/capstone/reports/independent_correctness_audit/independent_tests.xml ----------------------------
+================================================================= short test summary info ==================================================================
+FAILED tests/test_independent_hitskt_audit.py::test_each_encoder_and_decoder_block_obeys_its_causal_prefix - IndexError: index out of range in self
+=============================================================== 1 failed, 30 passed in 2.27s ===============================================================

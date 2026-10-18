@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="31" time="2.273" timestamp="2026-10-18T08:55:30.287733" hostname="dgxhnode3"><testcase classname="tests.test_independent_hitskt_audit" name="test_attention_values_and_all_gradients_against_explicit_oracle[dense-1]" time="0.111" /><testcase classname="tests.test_independent_hitskt_audit" name="test_attention_values_and_all_gradients_against_explicit_oracle[dense-2]" time="0.003" /><testcase classname="tests.test_independent_hitskt_audit" name="test_attention_values_and_all_gradients_against_explicit_oracle[dense-5]" time="0.003" /><testcase classname="tests.test_independent_hitskt_audit" name="test_attention_values_and_all_gradients_against_explicit_oracle[dense-11]" time="0.003" /><testcase classname="tests.test_independent_hitskt_audit" name="test_attention_values_and_all_gradients_against_explicit_oracle[right-1]" time="0.003" /><testcase classname="tests.test_independent_hitskt_audit" name="test_attention_values_and_all_gradients_against_explicit_oracle[right-2]" time="0.003" /><testcase classname="tests.test_independent_hitskt_audit" name="test_attention_values_and_all_gradients_against_explicit_oracle[right-5]" time="0.003" /><testcase classname="tests.test_independent_hitskt_audit" name="test_attention_values_and_all_gradients_against_explicit_oracle[right-11]" time="0.003" /><testcase classname="tests.test_independent_hitskt_audit" name="test_attention_values_and_all_gradients_against_explicit_oracle[holes-1]" time="0.003" /><testcase classname="tests.test_independent_hitskt_audit" name="test_attention_values_and_all_gradients_against_explicit_oracle[holes-2]" time="0.003" /><testcase classname="tests.test_independent_hitskt_audit" name="test_attention_values_and_all_gradients_against_explicit_oracle[holes-5]" time="0.003" /><testcase classname="tests.test_independent_hitskt_audit" name="test_attention_values_and_all_gradients_against_explicit_oracle[holes-11]" time="0.003" /><testcase classname="tests.test_independent_hitskt_audit" name="test_attention_values_and_all_gradients_against_explicit_oracle[empty-1]" time="0.003" /><testcase classname="tests.test_independent_hitskt_audit" name="test_attention_values_and_all_gradients_against_explicit_oracle[empty-2]" time="0.003" /><testcase classname="tests.test_independent_hitskt_audit" name="test_attention_values_and_all_gradients_against_explicit_oracle[empty-5]" time="0.003" /><testcase classname="tests.test_independent_hitskt_audit" name="test_attention_values_and_all_gradients_against_explicit_oracle[empty-11]" time="0.003" /><testcase classname="tests.test_independent_hitskt_audit" name="test_attention_future_cross_batch_and_masked_key_jacobian_is_zero" time="0.002" /><testcase classname="tests.test_independent_hitskt_audit" name="test_recollated_raw_own_and_future_responses_cannot_change_earlier_predictions[1-1-1]" time="0.009" /><testcase classname="tests.test_independent_hitskt_audit" name="test_recollated_raw_own_and_future_responses_cannot_change_earlier_predictions[1-2-3]" time="0.010" /><testcase classname="tests.test_independent_hitskt_audit" name="test_recollated_raw_own_and_future_responses_cannot_change_earlier_predictions[1-7-15]" time="0.024" /><testcase classname="tests.test_independent_hitskt_audit" name="test_recollated_raw_own_and_future_responses_cannot_change_earlier_predictions[1-17-4]" time="0.039" /><testcase classname="tests.test_independent_hitskt_audit" name="test_recollated_raw_own_and_future_responses_cannot_change_earlier_predictions[2-1-1]" time="0.012" /><testcase classname="tests.test_independent_hitskt_audit" name="test_recollated_raw_own_and_future_responses_cannot_change_earlier_predictions[2-2-3]" time="0.014" /><testcase classname="tests.test_independent_hitskt_audit" name="test_recollated_raw_own_and_future_responses_cannot_change_earlier_predictions[2-7-15]" time="0.034" /><testcase classname="tests.test_independent_hitskt_audit" name="test_recollated_raw_own_and_future_responses_cannot_change_earlier_predictions[2-17-4]" time="0.055" /><testcase classname="tests.test_independent_hitskt_audit" name="test_future_questions_eos_and_finite_padding_cannot_contaminate_real_targets[1]" time="0.010" /><testcase classname="tests.test_independent_hitskt_audit" name="test_future_questions_eos_and_finite_padding_cannot_contaminate_real_targets[4]" time="0.012" /><testcase classname="tests.test_independent_hitskt_audit" name="test_future_questions_eos_and_finite_padding_cannot_contaminate_real_targets[13]" time="0.012" /><testcase classname="tests.test_independent_hitskt_audit" name="test_each_encoder_and_decoder_block_obeys_its_causal_prefix" time="0.012"><failure message="IndexError: index out of range in self">def test_each_encoder_and_decoder_block_obeys_its_causal_prefix():
+        net = model(2)
+        batch = collate([example(9,4),example(12,2,5)])
+        layer = net.action_encoder.layers[0]
+        captured=[]
+        handle=layer.register_forward_hook(lambda m,i,o: captured.append(o.detach().clone()))
+        with torch.no_grad():
+            net.action_encoder(batch)
+            changed=deepcopy(batch); changed.history_correct[0,1] = 1-changed.history_correct[0,1]
+&gt;           net.action_encoder(changed)
+
+tests/test_independent_hitskt_audit.py:170: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py:1532: in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py:1541: in _call_impl
+    return forward_call(*args, **kwargs)
+ktbench/models/hitskt.py:57: in forward
+    + self.correct(batch.history_correct)
+/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py:1532: in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py:1541: in _call_impl
+    return forward_call(*args, **kwargs)
+/usr/local/lib/python3.10/dist-packages/torch/nn/modules/sparse.py:163: in forward
+    return F.embedding(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input = tensor([[ 0, -2,  2,  2,  2,  2,  2,  2,  2,  2,  2],
+        [ 1,  0,  1,  0,  3,  2,  2,  2,  2,  2,  2],
+        [ ...,  0,  3],
+        [ 1,  0,  1,  0,  1,  0,  3,  2,  2,  2,  2],
+        [ 0,  1,  0,  1,  0,  1,  0,  1,  0,  3,  2]])
+weight = Parameter containing:
+tensor([[-0.6384,  0.7719,  2.3322, -0.4266,  0.0745,  0.3182, -0.1293, -0.4328,
+         -0.592....8745,  2.0383,  0.6243,
+         -1.7065,  0.6694,  0.2687, -2.0929]], dtype=torch.float64,
+       requires_grad=True)
+padding_idx = 2, max_norm = None, norm_type = 2.0, scale_grad_by_freq = False, sparse = False
+
+    def embedding(
+        input: Tensor,
+        weight: Tensor,
+        padding_idx: Optional[int] = None,
+        max_norm: Optional[float] = None,
+        norm_type: float = 2.0,
+        scale_grad_by_freq: bool = False,
+        sparse: bool = False,
+    ) -&gt; Tensor:
+        r"""Generate a simple lookup table that looks up embeddings in a fixed dictionary and size.
+    
+        This module is often used to retrieve word embeddings using indices.
+        The input to the module is a list of indices, and the embedding matrix,
+        and the output is the corresponding word embeddings.
+    
+        See :class:`torch.nn.Embedding` for more details.
+    
+        .. note::
+            Note that the analytical gradients of this function with respect to
+            entries in :attr:`weight` at the row specified by :attr:`padding_idx`
+            are expected to differ from the numerical ones.
+    
+        .. note::
+            Note that `:class:`torch.nn.Embedding` differs from this function in
+            that it initializes the row of :attr:`weight` specified by
+            :attr:`padding_idx` to all zeros on construction.
+    
+        Args:
+            input (LongTensor): Tensor containing indices into the embedding matrix
+            weight (Tensor): The embedding matrix with number of rows equal to the maximum possible index + 1,
+                and number of columns equal to the embedding size
+            padding_idx (int, optional): If specified, the entries at :attr:`padding_idx` do not contribute to the gradient;
+                                         therefore, the embedding vector at :attr:`padding_idx` is not updated during training,
+                                         i.e. it remains as a fixed "pad".
+            max_norm (float, optional): If given, each embedding vector with norm larger than :attr:`max_norm`
+                                        is renormalized to have norm :attr:`max_norm`.
+                                        Note: this will modify :attr:`weight` in-place.
+            norm_type (float, optional): The p of the p-norm to compute for the :attr:`max_norm` option. Default ``2``.
+            scale_grad_by_freq (bool, optional): If given, this will scale gradients by the inverse of frequency of
+                                                    the words in the mini-batch. Default ``False``.
+            sparse (bool, optional): If ``True``, gradient w.r.t. :attr:`weight` will be a sparse tensor. See Notes under
+                                     :class:`torch.nn.Embedding` for more details regarding sparse gradients.
+    
+        Shape:
+            - Input: LongTensor of arbitrary shape containing the indices to extract
+            - Weight: Embedding matrix of floating point type with shape `(V, embedding_dim)`,
+              where V = maximum index + 1 and embedding_dim = the embedding size
+            - Output: `(*, embedding_dim)`, where `*` is the input shape
+    
+        Examples::
+    
+            &gt;&gt;&gt; # a batch of 2 samples of 4 indices each
+            &gt;&gt;&gt; input = torch.tensor([[1, 2, 4, 5], [4, 3, 2, 9]])
+            &gt;&gt;&gt; # an embedding matrix containing 10 tensors of size 3
+            &gt;&gt;&gt; embedding_matrix = torch.rand(10, 3)
+            &gt;&gt;&gt; # xdoctest: +IGNORE_WANT("non-deterministic")
+            &gt;&gt;&gt; F.embedding(input, embedding_matrix)
+            tensor([[[ 0.8490,  0.9625,  0.6753],
+                     [ 0.9666,  0.7761,  0.6108],
+                     [ 0.6246,  0.9751,  0.3618],
+                     [ 0.4161,  0.2419,  0.7383]],
+    
+                    [[ 0.6246,  0.9751,  0.3618],
+                     [ 0.0237,  0.7794,  0.0528],
+                     [ 0.9666,  0.7761,  0.6108],
+                     [ 0.3385,  0.8612,  0.1867]]])
+    
+            &gt;&gt;&gt; # example with padding_idx
+            &gt;&gt;&gt; weights = torch.rand(10, 3)
+            &gt;&gt;&gt; weights[0, :].zero_()
+            &gt;&gt;&gt; embedding_matrix = weights
+            &gt;&gt;&gt; input = torch.tensor([[0, 2, 0, 5]])
+            &gt;&gt;&gt; F.embedding(input, embedding_matrix, padding_idx=0)
+            tensor([[[ 0.0000,  0.0000,  0.0000],
+                     [ 0.5609,  0.5384,  0.8720],
+                     [ 0.0000,  0.0000,  0.0000],
+                     [ 0.6262,  0.2438,  0.7471]]])
+        """
+        if has_torch_function_variadic(input, weight):
+            return handle_torch_function(
+                embedding,
+                (input, weight),
+                input,
+                weight,
+                padding_idx=padding_idx,
+                max_norm=max_norm,
+                norm_type=norm_type,
+                scale_grad_by_freq=scale_grad_by_freq,
+                sparse=sparse,
+            )
+        if padding_idx is not None:
+            if padding_idx &gt; 0:
+                assert padding_idx &lt; weight.size(0), "Padding_idx must be within num_embeddings"
+            elif padding_idx &lt; 0:
+                assert padding_idx &gt;= -weight.size(0), "Padding_idx must be within num_embeddings"
+                padding_idx = weight.size(0) + padding_idx
+        else:
+            padding_idx = -1
+        if max_norm is not None:
+            # Note [embedding_renorm contiguous]
+            # `embedding_renorm_` will call .contiguous() on input anyways, so we
+            # call it here and take advantage of the improved locality in the
+            # `embedding` call below too.
+            input = input.contiguous()
+            # Note [embedding_renorm set_grad_enabled]
+            # XXX: equivalent to
+            # with torch.no_grad():
+            #   torch.embedding_renorm_
+            # remove once script supports set_grad_enabled
+            _no_grad_embedding_renorm_(weight, input, max_norm, norm_type)
+&gt;       return torch.embedding(weight, input, padding_idx, scale_grad_by_freq, sparse)
+E       IndexError: index out of range in self
+
+/usr/local/lib/python3.10/dist-packages/torch/nn/functional.py:2266: IndexError</failure></testcase><testcase classname="tests.test_independent_hitskt_audit" name="test_full_model_response_embedding_jacobian_excludes_own_future_and_other_batch" time="0.011" /><testcase classname="tests.test_independent_hitskt_audit" name="test_pad_and_eos_loss_counts_and_gradients_against_manual_real_target_oracle" time="0.002" /></testsuite></testsuites>

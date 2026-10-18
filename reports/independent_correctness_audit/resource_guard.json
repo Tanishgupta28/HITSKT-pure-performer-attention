@@ -1,0 +1,41 @@
+{
+  "audit_cpu_affinity": [
+    216,
+    217,
+    218,
+    219,
+    220,
+    221,
+    222,
+    223
+  ],
+  "container_memory_limit_bytes": 96636764160,
+  "cuda_visible_devices": "",
+  "current_workers": {
+    "ednet_kt1": 6,
+    "junyi": 2
+  },
+  "io_priority": "idle",
+  "nice": 19,
+  "observed_container_cpu_quota": 15,
+  "protected_training_observations": [
+    {
+      "pid": 182135,
+      "present": true,
+      "start_ticks": "15783617"
+    },
+    {
+      "pid": 1992414,
+      "present": true,
+      "start_ticks": "52004904"
+    },
+    {
+      "pid": 2028941,
+      "present": true,
+      "start_ticks": "53138518"
+    }
+  ],
+  "scope": "Only audit-owned capstone processes and descendants; LightSAKT2 processes neither modified nor signalled",
+  "shared_inference_admission_limit_bytes": 25769803776,
+  "updated_audit_process_count": 29
+}

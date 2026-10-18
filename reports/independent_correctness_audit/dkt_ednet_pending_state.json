@@ -1,0 +1,47 @@
+{
+  "active_config_patience": 10,
+  "checkpoint_embedded_patience": 5,
+  "finite_model_weights": true,
+  "last_checkpoint_sha256": "ae9f8248669c3800064020cbbb64c4e82ade108cac0cef27e1a23c74f208842b",
+  "last_completed_epoch": 9,
+  "no_training_or_repair_performed": true,
+  "optimizer_nonfinite_states": [
+    {
+      "nan_count": 0,
+      "parameter_index": 0,
+      "positive_infinities": 4306,
+      "state_key": "exp_avg_sq"
+    },
+    {
+      "nan_count": 0,
+      "parameter_index": 1,
+      "positive_infinities": 11673,
+      "state_key": "exp_avg_sq"
+    },
+    {
+      "nan_count": 0,
+      "parameter_index": 2,
+      "positive_infinities": 5406,
+      "state_key": "exp_avg_sq"
+    },
+    {
+      "nan_count": 0,
+      "parameter_index": 3,
+      "positive_infinities": 182,
+      "state_key": "exp_avg_sq"
+    },
+    {
+      "nan_count": 0,
+      "parameter_index": 4,
+      "positive_infinities": 182,
+      "state_key": "exp_avg_sq"
+    }
+  ],
+  "reason": "Incomplete DKT/EdNet training; no test result",
+  "saved_selection_state": {
+    "best_epoch": 1,
+    "best_validation_auc": 0.6845717850759062,
+    "consecutive_epochs_without_improvement": 8
+  },
+  "status": "NOT VERIFIED"
+}

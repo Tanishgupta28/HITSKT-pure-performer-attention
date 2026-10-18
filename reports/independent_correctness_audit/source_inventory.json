@@ -1,0 +1,267 @@
+{
+  "audit_tools": [
+    {
+      "path": "scripts/audit_answer_availability.py",
+      "sha256": "1ff6caa2796a9f3755eaadd7e2746105198e08db1443c584d4f98aad12ff7761"
+    },
+    {
+      "path": "scripts/audit_benchmark_artifacts.py",
+      "sha256": "bfe619d768659ca94c6daf3871c129a5d577fc71f694034b48ffe2366ee3e7c3"
+    },
+    {
+      "path": "scripts/audit_checkpoint_vocabularies.py",
+      "sha256": "9301dfacfa18664ea70e8236788a3d447506ff7901d2229bfe37608b55daa7d9"
+    },
+    {
+      "path": "scripts/audit_ednet_official_download.py",
+      "sha256": "53fce7c66ceac351b2ebc461cb6fd079d4f504bc46b96bf665530c4dfc74be42"
+    },
+    {
+      "path": "scripts/audit_evidence_integrity.py",
+      "sha256": "a9013b59c8dedc7b596bd40811cee1e8e9d3bd9a475835487eb2651e43c4d089"
+    },
+    {
+      "path": "scripts/audit_finalize_replay_evidence.py",
+      "sha256": "e8f9a47819e4c5f55d07fa01da6c0bff70f45cf58b905ce361430ab0c9f2549a"
+    },
+    {
+      "path": "scripts/audit_guarded_worker_crosscheck.py",
+      "sha256": "a9a8746b7adc058e3c9ac2d51b18c62aa32fc3a60f3422df1ab8d1115cf44460"
+    },
+    {
+      "path": "scripts/audit_hitskt_cpu_crosscheck.py",
+      "sha256": "d4b5e1bf32d26065ccc6457cf9fb85dbb4e89274b14aa9d3c55473703837f35b"
+    },
+    {
+      "path": "scripts/audit_hitskt_data.py",
+      "sha256": "b24d5db76468220c947ffb178a6ba2aa5c82cecf4a83d4a8187c94699a434cb4"
+    },
+    {
+      "path": "scripts/audit_hitskt_replay.py",
+      "sha256": "fdbe670702a3c63de5926ab04cfb7034ffa4f2581894f59f800d72bc86bbcc05"
+    },
+    {
+      "path": "scripts/audit_hitskt_replay_parallel.py",
+      "sha256": "b57a248bff81481ba045139ba0448c6c1f84d2e72d28f7178132e5711581ecab"
+    },
+    {
+      "path": "scripts/audit_memory_guard.py",
+      "sha256": "63d5c5b83217d81ce5a13d6a885fece46e729eb880235f8c57ddd1b02c8c5bec"
+    },
+    {
+      "path": "scripts/audit_rkt_cache_algebra.py",
+      "sha256": "3207f14a39f03e4231637c01da8c4ac71b11e85b6f551e147e7a6e61263938f0"
+    },
+    {
+      "path": "scripts/audit_rkt_cache_key_bounds.py",
+      "sha256": "625a53b435378eca052fd5c78e495059b22d8017d6ae3d690de1b92bb06c682d"
+    },
+    {
+      "path": "scripts/audit_unavailable_response_sensitivity.py",
+      "sha256": "7fa413a9dac34f76997ada9744494b9ff35ab2a38ea1959072a6875085e0e705"
+    },
+    {
+      "path": "scripts/audit_verify_preservation.py",
+      "sha256": "b76c34fe970f65f8298eedc8c64e19dd3e219ac19afe37be78524467455930d1"
+    },
+    {
+      "path": "scripts/generate_independent_correctness_audit.py",
+      "sha256": "e4dc0ac374f766130dc7c32733d0672c58a73d538f8b6befa04e7cc23de711f3"
+    }
+  ],
+  "base_commit": "656a9f062f228710c7aac1a3f8a499e1ffc301ff",
+  "finalized_utc": "2026-10-18T12:58:34.695108+00:00",
+  "original_sources": [
+    {
+      "path": "ktbench/__init__.py",
+      "sha256": "9048b7b632de4c9b21c792b318657f3cfd6c61f723ce04cb26c1e348a8d5651b",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "ktbench/baseline_registry.py",
+      "sha256": "39302025f9ad31071bd33f8292bedd780f29515194b92d28caff3f7c8248174e",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "ktbench/batching.py",
+      "sha256": "baffe36d07b869498fbd8eaee12da9317b1b451a0061b52845a47b21d51c2ea5",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "ktbench/config.py",
+      "sha256": "650f7ab21ca3428d212c3b6b7e3c012a055ac85ee48cabc4dc82d6a65a3b464c",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "ktbench/data/__init__.py",
+      "sha256": "35ceb7c865f6aa00a35272f4d642d689085bec7db9e7ac969aeba5abaded5b7d",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "ktbench/data/ednet.py",
+      "sha256": "2411642bbb14fac8437b8bfc69195fb69873b7c0629db99e6261b77cbf03a84b",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "ktbench/data/fast_rolling.py",
+      "sha256": "cd502767880088bf92374a3d01c5fcb845d446e0618c4896dbeaa976d41b8095",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "ktbench/data/flat.py",
+      "sha256": "c20feff081ffcea37782839f9e65c8e94d6f8c48ad30cdcac7b4acb7c5d97dd1",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "ktbench/data/publish_ednet.py",
+      "sha256": "10847c30ea1347d0649e4739550cbc7417708ab8b8077cda72d3263c664d9354",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "ktbench/data/publish_flat.py",
+      "sha256": "f495a9f2b8af4fe0ca858c72eafa84e752e9f96e68eefd6296143367eb7d21f2",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "ktbench/data/rolling_targets.py",
+      "sha256": "7e6475d6a3e6044ae238018c5caf170815d8ef8f71421a193040a0f84bffc0ca",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "ktbench/data/session_store.py",
+      "sha256": "6c695bc23da5c4b8116d29b5a099c16bb5669a99eb5cdfb9c378ace81d39f218",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "ktbench/data/validate_ednet.py",
+      "sha256": "c5bb4c9ba84038a8c1c03673330832d50aca7a23cebb869f1bdab20974d0f8b0",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "ktbench/data/validate_flat.py",
+      "sha256": "82d7f170ad7d91ab1ef33bc56df6a46492c181f2ce41ef636c8ff1140317d225",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "ktbench/hitskt_registry.py",
+      "sha256": "a2ea1bcc35ad634688a4776564d42147def529b5060e0c315e45437042af1448",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "ktbench/metrics.py",
+      "sha256": "6b57353631c67f5afd5b2785e3787ffdcf15086c0212a9bac75bba199eab6727",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "ktbench/models/__init__.py",
+      "sha256": "9d0b4eea562849ee9844eec158a6a8a6169410f8b01da07eff7deb59ac0aaa40",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "ktbench/models/baselines.py",
+      "sha256": "2e9ea166e5d13b67698a08f662a6e21a5bbf823ee2495477da4a6ad7c1758234",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "ktbench/models/hitskt.py",
+      "sha256": "627e3715eb1bd386139a7ba69eb603e6ac49dafe111f46e53ea731c03f55c515",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "ktbench/models/performer.py",
+      "sha256": "1b517922893f8573d294fbb036b0f7af6bb9e8d4a1a7808d50db52682d323004",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "ktbench/models/rkt.py",
+      "sha256": "fcbadf2aa99427e73ed125a82714862a7ffb5fe0beab42504c2f79b18885f23b",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "ktbench/rkt/__init__.py",
+      "sha256": "582ba5d14cd97e19111f8cb8213448bfb6b052e906819328dccd396940f7771c",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "ktbench/rkt/data.py",
+      "sha256": "2df01385859838ef9d482dfdf230b6034085d3f03f6f18a8a8517edb05a9a7b0",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "ktbench/rkt/phi.py",
+      "sha256": "9f8da4ecf9e893156200723fcbb8428296e973f706989296c7ff5da2054dad5f",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "ktbench/rkt/settings.py",
+      "sha256": "392a8c290b7fb84654c7218771e0cb91e0f46dec3fda306ce72b0b568bd0b435",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "ktbench/training.py",
+      "sha256": "ead48df5fd636d7a6e715f9c16eedbd562a7063e3f30a588401844d302eb6859",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "scripts/train_hitskt.py",
+      "sha256": "d58740964aab529c1b2f3edc92ef3a15dd50bb2f8bd89809b40c56933dd9cc87",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "scripts/train_baseline.py",
+      "sha256": "f1a3f89364728a598a67bba9684970ff64709b61a4ecebd15a381ae562192beb",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "scripts/train_rkt.py",
+      "sha256": "0a926794a638411d81c9a64c74649520005354b3c2cada945daf1ab8e6df9b14",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "scripts/evaluate_checkpoint.py",
+      "sha256": "ca00cadebd3621badb41d0ab67faf4a3bf63440d240c1e466554590748a1c58a",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "attention_modules.py",
+      "sha256": "117ea32019af4d08d1de1d6207f624c6b9518684a9421b80d0cb4d7e73a5020b",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "model_layers.py",
+      "sha256": "60d8d7f3249ed1f653fdbe488859f448133c9f0bb22ad9c82fa3922cd5f960d1",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "sublayers.py",
+      "sha256": "a23da0ad079dc4f9c0f3e1c60132bdeb42f013a0fcf2517992ff9ef9121c6250",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "loading_array.py",
+      "sha256": "c42a1758dfd76f3bdbae834c344762380bdc2c141256bb354f7fbd960722489b",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "train_test.py",
+      "sha256": "dbd74398bf8f49d0f03fb5e9fffa371a7dbb79c473b294882edbab114be2937c",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "main.py",
+      "sha256": "a87a4acad067ad15ef4651ff79169702fe8d6ddb3e93cdceaf02ba6d6183869c",
+      "unchanged_from_base": true
+    }
+  ],
+  "tests": [
+    {
+      "path": "tests/test_audit_tool_oracles.py",
+      "sha256": "3803907f26eb83ae6ff1a7a7e3e7afb87c939fe2c47c35d4a7c08805d76b2f20"
+    },
+    {
+      "path": "tests/test_independent_hitskt_audit.py",
+      "sha256": "1a2e0fac12d752b0ce2062c834cbb47059f6dc4f9faad14931dd850b4c45f29f"
+    }
+  ],
+  "unrelated_readme_sha256": "e5754c28ae89a628d46e0269523115404be13aba55d252a92c90ece2bf8ac6b8"
+}

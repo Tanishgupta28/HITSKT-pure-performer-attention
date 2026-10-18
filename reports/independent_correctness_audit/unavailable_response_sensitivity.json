@@ -1,0 +1,61 @@
+{
+  "implementation_sha256": "7fa413a9dac34f76997ada9744494b9ff35ab2a38ea1959072a6875085e0e705",
+  "records": {
+    "assist2017": {
+      "checkpoint_sha256": "085c8d9ae32f4e60892dfb3e4eed93d90a584696d0914456c135dcab7b890164",
+      "earlier_index_label_sensitivity_observed": 8,
+      "interpretation": "Earlier event-index responses can affect predictions even where that response completes after the query presentation (EdNet completion uses timestamp+elapsed proxy). This differs from future-index/self-label leakage.",
+      "own_label_exclusion_status": "PASS",
+      "own_label_flip_logit_absolute_changes": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sample_scope": "Eight distinct test sessions with an overlapping previous response, target length<=256 and history<=1024; diagnostic only",
+      "sample_size": 8,
+      "unavailable_predecessor_flip_logit_absolute_changes": [
+        0.1590358018875122,
+        0.17335271835327148,
+        0.4819377064704895,
+        0.4666965380311012,
+        0.01966071128845215,
+        0.22035974264144897,
+        0.1760818362236023,
+        0.843953013420105
+      ]
+    },
+    "ednet_kt1": {
+      "checkpoint_sha256": "58d4b1f393d0fa8ec372ba8bcc00cc8b7168d37817d4badfd26ee42abffd03c8",
+      "earlier_index_label_sensitivity_observed": 8,
+      "interpretation": "Earlier event-index responses can affect predictions even where that response completes after the query presentation (EdNet completion uses timestamp+elapsed proxy). This differs from future-index/self-label leakage.",
+      "own_label_exclusion_status": "PASS",
+      "own_label_flip_logit_absolute_changes": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sample_scope": "Eight distinct test sessions with an overlapping previous response, target length<=256 and history<=1024; diagnostic only",
+      "sample_size": 8,
+      "unavailable_predecessor_flip_logit_absolute_changes": [
+        0.14651387929916382,
+        0.201690673828125,
+        0.31327390670776367,
+        0.17625635862350464,
+        0.06709867715835571,
+        0.003901064395904541,
+        0.0637044906616211,
+        0.10259473323822021
+      ]
+    }
+  }
+}

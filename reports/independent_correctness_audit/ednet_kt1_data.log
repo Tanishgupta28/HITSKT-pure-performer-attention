@@ -1,0 +1,79 @@
+{"stage": "ednet_raw_reconciliation", "students_read": 8044, "total_students": 784309, "raw_rows": 9659163, "retained_rows": 9474203, "seconds": 25.00170441705268}
+{"stage": "ednet_raw_reconciliation", "students_read": 23920, "total_students": 784309, "raw_rows": 21097103, "retained_rows": 20668296, "seconds": 50.00236695504282}
+{"stage": "ednet_raw_reconciliation", "students_read": 69878, "total_students": 784309, "raw_rows": 31009812, "retained_rows": 29181300, "seconds": 75.00907770195045}
+{"stage": "ednet_raw_reconciliation", "students_read": 125587, "total_students": 784309, "raw_rows": 40520198, "retained_rows": 37408559, "seconds": 100.01184114895295}
+{"stage": "ednet_raw_reconciliation", "students_read": 176576, "total_students": 784309, "raw_rows": 50300707, "retained_rows": 46044287, "seconds": 125.01209599198774}
+{"stage": "ednet_raw_reconciliation", "students_read": 230897, "total_students": 784309, "raw_rows": 57717652, "retained_rows": 52105691, "seconds": 150.0342928180471}
+{"stage": "ednet_raw_reconciliation", "students_read": 266261, "total_students": 784309, "raw_rows": 62544508, "retained_rows": 56208970, "seconds": 175.03553891403135}
+{"stage": "ednet_raw_reconciliation", "students_read": 325696, "total_students": 784309, "raw_rows": 66154156, "retained_rows": 59167777, "seconds": 200.03676436294336}
+{"stage": "ednet_raw_reconciliation", "students_read": 379790, "total_students": 784309, "raw_rows": 69944055, "retained_rows": 62280637, "seconds": 225.0383051870158}
+{"stage": "ednet_raw_reconciliation", "students_read": 433327, "total_students": 784309, "raw_rows": 73697340, "retained_rows": 65332342, "seconds": 250.04027226602193}
+{"stage": "ednet_raw_reconciliation", "students_read": 486284, "total_students": 784309, "raw_rows": 77025506, "retained_rows": 67907560, "seconds": 275.0413610120304}
+{"stage": "ednet_raw_reconciliation", "students_read": 536423, "total_students": 784309, "raw_rows": 80345753, "retained_rows": 70518465, "seconds": 300.0423886340577}
+{"stage": "ednet_raw_reconciliation", "students_read": 586518, "total_students": 784309, "raw_rows": 83588452, "retained_rows": 73061821, "seconds": 325.04399659798946}
+{"stage": "ednet_raw_reconciliation", "students_read": 643265, "total_students": 784309, "raw_rows": 86637525, "retained_rows": 75397235, "seconds": 350.0447993930429}
+{"stage": "ednet_raw_reconciliation", "students_read": 701970, "total_students": 784309, "raw_rows": 89563426, "retained_rows": 77613432, "seconds": 375.04526566294953}
+{"stage": "ednet_raw_reconciliation", "students_read": 745564, "total_students": 784309, "raw_rows": 93092011, "retained_rows": 80517318, "seconds": 400.0470422509825}
+{
+  "dataset": "ednet_kt1",
+  "status": "PASS",
+  "lineage": {
+    "raw_rows": 95293926,
+    "raw_students": 784309,
+    "answered_rows": 95266280,
+    "unanswered_rows": 27646,
+    "unanswered_audit_count_match": true,
+    "retained_rows": 81940867,
+    "retained_students": 116548,
+    "raw_to_parquet_all_fields": "PASS",
+    "parquet_to_store_all_events": "PASS",
+    "all_zip_student_members_read_with_crc": true,
+    "supervised_source_row_unique_within_student": true,
+    "contents_zip_sha256": "aa910a0436d9dbac0ba232f55e27b37ad8d39da285fcf15f1c1eb5d064be98e7",
+    "answer_availability_native_unit": "milliseconds; timestamp + elapsed_time proxy",
+    "answer_availability": {
+      "ordered_predecessor_ends_after_next_start": 23650380,
+      "adjacent_equal_start_timestamps": 1255154,
+      "nonfinite_end_times": 0,
+      "ends_before_own_start": 0,
+      "maximum_adjacent_overlap_native_units": 285846876.0
+    },
+    "publisher_release_identity": "Official repository acquisition chain documented; local archives match recorded acquisition SHA256. No publisher-signed checksum available."
+  },
+  "store_contract": {
+    "status": "PASS",
+    "split_protocol": "chronological WITHIN-STUDENT, not student-disjoint",
+    "student_overlap_train_validation_test": 116548,
+    "supervised_targets": {
+      "train": 49458444,
+      "validation": 14520975,
+      "test": 13429870
+    },
+    "baseline_supervised_targets": {
+      "train": 53990022,
+      "validation": 14520975,
+      "test": 13429870
+    },
+    "first_session_interactions_context_only_for_hitskt": 4531578,
+    "all_post_first_session_targets_exactly_once": true,
+    "history_visibility": {
+      "train": {
+        "all_history_bounds_checked": true,
+        "targets": 1511786,
+        "targets_with_earlier_same_split_history": 1511786
+      },
+      "validation": {
+        "all_history_bounds_checked": true,
+        "targets": 474827,
+        "targets_with_earlier_same_split_history": 358279
+      },
+      "test": {
+        "all_history_bounds_checked": true,
+        "targets": 474827,
+        "targets_with_earlier_same_split_history": 358279
+      }
+    },
+    "answer_visibility": "Earlier response labels within validation/test are visible in rolling online histories; no label from a later event index is visible.",
+    "identical_test_population": true
+  }
+}

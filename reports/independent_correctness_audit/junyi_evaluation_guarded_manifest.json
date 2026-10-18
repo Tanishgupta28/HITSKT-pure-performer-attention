@@ -1,0 +1,226 @@
+{
+  "absolute_metric_tolerance": 1e-06,
+  "all_partial_previous_predictions_ignored": false,
+  "all_supervised_test_targets_once": true,
+  "all_test_sessions_once": true,
+  "base_commit": "656a9f062f228710c7aac1a3f8a499e1ffc301ff",
+  "best_checkpoint_epoch": 32,
+  "comparison": {
+    "accuracy": {
+      "absolute_difference": 7.734890298816133e-06,
+      "exact_equal": false,
+      "recalculated": 0.7555583328787389,
+      "stored": 0.75555059798844,
+      "within_tolerance": false
+    },
+    "bce_float64": {
+      "absolute_difference": 2.021944371377593e-07,
+      "exact_equal": false,
+      "recalculated": 0.4975776789342685,
+      "stored": 0.49757788112870566,
+      "within_tolerance": true
+    },
+    "f1": {
+      "absolute_difference": 3.88011352514539e-06,
+      "exact_equal": false,
+      "recalculated": 0.8305046326706952,
+      "stored": 0.83050075255717,
+      "within_tolerance": false
+    },
+    "historical_batch_weighted_bce": {
+      "absolute_difference": 2.0115822219057833e-07,
+      "exact_equal": false,
+      "recalculated": 0.49757767997048347,
+      "stored": 0.49757788112870566,
+      "within_tolerance": true
+    },
+    "mse": {
+      "absolute_difference": 8.877169338505908e-08,
+      "exact_equal": false,
+      "recalculated": 0.16478621003428573,
+      "stored": 0.16478629880597911,
+      "within_tolerance": true
+    },
+    "precision": {
+      "absolute_difference": 9.785552590235724e-06,
+      "exact_equal": false,
+      "recalculated": 0.7850550531960312,
+      "stored": 0.785045267643441,
+      "within_tolerance": false
+    },
+    "recall": {
+      "absolute_difference": 3.595542246714878e-06,
+      "exact_equal": false,
+      "recalculated": 0.8815400666253979,
+      "stored": 0.8815436621676446,
+      "within_tolerance": false
+    },
+    "roc_auc": {
+      "absolute_difference": 2.6840422751028825e-07,
+      "exact_equal": false,
+      "recalculated": 0.7978264739233538,
+      "stored": 0.7978262055191263,
+      "within_tolerance": true
+    }
+  },
+  "completion_utc": "2026-10-18T10:24:35.587676+00:00",
+  "cuda_visible_devices": "",
+  "dataset": "junyi",
+  "device": "CPU",
+  "evaluator_sha256": "fdbe670702a3c63de5926ab04cfb7034ffa4f2581894f59f800d72bc86bbcc05",
+  "exact_equality_all_metrics": false,
+  "execution": "Fresh spawned CPU workers each reload actual best checkpoint; unchanged historical batches, ordered collection",
+  "expected_targets": 2456402,
+  "first_three_batch_worker_direct_max_difference": null,
+  "fresh_process": true,
+  "historical_artifact_sha256": {
+    "_SUCCESS": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1",
+    "best_model.pt": "2308c5bf0c850da1e55daf802a0853a30fac45eeed071c7162c68fc17bfa3bdd",
+    "config.json": "f44dc08302831724efa8f94a0506fe2e95dce40ce52222b8fbea89628f3d55f5",
+    "dataset_stats.json": "85da73a724f4b33dec59426b4047cae111543f29ee8bbcbbe64a9866e2bd3924",
+    "final_results.json": "680f2d624e00591606a29379f3b9dbbdfe3d358a6d26173290e7f330e91e8faa",
+    "metrics.csv": "4580c0db64c647f8a9a96195e39df4a3e6e54e833fd78c625baeeb4390b873d3",
+    "training.jsonl": "dfc5294afcb73ff67d795dd8ced0d9feeaf26e7516c10b39cdc23374c5415e7b"
+  },
+  "historical_config": {
+    "action_chunking": false,
+    "action_layers": 1,
+    "action_truncation": false,
+    "attention": "pure causal ELU+1 Performer linear attention",
+    "best_epoch": 32,
+    "best_validation_auc": 0.8008507199510555,
+    "bucket_size": 512,
+    "context_sessions_including_target": 16,
+    "correct_layers": 1,
+    "dataset": "junyi",
+    "decoder_layers": 1,
+    "device": "cuda",
+    "dropout": 0.1,
+    "early_stopping_metric": "validation_roc_auc",
+    "early_stopping_min_delta": 0.0,
+    "early_stopping_patience": 5,
+    "early_stopping_strict_improvement": true,
+    "epoch_ceiling": 50,
+    "epochs_completed": 37,
+    "feedforward_width": 1024,
+    "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+    "heads": 2,
+    "history_sessions": 15,
+    "learning_rate": 5e-05,
+    "maximum_batch_size": 64,
+    "model": "HiTSKT",
+    "optimizer": "Adam",
+    "reload_best_checkpoint_before_test": true,
+    "seed": 42,
+    "session_layers": 1,
+    "token_budget": 32768,
+    "total_parameters": 8271105,
+    "trainable_parameters": 8271105,
+    "weight_decay": 0.0,
+    "width": 128,
+    "workers": 8
+  },
+  "main_loop_worker_direct_probe_performed": false,
+  "metric_implementation": "Independent tied-pair AUC and NumPy confusion/MSE/logit-BCE; no training epoch or project metric function used",
+  "original_artifacts_unchanged": true,
+  "parallel_evaluator_sha256": "b57a248bff81481ba045139ba0448c6c1f84d2e72d28f7178132e5711581ecab",
+  "parallel_started_utc": "2026-10-18T09:24:47.989077+00:00",
+  "pid": 2050569,
+  "postprocessing": {
+    "changes": "Clarify unperformed default parity field and inherited interruption reason; link actual supplemental probe",
+    "emitted_manifest_preserved": "reports/independent_correctness_audit/junyi_evaluation_guarded_manifest_before_annotation.json",
+    "emitted_manifest_sha256": "8f2feff42c6e2b57b15aadcccf96f48bb03515e29a4392012650281babfe2b82",
+    "predictions_and_metrics_unchanged": true,
+    "source_sha256": "e8f9a47819e4c5f55d07fa01da6c0bff70f45cf58b905ce361430ab0c9f2549a",
+    "utc": "2026-10-18T10:25:48.383693+00:00"
+  },
+  "precheck_interruption_reason": "Audit-owned serial CPU replay superseded by full fresh parallel CPU replay for runtime; partial predictions will not be used.",
+  "precheck_manifest_sha256": "167e5e23a1572daa150892ccb94a93bd5f758e9f4f607ae2b28b85139d4e0ece",
+  "prediction_artifacts_local": ".inspection/independent_correctness_audit/replay_junyi_guarded",
+  "prediction_sha256": {
+    "event_id.npy": "17ca45599832d5b28b5d8b5042fc369d5608a31711570e96b528a63ca4c6cd2c",
+    "label.npy": "92f2410cb3b365610bb7f2d32173bc7337e1edd7e7ab5380636e636174a4003d",
+    "logit.npy": "e193cf44381d477a64a612879e5253f32231451b34658c65a0a59cf24437d18b",
+    "probability.npy": "e3ea2b91a8bb7935f209bd6060de3c5ecf8abacb34c0ae8f0c02f8f6e083084d"
+  },
+  "preserved_prefix": {
+    "batches": 1435,
+    "cache": ".inspection/independent_correctness_audit/replay_junyi_bounded",
+    "first_three_batches_exact_logit_replay": true,
+    "independently_rechecked_all_event_ids_and_labels": true,
+    "original_prefix_not_modified": true,
+    "prefix_sha256": {
+      "event_id": "23e1e79f665f6440cef260d644e4f93bc9fe20de7fb6b9a5d74f7a528b3fb2b6",
+      "label": "73ff5aebbf519542ec484e90a61aa01322e317482276f1d8d09e27f700172c04",
+      "logit": "d1174809d3c86d843b169b36258f236c8b79b1b38559665755ebb82df5160dde",
+      "probability": "47d265c47c6fbcbd581032da3e9621840025a69ebc66acd027c6895d69acdca8"
+    },
+    "targets": 1106188
+  },
+  "recalculated_metrics": {
+    "accuracy": 0.7555583328787389,
+    "bce_float64": 0.4975776789342685,
+    "confusion": {
+      "fn": 197678,
+      "fp": 402769,
+      "tn": 384900,
+      "tp": 1471055
+    },
+    "f1": 0.8305046326706952,
+    "historical_batch_weighted_bce": 0.49757767997048347,
+    "mse": 0.16478621003428573,
+    "precision": 0.7850550531960312,
+    "recall": 0.8815400666253979,
+    "roc_auc": 0.7978264739233538,
+    "targets": 2456402,
+    "threshold": 0.5
+  },
+  "runtime_seconds": 3587.512413469027,
+  "session_store_sha256": {
+    "_SUCCESS": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1",
+    "correct.npy": "2366e130fc8d684de129bcddc9ad98115234e89d3eb7d3d94aca0337a5906b96",
+    "metadata.json": "581ee6f42d96681d3421991dd96ba628834175f53f57cc47e2f712b45023d4cd",
+    "question.npy": "2791c059775f4226a631b630d7d81303986fa731549e0c7a055a3156b94d0c33",
+    "session_number.npy": "0e9c15f7d973207e62cbfcd935e2c573c299c08531b774d1632aa7baa879137f",
+    "session_offsets.npy": "4958d26f376fa364eb9bfa864bb9867586dcbb460f46a2615898cecdbadbdb14",
+    "session_split.npy": "4d5ffc176e7a91b7333688d5e522348a2cd25848c944d54c9b03730fcece8e47",
+    "session_student.npy": "87eb4f34652c0cbf7d11719d233ffa8de1c19bc223adb274ec204d0be2a27248",
+    "skill.npy": "8f429f5fc3ff504df149dbd66d6211562b6957f6fd82d68df394e99150708fd6",
+    "student_offsets.npy": "2473f98238fbe2c70f013f41adac68b24c7ad991079099f478f86d5553210427",
+    "timestamp_ms.npy": "45830cf3109f2c129e7dea8fe39911fc93ad98f15b38818d7fcaecbf51e1b5fc"
+  },
+  "software": {
+    "numpy": "1.24.4",
+    "python": "3.10.12",
+    "torch": "2.4.0a0+f70bd71a48.nv24.06"
+  },
+  "started_utc": "2026-10-18T08:58:39.811313+00:00",
+  "status": "FAIL",
+  "stored_metrics": {
+    "accuracy": 0.75555059798844,
+    "f1": 0.83050075255717,
+    "loss": 0.49757788112870566,
+    "mse": 0.16478629880597911,
+    "precision": 0.785045267643441,
+    "recall": 0.8815436621676446,
+    "roc_auc": 0.7978262055191263,
+    "targets": 2456402,
+    "threshold": 0.5
+  },
+  "threads_per_worker": 1,
+  "tolerance_rationale": "Declared before replay: 1e-6 absolute for FP32 CPU vs historical CUDA; exact equality also recorded separately. No statistical tolerance or significance claim.",
+  "trained_checkpoint_causality": {
+    "absolute_tolerance": 1e-05,
+    "maximum_earlier_logit_change": 0.0,
+    "raw_response_flip_checks": 9,
+    "status": "PASS"
+  },
+  "worker_direct_crosscheck": {
+    "artifact": "reports/independent_correctness_audit/junyi_guarded_worker_direct_crosscheck.json",
+    "maximum_absolute_logit_difference": 0.0,
+    "scope": "First three newly evaluated batches after preserved prefix; separate fresh process",
+    "sha256": "fa6b3726f5917ddf76153be8a7051d84c62aa8eb6857991b3a32741324bd431a",
+    "status": "PASS"
+  },
+  "worker_processes": 2
+}

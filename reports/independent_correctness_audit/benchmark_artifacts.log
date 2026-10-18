@@ -1,0 +1,111 @@
+{
+  "statuses": [
+    [
+      "dkt",
+      "assist2017",
+      "PASS"
+    ],
+    [
+      "dkt",
+      "junyi",
+      "PASS"
+    ],
+    [
+      "dkt",
+      "ednet_kt1",
+      "NOT VERIFIED"
+    ],
+    [
+      "dkvmn",
+      "assist2017",
+      "PASS"
+    ],
+    [
+      "dkvmn",
+      "junyi",
+      "PASS"
+    ],
+    [
+      "dkvmn",
+      "ednet_kt1",
+      "PASS"
+    ],
+    [
+      "sakt",
+      "assist2017",
+      "PASS"
+    ],
+    [
+      "sakt",
+      "junyi",
+      "PASS"
+    ],
+    [
+      "sakt",
+      "ednet_kt1",
+      "PASS"
+    ],
+    [
+      "rkt",
+      "assist2017",
+      "PASS"
+    ],
+    [
+      "rkt",
+      "junyi",
+      "PASS"
+    ],
+    [
+      "rkt",
+      "ednet_kt1",
+      "PASS"
+    ],
+    [
+      "hitskt",
+      "assist2017",
+      "PASS"
+    ],
+    [
+      "hitskt",
+      "junyi",
+      "PASS"
+    ],
+    [
+      "hitskt",
+      "ednet_kt1",
+      "PASS"
+    ]
+  ],
+  "gains": {
+    "assist2017": {
+      "hitskt_auc": 0.7096240159197755,
+      "best_available_baseline": "rkt",
+      "best_available_baseline_auc": 0.7486264898793284,
+      "auc_difference": -0.03900247395955292,
+      "completed_baseline_count": 4,
+      "statistical_significance": "NOT VERIFIED",
+      "primary_seed_count": 1,
+      "primary_seed": 42
+    },
+    "junyi": {
+      "hitskt_auc": 0.7978262055191263,
+      "best_available_baseline": "rkt",
+      "best_available_baseline_auc": 0.7912548486618094,
+      "auc_difference": 0.006571356857316912,
+      "completed_baseline_count": 4,
+      "statistical_significance": "NOT VERIFIED",
+      "primary_seed_count": 1,
+      "primary_seed": 42
+    },
+    "ednet_kt1": {
+      "hitskt_auc": 0.7693648364413692,
+      "best_available_baseline": "sakt",
+      "best_available_baseline_auc": 0.7630078573122142,
+      "auc_difference": 0.006356979129155005,
+      "completed_baseline_count": 3,
+      "statistical_significance": "NOT VERIFIED",
+      "primary_seed_count": 1,
+      "primary_seed": 42
+    }
+  }
+}

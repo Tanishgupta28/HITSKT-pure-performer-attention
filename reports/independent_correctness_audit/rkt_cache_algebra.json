@@ -1,0 +1,203 @@
+{
+  "implementation_sha256": "3207f14a39f03e4231637c01da8c4ac71b11e85b6f551e147e7a6e61263938f0",
+  "records": {
+    "assist2017": {
+      "all_cache_counts_equal_sum_of_five_folds": true,
+      "all_entries_checked": true,
+      "all_train_pairs": 1569938,
+      "cache_files": [
+        {
+          "path": "data/processed/assist2017/full/rkt_phi_full/phi_all_train.npz",
+          "sha256": "a2efda881c5ffcd9c660bd22264aa9000029a4341e98e1740e33c2197a1f60a7"
+        },
+        {
+          "path": "data/processed/assist2017/full/rkt_phi_full/student_folds.csv",
+          "sha256": "9798a287ee2c439e4fa77bc887b61cb08ca3e9967b63644d5cb56c4936b408eb"
+        },
+        {
+          "path": "data/processed/assist2017/full/rkt_phi_full/metadata.json",
+          "sha256": "15e71936a761b6aa846c9030991e4e694889c7f934b4f14a1e0aee74f1b4255b"
+        },
+        {
+          "path": "data/processed/assist2017/full/rkt_phi_full/counts_fold_0.npz",
+          "sha256": "96f94ffe06c0d36c489992139dfaa7ba4384c30c3d192558b6c2bf26580fe871"
+        },
+        {
+          "path": "data/processed/assist2017/full/rkt_phi_full/phi_excluding_fold_0.npz",
+          "sha256": "26bed00e121f1aa6eb7e55463e094ff5c3d4f53689b271b4ee0639982a3e5a6e"
+        },
+        {
+          "path": "data/processed/assist2017/full/rkt_phi_full/counts_fold_1.npz",
+          "sha256": "ef34bad4ddc9a61f59c54f18ab4b1afc1e39355c4e255124b4e092f2bee3c4d3"
+        },
+        {
+          "path": "data/processed/assist2017/full/rkt_phi_full/phi_excluding_fold_1.npz",
+          "sha256": "63cb42a7f57c99d47111215f180c9706f978a6765cd913dd0e6e7225982b619d"
+        },
+        {
+          "path": "data/processed/assist2017/full/rkt_phi_full/counts_fold_2.npz",
+          "sha256": "e551fa2db8242c9b73f13f3ca545ef3e239c754d6b01bb8a9f44888b9e732c59"
+        },
+        {
+          "path": "data/processed/assist2017/full/rkt_phi_full/phi_excluding_fold_2.npz",
+          "sha256": "c66b1e19a90588f920c860668354c95509cb4dd11dbdd3942262e46589ad0d58"
+        },
+        {
+          "path": "data/processed/assist2017/full/rkt_phi_full/counts_fold_3.npz",
+          "sha256": "bef0a44669c8dbbc814b76195974d0d07f09e09851c3a310b9e19e32a863236a"
+        },
+        {
+          "path": "data/processed/assist2017/full/rkt_phi_full/phi_excluding_fold_3.npz",
+          "sha256": "814dc03bf5a16790eb297c189fd666096496184bc972b842cc4d04058b619fc3"
+        },
+        {
+          "path": "data/processed/assist2017/full/rkt_phi_full/counts_fold_4.npz",
+          "sha256": "44317ac46dfeadea5ffdcc08623359c90a2503ac0817e6ba04998969a1257950"
+        },
+        {
+          "path": "data/processed/assist2017/full/rkt_phi_full/phi_excluding_fold_4.npz",
+          "sha256": "296ae21704fd07bc80e181ddc0113c1dd23522ef47322b5d43adf4ff013e6689"
+        }
+      ],
+      "every_excluded_cache_equals_all_minus_own_fold": true,
+      "execution": "Compressed NPY members streamed to local scratch and memory-mapped; no full count-matrix RAM copies",
+      "raw_training_label_pair_counts_rebuilt": "NOT VERIFIED: validates persisted cache algebra, not original pair-count lineage",
+      "source_selection_review": "ktbench/rkt/phi.py:147 restricts construction to train sessions; own-fold complement for training, all-train cache for held-out rows",
+      "status": "PASS",
+      "student_fold_assignment_seed42_exact": true,
+      "working_chunk_rows": 250000
+    },
+    "ednet_kt1": {
+      "all_cache_counts_equal_sum_of_five_folds": true,
+      "all_entries_checked": true,
+      "all_train_pairs": 119228083,
+      "cache_files": [
+        {
+          "path": "data/processed/ednet_kt1/full/rkt_phi_full/phi_all_train.npz",
+          "sha256": "85804d529d707de282b0d667b74069bc88fd8f7d898a461dd0951539b3ffdf61"
+        },
+        {
+          "path": "data/processed/ednet_kt1/full/rkt_phi_full/student_folds.csv",
+          "sha256": "0acceb34a2a00692e1e92e1c4355f92fd752b8bb696e47c2503bc6016bb0223a"
+        },
+        {
+          "path": "data/processed/ednet_kt1/full/rkt_phi_full/metadata.json",
+          "sha256": "e7acbf266310cedb1aa3f556c09441da1f8aa3e3e0d742cb8ee55000d2e2df10"
+        },
+        {
+          "path": "data/processed/ednet_kt1/full/rkt_phi_full/counts_fold_0.npz",
+          "sha256": "8bcefbbfed4286b256d1c584327a0c05f574a7fcaa4ccea6e4eef2364cf51f51"
+        },
+        {
+          "path": "data/processed/ednet_kt1/full/rkt_phi_full/phi_excluding_fold_0.npz",
+          "sha256": "73b34b6c88849800601da50e8a95269cfe896c40abe7eebdb85de454266b2c23"
+        },
+        {
+          "path": "data/processed/ednet_kt1/full/rkt_phi_full/counts_fold_1.npz",
+          "sha256": "5e493e4d9d2c4165e416e9ae01f08df83b599c0cdf296c0bd6d7f069a50c91d3"
+        },
+        {
+          "path": "data/processed/ednet_kt1/full/rkt_phi_full/phi_excluding_fold_1.npz",
+          "sha256": "bc5c0c5c17ec1c7b35e89aa537c5a4d84d34f043cd62088fa28b0fcdcbbd44bb"
+        },
+        {
+          "path": "data/processed/ednet_kt1/full/rkt_phi_full/counts_fold_2.npz",
+          "sha256": "5715995bcb32a654bbe77342d5b0e65ea8388b148c6d9002cd873bb761413c27"
+        },
+        {
+          "path": "data/processed/ednet_kt1/full/rkt_phi_full/phi_excluding_fold_2.npz",
+          "sha256": "bb8348afe4ddab564cef05767ae76a88bec88b2b6803b0e479b2bda1871ef275"
+        },
+        {
+          "path": "data/processed/ednet_kt1/full/rkt_phi_full/counts_fold_3.npz",
+          "sha256": "1dd9a38652a6c6a4a8396f74f3888461a2a9eb18cb4bcd504d9940d17f67fa1f"
+        },
+        {
+          "path": "data/processed/ednet_kt1/full/rkt_phi_full/phi_excluding_fold_3.npz",
+          "sha256": "79db28f005e21aeebfa8041e2651a0a205995dbadb6b956059aad6f0dab2563d"
+        },
+        {
+          "path": "data/processed/ednet_kt1/full/rkt_phi_full/counts_fold_4.npz",
+          "sha256": "023ff9dbb851f02450cf81cf3837151c4a9458fa1b1f686cc957eb1bdcd957c5"
+        },
+        {
+          "path": "data/processed/ednet_kt1/full/rkt_phi_full/phi_excluding_fold_4.npz",
+          "sha256": "b73945ca4031974ecbd418815451226d80bfd03b988507d7d7728ea103ede4c2"
+        }
+      ],
+      "every_excluded_cache_equals_all_minus_own_fold": true,
+      "execution": "Compressed NPY members streamed to local scratch and memory-mapped; no full count-matrix RAM copies",
+      "raw_training_label_pair_counts_rebuilt": "NOT VERIFIED: validates persisted cache algebra, not original pair-count lineage",
+      "source_selection_review": "ktbench/rkt/phi.py:147 restricts construction to train sessions; own-fold complement for training, all-train cache for held-out rows",
+      "status": "PASS",
+      "student_fold_assignment_seed42_exact": true,
+      "working_chunk_rows": 250000
+    },
+    "junyi": {
+      "all_cache_counts_equal_sum_of_five_folds": true,
+      "all_entries_checked": true,
+      "all_train_pairs": 78744364,
+      "cache_files": [
+        {
+          "path": "data/processed/junyi/full/rkt_phi_full/phi_all_train.npz",
+          "sha256": "0d90f80c39c70d4fb9419417f8927492efe399ecc2bf176ba2aab199cd5e881d"
+        },
+        {
+          "path": "data/processed/junyi/full/rkt_phi_full/student_folds.csv",
+          "sha256": "9f5471dd0f9dfdc6da50a3137a360a9d3e55092294e29e94b7d78f59431ac38d"
+        },
+        {
+          "path": "data/processed/junyi/full/rkt_phi_full/metadata.json",
+          "sha256": "4f5097d98ddb9e06cf5289f2bec68ab068d1840a6268f43339d4adbb2ae8f302"
+        },
+        {
+          "path": "data/processed/junyi/full/rkt_phi_full/counts_fold_0.npz",
+          "sha256": "44a4aa3bbfedb8d40d63b6392203cb169faed800cdc53d7a469287a6afa981c0"
+        },
+        {
+          "path": "data/processed/junyi/full/rkt_phi_full/phi_excluding_fold_0.npz",
+          "sha256": "978f3c893abee74c8a08656e3c1b7da70b2bb9b4fc78fbc9be2113c2c10428c5"
+        },
+        {
+          "path": "data/processed/junyi/full/rkt_phi_full/counts_fold_1.npz",
+          "sha256": "57bc077a513ff4ac5f75784e5cf01f91f497fda25072b38527b69e04ce8adc46"
+        },
+        {
+          "path": "data/processed/junyi/full/rkt_phi_full/phi_excluding_fold_1.npz",
+          "sha256": "f6c322b65bacab51ba822f9bed168df34b1430e774b61ff28e432e88f84d3e82"
+        },
+        {
+          "path": "data/processed/junyi/full/rkt_phi_full/counts_fold_2.npz",
+          "sha256": "5e8f5925ae063940cc528635e3594e76bf32630cf7736eaf9a145681e6c6f623"
+        },
+        {
+          "path": "data/processed/junyi/full/rkt_phi_full/phi_excluding_fold_2.npz",
+          "sha256": "27974a39ff829728666cb20bbe180cbccb901f0c617ef632907be0dc8079b853"
+        },
+        {
+          "path": "data/processed/junyi/full/rkt_phi_full/counts_fold_3.npz",
+          "sha256": "73301182174c550fc8e1e65079420c8876b3dd535ed52e6e371d27090aff5f57"
+        },
+        {
+          "path": "data/processed/junyi/full/rkt_phi_full/phi_excluding_fold_3.npz",
+          "sha256": "ae89069c0863c81b435af5de8d7a79be5a3bbec85981f3e9586e421d9a4199fc"
+        },
+        {
+          "path": "data/processed/junyi/full/rkt_phi_full/counts_fold_4.npz",
+          "sha256": "b7200e4a81f5a0b3d464a5125ce034b6ba01123a5a156d5cb9cb7a28d9fb1ca0"
+        },
+        {
+          "path": "data/processed/junyi/full/rkt_phi_full/phi_excluding_fold_4.npz",
+          "sha256": "6f04f2822e9004e1f81a3ffb545625760e7806bf14de57c39ac820f19300543f"
+        }
+      ],
+      "every_excluded_cache_equals_all_minus_own_fold": true,
+      "execution": "Compressed NPY members streamed to local scratch and memory-mapped; no full count-matrix RAM copies",
+      "raw_training_label_pair_counts_rebuilt": "NOT VERIFIED: validates persisted cache algebra, not original pair-count lineage",
+      "source_selection_review": "ktbench/rkt/phi.py:147 restricts construction to train sessions; own-fold complement for training, all-train cache for held-out rows",
+      "status": "PASS",
+      "student_fold_assignment_seed42_exact": true,
+      "working_chunk_rows": 250000
+    }
+  }
+}

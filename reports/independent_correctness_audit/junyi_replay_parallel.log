@@ -1,0 +1,40 @@
+{"dataset": "junyi", "targets": 41604, "total": 2456402, "batches": 89, "seconds": 25.839372702059336, "processes": 8}
+{"dataset": "junyi", "targets": 85248, "total": 2456402, "batches": 160, "seconds": 51.155346775078215, "processes": 8}
+{"dataset": "junyi", "targets": 129486, "total": 2456402, "batches": 223, "seconds": 76.77362770505715, "processes": 8}
+{"dataset": "junyi", "targets": 170583, "total": 2456402, "batches": 279, "seconds": 102.47943502804264, "processes": 8}
+{"dataset": "junyi", "targets": 210224, "total": 2456402, "batches": 328, "seconds": 127.53027771809138, "processes": 8}
+{"dataset": "junyi", "targets": 247072, "total": 2456402, "batches": 372, "seconds": 153.0541097089881, "processes": 8}
+{"dataset": "junyi", "targets": 282376, "total": 2456402, "batches": 415, "seconds": 178.24447840999346, "processes": 8}
+{"dataset": "junyi", "targets": 319583, "total": 2456402, "batches": 459, "seconds": 203.92891572404187, "processes": 8}
+{"dataset": "junyi", "targets": 358544, "total": 2456402, "batches": 504, "seconds": 229.65611855708994, "processes": 8}
+{"dataset": "junyi", "targets": 396395, "total": 2456402, "batches": 547, "seconds": 255.97430877306033, "processes": 8}
+{"dataset": "junyi", "targets": 433108, "total": 2456402, "batches": 590, "seconds": 282.0357115010265, "processes": 8}
+{"dataset": "junyi", "targets": 469149, "total": 2456402, "batches": 633, "seconds": 307.1444111739984, "processes": 8}
+{"dataset": "junyi", "targets": 504818, "total": 2456402, "batches": 677, "seconds": 332.6313745670486, "processes": 8}
+{"dataset": "junyi", "targets": 527156, "total": 2456402, "batches": 704, "seconds": 358.3770127639873, "processes": 8}
+{"dataset": "junyi", "targets": 549483, "total": 2456402, "batches": 731, "seconds": 383.45277956908103, "processes": 8}
+{"dataset": "junyi", "targets": 572202, "total": 2456402, "batches": 758, "seconds": 409.76866612106096, "processes": 8}
+{"dataset": "junyi", "targets": 593116, "total": 2456402, "batches": 783, "seconds": 434.9889304530807, "processes": 8}
+{"dataset": "junyi", "targets": 618508, "total": 2456402, "batches": 813, "seconds": 461.21279059303924, "processes": 8}
+{"dataset": "junyi", "targets": 641499, "total": 2456402, "batches": 841, "seconds": 487.5607911529951, "processes": 8}
+{"dataset": "junyi", "targets": 666174, "total": 2456402, "batches": 871, "seconds": 513.7527915750397, "processes": 8}
+{"dataset": "junyi", "targets": 689241, "total": 2456402, "batches": 901, "seconds": 540.4767926940694, "processes": 8}
+{"dataset": "junyi", "targets": 711776, "total": 2456402, "batches": 931, "seconds": 565.5887877030764, "processes": 8}
+{"dataset": "junyi", "targets": 736152, "total": 2456402, "batches": 961, "seconds": 590.6647875050548, "processes": 8}
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/multiprocessing/pool.py", line 856, in next
+    item = self._items.popleft()
+IndexError: pop from an empty deque
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/capstone/scripts/audit_hitskt_replay_parallel.py", line 133, in <module>
+    if __name__=='__main__': main()
+  File "/workspace/capstone/scripts/audit_hitskt_replay_parallel.py", line 93, in main
+    for indices,logits,probability,labels,ids,loss in pool.imap(evaluate_batch,sampler,chunksize=1):
+  File "/usr/lib/python3.10/multiprocessing/pool.py", line 861, in next
+    self._cond.wait(timeout)
+  File "/usr/lib/python3.10/threading.py", line 320, in wait
+    waiter.acquire()
+KeyboardInterrupt

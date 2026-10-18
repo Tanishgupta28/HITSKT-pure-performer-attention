@@ -1,0 +1,18 @@
+{
+  "container_memory_limit_bytes": 96636764160,
+  "audit_jobs_killed": [
+    "audit_hitskt_cpu_crosscheck.py",
+    "audit_rkt_cache_algebra.py"
+  ],
+  "audit_job_exit_codes": [
+    137,
+    137
+  ],
+  "protected_training_pids_observed_alive_after_incident": [
+    182135,
+    1992414,
+    2028941
+  ],
+  "cause": "Audit memory planning used host RAM instead of the container memory cap. Two audit-only jobs were OOM victims.",
+  "action": "Stop owned replay pools, reduce pool sizes, bound cache algebra, assign audit-only OOM preference. No LightSAKT2 process edited/signalled/reconfigured."
+}
