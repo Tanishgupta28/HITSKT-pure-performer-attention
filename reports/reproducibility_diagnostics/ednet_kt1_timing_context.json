@@ -1,0 +1,71 @@
+{
+  "actual_hitskt_15_session_context": {
+    "test": {
+      "cross_session_proxy_overlap_targets": 98,
+      "equal_start_edges": 746698,
+      "equal_start_targets": 431050,
+      "proxy_overlap_edges": 6842255,
+      "proxy_overlap_targets": 4089385,
+      "same_solving_episode_edges": 6150341,
+      "same_solving_episode_targets": 3364799,
+      "targets": 13429870,
+      "with_prior_visible_response": 13429870
+    },
+    "train": {
+      "cross_session_proxy_overlap_targets": 40,
+      "equal_start_edges": 833066,
+      "equal_start_targets": 510925,
+      "proxy_overlap_edges": 23526609,
+      "proxy_overlap_targets": 14250811,
+      "same_solving_episode_edges": 21024714,
+      "same_solving_episode_targets": 11465681,
+      "targets": 49458444,
+      "with_prior_visible_response": 49458444
+    },
+    "validation": {
+      "cross_session_proxy_overlap_targets": 9,
+      "equal_start_edges": 484345,
+      "equal_start_targets": 287104,
+      "proxy_overlap_edges": 7312766,
+      "proxy_overlap_targets": 4396233,
+      "same_solving_episode_edges": 6569096,
+      "same_solving_episode_targets": 3598247,
+      "targets": 14520975,
+      "with_prior_visible_response": 14520975
+    }
+  },
+  "all_retained_adjacent": {
+    "test": {
+      "equal_start": 431050,
+      "previous_end_after_start": 4003464,
+      "same_solving_episode_previous": 3364799,
+      "targets": 13429870
+    },
+    "train": {
+      "equal_start": 537000,
+      "previous_end_after_start": 15345177,
+      "same_solving_episode_previous": 12366626,
+      "targets": 53990022
+    },
+    "validation": {
+      "equal_start": 287104,
+      "previous_end_after_start": 4301739,
+      "same_solving_episode_previous": 3598247,
+      "targets": 14520975
+    }
+  },
+  "caveat": "Counts are inequalities against recorded endTime (ASSIST/Junyi) or timestamp+elapsed_time proxy (EdNet); not counts of proven unavailable correctness feedback",
+  "dataset": "ednet_kt1",
+  "implementation_sha256": "38fa0fa1524e68e866c7ee9e95fd21668d167f3567182e521ba28ad90cfb96e7",
+  "local_array_sha256": {
+    "recorded_or_proxy_end.npy": "666969df3338662bc7804722fc04cb3ef10ce99d7135b3616adb2896baac59f7",
+    "solving_episode.npy": "fbfb65f35bc003196bd35c4b093c9974c751bd28cbafdfacea1863f6d4858866"
+  },
+  "retained_events": 81940867,
+  "runtime_seconds": 31.22999319306109,
+  "same_solving_episode_caveat": "Logged bundle episode membership, not exact submission/feedback timing; -1 disables this channel outside EdNet",
+  "scope": "Every HiTSKT supervised target and every earlier response exposed by its actual 15-session context, including within-current-session prefix; no current or future indexed labels",
+  "source_diagnostics": {},
+  "status": "COMPLETE",
+  "utc": "2026-10-18T17:03:18.757965+00:00"
+}

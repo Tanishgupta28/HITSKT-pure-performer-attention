@@ -1,0 +1,67 @@
+{
+  "snapshot_identity": [
+    {
+      "interpretation": "Incidental archived SAKT states, not evidence of DKT finiteness at epochs13/15",
+      "model": "SAKT",
+      "path": ".inspection/transport_switch_20260922"
+    },
+    {
+      "interpretation": "Archived epoch1 states, not a complete canonical step history",
+      "model": "DKT",
+      "path": ".inspection/dkt_ednet_abandoned_before_restart_20261008"
+    }
+  ],
+  "sources": [
+    {
+      "content_sha256": "252570ea63d63f51d54be90969a019088ea4c3c657423c94baf22e1076f8d5e4",
+      "dataset": "assist2017",
+      "entry": "https://sites.google.com/view/assistmentsdatamining/dataset",
+      "http_status": 200,
+      "limitation": "Accepted 14-column author transform lacks action-level/hint/scaffold and feedback fields; exact publisher-row transformation remains unverified",
+      "retrieval": "Public CSV export linked by official 2017 competition site; browser tool failed but direct read-only HTTP succeeded",
+      "supported_semantics": "startTime and endTime delimit problem activity in Unix seconds; timeTaken concerns the current step; no correctness-feedback release timestamp is specified",
+      "url": "https://docs.google.com/spreadsheets/d/1QVUStXiRerWbH1X0P11rJ5IsuU2Xutu60D1SjpmTMlk/export?format=csv"
+    },
+    {
+      "dataset": "assist2017_general",
+      "limitation": "General schema does not prove the mapping or feedback timing of every transformed 2017 row",
+      "supported_semantics": "General glossary distinguishes first answer/help and tutoring completion, and describes scaffolding",
+      "url": "https://sites.google.com/site/assistmentsdata/an-explanation-on-how-to-interpret-our-data-sets"
+    },
+    {
+      "dataset": "ednet_kt1",
+      "limitation": "KT1 has no event-level final-submit or feedback timestamp. KT2 covers fewer learners; no action-level join was performed.",
+      "supported_semantics": "KT1 gives presentation, submitted answer and elapsed duration. KT2 distinguishes bundle entry, revisable choices and final submission. KT3 has subsequent explanations.",
+      "url": "https://github.com/riiid/ednet"
+    },
+    {
+      "dataset": "junyi",
+      "files_url": "https://pslcdatashop.web.cmu.edu/Files?datasetId=1198",
+      "limitation": "Author CSV startTime/endTime to publisher event/attempt/feedback mapping NOT VERIFIED; do not adopt secondary mirrors as authoritative proof",
+      "retrieval": "Public metadata via HTTP 200; original attached-file subtabs require authenticated authorized access; no attempt to bypass authentication",
+      "supported_semantics": "Primary repository identifies the 2015 Junyi dataset and papers.",
+      "url": "https://pslcdatashop.web.cmu.edu/DatasetInfo?datasetId=1198"
+    },
+    {
+      "supported_semantics": "CPU/GPU and different reduction/batching paths need not be bit-identical",
+      "topic": "numerical_accuracy",
+      "url": "https://raw.githubusercontent.com/pytorch/pytorch/v2.4.0/docs/source/notes/numerical_accuracy.rst"
+    },
+    {
+      "supported_semantics": "TF32 changes matrix-multiply precision; flags must be recorded rather than inferred from upstream defaults",
+      "topic": "cuda_tf32",
+      "url": "https://docs.pytorch.org/docs/2.4/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices"
+    },
+    {
+      "supported_semantics": "Performer FAVOR+ approximates softmax attention using positive orthogonal random features",
+      "topic": "favor_plus",
+      "url": "https://arxiv.org/abs/2009.14794"
+    },
+    {
+      "supported_semantics": "A deterministic feature map yields associative linear attention, distinct from randomized softmax-kernel approximation",
+      "topic": "elu_linear_attention",
+      "url": "https://proceedings.mlr.press/v119/katharopoulos20a.html"
+    }
+  ],
+  "utc": "2026-10-18T17:08:20.815381+00:00"
+}

@@ -1,0 +1,51 @@
+{
+  "implementation_sha256": "8fe4ec14750c1b2ef27c086ca17d6bb7deb04a143c085776730c2e248eced36d",
+  "records": {
+    "assist2017": {
+      "all_target_ids_labels_and_batch_order_match": true,
+      "batch_membership_count_sha256": "ee7f853e7936ed4aec49bd5aa7ad00ac991fb474bc084f0fa71d9b36d34ee0d1",
+      "batches": 98,
+      "bucket_size": 512,
+      "cached_event_id_sha256": "f9c6fa714aec48d4ce09ee53af4050d8931f64998054023e03bde8806e4ff536",
+      "epoch": 0,
+      "limitation": "Regenerated unchanged historical sampler and compared with independently captured CPU vectors; original CUDA per-target/batch logs were not persisted",
+      "maximum_batch_size": 64,
+      "seed": 42,
+      "shuffle": false,
+      "status": "PASS",
+      "targets": 112252,
+      "token_budget": 32768
+    },
+    "ednet_kt1": {
+      "all_target_ids_labels_and_batch_order_match": true,
+      "batch_membership_count_sha256": "f181e182476ed6c29e1ce32041de2eadcac30a03ec02b1ce4b691f433bd6a668",
+      "batches": 24248,
+      "bucket_size": 512,
+      "cached_event_id_sha256": "3a1cb822540bb6dfaf8a5c4c6da497c4215392393c56954ff73fecb0c4140276",
+      "epoch": 0,
+      "limitation": "Regenerated unchanged historical sampler and compared with independently captured CPU vectors; original CUDA per-target/batch logs were not persisted",
+      "maximum_batch_size": 64,
+      "seed": 42,
+      "shuffle": false,
+      "status": "PASS",
+      "targets": 13429870,
+      "token_budget": 32768
+    },
+    "junyi": {
+      "all_target_ids_labels_and_batch_order_match": true,
+      "batch_membership_count_sha256": "492103034dd5904c2a6f27316ec695430dc1368aa2f88e6d66da498b01d18fb6",
+      "batches": 3658,
+      "bucket_size": 512,
+      "cached_event_id_sha256": "17ca45599832d5b28b5d8b5042fc369d5608a31711570e96b528a63ca4c6cd2c",
+      "epoch": 0,
+      "limitation": "Regenerated unchanged historical sampler and compared with independently captured CPU vectors; original CUDA per-target/batch logs were not persisted",
+      "maximum_batch_size": 64,
+      "seed": 42,
+      "shuffle": false,
+      "status": "PASS",
+      "targets": 2456402,
+      "token_budget": 32768
+    }
+  },
+  "utc": "2026-10-18T17:06:43.045994+00:00"
+}

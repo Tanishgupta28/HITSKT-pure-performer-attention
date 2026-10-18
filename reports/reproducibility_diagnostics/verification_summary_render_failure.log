@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/workspace/capstone/scripts/verify_hitskt_diagnostic_evidence.py", line 65, in <module>
+    if __name__=='__main__':main()
+  File "/workspace/capstone/scripts/verify_hitskt_diagnostic_evidence.py", line 44, in main
+    generator.save=check;generator.write=lambda *args,**kwargs:None;generator.main()
+  File "/workspace/capstone/scripts/generate_hitskt_diagnostic_reports.py", line 643, in main
+    save('HITSKT_RESEARCH_DECISION_REPORT.md',decision)
+  File "/workspace/capstone/scripts/verify_hitskt_diagnostic_evidence.py", line 42, in check
+    assert (Path('reports')/name).read_text()==body.rstrip()+'\n',name
+AssertionError: HITSKT_RESEARCH_DECISION_REPORT.md

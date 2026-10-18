@@ -30,6 +30,15 @@ remain intact; platform changes do not alter research source or live runs.
 
 ## Current short status
 
+The follow-up reproducibility/timing diagnosis is verified; see
+[REPRODUCIBILITY_STATE.md](REPRODUCIBILITY_STATE.md). All three historical CPU
+metric gates still fail; full ASSIST FP64 rules out the tested CPU-precision
+fixes. CUDA and actual feedback timing remain unverified. Retain V1 artifacts
+provisionally; no established retraining requirement yet.59 relevant tests and
+375-original/106-prior-audit preservation pass. Complete scoped publication,
+then wait; no training or LightSAKT2 modifications. Older audit/reset notes below
+remain historical evidence.
+
 The independent correctness audit is complete; see [AUDIT_STATE.md](AUDIT_STATE.md)
 and `reports/HITSKT_INDEPENDENT_CORRECTNESS_AUDIT.md`. 133 tests and
 full data reconstruction pass; all three CPU metric reproduction gates fail.

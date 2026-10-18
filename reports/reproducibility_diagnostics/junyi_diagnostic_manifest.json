@@ -1,0 +1,126 @@
+{
+  "base_audit_commit": "5625478ab0be344b145d2813939a71a0f6e49924",
+  "classification_bounds": {
+    "exact_total_disagreements": "NOT VERIFIED: historical per-target scores/classifications absent",
+    "maximum": 1165125,
+    "minimum": 31,
+    "net_correct_change": 19,
+    "parity": 1,
+    "scope": "Sharp bounds using confusion counts only; net correct change is not total changed classifications"
+  },
+  "comparison": {
+    "accuracy": {
+      "absolute_difference": 7.734890298816133e-06,
+      "exact_equal": false,
+      "recalculated": 0.7555583328787389,
+      "stored": 0.75555059798844,
+      "within_tolerance": false
+    },
+    "bce_float64": {
+      "absolute_difference": 2.021944371377593e-07,
+      "exact_equal": false,
+      "recalculated": 0.4975776789342685,
+      "stored": 0.49757788112870566,
+      "within_tolerance": true
+    },
+    "f1": {
+      "absolute_difference": 3.88011352514539e-06,
+      "exact_equal": false,
+      "recalculated": 0.8305046326706952,
+      "stored": 0.83050075255717,
+      "within_tolerance": false
+    },
+    "historical_batch_weighted_bce": {
+      "absolute_difference": 2.0115822219057833e-07,
+      "exact_equal": false,
+      "recalculated": 0.49757767997048347,
+      "stored": 0.49757788112870566,
+      "within_tolerance": true
+    },
+    "mse": {
+      "absolute_difference": 8.877169338505908e-08,
+      "exact_equal": false,
+      "recalculated": 0.16478621003428573,
+      "stored": 0.16478629880597911,
+      "within_tolerance": true
+    },
+    "precision": {
+      "absolute_difference": 9.785552590235724e-06,
+      "exact_equal": false,
+      "recalculated": 0.7850550531960312,
+      "stored": 0.785045267643441,
+      "within_tolerance": false
+    },
+    "recall": {
+      "absolute_difference": 3.595542246714878e-06,
+      "exact_equal": false,
+      "recalculated": 0.8815400666253979,
+      "stored": 0.8815436621676446,
+      "within_tolerance": false
+    },
+    "roc_auc": {
+      "absolute_difference": 2.6840422751028825e-07,
+      "exact_equal": false,
+      "recalculated": 0.7978264739233538,
+      "stored": 0.7978262055191263,
+      "within_tolerance": true
+    }
+  },
+  "cpu_metrics": {
+    "accuracy": 0.7555583328787389,
+    "bce_float64": 0.4975776789342685,
+    "confusion": {
+      "fn": 197678,
+      "fp": 402769,
+      "tn": 384900,
+      "tp": 1471055
+    },
+    "f1": 0.8305046326706952,
+    "historical_batch_weighted_bce": 0.49757767997048347,
+    "mse": 0.16478621003428573,
+    "precision": 0.7850550531960312,
+    "recall": 0.8815400666253979,
+    "roc_auc": 0.7978264739233538,
+    "targets": 2456402,
+    "threshold": 0.5
+  },
+  "cpu_precision_diagnostics": {
+    "changed_threshold_classifications": 0,
+    "maximum_absolute_logit_difference": 1.1892782429967497e-06,
+    "maximum_absolute_probability_difference": 1.866159566876746e-07,
+    "mean_absolute_logit_difference": 1.982701476933933e-07,
+    "mean_absolute_probability_difference": 3.6270016897810195e-08,
+    "negative_to_positive": 0,
+    "positive_to_negative": 0,
+    "scope": "Only selected sampled batches"
+  },
+  "cpu_verification": "FAIL: frozen absolute1e-6 metric gate",
+  "cuda_verification": "NOT VERIFIED: occupied MIG; no CUDA allocated",
+  "dataset": "junyi",
+  "historical_cuda_changed_classifications": "NOT VERIFIED: aggregate bounds only",
+  "historical_cuda_pointwise_max_errors": "NOT VERIFIED: historical vectors absent",
+  "implementation_sha256": "8325f4c9c171095126ed493b9ebfb99126efbc34858826db332293e27fad7237",
+  "input_sha256": {
+    "reports/reproducibility_diagnostics/artifact_and_dkt_forensics.json": "91a1d3d6948cd768f6a6f2c008e97016ef286936b343e294fe20781309b1168e",
+    "reports/reproducibility_diagnostics/cached_metrics_diagnostics.json": "7ec6b4c0cd8319c309e37fd975d9cee6c6e744c6143c916533f5038351d27c8b",
+    "reports/reproducibility_diagnostics/evaluation_order.json": "0960585acb628a51c179fe74bd3f89489e3cecbffd930f9e207870f60bfbfcfe",
+    "reports/reproducibility_diagnostics/junyi_fp64_sample.json": "8daac75e5adf34569e015f427cd08ad133d7d557e6e1e6428358cbe1831af45a",
+    "reports/reproducibility_diagnostics/junyi_timing_context.json": "73124ca71cfcf760e766f1800200847b65372d9e9334a8354f1ed283799a9df6"
+  },
+  "precision_scope": "sample",
+  "real_time_claim": "Unsupported without a separately verified availability-aware protocol",
+  "recommendation": "2. Results require additional verification but not yet retraining",
+  "response_availability": "NOT VERIFIED",
+  "stored_metrics": {
+    "accuracy": 0.75555059798844,
+    "f1": 0.83050075255717,
+    "loss": 0.49757788112870566,
+    "mse": 0.16478629880597911,
+    "precision": 0.785045267643441,
+    "recall": 0.8815436621676446,
+    "roc_auc": 0.7978262055191263,
+    "targets": 2456402,
+    "threshold": 0.5
+  },
+  "utc": "2026-10-18T17:13:41.329171+00:00"
+}

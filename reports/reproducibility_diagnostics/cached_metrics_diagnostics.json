@@ -1,0 +1,409 @@
+{
+  "implementation_sha256": "95301a39be5eb3803e5df9a18c01d71cbb946518df3a343981da2de54b6f7ab4",
+  "records": {
+    "assist2017": {
+      "all_target_probability_rounding": {
+        "changed_threshold_classifications": 0,
+        "distinction": "Same cached FP32 logits; changes sigmoid/metric precision, not FP64 model inference or historical CUDA replay",
+        "logit_sign_vs_cached_probability_changes": 0,
+        "logits_equal_zero": 0,
+        "maximum_absolute_probability_difference": 8.510043714160531e-08,
+        "minimum_absolute_logit": 2.355128526687622e-05,
+        "minimum_probability_margin": 5.900859832763672e-06,
+        "p32_equal_half": 0,
+        "probability_margin_counts": {
+          "0.0001": 36,
+          "0.001": 331,
+          "0.01": 3276,
+          "1e-05": 3,
+          "1e-06": 0,
+          "1e-07": 0
+        }
+      },
+      "bce_decomposition": {
+        "cached_cpu_float64_logit_bce": 0.6087236095474302,
+        "cached_cpu_historical_batch_weighted_fp32": 0.6087236110378144,
+        "cached_cpu_single_global_fp32_bce": 0.6087236404418945,
+        "conclusion": "Changing metric accumulation precision alone does not remove the historical/CPU discrepancy",
+        "cpu_batch32_minus_float64": 1.4903841494273706e-09,
+        "historical_cuda": 0.6087257417328864,
+        "original_cuda_minus_cpu_batch32": 2.1306950720445528e-06,
+        "original_cuda_minus_cpu_float64": 2.13218545619398e-06
+      },
+      "checkpoint_sha256": "085c8d9ae32f4e60892dfb3e4eed93d90a584696d0914456c135dcab7b890164",
+      "cpu_confusion": {
+        "fn": 19856,
+        "fp": 16696,
+        "tn": 52014,
+        "tp": 23686
+      },
+      "dataset": "assist2017",
+      "historical_confusion_inferred": {
+        "fn": 19853,
+        "fp": 16694,
+        "tn": 52016,
+        "tp": 23689
+      },
+      "maximum_original_cuda_logit_difference": "NOT VERIFIED: no historical per-target logits",
+      "maximum_original_cuda_probability_difference": "NOT VERIFIED: no historical per-target probabilities",
+      "metrics_float64_sigmoid_of_cached_float32_logits": {
+        "accuracy": 0.6743755122403164,
+        "bce_float64": 0.6087236095474302,
+        "confusion": {
+          "fn": 19856,
+          "fp": 16696,
+          "tn": 52014,
+          "tp": 23686
+        },
+        "f1": 0.5644630856489204,
+        "mse": 0.20984431785643345,
+        "precision": 0.5865484621861226,
+        "recall": 0.5439805245510082,
+        "roc_auc": 0.7096236380499226,
+        "targets": 112252,
+        "threshold": 0.5
+      },
+      "original_cuda_vs_cpu_classification_bounds": {
+        "exact_total_disagreements": "NOT VERIFIED: historical per-target scores/classifications absent",
+        "maximum": 73099,
+        "minimum": 5,
+        "net_correct_change": -5,
+        "parity": 1,
+        "scope": "Sharp bounds using confusion counts only; net correct change is not total changed classifications"
+      },
+      "selected_epoch": 40,
+      "source_cpu_manifest_sha256": "a83bfbe8939af0aa0371c779d73c143c8dc502d2c60383bdfc2418d572b492f8",
+      "status": "COMPLETE",
+      "stored_vs_cpu_comparison": {
+        "accuracy": {
+          "absolute_difference": 4.4542636211342135e-05,
+          "exact_equal": false,
+          "recalculated": 0.6743755122403164,
+          "stored": 0.6744200548765278,
+          "within_tolerance": false
+        },
+        "bce_float64": {
+          "absolute_difference": 2.13218545619398e-06,
+          "exact_equal": false,
+          "recalculated": 0.6087236095474302,
+          "stored": 0.6087257417328864,
+          "within_tolerance": false
+        },
+        "f1": {
+          "absolute_difference": 6.476660011145441e-05,
+          "exact_equal": false,
+          "recalculated": 0.5644630856489204,
+          "stored": 0.5645278522490319,
+          "within_tolerance": false
+        },
+        "historical_batch_weighted_bce": {
+          "absolute_difference": 2.1306950720445528e-06,
+          "exact_equal": false,
+          "recalculated": 0.6087236110378144,
+          "stored": 0.6087257417328864,
+          "within_tolerance": false
+        },
+        "mse": {
+          "absolute_difference": 8.839075735511681e-07,
+          "exact_equal": false,
+          "recalculated": 0.20984431782624707,
+          "stored": 0.20984520173382062,
+          "within_tolerance": true
+        },
+        "precision": {
+          "absolute_difference": 5.9764047688704025e-05,
+          "exact_equal": false,
+          "recalculated": 0.5865484621861226,
+          "stored": 0.5866082262338113,
+          "within_tolerance": false
+        },
+        "recall": {
+          "absolute_difference": 6.889899407469535e-05,
+          "exact_equal": false,
+          "recalculated": 0.5439805245510082,
+          "stored": 0.5440494235450829,
+          "within_tolerance": false
+        },
+        "roc_auc": {
+          "absolute_difference": 3.787054785320265e-07,
+          "exact_equal": false,
+          "recalculated": 0.709623637214297,
+          "stored": 0.7096240159197755,
+          "within_tolerance": true
+        }
+      },
+      "targets": 112252,
+      "unchanged_absolute_metric_tolerance": 1e-06
+    },
+    "ednet_kt1": {
+      "all_target_probability_rounding": {
+        "changed_threshold_classifications": 4,
+        "distinction": "Same cached FP32 logits; changes sigmoid/metric precision, not FP64 model inference or historical CUDA replay",
+        "logit_sign_vs_cached_probability_changes": 4,
+        "logits_equal_zero": 0,
+        "maximum_absolute_probability_difference": 8.867596146266976e-08,
+        "minimum_absolute_logit": 5.960464477539063e-08,
+        "minimum_probability_margin": 0.0,
+        "p32_equal_half": 4,
+        "probability_margin_counts": {
+          "0.0001": 2689,
+          "0.001": 27528,
+          "0.01": 274724,
+          "1e-05": 286,
+          "1e-06": 32,
+          "1e-07": 5
+        }
+      },
+      "bce_decomposition": {
+        "cached_cpu_float64_logit_bce": 0.5185181658640189,
+        "cached_cpu_historical_batch_weighted_fp32": 0.5185181668280653,
+        "cached_cpu_single_global_fp32_bce": 0.5185182094573975,
+        "conclusion": "Changing metric accumulation precision alone does not remove the historical/CPU discrepancy",
+        "cpu_batch32_minus_float64": 9.64046398266305e-10,
+        "historical_cuda": 0.5185181172959707,
+        "original_cuda_minus_cpu_batch32": -4.953209453706364e-08,
+        "original_cuda_minus_cpu_float64": -4.856804813879734e-08
+      },
+      "checkpoint_sha256": "58d4b1f393d0fa8ec372ba8bcc00cc8b7168d37817d4badfd26ee42abffd03c8",
+      "cpu_confusion": {
+        "fn": 967930,
+        "fp": 2539108,
+        "tn": 1705781,
+        "tp": 8217051
+      },
+      "dataset": "ednet_kt1",
+      "historical_confusion_inferred": {
+        "fn": 967965,
+        "fp": 2539103,
+        "tn": 1705786,
+        "tp": 8217016
+      },
+      "maximum_original_cuda_logit_difference": "NOT VERIFIED: no historical per-target logits",
+      "maximum_original_cuda_probability_difference": "NOT VERIFIED: no historical per-target probabilities",
+      "metrics_float64_sigmoid_of_cached_float32_logits": {
+        "accuracy": 0.7388628482628647,
+        "bce_float64": 0.5185181658640189,
+        "confusion": {
+          "fn": 967932,
+          "fp": 2539106,
+          "tn": 1705783,
+          "tp": 8217049
+        },
+        "f1": 0.8241304808311823,
+        "mse": 0.17371259468950248,
+        "precision": 0.7639392515262192,
+        "recall": 0.8946179638259458,
+        "roc_auc": 0.769364736112675,
+        "targets": 13429870,
+        "threshold": 0.5
+      },
+      "original_cuda_vs_cpu_classification_bounds": {
+        "exact_total_disagreements": "NOT VERIFIED: historical per-target scores/classifications absent",
+        "maximum": 5347462,
+        "minimum": 40,
+        "net_correct_change": 30,
+        "parity": 0,
+        "scope": "Sharp bounds using confusion counts only; net correct change is not total changed classifications"
+      },
+      "selected_epoch": 30,
+      "source_cpu_manifest_sha256": "fbc7eb7685be6ce36e375e488152f5b6b0b2267f8508f86ca9a22e45da6a55b6",
+      "status": "COMPLETE",
+      "stored_vs_cpu_comparison": {
+        "accuracy": {
+          "absolute_difference": 2.23382653741222e-06,
+          "exact_equal": false,
+          "recalculated": 0.7388628482628647,
+          "stored": 0.7388606144363273,
+          "within_tolerance": false
+        },
+        "bce_float64": {
+          "absolute_difference": 4.856804813879734e-08,
+          "exact_equal": false,
+          "recalculated": 0.5185181658640189,
+          "stored": 0.5185181172959707,
+          "within_tolerance": true
+        },
+        "f1": {
+          "absolute_difference": 1.857208446698344e-06,
+          "exact_equal": false,
+          "recalculated": 0.8241305161089085,
+          "stored": 0.8241286589004618,
+          "within_tolerance": false
+        },
+        "historical_batch_weighted_bce": {
+          "absolute_difference": 4.953209453706364e-08,
+          "exact_equal": false,
+          "recalculated": 0.5185181668280653,
+          "stored": 0.5185181172959707,
+          "within_tolerance": true
+        },
+        "mse": {
+          "absolute_difference": 2.0508481385350663e-08,
+          "exact_equal": false,
+          "recalculated": 0.17371259468978537,
+          "stored": 0.17371257418130398,
+          "within_tolerance": true
+        },
+        "precision": {
+          "absolute_difference": 4.1301457021081234e-07,
+          "exact_equal": false,
+          "recalculated": 0.7639391533725004,
+          "stored": 0.7639387403579302,
+          "within_tolerance": true
+        },
+        "recall": {
+          "absolute_difference": 3.810568579232232e-06,
+          "exact_equal": false,
+          "recalculated": 0.8946181815727218,
+          "stored": 0.8946143710041425,
+          "within_tolerance": false
+        },
+        "roc_auc": {
+          "absolute_difference": 1.002904272962013e-07,
+          "exact_equal": false,
+          "recalculated": 0.7693647361509419,
+          "stored": 0.7693648364413692,
+          "within_tolerance": true
+        }
+      },
+      "targets": 13429870,
+      "unchanged_absolute_metric_tolerance": 1e-06
+    },
+    "junyi": {
+      "all_target_probability_rounding": {
+        "changed_threshold_classifications": 0,
+        "distinction": "Same cached FP32 logits; changes sigmoid/metric precision, not FP64 model inference or historical CUDA replay",
+        "logit_sign_vs_cached_probability_changes": 0,
+        "logits_equal_zero": 0,
+        "maximum_absolute_probability_difference": 8.828051345499688e-08,
+        "minimum_absolute_logit": 1.7695128917694092e-06,
+        "minimum_probability_margin": 4.76837158203125e-07,
+        "p32_equal_half": 0,
+        "probability_margin_counts": {
+          "0.0001": 446,
+          "0.001": 4333,
+          "0.01": 43615,
+          "1e-05": 49,
+          "1e-06": 1,
+          "1e-07": 0
+        }
+      },
+      "bce_decomposition": {
+        "cached_cpu_float64_logit_bce": 0.4975776789342685,
+        "cached_cpu_historical_batch_weighted_fp32": 0.49757767997048347,
+        "cached_cpu_single_global_fp32_bce": 0.4975776970386505,
+        "conclusion": "Changing metric accumulation precision alone does not remove the historical/CPU discrepancy",
+        "cpu_batch32_minus_float64": 1.03621494718098e-09,
+        "historical_cuda": 0.49757788112870566,
+        "original_cuda_minus_cpu_batch32": 2.0115822219057833e-07,
+        "original_cuda_minus_cpu_float64": 2.021944371377593e-07
+      },
+      "checkpoint_sha256": "2308c5bf0c850da1e55daf802a0853a30fac45eeed071c7162c68fc17bfa3bdd",
+      "cpu_confusion": {
+        "fn": 197678,
+        "fp": 402769,
+        "tn": 384900,
+        "tp": 1471055
+      },
+      "dataset": "junyi",
+      "historical_confusion_inferred": {
+        "fn": 197672,
+        "fp": 402794,
+        "tn": 384875,
+        "tp": 1471061
+      },
+      "maximum_original_cuda_logit_difference": "NOT VERIFIED: no historical per-target logits",
+      "maximum_original_cuda_probability_difference": "NOT VERIFIED: no historical per-target probabilities",
+      "metrics_float64_sigmoid_of_cached_float32_logits": {
+        "accuracy": 0.7555583328787389,
+        "bce_float64": 0.4975776789342685,
+        "confusion": {
+          "fn": 197678,
+          "fp": 402769,
+          "tn": 384900,
+          "tp": 1471055
+        },
+        "f1": 0.8305046326706952,
+        "mse": 0.16478621004031938,
+        "precision": 0.7850550531960312,
+        "recall": 0.8815400666253979,
+        "roc_auc": 0.7978264736376741,
+        "targets": 2456402,
+        "threshold": 0.5
+      },
+      "original_cuda_vs_cpu_classification_bounds": {
+        "exact_total_disagreements": "NOT VERIFIED: historical per-target scores/classifications absent",
+        "maximum": 1165125,
+        "minimum": 31,
+        "net_correct_change": 19,
+        "parity": 1,
+        "scope": "Sharp bounds using confusion counts only; net correct change is not total changed classifications"
+      },
+      "selected_epoch": 32,
+      "source_cpu_manifest_sha256": "cb15a0bfbc43795511b860eea1f658f75839ee40b3f07be8dc717d18a9d1a284",
+      "status": "COMPLETE",
+      "stored_vs_cpu_comparison": {
+        "accuracy": {
+          "absolute_difference": 7.734890298816133e-06,
+          "exact_equal": false,
+          "recalculated": 0.7555583328787389,
+          "stored": 0.75555059798844,
+          "within_tolerance": false
+        },
+        "bce_float64": {
+          "absolute_difference": 2.021944371377593e-07,
+          "exact_equal": false,
+          "recalculated": 0.4975776789342685,
+          "stored": 0.49757788112870566,
+          "within_tolerance": true
+        },
+        "f1": {
+          "absolute_difference": 3.88011352514539e-06,
+          "exact_equal": false,
+          "recalculated": 0.8305046326706952,
+          "stored": 0.83050075255717,
+          "within_tolerance": false
+        },
+        "historical_batch_weighted_bce": {
+          "absolute_difference": 2.0115822219057833e-07,
+          "exact_equal": false,
+          "recalculated": 0.49757767997048347,
+          "stored": 0.49757788112870566,
+          "within_tolerance": true
+        },
+        "mse": {
+          "absolute_difference": 8.877169338505908e-08,
+          "exact_equal": false,
+          "recalculated": 0.16478621003428573,
+          "stored": 0.16478629880597911,
+          "within_tolerance": true
+        },
+        "precision": {
+          "absolute_difference": 9.785552590235724e-06,
+          "exact_equal": false,
+          "recalculated": 0.7850550531960312,
+          "stored": 0.785045267643441,
+          "within_tolerance": false
+        },
+        "recall": {
+          "absolute_difference": 3.595542246714878e-06,
+          "exact_equal": false,
+          "recalculated": 0.8815400666253979,
+          "stored": 0.8815436621676446,
+          "within_tolerance": false
+        },
+        "roc_auc": {
+          "absolute_difference": 2.6840422751028825e-07,
+          "exact_equal": false,
+          "recalculated": 0.7978264739233538,
+          "stored": 0.7978262055191263,
+          "within_tolerance": true
+        }
+      },
+      "targets": 2456402,
+      "unchanged_absolute_metric_tolerance": 1e-06
+    }
+  },
+  "status": "COMPLETE",
+  "utc": "2026-10-18T16:54:07.470853+00:00"
+}

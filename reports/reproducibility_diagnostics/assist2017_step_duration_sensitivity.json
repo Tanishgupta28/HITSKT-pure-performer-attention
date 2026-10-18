@@ -1,0 +1,49 @@
+{
+  "assumption": "Interpret timeTaken as seconds and startTime+timeTaken as a possible step-end proxy; neither units-to-feedback mapping nor correctness release is independently proven",
+  "by_target_split": {
+    "test": {
+      "cross_session_proxy_overlap_targets": 0,
+      "equal_start_edges": 1276,
+      "equal_start_targets": 1102,
+      "proxy_overlap_edges": 44336,
+      "proxy_overlap_targets": 41625,
+      "same_solving_episode_edges": 0,
+      "same_solving_episode_targets": 0,
+      "targets": 112252,
+      "with_prior_visible_response": 112252
+    },
+    "train": {
+      "cross_session_proxy_overlap_targets": 0,
+      "equal_start_edges": 4813,
+      "equal_start_targets": 4583,
+      "proxy_overlap_edges": 197597,
+      "proxy_overlap_targets": 192240,
+      "same_solving_episode_edges": 0,
+      "same_solving_episode_targets": 0,
+      "targets": 566107,
+      "with_prior_visible_response": 566107
+    },
+    "validation": {
+      "cross_session_proxy_overlap_targets": 0,
+      "equal_start_edges": 1421,
+      "equal_start_targets": 1228,
+      "proxy_overlap_edges": 48858,
+      "proxy_overlap_targets": 45873,
+      "same_solving_episode_edges": 0,
+      "same_solving_episode_targets": 0,
+      "targets": 125800,
+      "with_prior_visible_response": 125800
+    }
+  },
+  "implementation_sha256": "81bcebeb4c0253cd02142f6b61713ac5727b9259f748f6fc1f0b97c4234abbd6",
+  "not_a_replacement": "No protocol or original event/checkpoint changed",
+  "source_step_proxy_after_recorded_end": 321883,
+  "source_step_proxy_before_recorded_end": 320378,
+  "source_timeTaken_negative": 0,
+  "source_timeTaken_range": [
+    0.0,
+    3925.0
+  ],
+  "status": "COMPLETE CONDITIONAL DIAGNOSTIC",
+  "utc": "2026-10-18T17:07:15.589113+00:00"
+}

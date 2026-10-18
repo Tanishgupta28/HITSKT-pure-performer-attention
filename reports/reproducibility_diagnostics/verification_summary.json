@@ -1,0 +1,86 @@
+{
+  "implementation_bindings": [
+    {
+      "evidence": "reports/reproducibility_diagnostics/artifact_and_dkt_forensics.json",
+      "implementation": "scripts/diagnose_hitskt_artifacts.py"
+    },
+    {
+      "evidence": "reports/reproducibility_diagnostics/assist2017_diagnostic_manifest.json",
+      "implementation": "scripts/generate_hitskt_diagnostic_reports.py"
+    },
+    {
+      "evidence": "reports/reproducibility_diagnostics/assist2017_fp64_full.json",
+      "implementation": "scripts/diagnose_hitskt_precision.py"
+    },
+    {
+      "evidence": "reports/reproducibility_diagnostics/assist2017_step_duration_sensitivity.json",
+      "implementation": "scripts/diagnose_hitskt_assist_step_proxy.py"
+    },
+    {
+      "evidence": "reports/reproducibility_diagnostics/assist2017_timing_context.json",
+      "implementation": "scripts/diagnose_hitskt_timing.py"
+    },
+    {
+      "evidence": "reports/reproducibility_diagnostics/cached_metrics_diagnostics.json",
+      "implementation": "scripts/diagnose_hitskt_metrics.py"
+    },
+    {
+      "evidence": "reports/reproducibility_diagnostics/ednet_kt1_diagnostic_manifest.json",
+      "implementation": "scripts/generate_hitskt_diagnostic_reports.py"
+    },
+    {
+      "evidence": "reports/reproducibility_diagnostics/ednet_kt1_fp64_sample.json",
+      "implementation": "scripts/diagnose_hitskt_precision.py"
+    },
+    {
+      "evidence": "reports/reproducibility_diagnostics/ednet_kt1_timing_context.json",
+      "implementation": "scripts/diagnose_hitskt_timing.py"
+    },
+    {
+      "evidence": "reports/reproducibility_diagnostics/evaluation_order.json",
+      "implementation": "scripts/diagnose_hitskt_order.py"
+    },
+    {
+      "evidence": "reports/reproducibility_diagnostics/junyi_diagnostic_manifest.json",
+      "implementation": "scripts/generate_hitskt_diagnostic_reports.py"
+    },
+    {
+      "evidence": "reports/reproducibility_diagnostics/junyi_fp64_sample.json",
+      "implementation": "scripts/diagnose_hitskt_precision.py"
+    },
+    {
+      "evidence": "reports/reproducibility_diagnostics/junyi_timing_context.json",
+      "implementation": "scripts/diagnose_hitskt_timing.py"
+    },
+    {
+      "evidence": "reports/reproducibility_diagnostics/preservation_final.json",
+      "implementation": "scripts/diagnose_hitskt_preservation.py"
+    },
+    {
+      "evidence": "reports/reproducibility_diagnostics/preservation_initial.json",
+      "implementation": "scripts/diagnose_hitskt_preservation.py"
+    }
+  ],
+  "implementation_sha256": "ebd80e4fc1cfb34f2200cc6a8f35ba5a7e07c9598170c86fb52698cd6888d678",
+  "limitations": [
+    "No CUDA allocation/replay",
+    "No historical CUDA vectors",
+    "Junyi/EdNet FP64 inference sampled only",
+    "Actual correctness-release timing NOT VERIFIED",
+    "Baselines not freshly replayed"
+  ],
+  "preserved_originals": 375,
+  "preserved_prior_audit_files": 106,
+  "relevant_tests_passed": 59,
+  "report_rendering_and_local_links": "PASS",
+  "reports_sha256": {
+    "reports/HITSKT_AVAILABILITY_PROTOCOL_V2_PROPOSAL.md": "1a1c55e037d95a32154c3516597b66b0c4da14507c720856cb35a9a9e82f3d5e",
+    "reports/HITSKT_FAVOR_PLUS_IMPLEMENTATION_PROPOSAL.md": "9503fc4d1909c6e2f14e76f9eea0888f1b93a8e11825598b8fe6829b54a42aa4",
+    "reports/HITSKT_REPRODUCIBILITY_ROOT_CAUSE.md": "9803fc81c67931ebb0dae80e98f3d0f0d4dbdb6222c7629b907b2b9fc82a906c",
+    "reports/HITSKT_RESEARCH_DECISION_REPORT.md": "743fb8f2bde9e34238c7bea2be926682470bc1205ee9fda9c44436a3814016d0",
+    "reports/HITSKT_RESPONSE_TIMING_ANALYSIS.md": "0b5fcd2d1ef8e99a7561ccac487500ea37c20886bbe3fdab7478c11aa0508b5d"
+  },
+  "status": "PASS",
+  "utc": "2026-10-18T17:16:13.775546+00:00",
+  "verified_prediction_arrays": 24
+}

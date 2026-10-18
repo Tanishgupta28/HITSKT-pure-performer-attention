@@ -2,7 +2,26 @@
 
 Updated: 2026-10-18 UTC
 
-## 2026-10-18 — Independent HiTSKT correctness audit (latest)
+## 2026-10-18 — Reproducibility root cause and response timing (latest)
+
+- User requests diagnosis of all seven metric discrepancies, per-target numerical
+  and classification differences where evidence permits, runtime/precision/batch
+  determinism checks, and safe CUDA replay only when resources are available.
+- Preserve all375 captured originals, checkpoints and previous audit evidence.
+  Do not modify LightSAKT2, disturb active workers, resume DKT or launch full
+  training. No tolerance changes after seeing results.
+- Investigate authoritative feedback timing without assuming availability or
+  declaring leakage solely from overlap. Propose separately versioned evaluation
+  if needed; keep the historical protocol unchanged.
+- Preserve ELU+1 model; genuine FAVOR+ implementation proposal only, no training.
+  Inspect baseline evidence and DKT optimizer state without mutation/resumption.
+- Deliver and commit/push the three named reproducibility/timing/research decision
+  reports, with explicit per-dataset retention/verification/retraining decisions.
+  This authorizes the present diagnosis after the earlier wait checkpoint.
+- Execution decision: CPU checks are bounded/low-priority; do not allocate on the
+  occupied visible MIG. Missing per-target CUDA evidence must remain NOT VERIFIED.
+
+## 2026-10-18 — Independent HiTSKT correctness audit (historical)
 
 - Audit masking/leakage, all three full datasets, actual HiTSKT checkpoint
   replays, attention terminology, baseline comparability and publication claims.

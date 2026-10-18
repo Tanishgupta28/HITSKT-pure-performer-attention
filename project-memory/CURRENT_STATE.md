@@ -2,7 +2,20 @@
 
 Updated: 2026-10-18 UTC
 
-## Completed independent audit — latest
+## Completed follow-up diagnosis — latest
+
+The user authorized the reproducibility/timing follow-up after audit5625478.
+See [REPRODUCIBILITY_STATE.md](REPRODUCIBILITY_STATE.md). Three requested reports
+and separate availability-V2/FAVOR+ proposals are verified. All59 relevant tests
+pass;375 originals and106 previous audit files remain unchanged. No training,
+GPU allocation or LightSAKT2 edits/signals. No active diagnostic jobs remain.
+All3 historical CPU metric gates still FAIL; full ASSIST FP64 does not resolve
+BCE. CUDA replay and actual response availability remain NOT VERIFIED. Keep
+historical V1 evidence provisional; no established need to retrain yet.
+Finish scoped commit/push, verify remote equality, then wait. Do not automatically
+start DKT, V2, FAVOR+, multi-seed runs or CUDA work on the occupied MIG.
+
+## Completed independent audit — historical
 
 The audit completed all three full CPU replays and exhaustive data reconstruction.
 **133 tests PASS; all three metric reproduction gates FAIL** at declared 1e-6,

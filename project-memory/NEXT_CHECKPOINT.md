@@ -1,31 +1,24 @@
 # Next checkpoint
 
-Updated: 2026-10-18 UTC — independent correctness audit completed.
+Updated:2026-10-18 UTC — follow-up diagnosis verified.
 
-**After verifying the scoped audit commit/push, wait for user instructions.**
-Do not start the fifteenth training, new experiments or detached monitoring.
-Do not edit, signal or reconfigure LightSAKT2.
+Read [REPRODUCIBILITY_STATE.md](REPRODUCIBILITY_STATE.md) and reconcile the Git
+milestone with canonical remote before acting. No diagnostic job is active.
+The three requested reports, per-dataset manifests and two separate proposals
+are complete;59 relevant tests, hash bindings, renderer/links and375+106 file
+preservation checks PASS. All historical CPU metric gates remain FAIL.
 
-Read [AUDIT_STATE.md](AUDIT_STATE.md) and
-`reports/HITSKT_INDEPENDENT_CORRECTNESS_AUDIT.md`.
-All three complete CPU replays finished (15,998,524 targets). 133 tests and full
-raw/data reconstruction PASS. All three CPU metric gates FAIL at declared 1e-6;
-all AUC differences pass. This is not unconditional publication clearance.
+Publish the scoped diagnosis milestone to capstone-gpu/main if not already
+present, verify remote SHA equality, then **wait for user instructions**.
+Preserve the unrelated root README edit and untracked SAKT console log.
+No production training, DKT resume, optimizer reset, new experiment schedule,
+architecture/protocol replacement or LightSAKT2 edits/signals are authorized.
 
-The commit containing this endpoint should reach `capstone-gpu/main` normally;
-verify remote HEAD without force. Keep the unrelated root README edit and SAKT
-console log excluded. All 375 captured original hashes and all 30 checkpoints pass
-preservation. Full prediction arrays and scratch remain local/ignored.
-
-If new verification is requested, preserve the three authoritative manifests and
-use a fresh cache namespace. Resolve CPU/CUDA and response-feedback timing evidence
-before interpreting discrepancies as a need to retrain. Follow the report's
-conditional recommendations; no additional run was launched.
-
-DKT/EdNet remains last epoch 9/best epoch 1, counter 8/10; five Adam tensors have 21,749 positive
-infinities. Cause/recovery unresolved. Do not silently reset optimizer/counter,
-change protocol, restart from another epoch or resume without a recorded decision.
-See [CURRENT_STATE.md](CURRENT_STATE.md) and [USER_DIRECTIVES.md](USER_DIRECTIVES.md).
-
-The pre-audit reset handoff is retained in
-[NEXT_CHECKPOINT_history_before_2026-10-18_audit.md](NEXT_CHECKPOINT_history_before_2026-10-18_audit.md).
+Remaining scientific uncertainty: occupied H100/MIG prevents safe CUDA replay;
+historical prediction vectors/settings absent; actual response timing unverified;
+baseline fresh replay/RKT raw pair-count reconstruction missing. Preserve the
+1e-6 tolerance and distinguish numerical inference from training. If later
+authorized safe resources exist, next bounded action is unchanged-checkpoint
+CUDA verification, not retraining or grabbing an occupied partition.
+See [USER_DIRECTIVES.md](USER_DIRECTIVES.md).
+Previous endpoint: [NEXT_CHECKPOINT_history_before_2026-10-18_diagnosis.md](NEXT_CHECKPOINT_history_before_2026-10-18_diagnosis.md).

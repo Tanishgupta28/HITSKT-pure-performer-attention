@@ -1,0 +1,929 @@
+{
+  "archived_snapshots": [
+    {
+      "epoch": 13,
+      "model_tensors_all_finite": true,
+      "optimizer_nonfinite_elements": 0,
+      "optimizer_nonfinite_states": [],
+      "path": ".inspection/transport_switch_20260922/best_model.pt",
+      "sha256": "1de01970ef3ebf8a3b136347f4db21f7a746ec610eaa95a86051ddc84a5497ea",
+      "validation_auc": 0.7623242165859992
+    },
+    {
+      "epoch": 15,
+      "model_tensors_all_finite": true,
+      "optimizer_nonfinite_elements": 0,
+      "optimizer_nonfinite_states": [],
+      "path": ".inspection/transport_switch_20260922/last_model.pt",
+      "sha256": "d2bb25fd81908d70a5dc610a74e6877bc96576b069a7949c2b446471df5e7d8b",
+      "validation_auc": 0.761176496772544
+    },
+    {
+      "epoch": 1,
+      "model_tensors_all_finite": true,
+      "optimizer_nonfinite_elements": 0,
+      "optimizer_nonfinite_states": [],
+      "path": ".inspection/dkt_ednet_abandoned_before_restart_20261008/best_model.pt",
+      "sha256": "56a911479a2c0b53edd457e4179a942be6f652717e7322c35b41e45194e90215",
+      "validation_auc": 0.6845717850759062
+    },
+    {
+      "epoch": 1,
+      "model_tensors_all_finite": true,
+      "optimizer_nonfinite_elements": 0,
+      "optimizer_nonfinite_states": [],
+      "path": ".inspection/dkt_ednet_abandoned_before_restart_20261008/last_model.pt",
+      "sha256": "83d9e8a1ccb536fbc04ac4ccd78bfb423ffabc00bea82d3b21467c877a35d211",
+      "validation_auc": 0.6845717850759062
+    }
+  ],
+  "dkt_origin": "Exact first overflowing gradient/step NOT VERIFIED; snapshots do not form a complete canonical step history",
+  "historical_vs_independent": "Stored baseline scores remain historical; artifact consistency does not equal test replay",
+  "implementation_sha256": "b50ece1b66825eef4584ec6d7f41ed7ca7a00cb0ed69508646aaf1f72493b170",
+  "records": [
+    {
+      "best": {
+        "epoch": 12,
+        "model_tensors_all_finite": true,
+        "optimizer_nonfinite_elements": 0,
+        "optimizer_nonfinite_states": [],
+        "path": "experiments/dkt/assist2017/full/best_model.pt",
+        "sha256": "a57e93d381d7b717cc759f4a958dd80bb33cc506424493c20dda6e743949e107",
+        "validation_auc": 0.7213696055764979
+      },
+      "best_matches_previous_audit_sha256": true,
+      "checkpoint_matches_strict_selection": true,
+      "complete": true,
+      "completed_epochs": 17,
+      "config_selected_epoch": 12,
+      "dataset": "assist2017",
+      "fresh_baseline_test_replay": "NOT VERIFIED",
+      "last": {
+        "epoch": 17,
+        "model_tensors_all_finite": true,
+        "optimizer_nonfinite_elements": 0,
+        "optimizer_nonfinite_states": [],
+        "path": "experiments/dkt/assist2017/full/last_model.pt",
+        "sha256": "a0cf1a6128ce0a8d11ed17d5016e76b33afe985d3653c0962ef629c12b3350ed",
+        "validation_auc": 0.7187990504652112
+      },
+      "model": "dkt",
+      "stored_test_metrics": {
+        "accuracy": 0.6750258347290026,
+        "f1": 0.5151970230580105,
+        "loss": 0.6057200541985488,
+        "mse": 0.20838042806546592,
+        "precision": 0.6113932435416206,
+        "recall": 0.44515640071654955,
+        "roc_auc": 0.7069997420457494,
+        "targets": 112252,
+        "threshold": 0.5
+      },
+      "strict_validation_selected_auc": 0.7213696055764979,
+      "strict_validation_selected_epoch": 12
+    },
+    {
+      "best": {
+        "epoch": 3,
+        "model_tensors_all_finite": true,
+        "optimizer_nonfinite_elements": 0,
+        "optimizer_nonfinite_states": [],
+        "path": "experiments/dkt/junyi/full/best_model.pt",
+        "sha256": "024f89a1ec66c503aa9c1e255b68c320003b334f25b99031cef94fedb4d7693d",
+        "validation_auc": 0.7499506386307369
+      },
+      "best_matches_previous_audit_sha256": true,
+      "checkpoint_matches_strict_selection": true,
+      "complete": true,
+      "completed_epochs": 8,
+      "config_selected_epoch": 3,
+      "dataset": "junyi",
+      "fresh_baseline_test_replay": "NOT VERIFIED",
+      "last": {
+        "epoch": 8,
+        "model_tensors_all_finite": true,
+        "optimizer_nonfinite_elements": 0,
+        "optimizer_nonfinite_states": [],
+        "path": "experiments/dkt/junyi/full/last_model.pt",
+        "sha256": "242f04a8b6c9564d8c86f6e40148f19669a3c8014d0957f9d290b8b14fbbefd8",
+        "validation_auc": 0.7446097275289683
+      },
+      "model": "dkt",
+      "stored_test_metrics": {
+        "accuracy": 0.7257260822943475,
+        "f1": 0.8094759908929949,
+        "loss": 0.5415314254474518,
+        "mse": 0.18200326977544665,
+        "precision": 0.7664082388459961,
+        "recall": 0.8576722579346127,
+        "roc_auc": 0.7476841496612041,
+        "targets": 2456402,
+        "threshold": 0.5
+      },
+      "strict_validation_selected_auc": 0.7499506386307369,
+      "strict_validation_selected_epoch": 3
+    },
+    {
+      "best": {
+        "epoch": 1,
+        "model_tensors_all_finite": true,
+        "optimizer_nonfinite_elements": 0,
+        "optimizer_nonfinite_states": [],
+        "path": "experiments/dkt/ednet_kt1/full/best_model.pt",
+        "sha256": "56a911479a2c0b53edd457e4179a942be6f652717e7322c35b41e45194e90215",
+        "validation_auc": 0.6845717850759062
+      },
+      "best_matches_previous_audit_sha256": true,
+      "checkpoint_matches_strict_selection": true,
+      "complete": false,
+      "completed_epochs": 9,
+      "config_selected_epoch": 1,
+      "dataset": "ednet_kt1",
+      "fresh_baseline_test_replay": "NOT VERIFIED",
+      "last": {
+        "all_optimizer_tensor_stats": {
+          "interaction_embedding.weight": {
+            "exp_avg": {
+              "dtype": "torch.float32",
+              "elements": 287232,
+              "maximum_finite_absolute": 3239415644160.0,
+              "nan": 0,
+              "negative_inf": 0,
+              "positive_inf": 0
+            },
+            "exp_avg_sq": {
+              "dtype": "torch.float32",
+              "elements": 287232,
+              "maximum_finite_absolute": 2.395507788660813e+32,
+              "nan": 0,
+              "negative_inf": 0,
+              "positive_inf": 4306
+            },
+            "step": {
+              "dtype": "torch.float32",
+              "elements": 1,
+              "maximum_finite_absolute": 16777216.0,
+              "nan": 0,
+              "negative_inf": 0,
+              "positive_inf": 0
+            }
+          },
+          "output.bias": {
+            "exp_avg": {
+              "dtype": "torch.float32",
+              "elements": 1496,
+              "maximum_finite_absolute": 0.010664548724889755,
+              "nan": 0,
+              "negative_inf": 0,
+              "positive_inf": 0
+            },
+            "exp_avg_sq": {
+              "dtype": "torch.float32",
+              "elements": 1496,
+              "maximum_finite_absolute": 0.00039238217868842185,
+              "nan": 0,
+              "negative_inf": 0,
+              "positive_inf": 0
+            },
+            "step": {
+              "dtype": "torch.float32",
+              "elements": 1,
+              "maximum_finite_absolute": 16777216.0,
+              "nan": 0,
+              "negative_inf": 0,
+              "positive_inf": 0
+            }
+          },
+          "output.weight": {
+            "exp_avg": {
+              "dtype": "torch.float32",
+              "elements": 95744,
+              "maximum_finite_absolute": 0.011699389666318893,
+              "nan": 0,
+              "negative_inf": 0,
+              "positive_inf": 0
+            },
+            "exp_avg_sq": {
+              "dtype": "torch.float32",
+              "elements": 95744,
+              "maximum_finite_absolute": 0.0003875955590046942,
+              "nan": 0,
+              "negative_inf": 0,
+              "positive_inf": 0
+            },
+            "step": {
+              "dtype": "torch.float32",
+              "elements": 1,
+              "maximum_finite_absolute": 16777216.0,
+              "nan": 0,
+              "negative_inf": 0,
+              "positive_inf": 0
+            }
+          },
+          "rnn.bias_hh_l0": {
+            "exp_avg": {
+              "dtype": "torch.float32",
+              "elements": 256,
+              "maximum_finite_absolute": 3740929359872.0,
+              "nan": 0,
+              "negative_inf": 0,
+              "positive_inf": 0
+            },
+            "exp_avg_sq": {
+              "dtype": "torch.float32",
+              "elements": 256,
+              "maximum_finite_absolute": 1.0860477946010968e+32,
+              "nan": 0,
+              "negative_inf": 0,
+              "positive_inf": 182
+            },
+            "step": {
+              "dtype": "torch.float32",
+              "elements": 1,
+              "maximum_finite_absolute": 16777216.0,
+              "nan": 0,
+              "negative_inf": 0,
+              "positive_inf": 0
+            }
+          },
+          "rnn.bias_ih_l0": {
+            "exp_avg": {
+              "dtype": "torch.float32",
+              "elements": 256,
+              "maximum_finite_absolute": 3740929359872.0,
+              "nan": 0,
+              "negative_inf": 0,
+              "positive_inf": 0
+            },
+            "exp_avg_sq": {
+              "dtype": "torch.float32",
+              "elements": 256,
+              "maximum_finite_absolute": 1.0860477946010968e+32,
+              "nan": 0,
+              "negative_inf": 0,
+              "positive_inf": 182
+            },
+            "step": {
+              "dtype": "torch.float32",
+              "elements": 1,
+              "maximum_finite_absolute": 16777216.0,
+              "nan": 0,
+              "negative_inf": 0,
+              "positive_inf": 0
+            }
+          },
+          "rnn.weight_hh_l0": {
+            "exp_avg": {
+              "dtype": "torch.float32",
+              "elements": 16384,
+              "maximum_finite_absolute": 2001536286720.0,
+              "nan": 0,
+              "negative_inf": 0,
+              "positive_inf": 0
+            },
+            "exp_avg_sq": {
+              "dtype": "torch.float32",
+              "elements": 16384,
+              "maximum_finite_absolute": 2.559118199671654e+32,
+              "nan": 0,
+              "negative_inf": 0,
+              "positive_inf": 5406
+            },
+            "step": {
+              "dtype": "torch.float32",
+              "elements": 1,
+              "maximum_finite_absolute": 16777216.0,
+              "nan": 0,
+              "negative_inf": 0,
+              "positive_inf": 0
+            }
+          },
+          "rnn.weight_ih_l0": {
+            "exp_avg": {
+              "dtype": "torch.float32",
+              "elements": 16384,
+              "maximum_finite_absolute": 19673450020864.0,
+              "nan": 0,
+              "negative_inf": 0,
+              "positive_inf": 0
+            },
+            "exp_avg_sq": {
+              "dtype": "torch.float32",
+              "elements": 16384,
+              "maximum_finite_absolute": 1.9987507140636845e+32,
+              "nan": 0,
+              "negative_inf": 0,
+              "positive_inf": 11673
+            },
+            "step": {
+              "dtype": "torch.float32",
+              "elements": 1,
+              "maximum_finite_absolute": 16777216.0,
+              "nan": 0,
+              "negative_inf": 0,
+              "positive_inf": 0
+            }
+          }
+        },
+        "early_stopping": {
+          "metric": "validation_roc_auc",
+          "min_delta": 0.0,
+          "mode": "max",
+          "patience": 5,
+          "strict_improvement": true
+        },
+        "early_stopping_state": {
+          "best_epoch": 1,
+          "best_validation_auc": 0.6845717850759062,
+          "consecutive_epochs_without_improvement": 8
+        },
+        "epoch": 9,
+        "model_tensors_all_finite": true,
+        "optimizer_nonfinite_elements": 21749,
+        "optimizer_nonfinite_states": [
+          {
+            "dtype": "torch.float32",
+            "elements": 287232,
+            "maximum_finite_absolute": 2.395507788660813e+32,
+            "nan": 0,
+            "negative_inf": 0,
+            "parameter": "interaction_embedding.weight",
+            "positive_inf": 4306,
+            "state": "exp_avg_sq"
+          },
+          {
+            "dtype": "torch.float32",
+            "elements": 16384,
+            "maximum_finite_absolute": 1.9987507140636845e+32,
+            "nan": 0,
+            "negative_inf": 0,
+            "parameter": "rnn.weight_ih_l0",
+            "positive_inf": 11673,
+            "state": "exp_avg_sq"
+          },
+          {
+            "dtype": "torch.float32",
+            "elements": 16384,
+            "maximum_finite_absolute": 2.559118199671654e+32,
+            "nan": 0,
+            "negative_inf": 0,
+            "parameter": "rnn.weight_hh_l0",
+            "positive_inf": 5406,
+            "state": "exp_avg_sq"
+          },
+          {
+            "dtype": "torch.float32",
+            "elements": 256,
+            "maximum_finite_absolute": 1.0860477946010968e+32,
+            "nan": 0,
+            "negative_inf": 0,
+            "parameter": "rnn.bias_ih_l0",
+            "positive_inf": 182,
+            "state": "exp_avg_sq"
+          },
+          {
+            "dtype": "torch.float32",
+            "elements": 256,
+            "maximum_finite_absolute": 1.0860477946010968e+32,
+            "nan": 0,
+            "negative_inf": 0,
+            "parameter": "rnn.bias_hh_l0",
+            "positive_inf": 182,
+            "state": "exp_avg_sq"
+          }
+        ],
+        "optimizer_param_groups": [
+          {
+            "amsgrad": false,
+            "betas": [
+              0.9,
+              0.999
+            ],
+            "capturable": false,
+            "differentiable": false,
+            "eps": 1e-08,
+            "foreach": null,
+            "fused": null,
+            "lr": 0.0002,
+            "maximize": false,
+            "params": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "weight_decay": 0.0
+          }
+        ],
+        "path": "experiments/dkt/ednet_kt1/full/last_model.pt",
+        "sha256": "ae9f8248669c3800064020cbbb64c4e82ade108cac0cef27e1a23c74f208842b",
+        "validation_auc": 0.6108838021742428
+      },
+      "model": "dkt",
+      "stored_test_metrics": null,
+      "strict_validation_selected_auc": 0.6845717850759062,
+      "strict_validation_selected_epoch": 1
+    },
+    {
+      "best": {
+        "epoch": 18,
+        "model_tensors_all_finite": true,
+        "optimizer_nonfinite_elements": 0,
+        "optimizer_nonfinite_states": [],
+        "path": "experiments/dkvmn/assist2017/full/best_model.pt",
+        "sha256": "784456c227af03b2c89918d9297d2702a5183b343bdd03b99db1b0190ac8c69e",
+        "validation_auc": 0.6962520470412956
+      },
+      "best_matches_previous_audit_sha256": true,
+      "checkpoint_matches_strict_selection": true,
+      "complete": true,
+      "completed_epochs": 23,
+      "config_selected_epoch": 18,
+      "dataset": "assist2017",
+      "fresh_baseline_test_replay": "NOT VERIFIED",
+      "last": {
+        "epoch": 23,
+        "model_tensors_all_finite": true,
+        "optimizer_nonfinite_elements": 0,
+        "optimizer_nonfinite_states": [],
+        "path": "experiments/dkvmn/assist2017/full/last_model.pt",
+        "sha256": "2d96ab1ad7056fb022b953b39e97069290a03faf05361639dd8e84d929c29bfa",
+        "validation_auc": 0.6951639248424551
+      },
+      "model": "dkvmn",
+      "stored_test_metrics": {
+        "accuracy": 0.6635961942771621,
+        "f1": 0.44671062271062273,
+        "loss": 0.618201521382347,
+        "mse": 0.21413326015219722,
+        "precision": 0.6169661648049215,
+        "recall": 0.3500987552248404,
+        "roc_auc": 0.6822527020970142,
+        "targets": 112252,
+        "threshold": 0.5
+      },
+      "strict_validation_selected_auc": 0.6962520470412956,
+      "strict_validation_selected_epoch": 18
+    },
+    {
+      "best": {
+        "epoch": 1,
+        "model_tensors_all_finite": true,
+        "optimizer_nonfinite_elements": 0,
+        "optimizer_nonfinite_states": [],
+        "path": "experiments/dkvmn/junyi/full/best_model.pt",
+        "sha256": "b4d7d80366a0c2c27404fae9e35d47c36ee58e69bdb9150be0e40d90365d146a",
+        "validation_auc": 0.7450961223634319
+      },
+      "best_matches_previous_audit_sha256": true,
+      "checkpoint_matches_strict_selection": true,
+      "complete": true,
+      "completed_epochs": 6,
+      "config_selected_epoch": 1,
+      "dataset": "junyi",
+      "fresh_baseline_test_replay": "NOT VERIFIED",
+      "last": {
+        "epoch": 6,
+        "model_tensors_all_finite": true,
+        "optimizer_nonfinite_elements": 0,
+        "optimizer_nonfinite_states": [],
+        "path": "experiments/dkvmn/junyi/full/last_model.pt",
+        "sha256": "89739dfbc3bcdb9477331c89fa11166d59ebf3f42072b3924c50ba159fc315fe",
+        "validation_auc": 0.7408246860126464
+      },
+      "model": "dkvmn",
+      "stored_test_metrics": {
+        "accuracy": 0.7234760434163463,
+        "f1": 0.8181163363102187,
+        "loss": 0.5455991906689351,
+        "mse": 0.18363697807826554,
+        "precision": 0.7394883094791944,
+        "recall": 0.9154544196105668,
+        "roc_auc": 0.7415784624691203,
+        "targets": 2456402,
+        "threshold": 0.5
+      },
+      "strict_validation_selected_auc": 0.7450961223634319,
+      "strict_validation_selected_epoch": 1
+    },
+    {
+      "best": {
+        "epoch": 1,
+        "model_tensors_all_finite": true,
+        "optimizer_nonfinite_elements": 0,
+        "optimizer_nonfinite_states": [],
+        "path": "experiments/dkvmn/ednet_kt1/full/best_model.pt",
+        "sha256": "23e5ea19fd63c23647869012197d93159b87cc1c76399e6d7136bedcd26bd4e2",
+        "validation_auc": 0.6719177243615195
+      },
+      "best_matches_previous_audit_sha256": true,
+      "checkpoint_matches_strict_selection": true,
+      "complete": true,
+      "completed_epochs": 6,
+      "config_selected_epoch": 1,
+      "dataset": "ednet_kt1",
+      "fresh_baseline_test_replay": "NOT VERIFIED",
+      "last": {
+        "epoch": 6,
+        "model_tensors_all_finite": true,
+        "optimizer_nonfinite_elements": 0,
+        "optimizer_nonfinite_states": [],
+        "path": "experiments/dkvmn/ednet_kt1/full/last_model.pt",
+        "sha256": "9373551e68d89762ad1f99e0cad03a259c9f89c47b1918316cc1c06fb7f22f45",
+        "validation_auc": 0.6394325871080289
+      },
+      "model": "dkvmn",
+      "stored_test_metrics": {
+        "accuracy": 0.6988751938775283,
+        "f1": 0.8136602984915351,
+        "loss": 0.5833078272692482,
+        "mse": 0.19920125153954787,
+        "precision": 0.7053461512590434,
+        "recall": 0.9612753689964084,
+        "roc_auc": 0.6741059915424829,
+        "targets": 13429870,
+        "threshold": 0.5
+      },
+      "strict_validation_selected_auc": 0.6719177243615195,
+      "strict_validation_selected_epoch": 1
+    },
+    {
+      "best": {
+        "epoch": 30,
+        "model_tensors_all_finite": true,
+        "optimizer_nonfinite_elements": 0,
+        "optimizer_nonfinite_states": [],
+        "path": "experiments/sakt/assist2017/full/best_model.pt",
+        "sha256": "9f39018589a9498276172ba82f6884cad53a5c1a7ef4379de1a124d523ce6b0a",
+        "validation_auc": 0.7577061438567358
+      },
+      "best_matches_previous_audit_sha256": true,
+      "checkpoint_matches_strict_selection": true,
+      "complete": true,
+      "completed_epochs": 35,
+      "config_selected_epoch": 30,
+      "dataset": "assist2017",
+      "fresh_baseline_test_replay": "NOT VERIFIED",
+      "last": {
+        "epoch": 35,
+        "model_tensors_all_finite": true,
+        "optimizer_nonfinite_elements": 0,
+        "optimizer_nonfinite_states": [],
+        "path": "experiments/sakt/assist2017/full/last_model.pt",
+        "sha256": "7a8d7ceff2e42e015cd73d427eb43805ec392fc3c834d348af3abec947fa50ce",
+        "validation_auc": 0.7576838779292772
+      },
+      "model": "sakt",
+      "stored_test_metrics": {
+        "accuracy": 0.6902950504222642,
+        "f1": 0.559540853171838,
+        "loss": 0.5853560605634534,
+        "mse": 0.19987193044611914,
+        "precision": 0.6240144685901602,
+        "recall": 0.5071425290524092,
+        "roc_auc": 0.7384655653536991,
+        "targets": 112252,
+        "threshold": 0.5
+      },
+      "strict_validation_selected_auc": 0.7577061438567358,
+      "strict_validation_selected_epoch": 30
+    },
+    {
+      "best": {
+        "epoch": 13,
+        "model_tensors_all_finite": true,
+        "optimizer_nonfinite_elements": 0,
+        "optimizer_nonfinite_states": [],
+        "path": "experiments/sakt/junyi/full/best_model.pt",
+        "sha256": "6490d2fc947f64c6d0c86e3fd8cdf39ab4a3f5b725a607dbc5ad07215e2225f3",
+        "validation_auc": 0.7928608705706457
+      },
+      "best_matches_previous_audit_sha256": true,
+      "checkpoint_matches_strict_selection": true,
+      "complete": true,
+      "completed_epochs": 18,
+      "config_selected_epoch": 13,
+      "dataset": "junyi",
+      "fresh_baseline_test_replay": "NOT VERIFIED",
+      "last": {
+        "epoch": 18,
+        "model_tensors_all_finite": true,
+        "optimizer_nonfinite_elements": 0,
+        "optimizer_nonfinite_states": [],
+        "path": "experiments/sakt/junyi/full/last_model.pt",
+        "sha256": "dfc8fc9e1b81094675561c355fc79122df0142637d5408329588f482574c38ba",
+        "validation_auc": 0.7922445795009503
+      },
+      "model": "sakt",
+      "stored_test_metrics": {
+        "accuracy": 0.7494701600145253,
+        "f1": 0.8296411291595084,
+        "loss": 0.5071997748354633,
+        "mse": 0.16840058034014826,
+        "precision": 0.7709668341005314,
+        "recall": 0.8979818820626188,
+        "roc_auc": 0.7887961776898904,
+        "targets": 2456402,
+        "threshold": 0.5
+      },
+      "strict_validation_selected_auc": 0.7928608705706457,
+      "strict_validation_selected_epoch": 13
+    },
+    {
+      "best": {
+        "epoch": 13,
+        "model_tensors_all_finite": true,
+        "optimizer_nonfinite_elements": 0,
+        "optimizer_nonfinite_states": [],
+        "path": "experiments/sakt/ednet_kt1/full/best_model.pt",
+        "sha256": "1de01970ef3ebf8a3b136347f4db21f7a746ec610eaa95a86051ddc84a5497ea",
+        "validation_auc": 0.7623242165859992
+      },
+      "best_matches_previous_audit_sha256": true,
+      "checkpoint_matches_strict_selection": true,
+      "complete": true,
+      "completed_epochs": 18,
+      "config_selected_epoch": 13,
+      "dataset": "ednet_kt1",
+      "fresh_baseline_test_replay": "NOT VERIFIED",
+      "last": {
+        "epoch": 18,
+        "model_tensors_all_finite": true,
+        "optimizer_nonfinite_elements": 0,
+        "optimizer_nonfinite_states": [],
+        "path": "experiments/sakt/ednet_kt1/full/last_model.pt",
+        "sha256": "9f5fd63fc51ae3304687dfe243a58212c6d96fc04a724dce98adb82ab067e878",
+        "validation_auc": 0.7596583295247712
+      },
+      "model": "sakt",
+      "stored_test_metrics": {
+        "accuracy": 0.7392807972080147,
+        "f1": 0.8272087563782752,
+        "loss": 0.5245477522701514,
+        "mse": 0.1752942014962786,
+        "precision": 0.7565031146532126,
+        "recall": 0.9124938853983476,
+        "roc_auc": 0.7630078573122142,
+        "targets": 13429870,
+        "threshold": 0.5
+      },
+      "strict_validation_selected_auc": 0.7623242165859992,
+      "strict_validation_selected_epoch": 13
+    },
+    {
+      "best": {
+        "epoch": 14,
+        "model_tensors_all_finite": true,
+        "optimizer_nonfinite_elements": 0,
+        "optimizer_nonfinite_states": [],
+        "path": "experiments/rkt/assist2017/full/best_model.pt",
+        "sha256": "f771e82dc60ae440af46dc69f770a1931d4cacbdab3a352fa1b6a5358c9a88ab",
+        "validation_auc": 0.7712554524089533
+      },
+      "best_matches_previous_audit_sha256": true,
+      "checkpoint_matches_strict_selection": true,
+      "complete": true,
+      "completed_epochs": 19,
+      "config_selected_epoch": 14,
+      "dataset": "assist2017",
+      "fresh_baseline_test_replay": "NOT VERIFIED",
+      "last": {
+        "epoch": 19,
+        "model_tensors_all_finite": true,
+        "optimizer_nonfinite_elements": 0,
+        "optimizer_nonfinite_states": [],
+        "path": "experiments/rkt/assist2017/full/last_model.pt",
+        "sha256": "9ed9785d7e332de0496a096e147b55a9baa63b241c754ff45327e88e450b7b45",
+        "validation_auc": 0.7695204991063666
+      },
+      "model": "rkt",
+      "stored_test_metrics": {
+        "accuracy": 0.6965399280190999,
+        "f1": 0.5598625216425046,
+        "loss": 0.5771361223686124,
+        "mse": 0.19633600745846114,
+        "precision": 0.6399917287014061,
+        "recall": 0.49756556887602776,
+        "roc_auc": 0.7486264898793284,
+        "targets": 112252,
+        "threshold": 0.5
+      },
+      "strict_validation_selected_auc": 0.7712554524089533,
+      "strict_validation_selected_epoch": 14
+    },
+    {
+      "best": {
+        "epoch": 8,
+        "model_tensors_all_finite": true,
+        "optimizer_nonfinite_elements": 0,
+        "optimizer_nonfinite_states": [],
+        "path": "experiments/rkt/junyi/full/best_model.pt",
+        "sha256": "842e859509357c855545f86941dd5bcfc85614559c9335d121410eee9c112d7c",
+        "validation_auc": 0.7954429583997085
+      },
+      "best_matches_previous_audit_sha256": true,
+      "checkpoint_matches_strict_selection": true,
+      "complete": true,
+      "completed_epochs": 13,
+      "config_selected_epoch": 8,
+      "dataset": "junyi",
+      "fresh_baseline_test_replay": "NOT VERIFIED",
+      "last": {
+        "epoch": 13,
+        "model_tensors_all_finite": true,
+        "optimizer_nonfinite_elements": 0,
+        "optimizer_nonfinite_states": [],
+        "path": "experiments/rkt/junyi/full/last_model.pt",
+        "sha256": "7af299eccbd0827f397b197cf55b38ebfad4c51980482d1c7b615c58d5dc4be7",
+        "validation_auc": 0.7941206202326918
+      },
+      "model": "rkt",
+      "stored_test_metrics": {
+        "accuracy": 0.7523398043154175,
+        "f1": 0.829577482543929,
+        "loss": 0.5036462176741294,
+        "mse": 0.16703808830906774,
+        "precision": 0.7789090882309928,
+        "recall": 0.8872965297624006,
+        "roc_auc": 0.7912548486618094,
+        "targets": 2456402,
+        "threshold": 0.5
+      },
+      "strict_validation_selected_auc": 0.7954429583997085,
+      "strict_validation_selected_epoch": 8
+    },
+    {
+      "best": {
+        "epoch": 1,
+        "model_tensors_all_finite": true,
+        "optimizer_nonfinite_elements": 0,
+        "optimizer_nonfinite_states": [],
+        "path": "experiments/rkt/ednet_kt1/full/best_model.pt",
+        "sha256": "676fecb19061b35dd6f8050788875cadfc0de58a345145495190f772e752b8d4",
+        "validation_auc": 0.7479626872280917
+      },
+      "best_matches_previous_audit_sha256": true,
+      "checkpoint_matches_strict_selection": true,
+      "complete": true,
+      "completed_epochs": 6,
+      "config_selected_epoch": 1,
+      "dataset": "ednet_kt1",
+      "fresh_baseline_test_replay": "NOT VERIFIED",
+      "last": {
+        "epoch": 6,
+        "model_tensors_all_finite": true,
+        "optimizer_nonfinite_elements": 0,
+        "optimizer_nonfinite_states": [],
+        "path": "experiments/rkt/ednet_kt1/full/last_model.pt",
+        "sha256": "dfbd850cb9f9096c175eb3a5277f2b1156532c7eadc4c116eeecc0e37f5459cb",
+        "validation_auc": 0.746349134110817
+      },
+      "model": "rkt",
+      "stored_test_metrics": {
+        "accuracy": 0.7257950374798863,
+        "f1": 0.8251594973285162,
+        "loss": 0.5400390938822336,
+        "mse": 0.1819252324325963,
+        "precision": 0.731637300244736,
+        "recall": 0.9460949347636103,
+        "roc_auc": 0.7475470202501552,
+        "targets": 13429870,
+        "threshold": 0.5
+      },
+      "strict_validation_selected_auc": 0.7479626872280917,
+      "strict_validation_selected_epoch": 1
+    },
+    {
+      "best": {
+        "epoch": 40,
+        "model_tensors_all_finite": true,
+        "optimizer_nonfinite_elements": 0,
+        "optimizer_nonfinite_states": [],
+        "path": "experiments/hitskt/assist2017/full/best_model.pt",
+        "sha256": "085c8d9ae32f4e60892dfb3e4eed93d90a584696d0914456c135dcab7b890164",
+        "validation_auc": 0.719757256068911
+      },
+      "best_matches_previous_audit_sha256": true,
+      "checkpoint_matches_strict_selection": true,
+      "complete": true,
+      "completed_epochs": 45,
+      "config_selected_epoch": 40,
+      "dataset": "assist2017",
+      "fresh_baseline_test_replay": "See independent full CPU replay manifests",
+      "last": {
+        "epoch": 45,
+        "model_tensors_all_finite": true,
+        "optimizer_nonfinite_elements": 0,
+        "optimizer_nonfinite_states": [],
+        "path": "experiments/hitskt/assist2017/full/last_model.pt",
+        "sha256": "a1b38845bc52c7e736141eff009cf6b20f72dbdeeed86f59500776fa54fb0422",
+        "validation_auc": 0.7188899623249438
+      },
+      "model": "hitskt",
+      "stored_test_metrics": {
+        "accuracy": 0.6744200548765278,
+        "f1": 0.5645278522490319,
+        "loss": 0.6087257417328864,
+        "mse": 0.20984520173382062,
+        "precision": 0.5866082262338113,
+        "recall": 0.5440494235450829,
+        "roc_auc": 0.7096240159197755,
+        "targets": 112252,
+        "threshold": 0.5
+      },
+      "strict_validation_selected_auc": 0.719757256068911,
+      "strict_validation_selected_epoch": 40
+    },
+    {
+      "best": {
+        "epoch": 32,
+        "model_tensors_all_finite": true,
+        "optimizer_nonfinite_elements": 0,
+        "optimizer_nonfinite_states": [],
+        "path": "experiments/hitskt/junyi/full/best_model.pt",
+        "sha256": "2308c5bf0c850da1e55daf802a0853a30fac45eeed071c7162c68fc17bfa3bdd",
+        "validation_auc": 0.8008507199510555
+      },
+      "best_matches_previous_audit_sha256": true,
+      "checkpoint_matches_strict_selection": true,
+      "complete": true,
+      "completed_epochs": 37,
+      "config_selected_epoch": 32,
+      "dataset": "junyi",
+      "fresh_baseline_test_replay": "See independent full CPU replay manifests",
+      "last": {
+        "epoch": 37,
+        "model_tensors_all_finite": true,
+        "optimizer_nonfinite_elements": 0,
+        "optimizer_nonfinite_states": [],
+        "path": "experiments/hitskt/junyi/full/last_model.pt",
+        "sha256": "5f9a8b4fe8dc1d0ad14c6da234e88876cf1435f4639b0765527e282f5aeae2f7",
+        "validation_auc": 0.8006762122758578
+      },
+      "model": "hitskt",
+      "stored_test_metrics": {
+        "accuracy": 0.75555059798844,
+        "f1": 0.83050075255717,
+        "loss": 0.49757788112870566,
+        "mse": 0.16478629880597911,
+        "precision": 0.785045267643441,
+        "recall": 0.8815436621676446,
+        "roc_auc": 0.7978262055191263,
+        "targets": 2456402,
+        "threshold": 0.5
+      },
+      "strict_validation_selected_auc": 0.8008507199510555,
+      "strict_validation_selected_epoch": 32
+    },
+    {
+      "best": {
+        "epoch": 30,
+        "model_tensors_all_finite": true,
+        "optimizer_nonfinite_elements": 0,
+        "optimizer_nonfinite_states": [],
+        "path": "experiments/hitskt/ednet_kt1/full/best_model.pt",
+        "sha256": "58d4b1f393d0fa8ec372ba8bcc00cc8b7168d37817d4badfd26ee42abffd03c8",
+        "validation_auc": 0.7681769525193056
+      },
+      "best_matches_previous_audit_sha256": true,
+      "checkpoint_matches_strict_selection": true,
+      "complete": true,
+      "completed_epochs": 35,
+      "config_selected_epoch": 30,
+      "dataset": "ednet_kt1",
+      "fresh_baseline_test_replay": "See independent full CPU replay manifests",
+      "last": {
+        "epoch": 35,
+        "model_tensors_all_finite": true,
+        "optimizer_nonfinite_elements": 0,
+        "optimizer_nonfinite_states": [],
+        "path": "experiments/hitskt/ednet_kt1/full/last_model.pt",
+        "sha256": "ac25f6f4330fbc9c048fe696c3a59faeefac117dfc71c4861787599051a7f6d4",
+        "validation_auc": 0.76654441780194
+      },
+      "model": "hitskt",
+      "stored_test_metrics": {
+        "accuracy": 0.7388606144363273,
+        "f1": 0.8241286589004618,
+        "loss": 0.5185181172959707,
+        "mse": 0.17371257418130398,
+        "precision": 0.7639387403579302,
+        "recall": 0.8946143710041425,
+        "roc_auc": 0.7693648364413692,
+        "targets": 13429870,
+        "threshold": 0.5
+      },
+      "strict_validation_selected_auc": 0.7681769525193056,
+      "strict_validation_selected_epoch": 30
+    }
+  ],
+  "synthetic_optimizer_algebra": {
+    "finite_first_moment_divided_by_infinite_denominator": 0.0,
+    "positive_infinity_after_100_finite_second_moment_updates": true,
+    "scope": "Synthetic Adam second-moment algebra, not resuming or modifying any model/checkpoint"
+  },
+  "utc": "2026-10-18T17:03:58.695677+00:00"
+}

@@ -1,0 +1,126 @@
+{
+  "base_audit_commit": "5625478ab0be344b145d2813939a71a0f6e49924",
+  "classification_bounds": {
+    "exact_total_disagreements": "NOT VERIFIED: historical per-target scores/classifications absent",
+    "maximum": 5347462,
+    "minimum": 40,
+    "net_correct_change": 30,
+    "parity": 0,
+    "scope": "Sharp bounds using confusion counts only; net correct change is not total changed classifications"
+  },
+  "comparison": {
+    "accuracy": {
+      "absolute_difference": 2.23382653741222e-06,
+      "exact_equal": false,
+      "recalculated": 0.7388628482628647,
+      "stored": 0.7388606144363273,
+      "within_tolerance": false
+    },
+    "bce_float64": {
+      "absolute_difference": 4.856804813879734e-08,
+      "exact_equal": false,
+      "recalculated": 0.5185181658640189,
+      "stored": 0.5185181172959707,
+      "within_tolerance": true
+    },
+    "f1": {
+      "absolute_difference": 1.857208446698344e-06,
+      "exact_equal": false,
+      "recalculated": 0.8241305161089085,
+      "stored": 0.8241286589004618,
+      "within_tolerance": false
+    },
+    "historical_batch_weighted_bce": {
+      "absolute_difference": 4.953209453706364e-08,
+      "exact_equal": false,
+      "recalculated": 0.5185181668280653,
+      "stored": 0.5185181172959707,
+      "within_tolerance": true
+    },
+    "mse": {
+      "absolute_difference": 2.0508481385350663e-08,
+      "exact_equal": false,
+      "recalculated": 0.17371259468978537,
+      "stored": 0.17371257418130398,
+      "within_tolerance": true
+    },
+    "precision": {
+      "absolute_difference": 4.1301457021081234e-07,
+      "exact_equal": false,
+      "recalculated": 0.7639391533725004,
+      "stored": 0.7639387403579302,
+      "within_tolerance": true
+    },
+    "recall": {
+      "absolute_difference": 3.810568579232232e-06,
+      "exact_equal": false,
+      "recalculated": 0.8946181815727218,
+      "stored": 0.8946143710041425,
+      "within_tolerance": false
+    },
+    "roc_auc": {
+      "absolute_difference": 1.002904272962013e-07,
+      "exact_equal": false,
+      "recalculated": 0.7693647361509419,
+      "stored": 0.7693648364413692,
+      "within_tolerance": true
+    }
+  },
+  "cpu_metrics": {
+    "accuracy": 0.7388628482628647,
+    "bce_float64": 0.5185181658640189,
+    "confusion": {
+      "fn": 967930,
+      "fp": 2539108,
+      "tn": 1705781,
+      "tp": 8217051
+    },
+    "f1": 0.8241305161089085,
+    "historical_batch_weighted_bce": 0.5185181668280653,
+    "mse": 0.17371259468978537,
+    "precision": 0.7639391533725004,
+    "recall": 0.8946181815727218,
+    "roc_auc": 0.7693647361509419,
+    "targets": 13429870,
+    "threshold": 0.5
+  },
+  "cpu_precision_diagnostics": {
+    "changed_threshold_classifications": 1,
+    "maximum_absolute_logit_difference": 1.3506159044496258e-06,
+    "maximum_absolute_probability_difference": 2.3070689236792674e-07,
+    "mean_absolute_logit_difference": 2.0569503255030545e-07,
+    "mean_absolute_probability_difference": 4.070412620319405e-08,
+    "negative_to_positive": 0,
+    "positive_to_negative": 1,
+    "scope": "Only selected sampled batches"
+  },
+  "cpu_verification": "FAIL: frozen absolute1e-6 metric gate",
+  "cuda_verification": "NOT VERIFIED: occupied MIG; no CUDA allocated",
+  "dataset": "ednet_kt1",
+  "historical_cuda_changed_classifications": "NOT VERIFIED: aggregate bounds only",
+  "historical_cuda_pointwise_max_errors": "NOT VERIFIED: historical vectors absent",
+  "implementation_sha256": "8325f4c9c171095126ed493b9ebfb99126efbc34858826db332293e27fad7237",
+  "input_sha256": {
+    "reports/reproducibility_diagnostics/artifact_and_dkt_forensics.json": "91a1d3d6948cd768f6a6f2c008e97016ef286936b343e294fe20781309b1168e",
+    "reports/reproducibility_diagnostics/cached_metrics_diagnostics.json": "7ec6b4c0cd8319c309e37fd975d9cee6c6e744c6143c916533f5038351d27c8b",
+    "reports/reproducibility_diagnostics/ednet_kt1_fp64_sample.json": "51c431724c3a485e3870333b4026e9bc9455ef52b488ce976c484137b17b318b",
+    "reports/reproducibility_diagnostics/ednet_kt1_timing_context.json": "7f603a05bee3a2d7a13c0f1f427002a666906b2cbd85236ff283473e56dcf296",
+    "reports/reproducibility_diagnostics/evaluation_order.json": "0960585acb628a51c179fe74bd3f89489e3cecbffd930f9e207870f60bfbfcfe"
+  },
+  "precision_scope": "sample",
+  "real_time_claim": "Unsupported without a separately verified availability-aware protocol",
+  "recommendation": "2. Results require additional verification but not yet retraining",
+  "response_availability": "NOT VERIFIED",
+  "stored_metrics": {
+    "accuracy": 0.7388606144363273,
+    "f1": 0.8241286589004618,
+    "loss": 0.5185181172959707,
+    "mse": 0.17371257418130398,
+    "precision": 0.7639387403579302,
+    "recall": 0.8946143710041425,
+    "roc_auc": 0.7693648364413692,
+    "targets": 13429870,
+    "threshold": 0.5
+  },
+  "utc": "2026-10-18T17:13:41.331853+00:00"
+}

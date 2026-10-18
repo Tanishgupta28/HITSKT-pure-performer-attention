@@ -1,0 +1,76 @@
+{
+  "actual_hitskt_15_session_context": {
+    "test": {
+      "cross_session_proxy_overlap_targets": 0,
+      "equal_start_edges": 18633725,
+      "equal_start_targets": 2165594,
+      "proxy_overlap_edges": 0,
+      "proxy_overlap_targets": 0,
+      "same_solving_episode_edges": 0,
+      "same_solving_episode_targets": 0,
+      "targets": 2456402,
+      "with_prior_visible_response": 2456402
+    },
+    "train": {
+      "cross_session_proxy_overlap_targets": 0,
+      "equal_start_edges": 64296090,
+      "equal_start_targets": 7875413,
+      "proxy_overlap_edges": 0,
+      "proxy_overlap_targets": 0,
+      "same_solving_episode_edges": 0,
+      "same_solving_episode_targets": 0,
+      "targets": 8920358,
+      "with_prior_visible_response": 8920358
+    },
+    "validation": {
+      "cross_session_proxy_overlap_targets": 0,
+      "equal_start_edges": 18786353,
+      "equal_start_targets": 2252262,
+      "proxy_overlap_edges": 0,
+      "proxy_overlap_targets": 0,
+      "same_solving_episode_edges": 0,
+      "same_solving_episode_targets": 0,
+      "targets": 2556773,
+      "with_prior_visible_response": 2556773
+    }
+  },
+  "all_retained_adjacent": {
+    "test": {
+      "equal_start": 2165594,
+      "previous_end_after_start": 0,
+      "same_solving_episode_previous": 0,
+      "targets": 2456402
+    },
+    "train": {
+      "equal_start": 8515952,
+      "previous_end_after_start": 0,
+      "same_solving_episode_previous": 0,
+      "targets": 9647042
+    },
+    "validation": {
+      "equal_start": 2252262,
+      "previous_end_after_start": 0,
+      "same_solving_episode_previous": 0,
+      "targets": 2556773
+    }
+  },
+  "caveat": "Counts are inequalities against recorded endTime (ASSIST/Junyi) or timestamp+elapsed_time proxy (EdNet); not counts of proven unavailable correctness feedback",
+  "dataset": "junyi",
+  "implementation_sha256": "38fa0fa1524e68e866c7ee9e95fd21668d167f3567182e521ba28ad90cfb96e7",
+  "local_array_sha256": {
+    "recorded_or_proxy_end.npy": "1f698ba04cda9997f1320533e5268b11518d96b96ec01be9b588b2b56abcc72d",
+    "solving_episode.npy": "7d786bbfeffa9b34d3a25d6f5446d2db1ff8ef49102598ece327f1a06fe4b305"
+  },
+  "retained_events": 14660217,
+  "runtime_seconds": 5.096104466007091,
+  "same_solving_episode_caveat": "Logged bundle episode membership, not exact submission/feedback timing; -1 disables this channel outside EdNet",
+  "scope": "Every HiTSKT supervised target and every earlier response exposed by its actual 15-session context, including within-current-session prefix; no current or future indexed labels",
+  "source_diagnostics": {
+    "source_end_before_start": 0,
+    "source_end_equal_start": 14660217,
+    "source_positive_duration": 0,
+    "source_rows": 14660217
+  },
+  "status": "COMPLETE",
+  "utc": "2026-10-18T17:02:47.332268+00:00"
+}

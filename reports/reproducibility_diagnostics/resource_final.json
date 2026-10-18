@@ -1,0 +1,18 @@
+{
+  "cgroup_limit_bytes": 96636764160,
+  "cpu_policy": "One serial model inference at a time, CUDA hidden, threads1/2, affinity216-219 nice19 ionice3; metadata/count jobs on other single cores. Per-forward estimate<=16GiB and >=24GiB cgroup RSS headroom.",
+  "cuda_allocations_by_this_diagnosis": 0,
+  "gpu_allocation_decision": "No CUDA allocation: only visible MIG occupied, external LightSAKT2 active, compute-process visibility restricted; empty process display does not prove idle",
+  "gpu_inventory": "GPU 0: NVIDIA H100 80GB HBM3 (UUID: GPU-5a568e3c-e96c-169f-b063-f4478340ff51)\n  MIG 3g.40gb     Device  0: (UUID: MIG-d2fcfd79-720e-5218-82c9-0a132be68920)",
+  "light_progress_mtime_utc": "2026-10-18T17:08:56.705852+00:00",
+  "light_training_active_count": 1,
+  "memory_failcnt": 0,
+  "observed_usage_bytes": 33731633152,
+  "oom_control": {
+    "oom_kill": "2",
+    "oom_kill_disable": "0",
+    "under_oom": "0"
+  },
+  "oom_interpretation": "oom_kill=2 predates this follow-up; still2 at end. No new OOM kill observed. Estimate is not a hard process RSS cap.",
+  "utc": "2026-10-18T17:08:59.936207+00:00"
+}

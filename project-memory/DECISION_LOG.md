@@ -828,3 +828,36 @@
   final manifests and exact comparisons are in `reports/independent_correctness_audit/`.
   Recommendations were added only after full verification. Publish this scoped
   audit milestone normally, preserve unrelated edits, then wait for instructions.
+
+
+## 2026-10-18 UTC — Reproducibility/timing follow-up diagnosis verified
+
+- User authorized new diagnosis/reports and normal commit/push, preserving all
+  originals and LightSAKT2. No full training, DKT resume or architecture change.
+- Three full prior CPU prediction caches re-hashed; sampler IDs/labels/order
+  regenerated for every target. Best epochs40/32/30 and checkpoint hashes match.
+- Full ASSIST FP64 still misses original BCE by2.131244e-6 and changes0 classes.
+  Accumulation-only delta1.490384e-9 cannot explain historical2.130695e-6 gap.
+  Bounded Junyi/EdNet FP64 samples have4,072/2,666 targets; no full-scope claim.
+- Historical CUDA vectors/runtime flags absent. Exact original flips/max errors
+  remain NOT VERIFIED; confusion-only minimum flips5/31/40, net correct−5/+19/+30.
+  Current NVIDIA TF32 permission is observed, historical causal attribution is not.
+- Authoritative timing semantics do not certify correctness release. Full actual
+  HiTSKT context exposes recorded/proxy overlaps on7,059 ASSIST and4,089,385 EdNet
+  test targets; Junyi all source start==end, with2,165,594 tied test targets.
+  Same EdNet episode prior-label targets3,364,799. Do not call these confirmed leaks.
+- Rechecked11 completed baseline pairs need fresh replay; missing DKT/EdNet still
+  has21,749 positive-infinite Adam second moments in last9. No repair/resume.
+- Deliverables: three requested reports, separate availability-V2 and FAVOR+
+  proposals, per-dataset manifests and aggregate evidence under
+  `reports/reproducibility_diagnostics/`. Both proposals remain unimplemented.
+- Decision2 for all historical V1 datasets: preserve provisionally; additional
+  verification before publication, no established need for retraining yet.
+  Different real-time/V2 contexts require matched evaluation/training separately.
+-59 relevant tests PASS;375 originals and106 prior audit files unchanged;24
+  original/new prediction arrays and source/report bindings verified. Render-only
+  tab-escape mismatch fixed, initial verifier failure retained. OOM counter2
+  unchanged;90GiB cgroup respected; CUDA allocations0; LightSAKT2 remains active.
+- Detailed evidence, limitations and exact next checkpoint:
+  [REPRODUCIBILITY_STATE.md](REPRODUCIBILITY_STATE.md). Publish scoped milestone,
+  verify canonical remote equality and wait; no automatic training schedule.
