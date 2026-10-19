@@ -30,6 +30,13 @@ remain intact; platform changes do not alter research source or live runs.
 
 ## Current short status
 
+FAVOR+ request now authorizes isolated integration on
+`research/hitskt-favor-plus-v1`; see [FAVOR_PLUS_STATE.md](FAVOR_PLUS_STATE.md).
+The referenced starter/tests are missing, with path/link clarification pending.
+Preparation/preservation and59 legacy controls pass; no FAVOR+ implementation,
+pipeline or starter tests yet. No full training, GPU work or V2 authorized.
+Historical supervisor/audit milestones below remain intact.
+
 19 October: supervisor PDF/editable source/status/replay plan verified; see
 [SUPERVISOR_STATE.md](SUPERVISOR_STATE.md).59 controls and full cached-score
 recalculation pass;375 originals and156 prior evidence files unchanged. New

@@ -1,0 +1,32 @@
+{
+  "cuda_allocations": 0,
+  "full_model_favor_tests": "NOT RUN",
+  "full_training_runs": 0,
+  "gpu_pilot_readiness": "NOT VERIFIED",
+  "integration_status": "NOT IMPLEMENTED: starter missing",
+  "legacy_controls_passed": 59,
+  "memory_limit_bytes": 96636764160,
+  "observed_memory_usage_bytes": 35448541184,
+  "oom_control": {
+    "oom_kill": "2",
+    "oom_kill_disable": "0",
+    "under_oom": "0"
+  },
+  "originals_preserved": 375,
+  "preparation_status": "PASS",
+  "prior_implementation_evidence_preserved": 268,
+  "required_next_input": "Actual FAVOR+ starter implementation and its tests",
+  "source_sha256": {
+    "reports/favor_plus_v1/INTEGRATION_STATUS.md": "a5765660c1e0fe70c4045e3ae1f328c90b2f3e6f8006e6907e818214ccd34d61",
+    "reports/favor_plus_v1/legacy_cpu_controls.log": "d5a9f8424fcc0a4197e7839c9954d11034b845490dc690e7ad9108bd0c660e21",
+    "reports/favor_plus_v1/memory_validation.log": "c77d040222812aeae573a3dfd2cd3e041c8a139535ee18d4de0ca21a82062d81",
+    "reports/favor_plus_v1/preservation_baseline.json": "8a6520e4dab4e276adfba9204bfd7f9b1687bf8b79dbd704d3664ddbc6c25274",
+    "reports/favor_plus_v1/preservation_baseline.log": "6c53878a9953926b6f27bd0a9342de099af2d1e595dab9a6d4d465367499a1d1",
+    "reports/favor_plus_v1/preservation_handoff.json": "044826e3c767e6c8446193fc7aadb8a0b3b2e443d2646a1e5a1e4be1fc7c191a",
+    "reports/favor_plus_v1/preservation_handoff.log": "6c53878a9953926b6f27bd0a9342de099af2d1e595dab9a6d4d465367499a1d1",
+    "scripts/check_favor_plus_preservation.py": "c06f957f514b8b6290c8cf62033466e4fcb90fc7f267e91face6cb5fbde401fd"
+  },
+  "standalone_favor_tests": "NOT RUN",
+  "starter_search": "No supplied code/test attachment in conversation or accessible workspace/common mounts/archive/resources; local-path/download-link clarification pending",
+  "utc": "2026-10-19T10:12:21.690788+00:00"
+}

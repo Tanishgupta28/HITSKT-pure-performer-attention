@@ -891,3 +891,23 @@
 - Publish scoped deliverables normally, verify remote equality, then wait for
   independent resources or instructions. Detailed handoff:
   [SUPERVISOR_STATE.md](SUPERVISOR_STATE.md).
+
+
+## 2026-10-19 UTC — FAVOR+ starter integration authorized; missing attachment
+
+- User authorizes isolated research branch, starter-based integration and
+  standalone/full-model tests before fixes, then optimized/validated FAVOR+
+  pipeline hitskt_favor_plus_v1 and bounded CPU smoke. Full training and GPU
+  pilot execution remain prohibited; LightSAKT2/DKT and all old artifacts protected.
+- Created research/hitskt-favor-plus-v1 fromf465d84. Starter source/tests absent
+  from conversation/workspace/common mounts/archive/resources. Requested path/link;
+  no dependent implementation or fabricated test result while awaiting input.
+- Preservation PASS:375 originals/all30 checkpoints +268 additional prior code/
+  audit/report/test files.59 independent legacy CPU controls PASS again. These
+  are not FAVOR+ tests. No CUDA, optimizer reset/resume or new experiment.
+- New `reports/favor_plus_v1/INTEGRATION_STATUS.md` names missing input and all
+  NOT RUN/NOT IMPLEMENTED states, plus isolated model/checkpoint/data/evaluation
+  boundary and required validation. GPU pilot readiness remains NOT VERIFIED.
+- Publish verified preparation to research branch only, verify remote equality,
+  then resume from actual starter after user supplies it. Handoff:
+  [FAVOR_PLUS_STATE.md](FAVOR_PLUS_STATE.md). No automatic training schedule.

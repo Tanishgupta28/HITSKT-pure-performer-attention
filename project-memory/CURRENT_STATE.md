@@ -2,6 +2,17 @@
 
 Updated: 2026-10-19 UTC
 
+## FAVOR+ integration preparation — latest
+
+New user request authorizes FAVOR+ starter integration and bounded CPU smoke on
+`research/hitskt-favor-plus-v1`, based onf465d84; no full training/GPU pilot.
+See [FAVOR_PLUS_STATE.md](FAVOR_PLUS_STATE.md). Starter/test attachment is absent;
+path/link clarification pending. Do not invent a replacement or claim tests ran.
+Branch/preservation baseline ready:375 originals +268 prior source/evidence files
+unchanged,59 legacy controls PASS. FAVOR+ implementation/pipeline/smoke NOT DONE;
+GPU pilot readiness NOT VERIFIED. No LightSAKT2/DKT or historical artifacts changed.
+Publish preparation only to research branch, then obtain the missing starter.
+
 ## Supervisor briefing — latest
 
 Two-page supervisor PDF plus editable Markdown/HTML, verification status and

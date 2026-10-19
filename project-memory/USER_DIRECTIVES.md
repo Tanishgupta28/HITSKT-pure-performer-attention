@@ -2,7 +2,25 @@
 
 Updated: 2026-10-19 UTC
 
-## 2026-10-19 — Supervisor briefing and bounded remaining verification (latest)
+## 2026-10-19 — FAVOR+ starter integration (latest)
+
+- User authorizes a separate research branch and integration of their attached
+  FAVOR+ starter as a foundation, with standalone/full-model tests first and
+  failures fixed before optimization. Variant ID: hitskt_favor_plus_v1.
+- Preserve existing ELU+1 models/checkpoints/results, datasets and audits.
+  Keep non-attention architecture, datasets, splits and V1 evaluation unchanged.
+- Build a separate training pipeline/output namespace. Run bounded CPU smoke,
+  causality/gradient/stability/variable-length/memory/runtime verification only.
+  No full dataset training or GPU pilot execution yet; report readiness/risks.
+- Do not modify/interrupt LightSAKT2 or resume/reset unfinished DKT/EdNet.
+  Commit/push verified changes to the research branch, not canonical main.
+- This supersedes the older FAVOR+-implementation hold for the above scope;
+  V2, historical retraining and full new training remain unauthorized.
+- Starter/test files are not visible in current attachments/workspace or mounted
+  resources. A local-path/download-link clarification is pending; do not invent
+  a substitute implementation or claim starter tests ran before obtaining it.
+
+## 2026-10-19 — Supervisor briefing and bounded remaining verification (historical)
 
 - Continue from e1065c9; read all three completed diagnostic reports. Create a
   concise supervisor PDF, editable source and verification-status document.
