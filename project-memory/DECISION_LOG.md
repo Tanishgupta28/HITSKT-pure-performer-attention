@@ -1054,3 +1054,24 @@ GPU runtime and peak memory unknown, no CPU-to-GPU speed extrapolation.
 See [FAVOR_RESOURCE_PLAN_STATE.md](FAVOR_RESOURCE_PLAN_STATE.md). Publish scoped
 docs/memory to research branch then stop. Prior conditional execution scope
 retained historically, not activated by this diagnostic-only continuation.
+
+## 2026-10-19 UTC — Real ASSIST pilot CPU preparation and approval boundary
+
+User authorizes safe CPU implementation/preflight only and newly requires
+approval before ANY GPU execution/resource change; this supersedes earlier
+conditional automatic execution. Implemented fixed max5-update real-data runner,
+metadata guard, finite-state/QK/independent-kernel/softmax/resource/checkpoint
+diagnostics and gated CUDA harness provenance/quota. No attention/model/data or
+original full/synthetic pipeline changes. Final45new+11existing CPU checks PASS,
+0failures,1 legacy pipeline case deliberately deselected. Initial4 failures were
+incomplete session_length test fixture; preserved and corrected, not hidden.
+Actual ASSIST preflight under CUDA/model/Adam traps validates11 prior hashes,
+7060 train target sessions, freezes5 whole targets292 actions (maxcost485).
+Zero real-data forward/optimizer/CUDA calls. Final source-bound plan v2 valid;
+v1 intentionally refuses after final oracle fingerprint hardening, both saved.
+No training/GPU probe/allocation/watcher, LightSAKT2 interference or DKT changes.
+Prior229 suite inherited, not rerun; high-norm/learned-QK/GPU behavior still
+unverified and full training not established. See
+[FAVOR_REAL_PILOT_PREPARATION_STATE.md](FAVOR_REAL_PILOT_PREPARATION_STATE.md).
+Publish scoped research source/report/evidence/memory then stop for actual
+independent allocation and explicit user approval; no automatic CUDA continuation.

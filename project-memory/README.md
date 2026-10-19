@@ -30,15 +30,16 @@ remain intact; platform changes do not alter research source or live runs.
 
 ## Current short status
 
-Latest continuation from025a0e9 is resource diagnosis/planning only; see
-[FAVOR_RESOURCE_PLAN_STATE.md](FAVOR_RESOURCE_PLAN_STATE.md). LightSAKT2 active:
-811 complete/1 running/145 pending, epoch6; measured training forecast10.64
-continuous days with wide uncertainty and final work still following. No
-independent HiTSKT GPU or verified alternative server. No CUDA/training/tests
-this turn. Core229 CPU passes remain intact; stage1 harness prepared, but a
-real-data five-update pilot runner remains to implement. Full training readiness
-unestablished. Request exclusive allocation; publish docs then stop. Earlier
-conditional pilot approval does not authorize execution in this diagnostic turn.
+Latest from1e6255c: real ASSIST2017 max5-update runner, diagnostics and strict
+allocation/user-approval gate prepared. See
+[FAVOR_REAL_PILOT_PREPARATION_STATE.md](FAVOR_REAL_PILOT_PREPARATION_STATE.md).
+45new+11existing lightweight CPU checks PASS. Actual-data preflight verifies
+11 hashes/freezes5 whole train targets;0 real forwards/updates/CUDA calls. Prior
+229 CPU evidence retained, not rerun. Original artifacts/pipelines unchanged;
+updated CUDA harness changes safety/provenance only. New approval is required
+before ANY GPU execution/resource change, also actual independent allocation.
+No new GPU probe or LightSAKT2/DKT change. High-norm/CUDA/full-training readiness
+unestablished; publish scoped source/evidence/memory then stop, no watcher.
 
 19 October: supervisor PDF/editable source/status/replay plan verified; see
 [SUPERVISOR_STATE.md](SUPERVISOR_STATE.md).59 controls and full cached-score

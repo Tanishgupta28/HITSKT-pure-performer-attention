@@ -2,7 +2,23 @@
 
 Updated: 2026-10-19 UTC
 
-## FAVOR+ resource diagnosis and six-stage plan — latest
+## FAVOR+ real-data pilot CPU preparation — latest
+
+From1e6255c: real ASSIST pilot runner/diagnostics and shared GPU approval gate
+implemented,56 lightweight CPU cases PASS (45new+11existing). Actual dataset
+preflight verifies11 hashes and freezes5 whole targets/292 actions, no real-data
+forward/optimizer or CUDA. See
+[FAVOR_REAL_PILOT_PREPARATION_STATE.md](FAVOR_REAL_PILOT_PREPARATION_STATE.md).
+Valid prepared plan v2; stale v1 and initial fixture-failure evidence preserved.
+Stage1 and step-bound stage2 code now prepared, CUDA path NOT VERIFIED. High-norm
+approximation/learned QK/memory/runtime remain unmeasured; full training not ready.
+Latest user requires NEW approval before any GPU execution/resource changes,
+plus actual independent allocation; no earlier automatic conditional execution.
+No GPU probes, LightSAKT2/DKT changes, watchers, original artifact changes or
+full229 rerun. Commit/push scoped research changes then stop for allocation and
+approval; no training now. Unrelated README/SAKT log remain untouched.
+
+## FAVOR+ resource diagnosis and six-stage plan — historical
 
 Documentation-only continuation from025a0e9; read
 [FAVOR_RESOURCE_PLAN_STATE.md](FAVOR_RESOURCE_PLAN_STATE.md). At15:13UTC,

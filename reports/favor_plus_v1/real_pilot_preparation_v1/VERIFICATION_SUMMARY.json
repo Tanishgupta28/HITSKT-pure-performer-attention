@@ -1,0 +1,214 @@
+{
+  "actual_dataset_preflight": {
+    "actual_dataset_model_forwards": 0,
+    "checked_dataset_files": 11,
+    "cuda_api_calls": 0,
+    "host_memory": {
+      "cgroup_headroom_bytes": 60408549376,
+      "cgroup_limit_bytes": 96636764160,
+      "cgroup_usage_bytes": 36228214784,
+      "peak_process_rss_bytes": 582561792
+    },
+    "optimizer_updates": 0,
+    "plan_sha256": "1c03b9d1499c738877270e2d9ca46acced8982b006497c675dcc20cafe67f5d1",
+    "preparation_and_reload_seconds": 0.8381469730520621,
+    "prepared_plan": "/workspace/capstone/experiments/hitskt_favor_plus_v1/assist2017/real_pilot_prepare_cpu_20261019_v2/prepared_plan.json",
+    "selected": [
+      {
+        "dataset_index": 880,
+        "history_end_exclusive": 1558,
+        "history_lengths": [
+          19,
+          27,
+          33,
+          24,
+          47,
+          10
+        ],
+        "history_start": 1552,
+        "padded_tokens": 363,
+        "split": "train",
+        "student": 178,
+        "target_length": 67,
+        "target_session": 1558
+      },
+      {
+        "dataset_index": 3573,
+        "history_end_exclusive": 6312,
+        "history_lengths": [
+          55,
+          17,
+          51,
+          4
+        ],
+        "history_start": 6308,
+        "padded_tokens": 290,
+        "split": "train",
+        "student": 703,
+        "target_length": 60,
+        "target_session": 6312
+      },
+      {
+        "dataset_index": 2156,
+        "history_end_exclusive": 3823,
+        "history_lengths": [
+          42,
+          61,
+          4,
+          31,
+          47,
+          2,
+          59
+        ],
+        "history_start": 3816,
+        "padded_tokens": 485,
+        "split": "train",
+        "student": 431,
+        "target_length": 42,
+        "target_session": 3823
+      },
+      {
+        "dataset_index": 2863,
+        "history_end_exclusive": 5066,
+        "history_lengths": [
+          26
+        ],
+        "history_start": 5065,
+        "padded_tokens": 91,
+        "split": "train",
+        "student": 567,
+        "target_length": 61,
+        "target_session": 5066
+      },
+      {
+        "dataset_index": 3968,
+        "history_end_exclusive": 6972,
+        "history_lengths": [
+          33,
+          57,
+          30
+        ],
+        "history_start": 6969,
+        "padded_tokens": 241,
+        "split": "train",
+        "student": 776,
+        "target_length": 62,
+        "target_session": 6972
+      }
+    ],
+    "skipped_oversize_singletons": 0,
+    "status": "PASS_CPU_DATA_PREFLIGHT_ONLY",
+    "train_target_sessions": 7060
+  },
+  "additional_artifact_sha256": {
+    "experiments/hitskt_favor_plus_v1/assist2017/real_pilot_prepare_cpu_20261019_v1/prepared_plan.json": "4ede41e29b9d4b150f30ebf702a501b0333c1a23d81e59942979d02f4182d5b4",
+    "experiments/hitskt_favor_plus_v1/assist2017/real_pilot_prepare_cpu_20261019_v2/prepared_plan.json": "1c03b9d1499c738877270e2d9ca46acced8982b006497c675dcc20cafe67f5d1",
+    "reports/favor_plus_v1/REAL_DATA_PILOT_PREPARATION.md": "3df972273a491cf8be8de320c8e937132d15c61513dd58ddb4d75b3283894731",
+    "tests/test_favor_plus_real_pilot.py": "41d2e240fe1cac48a2c9166fbaf42e79faaf164d7b29cd3bcfb5ef001434d742"
+  },
+  "auc_accuracy_results": "NONE",
+  "base_commit": "1e6255ce5a1f530603ab421f0b4e787efa706c4c",
+  "cuda_status": "NOT RUN; actual user approval and independent allocation required",
+  "durable_memory_validation": {
+    "errors": 0,
+    "markdown_files": 30,
+    "ok": true,
+    "warnings": 0
+  },
+  "evidence_sha256": {
+    "ALLOCATION_RECORD.example.json": "7022fe91297f1ff8641ab5678da1e904f2a20f14a534b272c4c8cce1696f456c",
+    "CPU_VALIDATION_COMMAND.md": "42104389d9fc1dd27567f522ecacdc9794d079a23465c22c85ad955d537ded62",
+    "actual_dataset_preflight.log": "2d7813564027f64bb292e9b0cf74023186a3612940e332aaba0af2c70a2ed299",
+    "actual_dataset_preflight_v2.log": "353557e591cb452844debf38d682ed53632403eaee3d5c28c060ebd414ae6933",
+    "final_cpu_validation.log": "275ed874ba546841bccffef5f33d4989a07542ab683f1d5a527e52eb2cd4ae09",
+    "final_cpu_validation.xml": "8e68a17375d675a10816378c2c00ccef95d8d3fdebe449cf805add17507f921f",
+    "final_cpu_validation_v3.log": "e26f82b7a3a0b9ae85084efe60d690a1915d71fc8d9bc826b59acd895427095c",
+    "final_cpu_validation_v3.xml": "e0ee63c07545493d6878604169a8aff5f32d54bdc7555b6dc66237178aa9891c",
+    "new_cpu_tests_initial.log": "ec5f07118d43a4606148d432880dc9ca442334f0d7a2cc6961181eed4d2657b5",
+    "new_cpu_tests_initial.xml": "898b919e52639ceb0fcd5cbf9d4da8c813e712b19a611c063e53ca1abe8651cc",
+    "new_cpu_tests_v2.log": "3527b1082bf8c930e07877db4c2d4ead81730cf80f775be0b99c13e9b2d13916",
+    "new_cpu_tests_v2.xml": "c3928c098370f62edb354428ee8d0d7112eb3fe8b42e866bca6082f770f4be1a"
+  },
+  "final_deselected": 1,
+  "final_failed": 0,
+  "final_passed": 56,
+  "full_training_ready": false,
+  "gpu_probes_run": false,
+  "initial_failures": {
+    "cause": "test store fixture omitted production session_length method",
+    "failed": 4,
+    "passed": 39,
+    "resolved": true
+  },
+  "intentional_existing_source_changes": {
+    "scripts/validate_favor_plus_gpu.py": {
+      "change": "approval/allocation guard, allocator quota and evidence provenance only",
+      "current_sha256": "dfb4e71c64485082799c95c2e060ea38ef71510a402a4081faf6117c494ef082",
+      "previous_sha256": "6ad8e6a061619617943007f590c05109a007491891dbc97861b5fa49d65a4c04"
+    }
+  },
+  "known_remaining_risks": [
+    "high-norm random-feature approximation",
+    "learned QK evolution unmeasured",
+    "CUDA execution unverified",
+    "worst history/batch memory and runtime unmeasured"
+  ],
+  "new_cpu_tests": 45,
+  "prior_229_suite_rerun": false,
+  "required_limits": {
+    "batch_size": 1,
+    "diagnostic_prefix_positions": 32,
+    "max_cuda_allocated_bytes": 8589934592,
+    "max_execution_seconds": 900,
+    "max_optimizer_updates": 5,
+    "max_padded_tokens": 2048,
+    "max_process_rss_bytes": 4294967296,
+    "max_step_seconds": 120,
+    "minimum_cgroup_headroom_bytes": 2147483648
+  },
+  "scope": "CPU-only real-data pilot preparation; not CUDA or model training",
+  "source_sha256": {
+    "ktbench/batching.py": "baffe36d07b869498fbd8eaee12da9317b1b451a0061b52845a47b21d51c2ea5",
+    "ktbench/config.py": "650f7ab21ca3428d212c3b6b7e3c012a055ac85ee48cabc4dc82d6a65a3b464c",
+    "ktbench/data/session_store.py": "6c695bc23da5c4b8116d29b5a099c16bb5669a99eb5cdfb9c378ace81d39f218",
+    "ktbench/favor_plus_gpu_access.py": "d1011946f0de6f40c50e90708f3d3faeef9214a3750b529ce6a1e6d4beed8adf",
+    "ktbench/favor_plus_pilot_diagnostics.py": "c1ae1a51cfe3878c6a39f06cacfe9163c6ef93bc6f5bf004106665509de82062",
+    "ktbench/favor_plus_pipeline.py": "b457c695f5b3672551a03551b8c247c86a78eaf0664236d87d6a4441fbcb2171",
+    "ktbench/favor_plus_real_pilot.py": "799fb51db06227fdf5ac5d1dad573c98a96437d7bb006b6ec352bc141b2262f5",
+    "ktbench/hitskt_registry.py": "a2ea1bcc35ad634688a4776564d42147def529b5060e0c315e45437042af1448",
+    "ktbench/metrics.py": "6b57353631c67f5afd5b2785e3787ffdcf15086c0212a9bac75bba199eab6727",
+    "ktbench/models/favor_plus.py": "e6ebc03554a08b9a61204fa481eae6bb0fbe8fe455302df37c78ecd7a72eb2af",
+    "ktbench/models/hitskt.py": "627e3715eb1bd386139a7ba69eb603e6ac49dafe111f46e53ea731c03f55c515",
+    "ktbench/models/hitskt_favor_plus.py": "5a90cc69b4eefb7ffd1ea30c78d36cd9bf531537803a5f51c4d3cb97089c7e8b",
+    "ktbench/models/performer.py": "1b517922893f8573d294fbb036b0f7af6bb9e8d4a1a7808d50db52682d323004",
+    "ktbench/training.py": "ead48df5fd636d7a6e715f9c16eedbd562a7063e3f30a588401844d302eb6859",
+    "scripts/evaluate_hitskt_favor_plus.py": "e4c1e0b9f43ef1c2a8b70c97d71c8510d605ff4431f41b54b66560c4e4936b4d",
+    "scripts/favor_plus_quality_common.py": "11148db1c52458aeb03a0b1af99b301179eaf956d2decb68ceafcbf7426faf98",
+    "scripts/pilot_hitskt_favor_plus_real.py": "2e83e0807b381274bc13c082c799f108c0b5a5a242d1b7ec832dc94dedffc63d",
+    "scripts/train_hitskt_favor_plus.py": "7641a16f41cb0852ac288c2e881b85b4ff085103000d83dfcd2b0c18aea08bb6",
+    "scripts/validate_favor_plus_gpu.py": "dfb4e71c64485082799c95c2e060ea38ef71510a402a4081faf6117c494ef082"
+  },
+  "status": "PASS_CPU_PREPARATION_ONLY",
+  "targeted_existing_cpu_tests": 11,
+  "unchanged_previous_small_source_report_identities": {
+    "ktbench/favor_plus_pipeline.py": "b457c695f5b3672551a03551b8c247c86a78eaf0664236d87d6a4441fbcb2171",
+    "ktbench/models/favor_plus.py": "e6ebc03554a08b9a61204fa481eae6bb0fbe8fe455302df37c78ecd7a72eb2af",
+    "ktbench/models/hitskt.py": "627e3715eb1bd386139a7ba69eb603e6ac49dafe111f46e53ea731c03f55c515",
+    "ktbench/models/hitskt_favor_plus.py": "5a90cc69b4eefb7ffd1ea30c78d36cd9bf531537803a5f51c4d3cb97089c7e8b",
+    "ktbench/models/performer.py": "1b517922893f8573d294fbb036b0f7af6bb9e8d4a1a7808d50db52682d323004",
+    "reports/favor_plus_v1/GPU_PILOT_AND_TRAINING_READINESS.md": "c9303b710be5076abdea6add2a0a4cf5ea54ece642fcd8848b25d1b063779e6d",
+    "reports/favor_plus_v1/IMPLEMENTATION_VALIDATION.md": "ec0326dc62dcde579e9b9a2ddc84c55e66a296961dfee8dd925c4d890db8ebf0",
+    "reports/favor_plus_v1/NUMERICAL_QUALITY_AND_GPU_READINESS.md": "e3b19957eabf51406221b6e0b84a6d0c379d0088fd4f04e3c728347868296937",
+    "reports/favor_plus_v1/numerical_quality_v1/VERIFICATION_SUMMARY.json": "e0452c2a7a27d5274df31de0c496500d9d03f296cad57e9cd5e49b625431c39a",
+    "reports/favor_plus_v1/numerical_quality_v1/dataset_pipeline_plan.json": "da20efaa58cb7fd8d5ee2ccd1ee16a84b3b89cf6d17d26e622ab174ecc456d00",
+    "reports/favor_plus_v1/numerical_quality_v1/quality_decision.json": "6dfc55e2de060ead1f4cd068f658f7d3b0a053ebdde950321df60392b288b2f2",
+    "scripts/evaluate_hitskt_favor_plus.py": "e4c1e0b9f43ef1c2a8b70c97d71c8510d605ff4431f41b54b66560c4e4936b4d",
+    "scripts/pilot_hitskt_favor_plus.py": "1c5c459eef90137b9544cb607cdef1204cd9c93b4de76beb4506fbd8501f6f9b",
+    "scripts/train_hitskt_favor_plus.py": "7641a16f41cb0852ac288c2e881b85b4ff085103000d83dfcd2b0c18aea08bb6"
+  },
+  "unrelated_preserved_hashes": {
+    "README.md": "e5754c28ae89a628d46e0269523115404be13aba55d252a92c90ece2bf8ac6b8",
+    "experiments/sakt/ednet_kt1/full/independent_evaluation.console.log": "0f5546314e0911001954ca04e2fccdad7be7e09dce685fb8d61f5fe7a7af76ff"
+  },
+  "whitespace_check": "source/document paths PASS; raw pytest traceback log/XML whitespace preserved byte-for-byte"
+}

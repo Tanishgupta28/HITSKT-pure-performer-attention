@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="4" skipped="0" tests="43" time="1.869" timestamp="2026-10-19T17:31:50.575133" hostname="dgxhnode3"><testcase classname="tests.test_favor_plus_real_pilot" name="test_metadata_guard_accepts_only_documented_action_without_cuda" time="0.001" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_metadata_guard_rejects_missing_invalid_expired_or_unapproved[exclusive-False]" time="0.001" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_metadata_guard_rejects_missing_invalid_expired_or_unapproved[exclusive-true]" time="0.001" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_metadata_guard_rejects_missing_invalid_expired_or_unapproved[independent-False]" time="0.001" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_metadata_guard_rejects_missing_invalid_expired_or_unapproved[owner-]" time="0.001" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_metadata_guard_rejects_missing_invalid_expired_or_unapproved[job_id-]" time="0.001" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_metadata_guard_rejects_missing_invalid_expired_or_unapproved[external_allocation_evidence-None]" time="0.001" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_metadata_guard_rejects_missing_invalid_expired_or_unapproved[resource_uuid-MIG-placeholder]" time="0.001" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_metadata_guard_rejects_missing_invalid_expired_or_unapproved[starts_utc-2090-01-01T00:00:00Z]" time="0.001" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_metadata_guard_rejects_missing_invalid_expired_or_unapproved[expires_utc-2000-01-01T00:00:00Z]" time="0.001" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_metadata_guard_rejects_missing_invalid_expired_or_unapproved[starts_utc-2026-01-01]" time="0.001" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_metadata_guard_rejects_missing_invalid_expired_or_unapproved[user_approval-value10]" time="0.001" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_metadata_guard_rejects_missing_invalid_expired_or_unapproved[user_approval-value11]" time="0.001" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_metadata_guard_requires_exact_device_isolation[None]" time="0.001" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_metadata_guard_requires_exact_device_isolation[0]" time="0.001" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_metadata_guard_requires_exact_device_isolation[MIG-11111111-2222-3333-4444-555555555555,another]" time="0.001" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_metadata_guard_requires_exact_device_isolation[GPU-11111111-2222-3333-4444-555555555555]" time="0.001" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_protected_mig_and_whole_parent_refused_even_with_asserted_approval[GPU-5a568e3c-e96c-169f-b063-f4478340ff51]" time="0.001" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_protected_mig_and_whole_parent_refused_even_with_asserted_approval[MIG-d2fcfd79-720e-5218-82c9-0a132be68920]" time="0.001" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_real_execute_refuses_before_io_rng_model_or_cuda" time="0.002" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_existing_cuda_harness_now_requires_actual_user_approval" time="0.007" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_train_selection_is_repeatable_whole_sessions_in_original_sampler_order" time="0.002"><failure message="AttributeError: 'types.SimpleNamespace' object has no attribute 'session_length'. Did you mean: 'session_split'?">def test_train_selection_is_repeatable_whole_sessions_in_original_sampler_order():
+        store = store_fixture()
+&gt;       dataset, first, skipped = pilot.select_training_examples(store, 5)
+
+tests/test_favor_plus_real_pilot.py:109: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+ktbench/favor_plus_real_pilot.py:110: in select_training_examples
+    for batch_indices in sampler:
+ktbench/batching.py:142: in __iter__
+    shape = self.shapes[index]
+ktbench/data/session_store.py:265: in __getitem__
+    return self.dataset.shape(index)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;ktbench.data.session_store.RollingSessionDataset object at 0x7fff031bba90&gt;, index = 9
+
+    def shape(self, index: int) -&gt; ExampleShape:
+        target_index = int(self.targets[index])
+        history_start, history_stop = self._history_bounds(target_index)
+        offsets = self.store.session_offsets
+        history_lengths = tuple(
+            int(offsets[item + 1] - offsets[item]) for item in range(history_start, history_stop)
+        )
+&gt;       return ExampleShape(history_lengths, self.store.session_length(target_index))
+E       AttributeError: 'types.SimpleNamespace' object has no attribute 'session_length'. Did you mean: 'session_split'?
+
+ktbench/data/session_store.py:250: AttributeError</failure></testcase><testcase classname="tests.test_favor_plus_real_pilot" name="test_selector_skips_oversize_singletons_without_truncating_or_reading_labels" time="0.001"><failure message="AttributeError: 'types.SimpleNamespace' object has no attribute 'session_length'. Did you mean: 'session_split'?">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7ffff7012830&gt;
+
+    def test_selector_skips_oversize_singletons_without_truncating_or_reading_labels(monkeypatch):
+        store = store_fixture()
+        # No question/skill/correct arrays exist: length-only selection cannot read labels.
+        monkeypatch.setitem(pilot.LIMITS, "max_padded_tokens", 10)
+&gt;       _, rows, skipped = pilot.select_training_examples(store, 5)
+
+tests/test_favor_plus_real_pilot.py:130: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+ktbench/favor_plus_real_pilot.py:110: in select_training_examples
+    for batch_indices in sampler:
+ktbench/batching.py:142: in __iter__
+    shape = self.shapes[index]
+ktbench/data/session_store.py:265: in __getitem__
+    return self.dataset.shape(index)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;ktbench.data.session_store.RollingSessionDataset object at 0x7ffff7012c20&gt;, index = 9
+
+    def shape(self, index: int) -&gt; ExampleShape:
+        target_index = int(self.targets[index])
+        history_start, history_stop = self._history_bounds(target_index)
+        offsets = self.store.session_offsets
+        history_lengths = tuple(
+            int(offsets[item + 1] - offsets[item]) for item in range(history_start, history_stop)
+        )
+&gt;       return ExampleShape(history_lengths, self.store.session_length(target_index))
+E       AttributeError: 'types.SimpleNamespace' object has no attribute 'session_length'. Did you mean: 'session_split'?
+
+ktbench/data/session_store.py:250: AttributeError</failure></testcase><testcase classname="tests.test_favor_plus_real_pilot" name="test_corrupt_history_boundaries_fail_instead_of_silent_filtering[student]" time="0.001"><failure message="AttributeError: 'types.SimpleNamespace' object has no attribute 'session_length'. Did you mean: 'session_split'?">corruption = 'student'
+
+    @pytest.mark.parametrize("corruption", ["student", "split"])
+    def test_corrupt_history_boundaries_fail_instead_of_silent_filtering(corruption):
+        store = store_fixture()
+        if corruption == "student": store.session_student = np.arange(30)
+        else: store.session_split[::5] = 1
+        with pytest.raises(ValueError, match="crosses"):
+&gt;           pilot.select_training_examples(store, 5)
+
+tests/test_favor_plus_real_pilot.py:142: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+ktbench/favor_plus_real_pilot.py:110: in select_training_examples
+    for batch_indices in sampler:
+ktbench/batching.py:142: in __iter__
+    shape = self.shapes[index]
+ktbench/data/session_store.py:265: in __getitem__
+    return self.dataset.shape(index)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;ktbench.data.session_store.RollingSessionDataset object at 0x7fff03399f60&gt;, index = 9
+
+    def shape(self, index: int) -&gt; ExampleShape:
+        target_index = int(self.targets[index])
+        history_start, history_stop = self._history_bounds(target_index)
+        offsets = self.store.session_offsets
+        history_lengths = tuple(
+            int(offsets[item + 1] - offsets[item]) for item in range(history_start, history_stop)
+        )
+&gt;       return ExampleShape(history_lengths, self.store.session_length(target_index))
+E       AttributeError: 'types.SimpleNamespace' object has no attribute 'session_length'. Did you mean: 'session_split'?
+
+ktbench/data/session_store.py:250: AttributeError</failure></testcase><testcase classname="tests.test_favor_plus_real_pilot" name="test_corrupt_history_boundaries_fail_instead_of_silent_filtering[split]" time="0.001"><failure message="AttributeError: 'types.SimpleNamespace' object has no attribute 'session_length'. Did you mean: 'session_split'?">corruption = 'split'
+
+    @pytest.mark.parametrize("corruption", ["student", "split"])
+    def test_corrupt_history_boundaries_fail_instead_of_silent_filtering(corruption):
+        store = store_fixture()
+        if corruption == "student": store.session_student = np.arange(30)
+        else: store.session_split[::5] = 1
+        with pytest.raises(ValueError, match="crosses"):
+&gt;           pilot.select_training_examples(store, 5)
+
+tests/test_favor_plus_real_pilot.py:142: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+ktbench/favor_plus_real_pilot.py:110: in select_training_examples
+    for batch_indices in sampler:
+ktbench/batching.py:142: in __iter__
+    shape = self.shapes[index]
+ktbench/data/session_store.py:265: in __getitem__
+    return self.dataset.shape(index)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;ktbench.data.session_store.RollingSessionDataset object at 0x7fff030b69b0&gt;, index = 9
+
+    def shape(self, index: int) -&gt; ExampleShape:
+        target_index = int(self.targets[index])
+        history_start, history_stop = self._history_bounds(target_index)
+        offsets = self.store.session_offsets
+        history_lengths = tuple(
+            int(offsets[item + 1] - offsets[item]) for item in range(history_start, history_stop)
+        )
+&gt;       return ExampleShape(history_lengths, self.store.session_length(target_index))
+E       AttributeError: 'types.SimpleNamespace' object has no attribute 'session_length'. Did you mean: 'session_split'?
+
+ktbench/data/session_store.py:250: AttributeError</failure></testcase><testcase classname="tests.test_favor_plus_real_pilot" name="test_verified_dataset_identity_rejects_modified_processed_bytes" time="0.002" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_step_bounds_fail_before_dataset_access[0]" time="0.001" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_step_bounds_fail_before_dataset_access[6]" time="0.001" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_step_bounds_fail_before_dataset_access[-1]" time="0.001" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_step_bounds_fail_before_dataset_access[True]" time="0.001" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_step_bounds_fail_before_dataset_access[5.0]" time="0.001" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_update_counter_never_allows_sixth_call_and_counts_partial_failure" time="0.001" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_bounded_controller_stops_on_failure_without_retry_or_sixth_update" time="0.001" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_resource_failure_stops_before_any_fake_update" time="0.001" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_high_norm_approximation_error_is_not_mislabeled_as_kernel_defect" time="0.012" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_prefix_diagnostic_rejects_nonfinite_active_values_and_unbounded_prefix" time="0.001" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_fixed_example_hooks_preserve_rng_mode_and_remove_themselves_on_failure" time="0.012" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_checkpoint_tree_covers_nonfinite_adam_and_exact_serialization" time="0.002" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_plan_rejects_widened_bounds_before_source_or_dataset_io" time="0.001" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_cuda_pass_evidence_cannot_be_missing_different_profile_or_device[missing]" time="0.001" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_cuda_pass_evidence_cannot_be_missing_different_profile_or_device[profile]" time="0.001" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_cuda_pass_evidence_cannot_be_missing_different_profile_or_device[device]" time="0.001" /><testcase classname="tests.test_favor_plus_real_pilot" name="test_cuda_pass_evidence_cannot_be_missing_different_profile_or_device[stage_failure]" time="0.001" /></testsuite></testsuites>

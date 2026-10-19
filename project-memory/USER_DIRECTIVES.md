@@ -2,7 +2,23 @@
 
 Updated: 2026-10-19 UTC
 
-## 2026-10-19 — Resource diagnosis and planning only (latest)
+## 2026-10-19 — CPU-only real-data pilot preparation (latest)
+
+- Continue current research/hitskt-favor-plus-v1 state. Implement reproducible
+  actual ASSIST2017 pilot,128 features/seed42/B1/cost2048/max5 updates, safe
+  bounds/failure handling and numerical/QK/approximation/resource diagnostics.
+- Run lightweight CPU validation only. No CUDA calls or GPU probes, actual
+  dataset training, resource/allocation changes, watchers, LightSAKT2 edits or
+  interference, DKT/EdNet changes, unrelated models/data changes or main changes.
+- NEW explicit boundary: request user approval before ANY future GPU execution
+  or resource change. Earlier conditional-execution permission is superseded
+  on this point. Independent exclusive allocation must also be established;
+  an approval flag/record cannot manufacture allocation or user approval.
+- Preserve all previous work. Document commands, memory bounds/criteria and
+  larger-experiment gates; no unrun diagnostic presented as a result. Commit
+  and push only validated scoped research changes normally, never force-push.
+
+## 2026-10-19 — Resource diagnosis and planning only (historical)
 
 - Continue from025a0e9 on research/hitskt-favor-plus-v1. Latest request is
   diagnostic/planning only, explicitly not permission to launch GPU work in

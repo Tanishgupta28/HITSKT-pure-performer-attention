@@ -18,7 +18,8 @@ import torch
 
 from ktbench.batching import Session,SessionExample,collate_hitskt
 from ktbench.config import PROJECT_SEED
-from ktbench.favor_plus_pipeline import fresh_run,model_config,runtime,sha256,write_json
+from ktbench.favor_plus_gpu_access import CUDA_VALIDATION,require_gpu_authorization
+from ktbench.favor_plus_pipeline import fresh_run,model_config,runtime,sha256,write_json,source_identity
 from ktbench.metrics import masked_bce_loss
 from ktbench.models.favor_plus import FavorPlusConfig,causal_favor_attention,orthogonal_gaussian_projection
 from ktbench.models.hitskt_favor_plus import HiTSKTFavorPlus
@@ -48,11 +49,13 @@ def plan():
                'short-to-long feature attention memory/runtime','full hierarchy own-label shifting/backward',
                'tagged checkpoint exact reload'],stop_on_first_failure=True,
         allocation_record_fields=['resource_uuid','owner','exclusive','expires_utc','external_allocation_evidence'],
+        additional_required_access_fields=['independent','job_id','starts_utc','user_approval'],
         limitation='metadata validation is not independent proof; external allocation must be established first')
 
 
 def execute(record,run_id,features,profile):
     admit_allocation(record,os.environ.get('CUDA_VISIBLE_DEVICES'))  # BEFORE CUDA or CUDA RNG checks
+    require_gpu_authorization(record,os.environ.get('CUDA_VISIBLE_DEVICES'),CUDA_VALIDATION)
     out=fresh_run(profile,run_id)
     write_json(out/'allocation_record.json',record)
     dev=torch.device('cuda:0')
@@ -62,12 +65,17 @@ def execute(record,run_id,features,profile):
     torch.backends.cudnn.benchmark=False
     torch.backends.cudnn.deterministic=True
     torch.use_deterministic_algorithms(True)
-    torch.manual_seed(PROJECT_SEED)
     rows=[]
     try:
+        torch.set_num_threads(1)
+        torch.manual_seed(PROJECT_SEED)
+        capacity=torch.cuda.get_device_properties(dev).total_memory
+        if capacity<10*1024**3:raise MemoryError('8GiB budget plus runtime headroom required')
+        torch.cuda.set_per_process_memory_fraction(8*1024**3/capacity,dev)
         for length in LENGTHS:
             for chunk in (16,32,64):
                 admit_allocation(record,os.environ.get('CUDA_VISIBLE_DEVICES'))
+                require_gpu_authorization(record,os.environ.get('CUDA_VISIBLE_DEVICES'),CUDA_VALIDATION)
                 torch.manual_seed(42)
                 cpu=[(torch.randn(1,2,length,64)*.35).requires_grad_() for _ in range(3)]
                 omega=orthogonal_gaussian_projection(2,features,64,42).float()
@@ -106,6 +114,7 @@ def execute(record,run_id,features,profile):
                          max_abs_gradients=gd,seconds=elapsed,peak_allocated_bytes=peak,status='PASS')
                 rows.append(row);write_json(out/f'kernel_{length}_{chunk}.json',row)
                 del cpu,gpu,actual,expected,changed,grads,cg,perturbed
+        require_gpu_authorization(record,os.environ.get('CUDA_VISIBLE_DEVICES'),CUDA_VALIDATION)
         cfg=model_config(profile,20,5)
         cpu_model=HiTSKTFavorPlus(cfg,FavorPlusConfig(features=features)).eval()
         model=copy.deepcopy(cpu_model).to(dev)
@@ -128,7 +137,11 @@ def execute(record,run_id,features,profile):
         torch.save(model.checkpoint(),out/'gpu_model.pt')
         restored=HiTSKTFavorPlus.from_checkpoint(out/'gpu_model.pt').to(dev).eval()
         with torch.no_grad():assert torch.equal(logits,restored(batch))
+        require_gpu_authorization(record,os.environ.get('CUDA_VISIBLE_DEVICES'),CUDA_VALIDATION)
         result=dict(status='PASS',scope='bounded synthetic GPU verification',kernels=rows,
+                    profile=profile,features=features,allocation_resource_uuid=record['resource_uuid'],
+                    source=source_identity(),access_guard_sha256=sha256(Path(__file__).resolve().parents[1]/'ktbench/favor_plus_gpu_access.py'),
+                    oracle_sha256=sha256(Path(__file__).with_name('favor_plus_quality_common.py')),
                     full_model_shift_gradients_checkpoint='PASS',runtime=runtime(dev),
                     full_model_cpu_cuda_max_abs_logit_difference=float((logits.cpu()-cpu_logits).abs().max()),
                     full_model_cpu_cuda_max_abs_parameter_gradient_difference=model_gradient_delta,

@@ -1,0 +1,101 @@
+{
+  "status": "PASS_CPU_DATA_PREFLIGHT_ONLY",
+  "plan": "/workspace/capstone/experiments/hitskt_favor_plus_v1/assist2017/real_pilot_prepare_cpu_20261019_v1/prepared_plan.json",
+  "plan_sha256": "4ede41e29b9d4b150f30ebf702a501b0333c1a23d81e59942979d02f4182d5b4",
+  "selected": [
+    {
+      "dataset_index": 880,
+      "history_end_exclusive": 1558,
+      "history_lengths": [
+        19,
+        27,
+        33,
+        24,
+        47,
+        10
+      ],
+      "history_start": 1552,
+      "padded_tokens": 363,
+      "split": "train",
+      "student": 178,
+      "target_length": 67,
+      "target_session": 1558
+    },
+    {
+      "dataset_index": 3573,
+      "history_end_exclusive": 6312,
+      "history_lengths": [
+        55,
+        17,
+        51,
+        4
+      ],
+      "history_start": 6308,
+      "padded_tokens": 290,
+      "split": "train",
+      "student": 703,
+      "target_length": 60,
+      "target_session": 6312
+    },
+    {
+      "dataset_index": 2156,
+      "history_end_exclusive": 3823,
+      "history_lengths": [
+        42,
+        61,
+        4,
+        31,
+        47,
+        2,
+        59
+      ],
+      "history_start": 3816,
+      "padded_tokens": 485,
+      "split": "train",
+      "student": 431,
+      "target_length": 42,
+      "target_session": 3823
+    },
+    {
+      "dataset_index": 2863,
+      "history_end_exclusive": 5066,
+      "history_lengths": [
+        26
+      ],
+      "history_start": 5065,
+      "padded_tokens": 91,
+      "split": "train",
+      "student": 567,
+      "target_length": 61,
+      "target_session": 5066
+    },
+    {
+      "dataset_index": 3968,
+      "history_end_exclusive": 6972,
+      "history_lengths": [
+        33,
+        57,
+        30
+      ],
+      "history_start": 6969,
+      "padded_tokens": 241,
+      "split": "train",
+      "student": 776,
+      "target_length": 62,
+      "target_session": 6972
+    }
+  ],
+  "skipped_oversize_singletons": 0,
+  "checked_dataset_files": 11,
+  "train_target_sessions": 7060,
+  "optimizer_updates": 0,
+  "actual_dataset_model_forwards": 0,
+  "cuda_api_calls": 0,
+  "elapsed_preparation_and_reload_seconds": 0.8725763070397079,
+  "host_memory": {
+    "peak_process_rss_bytes": 582705152,
+    "cgroup_limit_bytes": 96636764160,
+    "cgroup_usage_bytes": 36294467584,
+    "cgroup_headroom_bytes": 60342296576
+  }
+}

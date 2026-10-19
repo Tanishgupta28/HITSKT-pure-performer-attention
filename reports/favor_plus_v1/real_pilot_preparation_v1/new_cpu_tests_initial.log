@@ -1,0 +1,141 @@
+.....................FFFF..................                                                                                                          [100%]
+========================================================================= FAILURES =========================================================================
+_______________________________________ test_train_selection_is_repeatable_whole_sessions_in_original_sampler_order ________________________________________
+
+    def test_train_selection_is_repeatable_whole_sessions_in_original_sampler_order():
+        store = store_fixture()
+>       dataset, first, skipped = pilot.select_training_examples(store, 5)
+
+tests/test_favor_plus_real_pilot.py:109: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+ktbench/favor_plus_real_pilot.py:110: in select_training_examples
+    for batch_indices in sampler:
+ktbench/batching.py:142: in __iter__
+    shape = self.shapes[index]
+ktbench/data/session_store.py:265: in __getitem__
+    return self.dataset.shape(index)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <ktbench.data.session_store.RollingSessionDataset object at 0x7fff031bba90>, index = 9
+
+    def shape(self, index: int) -> ExampleShape:
+        target_index = int(self.targets[index])
+        history_start, history_stop = self._history_bounds(target_index)
+        offsets = self.store.session_offsets
+        history_lengths = tuple(
+            int(offsets[item + 1] - offsets[item]) for item in range(history_start, history_stop)
+        )
+>       return ExampleShape(history_lengths, self.store.session_length(target_index))
+E       AttributeError: 'types.SimpleNamespace' object has no attribute 'session_length'. Did you mean: 'session_split'?
+
+ktbench/data/session_store.py:250: AttributeError
+_______________________________________ test_selector_skips_oversize_singletons_without_truncating_or_reading_labels _______________________________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7ffff7012830>
+
+    def test_selector_skips_oversize_singletons_without_truncating_or_reading_labels(monkeypatch):
+        store = store_fixture()
+        # No question/skill/correct arrays exist: length-only selection cannot read labels.
+        monkeypatch.setitem(pilot.LIMITS, "max_padded_tokens", 10)
+>       _, rows, skipped = pilot.select_training_examples(store, 5)
+
+tests/test_favor_plus_real_pilot.py:130: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+ktbench/favor_plus_real_pilot.py:110: in select_training_examples
+    for batch_indices in sampler:
+ktbench/batching.py:142: in __iter__
+    shape = self.shapes[index]
+ktbench/data/session_store.py:265: in __getitem__
+    return self.dataset.shape(index)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <ktbench.data.session_store.RollingSessionDataset object at 0x7ffff7012c20>, index = 9
+
+    def shape(self, index: int) -> ExampleShape:
+        target_index = int(self.targets[index])
+        history_start, history_stop = self._history_bounds(target_index)
+        offsets = self.store.session_offsets
+        history_lengths = tuple(
+            int(offsets[item + 1] - offsets[item]) for item in range(history_start, history_stop)
+        )
+>       return ExampleShape(history_lengths, self.store.session_length(target_index))
+E       AttributeError: 'types.SimpleNamespace' object has no attribute 'session_length'. Did you mean: 'session_split'?
+
+ktbench/data/session_store.py:250: AttributeError
+________________________________________ test_corrupt_history_boundaries_fail_instead_of_silent_filtering[student] _________________________________________
+
+corruption = 'student'
+
+    @pytest.mark.parametrize("corruption", ["student", "split"])
+    def test_corrupt_history_boundaries_fail_instead_of_silent_filtering(corruption):
+        store = store_fixture()
+        if corruption == "student": store.session_student = np.arange(30)
+        else: store.session_split[::5] = 1
+        with pytest.raises(ValueError, match="crosses"):
+>           pilot.select_training_examples(store, 5)
+
+tests/test_favor_plus_real_pilot.py:142: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+ktbench/favor_plus_real_pilot.py:110: in select_training_examples
+    for batch_indices in sampler:
+ktbench/batching.py:142: in __iter__
+    shape = self.shapes[index]
+ktbench/data/session_store.py:265: in __getitem__
+    return self.dataset.shape(index)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <ktbench.data.session_store.RollingSessionDataset object at 0x7fff03399f60>, index = 9
+
+    def shape(self, index: int) -> ExampleShape:
+        target_index = int(self.targets[index])
+        history_start, history_stop = self._history_bounds(target_index)
+        offsets = self.store.session_offsets
+        history_lengths = tuple(
+            int(offsets[item + 1] - offsets[item]) for item in range(history_start, history_stop)
+        )
+>       return ExampleShape(history_lengths, self.store.session_length(target_index))
+E       AttributeError: 'types.SimpleNamespace' object has no attribute 'session_length'. Did you mean: 'session_split'?
+
+ktbench/data/session_store.py:250: AttributeError
+_________________________________________ test_corrupt_history_boundaries_fail_instead_of_silent_filtering[split] __________________________________________
+
+corruption = 'split'
+
+    @pytest.mark.parametrize("corruption", ["student", "split"])
+    def test_corrupt_history_boundaries_fail_instead_of_silent_filtering(corruption):
+        store = store_fixture()
+        if corruption == "student": store.session_student = np.arange(30)
+        else: store.session_split[::5] = 1
+        with pytest.raises(ValueError, match="crosses"):
+>           pilot.select_training_examples(store, 5)
+
+tests/test_favor_plus_real_pilot.py:142: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+ktbench/favor_plus_real_pilot.py:110: in select_training_examples
+    for batch_indices in sampler:
+ktbench/batching.py:142: in __iter__
+    shape = self.shapes[index]
+ktbench/data/session_store.py:265: in __getitem__
+    return self.dataset.shape(index)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <ktbench.data.session_store.RollingSessionDataset object at 0x7fff030b69b0>, index = 9
+
+    def shape(self, index: int) -> ExampleShape:
+        target_index = int(self.targets[index])
+        history_start, history_stop = self._history_bounds(target_index)
+        offsets = self.store.session_offsets
+        history_lengths = tuple(
+            int(offsets[item + 1] - offsets[item]) for item in range(history_start, history_stop)
+        )
+>       return ExampleShape(history_lengths, self.store.session_length(target_index))
+E       AttributeError: 'types.SimpleNamespace' object has no attribute 'session_length'. Did you mean: 'session_split'?
+
+ktbench/data/session_store.py:250: AttributeError
+-------------------- generated xml file: /workspace/capstone/reports/favor_plus_v1/real_pilot_preparation_v1/new_cpu_tests_initial.xml ---------------------
+================================================================= short test summary info ==================================================================
+FAILED tests/test_favor_plus_real_pilot.py::test_train_selection_is_repeatable_whole_sessions_in_original_sampler_order - AttributeError: 'types.SimpleNa...
+FAILED tests/test_favor_plus_real_pilot.py::test_selector_skips_oversize_singletons_without_truncating_or_reading_labels - AttributeError: 'types.SimpleN...
+FAILED tests/test_favor_plus_real_pilot.py::test_corrupt_history_boundaries_fail_instead_of_silent_filtering[student] - AttributeError: 'types.SimpleName...
+FAILED tests/test_favor_plus_real_pilot.py::test_corrupt_history_boundaries_fail_instead_of_silent_filtering[split] - AttributeError: 'types.SimpleNamesp...
+4 failed, 39 passed in 1.87s

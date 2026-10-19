@@ -1,0 +1,15 @@
+{
+  "resource_uuid": "REPLACE_WITH_ACTUALLY_ASSIGNED_GPU_OR_MIG_UUID",
+  "owner": "REPLACE_WITH_ASSIGNED_OWNER",
+  "job_id": "REPLACE_WITH_EXTERNAL_JOB_OR_BOOKING_ID",
+  "exclusive": false,
+  "independent": false,
+  "external_allocation_evidence": "REPLACE_WITH_NONSECRET_ADMIN_OR_SCHEDULER_ASSIGNMENT_REFERENCE",
+  "starts_utc": "2000-01-01T00:00:00Z",
+  "expires_utc": "2000-01-01T00:00:00Z",
+  "user_approval": {
+    "approved": false,
+    "evidence": "REPLACE_ONLY_AFTER_ACTUAL_USER_APPROVAL",
+    "actions": []
+  }
+}
