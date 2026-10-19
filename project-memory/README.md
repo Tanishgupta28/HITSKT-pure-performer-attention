@@ -36,7 +36,8 @@ Genuine FAVOR+ CPU implementation is verified on
 replays and long-session CPU checks pass. See [FAVOR_PLUS_STATE.md](FAVOR_PLUS_STATE.md).
 All originals/prior evidence unchanged. Candidate for bounded independent GPU
 pilot; CUDA/full dataset training remain NOT VERIFIED/NOT RUN. No LightSAKT2,
-DKT, V2 or historical training changes. Publish research only, then wait.
+DKT, V2 or historical training changes. Implementation67f09d2 is published on
+the research branch; wait for independent GPU availability and execution direction.
 
 19 October: supervisor PDF/editable source/status/replay plan verified; see
 [SUPERVISOR_STATE.md](SUPERVISOR_STATE.md).59 controls and full cached-score

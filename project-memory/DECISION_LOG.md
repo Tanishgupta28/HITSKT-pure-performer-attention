@@ -949,3 +949,14 @@ Report reports/favor_plus_v1/IMPLEMENTATION_VALIDATION.md and evidence folder
 implementation_v1/. Conditional bounded-GPU pilot candidate only; unverified
 CUDA/performance/learned-norm behavior prevents production/publication claims.
 Publish scoped research branch then wait; no automatic experiment schedule.
+
+## 2026-10-19 UTC — FAVOR+ implementation pushed; exact handoff
+
+Implementation 67f09d2291e632398826af21e5f731f8762a05f9 committed and pushed to capstone-gpu
+research/hitskt-favor-plus-v1; git ls-remote confirms equality. Canonical main
+remains f465d84838e5f8b1c637736e362a945c20cfde10. All verified source hashes
+still match CPU evidence after commit.375 original/277 prior-file final
+preservation PASS, unrelated edits excluded. Strict durable-memory validation
+PASS without warnings. Publish this handoff/receipt normally, then wait; no
+GPU pilot/full training is running or scheduled. Next bounded GPU work requires
+independent resources and execution direction. See [NEXT_CHECKPOINT.md](NEXT_CHECKPOINT.md).

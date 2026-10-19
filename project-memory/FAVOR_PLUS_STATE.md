@@ -44,6 +44,8 @@ not selected on test outcomes. V1 response-availability limitation remains.
 Preservation PASS:375 originals/all30 checkpoints +277 prior source/evidence
 files, including all old audits/preparation, and unrelated README/SAKT log.
 No LightSAKT2 change/signal, DKT resume/reset, full training, CUDA, or V2.
-Cgroup90GiB, OOM kills2 unchanged. Publish scoped implementation/report/memory
-research branch only; then wait for independent GPU availability and explicit
-execution direction. See [NEXT_CHECKPOINT.md](NEXT_CHECKPOINT.md).
+Cgroup90GiB, OOM kills2 unchanged. Implementation/report commit 67f09d2291e632398826af21e5f731f8762a05f9
+is pushed and remote-verified on the research branch; main unchanged. Handoff
+publication receipt is in implementation_v1/publication_receipt.json. Wait for
+independent GPU availability and explicit execution direction. See
+[NEXT_CHECKPOINT.md](NEXT_CHECKPOINT.md).

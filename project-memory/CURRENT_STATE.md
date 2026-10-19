@@ -12,8 +12,8 @@ full hierarchy13080-action target peak1.751GB.375 originals/all30 checkpoints
 and277 prior evidence/source files unchanged. No CUDA/full dataset training.
 Candidate for independently available GPU pilot; GPU performance/learned-norm
 approximation remain unverified, high-norm synthetic error documented.
-See [FAVOR_PLUS_STATE.md](FAVOR_PLUS_STATE.md). Publish research branch only,
-then wait for execution direction. No attachment dependency, LightSAKT2/DKT
+See [FAVOR_PLUS_STATE.md](FAVOR_PLUS_STATE.md). Implementation 67f09d2291e632398826af21e5f731f8762a05f9
+is pushed/remote-verified on the research branch; main unchanged. Wait for execution direction. No attachment dependency, LightSAKT2/DKT
 changes, availability-aware V2 or original retraining.
 
 ## Supervisor briefing — historical checkpoint
