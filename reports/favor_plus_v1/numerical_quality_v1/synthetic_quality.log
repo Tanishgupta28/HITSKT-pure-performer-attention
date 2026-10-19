@@ -1,0 +1,10 @@
+distribution PASS
+synthetic comparisons 288
+precision complete
+benchmark 257 128 {'length': 257, 'features': 128, 'forward_seconds': 0.024997399072162807, 'backward_seconds': 0.43143629305996, 'peak_rss_bytes': 702844928, 'baseline_rss_bytes': 702844928, 'finite_outputs_and_gradients': True}
+benchmark 257 256 {'length': 257, 'features': 256, 'forward_seconds': 0.02889276691712439, 'backward_seconds': 0.34030725597403944, 'peak_rss_bytes': 702844928, 'baseline_rss_bytes': 702844928, 'finite_outputs_and_gradients': True}
+benchmark 257 512 {'length': 257, 'features': 512, 'forward_seconds': 0.038592619937844574, 'backward_seconds': 0.4416057780617848, 'peak_rss_bytes': 718049280, 'baseline_rss_bytes': 702844928, 'finite_outputs_and_gradients': True}
+benchmark 3925 128 {'length': 3925, 'features': 128, 'forward_seconds': 0.3239815380657092, 'backward_seconds': 1.6248526379931718, 'peak_rss_bytes': 702844928, 'baseline_rss_bytes': 702844928, 'finite_outputs_and_gradients': True}
+benchmark 3925 256 {'length': 3925, 'features': 256, 'forward_seconds': 0.3839842970483005, 'backward_seconds': 2.0602993679931387, 'peak_rss_bytes': 742940672, 'baseline_rss_bytes': 702844928, 'finite_outputs_and_gradients': True}
+benchmark 3925 512 {'length': 3925, 'features': 512, 'forward_seconds': 0.5161502039991319, 'backward_seconds': 2.890403831959702, 'peak_rss_bytes': 845127680, 'baseline_rss_bytes': 702844928, 'finite_outputs_and_gradients': True}
+COMPLETE PASS

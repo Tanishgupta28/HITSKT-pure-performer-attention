@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/workspace/capstone/scripts/inspect_favor_plus_training_norms.py", line 161, in <module>
+    if __name__=='__main__':main()
+  File "/workspace/capstone/scripts/inspect_favor_plus_training_norms.py", line 154, in main
+    result=[run_dataset(name,config,args.run_id) for name in config['training_sample']['datasets']]
+  File "/workspace/capstone/scripts/inspect_favor_plus_training_norms.py", line 154, in <listcomp>
+    result=[run_dataset(name,config,args.run_id) for name in config['training_sample']['datasets']]
+  File "/workspace/capstone/scripts/inspect_favor_plus_training_norms.py", line 115, in run_dataset
+    norms,frozen=capture_model(model,dataset,selected)
+  File "/workspace/capstone/scripts/inspect_favor_plus_training_norms.py", line 84, in capture_model
+    assert padded_token_cost([example_shape(example)])==item['padded_tokens']
+AssertionError

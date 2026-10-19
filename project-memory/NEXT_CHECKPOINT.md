@@ -1,30 +1,34 @@
 # Next checkpoint
 
-19 October2026 UTC — FAVOR+ implementation published; wait for direction.
-Branch research/hitskt-favor-plus-v1. Implementation commit `67f09d2291e632398826af21e5f731f8762a05f9`
-was pushed to capstone-gpu and verified by git ls-remote. Canonical main remains
-f465d84838e5f8b1c637736e362a945c20cfde10. Latest branch tip also carries this
-handoff. No starter dependency. Read [FAVOR_PLUS_STATE.md](FAVOR_PLUS_STATE.md)
-and [USER_DIRECTIVES.md](USER_DIRECTIVES.md).
+19 October2026 UTC — bounded quality study complete; CUDA pending.
+Branch research/hitskt-favor-plus-v1, from31886f6; predeclared design49ed057.
+Read [FAVOR_QUALITY_STATE.md](FAVOR_QUALITY_STATE.md) and latest
+[USER_DIRECTIVES.md](USER_DIRECTIVES.md). Baseline handoff preserved at
+[NEXT_CHECKPOINT_history_before_favor_quality.md](NEXT_CHECKPOINT_history_before_favor_quality.md).
 
-Established:74 new FAVOR+ and143 legacy tests PASS (217 distinct,0 failures),
-all3 synthetic profiles and fresh-process CPU checkpoint replays PASS, long
-attention13081 and full-model target13080-action checks PASS.375 originals and
-277 prior files unchanged. Report: reports/favor_plus_v1/IMPLEMENTATION_VALIDATION.md;
-evidence: implementation_v1/verification_summary.json, final_verified_suite.log,
-pilot_tests.log, preservation_handoff.json, publication_receipt.json.
-Unrelated root README and SAKT log remain outside commits.
+Established:229 tests (217 prior+12 new),288 synthetic/576 sample comparisons,
+24 double-gradient cases,54 precision controls PASS. Frozen rule recommends128
+for first bounded diagnostic pilot, not full training. High-norm sampling
+error persists at512; no tested production defect observed.4 whole train
+sessions per dataset,0 optimizer steps. All3 original profiles/counts/protocol/
+validation selection and375-original/341-prior-file preservation PASS.
 
-Next action: wait for explicit execution direction and an independently
-available GPU. No occupied MIG allocation, automatic pilot, watcher or training.
-Once directed, begin the bounded synthetic pilot at length257/1..2steps,
-explicit device and independent-device assertion, then increase long lengths.
-Record numerical/reference/gradient/memory/runtime/checkpoint CUDA evidence;
-GPU performance, learned-norm approximation and flattened-history batches remain
-unverified. Do not infer publication readiness or real dataset AUC from smokes.
+Authoritative report: reports/favor_plus_v1/NUMERICAL_QUALITY_AND_GPU_READINESS.md.
+Evidence: numerical_quality_v1/VERIFICATION_SUMMARY.json, quality_decision.json,
+full_suite.log/XML, precision_controls.json, training_sample_summary.json,
+preservation.json, gpu_resource_status.json and gpu_pilot_plan.json.
+Current scope includes normal commit/push to research only; on resume verify
+branch tip matches capstone-gpu. Preserve unrelated README and SAKT log.
 
-No full training, LightSAKT2 changes/signals, DKT/EdNet resume/reset, V2,
-historical retraining, old architecture changes or original artifact overwrite.
-New outputs only under experiments/hitskt_favor_plus_v1/.
-Historical checkpoint:
-[NEXT_CHECKPOINT_history_before_favor_implementation.md](NEXT_CHECKPOINT_history_before_favor_implementation.md).
+Next action after publication: wait for genuinely exclusive independent GPU
+allocation. Do not initialize CUDA on current MIG, infer ownership from empty
+process table, fabricate allocation evidence or disturb LightSAKT2. Prepared
+scripts/validate_favor_plus_gpu.py has staged17..13081 length checks and guards;
+its CUDA path remains unverified. Once resources are established within the
+user-authorized conditional scope, run short synthetic correctness first and
+stop on numerical/resource failure. Dataset pilot only after CUDA checks and
+bounded execution decision; proposed128/B1/cost<=2048/<=5 initial train steps.
+
+No full training, hyperparameter search, architecture/default change, historical
+result overwrite, DKT/EdNet resume/reset, availability V2 or main merge. Outputs
+only experiments/hitskt_favor_plus_v1/. No automatic watcher or experiment queue.

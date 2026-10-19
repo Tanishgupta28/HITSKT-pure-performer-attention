@@ -30,14 +30,13 @@ remain intact; platform changes do not alter research source or live runs.
 
 ## Current short status
 
-Genuine FAVOR+ CPU implementation is verified on
-`research/hitskt-favor-plus-v1` from bc262e6. There is no attachment dependency.
-74 new FAVOR+ tests +143 legacy cases PASS; all3 synthetic profiles/checkpoint
-replays and long-session CPU checks pass. See [FAVOR_PLUS_STATE.md](FAVOR_PLUS_STATE.md).
-All originals/prior evidence unchanged. Candidate for bounded independent GPU
-pilot; CUDA/full dataset training remain NOT VERIFIED/NOT RUN. No LightSAKT2,
-DKT, V2 or historical training changes. Implementation67f09d2 is published on
-the research branch; wait for independent GPU availability and execution direction.
+Latest bounded FAVOR+ numerical-quality study from31886f6:229 tests and all
+CPU numerical controls PASS;128 recommended for bounded diagnostic pilot by
+frozen design49ed057. High-norm approximation remains poor; trained FAVOR norm
+behavior/full-training readiness NOT ESTABLISHED. See
+[FAVOR_QUALITY_STATE.md](FAVOR_QUALITY_STATE.md). No independent GPU allocation,
+no CUDA initialization, no real dataset optimization or protected-worker changes.
+All originals/prior evidence preserved. Research branch publication only.
 
 19 October: supervisor PDF/editable source/status/replay plan verified; see
 [SUPERVISOR_STATE.md](SUPERVISOR_STATE.md).59 controls and full cached-score

@@ -1,0 +1,10 @@
+{
+  "status": "FAILED DIAGNOSTIC ATTEMPT",
+  "root_cause": "new diagnostic cost estimate omitted session-encoder EOS slots; assertion stopped before sampled model forward",
+  "affected": "sample selector only; production model/data/pipeline unchanged",
+  "original_log": "reports/favor_plus_v1/numerical_quality_v1/training_sample.log",
+  "failed_fresh_directory": "experiments/hitskt_favor_plus_v1/assist2017/quality_cpu_20261019_v1",
+  "resolution": "reuse unchanged padded_token_cost(ExampleShape) helper; same declared2048 budget; rerun fresh v2 directory",
+  "sampled_forward_calls": 0,
+  "optimizer_steps": 0
+}

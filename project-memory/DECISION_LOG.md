@@ -972,3 +972,35 @@ nvidia-smi shows only existing H100 MIG; scheduler/exclusive ownership absent,
 usage permission restricted. No CUDA initialization; GPU tests pending. Plan
 includes only4 whole training targets per dataset and frozen-QKV comparisons;
 historical trained ELU weights are a separately labeled stress control.
+
+## 2026-10-19 UTC — Quality evidence and frozen feature-count decision
+
+288 synthetic and576 frozen whole-training-sample attention comparisons PASS,
+max output delta7.994e-14;24 double-gradient cases max3.775e-14.54 independent
+float32/64-accumulation output/gradient controls PASS, raw-exp underflow avoided
+by existing log/causal gauge.32-seed distribution/Gaussian moment controls PASS.
+High-norm approximation errors persist at512; expected lognormal rare-tail
+variance, no implementation defect observed in tested cases. Fresh initial
+FAVOR Q/K norms differ substantially from trained ELU stress controls; never
+loaded ELU weights into FAVOR. No learned FAVOR norm or dataset metric claim.
+One failed new sampler attempt omitted hierarchy EOS slots in a cost estimate;
+assertion aborted before sampled forward, reused original cost helper, reran
+fresh v2 directory. Failure preserved; production source/protocol unchanged.
+Frozen rule selects128 for bounded pilot only; no defaults/full-training change.
+256/512 initial frozen-context MSE gains29.5/44.5%, resource ratios1.25/1.75x.
+All3 dataset compatibility plans PASS; all originals/prior sources preserved.
+Current MIG ownership not exclusive/established, GPU plan PENDING, no CUDA.
+
+## 2026-10-19 UTC — Quality validation complete; conditional pilot readiness
+
+229 tests PASS (217 prior+12 new),0 failures/skips. Independent precision54
+controls PASS, full numerical study artifacts and decision committed-design
+identity cross-check PASS.375 originals and341 additional prior files preserved,
+including local smoke binaries/all earlier FAVOR+ code/reports. All3 original
+protocol/profile/count checks PASS; synthetic validation-peak2/last3/reload2
+control PASS. No real dataset optimization, full training or CUDA initialized.
+New reports/favor_plus_v1/NUMERICAL_QUALITY_AND_GPU_READINESS.md records exact
+scope, negative high-norm findings, failed diagnostic selector attempt,128
+bounded-pilot recommendation and unverified GPU/full-training status. GPU
+ownership absent, protected training active, no interference. Publish normal
+scoped research commit then verify remote; next wait for independent device.

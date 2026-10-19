@@ -1,0 +1,48 @@
+{
+  "architecture_changed": false,
+  "base_commit": "31886f6ceab1dbcb0243b40468855256ba8f1f5c",
+  "cuda_status": "PENDING; no CUDA initialization; no independently exclusive allocation",
+  "dataset_optimizer_steps": 0,
+  "default_features_changed": false,
+  "design_commit": "49ed057",
+  "design_sha256": "0b26f07dc504bddc13b28b4217dfce69683a4c4b9201082e3d19d1b4188c1f38",
+  "evidence_sha256": {
+    "PREDECLARED_DESIGN.json": "0b26f07dc504bddc13b28b4217dfce69683a4c4b9201082e3d19d1b4188c1f38",
+    "dataset_pipeline_plan.json": "da20efaa58cb7fd8d5ee2ccd1ee16a84b3b89cf6d17d26e622ab174ecc456d00",
+    "gpu_pilot_plan.json": "ea6b187601dffc9da0cb50c59472b115dfdf04fef0b756df2f4312835eac66b1",
+    "gpu_resource_status.json": "161db79011bf1f2509616b05e376a3313d35a0979357df04f7e655b56eee4ef6",
+    "precision_controls.json": "cf82a703089b3fa67d9aaeb38335b7598a671a6e3d21cc3d27b8f45d35df7404",
+    "preservation.json": "16629f7931995ad1d42ce4dea31cc5497a59b40435d89525063425be351bab22",
+    "quality_decision.json": "6dfc55e2de060ead1f4cd068f658f7d3b0a053ebdde950321df60392b288b2f2",
+    "synthetic_quality.json": "b4f28ceffd3c6ae1bc65dd4ff646b8f0e0b3a67e800d6c27e4caf6fab8fd9548",
+    "training_sample_first_failure.json": "b70bb33906099ebeaf9543eb507dc6f96f4ad3d7f24136641a6d3a09f6d5e3fa",
+    "training_sample_summary.json": "d8537de55c7dd54235c0ccd573d4f36f48b800197f1d920f7bf1827ea788deb8"
+  },
+  "gradient_cases": 24,
+  "new_tests": 12,
+  "originals_preserved": 375,
+  "precision_controls": 54,
+  "prior_files_preserved": 341,
+  "prior_regression_tests": 217,
+  "pytest_counts": {
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "tests": 229
+  },
+  "recommendation_scope": "bounded diagnostic pilot only",
+  "recommended_features": 128,
+  "sample_comparisons": 576,
+  "source_sha256": {
+    "scripts/check_favor_plus_quality_preservation.py": "3fc7e49c63b1943755337b61ef08904b6d2060be90b9a8f8e0764bc7a0236655",
+    "scripts/diagnose_favor_plus_quality.py": "eff9c83c9a41de34940070850b350bc1da52ec16afc8dcd5c57f00d7023ea8c3",
+    "scripts/favor_plus_quality_common.py": "11148db1c52458aeb03a0b1af99b301179eaf956d2decb68ceafcbf7426faf98",
+    "scripts/inspect_favor_plus_training_norms.py": "a453c25020f9bc0db7e9bfa7aadfe13acabd611c58f55f7ab8a397f5fb534604",
+    "scripts/summarize_favor_plus_quality.py": "e2ae9823143b2e973b41e02853e09cd8a6fbab54d07f973d5e2d16dc4cf179d9",
+    "scripts/validate_favor_plus_gpu.py": "6ad8e6a061619617943007f590c05109a007491891dbc97861b5fa49d65a4c04",
+    "scripts/verify_favor_plus_precision.py": "43a83c863c3b6477e288d36e1a5178e7a8a94e7adc770004b7605b48acd00cea",
+    "tests/test_favor_quality_diagnostics.py": "6ec563115375368e908960ea61f8b399e23cb56cea58db6840535adbfde526ff"
+  },
+  "status": "PASS",
+  "synthetic_comparisons": 288
+}

@@ -1,5 +1,9 @@
 # FAVOR+ v1 verified CPU implementation
 
+Latest follow-up: [FAVOR_QUALITY_STATE.md](FAVOR_QUALITY_STATE.md). This file
+records the preserved implementation milestone; read the quality follow-up for
+current feature-count advice and pending GPU ownership.
+
 19 October2026 UTC. Branch research/hitskt-favor-plus-v1; continuation base
 bc262e6. Latest user explicitly authorizes genuine FAVOR+ from scratch;
 no starter/attachment dependency exists. Historical preparation is retained in

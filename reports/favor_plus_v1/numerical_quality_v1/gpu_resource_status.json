@@ -1,0 +1,17 @@
+{
+  "utc": "2026-10-19T13:33:54.751844+00:00",
+  "gpu_listing": "GPU 0: NVIDIA H100 80GB HBM3 (UUID: GPU-5a568e3c-e96c-169f-b063-f4478340ff51)\n  MIG 3g.40gb     Device  0: (UUID: MIG-d2fcfd79-720e-5218-82c9-0a132be68920)",
+  "usage_query": "NVIDIA H100 80GB HBM3, GPU-5a568e3c-e96c-169f-b063-f4478340ff51, [Insufficient Permissions], [Insufficient Permissions], [N/A]",
+  "scheduler_job_id_present": false,
+  "exclusive_allocation_evidence": null,
+  "protected_progress_counts": {
+    "completed": 810,
+    "pending": 146,
+    "running": 1
+  },
+  "protected_progress_updated_utc": "2026-10-19T13:33:52.252364+00:00",
+  "decision": "PENDING: no independent exclusive ownership; do not initialize CUDA",
+  "cuda_initialized_by_this_task": false,
+  "cgroup_limit_bytes": 96636764160,
+  "cgroup_oom_control": "oom_kill_disable 0\nunder_oom 0\noom_kill 2"
+}

@@ -1,0 +1,48 @@
+{
+  "allocation_record_fields": [
+    "resource_uuid",
+    "owner",
+    "exclusive",
+    "expires_utc",
+    "external_allocation_evidence"
+  ],
+  "batch": 1,
+  "chunks": [
+    16,
+    32,
+    64
+  ],
+  "cuda_initialized": false,
+  "dtype": "float32, TF32 disabled",
+  "features": [
+    128,
+    256,
+    512
+  ],
+  "gradient_atol": 5e-05,
+  "gradient_rtol": 0.001,
+  "head_width": 64,
+  "heads": 2,
+  "lengths": [
+    17,
+    65,
+    257,
+    939,
+    3925,
+    13081
+  ],
+  "limitation": "metadata validation is not independent proof; external allocation must be established first",
+  "max_gpu_allocated_bytes": 8589934592,
+  "max_stage_seconds": 120,
+  "output_max_abs_tolerance": 5e-05,
+  "resource": "external exclusive allocation required",
+  "status": "PENDING",
+  "steps": [
+    "CPU/NumPy oracle and CUDA outputs/gradients",
+    "causal and padded prefix invariance",
+    "short-to-long feature attention memory/runtime",
+    "full hierarchy own-label shifting/backward",
+    "tagged checkpoint exact reload"
+  ],
+  "stop_on_first_failure": true
+}

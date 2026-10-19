@@ -2,7 +2,20 @@
 
 Updated: 2026-10-19 UTC
 
-## FAVOR+ CPU implementation verified — latest
+## FAVOR+ numerical quality — latest
+
+From31886f6, predeclared design49ed057. See
+[FAVOR_QUALITY_STATE.md](FAVOR_QUALITY_STATE.md).229 tests,288 synthetic/576
+frozen sample comparisons and54 precision controls PASS. High-norm error is
+consistent with rare-tail sampling, not an observed implementation defect.
+Frozen rule retains128 for diagnostic pilot only; no defaults/full-training
+approval.12 whole training targets,936 actions,0 optimizer steps; old trained
+ELU controls clearly separate.375 originals and341 prior files preserved.
+No independent GPU allocation: CUDA pending/uninitialized, LightSAKT2 protected.
+All3 dataset profiles/protocol/counts and best-checkpoint selection PASS.
+Publish scoped research diagnostics; then wait for independent CUDA resources.
+
+## FAVOR+ CPU implementation verified — historical baseline
 
 Genuine FAVOR+ from scratch on research/hitskt-favor-plus-v1 from bc262e6:
 74 new FAVOR+ tests and143 legacy controls PASS (217 distinct,0 failures).

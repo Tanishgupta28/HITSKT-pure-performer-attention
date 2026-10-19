@@ -1,0 +1,31 @@
+{
+  "datasets": [
+    {
+      "dataset": "assist2017",
+      "manifest": "experiments/hitskt_favor_plus_v1/assist2017/quality_cpu_20261019_v2/training_norms_manifest.json",
+      "manifest_sha256": "2d0dd7fed49c36c3abba19e96c77ed9196c4b91c361205c5097dcffb0d53983e",
+      "selected_targets": 4,
+      "status": "PASS"
+    },
+    {
+      "dataset": "junyi",
+      "manifest": "experiments/hitskt_favor_plus_v1/junyi/quality_cpu_20261019_v2/training_norms_manifest.json",
+      "manifest_sha256": "9c3190e3bcb4e7d80ced8daf7fd0c310aec9d8e1637782e2b9aadbb5bff9f9ee",
+      "selected_targets": 4,
+      "status": "PASS"
+    },
+    {
+      "dataset": "ednet_kt1",
+      "manifest": "experiments/hitskt_favor_plus_v1/ednet_kt1/quality_cpu_20261019_v2/training_norms_manifest.json",
+      "manifest_sha256": "565f38ef4538aa86ec3858879d7e1020116c7528693d0d5f235ca7597ce87d76",
+      "selected_targets": 4,
+      "status": "PASS"
+    }
+  ],
+  "design_sha256": "0b26f07dc504bddc13b28b4217dfce69683a4c4b9201082e3d19d1b4188c1f38",
+  "limitation": "untrained FAVOR+ norms plus trained ELU stress controls; no learned FAVOR+ distribution",
+  "no_optimizer_steps": true,
+  "oracle_sha256": "11148db1c52458aeb03a0b1af99b301179eaf956d2decb68ceafcbf7426faf98",
+  "script_sha256": "a453c25020f9bc0db7e9bfa7aadfe13acabd611c58f55f7ab8a397f5fb534604",
+  "status": "PASS"
+}
