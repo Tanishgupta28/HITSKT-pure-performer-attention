@@ -30,6 +30,14 @@ remain intact; platform changes do not alter research source or live runs.
 
 ## Current short status
 
+19 October: supervisor PDF/editable source/status/replay plan verified; see
+[SUPERVISOR_STATE.md](SUPERVISOR_STATE.md).59 controls and full cached-score
+recalculation pass;375 originals and156 prior evidence files unchanged. New
+documents correct DKVMN/RKT history-description error without changing results.
+CUDA remains deferred on occupied MIG; publication readiness NOT VERIFIED.
+No new training or V2/FAVOR+ implementation. Publish scoped deliverables,
+verify remote equality, then wait for independent resources/instructions.
+
 The follow-up reproducibility/timing diagnosis is verified; see
 [REPRODUCIBILITY_STATE.md](REPRODUCIBILITY_STATE.md). All three historical CPU
 metric gates still fail; full ASSIST FP64 rules out the tested CPU-precision

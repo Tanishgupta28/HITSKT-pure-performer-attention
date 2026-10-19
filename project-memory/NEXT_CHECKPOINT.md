@@ -1,24 +1,29 @@
 # Next checkpoint
 
-Updated:2026-10-18 UTC — follow-up diagnosis verified.
+Updated19 October2026 UTC — supervisor delivery verified.
 
-Read [REPRODUCIBILITY_STATE.md](REPRODUCIBILITY_STATE.md) and reconcile the Git
-milestone with canonical remote before acting. No diagnostic job is active.
-The three requested reports, per-dataset manifests and two separate proposals
-are complete;59 relevant tests, hash bindings, renderer/links and375+106 file
-preservation checks PASS. All historical CPU metric gates remain FAIL.
+Read [SUPERVISOR_STATE.md](SUPERVISOR_STATE.md),
+[USER_DIRECTIVES.md](USER_DIRECTIVES.md) and actual Git status before acting.
+The supervisor PDF/source/status/replay plan and evidence are complete.
+No diagnostic process, CUDA replay, model training or watcher is active.
 
-Publish the scoped diagnosis milestone to capstone-gpu/main if not already
-present, verify remote SHA equality, then **wait for user instructions**.
-Preserve the unrelated root README edit and untracked SAKT console log.
-No production training, DKT resume, optimizer reset, new experiment schedule,
-architecture/protocol replacement or LightSAKT2 edits/signals are authorized.
+Commit/push the scoped supervisor milestone to capstone-gpu/main if not already
+published, verify remote SHA equality and **wait for independent GPU resources
+or further user instructions**. Preserve the unrelated root README edit and
+untracked SAKT console log. Prior checkpoint:
+[October18 checkpoint](NEXT_CHECKPOINT_history_before_2026-10-19_briefing.md).
 
-Remaining scientific uncertainty: occupied H100/MIG prevents safe CUDA replay;
-historical prediction vectors/settings absent; actual response timing unverified;
-baseline fresh replay/RKT raw pair-count reconstruction missing. Preserve the
-1e-6 tolerance and distinguish numerical inference from training. If later
-authorized safe resources exist, next bounded action is unchanged-checkpoint
-CUDA verification, not retraining or grabbing an occupied partition.
-See [USER_DIRECTIVES.md](USER_DIRECTIVES.md).
-Previous endpoint: [NEXT_CHECKPOINT_history_before_2026-10-18_diagnosis.md](NEXT_CHECKPOINT_history_before_2026-10-18_diagnosis.md).
+CUDA inference is authorized only on a genuinely idle independent device under
+the frozen replay plan. The only visible MIG is occupied and LightSAKT2 active;
+restricted empty process output is not idle evidence. Do not initialize CUDA
+without ownership/headroom admission. No automatic polling or worker interruption.
+
+Next scientific work after admission: unchanged HiTSKT checkpoint CUDA replay
+for all3 datasets with original batch shapes and absolute1e-6 gate. Completed
+baseline replays follow the bounded11-pair queue; no DKT/EdNet resume/reset.
+Baseline context windows are DKT199,DKVMN199,SAKT99,RKT49; prior prose error is
+corrected only in the new reports. No V2/FAVOR+, new full training or seed sweep.
+
+All3 historical CPU complete metric gates remain FAIL; AUCs pass1e-6. Actual
+response availability and publication readiness remain NOT VERIFIED. Preserve
+historical values separately from independent CPU values; no automatic retraining.

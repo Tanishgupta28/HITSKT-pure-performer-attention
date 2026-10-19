@@ -861,3 +861,33 @@
 - Detailed evidence, limitations and exact next checkpoint:
   [REPRODUCIBILITY_STATE.md](REPRODUCIBILITY_STATE.md). Publish scoped milestone,
   verify canonical remote equality and wait; no automatic training schedule.
+
+
+## 2026-10-19 UTC — Supervisor verification brief and bounded replay plan
+
+- User requested a concise PDF/editable source, verification status and minimum
+  evidence checklist from e1065c9; conditional independent-GPU inference only.
+  No full training, DKT continuation/reset, V2 or FAVOR+ implementation.
+- Read all3 diagnostic reports and verified375 original/156 prior evidence
+  files unchanged.59 relevant controls PASS again. Recalculated every cached
+  CPU metric on15,998,524 targets, exactly matching prior manifests.
+- Found and corrected descriptive baseline-history error in new documents:
+  DKVMN uses199 prior interactions, RKT49; saved configs/checkpoints and source
+  agree. Prior reports remain untouched, metrics/weights unchanged.
+- Produced2-page A4 supervisor PDF with editable Markdown/HTML, explicit status
+  document and resource-bounded replay plan. Numerical tables, independent PDF
+  parsing, links, geometry and visual review PASS. Evidence directory:
+  `reports/supervisor_verification/`, terminal `delivery_verification.json` PASS.
+- Metadata-only preflight sized all original evaluation batches; maxima
+  6.799/4.234/18.964GiB. Six RKT relation matrices need0.321/16.020/25.915GiB
+  payload, before overhead. GPU plan permits<=24GiB estimate with8GiB reserve
+  and measured preflight; host reserve24GiB. No shapes/protocol/tolerance changed.
+- Visible H100/MIG still occupied, active protected heartbeat, restricted process
+  visibility. CUDA allocations0, no independent lease established, no inference
+  auto-watcher. Existing auto-CUDA helper must not be launched blindly.
+- All3 AUC gates PASS, full CPU metric gates FAIL, CUDA/feedback timing/publication
+  remain NOT VERIFIED. Retain V1 artifacts provisionally; no justified automatic
+  retraining.11 completed baseline metric replays and raw RKT counts remain open.
+- Publish scoped deliverables normally, verify remote equality, then wait for
+  independent resources or instructions. Detailed handoff:
+  [SUPERVISOR_STATE.md](SUPERVISOR_STATE.md).

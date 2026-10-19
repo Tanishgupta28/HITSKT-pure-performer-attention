@@ -1,0 +1,16 @@
+{
+  "cuda_allocations": 0,
+  "gpu_inventory": "GPU 0: NVIDIA H100 80GB HBM3 (UUID: GPU-5a568e3c-e96c-169f-b063-f4478340ff51)\n  MIG 3g.40gb     Device  0: (UUID: MIG-d2fcfd79-720e-5218-82c9-0a132be68920)",
+  "light_active_job_count": 1,
+  "light_progress_mtime": 1792378445.586459,
+  "memory_limit_bytes": 96636764160,
+  "observed_memory_usage_bytes": 34598871040,
+  "oom_control": {
+    "oom_kill": "2",
+    "oom_kill_disable": "0",
+    "under_oom": "0"
+  },
+  "protected_processes_signalled": 0,
+  "result": "No independent free GPU established. Only read-only observations; no CUDA replay or model training launched.",
+  "utc": "2026-10-19T02:54:20.745646+00:00"
+}

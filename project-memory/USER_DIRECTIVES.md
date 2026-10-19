@@ -1,8 +1,25 @@
 # Durable user directives
 
-Updated: 2026-10-18 UTC
+Updated: 2026-10-19 UTC
 
-## 2026-10-18 — Reproducibility root cause and response timing (latest)
+## 2026-10-19 — Supervisor briefing and bounded remaining verification (latest)
+
+- Continue from e1065c9; read all three completed diagnostic reports. Create a
+  concise supervisor PDF, editable source and verification-status document.
+- Distinguish historical CUDA/independent CPU AUCs, PASS/FAIL/NOT VERIFIED,
+  retrospective within-student evaluation and unverified feedback timing.
+  Describe deterministic causal ELU+1 hierarchical HiTSKT, not FAVOR+.
+- Label historical baseline metrics unverified by fresh replay; prioritize the
+  minimum remaining evidence and prepare a resource-bounded baseline replay plan.
+- Full unchanged-checkpoint CUDA inference is authorized only if a genuinely
+  free independent device is established. Never interrupt LightSAKT2 or infer
+  availability from an empty restricted process table.
+- No full training, DKT/EdNet resume, optimizer reset, V2 implementation or
+  genuine FAVOR+ implementation. CPU differences alone do not justify retraining.
+- Preserve original scientific artifacts and all prior audit evidence; commit
+  and push verified new reports, source and memory normally.
+
+## 2026-10-18 — Reproducibility root cause and response timing (historical)
 
 - User requests diagnosis of all seven metric discrepancies, per-target numerical
   and classification differences where evidence permits, runtime/precision/batch

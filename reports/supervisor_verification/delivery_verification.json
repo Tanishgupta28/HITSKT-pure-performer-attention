@@ -1,0 +1,37 @@
+{
+  "baseline_context_erratum": "VERIFIED: DKVMN199, RKT49",
+  "cached_cpu_targets_recalculated": 15998524,
+  "full_baseline_replays": 0,
+  "full_cuda_replays": 0,
+  "full_training_runs": 0,
+  "implementation_bindings": {
+    "reports/supervisor_verification/baseline_context_correction.json": "scripts/prepare_hitskt_supervisor_facts.py",
+    "reports/supervisor_verification/preservation_final.json": "scripts/audit_supervisor_evidence.py",
+    "reports/supervisor_verification/preservation_initial.json": "scripts/audit_supervisor_evidence.py",
+    "reports/supervisor_verification/replay_resource_preflight.json": "scripts/preflight_hitskt_checkpoint_replays.py",
+    "reports/supervisor_verification/supervisor_facts.json": "scripts/prepare_hitskt_supervisor_facts.py"
+  },
+  "implementation_sha256": "5d0c5634e9d230b9bcea8178334b314f252c496eeaaea83621439cf6c61970af",
+  "next_step": "Independent-resource CUDA replay under unchanged1e-6 gate; no retraining yet",
+  "original_research_files_preserved": 375,
+  "output_sha256": {
+    "reports/HITSKT_CHECKPOINT_REPLAY_PLAN.md": "409d8ba93c46cbb520a7d3bde9ae3d17b5c8b1eb6ceee853200669f0c0a37921",
+    "reports/HITSKT_SUPERVISOR_BRIEF.html": "a09084e2c735c1b0d55df94c7eb5da47fcbcc2ce9c756ab0e745f6e9b8a0f891",
+    "reports/HITSKT_SUPERVISOR_BRIEF.md": "ec9a71da250670e1c3ff34b5c6e5b46ebdde61ac54a8103d35b7139f4ee8fa8a",
+    "reports/HITSKT_SUPERVISOR_BRIEF.pdf": "5e0d44b46777db42d026bf2685c368890f34720b978b29f1bb10743840561de5",
+    "reports/HITSKT_VERIFICATION_STATUS.md": "1d33267eaf10c853370108c78373725e757f480c90a62e6319c3e43eb0d78920",
+    "reports/supervisor_verification/report_style.css": "70f13c0fd3d0b9fc824751366c2ca99bf8f97686a4b249ec5ba8c691824314b0"
+  },
+  "pages": 2,
+  "pdf_independent_parser": "PASS",
+  "pdf_layout_geometry": "PASS",
+  "pdf_visual_review": "PASS",
+  "prior_verification_files_preserved": 156,
+  "publication_readiness": "NOT VERIFIED",
+  "relevant_controls_passed": 59,
+  "report_tables": "PASS",
+  "resource_status": "NOT VERIFIED: no idle independent GPU; preflight estimates only",
+  "source_link_checks": "PASS",
+  "status": "PASS",
+  "utc": "2026-10-19T02:53:15.733229+00:00"
+}

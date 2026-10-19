@@ -1,8 +1,21 @@
 # Current state
 
-Updated: 2026-10-18 UTC
+Updated: 2026-10-19 UTC
 
-## Completed follow-up diagnosis — latest
+## Supervisor briefing — latest
+
+Two-page supervisor PDF plus editable Markdown/HTML, verification status and
+bounded replay plan are verified. See [SUPERVISOR_STATE.md](SUPERVISOR_STATE.md).
+Fresh saved-score recalculation matches all15,998,524 CPU targets;59 relevant
+controls PASS again;375 originals and156 previous verification files unchanged.
+Corrected a baseline-context description in new documents:DKVMN199/RKT49.
+Older reports and all scientific originals remain intact. No training or CUDA
+allocation. Only visible MIG occupied; LightSAKT2 active and protected.
+All3 full CPU metric gates still FAIL; CUDA/timing/publication NOT VERIFIED.
+Complete scoped publication/remote check, then await independent resources or
+instructions. Do not start DKT, V2, FAVOR+ or another experiment schedule.
+
+## Completed follow-up diagnosis — historical
 
 The user authorized the reproducibility/timing follow-up after audit5625478.
 See [REPRODUCIBILITY_STATE.md](REPRODUCIBILITY_STATE.md). Three requested reports

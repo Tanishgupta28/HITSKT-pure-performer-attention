@@ -1,0 +1,15 @@
+body { font-family: sans-serif; font-size: 10pt; line-height: 1.19; color: #243347; }
+h1 { font-size: 18pt; line-height: 1.05; color: #122f49; margin: 0 0 8pt 0; }
+h2 { font-size: 11.2pt; line-height: 1.08; color: #164b68; margin: 9pt 0 4pt 0; }
+p { margin: 4pt 0; }
+strong { color: #152f45; }
+a { color: #145b7a; text-decoration: none; }
+table { width: 100%; border-collapse: collapse; font-size: 8.5pt; line-height: 1.15; margin: 5pt 0 7pt 0; }
+th { color: white; background-color: #163e59; font-weight: bold; text-align: left; padding: 5pt; vertical-align: top; }
+td { padding: 4pt 5pt; border-bottom: 0.5pt solid #cfdbe1; vertical-align: top; }
+tr:nth-child(even) td { background-color: #f1f5f7; }
+ol { margin: 4pt 0 5pt 0; padding-left: 16pt; }
+li { margin: 3pt 0; }
+.pass { color: #086349; font-weight: bold; }
+.fail { color: #a02828; font-weight: bold; }
+.pending { color: #88530a; font-weight: bold; }

@@ -1,0 +1,529 @@
+{
+  "cuda_allocations": 0,
+  "estimate": "3 copies of largest original causal outer-product prefix +1GiB overhead; FP32; not measured peak CUDA/RSS",
+  "gpu_admission": "NOT VERIFIED: resources remain occupied; estimates never establish an independent lease",
+  "hitskt": {
+    "assist2017": {
+      "all_original_batch_order_hash_matches": true,
+      "first_three_shape_estimates_match_actual_collator": true,
+      "largest_original_batch": {
+        "batch_index": 84,
+        "examples": 7,
+        "history_slots": 31668,
+        "target_slots": 798
+      },
+      "maximum_forward_estimate_bytes": 7299923968,
+      "maximum_forward_estimate_gib": 6.798583984375,
+      "original_batches": 98,
+      "targets": 112252,
+      "under_16gib_estimate_cap": true
+    },
+    "ednet_kt1": {
+      "all_original_batch_order_hash_matches": true,
+      "first_three_shape_estimates_match_actual_collator": true,
+      "largest_original_batch": {
+        "batch_index": 24246,
+        "examples": 1,
+        "history_slots": 196215,
+        "target_slots": 49
+      },
+      "maximum_forward_estimate_bytes": 20362461184,
+      "maximum_forward_estimate_gib": 18.964019775390625,
+      "original_batches": 24248,
+      "targets": 13429870,
+      "under_16gib_estimate_cap": false
+    },
+    "junyi": {
+      "all_original_batch_order_hash_matches": true,
+      "first_three_shape_estimates_match_actual_collator": true,
+      "largest_original_batch": {
+        "batch_index": 3657,
+        "examples": 1,
+        "history_slots": 35325,
+        "target_slots": 6
+      },
+      "maximum_forward_estimate_bytes": 4546330624,
+      "maximum_forward_estimate_gib": 4.234100341796875,
+      "original_batches": 3658,
+      "targets": 2456402,
+      "under_16gib_estimate_cap": true
+    }
+  },
+  "implementation_sha256": "8a4b668c9504cc1f4b35131dc840a16980e17f24412ec609bdea2b77a54ed125",
+  "model_forwards": 0,
+  "rkt_phi": {
+    "assist2017": {
+      "all_six_repository_payload_bytes": 344588560,
+      "all_six_repository_payload_gib": 0.3209231048822403,
+      "files": [
+        {
+          "compressed_file_bytes": 5133769,
+          "members": [
+            {
+              "array_payload_bytes": 12559504,
+              "dtype": "int64",
+              "name": "keys.npy",
+              "shape": [
+                1569938
+              ],
+              "uncompressed_member_bytes": 12559632
+            },
+            {
+              "array_payload_bytes": 50238016,
+              "dtype": "int64",
+              "name": "counts.npy",
+              "shape": [
+                1569938,
+                4
+              ],
+              "uncompressed_member_bytes": 50238144
+            }
+          ],
+          "path": "data/processed/assist2017/full/rkt_phi_full/phi_all_train.npz"
+        },
+        {
+          "compressed_file_bytes": 4529371,
+          "members": [
+            {
+              "array_payload_bytes": 11316368,
+              "dtype": "int64",
+              "name": "keys.npy",
+              "shape": [
+                1414546
+              ],
+              "uncompressed_member_bytes": 11316496
+            },
+            {
+              "array_payload_bytes": 45265472,
+              "dtype": "int64",
+              "name": "counts.npy",
+              "shape": [
+                1414546,
+                4
+              ],
+              "uncompressed_member_bytes": 45265600
+            }
+          ],
+          "path": "data/processed/assist2017/full/rkt_phi_full/phi_excluding_fold_0.npz"
+        },
+        {
+          "compressed_file_bytes": 4452822,
+          "members": [
+            {
+              "array_payload_bytes": 11091088,
+              "dtype": "int64",
+              "name": "keys.npy",
+              "shape": [
+                1386386
+              ],
+              "uncompressed_member_bytes": 11091216
+            },
+            {
+              "array_payload_bytes": 44364352,
+              "dtype": "int64",
+              "name": "counts.npy",
+              "shape": [
+                1386386,
+                4
+              ],
+              "uncompressed_member_bytes": 44364480
+            }
+          ],
+          "path": "data/processed/assist2017/full/rkt_phi_full/phi_excluding_fold_1.npz"
+        },
+        {
+          "compressed_file_bytes": 4552318,
+          "members": [
+            {
+              "array_payload_bytes": 11404192,
+              "dtype": "int64",
+              "name": "keys.npy",
+              "shape": [
+                1425524
+              ],
+              "uncompressed_member_bytes": 11404320
+            },
+            {
+              "array_payload_bytes": 45616768,
+              "dtype": "int64",
+              "name": "counts.npy",
+              "shape": [
+                1425524,
+                4
+              ],
+              "uncompressed_member_bytes": 45616896
+            }
+          ],
+          "path": "data/processed/assist2017/full/rkt_phi_full/phi_excluding_fold_2.npz"
+        },
+        {
+          "compressed_file_bytes": 4524852,
+          "members": [
+            {
+              "array_payload_bytes": 11300504,
+              "dtype": "int64",
+              "name": "keys.npy",
+              "shape": [
+                1412563
+              ],
+              "uncompressed_member_bytes": 11300632
+            },
+            {
+              "array_payload_bytes": 45202016,
+              "dtype": "int64",
+              "name": "counts.npy",
+              "shape": [
+                1412563,
+                4
+              ],
+              "uncompressed_member_bytes": 45202144
+            }
+          ],
+          "path": "data/processed/assist2017/full/rkt_phi_full/phi_excluding_fold_3.npz"
+        },
+        {
+          "compressed_file_bytes": 4499635,
+          "members": [
+            {
+              "array_payload_bytes": 11246056,
+              "dtype": "int64",
+              "name": "keys.npy",
+              "shape": [
+                1405757
+              ],
+              "uncompressed_member_bytes": 11246184
+            },
+            {
+              "array_payload_bytes": 44984224,
+              "dtype": "int64",
+              "name": "counts.npy",
+              "shape": [
+                1405757,
+                4
+              ],
+              "uncompressed_member_bytes": 44984352
+            }
+          ],
+          "path": "data/processed/assist2017/full/rkt_phi_full/phi_excluding_fold_4.npz"
+        }
+      ],
+      "limitation": "Header/payload estimate only, not repository allocation, peak RSS or verification of raw relation counts"
+    },
+    "ednet_kt1": {
+      "all_six_repository_payload_bytes": 27825578480,
+      "all_six_repository_payload_gib": 25.914589390158653,
+      "files": [
+        {
+          "compressed_file_bytes": 515082763,
+          "members": [
+            {
+              "array_payload_bytes": 953824664,
+              "dtype": "int64",
+              "name": "keys.npy",
+              "shape": [
+                119228083
+              ],
+              "uncompressed_member_bytes": 953824792
+            },
+            {
+              "array_payload_bytes": 3815298656,
+              "dtype": "int64",
+              "name": "counts.npy",
+              "shape": [
+                119228083,
+                4
+              ],
+              "uncompressed_member_bytes": 3815298784
+            }
+          ],
+          "path": "data/processed/ednet_kt1/full/rkt_phi_full/phi_all_train.npz"
+        },
+        {
+          "compressed_file_bytes": 483308961,
+          "members": [
+            {
+              "array_payload_bytes": 924241680,
+              "dtype": "int64",
+              "name": "keys.npy",
+              "shape": [
+                115530210
+              ],
+              "uncompressed_member_bytes": 924241808
+            },
+            {
+              "array_payload_bytes": 3696966720,
+              "dtype": "int64",
+              "name": "counts.npy",
+              "shape": [
+                115530210,
+                4
+              ],
+              "uncompressed_member_bytes": 3696966848
+            }
+          ],
+          "path": "data/processed/ednet_kt1/full/rkt_phi_full/phi_excluding_fold_0.npz"
+        },
+        {
+          "compressed_file_bytes": 481943943,
+          "members": [
+            {
+              "array_payload_bytes": 922509120,
+              "dtype": "int64",
+              "name": "keys.npy",
+              "shape": [
+                115313640
+              ],
+              "uncompressed_member_bytes": 922509248
+            },
+            {
+              "array_payload_bytes": 3690036480,
+              "dtype": "int64",
+              "name": "counts.npy",
+              "shape": [
+                115313640,
+                4
+              ],
+              "uncompressed_member_bytes": 3690036608
+            }
+          ],
+          "path": "data/processed/ednet_kt1/full/rkt_phi_full/phi_excluding_fold_1.npz"
+        },
+        {
+          "compressed_file_bytes": 481893699,
+          "members": [
+            {
+              "array_payload_bytes": 922552240,
+              "dtype": "int64",
+              "name": "keys.npy",
+              "shape": [
+                115319030
+              ],
+              "uncompressed_member_bytes": 922552368
+            },
+            {
+              "array_payload_bytes": 3690208960,
+              "dtype": "int64",
+              "name": "counts.npy",
+              "shape": [
+                115319030,
+                4
+              ],
+              "uncompressed_member_bytes": 3690209088
+            }
+          ],
+          "path": "data/processed/ednet_kt1/full/rkt_phi_full/phi_excluding_fold_2.npz"
+        },
+        {
+          "compressed_file_bytes": 480441966,
+          "members": [
+            {
+              "array_payload_bytes": 920521416,
+              "dtype": "int64",
+              "name": "keys.npy",
+              "shape": [
+                115065177
+              ],
+              "uncompressed_member_bytes": 920521544
+            },
+            {
+              "array_payload_bytes": 3682085664,
+              "dtype": "int64",
+              "name": "counts.npy",
+              "shape": [
+                115065177,
+                4
+              ],
+              "uncompressed_member_bytes": 3682085792
+            }
+          ],
+          "path": "data/processed/ednet_kt1/full/rkt_phi_full/phi_excluding_fold_3.npz"
+        },
+        {
+          "compressed_file_bytes": 480784959,
+          "members": [
+            {
+              "array_payload_bytes": 921466576,
+              "dtype": "int64",
+              "name": "keys.npy",
+              "shape": [
+                115183322
+              ],
+              "uncompressed_member_bytes": 921466704
+            },
+            {
+              "array_payload_bytes": 3685866304,
+              "dtype": "int64",
+              "name": "counts.npy",
+              "shape": [
+                115183322,
+                4
+              ],
+              "uncompressed_member_bytes": 3685866432
+            }
+          ],
+          "path": "data/processed/ednet_kt1/full/rkt_phi_full/phi_excluding_fold_4.npz"
+        }
+      ],
+      "limitation": "Header/payload estimate only, not repository allocation, peak RSS or verification of raw relation counts"
+    },
+    "junyi": {
+      "all_six_repository_payload_bytes": 17201578720,
+      "all_six_repository_payload_gib": 16.020218580961227,
+      "files": [
+        {
+          "compressed_file_bytes": 255887845,
+          "members": [
+            {
+              "array_payload_bytes": 629954912,
+              "dtype": "int64",
+              "name": "keys.npy",
+              "shape": [
+                78744364
+              ],
+              "uncompressed_member_bytes": 629955040
+            },
+            {
+              "array_payload_bytes": 2519819648,
+              "dtype": "int64",
+              "name": "counts.npy",
+              "shape": [
+                78744364,
+                4
+              ],
+              "uncompressed_member_bytes": 2519819776
+            }
+          ],
+          "path": "data/processed/junyi/full/rkt_phi_full/phi_all_train.npz"
+        },
+        {
+          "compressed_file_bytes": 225229464,
+          "members": [
+            {
+              "array_payload_bytes": 563950888,
+              "dtype": "int64",
+              "name": "keys.npy",
+              "shape": [
+                70493861
+              ],
+              "uncompressed_member_bytes": 563951016
+            },
+            {
+              "array_payload_bytes": 2255803552,
+              "dtype": "int64",
+              "name": "counts.npy",
+              "shape": [
+                70493861,
+                4
+              ],
+              "uncompressed_member_bytes": 2255803680
+            }
+          ],
+          "path": "data/processed/junyi/full/rkt_phi_full/phi_excluding_fold_0.npz"
+        },
+        {
+          "compressed_file_bytes": 224383626,
+          "members": [
+            {
+              "array_payload_bytes": 561733752,
+              "dtype": "int64",
+              "name": "keys.npy",
+              "shape": [
+                70216719
+              ],
+              "uncompressed_member_bytes": 561733880
+            },
+            {
+              "array_payload_bytes": 2246935008,
+              "dtype": "int64",
+              "name": "counts.npy",
+              "shape": [
+                70216719,
+                4
+              ],
+              "uncompressed_member_bytes": 2246935136
+            }
+          ],
+          "path": "data/processed/junyi/full/rkt_phi_full/phi_excluding_fold_1.npz"
+        },
+        {
+          "compressed_file_bytes": 223690528,
+          "members": [
+            {
+              "array_payload_bytes": 560580616,
+              "dtype": "int64",
+              "name": "keys.npy",
+              "shape": [
+                70072577
+              ],
+              "uncompressed_member_bytes": 560580744
+            },
+            {
+              "array_payload_bytes": 2242322464,
+              "dtype": "int64",
+              "name": "counts.npy",
+              "shape": [
+                70072577,
+                4
+              ],
+              "uncompressed_member_bytes": 2242322592
+            }
+          ],
+          "path": "data/processed/junyi/full/rkt_phi_full/phi_excluding_fold_2.npz"
+        },
+        {
+          "compressed_file_bytes": 223333019,
+          "members": [
+            {
+              "array_payload_bytes": 559511920,
+              "dtype": "int64",
+              "name": "keys.npy",
+              "shape": [
+                69938990
+              ],
+              "uncompressed_member_bytes": 559512048
+            },
+            {
+              "array_payload_bytes": 2238047680,
+              "dtype": "int64",
+              "name": "counts.npy",
+              "shape": [
+                69938990,
+                4
+              ],
+              "uncompressed_member_bytes": 2238047808
+            }
+          ],
+          "path": "data/processed/junyi/full/rkt_phi_full/phi_excluding_fold_3.npz"
+        },
+        {
+          "compressed_file_bytes": 225511293,
+          "members": [
+            {
+              "array_payload_bytes": 564583656,
+              "dtype": "int64",
+              "name": "keys.npy",
+              "shape": [
+                70572957
+              ],
+              "uncompressed_member_bytes": 564583784
+            },
+            {
+              "array_payload_bytes": 2258334624,
+              "dtype": "int64",
+              "name": "counts.npy",
+              "shape": [
+                70572957,
+                4
+              ],
+              "uncompressed_member_bytes": 2258334752
+            }
+          ],
+          "path": "data/processed/junyi/full/rkt_phi_full/phi_excluding_fold_4.npz"
+        }
+      ],
+      "limitation": "Header/payload estimate only, not repository allocation, peak RSS or verification of raw relation counts"
+    }
+  },
+  "status": "PASS: metadata-only preflight completed",
+  "utc": "2026-10-19T02:50:03.330839+00:00"
+}

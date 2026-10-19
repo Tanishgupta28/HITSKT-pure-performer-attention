@@ -1,0 +1,232 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>HiTSKT supervisor brief</title><style>body { font-family: sans-serif; font-size: 10pt; line-height: 1.19; color: #243347; }
+h1 { font-size: 18pt; line-height: 1.05; color: #122f49; margin: 0 0 8pt 0; }
+h2 { font-size: 11.2pt; line-height: 1.08; color: #164b68; margin: 9pt 0 4pt 0; }
+p { margin: 4pt 0; }
+strong { color: #152f45; }
+a { color: #145b7a; text-decoration: none; }
+table { width: 100%; border-collapse: collapse; font-size: 8.5pt; line-height: 1.15; margin: 5pt 0 7pt 0; }
+th { color: white; background-color: #163e59; font-weight: bold; text-align: left; padding: 5pt; vertical-align: top; }
+td { padding: 4pt 5pt; border-bottom: 0.5pt solid #cfdbe1; vertical-align: top; }
+tr:nth-child(even) td { background-color: #f1f5f7; }
+ol { margin: 4pt 0 5pt 0; padding-left: 16pt; }
+li { margin: 3pt 0; }
+.pass { color: #086349; font-weight: bold; }
+.fail { color: #a02828; font-weight: bold; }
+.pending { color: #88530a; font-weight: bold; }
+
+@media print { .page + .page { page-break-before: always; } }
+</style></head><body><section class="page"><h1>Modified HiTSKT: supervisor verification brief</h1>
+<p>19 October 2026 · Evidence baseline: <strong>e1065c9</strong> · Primary training seed: <strong>42</strong></p>
+<p><strong>Decision:</strong> retain the three historical experiments as provisional evidence.
+Further verification is needed before presenting the complete metric sets as
+reproduced. No demonstrated training defect currently requires retraining.
+<strong>Publication readiness: NOT VERIFIED.</strong></p>
+<p>The model is <strong>hierarchical HiTSKT with deterministic causal ELU+1 linear
+attention</strong>. It is a modified model, <strong>not genuine FAVOR+ Performer</strong> and not
+an exact replication of every original-paper component.</p>
+<h2>Three test results: distinguish history from independent replay</h2>
+<table>
+<thead>
+<tr>
+<th style="width:11%">Dataset</th>
+<th style="width:21%">Historical CUDA AUC</th>
+<th style="width:21%">Independent full CPU AUC</th>
+<th style="width:13%">Masking / accepted data</th>
+<th style="width:13%">Fresh CUDA replay</th>
+<th style="width:21%">Next step</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ASSIST2017</td>
+<td>0.7096240159197755</td>
+<td>0.7096236372142970</td>
+<td class="pass">PASS / PASS</td>
+<td class="pending">NOT VERIFIED</td>
+<td>Verify further; no retraining yet</td>
+</tr>
+<tr>
+<td>Junyi</td>
+<td>0.7978262055191263</td>
+<td>0.7978264739233538</td>
+<td class="pass">PASS / PASS</td>
+<td class="pending">NOT VERIFIED</td>
+<td>Verify further; no retraining yet</td>
+</tr>
+<tr>
+<td>EdNet-KT1</td>
+<td>0.7693648364413692</td>
+<td>0.7693647361509419</td>
+<td class="pass">PASS / PASS</td>
+<td class="pending">NOT VERIFIED</td>
+<td>Verify further; no retraining yet</td>
+</tr>
+</tbody>
+</table>
+<p>All three AUC differences pass the unchanged <strong>absolute 1e-6</strong> acceptance
+tolerance. <strong>All three complete CPU metric sets FAIL that gate.</strong> ASSIST fails
+accuracy, precision, recall, F1 and BCE; Junyi fails accuracy, precision, recall
+and F1; EdNet fails accuracy, recall and F1. These failures have not been
+relabelled as rounding or hidden behind AUC agreement.</p>
+<p>CPU test coverage is <strong>112,252 / 2,456,402 / 13,429,870 targets</strong>, using the
+validation-selected checkpoints at epochs <strong>40 / 32 / 30</strong>, respectively.
+The historical CUDA prediction vectors and actual precision flags were not
+saved. Exact original CUDA-versus-CPU pointwise errors and classification-flip
+counts therefore remain unverified. Full float64 ASSIST inference still misses
+historical BCE by <strong>2.13e-6</strong>; tested CPU precision changes do not resolve it.</p>
+<h2>What the independent checks establish</h2>
+<p><strong>Masking PASS:</strong> future-response and own-target perturbations, independent
+explicit causal attention outputs and gradients, target shifting, BOS/EOS,
+loss masking, student/batch isolation and session boundaries pass within the
+production collator's right-padding contract. Arbitrary externally supplied
+left/internal padding is outside the full-model guarantee. Sequence causality
+does not establish when an earlier response became available in real time.</p>
+<p><strong>Accepted-data reconstruction PASS:</strong> every accepted source and processed/store
+event was checked for mappings, sessions, student boundaries, chronological
+splits, label alignment and intended target coverage; no intended supervised
+target is duplicated or missing. These are exhaustive checks, not samples.</p>
+<table>
+<thead>
+<tr>
+<th style="width:22%">Dataset</th>
+<th style="width:22%">Accepted source rows</th>
+<th style="width:18%">Retained learners</th>
+<th style="width:20%">Retained events</th>
+<th style="width:18%">Sessions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ASSIST2017</td>
+<td>942,807</td>
+<td>1,388</td>
+<td>885,335</td>
+<td>12,402</td>
+</tr>
+<tr>
+<td>Junyi</td>
+<td>14,660,217</td>
+<td>29,865</td>
+<td>14,660,217</td>
+<td>600,154</td>
+</tr>
+<tr>
+<td>Full EdNet-KT1</td>
+<td>95,293,926</td>
+<td>116,548</td>
+<td>81,940,867</td>
+<td>2,577,988</td>
+</tr>
+</tbody>
+</table>
+<p>ASSIST/Junyi inputs match the authors' distributed CSV bytes; their original
+publisher-to-author transformation remains <strong>NOT VERIFIED</strong>. EdNet checks cover
+all <strong>784,309 student files</strong>, ZIP CRCs and official archive byte identity.
+HiTSKT deliberately uses the first training session as context only.</p></section>
+<section class="page"><h2>Evaluation meaning and response-timing limits</h2>
+<p>The existing protocol is <strong>chronological within-student, retrospective and
+teacher-forced</strong>: fixed weights predict each target using earlier indexed
+responses, including earlier validation/test responses. It is <strong>not
+student-disjoint</strong>, a global-calendar holdout or a certified real-time
+presentation-time evaluation. An earlier event index does not prove that its
+answer or correctness feedback had arrived.</p>
+<table>
+<thead>
+<tr>
+<th style="width:15%">Dataset</th>
+<th style="width:44%">Test-set timing observation</th>
+<th style="width:41%">Scientific implication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ASSIST2017</td>
+<td>7,059 targets have an exposed earlier recorded end after current presentation.</td>
+<td>Problem/step completion does not establish correctness release. Actual availability NOT VERIFIED.</td>
+</tr>
+<tr>
+<td>Junyi</td>
+<td>2,165,594 targets have a tied-start prior label; all source rows have start=end.</td>
+<td>Zero recorded overlaps cannot certify instantaneous feedback. Actual availability NOT VERIFIED.</td>
+</tr>
+<tr>
+<td>EdNet-KT1</td>
+<td>4,089,385 targets have a prior completion-proxy overlap; 3,364,799 expose a prior same-episode label.</td>
+<td>KT1 lacks final submission/feedback events. Pre-bundle prediction claims are not established.</td>
+</tr>
+</tbody>
+</table>
+<p>These observations are <strong>not counts of confirmed leakage</strong> or estimates of
+metric inflation. Response-release timing needs separate evidence. Do not
+silently substitute availability-aware V2 or implement it as part of this report.</p>
+<h2>Baseline comparison: historical scores, not fresh reproductions</h2>
+<p>All entries below are <strong>historical stored test AUCs</strong>, rounded to nine decimals.
+<strong>None of the 11 completed baseline metric sets has an independent fresh replay
+in these audits.</strong> Checkpoint hashes and validation selection pass artifact
+checks; this is not metric reproduction.</p>
+<table>
+<thead>
+<tr>
+<th style="width:24%">Dataset</th>
+<th style="width:19%">DKT</th>
+<th style="width:19%">DKVMN</th>
+<th style="width:19%">SAKT</th>
+<th style="width:19%">RKT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ASSIST2017</td>
+<td>0.706999742</td>
+<td>0.682252702</td>
+<td>0.738465565</td>
+<td>0.748626490</td>
+</tr>
+<tr>
+<td>Junyi</td>
+<td>0.747684150</td>
+<td>0.741578462</td>
+<td>0.788796178</td>
+<td>0.791254849</td>
+</tr>
+<tr>
+<td>EdNet-KT1</td>
+<td>MISSING</td>
+<td>0.674105992</td>
+<td>0.763007857</td>
+<td>0.747547020</td>
+</tr>
+</tbody>
+</table>
+<p>Recorded HiTSKT AUC is below the strongest ASSIST baseline and above the best
+available Junyi/EdNet baselines by <strong>0.006571357 / 0.006356979</strong>. These are
+single-seed descriptive differences, <strong>not demonstrated significant gains</strong>.
+Features, history budgets and training target populations differ. Correct saved
+history windows are DKT/DKVMN <strong>199</strong>, SAKT <strong>99</strong>, RKT <strong>49</strong>; this corrects a
+descriptive error in the earlier report. RKT raw relation counts still need an
+independent reconstruction. DKT/EdNet has no final result; its last optimizer
+contains <strong>21,749 positive infinities</strong>. Do not resume/reset it.</p>
+<h2>Minimum remaining verification, in priority order</h2>
+<ol>
+<li><strong>Close the HiTSKT metric discrepancy:</strong> on a genuinely idle independent
+   GPU, replay all three unchanged best checkpoints with original batches and
+   settings. Save runtime flags, hashes, local predictions and all seven metrics;
+   apply the original 1e-6 gate and report failures without retuning tolerance.</li>
+<li><strong>Verify comparisons:</strong> independently replay completed baseline checkpoints,
+   prioritizing RKT/ASSIST, RKT/Junyi and SAKT/EdNet; independently reconstruct
+   RKT's training-only relation counts. Keep missing DKT/EdNet missing.</li>
+<li><strong>Freeze defensible claims:</strong> retain the retrospective within-student scope
+   and disclose timing/provenance limits. Real-time, student-disjoint,
+   FAVOR+ or statistically significant-superiority claims need separate evidence.
+   V2, FAVOR+ and additional training require an explicit research decision.</li>
+</ol>
+<p>The only visible H100 MIG remains occupied by protected training; <strong>no CUDA
+replay was attempted</strong>. On 19 October, <strong>59 relevant controls passed again</strong>
+and all full cached CPU metrics recalculated identically. Original artifacts
+and prior evidence remain preserved. See the
+<a href="https://github.com/Tanishgupta28/HITSKT-pure-performer-attention/blob/main/reports/HITSKT_VERIFICATION_STATUS.md">verification status and replay plan</a> for hashes,
+acceptance rules, detailed scopes and the resource gate.</p>
+<p>Evidence: <a href="https://github.com/Tanishgupta28/HITSKT-pure-performer-attention/blob/e1065c9/reports/HITSKT_REPRODUCIBILITY_ROOT_CAUSE.md">numerical diagnosis</a>,
+<a href="https://github.com/Tanishgupta28/HITSKT-pure-performer-attention/blob/e1065c9/reports/HITSKT_RESPONSE_TIMING_ANALYSIS.md">timing analysis</a>,
+<a href="https://github.com/Tanishgupta28/HITSKT-pure-performer-attention/blob/e1065c9/reports/HITSKT_RESEARCH_DECISION_REPORT.md">research decisions</a>.</p></section></body></html>
