@@ -960,3 +960,15 @@ preservation PASS, unrelated edits excluded. Strict durable-memory validation
 PASS without warnings. Publish this handoff/receipt normally, then wait; no
 GPU pilot/full training is running or scheduled. Next bounded GPU work requires
 independent resources and execution direction. See [NEXT_CHECKPOINT.md](NEXT_CHECKPOINT.md).
+
+## 2026-10-19 UTC — Bounded numerical quality study frozen
+
+User authorizes bounded synthetic/training-split diagnostics from31886f6,
+predeclared128/256/512 comparison, conditional exclusive GPU verification and
+all3 pipeline preparation. Design reports/favor_plus_v1/numerical_quality_v1/
+PREDECLARED_DESIGN.json frozen before measurements. No test/validation responses
+for feature choice, no architecture/default changes or full training. Current
+nvidia-smi shows only existing H100 MIG; scheduler/exclusive ownership absent,
+usage permission restricted. No CUDA initialization; GPU tests pending. Plan
+includes only4 whole training targets per dataset and frozen-QKV comparisons;
+historical trained ELU weights are a separately labeled stress control.

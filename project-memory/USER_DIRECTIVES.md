@@ -2,7 +2,24 @@
 
 Updated: 2026-10-19 UTC
 
-## 2026-10-19 — FAVOR+ implementation from scratch (latest)
+## 2026-10-19 — FAVOR+ numerical quality and readiness (latest)
+
+- Continue from31886f6 on research/hitskt-favor-plus-v1. Freeze a bounded
+  128/256/512 feature comparison before running it; independent distribution,
+  feature-kernel/softmax/gradient/stability/resource diagnostics. No test-AUC tuning.
+- Small training-split samples are authorized for norm diagnostics; no full
+  training, hyperparameter searches or architecture changes. All3 dataset
+  pipelines/protocol/checkpoint selection/metrics must remain consistent.
+- CUDA only after genuinely exclusive independent ownership is established.
+  Visible existing MIG ownership is not established: no CUDA initialization.
+  Complete safe CPU work and leave GPU pilot pending if that remains true.
+- Preserve all old research/checkpoints/reports, ELU+1 results and Git history;
+  do not disturb LightSAKT2 or resume/reset DKT. New experiment outputs only in
+  experiments/hitskt_favor_plus_v1/. Commit/push research branch only; no main merge.
+- Produce new evidence-based quality/readiness report and feature-count advice,
+  distinguish expected approximation variance from defects and GPU uncertainty.
+
+## 2026-10-19 — FAVOR+ implementation from scratch (historical)
 
 - Explicit correction: no starter ZIP/attachment exists or is needed. User fully
   authorizes genuine FAVOR+ from scratch using the official Performer paper.
