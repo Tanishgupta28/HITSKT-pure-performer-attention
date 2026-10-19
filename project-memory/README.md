@@ -30,14 +30,15 @@ remain intact; platform changes do not alter research source or live runs.
 
 ## Current short status
 
-Latest FAVOR+ CUDA/pilot continuation fromd7399a0 is resource-blocked.
-LightSAKT2 active; no independently assigned GPU/MIG, CUDA not initialized,
-CUDA checks and real ASSIST pilot NOT RUN. Full-training readiness unestablished.
-See [FAVOR_GPU_PILOT_STATE.md](FAVOR_GPU_PILOT_STATE.md). Conditional128-feature
-CUDA then<=5 ASSIST train updates are authorized once their gates pass; no
-full training or test evaluation.375 originals +407 prior files preserved.
-229 prior CPU passes remain intact; [FAVOR_QUALITY_STATE.md](FAVOR_QUALITY_STATE.md).
-Publish scoped report/evidence/memory, then wait for actual external allocation.
+Latest continuation from025a0e9 is resource diagnosis/planning only; see
+[FAVOR_RESOURCE_PLAN_STATE.md](FAVOR_RESOURCE_PLAN_STATE.md). LightSAKT2 active:
+811 complete/1 running/145 pending, epoch6; measured training forecast10.64
+continuous days with wide uncertainty and final work still following. No
+independent HiTSKT GPU or verified alternative server. No CUDA/training/tests
+this turn. Core229 CPU passes remain intact; stage1 harness prepared, but a
+real-data five-update pilot runner remains to implement. Full training readiness
+unestablished. Request exclusive allocation; publish docs then stop. Earlier
+conditional pilot approval does not authorize execution in this diagnostic turn.
 
 19 October: supervisor PDF/editable source/status/replay plan verified; see
 [SUPERVISOR_STATE.md](SUPERVISOR_STATE.md).59 controls and full cached-score

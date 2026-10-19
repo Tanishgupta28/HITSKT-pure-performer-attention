@@ -2,7 +2,23 @@
 
 Updated: 2026-10-19 UTC
 
-## FAVOR+ CUDA/pilot resource gate — latest
+## FAVOR+ resource diagnosis and six-stage plan — latest
+
+Documentation-only continuation from025a0e9; read
+[FAVOR_RESOURCE_PLAN_STATE.md](FAVOR_RESOURCE_PLAN_STATE.md). At15:13UTC,
+LightSAKT2 active811 complete/1 running/145 pending, current GKT epoch6.
+Measured-reference training forecast255.31 occupied MIG hours/10.64 continuous
+days, broad51.09–890.34h scenario; final verification follows, no release promise.
+Only protected H100 MIG visible; no independent HiTSKT assignment or verified
+alternative server. No CUDA/PyTorch import, GPU work, tests or training this turn.
+Core CPU evidence229 PASS inherited; no observed unresolved attention defect.
+Stage1 CUDA harness prepared; real-data five-update runner/instrumentation still
+needs implementation, so stage2 is not turnkey. Full training not established.
+New resource/plan report and sanitized evidence only; preserve all originals and
+unrelated edits. Commit/push docs to research branch then stop. Latest request
+explicitly does not authorize GPU execution; no automatic resource polling/jobs.
+
+## FAVOR+ CUDA/pilot resource gate — historical
 
 Continuation fromd7399a0: LightSAKT2 remains active (fresh heartbeat1 running,
 GPU handles on protected processes182135/2325921). Only existing H100 MIG

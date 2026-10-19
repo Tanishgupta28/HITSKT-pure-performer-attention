@@ -1,0 +1,1139 @@
+{
+  "allocation_environment": {
+    "CUDA_VISIBLE_DEVICES": "UNSET",
+    "LSB_JOBID": "UNSET",
+    "NVIDIA_VISIBLE_DEVICES": "/var/run/nvidia-container-devices",
+    "PBS_JOBID": "UNSET",
+    "SLURM_JOB_GPUS": "UNSET",
+    "SLURM_JOB_ID": "UNSET",
+    "SLURM_STEP_GPUS": "UNSET"
+  },
+  "base_commit": "025a0e932e563c517d59d6b787f43f01a756b2c0",
+  "current_run_history_epochs": [
+    {
+      "epoch": 1,
+      "epoch_seconds": 622.4098503630375
+    },
+    {
+      "epoch": 2,
+      "epoch_seconds": 611.210019796039
+    },
+    {
+      "epoch": 3,
+      "epoch_seconds": 603.2690885260236
+    },
+    {
+      "epoch": 4,
+      "epoch_seconds": 605.1772587560117
+    },
+    {
+      "epoch": 5,
+      "epoch_seconds": 610.3578449740307
+    },
+    {
+      "epoch": 6,
+      "epoch_seconds": 611.2867530389922
+    }
+  ],
+  "current_run_limits": {
+    "max_epochs": 50,
+    "patience": 5
+  },
+  "dataset_planning": {
+    "assist2017": {
+      "floor_limit": "excludes activations, projection buffers, allocator/runtime, dataset indexes, temporary/sorting workspaces; disk size is not RSS",
+      "fp32_weights_grads_adam_moments_floor_bytes": 110903312,
+      "metadata": {
+        "action_chunking": false,
+        "action_truncation": false,
+        "format_version": 2,
+        "interactions": 885335,
+        "maximum_session_length": 938,
+        "num_questions": 3158,
+        "num_skills": 102,
+        "processed_timestamp_unit": "milliseconds",
+        "sessions": 12402,
+        "split_sessions": {
+          "test": 1977,
+          "train": 8448,
+          "validation": 1977
+        },
+        "students": 1388,
+        "timestamp_hours_divisor": 3600000
+      },
+      "profile": {
+        "action_layers": 1,
+        "bucket_size": 512,
+        "context_sessions_including_target": 16,
+        "correct_layers": 1,
+        "decoder_layers": 1,
+        "dropout": 0.1,
+        "epoch_ceiling": 100,
+        "feedforward_width": 2048,
+        "heads": 4,
+        "history_sessions": 15,
+        "learning_rate": 5e-05,
+        "maximum_batch_size": 64,
+        "model": "hitskt_favor_plus_v1",
+        "optimizer": "Adam",
+        "session_layers": 1,
+        "token_budget": 32768,
+        "weight_decay": 0.0,
+        "width": 256
+      },
+      "session_store_file_count": 11,
+      "session_store_files_bytes": 15274211,
+      "target_counts": {
+        "test": 112252,
+        "train": 566107,
+        "validation": 125800
+      },
+      "trainable_parameters_inherited_from_unchanged_architecture": 6931457,
+      "training_raw_score_label_arrays_bytes": 2830535,
+      "training_score_arrays_plus_metric_conversions_predicted_floor_bytes": 16417103
+    },
+    "ednet_kt1": {
+      "floor_limit": "excludes activations, projection buffers, allocator/runtime, dataset indexes, temporary/sorting workspaces; disk size is not RSS",
+      "fp32_weights_grads_adam_moments_floor_bytes": 81190928,
+      "metadata": {
+        "action_chunking": false,
+        "action_truncation": false,
+        "format_version": 2,
+        "interactions": 81940867,
+        "maximum_session_length": 13080,
+        "num_questions": 13169,
+        "num_skills": 1495,
+        "processed_timestamp_unit": "milliseconds",
+        "sessions": 2577988,
+        "split_sessions": {
+          "test": 474827,
+          "train": 1628334,
+          "validation": 474827
+        },
+        "students": 116548,
+        "timestamp_hours_divisor": 3600000
+      },
+      "profile": {
+        "action_layers": 1,
+        "bucket_size": 512,
+        "context_sessions_including_target": 16,
+        "correct_layers": 1,
+        "decoder_layers": 1,
+        "dropout": 0.1,
+        "epoch_ceiling": 40,
+        "feedforward_width": 1024,
+        "heads": 2,
+        "history_sessions": 15,
+        "learning_rate": 8e-05,
+        "maximum_batch_size": 64,
+        "model": "hitskt_favor_plus_v1",
+        "optimizer": "Adam",
+        "session_layers": 1,
+        "token_budget": 32768,
+        "weight_decay": 0.0,
+        "width": 128
+      },
+      "session_store_file_count": 11,
+      "session_store_files_bytes": 1437754514,
+      "target_counts": {
+        "test": 13429870,
+        "train": 49458444,
+        "validation": 14520975
+      },
+      "trainable_parameters_inherited_from_unchanged_architecture": 5074433,
+      "training_raw_score_label_arrays_bytes": 247292220,
+      "training_score_arrays_plus_metric_conversions_predicted_floor_bytes": 1434294876
+    },
+    "junyi": {
+      "floor_limit": "excludes activations, projection buffers, allocator/runtime, dataset indexes, temporary/sorting workspaces; disk size is not RSS",
+      "fp32_weights_grads_adam_moments_floor_bytes": 132337680,
+      "metadata": {
+        "action_chunking": false,
+        "action_truncation": false,
+        "format_version": 2,
+        "interactions": 14660217,
+        "maximum_session_length": 3924,
+        "num_questions": 25630,
+        "num_skills": 1521,
+        "processed_timestamp_unit": "milliseconds",
+        "sessions": 600154,
+        "split_sessions": {
+          "test": 109506,
+          "train": 381142,
+          "validation": 109506
+        },
+        "students": 29865,
+        "timestamp_hours_divisor": 3600000
+      },
+      "profile": {
+        "action_layers": 1,
+        "bucket_size": 512,
+        "context_sessions_including_target": 16,
+        "correct_layers": 1,
+        "decoder_layers": 1,
+        "dropout": 0.1,
+        "epoch_ceiling": 50,
+        "feedforward_width": 1024,
+        "heads": 2,
+        "history_sessions": 15,
+        "learning_rate": 5e-05,
+        "maximum_batch_size": 64,
+        "model": "hitskt_favor_plus_v1",
+        "optimizer": "Adam",
+        "session_layers": 1,
+        "token_budget": 32768,
+        "weight_decay": 0.0,
+        "width": 128
+      },
+      "session_store_file_count": 11,
+      "session_store_files_bytes": 259666818,
+      "target_counts": {
+        "test": 2456402,
+        "train": 8920358,
+        "validation": 2556773
+      },
+      "trainable_parameters_inherited_from_unchanged_architecture": 8271105,
+      "training_raw_score_label_arrays_bytes": 44601790,
+      "training_score_arrays_plus_metric_conversions_predicted_floor_bytes": 258690382
+    }
+  },
+  "exposed_device_entries": [
+    "MIG-d2fcfd79-720e-5218-82c9-0a132be68920"
+  ],
+  "external_exclusive_hitskt_allocation": "NOT ESTABLISHED; no accessible alternative compute allocation identified",
+  "installed_torch_distribution": "2.4.0a0+f70bd71a48.nv24.6",
+  "light_category_occupied_hours": [
+    {
+      "dataset": "ASSIST2015",
+      "fresh_training_runs": "8",
+      "model": "GKT",
+      "occupied_mig_hours": "18.30167916772541",
+      "phase": "baseline_tuning",
+      "remaining_entries": "8",
+      "serial_equivalent_hours": "18.30167916772541"
+    },
+    {
+      "dataset": "Algebra2005",
+      "fresh_training_runs": "35",
+      "model": "GKT",
+      "occupied_mig_hours": "31.34625840258289",
+      "phase": "baseline_tuning",
+      "remaining_entries": "36",
+      "serial_equivalent_hours": "31.34625840258289"
+    },
+    {
+      "dataset": "ASSIST2015",
+      "fresh_training_runs": "36",
+      "model": "GKT_MHA",
+      "occupied_mig_hours": "102.01608381428161",
+      "phase": "baseline_tuning",
+      "remaining_entries": "36",
+      "serial_equivalent_hours": "154.27778392736695"
+    },
+    {
+      "dataset": "Algebra2005",
+      "fresh_training_runs": "36",
+      "model": "GKT_MHA",
+      "occupied_mig_hours": "65.30302352367815",
+      "phase": "baseline_tuning",
+      "remaining_entries": "36",
+      "serial_equivalent_hours": "98.75703297267101"
+    },
+    {
+      "dataset": "ASSIST2009",
+      "fresh_training_runs": "4",
+      "model": "GKT",
+      "occupied_mig_hours": "2.73364746591519",
+      "phase": "repeated_seeds",
+      "remaining_entries": "5",
+      "serial_equivalent_hours": "2.73364746591519"
+    },
+    {
+      "dataset": "ASSIST2015",
+      "fresh_training_runs": "4",
+      "model": "GKT",
+      "occupied_mig_hours": "9.508502479500802",
+      "phase": "repeated_seeds",
+      "remaining_entries": "5",
+      "serial_equivalent_hours": "9.508502479500802"
+    },
+    {
+      "dataset": "Algebra2005",
+      "fresh_training_runs": "4",
+      "model": "GKT",
+      "occupied_mig_hours": "3.5824200977238405",
+      "phase": "repeated_seeds",
+      "remaining_entries": "5",
+      "serial_equivalent_hours": "3.5824200977238405"
+    },
+    {
+      "dataset": "ASSIST2009",
+      "fresh_training_runs": "4",
+      "model": "GKT_MHA",
+      "occupied_mig_hours": "3.8893583513626457",
+      "phase": "repeated_seeds",
+      "remaining_entries": "5",
+      "serial_equivalent_hours": "5.8818331866178175"
+    },
+    {
+      "dataset": "ASSIST2015",
+      "fresh_training_runs": "4",
+      "model": "GKT_MHA",
+      "occupied_mig_hours": "11.335120423809066",
+      "phase": "repeated_seeds",
+      "remaining_entries": "5",
+      "serial_equivalent_hours": "17.14197599192966"
+    },
+    {
+      "dataset": "Algebra2005",
+      "fresh_training_runs": "4",
+      "model": "GKT_MHA",
+      "occupied_mig_hours": "7.255891502630906",
+      "phase": "repeated_seeds",
+      "remaining_entries": "5",
+      "serial_equivalent_hours": "10.973003663630113"
+    }
+  ],
+  "light_coordinator": {
+    "batch_sizes_unchanged": true,
+    "coordinator_pid": 191761,
+    "running": {
+      "ASSIST2015-GKT-baseline_tuning-42-d998e3d1a034": 2325921,
+      "ASSIST2015-GKT-baseline_tuning-42-df10e3998ba8": 2404132
+    },
+    "scope": "complete 957-entry schedule; no scope reduction",
+    "stopping": false,
+    "worker_limit_gkt": 2,
+    "worker_limit_other_models": 1
+  },
+  "light_eta": {
+    "completed_duration_scope": "Saved cumulative training_seconds include training and validation through checkpoint restoration, excluding subprocess initialization and post-selection test inference. Epoch_seconds directly measure complete train/validation epochs; resumed histories are included once.",
+    "conditional_training_finish_utc": {
+      "central": "2026-11-03T07:45:18.315142+00:00",
+      "high": "2026-11-25T17:33:30.022411+00:00",
+      "low": "2026-10-22T10:21:58.637309+00:00"
+    },
+    "conditional_two_worker_training_finish_utc": {
+      "central": "2026-10-30T06:31:22.567487+00:00",
+      "high": "2026-11-25T17:33:30.022411+00:00",
+      "low": "2026-10-21T18:18:31.377767+00:00"
+    },
+    "counts": {
+      "completed": 811,
+      "pending": 145,
+      "running": 1
+    },
+    "interpretation": "GPU reserved wall hours from end-to-end measured epochs, not hardware GPU-active time. Scenario envelope, not a statistical confidence interval or guaranteed bound.",
+    "longest_expected_remaining": [
+      {
+        "action": "training",
+        "central_expected_total_epochs": 23.0,
+        "central_hours": 4.711480427766012,
+        "dataset": "ASSIST2015",
+        "dataset_model_timing_measured": true,
+        "high_hours": 12.278368785905254,
+        "last_completed_epoch": 0.0,
+        "low_hours": 0.9816503815964424,
+        "model": "GKT_MHA",
+        "phase": "baseline_tuning",
+        "reference_runs": "ASSIST2015-GKT_MHA-primary-42-6a6d36ebb3d6;measured primary/wide engineering anchors",
+        "run_id": "ASSIST2015-GKT_MHA-baseline_tuning-42-1aa2f6f065fe"
+      },
+      {
+        "action": "training",
+        "central_expected_total_epochs": 23.0,
+        "central_hours": 4.711480427766012,
+        "dataset": "ASSIST2015",
+        "dataset_model_timing_measured": true,
+        "high_hours": 12.278368785905254,
+        "last_completed_epoch": 0.0,
+        "low_hours": 0.9816503815964424,
+        "model": "GKT_MHA",
+        "phase": "baseline_tuning",
+        "reference_runs": "ASSIST2015-GKT_MHA-primary-42-6a6d36ebb3d6;measured primary/wide engineering anchors",
+        "run_id": "ASSIST2015-GKT_MHA-baseline_tuning-42-b53e443cf30e"
+      },
+      {
+        "action": "training",
+        "central_expected_total_epochs": 23.0,
+        "central_hours": 4.711480427766012,
+        "dataset": "ASSIST2015",
+        "dataset_model_timing_measured": true,
+        "high_hours": 12.278368785905254,
+        "last_completed_epoch": 0.0,
+        "low_hours": 0.9816503815964424,
+        "model": "GKT_MHA",
+        "phase": "baseline_tuning",
+        "reference_runs": "ASSIST2015-GKT_MHA-primary-42-6a6d36ebb3d6;measured primary/wide engineering anchors",
+        "run_id": "ASSIST2015-GKT_MHA-baseline_tuning-42-ebf0bd893198"
+      },
+      {
+        "action": "training",
+        "central_expected_total_epochs": 23.0,
+        "central_hours": 4.711480427766012,
+        "dataset": "ASSIST2015",
+        "dataset_model_timing_measured": true,
+        "high_hours": 12.278368785905254,
+        "last_completed_epoch": 0.0,
+        "low_hours": 0.9816503815964424,
+        "model": "GKT_MHA",
+        "phase": "baseline_tuning",
+        "reference_runs": "ASSIST2015-GKT_MHA-primary-42-6a6d36ebb3d6;measured primary/wide engineering anchors",
+        "run_id": "ASSIST2015-GKT_MHA-baseline_tuning-42-55ef256295ef"
+      },
+      {
+        "action": "training",
+        "central_expected_total_epochs": 23.0,
+        "central_hours": 4.711480427766012,
+        "dataset": "ASSIST2015",
+        "dataset_model_timing_measured": true,
+        "high_hours": 12.278368785905254,
+        "last_completed_epoch": 0.0,
+        "low_hours": 0.9816503815964424,
+        "model": "GKT_MHA",
+        "phase": "baseline_tuning",
+        "reference_runs": "ASSIST2015-GKT_MHA-primary-42-6a6d36ebb3d6;measured primary/wide engineering anchors",
+        "run_id": "ASSIST2015-GKT_MHA-baseline_tuning-42-277eb8941533"
+      },
+      {
+        "action": "training",
+        "central_expected_total_epochs": 23.0,
+        "central_hours": 4.711480427766012,
+        "dataset": "ASSIST2015",
+        "dataset_model_timing_measured": true,
+        "high_hours": 12.278368785905254,
+        "last_completed_epoch": 0.0,
+        "low_hours": 0.9816503815964424,
+        "model": "GKT_MHA",
+        "phase": "baseline_tuning",
+        "reference_runs": "ASSIST2015-GKT_MHA-primary-42-6a6d36ebb3d6;measured primary/wide engineering anchors",
+        "run_id": "ASSIST2015-GKT_MHA-baseline_tuning-42-bf0659f5cb99"
+      },
+      {
+        "action": "training",
+        "central_expected_total_epochs": 23.0,
+        "central_hours": 4.711480427766012,
+        "dataset": "ASSIST2015",
+        "dataset_model_timing_measured": true,
+        "high_hours": 12.278368785905254,
+        "last_completed_epoch": 0.0,
+        "low_hours": 0.9816503815964424,
+        "model": "GKT_MHA",
+        "phase": "baseline_tuning",
+        "reference_runs": "ASSIST2015-GKT_MHA-primary-42-6a6d36ebb3d6;measured primary/wide engineering anchors",
+        "run_id": "ASSIST2015-GKT_MHA-baseline_tuning-42-5d49bd1029f9"
+      },
+      {
+        "action": "training",
+        "central_expected_total_epochs": 23.0,
+        "central_hours": 4.711480427766012,
+        "dataset": "ASSIST2015",
+        "dataset_model_timing_measured": true,
+        "high_hours": 12.278368785905254,
+        "last_completed_epoch": 0.0,
+        "low_hours": 0.9816503815964424,
+        "model": "GKT_MHA",
+        "phase": "baseline_tuning",
+        "reference_runs": "ASSIST2015-GKT_MHA-primary-42-6a6d36ebb3d6;measured primary/wide engineering anchors",
+        "run_id": "ASSIST2015-GKT_MHA-baseline_tuning-42-40031d9f8cb4"
+      },
+      {
+        "action": "training",
+        "central_expected_total_epochs": 23.0,
+        "central_hours": 4.711480427766012,
+        "dataset": "ASSIST2015",
+        "dataset_model_timing_measured": true,
+        "high_hours": 12.278368785905254,
+        "last_completed_epoch": 0.0,
+        "low_hours": 0.9816503815964424,
+        "model": "GKT_MHA",
+        "phase": "baseline_tuning",
+        "reference_runs": "ASSIST2015-GKT_MHA-primary-42-6a6d36ebb3d6;measured primary/wide engineering anchors",
+        "run_id": "ASSIST2015-GKT_MHA-baseline_tuning-42-916f8762839d"
+      },
+      {
+        "action": "training",
+        "central_expected_total_epochs": 23.0,
+        "central_hours": 4.711480427766012,
+        "dataset": "ASSIST2015",
+        "dataset_model_timing_measured": true,
+        "high_hours": 12.278368785905254,
+        "last_completed_epoch": 0.0,
+        "low_hours": 0.9816503815964424,
+        "model": "GKT_MHA",
+        "phase": "baseline_tuning",
+        "reference_runs": "ASSIST2015-GKT_MHA-primary-42-6a6d36ebb3d6;measured primary/wide engineering anchors",
+        "run_id": "ASSIST2015-GKT_MHA-baseline_tuning-42-a609c35fb916"
+      },
+      {
+        "action": "training",
+        "central_expected_total_epochs": 23.0,
+        "central_hours": 4.711480427766012,
+        "dataset": "ASSIST2015",
+        "dataset_model_timing_measured": true,
+        "high_hours": 12.278368785905254,
+        "last_completed_epoch": 0.0,
+        "low_hours": 0.9816503815964424,
+        "model": "GKT_MHA",
+        "phase": "baseline_tuning",
+        "reference_runs": "ASSIST2015-GKT_MHA-primary-42-6a6d36ebb3d6;measured primary/wide engineering anchors",
+        "run_id": "ASSIST2015-GKT_MHA-baseline_tuning-42-6e76f8e10a56"
+      },
+      {
+        "action": "training",
+        "central_expected_total_epochs": 23.0,
+        "central_hours": 4.711480427766012,
+        "dataset": "ASSIST2015",
+        "dataset_model_timing_measured": true,
+        "high_hours": 12.278368785905254,
+        "last_completed_epoch": 0.0,
+        "low_hours": 0.9816503815964424,
+        "model": "GKT_MHA",
+        "phase": "baseline_tuning",
+        "reference_runs": "ASSIST2015-GKT_MHA-primary-42-6a6d36ebb3d6;measured primary/wide engineering anchors",
+        "run_id": "ASSIST2015-GKT_MHA-baseline_tuning-42-333c8f50dc55"
+      }
+    ],
+    "mean_completed_run_seconds": 825.5901496392167,
+    "measured_gkt_full_runs": {
+      "ASSIST2009/GKT": 36,
+      "ASSIST2009/GKT_MHA": 37,
+      "ASSIST2015/GKT": 28,
+      "ASSIST2015/GKT_MHA": 1,
+      "Algebra2005/GKT": 1,
+      "Algebra2005/GKT_MHA": 1
+    },
+    "method": "Measured complete train/validation epochs and dataset/model-specific stopping counts. GKT epoch costs are calibrated with primary and wide configurations measured on each dataset, using weighted train/validation step ratios and interpolation by width; a minimum 20% runtime scenario spread is applied. Smaller-than-primary widths conservatively retain primary cost. Other models use closest measured configurations and batch-timestep/arithmetic proxies. Six-epoch earliest-stop and 50-epoch maximum scenarios bracket the observed dataset/model mean stopping count. Unknown selections use mean candidate cost, not selection probabilities. FP32 mathematics, batch sizes and stopping rules are unchanged.",
+    "postprocessing": {
+      "benchmark": "Exclusive 120-case benchmark status completed; actual execution seconds 25.469461232976755; results/tables/efficiency.csv. Completed benchmarking is reused by final analyses; CPU epoch-runtime documentation is refreshed later.",
+      "statistics": "18 paired comparisons, five seeds; engineering microbenchmark timing is reported below; real paired research results still require final training.",
+      "verification": "About 1.04 serial inference GPU hours from measured primary eval steps for 912 distinct projected states; future selected-config widths, AUC computation and model/cache setup add uncertainty and overhead. All unique checkpoints remain verified; identical aliases reuse inference.",
+      "visualizations": "Three final attention maps, two ASSIST2009 case figures; measured plot-render pilot below; final-case CPU inference remains unmeasured."
+    },
+    "postprocessing_cpu_pilot_timings": {
+      "actual_primary_analysis_seconds": 4.55341371500981,
+      "eighteen_five_pair_signed_rank_compute_seconds": 0.002166819991543889,
+      "five_final_attention_case_figure_render_only_estimate_seconds": 3.7945114291748423,
+      "includes_png_svg_pdf_and_csv": true,
+      "mean_render_seconds_per_figure_including_all_exports": 0.7589022858349684,
+      "measured_utc": "2026-10-13T14:57:20.174838+00:00",
+      "png_figures_existing_after": 11,
+      "png_figures_rendered": 6,
+      "render_estimate_limit": "Rendering reference only; future CPU inference, dataset reads, tables and GPU benchmarks are additional and unmeasured.",
+      "scope": "Incomplete primary-only genuine data; timing includes startup and summary verification. Final five-seed graphics workload differs.",
+      "statistical_timing_scope": "Algorithm workload microbenchmark only, synthetic differences; no research p-values or completed paired experiments produced."
+    },
+    "remaining_slots": 146,
+    "remaining_training_gpu_reserved_hours": {
+      "central": 352.53908467661506,
+      "high": 890.3423366958158,
+      "low": 67.15028527870629
+    },
+    "two_worker_estimate_limit": "Serial isolated-equivalent hours differ from MIG occupied wall hours. Two independent GKT-MHA workers only; PAM and other models remain serial. Use the smallest measured MHA throughput factor across tested datasets/widths. Wide PAM measured 0.90x and was rejected for parallel execution. Short-step throughput is extrapolated, not guaranteed. High scenario assumes no sustained benefit. Startup/test/analysis excluded. Aggregate worker elapsed-hours may increase under contention.",
+    "two_worker_measured_throughput_speedup": 1.5122888289676635,
+    "two_worker_training_wall_hours": {
+      "central": 255.30693255016192,
+      "high": 890.342336695816,
+      "low": 51.09271318348653
+    },
+    "unknowns": "All 21 model/dataset primary strata including Algebra2005 have measured complete epochs. GKT primary/wide steps were measured on all three datasets; newly completed full runs update dataset/model stopping counts. Exact independent completed-run counts are tabulated below and stored in measured_gkt_full_runs. Most future configuration stopping epochs remain unknown; timing evidence is still sparse in several GKT strata. Short concurrency probes do not guarantee whole-run throughput. Post-selection test inference, subprocess initialization, final artifact verification and remaining analyses add time; completed exclusive benchmarks are reused.",
+    "updated_utc": "2026-10-19T15:12:57.610306+00:00",
+    "wall_clock_assumption": "One current MIG worker remains continuously available; no outages or new paid resources."
+  },
+  "light_health": {
+    "active_runs": [
+      {
+        "age_reference": "history checkpoint",
+        "best_checkpoint": "checkpoints/ASSIST2015-GKT-baseline_tuning-42-d998e3d1a034/best.pt",
+        "checkpoint_stalled": false,
+        "first_checkpoint_startup_grace_seconds": null,
+        "last_completed_epoch": 6,
+        "recent_mean_epoch_seconds": 608.2601930182194,
+        "run_id": "ASSIST2015-GKT-baseline_tuning-42-d998e3d1a034",
+        "seconds_since_last_epoch": 19.06778907775879,
+        "stall_threshold_seconds": 1824.7805790546581,
+        "startup_epoch_seconds_extrapolated": null
+      }
+    ],
+    "counts": {
+      "completed": 811,
+      "pending": 145,
+      "running": 1
+    },
+    "failed_or_interrupted_runs": 0,
+    "gpu_capacity_mib": 40320,
+    "gpu_memory_mib": 1864,
+    "gpu_utilization_percent": null,
+    "gpu_utilization_reason": "Unavailable for this MIG device; process/epoch evidence is used instead.",
+    "healthy_progress_observed": true,
+    "restart_policy": "Detached session survives terminal/client disconnect; no process restart after environment shutdown is configured.",
+    "sample_time": 1792422778.105313,
+    "scheduler": {
+      "alive": true,
+      "pid": 78472
+    },
+    "storage": "/workspace is an NFS mount; retention after deprovisioning is not verified. Private GitHub draft assets: 790 independently downloaded/checksum verified; completed-archive synchronization True.",
+    "training_processes": [
+      {
+        "cpu_seconds": 3690.14,
+        "cpu_seconds_advanced": 63.00999999999976,
+        "observed_seconds": 63.01809287071228,
+        "pid": 2325921,
+        "ppid": 191761,
+        "process_state": "S",
+        "session_id": 78472
+      },
+      {
+        "cpu_seconds": 7.48,
+        "cpu_seconds_advanced": 0.0,
+        "observed_seconds": 63.01809287071228,
+        "pid": 2404132,
+        "ppid": 191761,
+        "process_state": "S",
+        "session_id": 78472
+      }
+    ],
+    "updated_utc": "2026-10-19T15:12:59.166426+00:00"
+  },
+  "light_measured_timing_strata": [
+    {
+      "average_completed_run_seconds": "5.609694622877968",
+      "average_epoch_seconds": "0.28435458539875735",
+      "completed_runs": "41",
+      "dataset": "ASSIST2009",
+      "measured_epochs": "778",
+      "measured_runs": "41",
+      "model": "DKT"
+    },
+    {
+      "average_completed_run_seconds": "10.486581116245716",
+      "average_epoch_seconds": "0.3484743987004692",
+      "completed_runs": "41",
+      "dataset": "ASSIST2009",
+      "measured_epochs": "1198",
+      "measured_runs": "41",
+      "model": "DKT+"
+    },
+    {
+      "average_completed_run_seconds": "243.10190090392607",
+      "average_epoch_seconds": "6.1788709690414425",
+      "completed_runs": "40",
+      "dataset": "ASSIST2009",
+      "measured_epochs": "1570",
+      "measured_runs": "40",
+      "model": "DKVMN"
+    },
+    {
+      "average_completed_run_seconds": "2254.772594070694",
+      "average_epoch_seconds": "169.36329493753988",
+      "completed_runs": "36",
+      "dataset": "ASSIST2009",
+      "measured_epochs": "478",
+      "measured_runs": "36",
+      "model": "GKT"
+    },
+    {
+      "average_completed_run_seconds": "6210.935928318752",
+      "average_epoch_seconds": "219.20139499462644",
+      "completed_runs": "37",
+      "dataset": "ASSIST2009",
+      "measured_epochs": "1047",
+      "measured_runs": "37",
+      "model": "GKT_MHA"
+    },
+    {
+      "average_completed_run_seconds": "11.19855026314681",
+      "average_epoch_seconds": "0.42109886671007857",
+      "completed_runs": "41",
+      "dataset": "ASSIST2009",
+      "measured_epochs": "1061",
+      "measured_runs": "41",
+      "model": "SAKT"
+    },
+    {
+      "average_completed_run_seconds": "25.2092579775485",
+      "average_epoch_seconds": "0.8639241364054802",
+      "completed_runs": "60",
+      "dataset": "ASSIST2009",
+      "measured_epochs": "1726",
+      "measured_runs": "60",
+      "model": "LightSAKT"
+    },
+    {
+      "average_completed_run_seconds": "18.6018925565625",
+      "average_epoch_seconds": "1.166812947087866",
+      "completed_runs": "41",
+      "dataset": "ASSIST2015",
+      "measured_epochs": "645",
+      "measured_runs": "41",
+      "model": "DKT"
+    },
+    {
+      "average_completed_run_seconds": "33.54627820519516",
+      "average_epoch_seconds": "1.4163358494586573",
+      "completed_runs": "41",
+      "dataset": "ASSIST2015",
+      "measured_epochs": "962",
+      "measured_runs": "41",
+      "model": "DKT+"
+    },
+    {
+      "average_completed_run_seconds": "838.5344319238513",
+      "average_epoch_seconds": "22.331961674478848",
+      "completed_runs": "40",
+      "dataset": "ASSIST2015",
+      "measured_epochs": "1500",
+      "measured_runs": "40",
+      "model": "DKVMN"
+    },
+    {
+      "average_completed_run_seconds": "8164.30628190245",
+      "average_epoch_seconds": "604.8625960981275",
+      "completed_runs": "28",
+      "dataset": "ASSIST2015",
+      "measured_epochs": "383",
+      "measured_runs": "29",
+      "model": "GKT"
+    },
+    {
+      "average_completed_run_seconds": "14591.295948797997",
+      "average_epoch_seconds": "633.1928474512603",
+      "completed_runs": "1",
+      "dataset": "ASSIST2015",
+      "measured_epochs": "23",
+      "measured_runs": "1",
+      "model": "GKT_MHA"
+    },
+    {
+      "average_completed_run_seconds": "32.17516042197637",
+      "average_epoch_seconds": "1.4747563328746558",
+      "completed_runs": "41",
+      "dataset": "ASSIST2015",
+      "measured_epochs": "885",
+      "measured_runs": "41",
+      "model": "SAKT"
+    },
+    {
+      "average_completed_run_seconds": "84.63642058150144",
+      "average_epoch_seconds": "3.7963284470026704",
+      "completed_runs": "60",
+      "dataset": "ASSIST2015",
+      "measured_epochs": "1331",
+      "measured_runs": "60",
+      "model": "LightSAKT"
+    },
+    {
+      "average_completed_run_seconds": "9.501430797218855",
+      "average_epoch_seconds": "0.28009304244787764",
+      "completed_runs": "41",
+      "dataset": "Algebra2005",
+      "measured_epochs": "1324",
+      "measured_runs": "41",
+      "model": "DKT"
+    },
+    {
+      "average_completed_run_seconds": "13.481536538342281",
+      "average_epoch_seconds": "0.3536946661570509",
+      "completed_runs": "41",
+      "dataset": "Algebra2005",
+      "measured_epochs": "1503",
+      "measured_runs": "41",
+      "model": "DKT+"
+    },
+    {
+      "average_completed_run_seconds": "322.58593844337156",
+      "average_epoch_seconds": "6.948836575330718",
+      "completed_runs": "40",
+      "dataset": "Algebra2005",
+      "measured_epochs": "1852",
+      "measured_runs": "40",
+      "model": "DKVMN"
+    },
+    {
+      "average_completed_run_seconds": "3223.880916954018",
+      "average_epoch_seconds": "200.81482279018383",
+      "completed_runs": "1",
+      "dataset": "Algebra2005",
+      "measured_epochs": "16",
+      "measured_runs": "1",
+      "model": "GKT"
+    },
+    {
+      "average_completed_run_seconds": "9808.80258228199",
+      "average_epoch_seconds": "204.0523920637667",
+      "completed_runs": "1",
+      "dataset": "Algebra2005",
+      "measured_epochs": "48",
+      "measured_runs": "1",
+      "model": "GKT_MHA"
+    },
+    {
+      "average_completed_run_seconds": "12.592565963026306",
+      "average_epoch_seconds": "0.32021625352627403",
+      "completed_runs": "41",
+      "dataset": "Algebra2005",
+      "measured_epochs": "1541",
+      "measured_runs": "41",
+      "model": "SAKT"
+    },
+    {
+      "average_completed_run_seconds": "36.426912020264716",
+      "average_epoch_seconds": "0.9766963560249001",
+      "completed_runs": "60",
+      "dataset": "Algebra2005",
+      "measured_epochs": "2201",
+      "measured_runs": "60",
+      "model": "LightSAKT"
+    }
+  ],
+  "light_remaining_work_groups": [
+    {
+      "action": "training",
+      "entries": 55,
+      "model": "GKT"
+    },
+    {
+      "action": "training",
+      "entries": 84,
+      "model": "GKT_MHA"
+    },
+    {
+      "action": "reuse/evaluation; zero additional training",
+      "entries": 4,
+      "model": "GKT"
+    },
+    {
+      "action": "reuse/evaluation; zero additional training",
+      "entries": 3,
+      "model": "GKT_MHA"
+    }
+  ],
+  "light_status": {
+    "additional_primary_grid_reuses": 9,
+    "all_training_slots_completed": false,
+    "completed": 811,
+    "counts": {
+      "completed": 811,
+      "pending": 145,
+      "running": 1
+    },
+    "distinct_training_runs_planned": 912,
+    "phase_counts": {
+      "5": {
+        "completed": 21
+      },
+      "6": {
+        "completed": 640,
+        "pending": 115,
+        "running": 1
+      },
+      "7": {
+        "completed": 75,
+        "pending": 30
+      },
+      "8": {
+        "completed": 75
+      }
+    },
+    "processes": {
+      "active_recovery": {
+        "alive": true,
+        "pid": 818712
+      },
+      "coordinator": {
+        "alive": true,
+        "pid": 191761
+      },
+      "eta": {
+        "alive": true,
+        "pid": 986001
+      },
+      "offsite": {
+        "alive": true,
+        "pid": 1722517
+      },
+      "preservation": {
+        "alive": true,
+        "pid": 212401
+      },
+      "progressive": {
+        "alive": true,
+        "pid": 185610
+      },
+      "recovery_supervisor": {
+        "alive": true,
+        "pid": 818850
+      },
+      "scheduler": {
+        "alive": true,
+        "pid": 78472
+      }
+    },
+    "remaining": 146,
+    "research_verified_complete": false,
+    "reused_slots": 45,
+    "running_jobs": [
+      {
+        "best_checkpoint": "checkpoints/ASSIST2015-GKT-baseline_tuning-42-d998e3d1a034/best.pt",
+        "last_completed_epoch": 6,
+        "run_id": "ASSIST2015-GKT-baseline_tuning-42-d998e3d1a034"
+      }
+    ],
+    "total_slots": 957,
+    "updated_utc": "2026-10-19T15:12:59.332516+00:00"
+  },
+  "light_waiting_worker": {
+    "execution_coordinator_pid": 191761,
+    "run_id": "ASSIST2015-GKT-baseline_tuning-42-df10e3998ba8",
+    "status": "pending",
+    "waiting_for_gpu_admission": true
+  },
+  "live_process_observation": [
+    {
+      "cwd": "/workspace/LightSAKT2",
+      "nvidia_handles": [],
+      "parent_pid": 1,
+      "pid": 78472,
+      "state": "S (sleeping)",
+      "wait_channel": "do_wait"
+    },
+    {
+      "cwd": "/workspace/LightSAKT2",
+      "nvidia_handles": [
+        "/dev/nvidia-caps/nvidia-cap21",
+        "/dev/nvidia-caps/nvidia-cap22",
+        "/dev/nvidia-uvm",
+        "/dev/nvidia0",
+        "/dev/nvidiactl"
+      ],
+      "parent_pid": 78472,
+      "pid": 182135,
+      "state": "S (sleeping)",
+      "wait_channel": "do_wait"
+    },
+    {
+      "cwd": "/workspace/LightSAKT2",
+      "nvidia_handles": [],
+      "parent_pid": 182135,
+      "pid": 191761,
+      "state": "D (disk sleep)",
+      "wait_channel": "rpc_wait_bit_killable"
+    },
+    {
+      "cwd": "/workspace/LightSAKT2",
+      "nvidia_handles": [
+        "/dev/nvidia-caps/nvidia-cap21",
+        "/dev/nvidia-caps/nvidia-cap22",
+        "/dev/nvidia-uvm",
+        "/dev/nvidia0",
+        "/dev/nvidiactl"
+      ],
+      "parent_pid": 191761,
+      "pid": 2325921,
+      "state": "S (sleeping)",
+      "wait_channel": "futex_wait_queue_me"
+    },
+    {
+      "cwd": "/workspace/LightSAKT2",
+      "nvidia_handles": [],
+      "parent_pid": 191761,
+      "pid": 2404132,
+      "state": "S (sleeping)",
+      "wait_channel": "locks_lock_inode_wait"
+    }
+  ],
+  "memory_cgroup": {
+    "memory.limit_in_bytes": "96636764160",
+    "memory.oom_control": "oom_kill_disable 0\nunder_oom 0\noom_kill 2",
+    "memory.usage_in_bytes": "36290850816"
+  },
+  "nvml_queries": [
+    {
+      "argv": [
+        "nvidia-smi",
+        "-L"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "GPU 0: NVIDIA H100 80GB HBM3 (UUID: GPU-5a568e3c-e96c-169f-b063-f4478340ff51)\n  MIG 3g.40gb     Device  0: (UUID: MIG-d2fcfd79-720e-5218-82c9-0a132be68920)"
+    },
+    {
+      "argv": [
+        "nvidia-smi",
+        "--query-gpu=index,name,uuid,driver_version,memory.total,memory.used",
+        "--format=csv,noheader"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "0, NVIDIA H100 80GB HBM3, GPU-5a568e3c-e96c-169f-b063-f4478340ff51, 535.161.08, [Insufficient Permissions], [Insufficient Permissions]"
+    },
+    {
+      "argv": [
+        "nvidia-smi",
+        "--query-compute-apps=pid,gpu_uuid,used_memory",
+        "--format=csv,noheader"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "[Insufficient Permissions], GPU-5a568e3c-e96c-169f-b063-f4478340ff51, [Insufficient Permissions]"
+    }
+  ],
+  "observed_utc": "2026-10-19T15:13:01.214673+00:00",
+  "prior_cpu_evidence": {
+    "full_preservation_reaudit_this_turn": false,
+    "new_tests_run_this_turn": 0,
+    "small_evidence_identity_checks": {
+      "reports/favor_plus_v1/numerical_quality_v1/dataset_pipeline_plan.json": true,
+      "reports/favor_plus_v1/numerical_quality_v1/quality_decision.json": true,
+      "scripts/validate_favor_plus_gpu.py": true
+    },
+    "tests": {
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "tests": 229
+    }
+  },
+  "read_only_light_source_identities": {
+    "/workspace/LightSAKT2/reports/ETA.json": {
+      "bytes": 12279,
+      "mtime_utc": "2026-10-19T15:12:58.100367+00:00",
+      "sha256": "f49a520becc3c7a733c60d0c3a0e6e8a27f7fe04b5c597743828ecb9bb763aa4"
+    },
+    "/workspace/LightSAKT2/reports/ETA_CATEGORY_OCCUPIED_HOURS.csv": {
+      "bytes": 841,
+      "sha256": "6870d3d2d588d2561645594a9140661024682cba6b4451dcd0b87979c709cf70"
+    },
+    "/workspace/LightSAKT2/reports/ETA_MEASURED_TIMINGS.csv": {
+      "bytes": 1467,
+      "sha256": "3bdab9baf7a7a36ec67ec647aaedf01c27fe90fa4d1e5fcec18c16f5633bdfd6"
+    },
+    "/workspace/LightSAKT2/reports/ETA_REMAINING_RUNS.csv": {
+      "bytes": 35155,
+      "sha256": "eb84f71f0c51954fd5b2fb31b3fb6bafead2a5fcff4aea71f6452bdd43984e67"
+    },
+    "/workspace/LightSAKT2/reports/execution_health.json": {
+      "bytes": 2025,
+      "mtime_utc": "2026-10-19T15:12:59.165676+00:00",
+      "sha256": "0c96d2a39dfacc99add4417bdaef367af71799cc4130535df00867a3ac33df5e"
+    },
+    "/workspace/LightSAKT2/reports/optimization/coordinator_status.json": {
+      "bytes": 351,
+      "mtime_utc": "2026-10-19T15:13:00.075670+00:00",
+      "sha256": "c359491009a2b3fa229732c4dbabf1612fdb7342f5291dc86470171f4349e285"
+    },
+    "/workspace/LightSAKT2/reports/progress.json": {
+      "bytes": 1557,
+      "mtime_utc": "2026-10-19T15:12:59.332674+00:00",
+      "sha256": "938c194059f8675dc65808671730e0bc31931c27a99f94ba5e88ce67c12bfc16"
+    },
+    "/workspace/LightSAKT2/results/raw/ASSIST2015-GKT-baseline_tuning-42-b5ab999a1945/metrics.json": {
+      "bytes": 1087,
+      "sha256": "e6aa9bf110696973683e4e010d9bf3ff8c9e3c59792c7d702d79ceeb885736a1"
+    },
+    "/workspace/LightSAKT2/results/raw/ASSIST2015-GKT-baseline_tuning-42-bf9309e06648/metrics.json": {
+      "bytes": 1083,
+      "sha256": "1cd81bc437f7e4a72d5afe6e917f57d35d31ddf7fac6f02624048a916a60dd3d"
+    },
+    "/workspace/LightSAKT2/results/raw/ASSIST2015-GKT-baseline_tuning-42-c217ebb4917d/metrics.json": {
+      "bytes": 1085,
+      "sha256": "34e59ca161d76e9b7e70db227d6827ccb984ede1eeeaa8f639fd0fc987d9f8ae"
+    },
+    "/workspace/LightSAKT2/results/raw/ASSIST2015-GKT-baseline_tuning-42-c57323d48198/metrics.json": {
+      "bytes": 1087,
+      "sha256": "62a35014fbe5aef93419f5710e1f505f5cd6ef8f427b51b9e225337cff2554d5"
+    },
+    "/workspace/LightSAKT2/results/raw/ASSIST2015-GKT-baseline_tuning-42-c7c1bf974011/metrics.json": {
+      "bytes": 1088,
+      "sha256": "d0298709e5d1092845066e838041e12e50aa40f92c1fc2c1fdac57b1f9e68561"
+    },
+    "/workspace/LightSAKT2/results/raw/ASSIST2015-GKT-baseline_tuning-42-d998e3d1a034/config.json": {
+      "bytes": 453,
+      "mtime_utc": "2026-10-19T14:11:32.777732+00:00",
+      "sha256": "f7da8af385a77d048cd2c4e485f363703cce17b2d12511877905d68bb6d2183b"
+    },
+    "/workspace/LightSAKT2/results/raw/ASSIST2015-GKT-baseline_tuning-42-d998e3d1a034/history.json": {
+      "bytes": 2127,
+      "mtime_utc": "2026-10-19T15:12:39.037524+00:00",
+      "sha256": "c373b2b7a08b432520a0658ceb8cb424976791dabb1d88fd53327292db1043aa"
+    },
+    "/workspace/LightSAKT2/results/raw/ASSIST2015-GKT-baseline_tuning-42-df10e3998ba8/status.json": {
+      "bytes": 163,
+      "mtime_utc": "2026-10-19T14:11:36.697702+00:00",
+      "sha256": "0e3962f7bcf47c76338be954f4a2852355c23ea4920b4d870edc1894773744dd"
+    }
+  },
+  "recent_completed_independent_assist2015_gkt": [
+    {
+      "best_epoch": 31,
+      "epochs_trained": 36,
+      "includes_post_selection_test_inference": false,
+      "run_id": "ASSIST2015-GKT-baseline_tuning-42-c7c1bf974011",
+      "saved_utc": "2026-10-19T14:11:32.762734+00:00",
+      "training_seconds": 21699.260084827896
+    },
+    {
+      "best_epoch": 13,
+      "epochs_trained": 18,
+      "includes_post_selection_test_inference": false,
+      "run_id": "ASSIST2015-GKT-baseline_tuning-42-c57323d48198",
+      "saved_utc": "2026-10-19T08:09:51.134283+00:00",
+      "training_seconds": 10890.258540843963
+    },
+    {
+      "best_epoch": 2,
+      "epochs_trained": 7,
+      "includes_post_selection_test_inference": false,
+      "run_id": "ASSIST2015-GKT-baseline_tuning-42-bf9309e06648",
+      "saved_utc": "2026-10-19T05:08:18.643038+00:00",
+      "training_seconds": 4164.979921806022
+    },
+    {
+      "best_epoch": 1,
+      "epochs_trained": 6,
+      "includes_post_selection_test_inference": false,
+      "run_id": "ASSIST2015-GKT-baseline_tuning-42-c217ebb4917d",
+      "saved_utc": "2026-10-19T03:58:51.501332+00:00",
+      "training_seconds": 3735.963289701962
+    },
+    {
+      "best_epoch": 3,
+      "epochs_trained": 8,
+      "includes_post_selection_test_inference": false,
+      "run_id": "ASSIST2015-GKT-baseline_tuning-42-b5ab999a1945",
+      "saved_utc": "2026-10-19T02:56:29.750527+00:00",
+      "training_seconds": 4802.764413817902
+    }
+  ],
+  "requested_sha_typo": "025a0e932e563c517d95d6b787f45fe1a756b2c0",
+  "scheduler_clients": {
+    "bjobs": null,
+    "kubectl": null,
+    "qstat": null,
+    "scontrol": null,
+    "squeue": null
+  },
+  "source_and_report_sha256": {
+    "ktbench/favor_plus_pipeline.py": "b457c695f5b3672551a03551b8c247c86a78eaf0664236d87d6a4441fbcb2171",
+    "ktbench/models/favor_plus.py": "e6ebc03554a08b9a61204fa481eae6bb0fbe8fe455302df37c78ecd7a72eb2af",
+    "ktbench/models/hitskt.py": "627e3715eb1bd386139a7ba69eb603e6ac49dafe111f46e53ea731c03f55c515",
+    "ktbench/models/hitskt_favor_plus.py": "5a90cc69b4eefb7ffd1ea30c78d36cd9bf531537803a5f51c4d3cb97089c7e8b",
+    "ktbench/models/performer.py": "1b517922893f8573d294fbb036b0f7af6bb9e8d4a1a7808d50db52682d323004",
+    "reports/favor_plus_v1/GPU_PILOT_AND_TRAINING_READINESS.md": "c9303b710be5076abdea6add2a0a4cf5ea54ece642fcd8848b25d1b063779e6d",
+    "reports/favor_plus_v1/IMPLEMENTATION_VALIDATION.md": "ec0326dc62dcde579e9b9a2ddc84c55e66a296961dfee8dd925c4d890db8ebf0",
+    "reports/favor_plus_v1/NUMERICAL_QUALITY_AND_GPU_READINESS.md": "e3b19957eabf51406221b6e0b84a6d0c379d0088fd4f04e3c728347868296937",
+    "reports/favor_plus_v1/numerical_quality_v1/VERIFICATION_SUMMARY.json": "e0452c2a7a27d5274df31de0c496500d9d03f296cad57e9cd5e49b625431c39a",
+    "reports/favor_plus_v1/numerical_quality_v1/dataset_pipeline_plan.json": "da20efaa58cb7fd8d5ee2ccd1ee16a84b3b89cf6d17d26e622ab174ecc456d00",
+    "reports/favor_plus_v1/numerical_quality_v1/quality_decision.json": "6dfc55e2de060ead1f4cd068f658f7d3b0a053ebdde950321df60392b288b2f2",
+    "scripts/evaluate_hitskt_favor_plus.py": "e4c1e0b9f43ef1c2a8b70c97d71c8510d605ff4431f41b54b66560c4e4936b4d",
+    "scripts/pilot_hitskt_favor_plus.py": "1c5c459eef90137b9544cb607cdef1204cd9c93b4de76beb4506fbd8501f6f9b",
+    "scripts/train_hitskt_favor_plus.py": "7641a16f41cb0852ac288c2e881b85b4ff085103000d83dfcd2b0c18aea08bb6",
+    "scripts/validate_favor_plus_gpu.py": "6ad8e6a061619617943007f590c05109a007491891dbc97861b5fa49d65a4c04"
+  },
+  "ssh_config_present": false,
+  "task_scope": "documentation-only diagnostic; no PyTorch import, CUDA API, training, watchers, signals, allocations or protected writes",
+  "unrelated_file_sha256": {
+    "README.md": "e5754c28ae89a628d46e0269523115404be13aba55d252a92c90ece2bf8ac6b8",
+    "experiments/sakt/ednet_kt1/full/independent_evaluation.console.log": "0f5546314e0911001954ca04e2fccdad7be7e09dce685fb8d61f5fe7a7af76ff"
+  }
+}

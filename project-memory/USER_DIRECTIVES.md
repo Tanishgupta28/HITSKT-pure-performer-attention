@@ -2,7 +2,24 @@
 
 Updated: 2026-10-19 UTC
 
-## 2026-10-19 — Conditional CUDA verification and five-step ASSIST pilot (latest)
+## 2026-10-19 — Resource diagnosis and planning only (latest)
+
+- Continue from025a0e9 on research/hitskt-favor-plus-v1. Latest request is
+  diagnostic/planning only, explicitly not permission to launch GPU work in
+  this turn, even if a device appears available. Read-only LightSAKT2 status,
+  schedule/ETA/ownership inspection; no CUDA initialization, training, watchers,
+  allocations, signals, schedule changes or DKT/EdNet changes.
+- Review existing FAVOR+ evidence without repeating229 tests or redundant
+  diagnostics. Identify genuinely necessary missing CPU preparation honestly;
+  do not implement new runners or architecture changes in this documentation task.
+- Save concise resource/readiness/six-stage plan, update durable memory, commit
+  verified documentation only on research branch. Preserve all old artifacts
+  and the unrelated README/SAKT log. No full training or main merge.
+- Earlier conditional CUDA/five-step authorization is historical context,
+  not an instruction to execute during this diagnostic turn. Finish report,
+  then stop; no automatic resource rechecks or GPU experiment schedule.
+
+## 2026-10-19 — Conditional CUDA verification and five-step ASSIST pilot (historical)
 
 - Continue from d7399a0 on research/hitskt-favor-plus-v1. Read memory/reports/
   staged GPU plan; inspect LightSAKT2 and independent allocation read-only.

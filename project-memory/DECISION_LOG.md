@@ -1033,3 +1033,24 @@ or CUDA probe/context in this continuation. No new model/training code or pilot
 checkpoint. Conditional128-feature CUDA then5-update ASSIST train-only approval
 is durable and must not be re-requested after gates pass. Normal scoped research
 publication then wait for external allocation; no watcher or protected changes.
+
+## 2026-10-19 UTC — Resource diagnosis and training plan, no execution
+
+Latest request explicitly limits this turn to diagnosis/planning/documentation.
+Resolved supplied SHA typo to actual branch/remote base025a0e9. Frozen15:13UTC
+LightSAKT2 evidence shows811 complete/1 running/145 pending, epoch6 advancing;
+139 remaining training entries plus7 reuse/evaluation. Measured-reference255.31
+occupied MIG hours/10.64 continuous days, scenario51.09–890.34h; final GPU
+verification follows, so no resource-release ETA or reassignment guarantee.
+Second coordinator child waits on GPU-admission lock, not stalled training.
+Only protected H100 MIG exposed; no independent HiTSKT lease or accessible
+alternative compute established. No CUDA/PyTorch import/tests/training/watchers/
+signals/allocations or protected edits. Core229 CPU tests inherited, no observed
+unresolved attention defect. Identified real remaining orchestration gap:
+current pilot synthetic; explicit <=5-update train-only ASSIST runner and
+instrumentation still required. No new implementation in documentation task.
+New resource status/six-stage plan and sanitized evidence only; full FAVOR+
+GPU runtime and peak memory unknown, no CPU-to-GPU speed extrapolation.
+See [FAVOR_RESOURCE_PLAN_STATE.md](FAVOR_RESOURCE_PLAN_STATE.md). Publish scoped
+docs/memory to research branch then stop. Prior conditional execution scope
+retained historically, not activated by this diagnostic-only continuation.
