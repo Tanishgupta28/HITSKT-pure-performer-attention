@@ -2,7 +2,20 @@
 
 Updated: 2026-10-19 UTC
 
-## FAVOR+ numerical quality — latest
+## FAVOR+ CUDA/pilot resource gate — latest
+
+Continuation fromd7399a0: LightSAKT2 remains active (fresh heartbeat1 running,
+GPU handles on protected processes182135/2325921). Only existing H100 MIG
+visible; no independent exclusive assignment established. Stopped GPU work:
+no PyTorch/CUDA initialization, CUDA verification or real ASSIST pilot. Full
+training NOT READY/NOT ESTABLISHED for ASSIST/Junyi/EdNet. Prior229 CPU passes
+remain inherited evidence;375 originals +407 prior source/output files preserved.
+See [FAVOR_GPU_PILOT_STATE.md](FAVOR_GPU_PILOT_STATE.md). Conditional CUDA and
+five-step ASSIST train-only authorization persists once resource/CUDA gates
+pass; no repeat approval needed. Publish research-only blocker report then
+wait for actual external allocation. No watcher, LightSAKT2/DKT changes or training.
+
+## FAVOR+ numerical quality — historical verified baseline
 
 From31886f6, predeclared design49ed057. See
 [FAVOR_QUALITY_STATE.md](FAVOR_QUALITY_STATE.md).229 tests,288 synthetic/576

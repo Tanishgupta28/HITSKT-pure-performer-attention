@@ -1004,3 +1004,32 @@ scope, negative high-norm findings, failed diagnostic selector attempt,128
 bounded-pilot recommendation and unverified GPU/full-training status. GPU
 ownership absent, protected training active, no interference. Publish normal
 scoped research commit then verify remote; next wait for independent device.
+
+## 2026-10-19 UTC — CUDA and five-step ASSIST pilot authorized conditionally; resource gate blocked
+
+User authorizes staged128-feature CUDA checks only after independent exclusive
+allocation, then at most5 real ASSIST train optimizer steps B1/cost2048/seed42.
+No full training, test evaluation, LightSAKT2/DKT changes or watchers. Resource
+inspection at14:49 UTC: one existing H100 MIG, no scheduler assignment/external
+lease, restricted usage/PID visibility. Fresh LightSAKT2 heartbeat reports1
+running job (811 complete/145 pending); live processes182135 and2325921 hold
+NVIDIA device handles. Ownership for HiTSKT not established. Stopped GPU work;
+no PyTorch imported for resource inspection, CUDA initialized or pilot run.
+Evidence reports/favor_plus_v1/gpu_pilot_readiness_20261019_v1/
+resource_and_process_evidence.json. Prior229 CPU tests are inherited evidence,
+not new CUDA passes. Finish required blocker/readiness report, preservation and
+scoped publication; then wait for actual allocation. Conditional authorization
+persists once resource/CUDA gates pass, without re-asking permission.
+
+## 2026-10-19 UTC — Resource-blocked GPU/pilot report complete
+
+New required reports/favor_plus_v1/GPU_PILOT_AND_TRAINING_READINESS.md records
+LightSAKT2 activity, exclusive-allocation blocker, CUDA and real ASSIST pilot
+NOT RUN, full training NOT ESTABLISHED and exact provider/UUID/access/headroom
+requirements. No GPU or real training work after gate blocked. Prior229 CPU
+results retained with explicit not-rerun scope,375 original and407 prior source/
+output files freshly hash-verified; unrelated edits preserved. No PyTorch import
+or CUDA probe/context in this continuation. No new model/training code or pilot
+checkpoint. Conditional128-feature CUDA then5-update ASSIST train-only approval
+is durable and must not be re-requested after gates pass. Normal scoped research
+publication then wait for external allocation; no watcher or protected changes.

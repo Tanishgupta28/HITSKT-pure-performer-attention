@@ -30,13 +30,14 @@ remain intact; platform changes do not alter research source or live runs.
 
 ## Current short status
 
-Latest bounded FAVOR+ numerical-quality study from31886f6:229 tests and all
-CPU numerical controls PASS;128 recommended for bounded diagnostic pilot by
-frozen design49ed057. High-norm approximation remains poor; trained FAVOR norm
-behavior/full-training readiness NOT ESTABLISHED. See
-[FAVOR_QUALITY_STATE.md](FAVOR_QUALITY_STATE.md). No independent GPU allocation,
-no CUDA initialization, no real dataset optimization or protected-worker changes.
-All originals/prior evidence preserved. Research branch publication only.
+Latest FAVOR+ CUDA/pilot continuation fromd7399a0 is resource-blocked.
+LightSAKT2 active; no independently assigned GPU/MIG, CUDA not initialized,
+CUDA checks and real ASSIST pilot NOT RUN. Full-training readiness unestablished.
+See [FAVOR_GPU_PILOT_STATE.md](FAVOR_GPU_PILOT_STATE.md). Conditional128-feature
+CUDA then<=5 ASSIST train updates are authorized once their gates pass; no
+full training or test evaluation.375 originals +407 prior files preserved.
+229 prior CPU passes remain intact; [FAVOR_QUALITY_STATE.md](FAVOR_QUALITY_STATE.md).
+Publish scoped report/evidence/memory, then wait for actual external allocation.
 
 19 October: supervisor PDF/editable source/status/replay plan verified; see
 [SUPERVISOR_STATE.md](SUPERVISOR_STATE.md).59 controls and full cached-score

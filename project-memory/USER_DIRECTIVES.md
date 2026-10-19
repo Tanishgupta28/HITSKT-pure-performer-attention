@@ -2,7 +2,29 @@
 
 Updated: 2026-10-19 UTC
 
-## 2026-10-19 — FAVOR+ numerical quality and readiness (latest)
+## 2026-10-19 — Conditional CUDA verification and five-step ASSIST pilot (latest)
+
+- Continue from d7399a0 on research/hitskt-favor-plus-v1. Read memory/reports/
+  staged GPU plan; inspect LightSAKT2 and independent allocation read-only.
+- CUDA execution is authorized only after actual independent exclusive GPU/MIG
+  ownership is established, beyond process visibility/free memory. If unavailable,
+  do not initialize CUDA; stop GPU work and report the exact resource blocker.
+- After required CUDA checks PASS, a real ASSIST2017 train-only pilot is now
+  authorized: hitskt_favor_plus_v1,128 features, seed42, original nonattention
+  architecture/data/splits/history, B1, cost<=2048, at most5 optimizer steps.
+  No test evaluation, architecture/protocol changes, HPO or full training.
+- Record loss/gradients/QK norms/feature concentration/softmax approximation/
+  memory/runtime/checkpoint integrity. Stop immediately on numerical/resource/
+  correctness failures;5 steps cannot demonstrate convergence or expected AUC.
+- Preserve all originals and prior reports/checkpoints/results. No LightSAKT2
+  interruption/modification, DKT/EdNet resume/reset, automatic GPU watcher or
+  repeated background polling. Commit/push research branch only, never merge main.
+- Required report: reports/favor_plus_v1/GPU_PILOT_AND_TRAINING_READINESS.md.
+- Current resource check found no independent allocation; CUDA and ASSIST pilot
+  remain NOT RUN. Conditional pilot authorization persists once resource/CUDA
+  gates pass; do not request this authorization again.
+
+## 2026-10-19 — FAVOR+ numerical quality and readiness (historical)
 
 - Continue from31886f6 on research/hitskt-favor-plus-v1. Freeze a bounded
   128/256/512 feature comparison before running it; independent distribution,

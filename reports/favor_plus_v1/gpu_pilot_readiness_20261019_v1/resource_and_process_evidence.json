@@ -1,0 +1,202 @@
+{
+  "allocation_environment": {
+    "CUDA_VISIBLE_DEVICES": null,
+    "LSB_JOBID": null,
+    "NVIDIA_VISIBLE_DEVICES": "/var/run/nvidia-container-devices",
+    "PBS_JOBID": null,
+    "SLURM_JOB_GPUS": null,
+    "SLURM_JOB_ID": null,
+    "SLURM_STEP_GPUS": null
+  },
+  "assist2017_optimizer_steps": 0,
+  "assist2017_pilot": "NOT RUN",
+  "base_commit": "d7399a0baf288eb035628273355ae3a005088acb",
+  "cgroup_limit_bytes": 96636764160,
+  "cgroup_oom_control": "oom_kill_disable 0\nunder_oom 0\noom_kill 2",
+  "cuda_initialized_by_this_task": false,
+  "cuda_verification": "NOT RUN",
+  "decision": "stop GPU work; do not initialize CUDA; do not run ASSIST pilot",
+  "external_exclusive_allocation_evidence": null,
+  "full_training_readiness": "NOT ESTABLISHED",
+  "gpu_listing_observed": "GPU 0: NVIDIA H100 80GB HBM3 (UUID: GPU-5a568e3c-e96c-169f-b063-f4478340ff51)\n  MIG 3g.40gb Device 0 (UUID: MIG-d2fcfd79-720e-5218-82c9-0a132be68920)",
+  "gpu_listing_query_utc": "2026-10-19T14:49:54Z",
+  "lightsakt2": {
+    "counts": {
+      "completed": 811,
+      "pending": 145,
+      "running": 1
+    },
+    "heartbeat_file_age_seconds": 29.970983028411865,
+    "heartbeat_utc": "2026-10-19T14:51:05.811271+00:00",
+    "live_processes": [
+      {
+        "modules": [
+          "scripts.schedule"
+        ],
+        "nvidia_device_handles": [],
+        "pid": 78472,
+        "ppid": 1,
+        "rss": "493340 kB",
+        "state": "S (sleeping)",
+        "threads": 128
+      },
+      {
+        "modules": [
+          "scripts.run"
+        ],
+        "nvidia_device_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ],
+        "pid": 182135,
+        "ppid": 78472,
+        "rss": "1401620 kB",
+        "state": "S (sleeping)",
+        "threads": 134
+      },
+      {
+        "modules": [
+          "scripts.progressive"
+        ],
+        "nvidia_device_handles": [],
+        "pid": 185610,
+        "ppid": 1,
+        "rss": "657360 kB",
+        "state": "S (sleeping)",
+        "threads": 135
+      },
+      {
+        "modules": [
+          "scripts.coordinator"
+        ],
+        "nvidia_device_handles": [],
+        "pid": 191761,
+        "ppid": 182135,
+        "rss": "501928 kB",
+        "state": "S (sleeping)",
+        "threads": 128
+      },
+      {
+        "modules": [
+          "scripts.preserve"
+        ],
+        "nvidia_device_handles": [],
+        "pid": 212401,
+        "ppid": 1,
+        "rss": "505996 kB",
+        "state": "S (sleeping)",
+        "threads": 128
+      },
+      {
+        "modules": [
+          "scripts.active_recovery"
+        ],
+        "nvidia_device_handles": [],
+        "pid": 818712,
+        "ppid": 1,
+        "rss": "518244 kB",
+        "state": "S (sleeping)",
+        "threads": 3
+      },
+      {
+        "modules": [
+          "scripts.recover"
+        ],
+        "nvidia_device_handles": [],
+        "pid": 818850,
+        "ppid": 1,
+        "rss": "505940 kB",
+        "state": "S (sleeping)",
+        "threads": 2
+      },
+      {
+        "modules": [
+          "scripts.eta"
+        ],
+        "nvidia_device_handles": [],
+        "pid": 986001,
+        "ppid": 1,
+        "rss": "521416 kB",
+        "state": "S (sleeping)",
+        "threads": 2
+      },
+      {
+        "modules": [],
+        "nvidia_device_handles": [],
+        "pid": 1115850,
+        "ppid": 1,
+        "rss": "8208 kB",
+        "state": "S (sleeping)",
+        "threads": 1
+      },
+      {
+        "modules": [],
+        "nvidia_device_handles": [],
+        "pid": 1116552,
+        "ppid": 1115850,
+        "rss": "105624 kB",
+        "state": "S (sleeping)",
+        "threads": 20
+      },
+      {
+        "modules": [
+          "scripts.offsite"
+        ],
+        "nvidia_device_handles": [],
+        "pid": 1722517,
+        "ppid": 1,
+        "rss": "515788 kB",
+        "state": "S (sleeping)",
+        "threads": 2
+      },
+      {
+        "modules": [
+          "scripts.run"
+        ],
+        "nvidia_device_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ],
+        "pid": 2325921,
+        "ppid": 191761,
+        "rss": "1542976 kB",
+        "state": "S (sleeping)",
+        "threads": 137
+      },
+      {
+        "modules": [
+          "scripts.run"
+        ],
+        "nvidia_device_handles": [],
+        "pid": 2404132,
+        "ppid": 191761,
+        "rss": "490840 kB",
+        "state": "S (sleeping)",
+        "threads": 128
+      }
+    ],
+    "running_jobs": [
+      {
+        "last_completed_epoch": 3,
+        "run_id": "ASSIST2015-GKT-baseline_tuning-42-d998e3d1a034"
+      }
+    ]
+  },
+  "observed_utc": "2026-10-19T14:51:35.779390+00:00",
+  "pytorch_imported_for_resource_check": false,
+  "resource_gate": "BLOCKED: no independent exclusive assignment established",
+  "scheduler_client_available": {
+    "kubectl": false,
+    "scontrol": false,
+    "squeue": false
+  },
+  "signals_or_changes_to_protected_processes": false,
+  "usage_and_compute_process_query": "Insufficient Permissions for memory/utilization and compute PID/process fields; not evidence of vacancy",
+  "watcher_created": false
+}

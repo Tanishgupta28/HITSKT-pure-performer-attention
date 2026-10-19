@@ -1,0 +1,36 @@
+{
+  "architecture_changed": false,
+  "artifact_sha256": {
+    "reports/favor_plus_v1/GPU_PILOT_AND_TRAINING_READINESS.md": "c9303b710be5076abdea6add2a0a4cf5ea54ece642fcd8848b25d1b063779e6d",
+    "reports/favor_plus_v1/gpu_pilot_readiness_20261019_v1/memory_validation.log": "9447921a0ba97d1e4722ef4dd003c541a42a6a67f2d967ed8c8ef80e9635144d",
+    "reports/favor_plus_v1/gpu_pilot_readiness_20261019_v1/preservation.json": "f8833d320d93ea5b036eb38771d897af26b3648e22fe20fd86fd1eab2a146eaa",
+    "reports/favor_plus_v1/gpu_pilot_readiness_20261019_v1/resource_and_process_evidence.json": "3c4403ffafe8138c1091bb78643883b078bf4556f446ebe58d5a04a4a600f27e"
+  },
+  "assist2017_optimizer_steps": 0,
+  "assist2017_pilot": "NOT RUN",
+  "base_commit": "d7399a0baf288eb035628273355ae3a005088acb",
+  "conditional_authorization_persists": true,
+  "cuda_initialization_by_this_continuation": false,
+  "cuda_verification": "NOT RUN",
+  "full_training_readiness": {
+    "assist2017": "NOT ESTABLISHED",
+    "ednet_kt1": "NOT ESTABLISHED",
+    "junyi": "NOT ESTABLISHED"
+  },
+  "independent_exclusive_allocation_established": false,
+  "lightsakt2_active_at_inspection": true,
+  "memory_validation": "PASS",
+  "new_tests_run": 0,
+  "originals_preserved": 375,
+  "planned_batch_size": 1,
+  "planned_features": 128,
+  "planned_maximum_optimizer_steps": 5,
+  "planned_padded_token_cap": 2048,
+  "planned_seed": 42,
+  "prior_cpu_tests_passed": 229,
+  "prior_source_and_outputs_preserved": 407,
+  "prior_tests_rerun": false,
+  "source_changed": false,
+  "status": "BLOCKED_RESOURCE",
+  "watcher_created": false
+}

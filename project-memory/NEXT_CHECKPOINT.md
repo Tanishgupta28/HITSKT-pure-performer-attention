@@ -1,34 +1,38 @@
 # Next checkpoint
 
-19 October2026 UTC — bounded quality study complete; CUDA pending.
-Branch research/hitskt-favor-plus-v1, from31886f6; predeclared design49ed057.
-Read [FAVOR_QUALITY_STATE.md](FAVOR_QUALITY_STATE.md) and latest
-[USER_DIRECTIVES.md](USER_DIRECTIVES.md). Baseline handoff preserved at
-[NEXT_CHECKPOINT_history_before_favor_quality.md](NEXT_CHECKPOINT_history_before_favor_quality.md).
+19 October2026 UTC — stop safely at independent-GPU resource gate.
+Branch research/hitskt-favor-plus-v1, continuation based7399a0. Read
+[FAVOR_GPU_PILOT_STATE.md](FAVOR_GPU_PILOT_STATE.md) and latest
+[USER_DIRECTIVES.md](USER_DIRECTIVES.md). Previous scientific checkpoint:
+[NEXT_CHECKPOINT_history_before_favor_gpu_pilot.md](NEXT_CHECKPOINT_history_before_favor_gpu_pilot.md).
 
-Established:229 tests (217 prior+12 new),288 synthetic/576 sample comparisons,
-24 double-gradient cases,54 precision controls PASS. Frozen rule recommends128
-for first bounded diagnostic pilot, not full training. High-norm sampling
-error persists at512; no tested production defect observed.4 whole train
-sessions per dataset,0 optimizer steps. All3 original profiles/counts/protocol/
-validation selection and375-original/341-prior-file preservation PASS.
+Completed: fresh read-only resource/process inspection, required report
+reports/favor_plus_v1/GPU_PILOT_AND_TRAINING_READINESS.md and evidence under
+gpu_pilot_readiness_20261019_v1/. LightSAKT2 active (1 running job, live GPU
+handles); only existing H100 MIG visible, no independent exclusive ownership.
+No PyTorch/CUDA initialization/probe, CUDA checks or ASSIST optimization.
+375 originals +407 prior files preserved; prior229 CPU tests unchanged.
+No model/training source/data/checkpoint/results changes. Preserve unrelated
+root README and SAKT log. Report/evidence/memory publication is research-only;
+on resume reconcile branch tip against capstone-gpu, never merge main.
 
-Authoritative report: reports/favor_plus_v1/NUMERICAL_QUALITY_AND_GPU_READINESS.md.
-Evidence: numerical_quality_v1/VERIFICATION_SUMMARY.json, quality_decision.json,
-full_suite.log/XML, precision_controls.json, training_sample_summary.json,
-preservation.json, gpu_resource_status.json and gpu_pilot_plan.json.
-Current scope includes normal commit/push to research only; on resume verify
-branch tip matches capstone-gpu. Preserve unrelated README and SAKT log.
+Next action: wait for externally assigned independent/exclusive GPU or MIG.
+No watcher/repeated background polling. Need allocator/provider owner/job,
+UUID, external exclusivity evidence, expiry/window, device exposed to container
+and CUDA_VISIBLE_DEVICES exactly matching. Budget8GiB test cap plus overhead;
+16GiB+ or separate40GiB MIG is a planning choice, not measured minimum.
+Do not repurpose or repartition current protected MIG.
 
-Next action after publication: wait for genuinely exclusive independent GPU
-allocation. Do not initialize CUDA on current MIG, infer ownership from empty
-process table, fabricate allocation evidence or disturb LightSAKT2. Prepared
-scripts/validate_favor_plus_gpu.py has staged17..13081 length checks and guards;
-its CUDA path remains unverified. Once resources are established within the
-user-authorized conditional scope, run short synthetic correctness first and
-stop on numerical/resource failure. Dataset pilot only after CUDA checks and
-bounded execution decision; proposed128/B1/cost<=2048/<=5 initial train steps.
+Conditional authorization persists: once actual allocation exists, execute
+staged128-feature harness with explicit assist2017 profile, short-to-long,
+stop on any correctness/nonfinite/resource failure. Only after required CUDA
+PASS, run at most5 ASSIST2017 training updates, seed42/B1/whole sessions/original
+history and architecture/cost2048, no test evaluation. Implement/review actual
+step-bound real-data runner then; current pilot CLI is synthetic. Record loss,
+gradient/QK norms, feature concentration, bounded exact-softmax comparison,
+GPU peak/runtime/config/data/checkpoint hashes/reload integrity. No re-approval
+needed for this already authorized conditional scope. No full training on
+any dataset or conclusion about convergence/AUC from5 steps.
 
-No full training, hyperparameter search, architecture/default change, historical
-result overwrite, DKT/EdNet resume/reset, availability V2 or main merge. Outputs
-only experiments/hitskt_favor_plus_v1/. No automatic watcher or experiment queue.
+No LightSAKT2 signals/edits, DKT/EdNet resume/reset, architecture/protocol change,
+historical results overwrite, hyperparameter sweep or automatic experiment queue.
