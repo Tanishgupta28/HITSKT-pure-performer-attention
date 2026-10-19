@@ -30,12 +30,13 @@ remain intact; platform changes do not alter research source or live runs.
 
 ## Current short status
 
-FAVOR+ request now authorizes isolated integration on
-`research/hitskt-favor-plus-v1`; see [FAVOR_PLUS_STATE.md](FAVOR_PLUS_STATE.md).
-The referenced starter/tests are missing, with path/link clarification pending.
-Preparation/preservation and59 legacy controls pass; no FAVOR+ implementation,
-pipeline or starter tests yet. No full training, GPU work or V2 authorized.
-Historical supervisor/audit milestones below remain intact.
+Genuine FAVOR+ CPU implementation is verified on
+`research/hitskt-favor-plus-v1` from bc262e6. There is no attachment dependency.
+74 new FAVOR+ tests +143 legacy cases PASS; all3 synthetic profiles/checkpoint
+replays and long-session CPU checks pass. See [FAVOR_PLUS_STATE.md](FAVOR_PLUS_STATE.md).
+All originals/prior evidence unchanged. Candidate for bounded independent GPU
+pilot; CUDA/full dataset training remain NOT VERIFIED/NOT RUN. No LightSAKT2,
+DKT, V2 or historical training changes. Publish research only, then wait.
 
 19 October: supervisor PDF/editable source/status/replay plan verified; see
 [SUPERVISOR_STATE.md](SUPERVISOR_STATE.md).59 controls and full cached-score

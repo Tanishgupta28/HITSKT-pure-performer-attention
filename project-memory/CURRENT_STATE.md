@@ -2,18 +2,21 @@
 
 Updated: 2026-10-19 UTC
 
-## FAVOR+ integration preparation — latest
+## FAVOR+ CPU implementation verified — latest
 
-New user request authorizes FAVOR+ starter integration and bounded CPU smoke on
-`research/hitskt-favor-plus-v1`, based onf465d84; no full training/GPU pilot.
-See [FAVOR_PLUS_STATE.md](FAVOR_PLUS_STATE.md). Starter/test attachment is absent;
-path/link clarification pending. Do not invent a replacement or claim tests ran.
-Branch/preservation baseline ready:375 originals +268 prior source/evidence files
-unchanged,59 legacy controls PASS. FAVOR+ implementation/pipeline/smoke NOT DONE;
-GPU pilot readiness NOT VERIFIED. No LightSAKT2/DKT or historical artifacts changed.
-Publish preparation only to research branch, then obtain the missing starter.
+Genuine FAVOR+ from scratch on research/hitskt-favor-plus-v1 from bc262e6:
+74 new FAVOR+ tests and143 legacy controls PASS (217 distinct,0 failures).
+Separate model/pipelines, original attention-only boundary, all3 CPU synthetic
+profiles and fresh checkpoint replays verified. Long attention13081 peak0.786GB;
+full hierarchy13080-action target peak1.751GB.375 originals/all30 checkpoints
+and277 prior evidence/source files unchanged. No CUDA/full dataset training.
+Candidate for independently available GPU pilot; GPU performance/learned-norm
+approximation remain unverified, high-norm synthetic error documented.
+See [FAVOR_PLUS_STATE.md](FAVOR_PLUS_STATE.md). Publish research branch only,
+then wait for execution direction. No attachment dependency, LightSAKT2/DKT
+changes, availability-aware V2 or original retraining.
 
-## Supervisor briefing — latest
+## Supervisor briefing — historical checkpoint
 
 Two-page supervisor PDF plus editable Markdown/HTML, verification status and
 bounded replay plan are verified. See [SUPERVISOR_STATE.md](SUPERVISOR_STATE.md).

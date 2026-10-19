@@ -1,0 +1,68 @@
+{
+  "cuda_status": "NOT VERIFIED: no allocation; occupied GPU protected",
+  "distinct_tests_total": 217,
+  "existing_regression_tests": 143,
+  "failures": 0,
+  "final_combined_suite": {
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "tests": 214
+  },
+  "full_dataset_training": "NOT RUN",
+  "kernel_identity_matches_optimized_diagnostics_long_model_and_smokes": true,
+  "kernel_sha256": "e6ebc03554a08b9a61204fa481eae6bb0fbe8fe455302df37c78ecd7a72eb2af",
+  "later_pilot_tests": {
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "tests": 3
+  },
+  "legacy_artifacts_preserved": "PASS",
+  "memory_oom_kills_after": 2,
+  "memory_oom_kills_before": 2,
+  "model": "hitskt_favor_plus_v1",
+  "new_favor_plus_tests": 74,
+  "publication_ready": false,
+  "source_hashes": {
+    "ktbench/favor_plus_pipeline.py": "b457c695f5b3672551a03551b8c247c86a78eaf0664236d87d6a4441fbcb2171",
+    "ktbench/models/favor_plus.py": "e6ebc03554a08b9a61204fa481eae6bb0fbe8fe455302df37c78ecd7a72eb2af",
+    "ktbench/models/hitskt_favor_plus.py": "5a90cc69b4eefb7ffd1ea30c78d36cd9bf531537803a5f51c4d3cb97089c7e8b",
+    "scripts/check_favor_plus_implementation_preservation.py": "8193652c752c2f4de1b15ae835ccccfb842e91ab8a883847d8f52778ad725894",
+    "scripts/check_favor_plus_preservation.py": "c06f957f514b8b6290c8cf62033466e4fcb90fc7f267e91face6cb5fbde401fd",
+    "scripts/evaluate_hitskt_favor_plus.py": "e4c1e0b9f43ef1c2a8b70c97d71c8510d605ff4431f41b54b66560c4e4936b4d",
+    "scripts/pilot_hitskt_favor_plus.py": "1c5c459eef90137b9544cb607cdef1204cd9c93b4de76beb4506fbd8501f6f9b",
+    "scripts/plan_hitskt_favor_plus.py": "619b2abd62f36a0c344a34690d5bf3c07ae49ff7c1cbdb2f7d6b19706da65f91",
+    "scripts/replay_favor_plus_smoke.py": "537c14d399e3b4222884f4e53a4b3d4cbe31444c55ea22a2a215870d21b5b6c8",
+    "scripts/smoke_favor_plus_long_model.py": "931f1b5f2caa09c94c7a10588d267645c7825c2493808c86881c892897a2b37d",
+    "scripts/train_hitskt_favor_plus.py": "7641a16f41cb0852ac288c2e881b85b4ff085103000d83dfcd2b0c18aea08bb6",
+    "scripts/validate_favor_plus_cpu.py": "dbe3825f9ea197c8f2999d20696eaa32015136edbc743e840eb7a22e02dd1938",
+    "tests/test_favor_plus.py": "97af087b0266fca0dde8aa3c7c95c56bca630e35b8e324ea7df2af9a2c7ed116",
+    "tests/test_favor_plus_pilot.py": "61832f4112e3239a131fa8a4f470ecc5056a14a9cabd8bb71eb2bff352faf0bc",
+    "tests/test_favor_plus_pipeline.py": "8cfbfc04932eaf1f686219024cbadc13db186c232a2da4491888d9304aaa5df6"
+  },
+  "status": "PASS",
+  "synthetic_profile_smokes": {
+    "assist2017": {
+      "checkpoint_sha256": "273d01e8cc114fe14733b2c3be0483e5f49a3cbb95611d37663f64f56ac1c9ae",
+      "dataset_used": false,
+      "fresh_process_status": "PASS",
+      "manifest": "experiments/hitskt_favor_plus_v1/assist2017/cpu_smoke_20261019_v1/smoke_manifest.json",
+      "max_abs_logit_difference": 0.0
+    },
+    "ednet_kt1": {
+      "checkpoint_sha256": "027031fe53ff8be0b7b9e4a45e6958a6ff54bdaf7bd6329c652fa66407494ac7",
+      "dataset_used": false,
+      "fresh_process_status": "PASS",
+      "manifest": "experiments/hitskt_favor_plus_v1/ednet_kt1/cpu_smoke_20261019_v1/smoke_manifest.json",
+      "max_abs_logit_difference": 0.0
+    },
+    "junyi": {
+      "checkpoint_sha256": "0a153aad3ef547c0212accf6136b2baafec54315296085462dd0ccfbd224bdbf",
+      "dataset_used": false,
+      "fresh_process_status": "PASS",
+      "manifest": "experiments/hitskt_favor_plus_v1/junyi/cpu_smoke_20261019_v1/smoke_manifest.json",
+      "max_abs_logit_difference": 0.0
+    }
+  }
+}

@@ -911,3 +911,41 @@
 - Publish verified preparation to research branch only, verify remote equality,
   then resume from actual starter after user supplies it. Handoff:
   [FAVOR_PLUS_STATE.md](FAVOR_PLUS_STATE.md). No automatic training schedule.
+
+## 2026-10-19 UTC — Starter dependency explicitly withdrawn
+
+User authorizes FAVOR+ from scratch and all FAVOR-specific CPU verification on
+bc262e6 research branch. Previous attachment hold is superseded, not a blocker.
+Official source: arXiv:2009.14794 sections2.3/2.4 and AppendixB. New isolated
+implementation underway; prior preparation reports remain immutable history.
+No full training/GPU allocation or protected-workstream changes authorized.
+
+## 2026-10-19 UTC — Initial FAVOR+ correctness passes; memory refinement
+
+Initial49 kernel/model and62 kernel/model/pipeline tests pass. Initial CPU
+long-session diagnostics show~5.33GB RSS at13081 positions despite framework
+checkpointing: valid performance evidence, not a mathematical failure. Saved
+initial source/log/JSON under reports/favor_plus_v1/implementation_v1/. Replaced
+non-reentrant framework checkpoint with a first-order custom VJP retaining
+chunk-boundary states and recomputing one chunk backward. Expanded69 tests,
+including independent/finite-difference gradients and precision islands, PASS.
+Optimized long-session diagnostics running; no CUDA or dataset training.
+
+## 2026-10-19 UTC — FAVOR+ CPU implementation accepted; GPU deferred
+
+217 distinct passes:74 new FAVOR+-specific tests plus143 original regressions,
+0 failures/skips. Final combined214 suite +3 later pilot tests. Independent
+feature-kernel/gradient/finite-difference, causality/own-label/PAD/EOS/dropout,
+projection/checkpoint/namespace/pipeline and long-session evidence PASS.
+Chunk-recomputed first-order VJP lowers measured13081 attention peak5.330GB to
+0.786GB and fwd+bwd17.269s to5.591s at B1/H2/d64/m128/C32. Full hierarchy long
+synthetic target13080 plus shorter companion peaks1.751GB with finite gradients.
+All3 historical nonattention profiles/counts match; 2-step CPU synthetic smokes
+and fresh-process reloads PASS exactly, no real data training/AUC. High-norm
+approximation error documented (scale3/m128 MSE0.758), not hidden or tuned away.
+Preservation375 originals/all30 checkpoints and277 prior files PASS; all old
+reports kept. OOM count2 unchanged, no GPU/LightSAKT2/DKT/V2/full-training work.
+Report reports/favor_plus_v1/IMPLEMENTATION_VALIDATION.md and evidence folder
+implementation_v1/. Conditional bounded-GPU pilot candidate only; unverified
+CUDA/performance/learned-norm behavior prevents production/publication claims.
+Publish scoped research branch then wait; no automatic experiment schedule.

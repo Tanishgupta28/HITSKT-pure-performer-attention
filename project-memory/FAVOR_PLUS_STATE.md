@@ -1,40 +1,49 @@
-# FAVOR+ v1 research branch
+# FAVOR+ v1 verified CPU implementation
 
-19 October2026 UTC. PREPARATION VERIFIED; integration awaits missing input.
-Branch:`research/hitskt-favor-plus-v1`, base:f465d84. Publish only this branch,
-not canonical main. Latest [USER_DIRECTIVES.md](USER_DIRECTIVES.md) authorizes
-new FAVOR+ code/pipeline and bounded CPU verification, not full training or
-GPU pilot execution. V2 remains out of scope. Preserve all historical artifacts.
+19 October2026 UTC. Branch research/hitskt-favor-plus-v1; continuation base
+bc262e6. Latest user explicitly authorizes genuine FAVOR+ from scratch;
+no starter/attachment dependency exists. Historical preparation is retained in
+[FAVOR_PLUS_PREPARATION_HISTORY.md](FAVOR_PLUS_PREPARATION_HISTORY.md).
 
-Required input: user-referenced attached starter implementation and standalone/
-full-model tests. None is visible in the conversation, repo, common attachment
-mounts, workspace archive or mounted resources. Asked for a local path/download
-link asynchronously; no answer received at this checkpoint. Do not substitute
-newly invented code or call the existing proposal an implementation.
+CPU correctness PASS:74 new FAVOR+-specific tests +143 legacy regression cases
+=217 distinct passes,0 failures/skips. Combined214-case suite plus3 later pilot
+admission/CPU tests. Evidence: reports/favor_plus_v1/implementation_v1/
+final_verified_suite.log, pilot_tests.log, verification_summary.json.
+Main report: reports/favor_plus_v1/IMPLEMENTATION_VALIDATION.md.
 
-Completed:
-- New research branch created fromf465d84838e5f8b1c637736e362a945c20cfde10.
--375 originals/all30 checkpoints and268 additional prior source/verification
-  files PASS baseline/handoff hashes; unrelated root README/Sakt log preserved.
--59 existing independent legacy causal/mask/gradient/audit controls PASS again,
-  one low-priority CPU thread, CUDA hidden. These are not FAVOR+ tests.
-- Integration boundary and explicit NOT RUN/NOT IMPLEMENTED statuses recorded
-  in `reports/favor_plus_v1/INTEGRATION_STATUS.md`. Preservation JSON/logs and
-  `legacy_cpu_controls.log` sit beside it. New preservation helper:
-  `scripts/check_favor_plus_preservation.py`.
+New isolated ktbench/models/favor_plus.py and hitskt_favor_plus.py implement
+positive Gaussian-marginal orthogonal softmax features, d^(-1/4) scaling,
+compensated per-feature causal maxima/sums, fixed local-seed projection buffers,
+and a custom first-order chunk-recomputed backward. Format2/variant tag rejects
+legacy format1. All learned initialization/hierarchy/components remain identical
+outside the attention algorithm. Original scientific source unchanged.
 
-Not done: starter test run, full-model FAVOR+ integration, kernel optimization,
-new training pipeline, FAVOR+ CPU smoke or GPU-readiness verification. Readiness
-is NOT VERIFIED. Do not claim legacy tests establish genuine FAVOR+ correctness.
-No CUDA, training, new experiment, LightSAKT2 modification/signal or DKT resume.
-Actual cgroup90GiB; protected training active; previous OOM counter2 unchanged.
+Independent explicit feature-kernel output/gradient and finite-difference tests,
+mask/own-label/future/cross-batch/dropout checks, PAD/EOS, mixed precision CPU
+controls, full-model gradients and checkpoints PASS. Long attention13081
+positions/H2/d64/m128/chunk32 peaks0.786GB vs initial5.330GB, fwd/bwd1.078/4.513s.
+Full EdNet-profile synthetic hierarchy, targets13080/17, finite fwd/bwd, peak
+1.751GB; padding delta4.7684e-7. Initial source/measurements remain preserved.
+Higher-order derivatives unsupported. Large flattened history batches untested.
 
-Next exact step: obtain/hash the actual starter and tests; inspect them and run
-their unmodified standalone/full-model tests first, preserving failures. Then
-implement isolated hitskt_favor_plus_v1, leaving non-attention components and V1
-data/splits/protocol unchanged. Outputs under separate variant/run directories.
-The integration-status document records the test/architecture/checkpoint contract.
+Separate pipeline/CLIs reuse original data/splits/sampler/profile/loss/selection.
+Read-only all3 profile/target-count check PASS. All3 registered profiles passed
+2-step CPU synthetic optimization and fresh-process checkpoint/logit replay
+(max difference0), under experiments/hitskt_favor_plus_v1/<dataset>/
+cpu_smoke_20261019_v1/. Reduced vocabularies; no real dataset AUC. New binaries
+stay local/ignored. Explicit device, fresh guarded paths, no implicit resume.
+Bounded synthetic pilot CLI has a CUDA admission guard and CPU-tested path;
+no CUDA executed. Future full training is behind an explicit execution flag.
 
-Commit/push this verified preparation checkpoint normally to the research branch
-and verify remote equality. No implementation-completion claim or automatic
-training schedule. The missing source requires user input before dependent work.
+Readiness: candidate for bounded pilot on an independently available GPU;
+CUDA correctness/performance and dataset training NOT VERIFIED/NOT RUN.
+High-norm softmax approximation is poor (scale3/m128 mean MSE0.758 in declared
+synthetic grid); no universal approximation or publication claim. Feature count
+not selected on test outcomes. V1 response-availability limitation remains.
+
+Preservation PASS:375 originals/all30 checkpoints +277 prior source/evidence
+files, including all old audits/preparation, and unrelated README/SAKT log.
+No LightSAKT2 change/signal, DKT resume/reset, full training, CUDA, or V2.
+Cgroup90GiB, OOM kills2 unchanged. Publish scoped implementation/report/memory
+research branch only; then wait for independent GPU availability and explicit
+execution direction. See [NEXT_CHECKPOINT.md](NEXT_CHECKPOINT.md).

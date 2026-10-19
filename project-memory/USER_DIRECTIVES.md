@@ -2,7 +2,23 @@
 
 Updated: 2026-10-19 UTC
 
-## 2026-10-19 — FAVOR+ starter integration (latest)
+## 2026-10-19 — FAVOR+ implementation from scratch (latest)
+
+- Explicit correction: no starter ZIP/attachment exists or is needed. User fully
+  authorizes genuine FAVOR+ from scratch using the official Performer paper.
+  Supersedes the historical attachment hold below and in dated preparation reports.
+- Continue from bc262e6 on research/hitskt-favor-plus-v1. Preserve original ELU+1
+  source, checkpoints, data, results and all prior audit evidence unchanged.
+- Attention-only variant hitskt_favor_plus_v1; separate tagged checkpoints and
+  experiments/hitskt_favor_plus_v1/ outputs; same hierarchy and V1 protocol.
+- Implement and execute independent FAVOR+ projection/kernel/gradient/softmax/
+  masking/shifting/PAD/EOS/checkpoint/long-session tests and original regressions.
+- Build separate training/evaluation pipelines for all three datasets; bounded
+  CPU smoke only now. No full training, occupied MIG allocation, LightSAKT2 changes,
+  DKT/EdNet resume/reset, or availability-aware V2. Report GPU-pilot readiness.
+- Commit/push verified changes to the existing research branch only, report SHA.
+
+## 2026-10-19 — FAVOR+ starter integration (historical; dependency superseded)
 
 - User authorizes a separate research branch and integration of their attached
   FAVOR+ starter as a foundation, with standalone/full-model tests first and

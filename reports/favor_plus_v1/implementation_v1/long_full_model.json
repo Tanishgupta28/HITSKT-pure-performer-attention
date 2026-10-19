@@ -1,0 +1,58 @@
+{
+  "backward_seconds": 12.555715834023431,
+  "chunk_size": 32,
+  "companion_padding_max_abs_logit_difference": 4.76837158203125e-07,
+  "dataset_profile": "ednet_kt1",
+  "features": 128,
+  "finite_outputs_and_gradients": true,
+  "forward_seconds": 3.505930125946179,
+  "history_lengths": [
+    [
+      21,
+      4
+    ],
+    [
+      3
+    ]
+  ],
+  "kind": "CPU_synthetic_full_model_no_optimizer_step",
+  "limitations": "CPU synthetic reduced vocabulary; not maximum history length/batch or CUDA",
+  "peak_rss_bytes": 1750876160,
+  "peak_rss_increment_bytes": 1156853760,
+  "runtime": {
+    "cuda_runtime": "12.5",
+    "cudnn_allow_tf32": true,
+    "cudnn_benchmark": false,
+    "cudnn_deterministic": true,
+    "deterministic_algorithms": true,
+    "device": "cpu",
+    "float32_matmul_precision": "high",
+    "matmul_allow_tf32": true,
+    "numpy": "1.24.4",
+    "python": "3.10.12",
+    "threads": 1,
+    "torch": "2.4.0a0+f70bd71a48.nv24.06"
+  },
+  "source": {
+    "git_head": "bc262e66a8bb8ae25dc4dc38d7ca47d74c516375",
+    "source_sha256": {
+      "ktbench/batching.py": "baffe36d07b869498fbd8eaee12da9317b1b451a0061b52845a47b21d51c2ea5",
+      "ktbench/data/session_store.py": "6c695bc23da5c4b8116d29b5a099c16bb5669a99eb5cdfb9c378ace81d39f218",
+      "ktbench/favor_plus_pipeline.py": "cd82f4d36c4b79b2e08a77d2a441a7b973f4cf90367b0346f3803f5f54395822",
+      "ktbench/hitskt_registry.py": "a2ea1bcc35ad634688a4776564d42147def529b5060e0c315e45437042af1448",
+      "ktbench/metrics.py": "6b57353631c67f5afd5b2785e3787ffdcf15086c0212a9bac75bba199eab6727",
+      "ktbench/models/favor_plus.py": "e6ebc03554a08b9a61204fa481eae6bb0fbe8fe455302df37c78ecd7a72eb2af",
+      "ktbench/models/hitskt.py": "627e3715eb1bd386139a7ba69eb603e6ac49dafe111f46e53ea731c03f55c515",
+      "ktbench/models/hitskt_favor_plus.py": "5a90cc69b4eefb7ffd1ea30c78d36cd9bf531537803a5f51c4d3cb97089c7e8b",
+      "ktbench/models/performer.py": "1b517922893f8573d294fbb036b0f7af6bb9e8d4a1a7808d50db52682d323004",
+      "scripts/evaluate_hitskt_favor_plus.py": "3c2755cccc113dd9c2a1cede8879d83561be41bc24412370dff7aa0d7acbda5b",
+      "scripts/train_hitskt_favor_plus.py": "7641a16f41cb0852ac288c2e881b85b4ff085103000d83dfcd2b0c18aea08bb6"
+    }
+  },
+  "status": "PASS",
+  "supervised_targets": 13097,
+  "target_lengths": [
+    13080,
+    17
+  ]
+}
