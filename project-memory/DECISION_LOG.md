@@ -1243,3 +1243,18 @@ proposal prepared. Newhelper only, versioned executioncontroller still needed;
 original20controller untouched. Approval question sent; no affirmative reply yet.
 Conditional GO bounded continuation, approximation REVIEW, NO-GO full training.
 Report ASSIST_20_TO_50_CONTINUATION_REVIEW.md; publish scopedresearch thenwait.
+
+
+## 2026-10-20 — Actual20→50 continuation approved and control gates prepared
+
+User now explicitly approves30additional/50TOTAL, conditionalcurrent independent
+authorizedGPU/exclusivecompute/resourcecheck; sameparent20/Adam/RNG/config/.20
+threshold, no Light/unrelatedinterference/fulltraining. Designe795a87 prospective.
+Separate controller/newvalidator/no-step recovery leaves allsourcebound20science/
+control files untouched.29new+71oldCPUcases PASS100; actual-data CPUplanprepared
+b67816e6... no realdataforward/update/CUDA. Initial17:05NVML/processsnapshotidle/
+Lightheldsamehash; ownerallocationstatementretained, no new schedulerleaseclaim.
+Nextfreshadmission thenstage30/recovery30/40/recovery40/50/recovery50; stop50 or
+firstfailure, newatomic25/30/35/40/45/50. Exactparent20 prediction/nextgrad proof
+and fullfrozenvalidation20 replay requiredbefore21; maintain all severe/resource
+gates. NewcampaignGPU/metricsNOTRUN at this checkpoint; inspect terminalfiles.

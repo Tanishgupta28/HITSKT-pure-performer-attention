@@ -1,5 +1,21 @@
 # Next checkpoint
 
+LATEST user APPROVED30 additional/50TOTAL updates. Prior pending-approval gate
+below is historical. Read [FAVOR_ASSIST50_STATE.md](FAVOR_ASSIST50_STATE.md).
+New controller/recovery and100 CPU cases PASS; prepared plan
+`experiments/hitskt_favor_plus_v1/assist2017/assist50_continuation_20261020_v1/prepared_plan.json`.
+Before GPU: run the NEW finite preflight with exact assigned MIG env; record owner
+allocation+actual scope approval, no conflicts/Light/RAM issues. Then stage30,
+verify30, stage40, verify40, stage50, verify50, sequential separate processes.
+Use `scripts/assist50_favor_plus.py` only, no old20/100 executor, no auto retry.
+Every phase has freshadmission; exact20 baseline/nextgradient proof before21.
+Stop immediately for failure and preserve latest atomic25/30/35/40/45/50 state.
+At50 write report/memory/verifiedresearchcommit then STOP for another approval.
+No test/fulltraining/Light/DKT/unrelatedchanges. No CUDA/training has run in this
+new campaign yet at this handoff; verify actual stage/result files before acting.
+
+Previous preparation checkpoint (historical):
+
 LATEST20→50 preparation: read
 [FAVOR_ASSIST50_PREPARATION_STATE.md](FAVOR_ASSIST50_PREPARATION_STATE.md) and
 `reports/favor_plus_v1/ASSIST_20_TO_50_CONTINUATION_REVIEW.md`.

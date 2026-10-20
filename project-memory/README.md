@@ -30,6 +30,11 @@ remain intact; platform changes do not alter research source or live runs.
 
 ## Current short status
 
+Latest: user approved exact20→50 continuation,30 additional updates only. Separate
+controller/recovery and100 CPU controls PASS; GPU execution pending freshadmission.
+Same science/.20 REVIEW, no Light/DKT/fulltraining. Read
+[FAVOR_ASSIST50_STATE.md](FAVOR_ASSIST50_STATE.md) before older pending-approval notes.
+
 Latest: CPU checkpoint/Action review and exact20→50 handoff prepared,71 targeted
 CPU PASS. Action .2131 REVIEW persists as finite-feature error, not resolved by
 FP64. Same owner research MIG idle at14:50UTC; Light held. No CUDA or new update.

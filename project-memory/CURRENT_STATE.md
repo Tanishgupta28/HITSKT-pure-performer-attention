@@ -2,6 +2,17 @@
 
 Updated: 2026-10-20 UTC
 
+## Latest:20→50 explicitly approved; controller and CPU controls ready
+
+Latest user now grants30 additional/50TOTAL only, subject to independent current
+authorized device availability; prior owner-confirmed research transfer retained.
+Designe795a87 precedes execution. New separatecontroller/recovery validates exact20
+parent handoff, same scientific configuration and frozen samples;100 targeted
+CPU controls PASS(29new+71previous). Prepared planb67816e6...; no GPU/update yet.
+17:05read-only ownerMIG idle/Lightheld; require fresh admission before CUDA.
+Next run30 then fresh recovery,40/recovery,50/recovery, STOP. Same.20 REVIEW and
+all severe/resource gates. See [FAVOR_ASSIST50_STATE.md](FAVOR_ASSIST50_STATE.md).
+
 ## Latest:20→50 preparation verified; explicit continuation approval pending
 
 Read [FAVOR_ASSIST50_PREPARATION_STATE.md](FAVOR_ASSIST50_PREPARATION_STATE.md).
