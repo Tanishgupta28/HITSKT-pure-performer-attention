@@ -1270,3 +1270,21 @@ group content; rawoptimizer state reload still exact. On-diskJSON fixture regres
 added;101CPUcases PASS(30new+71prior). Freshv2 plan fromsameoriginal20 state uses
 unchanged30additionalapproval/configuration/thresholds; noattention/datasetchange.
 Oldattempt/source retained inGit and artifacts; freshresourceadmission required.
+
+
+## 2026-10-20 — Exact20 recovery passes; NVML identity blocks before21
+
+Correctedv2 preflight17:15:29 sameownerMIG empty/exposed/noLight/RAMissue. Source
+b255713 initializesCUDA then proves original20 evaldiff0/modelAdamRNGprojections
+and nextloss/allgradientdigest exact with0Adamcalls. Atdiagnostics20 boundary,
+NVMLPID67123 differsfromown2847964; no/procotherholder/identitymapping. Strictguard
+stops BEFOREvalidation20/update21, total20/new0; no30/40/50 checkpoints/metrics.
+Noautomaticrestart/bypass/unrelatedsignal. Post17:17read-onlybothPIDsabsent/NVML
+empty/Lightheld/OOMsame; correlationwithownexit cannotprovealias or competingjob.
+Needhost/containerGPUprocessmapping/authoritativeallocationidentity, not repeated
+ownershipgrantorKube403.103CPUtests PASS(32new+71prior), includingexplicitNVML
+self-vs-unknown failclosed cases.199oldcampaignfiles/checkpointsunchanged.
+Resourcefailure3.767602s; no verifiednewTorchpeak/RSS/throughput/newtrainingloss.
+Action.2131 REVIEW retained/post20stabilityNOTVERIFIED/fulltrainingNO-GO. Report
+ASSIST_50_UPDATE_VALIDATION_RESULTS.md truthfullymarks50NOTREACHED. Publishscoped
+research thenSTOP forresourceidentityevidence; no additionalCUDA/polling/training.

@@ -1,0 +1,41 @@
+{
+  "status": "FAIL",
+  "failure_type": "ResourceConflict",
+  "message": "unverified/competing NVML compute process",
+  "conflict_snapshot": {
+    "observed_utc": "2026-10-20T17:15:55.813249+00:00",
+    "own_pid": 2847964,
+    "holders": [],
+    "conflicts": [],
+    "light_processes": [],
+    "inaccessible_fd_pids": [],
+    "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored",
+    "nvml": {
+      "total_bytes": 42278584320,
+      "free_bytes": 41650814976,
+      "used_bytes": 627769344,
+      "compute_processes": [
+        {
+          "pid": 67123,
+          "used_gpu_memory_bytes": 578813952,
+          "gpu_instance": 2,
+          "compute_instance": 0
+        }
+      ]
+    }
+  },
+  "cuda_calls_by_handler": 0,
+  "no_automatic_restart": true
+}
+Traceback (most recent call last):
+  File "/workspace/capstone/scripts/assist50_favor_plus.py", line 34, in <module>
+    if __name__=='__main__':main()
+  File "/workspace/capstone/scripts/assist50_favor_plus.py", line 22, in main
+    result=prepare(a.run_id) if a.action=='prepare' else (execute if a.action=='stage' else verify)(
+  File "/workspace/capstone/ktbench/favor_plus_assist50.py", line 234, in execute
+    if previous==20:diagnose(20)
+  File "/workspace/capstone/ktbench/favor_plus_assist50.py", line 213, in diagnose
+    phase=f'diagnostics_{step}';b.check(phase)
+  File "/workspace/capstone/ktbench/favor_plus_assist50.py", line 138, in check
+    raise telemetry.ResourceConflict('unverified/competing NVML compute process',{**snapshot,'nvml':memory})
+ktbench.favor_plus_resource_telemetry.ResourceConflict: unverified/competing NVML compute process

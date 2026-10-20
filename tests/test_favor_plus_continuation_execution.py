@@ -174,3 +174,22 @@ def test_old_checkpoint_validator_still_refuses_new_kind(tiny_state):
     from ktbench.favor_plus_pilot_recovery import validate
     value,contract,_=tiny_state
     with pytest.raises(ValueError):validate(value,contract)
+
+
+@pytest.mark.parametrize('same_pid',[False,True])
+def test_nvml_identity_requires_exact_own_pid_without_alias_assumptions(tmp_path,monkeypatch,same_pid):
+    snap=dict(conflicts=[],holders=[],inaccessible_fd_pids=[],light_processes=[])
+    monkeypatch.setattr(p,'admit',lambda *a:('UNIT_UUID',snap))
+    monkeypatch.setattr(p.original,'check_host_resources',lambda:{'unit':'CPU fixture'})
+    memory=dict(total_bytes=40*1024**3,free_bytes=39*1024**3,used_bytes=1024**3,
+        compute_processes=[{'pid':os.getpid() if same_pid else os.getpid()+1}])
+    monkeypatch.setattr(p.telemetry,'nvml_snapshot',lambda *a:memory)
+    def forbidden(*a,**k):raise AssertionError('must not query CUDA for metadata-only boundary')
+    for name in ('memory_allocated','memory_reserved','max_memory_allocated','max_memory_reserved'):
+        monkeypatch.setattr(torch.cuda,name,forbidden)
+    b=p.Boundaries({},p.original.utc().isoformat(),{'max_execution_seconds':2700},tmp_path)
+    b.last={'cached_before_conflict':True}
+    if same_pid:assert b.check('UNIT',cuda=False)['nvml']==memory
+    else:
+        with pytest.raises(p.telemetry.ResourceConflict):b.check('UNIT',cuda=False)
+        assert b.last=={'cached_before_conflict':True}

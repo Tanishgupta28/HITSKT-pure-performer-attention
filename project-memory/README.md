@@ -30,6 +30,13 @@ remain intact; platform changes do not alter research source or live runs.
 
 ## Current short status
 
+Latest: approved20→50 attempt STOPPED before21 for unmapped NVML67123 vs own
+2847964. Exact20CUDArecovery PASS/0newupdates, no30/40/50metrics/checkpoints.
+103CPU controls PASS; originals/Light/DKT untouched, resource released. Need
+host/containerPIDmapping or verifiableallocationprocessidentity before CUDA;
+no repeated403/ownershippermissionrequest. ActionREVIEW/fulltrainingNO-GO. Read
+[FAVOR_ASSIST50_STATE.md](FAVOR_ASSIST50_STATE.md); WAIT forresourceevidence.
+
 Latest: user approved exact20→50 continuation,30 additional updates only. Separate
 controller/recovery and100 CPU controls PASS; GPU execution pending freshadmission.
 Same science/.20 REVIEW, no Light/DKT/fulltraining. Read

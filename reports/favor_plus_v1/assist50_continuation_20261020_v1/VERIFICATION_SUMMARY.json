@@ -1,0 +1,125 @@
+{
+  "additional_optimizer_calls": 0,
+  "cpu_tests": {
+    "corrected101_then_two_explicit_nvml_guard_cases": true,
+    "current_distinct_passed": 103,
+    "failures": 0,
+    "initial100_missed_json_boundary": true,
+    "new_execution_cases": 32,
+    "previous_controls": 71
+  },
+  "decision": "NO-GO for more GPU execution until PID identity is established; no50-update training-readiness conclusion",
+  "failed_process_execution_seconds": 3.7676022549858317,
+  "failure_scope": {
+    "interpretation": "Unknown PID attribution; neither another workload nor own PID alias proved; do not bypass guard",
+    "nvml_compute": [
+      {
+        "compute_instance": 0,
+        "gpu_instance": 2,
+        "pid": 67123,
+        "used_gpu_memory_bytes": 578813952
+      }
+    ],
+    "observed_total_mig_used_bytes": 627769344,
+    "phase": "diagnostics_20",
+    "visible_process_pid": 2847964
+  },
+  "first_attempt": {
+    "additional_optimizer_calls": 0,
+    "cause": "Adam betas tuple/list metadata representation; fixed without changing values/thresholds; preserved",
+    "status": "ABORTED_BEFORE_CUDA"
+  },
+  "frozen_validation20_metrics": {
+    "accuracy": 0.5026924295216978,
+    "f1": 0.38910505836575876,
+    "loss": 0.7412826676968347,
+    "mse": 0.2705159422186416,
+    "precision": 0.33178500331785005,
+    "recall": 0.4703668861712135,
+    "roc_auc": 0.5083134090053469,
+    "targets": 3157,
+    "threshold": 0.5
+  },
+  "full_training_ready": false,
+  "new_test_evaluations": 0,
+  "new_torch_gpu_peak_bytes": "NOT VERIFIED: failure occurred before next cached CUDA memory boundary",
+  "new_training_gradient_norms": [],
+  "new_training_losses": [],
+  "new_training_throughput": "NOT MEASURED:0 updates",
+  "next_requirement": "Authoritative host/container PID mapping or visible allocation-level process identity for this MIG; alternatively an assigned MIG with verifiable ownership. Existing owner permission is not missing. No new CUDA to infer alias.",
+  "optimizer_updates_total": 20,
+  "parent_checkpoint_sha256": "0388e984b8bed21210455be561524a041c892b98b2a87b50fa3ecb1c3ade86f4",
+  "parent_cuda_recovery": {
+    "destination_contract_sha256": "1e0f2d0ef89ae271959e9bd70adf1f5081dbedfa555748fe1753ed3d187eff14",
+    "eval_prediction_max_abs_difference": 0.0,
+    "incoming_checkpoint_sha256": "0388e984b8bed21210455be561524a041c892b98b2a87b50fa3ecb1c3ade86f4",
+    "incoming_component_sha256": {
+      "contract": "431cd288c1d95b27e66ed7844586055428771915a5a224df4005de237edc6530",
+      "next_update_probe": "949d74f4390db90ee4774deda5cfcd977a38aeab44027dfc0adb7f2e98054114",
+      "optimizer_state_dict": "125fb672c4590cb1932aabdacf34f33c238c82349dec0a8d253a01166c1ef360",
+      "reference_eval_logits": "927d9d5b90a72fd1658933a982987f45f59f93ac166565853f63a9d9605714c7",
+      "rng_state": "7be6aab224191d415d9042ef08f302a55360b77d1cce464df50655d53efcf68e",
+      "sampler": "f2f652f4be688e92ce15e1a48b44b3c23d13f93f0b2fd88acf2147b1e3e71222",
+      "state_dict": "d6bac92f312f44eed28b3f03d51e63f054d090610a54a5957dbf48568ed2b653"
+    },
+    "model_adam_rng_projection_integrity": "PASS",
+    "next_train_forward_loss_all_gradient_digest": "EXACT",
+    "optimizer_calls_during_recovery": 0,
+    "optimizer_updates": 20,
+    "parent_checkpoint_sha256": "0388e984b8bed21210455be561524a041c892b98b2a87b50fa3ecb1c3ade86f4",
+    "source_checkpoint_unchanged": true,
+    "source_contract_sha256": "431cd288c1d95b27e66ed7844586055428771915a5a224df4005de237edc6530",
+    "status": "PASS",
+    "unchanged_model_adam_rng_projections": true
+  },
+  "post_failure_observation": {
+    "/proc/driver/nvidia/clients": "FileNotFoundError",
+    "/proc/driver/nvidia/gpus/0000:00:00.0/information": "FileNotFoundError",
+    "/proc/driver/nvidia/version": "NVRM version: NVIDIA UNIX x86_64 Kernel Module  535.161.08  Tue Mar  5 22:42:15 UTC 2024\nGCC version:  \n",
+    "cuda_initialized": false,
+    "nvml": {
+      "compute_processes": [],
+      "free_bytes": 42238803968,
+      "total_bytes": 42278584320,
+      "used_bytes": 39780352
+    },
+    "observed_utc": "2026-10-20T17:17:26.466691+00:00",
+    "pid_namespace": "pid:[4026559509]",
+    "proc2847964_exists": false,
+    "proc67123_exists": false,
+    "self_os_pid": 2848542,
+    "self_pid_fields": {
+      "NSpid": "2848542",
+      "NStgid": "2848542",
+      "PPid": "2848525",
+      "Pid": "2848542"
+    },
+    "self_proc_symlink": "2848542",
+    "snapshot": {
+      "conflicts": [],
+      "holders": [],
+      "inaccessible_fd_pids": [],
+      "light_processes": [],
+      "observed_utc": "2026-10-20T17:17:26.405599+00:00",
+      "own_pid": 2848542,
+      "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+    }
+  },
+  "preservation": {
+    "all_original20_files_unchanged": true,
+    "light_dkt_modifications": 0,
+    "light_hold_sha256": "65214c2c53852024e970fd0a176f71968f204ec0748635a7e6f46de3ed64c234",
+    "original20_files_verified": 199,
+    "signals_sent": 0,
+    "unrelated_readme_sakt_unchanged": true
+  },
+  "source_commit_executed": "b255713",
+  "status": "RESOURCE_IDENTITY_BLOCKED_BEFORE_UPDATE21;50_NOT_REACHED",
+  "training_milestones": {
+    "20": "HISTORICAL20_UNCHANGED",
+    "30": "NOT RUN",
+    "40": "NOT RUN",
+    "50": "NOT RUN"
+  },
+  "validation20_status": "HISTORICAL ONLY; fresh full-sample replay stopped before evaluation"
+}

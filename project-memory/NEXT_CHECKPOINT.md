@@ -1,5 +1,22 @@
 # Next checkpoint
 
+LATEST: **STOP GPU/training; runtime PID identity blocked before update21**.
+Read [FAVOR_ASSIST50_STATE.md](FAVOR_ASSIST50_STATE.md) and
+`reports/favor_plus_v1/ASSIST_50_UPDATE_VALIDATION_RESULTS.md`.
+Current20/new0Adamcalls, exact20freshCUDArecoveryPASS; no30/40/50 results.
+Failedv1preCUDA andv2runtimeattempts preserved/quarantined; do not rerun either
+stage or recreate directories. Existingownerallocationpermission remains, but
+NVML67123 could not be mapped to own2847964; neitherotherwork norself proved.
+Need authoritativehost/containerPIDmapping or allocationprocessidentity evidence
+(or assignedalternativewithverifiableownership) before any newCUDA. No CUDA
+probe to inferalias/guardbypass/watcher/unrelatedsignals. When evidencearrives,
+assess safeadmission withtargetedtests and a freshversionedcontinuation from
+SAME ORIGINAL20, neverzero/Adamreset. Unused30calls remain max50scope, not
+permission to ignoreconflict. Preserve.20review/science/resource/data settings.
+Publishverifiedresearchreport/memory, verifyremote thenWAIT. No fulltraining.
+
+Earlier pre-execution action (historical; DO NOT RUN while blocked):
+
 LATEST user APPROVED30 additional/50TOTAL updates. Prior pending-approval gate
 below is historical. Read [FAVOR_ASSIST50_STATE.md](FAVOR_ASSIST50_STATE.md).
 V1 pre-initialization metadata tuple/list comparison rejected before anyCUDA/update;

@@ -1,0 +1,64 @@
+{
+  "conflict_snapshot": {
+    "conflicts": [],
+    "holders": [],
+    "inaccessible_fd_pids": [],
+    "light_processes": [],
+    "nvml": {
+      "compute_processes": [
+        {
+          "compute_instance": 0,
+          "gpu_instance": 2,
+          "pid": 67123,
+          "used_gpu_memory_bytes": 578813952
+        }
+      ],
+      "free_bytes": 41650814976,
+      "total_bytes": 42278584320,
+      "used_bytes": 627769344
+    },
+    "observed_utc": "2026-10-20T17:15:55.813249+00:00",
+    "own_pid": 2847964,
+    "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+  },
+  "failure_type": "ResourceConflict",
+  "last_safe_resources": {
+    "additional_optimizer_calls": 0,
+    "calls": 20,
+    "campaign_elapsed_seconds": 0.277296,
+    "host": {
+      "cgroup_headroom_bytes": 75884560384,
+      "cgroup_limit_bytes": 96636764160,
+      "cgroup_usage_bytes": 20752203776,
+      "peak_process_rss_bytes": 683474944
+    },
+    "nvml": {
+      "compute_processes": [],
+      "free_bytes": 42238869504,
+      "total_bytes": 42278584320,
+      "used_bytes": 39714816
+    },
+    "nvml_peak_observed_used_bytes": 39714816,
+    "observed_utc": "2026-10-20T17:15:52.457465+00:00",
+    "phase": "initialization",
+    "snapshot": {
+      "conflicts": [],
+      "holders": [],
+      "inaccessible_fd_pids": [],
+      "light_processes": [],
+      "observed_utc": "2026-10-20T17:15:52.366101+00:00",
+      "own_pid": 2847964,
+      "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+    }
+  },
+  "message": "unverified/competing NVML compute process",
+  "no_automatic_restart": true,
+  "no_cuda_calls_in_failure_handler": true,
+  "observed_utc": "2026-10-20T17:15:55.947759+00:00",
+  "optimizer_step_calls": 20,
+  "optimizer_updates": 20,
+  "phase": "diagnostics_20",
+  "process_execution_seconds": 3.7676022549858317,
+  "status": "FAIL",
+  "valid_published_checkpoints": []
+}

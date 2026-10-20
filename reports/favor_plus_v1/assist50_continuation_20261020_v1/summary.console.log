@@ -1,0 +1,58 @@
+{
+  "status": "RESOURCE_IDENTITY_BLOCKED_BEFORE_UPDATE21;50_NOT_REACHED",
+  "source_commit_executed": "b255713",
+  "optimizer_updates_total": 20,
+  "additional_optimizer_calls": 0,
+  "training_milestones": {
+    "20": "HISTORICAL20_UNCHANGED",
+    "30": "NOT RUN",
+    "40": "NOT RUN",
+    "50": "NOT RUN"
+  },
+  "parent_checkpoint_sha256": "0388e984b8bed21210455be561524a041c892b98b2a87b50fa3ecb1c3ade86f4",
+  "validation20_status": "HISTORICAL ONLY; fresh full-sample replay stopped before evaluation",
+  "new_training_losses": [],
+  "new_training_gradient_norms": [],
+  "new_training_throughput": "NOT MEASURED:0 updates",
+  "new_torch_gpu_peak_bytes": "NOT VERIFIED: failure occurred before next cached CUDA memory boundary",
+  "failed_process_execution_seconds": 3.7676022549858317,
+  "failure_scope": {
+    "phase": "diagnostics_20",
+    "visible_process_pid": 2847964,
+    "nvml_compute": [
+      {
+        "compute_instance": 0,
+        "gpu_instance": 2,
+        "pid": 67123,
+        "used_gpu_memory_bytes": 578813952
+      }
+    ],
+    "observed_total_mig_used_bytes": 627769344,
+    "interpretation": "Unknown PID attribution; neither another workload nor own PID alias proved; do not bypass guard"
+  },
+  "first_attempt": {
+    "status": "ABORTED_BEFORE_CUDA",
+    "additional_optimizer_calls": 0,
+    "cause": "Adam betas tuple/list metadata representation; fixed without changing values/thresholds; preserved"
+  },
+  "cpu_tests": {
+    "current_distinct_passed": 103,
+    "failures": 0,
+    "new_execution_cases": 32,
+    "previous_controls": 71,
+    "initial100_missed_json_boundary": true,
+    "corrected101_then_two_explicit_nvml_guard_cases": true
+  },
+  "preservation": {
+    "original20_files_verified": 199,
+    "all_original20_files_unchanged": true,
+    "light_hold_sha256": "65214c2c53852024e970fd0a176f71968f204ec0748635a7e6f46de3ed64c234",
+    "unrelated_readme_sakt_unchanged": true,
+    "signals_sent": 0,
+    "light_dkt_modifications": 0
+  },
+  "next_requirement": "Authoritative host/container PID mapping or visible allocation-level process identity for this MIG; alternatively an assigned MIG with verifiable ownership. Existing owner permission is not missing. No new CUDA to infer alias.",
+  "full_training_ready": false,
+  "new_test_evaluations": 0,
+  "decision": "NO-GO for more GPU execution until PID identity is established; no50-update training-readiness conclusion"
+}

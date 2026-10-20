@@ -2,6 +2,20 @@
 
 Updated: 2026-10-20 UTC
 
+## Latest:20→50 RESOURCE IDENTITY BLOCKED;0 additional updates
+
+Exactcheckpoint20 freshCUDA recovery PASS(diff0/AdamRNGprojections/nextgradient
+digest exact/0Adamcalls). Then NVML PID67123 differed from own2847964 with no
+visible/proven mapping. Guard stopped BEFORE diagnostics20/validation/update21;
+no30/40/50 checkpoints/newmetrics. Runtimefailure preservedv2, no retry/signals.
+17:17read-only release: noNVMLcompute/Lighttrainer/holder, holdsamehash/OOMsame.
+Could be namespacealias or otherwork; neither proved. Need authoritativehostPID
+mapping/verifiedallocationprocessidentity, not repeatownershippermission or403.
+103targetedCPU PASS(32new+71prior); old199files unchanged. Action.2131 REVIEW;
+post20training stabilityNOTVERIFIED/fulltrainingNO-GO. STOP CUDA and wait for
+resourceidentityevidence. See [FAVOR_ASSIST50_STATE.md](FAVOR_ASSIST50_STATE.md)
+and `reports/favor_plus_v1/ASSIST_50_UPDATE_VALIDATION_RESULTS.md`.
+
 ## Latest:20→50 explicitly approved; controller and CPU controls ready
 
 Correction: v1 attemptedlaunch rejected beforeCUDA for Adam betas tuple/list
