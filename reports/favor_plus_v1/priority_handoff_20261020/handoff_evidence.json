@@ -1,0 +1,79 @@
+{
+  "observed_utc": "2026-10-20T07:01:53.329940+00:00",
+  "lightsakt2_branch": "research-rebuild",
+  "lightsakt2_commit": "3debdc21ce2380ad4dd3bfaa8b5f14eea208eae4",
+  "lightsakt2_report": "/workspace/LightSAKT2/reports/LIGHTSAKT2_HITSKT_PRIORITY_HANDOFF_20261020.md",
+  "evidence": {
+    "preservation_comparison.json": {
+      "status": "PASS",
+      "protected_files": 7915,
+      "protected_bytes": 1391693255,
+      "before_after_identical": true,
+      "checkpoint_references": 814,
+      "signals_sent": 0,
+      "scientific_source_modified": false,
+      "after_snapshot": "reports/priority_handoff_20261020/after_hold/snapshot.json"
+    },
+    "interrupted_checkpoint_and_archive.json": {
+      "observed_utc": "2026-10-20T06:54:07.913347+00:00",
+      "status": "PASS",
+      "verified_checkpoints": [
+        {
+          "path": "/workspace/LightSAKT2/checkpoints/ASSIST2015-GKT-baseline_tuning-42-e01b589e46cc/best.pt",
+          "sha256": "a36930ca8a0a5d9e0325405de50dc83c82584408080bf2f0f56cd321fb455608",
+          "epoch": 2,
+          "strict_state_load": true,
+          "finite_parameters": true,
+          "split_data_match": true,
+          "optimizer_rng_verified": false
+        },
+        {
+          "path": "/workspace/LightSAKT2/checkpoints/ASSIST2015-GKT-baseline_tuning-42-e01b589e46cc/latest.pt",
+          "sha256": "1a508b505f07f48491e489d06cb837e660cb6dd5378c7ba33ab8ff61a8a0e551",
+          "epoch": 2,
+          "strict_state_load": true,
+          "finite_parameters": true,
+          "split_data_match": true,
+          "optimizer_rng_verified": true
+        }
+      ],
+      "epoch": 2,
+      "best_epoch": 2,
+      "best_validation_auc": 0.7327774052048939,
+      "bad_epochs": 0,
+      "history_epochs": [
+        1,
+        2
+      ],
+      "model_optimizer_rng_loader_state_verified_on_cpu": true,
+      "processed_and_split_hashes_verified": true,
+      "cuda_calls": 0,
+      "optimizer_updates": 0,
+      "local_archive": "backups/priority_handoff_20261020/interrupted_gkt_epoch2.tar.gz",
+      "local_archive_sha256": "6e3b03248307f609059a4bec7ea0ac203cbbb35054360a871b3b5920bf0a45c0",
+      "local_archive_bytes": 3869675,
+      "local_archive_members": 1155,
+      "local_archive_content_hashes_verified": true,
+      "scope": "Epoch-boundary state preserved; incomplete epoch3 work is not a resumable checkpoint; no training or inference",
+      "offsite_verification": "Not rerun; local recovery archive only"
+    },
+    "completed_backup_presence.json": {
+      "records": 814,
+      "all_referenced_local_archives_present": true,
+      "missing_run_ids": [],
+      "scope": "Presence only: no new archive hash/download verification except the separately verified interrupted epoch2 archive"
+    }
+  },
+  "final_light_hold_tests": {
+    "passed": 9,
+    "failed": 0,
+    "log": "/workspace/LightSAKT2/reports/priority_handoff_20261020/hold_cpu_tests_final.log"
+  },
+  "favor_plan_source_hashes_verified": 19,
+  "favor_source_hash_failures": [],
+  "cuda_verification": "NOT RUN: allocation/exclusivity blocked",
+  "real_assist_pilot": "NOT RUN",
+  "favor_optimizer_updates": 0,
+  "full_training": "NOT AUTHORIZED; readiness NOT ESTABLISHED",
+  "user_authorization": "2026-10-20 staged128-feature CUDA then <=5 ASSIST train-only steps conditional on actual exclusive assignment/correctness; no new permission needed for these phases once gates pass"
+}

@@ -1,0 +1,648 @@
+{
+  "observed_utc": "2026-10-20T06:55:23.071970+00:00",
+  "cuda_initialized": false,
+  "signals_sent": 0,
+  "allocation_status": "NOT VERIFIED",
+  "exclusive_access": "BLOCKED: unrelated visible GPU workload",
+  "inspection": "read-only NVML and OS/container metadata; no CUDA import/context",
+  "device_inventory": {
+    "returncode": 0,
+    "stdout": "GPU 0: NVIDIA H100 80GB HBM3 (UUID: GPU-5a568e3c-e96c-169f-b063-f4478340ff51)\n  MIG 3g.40gb     Device  0: (UUID: MIG-d2fcfd79-720e-5218-82c9-0a132be68920)",
+    "stderr": ""
+  },
+  "compute_process_query": {
+    "returncode": 0,
+    "stdout": "[Insufficient Permissions], GPU-5a568e3c-e96c-169f-b063-f4478340ff51, [Insufficient Permissions]",
+    "stderr": ""
+  },
+  "nvml_memory": {
+    "MIG-d2fcfd79-720e-5218-82c9-0a132be68920": {
+      "handle_returncode": 0,
+      "memory_returncode": 0,
+      "total_bytes": 42278584320,
+      "free_bytes": 32356237312,
+      "used_bytes": 9922347008
+    },
+    "GPU-5a568e3c-e96c-169f-b063-f4478340ff51": {
+      "handle_returncode": 0,
+      "memory_returncode": 4
+    }
+  },
+  "nvml_init_returncode": 0,
+  "processes": {
+    "project_module_processes": [],
+    "visible_gpu_handle_owners": [
+      {
+        "pid": 2662175,
+        "uid": "0\t0\t0\t0",
+        "parent_pid": 2658770,
+        "state": "R (running)",
+        "comm": "pt_main_thread",
+        "module": null,
+        "inside_lightsakt2": false,
+        "inside_hitskt": false,
+        "nvidia_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ]
+      },
+      {
+        "pid": 2662246,
+        "uid": "0\t0\t0\t0",
+        "parent_pid": 2662175,
+        "state": "S (sleeping)",
+        "comm": "pt_main_thread",
+        "module": null,
+        "inside_lightsakt2": false,
+        "inside_hitskt": false,
+        "nvidia_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ]
+      },
+      {
+        "pid": 2662248,
+        "uid": "0\t0\t0\t0",
+        "parent_pid": 2662175,
+        "state": "S (sleeping)",
+        "comm": "pt_main_thread",
+        "module": null,
+        "inside_lightsakt2": false,
+        "inside_hitskt": false,
+        "nvidia_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ]
+      },
+      {
+        "pid": 2662250,
+        "uid": "0\t0\t0\t0",
+        "parent_pid": 2662175,
+        "state": "S (sleeping)",
+        "comm": "pt_main_thread",
+        "module": null,
+        "inside_lightsakt2": false,
+        "inside_hitskt": false,
+        "nvidia_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ]
+      },
+      {
+        "pid": 2662252,
+        "uid": "0\t0\t0\t0",
+        "parent_pid": 2662175,
+        "state": "S (sleeping)",
+        "comm": "pt_main_thread",
+        "module": null,
+        "inside_lightsakt2": false,
+        "inside_hitskt": false,
+        "nvidia_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ]
+      },
+      {
+        "pid": 2662254,
+        "uid": "0\t0\t0\t0",
+        "parent_pid": 2662175,
+        "state": "S (sleeping)",
+        "comm": "pt_main_thread",
+        "module": null,
+        "inside_lightsakt2": false,
+        "inside_hitskt": false,
+        "nvidia_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ]
+      },
+      {
+        "pid": 2662256,
+        "uid": "0\t0\t0\t0",
+        "parent_pid": 2662175,
+        "state": "S (sleeping)",
+        "comm": "pt_main_thread",
+        "module": null,
+        "inside_lightsakt2": false,
+        "inside_hitskt": false,
+        "nvidia_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ]
+      },
+      {
+        "pid": 2662258,
+        "uid": "0\t0\t0\t0",
+        "parent_pid": 2662175,
+        "state": "S (sleeping)",
+        "comm": "pt_main_thread",
+        "module": null,
+        "inside_lightsakt2": false,
+        "inside_hitskt": false,
+        "nvidia_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ]
+      },
+      {
+        "pid": 2662260,
+        "uid": "0\t0\t0\t0",
+        "parent_pid": 2662175,
+        "state": "S (sleeping)",
+        "comm": "pt_main_thread",
+        "module": null,
+        "inside_lightsakt2": false,
+        "inside_hitskt": false,
+        "nvidia_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ]
+      },
+      {
+        "pid": 2662262,
+        "uid": "0\t0\t0\t0",
+        "parent_pid": 2662175,
+        "state": "S (sleeping)",
+        "comm": "pt_main_thread",
+        "module": null,
+        "inside_lightsakt2": false,
+        "inside_hitskt": false,
+        "nvidia_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ]
+      },
+      {
+        "pid": 2662264,
+        "uid": "0\t0\t0\t0",
+        "parent_pid": 2662175,
+        "state": "S (sleeping)",
+        "comm": "pt_main_thread",
+        "module": null,
+        "inside_lightsakt2": false,
+        "inside_hitskt": false,
+        "nvidia_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ]
+      },
+      {
+        "pid": 2662266,
+        "uid": "0\t0\t0\t0",
+        "parent_pid": 2662175,
+        "state": "S (sleeping)",
+        "comm": "pt_main_thread",
+        "module": null,
+        "inside_lightsakt2": false,
+        "inside_hitskt": false,
+        "nvidia_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ]
+      },
+      {
+        "pid": 2662268,
+        "uid": "0\t0\t0\t0",
+        "parent_pid": 2662175,
+        "state": "S (sleeping)",
+        "comm": "pt_main_thread",
+        "module": null,
+        "inside_lightsakt2": false,
+        "inside_hitskt": false,
+        "nvidia_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ]
+      },
+      {
+        "pid": 2662270,
+        "uid": "0\t0\t0\t0",
+        "parent_pid": 2662175,
+        "state": "S (sleeping)",
+        "comm": "pt_main_thread",
+        "module": null,
+        "inside_lightsakt2": false,
+        "inside_hitskt": false,
+        "nvidia_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ]
+      },
+      {
+        "pid": 2662272,
+        "uid": "0\t0\t0\t0",
+        "parent_pid": 2662175,
+        "state": "S (sleeping)",
+        "comm": "pt_main_thread",
+        "module": null,
+        "inside_lightsakt2": false,
+        "inside_hitskt": false,
+        "nvidia_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ]
+      },
+      {
+        "pid": 2662274,
+        "uid": "0\t0\t0\t0",
+        "parent_pid": 2662175,
+        "state": "S (sleeping)",
+        "comm": "pt_main_thread",
+        "module": null,
+        "inside_lightsakt2": false,
+        "inside_hitskt": false,
+        "nvidia_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ]
+      },
+      {
+        "pid": 2662276,
+        "uid": "0\t0\t0\t0",
+        "parent_pid": 2662175,
+        "state": "S (sleeping)",
+        "comm": "pt_main_thread",
+        "module": null,
+        "inside_lightsakt2": false,
+        "inside_hitskt": false,
+        "nvidia_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ]
+      },
+      {
+        "pid": 2662278,
+        "uid": "0\t0\t0\t0",
+        "parent_pid": 2662175,
+        "state": "S (sleeping)",
+        "comm": "pt_main_thread",
+        "module": null,
+        "inside_lightsakt2": false,
+        "inside_hitskt": false,
+        "nvidia_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ]
+      },
+      {
+        "pid": 2662280,
+        "uid": "0\t0\t0\t0",
+        "parent_pid": 2662175,
+        "state": "S (sleeping)",
+        "comm": "pt_main_thread",
+        "module": null,
+        "inside_lightsakt2": false,
+        "inside_hitskt": false,
+        "nvidia_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ]
+      },
+      {
+        "pid": 2662282,
+        "uid": "0\t0\t0\t0",
+        "parent_pid": 2662175,
+        "state": "S (sleeping)",
+        "comm": "pt_main_thread",
+        "module": null,
+        "inside_lightsakt2": false,
+        "inside_hitskt": false,
+        "nvidia_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ]
+      },
+      {
+        "pid": 2662284,
+        "uid": "0\t0\t0\t0",
+        "parent_pid": 2662175,
+        "state": "S (sleeping)",
+        "comm": "pt_main_thread",
+        "module": null,
+        "inside_lightsakt2": false,
+        "inside_hitskt": false,
+        "nvidia_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ]
+      },
+      {
+        "pid": 2662286,
+        "uid": "0\t0\t0\t0",
+        "parent_pid": 2662175,
+        "state": "S (sleeping)",
+        "comm": "pt_main_thread",
+        "module": null,
+        "inside_lightsakt2": false,
+        "inside_hitskt": false,
+        "nvidia_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ]
+      },
+      {
+        "pid": 2662288,
+        "uid": "0\t0\t0\t0",
+        "parent_pid": 2662175,
+        "state": "S (sleeping)",
+        "comm": "pt_main_thread",
+        "module": null,
+        "inside_lightsakt2": false,
+        "inside_hitskt": false,
+        "nvidia_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ]
+      },
+      {
+        "pid": 2662290,
+        "uid": "0\t0\t0\t0",
+        "parent_pid": 2662175,
+        "state": "S (sleeping)",
+        "comm": "pt_main_thread",
+        "module": null,
+        "inside_lightsakt2": false,
+        "inside_hitskt": false,
+        "nvidia_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ]
+      },
+      {
+        "pid": 2662292,
+        "uid": "0\t0\t0\t0",
+        "parent_pid": 2662175,
+        "state": "S (sleeping)",
+        "comm": "pt_main_thread",
+        "module": null,
+        "inside_lightsakt2": false,
+        "inside_hitskt": false,
+        "nvidia_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ]
+      },
+      {
+        "pid": 2662294,
+        "uid": "0\t0\t0\t0",
+        "parent_pid": 2662175,
+        "state": "S (sleeping)",
+        "comm": "pt_main_thread",
+        "module": null,
+        "inside_lightsakt2": false,
+        "inside_hitskt": false,
+        "nvidia_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ]
+      },
+      {
+        "pid": 2662296,
+        "uid": "0\t0\t0\t0",
+        "parent_pid": 2662175,
+        "state": "S (sleeping)",
+        "comm": "pt_main_thread",
+        "module": null,
+        "inside_lightsakt2": false,
+        "inside_hitskt": false,
+        "nvidia_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ]
+      },
+      {
+        "pid": 2662298,
+        "uid": "0\t0\t0\t0",
+        "parent_pid": 2662175,
+        "state": "S (sleeping)",
+        "comm": "pt_main_thread",
+        "module": null,
+        "inside_lightsakt2": false,
+        "inside_hitskt": false,
+        "nvidia_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ]
+      },
+      {
+        "pid": 2662300,
+        "uid": "0\t0\t0\t0",
+        "parent_pid": 2662175,
+        "state": "S (sleeping)",
+        "comm": "pt_main_thread",
+        "module": null,
+        "inside_lightsakt2": false,
+        "inside_hitskt": false,
+        "nvidia_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ]
+      },
+      {
+        "pid": 2662302,
+        "uid": "0\t0\t0\t0",
+        "parent_pid": 2662175,
+        "state": "S (sleeping)",
+        "comm": "pt_main_thread",
+        "module": null,
+        "inside_lightsakt2": false,
+        "inside_hitskt": false,
+        "nvidia_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ]
+      },
+      {
+        "pid": 2662304,
+        "uid": "0\t0\t0\t0",
+        "parent_pid": 2662175,
+        "state": "S (sleeping)",
+        "comm": "pt_main_thread",
+        "module": null,
+        "inside_lightsakt2": false,
+        "inside_hitskt": false,
+        "nvidia_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ]
+      },
+      {
+        "pid": 2662306,
+        "uid": "0\t0\t0\t0",
+        "parent_pid": 2662175,
+        "state": "S (sleeping)",
+        "comm": "pt_main_thread",
+        "module": null,
+        "inside_lightsakt2": false,
+        "inside_hitskt": false,
+        "nvidia_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ]
+      },
+      {
+        "pid": 2662308,
+        "uid": "0\t0\t0\t0",
+        "parent_pid": 2662175,
+        "state": "S (sleeping)",
+        "comm": "pt_main_thread",
+        "module": null,
+        "inside_lightsakt2": false,
+        "inside_hitskt": false,
+        "nvidia_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ]
+      },
+      {
+        "pid": 2662453,
+        "uid": "0\t0\t0\t0",
+        "parent_pid": 2662451,
+        "state": "R (running)",
+        "comm": "nvidia-smi",
+        "module": null,
+        "inside_lightsakt2": false,
+        "inside_hitskt": false,
+        "nvidia_handles": [
+          "/dev/nvidia-caps/nvidia-cap21",
+          "/dev/nvidia-caps/nvidia-cap22",
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ]
+      }
+    ],
+    "inaccessible_fd_directories": 0,
+    "visibility_limit": "Only processes visible in this PID namespace; no external scheduler reservation evidence"
+  },
+  "memory_cgroup": {
+    "memory.limit_in_bytes": "96636764160",
+    "memory.usage_in_bytes": "65202343936",
+    "memory.oom_control": "oom_kill_disable 0\nunder_oom 0\noom_kill 2"
+  },
+  "scheduler_assignment_environment_present": {
+    "SLURM_JOB_ID": false,
+    "SLURM_JOB_GPUS": false,
+    "PBS_JOBID": false,
+    "LSB_JOBID": false
+  },
+  "scheduler_tools_available": {
+    "squeue": false,
+    "scontrol": false,
+    "qstat": false,
+    "bjobs": false
+  },
+  "container_device_list": [
+    "MIG-d2fcfd79-720e-5218-82c9-0a132be68920"
+  ],
+  "cron_scheduler_commands": {
+    "crontab_tool_available": false
+  },
+  "cron_supervisor_configuration_paths": [
+    "/etc/cron.d/e2scrub_all"
+  ],
+  "kubernetes_allocation_read": {
+    "http_status": 403,
+    "pod_name_source": "container HOSTNAME, not independently confirmed",
+    "body_not_recorded": true
+  }
+}

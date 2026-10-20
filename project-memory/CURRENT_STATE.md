@@ -1,8 +1,28 @@
 # Current state
 
-Updated: 2026-10-19 UTC
+Updated: 2026-10-20 UTC
 
-## FAVOR+ real-data pilot CPU preparation — latest
+## LightSAKT2 handoff and GPU authorization — latest
+
+User permits stopping verified LightSAKT2 only and staged CUDA/five ASSIST
+updates after genuine exclusive allocation/correctness; no repeat approval for
+that scope, no full training. Workers were already interrupted before this turn:
+813 complete/142 pending/2 interrupted/0 running, no signals sent. Persistent
+restart hold and nine CPU hold tests pass.7915 scientific files byte-identical;
+epoch2 GKT CPU model/Adam/RNG/config/data checks and local recovery archive pass.
+LightSAKT2 controls/report/memory pushed on research-rebuild at
+3debdc21ce2380ad4dd3bfaa8b5f14eea208eae4; older dirty research state untouched.
+
+Unrelated work outside both repositories holds same sole exposed MIG capability
+devices. No authoritative exclusive assignment; Kubernetes403/no scheduler.
+CUDA/pilot NOT RUN; full training NOT ESTABLISHED. Allocation clarification
+requested, no evidence received. No model/data/pipeline/DKT changes or watcher.
+30 original checkpoint hashes and19 prepared-source hashes freshly match;
+375-file/229-test evidence inherited, not rerun. See
+[FAVOR_PRIORITY_HANDOFF_STATE.md](FAVOR_PRIORITY_HANDOFF_STATE.md).
+Publish scoped research report/memory then stop for actual allocation evidence.
+
+## FAVOR+ real-data pilot CPU preparation — historical
 
 From1e6255c: real ASSIST pilot runner/diagnostics and shared GPU approval gate
 implemented,56 lightweight CPU cases PASS (45new+11existing). Actual dataset

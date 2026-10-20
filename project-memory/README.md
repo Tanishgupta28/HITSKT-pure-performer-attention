@@ -30,6 +30,17 @@ remain intact; platform changes do not alter research source or live runs.
 
 ## Current short status
 
+20 October: LightSAKT2 was already interrupted, no signals sent.813 completed/
+142 pending/2 interrupted, zero live training. Restart hold and nine CPU control
+tests pass;7915 artifacts and epoch2 recovery state preserved. User now authorizes
+staged CUDA then <=5 ASSIST updates after genuine exclusive assignment; no repeat
+approval needed for that scope. Unrelated work still owns GPU handles and allocation
+is unverified. CUDA/pilot NOT RUN; full training not ready. See
+[FAVOR_PRIORITY_HANDOFF_STATE.md](FAVOR_PRIORITY_HANDOFF_STATE.md). Publish scoped
+research reports then stop for allocation evidence; no watcher/unrelated signals.
+
+## Historical preparation status — 19 October
+
 Latest from1e6255c: real ASSIST2017 max5-update runner, diagnostics and strict
 allocation/user-approval gate prepared. See
 [FAVOR_REAL_PILOT_PREPARATION_STATE.md](FAVOR_REAL_PILOT_PREPARATION_STATE.md).

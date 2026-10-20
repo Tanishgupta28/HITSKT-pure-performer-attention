@@ -1,35 +1,34 @@
 # Next checkpoint
 
-19 October2026 UTC — real-data pilot CPU preparation complete; no GPU execution.
-Branch research/hitskt-favor-plus-v1, base1e6255c. Read latest
-[USER_DIRECTIVES.md](USER_DIRECTIVES.md) and
-[FAVOR_REAL_PILOT_PREPARATION_STATE.md](FAVOR_REAL_PILOT_PREPARATION_STATE.md).
+20 October 2026 UTC — LightSAKT2 preservation/hold complete; GPU ownership blocked.
+Read [USER_DIRECTIVES.md](USER_DIRECTIVES.md) and
+[FAVOR_PRIORITY_HANDOFF_STATE.md](FAVOR_PRIORITY_HANDOFF_STATE.md).
 Previous checkpoint preserved in
-[NEXT_CHECKPOINT_history_before_real_pilot_preparation.md](NEXT_CHECKPOINT_history_before_real_pilot_preparation.md).
+[NEXT_CHECKPOINT_history_before_20261020_priority_handoff.md](NEXT_CHECKPOINT_history_before_20261020_priority_handoff.md).
 
-Real-data runner/diagnostics and shared approval/allocation gate prepared;
-45new+11existing lightweight CPU tests PASS. Actual ASSIST preflight verifies
-11 files/five whole train targets292 actions,0 actual model forwards/updates.
-Valid v2 plan and command paths in reports/favor_plus_v1/REAL_DATA_PILOT_PREPARATION.md.
-V1 plan correctly stale after final source hardening; preserve all iteration logs.
-All code/data/checkpoints/reports from old research preserved except intended
-CUDA harness safety/provenance changes. Unrelated README/SAKT log preserved.
-Finish scoped validation/commit/push to capstone-gpu research branch only, then
-stop. No full229 rerun, original dataset training, GPU probe/CUDA call or watcher.
+Finish scoped report/memory commit/push to capstone-gpu research branch only,
+verify remote equality, then stop. LightSAKT2 hold/report/memory already pushed
+on research-rebuild at3debdc21ce2380ad4dd3bfaa8b5f14eea208eae4. Preserve older
+LightSAKT2 dirty research state and unrelated HiTSKT README/SAKT console log.
 
-CRITICAL: latest user explicitly requires approval BEFORE ANY GPU execution or
-resource changes. Earlier conditional automatic execution permission is superseded.
-Get actual independent exclusive assignment UUID/owner/job/external authority/
-valid window/container exposure, then actual user approval before commands.
-Do not fabricate either from the example metadata record, free VRAM or old
-conditional instructions. Current LightSAKT2 MIG/whole parent are blocked.
-No automatic probes, watcher, allocation, LightSAKT2 signals/config changes or
-DKT/EdNet resume/reset. Stage1 complete matching128-feature ASSIST CUDA PASS is
-required before stage2 <=5 updates. Run only within newly approved scope.
+Next bounded action requires actual administrator/scheduler/allocation-owner
+exclusive assignment evidence:UUID/owner/job/external reference/valid window,
+container exposure and no unrelated jobs/reservations. Only exposed MIG has
+unrelated live handle owners; no authority available, Kubernetes403. Clarification
+requested; no evidence received. No automatic polling/watcher, unrelated signals
+or CUDA initialization. Free VRAM/stopped LightSAKT2 is not a lease.
 
-Pilot safeguards: B1/cost2048/seed42/original hierarchy/history/whole sessions,
-8GiB allocator quota/4GiB process RSS/2GiB cgroup headroom/120s per update/900s
-cooperative deadline, full requested diagnostics and hashed optimizer/RNG/model
-reload. No test evaluation/resume/sixth update. High-norm approximation remains
-unresolved; no convergence/AUC claim from five steps. Larger validation pilot
-and full training remain separate approval decisions.
+Latest user already authorizes verified LightSAKT2 shutdown and bounded staged
+CUDA then <=5 ASSIST train-only updates once resource/correctness gates pass;
+do not re-ask for that scope. Known MIG/parent remain hard-blocked in source.
+If actually reassigned, first review/test a narrow evidence-based guard change,
+then prepare a fresh source-bound plan. Do not bypass or invent independent status.
+Existing128-feature/seed42/B1/cost2048/8GiB quota/resource/time/strict numerical
+gates and full matching CUDA PASS prerequisite remain unchanged. Future commands
+and criteria:latest handoff report and REAL_DATA_PILOT_PREPARATION.md.
+
+All new GPU metrics, real-data losses/learned-QK trajectories and original-batch
+memory/runtime remain unmeasured; full training not ready. Larger validation
+pilot/full ASSIST/Junyi/EdNet each need later explicit authorization. Preserve all
+historical results, ELU+1 code, previous evidence and LightSAKT2 held pending jobs;
+do not resume/reset unfinished DKT/EdNet or edit main/history.

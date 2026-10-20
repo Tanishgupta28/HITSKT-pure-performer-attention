@@ -1075,3 +1075,27 @@ unverified and full training not established. See
 [FAVOR_REAL_PILOT_PREPARATION_STATE.md](FAVOR_REAL_PILOT_PREPARATION_STATE.md).
 Publish scoped research source/report/evidence/memory then stop for actual
 independent allocation and explicit user approval; no automatic CUDA continuation.
+
+
+## 2026-10-20 — LightSAKT2 handoff; unrelated GPU resource blocker
+
+New user priority permits verified LightSAKT2 shutdown and staged128-feature CUDA
+then <=5 ASSIST train-only updates after actual exclusive assignment/correctness.
+Workers/controllers were already interrupted; no signals sent.813 completed/
+142 pending/2 interrupted, GKT best/latest2. Persistent hold protects known
+launch/recovery/admission/hook paths.9 final CPU hold tests pass; initial
+import-trap failures retained.7915-file before/after preservation and strict
+CPU epoch2 model/Adam/RNG/config/data recovery pass; separate local archive,
+no new offsite verification. Controls/report/new memory pushed to LightSAKT2
+research-rebuild at3debdc21ce2380ad4dd3bfaa8b5f14eea208eae4. Older dirty state
+and different sibling study untouched.
+
+Unrelated GPU owners outside both roots still hold sole exposed MIG capabilities.
+NVML9.24GiB used at06:55; no scheduler authority, Kubernetes403. Allocation
+clarification requested; no evidence received. CUDA/pilot NOT RUN; no unrelated
+signal/watcher/real training. Current MIG guard retained.30 original checkpoint
+and19 prepared-source hashes freshly match; full375/229 evidence not rerun.
+New report/evidence/memory documents blocker and next bounded gates. No ELU+1/
+data/model/pipeline/DKT changes or main merge. Publish scoped research docs,
+then stop for actual allocation; no repeat execution approval for newly authorized
+bounded stages once resource/correctness gates genuinely pass.

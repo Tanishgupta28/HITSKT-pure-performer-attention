@@ -1,8 +1,33 @@
 # Durable user directives
 
-Updated: 2026-10-19 UTC
+Updated: 2026-10-20 UTC
 
-## 2026-10-19 — CPU-only real-data pilot preparation (latest)
+## 2026-10-20 — Verified LightSAKT2 shutdown and bounded FAVOR+ GPU work (latest)
+
+- User explicitly authorizes stopping ONLY their verified LightSAKT2 training
+  workload, preserving all artifacts and disabling automatic relaunches. Prior
+  no-interruption restriction is superseded for those jobs only. Never stop
+  unrelated processes/services/other users. Verify ownership/preservation first;
+  graceful bounded shutdown, inspect before stronger signals, no kill during writes.
+- Read latest state, snapshot progress/checkpoints/configs/logs and preserve all
+  completed/incomplete work. Inspect scheduler/recovery/queued workers and prevent
+  future launches without deleting configurations or scientific results.
+- GPU authorization is a separate gate after shutdown. Need actual exclusive
+  assignment/reassignment evidence, no unrelated jobs/reservations, UUID/VRAM/
+  cgroup limits. Stopping LightSAKT2/free VRAM alone never proves ownership.
+  If ownership/preservation/shutdown or GPU assignment cannot be established,
+  ask the user; no CUDA initialization on an unverified resource.
+- Once resource ownership is established, user NOW authorizes staged128-feature
+  FAVOR+ CUDA verification and only after PASS the prepared ASSIST train-only
+  <=5-update pilot, seed42/B1/cost2048/original protocol, no test evaluation.
+  Record all losses/gradients/QK/approximation/memory/runtime/checkpoint evidence.
+  Stop on serious failures. This supersedes the prior need to re-ask permission
+  for these specific phases; it does not manufacture resource ownership.
+- No full training, original ELU+1 changes, DKT/EdNet modification/resumption,
+  merge or history rewrite. Report outcomes/readiness, update relevant memory,
+  commit/push verified changes to each existing appropriate research branch.
+
+## 2026-10-19 — CPU-only real-data pilot preparation (historical)
 
 - Continue current research/hitskt-favor-plus-v1 state. Implement reproducible
   actual ASSIST2017 pilot,128 features/seed42/B1/cost2048/max5 updates, safe
