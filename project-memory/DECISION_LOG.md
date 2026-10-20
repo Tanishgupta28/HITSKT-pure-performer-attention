@@ -1224,3 +1224,22 @@ No GPUcompute remains afterrelease, hold/OOM unchanged. GO separatelyapproved
 50TOTAL continuation(30more) via explicit contract migration; NO-GO full training.
 Current budget exhausted; publish research-only thenstop. Report ASSIST_20_UPDATE_
 VALIDATION_RESULTS.md underreports/favor_plus_v1/ and corresponding evidence.
+
+
+## 2026-10-20 — CPU20→50 preparation, approval requested before continuation
+
+Latest user requires new explicit approval before30 extra updates from exact20;
+past20 grant cannot be reused. PredeclareCPUreviewdd6be27, then reload5/10/20
+unchanged SHA/components/61Adam/RNG/projections/source24/data11/config/sampler.
+CPU strict20 model/Adam tensors exact.24savedActionprefix replay confirms stable
+.213176→.213145 (> .20 REVIEW four/six), GPU-feature error1.0125e-6 and FP64-feature
+2.39e-15 without fixing softmax discrepancy. Frozen20featuregrid median128/256/512
+.181615/.162414/.134871; tails not uniformly improved, no model/count change.
+71CPU tests PASS(19new/52existing). No CUDA/real-data forward/update/test/newmetrics.
+14:50read-only sameMIG idle/no conflicts, Light held samehash/OOMsame; no separate
+newallocation or scheduler evidence, owner resource confirmation retained.
+Exact51IDs/handoff/30additional50total/25..50checkpoints/frozenvalidation20/30/40/50
+proposal prepared. Newhelper only, versioned executioncontroller still needed;
+original20controller untouched. Approval question sent; no affirmative reply yet.
+Conditional GO bounded continuation, approximation REVIEW, NO-GO full training.
+Report ASSIST_20_TO_50_CONTINUATION_REVIEW.md; publish scopedresearch thenwait.

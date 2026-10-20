@@ -1,0 +1,44 @@
+{
+  "observed_utc": "2026-10-20T14:50:30.369554+00:00",
+  "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+  "snapshot": {
+    "observed_utc": "2026-10-20T14:50:30.151140+00:00",
+    "own_pid": 2805635,
+    "holders": [],
+    "conflicts": [],
+    "light_processes": [],
+    "inaccessible_fd_pids": [],
+    "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+  },
+  "nvml": {
+    "total_bytes": 42278584320,
+    "free_bytes": 42238803968,
+    "used_bytes": 39780352,
+    "compute_processes": []
+  },
+  "inventory": {
+    "returncode": 0,
+    "stdout": "GPU 0: NVIDIA H100 80GB HBM3 (UUID: GPU-5a568e3c-e96c-169f-b063-f4478340ff51)\n  MIG 3g.40gb     Device  0: (UUID: MIG-d2fcfd79-720e-5218-82c9-0a132be68920)",
+    "stderr": ""
+  },
+  "device_exposure": [
+    "MIG-d2fcfd79-720e-5218-82c9-0a132be68920"
+  ],
+  "host_cgroup": {
+    "memory.limit_in_bytes": "96636764160",
+    "memory.usage_in_bytes": "20352315392",
+    "memory.oom_control": "oom_kill_disable 0\nunder_oom 0\noom_kill 2"
+  },
+  "workspace_free_bytes": 216343642112,
+  "light_hold_status": "USER_TRAINING_HOLD_ACTIVE",
+  "light_hold_sha256": "65214c2c53852024e970fd0a176f71968f204ec0748635a7e6f46de3ed64c234",
+  "visible_conflict_free": true,
+  "resource_sufficient_now": true,
+  "allocation_authority": "Existing explicit allocation-owner confirmation/transfer in conversation, preserved in assist20 OWNER_AND_STUDY_AUTHORIZATION.md; no new external scheduler evidence",
+  "separate_new_gpu_allocation_confirmed": false,
+  "new_continuation_approval": "PENDING; old20 scope cannot authorize30 additional updates",
+  "cuda_initialized": false,
+  "signals_sent": 0,
+  "research_jobs_modified": 0,
+  "limitation": "Finite visible-PID/NVML snapshot, not a scheduler reservation guarantee or future availability. Do not treat display monitors as compute. Fresh admission and scoped user approval required before any CUDA."
+}

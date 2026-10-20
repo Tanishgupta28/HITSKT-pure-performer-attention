@@ -1,5 +1,23 @@
 # Next checkpoint
 
+LATEST20→50 preparation: read
+[FAVOR_ASSIST50_PREPARATION_STATE.md](FAVOR_ASSIST50_PREPARATION_STATE.md) and
+`reports/favor_plus_v1/ASSIST_20_TO_50_CONTINUATION_REVIEW.md`.
+Checkpoint20 intact, Action approximation REVIEW persists;71 targeted CPU PASS.
+**STOP GPU/training pending explicit approval of30 additional/50TOTAL updates.**
+Approval question sent; preselected UI option is not a reply. None received yet.
+On actual approval, record its exact scope, implement/test separately versioned
+controller and explicit parent contract migration, fresh resource admission,
+verify checkpoint20 baseline/next-gradient proof, then planned30/40/50 endpoints
+with atomic25/30/35/40/45/50 checkpoints. Never seed after RNG restoration/reset
+Adam or pass50 to old20 controller. Same128features/original scientific settings,
+frozen validation/.20 REVIEW/severe/resource gates; no test/fulltraining.
+Current read-only resource observation is14:50UTC, not a future reservation.
+Existing owner attestation retained; no extra independent GPU confirmed, no
+new administrative evidence fabricated. Do not disturb Light/DKT/old artifacts.
+
+Previous completed20 publication checkpoint (historical):
+
 Fresh20-update study COMPLETED; read USER_DIRECTIVES, CURRENT_STATE and
 [FAVOR_ASSIST20_STATE.md](FAVOR_ASSIST20_STATE.md), plus
 `reports/favor_plus_v1/ASSIST_20_UPDATE_VALIDATION_RESULTS.md`.

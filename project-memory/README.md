@@ -30,6 +30,13 @@ remain intact; platform changes do not alter research source or live runs.
 
 ## Current short status
 
+Latest: CPU checkpoint/Action review and exact20→50 handoff prepared,71 targeted
+CPU PASS. Action .2131 REVIEW persists as finite-feature error, not resolved by
+FP64. Same owner research MIG idle at14:50UTC; Light held. No CUDA or new update.
+**Explicit30-additional-update approval pending**; versioned execution controller
+still needed before launch. Read
+[FAVOR_ASSIST50_PREPARATION_STATE.md](FAVOR_ASSIST50_PREPARATION_STATE.md).
+
 Latest: recoverable20-update ASSIST pilot completed. Atomic5/10/20 and fresh CUDA
 no-step recovery PASS,154 targeted CPU controls PASS. Current read-only monitor
 activity verified/old guard race fixed; historical PID still unknown. Tiny mixed

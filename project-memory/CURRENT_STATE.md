@@ -2,6 +2,18 @@
 
 Updated: 2026-10-20 UTC
 
+## Latest:20→50 preparation verified; explicit continuation approval pending
+
+Read [FAVOR_ASSIST50_PREPARATION_STATE.md](FAVOR_ASSIST50_PREPARATION_STATE.md).
+CPU-only5/10/20 checkpoint/Adam/RNG/config/source/data integrity PASS; strict20
+model/Adam reload exact. Action error0→20=.21317586→.21314548, four/six>.20;
+FP64 removes implementation rounding, not softmax error. REVIEW retained.
+71 targeted CPU cases PASS(19new+52existing).14:50UTC same owner-confirmed MIG idle,
+Light stopped/hold samehash, no CUDA/new update or unrelated changes. Frozen
+exact20→50 handoff prepared; versioned execution controller still required.
+User explicitly requires NEW approval before30 further updates; requested via
+UI, no affirmative reply yet. STOP GPU/training while pending; no full training.
+
 ## Recoverable20-update ASSIST study — completed
 
 Exactly20 real updates PASS; atomic5/10/20 checkpoints and fresh CUDA no-step

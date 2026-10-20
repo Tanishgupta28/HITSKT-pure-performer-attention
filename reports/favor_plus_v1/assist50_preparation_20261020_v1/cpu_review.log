@@ -1,0 +1,44 @@
+{
+  "status": "REVIEW_RETAINED; NO_FLOATING_POINT_KERNEL_DEFECT_OBSERVED_IN_BOUNDED_CASES",
+  "thresholds_unchanged": true,
+  "review_relative_l2": 0.2,
+  "aggregated": [
+    {
+      "update": 0,
+      "relative_l2_median": 0.2131758601926153,
+      "relative_l2_max": 0.23581723296626336,
+      "review_count": 4,
+      "unique_raw_qkv_prefixes": 6,
+      "median_pair_ess": 8.16032386039763
+    },
+    {
+      "update": 5,
+      "relative_l2_median": 0.21291682965704722,
+      "relative_l2_max": 0.23516021691562605,
+      "review_count": 4,
+      "unique_raw_qkv_prefixes": 6,
+      "median_pair_ess": 8.178205027878281
+    },
+    {
+      "update": 10,
+      "relative_l2_median": 0.2133263885921866,
+      "relative_l2_max": 0.2350590709194142,
+      "review_count": 4,
+      "unique_raw_qkv_prefixes": 6,
+      "median_pair_ess": 8.193885771042183
+    },
+    {
+      "update": 20,
+      "relative_l2_median": 0.2131454770930238,
+      "relative_l2_max": 0.2347878195144589,
+      "review_count": 4,
+      "unique_raw_qkv_prefixes": 6,
+      "median_pair_ess": 8.180666651914649
+    }
+  ],
+  "maximum_saved_gpu_feature_kernel_abs": 1.0124977556091874e-06,
+  "maximum_fp64_feature_kernel_abs": 2.3869795029440866e-15,
+  "maximum_cpu_fp32_saved_gpu_abs": 4.76837158203125e-07,
+  "projection_comparison_policy": "Frozen update20 QKV, diagnostic seeds0..7; deployed seed42 unchanged. Generation streams are not nested across feature counts. This is not independent training or feature selection.",
+  "scope": "Action attention raw outputs only, six frozen train examples/first32 positions; no real-data model forward, no optimizer update, no validation/test inspection"
+}
