@@ -1,5 +1,20 @@
 # Exact20→50 FAVOR+ continuation —20 October2026
 
+## Latest correction before any CUDA/update
+
+Initial v1 launch was rejected BEFORE initialize/CUDA/Adam for preserved Adam
+betas tuple versus prepared JSON list metadata equality. No scientific values
+changed,0newcalls/0CUDA; stage030 admission/traceback and study_failure.json kept
+under assist50_continuation_20261020_v1. It is quarantined, never rerun.
+Compare complete optimizer-group metadata by exact JSON numeric/content equality;
+raw Adam tensors and loaded optimizer trees still require exact equality. New
+regression uses actual on-disk JSON contracts;101 CPU tests PASS(30new+71prior).
+Correctedfresh output `assist50_continuation_20261020_v2` starts at SAME original20
+checkpoint, notzero, with unchanged remaining30-call approval. No failed optimizer
+step was retried. Use allocation_record_v2/resource_admission_v2 via newpreflight;
+old v1 admission/record/log remain immutable. No CUDA/update has run yet.
+Plan SHA b0c27320ab361703808aa8b895b748b7f573b170319ec1dff45bda6dadd8d13e.
+
 ## Current authorization and execution checkpoint
 
 Latest user explicitly approves30 additional Adam calls from exact20 checkpoint,

@@ -15,7 +15,7 @@ from ktbench import favor_plus_assist20 as original
 from ktbench import favor_plus_pilot_recovery as parent_recovery
 from ktbench import favor_plus_resource_telemetry as telemetry
 from ktbench.favor_plus_continuation_contract import ACTION,PARENT_SHA256,require_explicit_approval,stage_interval
-from ktbench.favor_plus_continuation_recovery import KIND,atomic_checkpoint,no_step_recovery,seal,validate
+from ktbench.favor_plus_continuation_recovery import KIND,atomic_checkpoint,no_step_recovery,optimizer_groups_equal,seal,validate
 from ktbench.favor_plus_gpu_access import CUDA_VALIDATION,require_gpu_authorization
 from ktbench.favor_plus_pipeline import ROOT,fresh_run,runtime,sha256,write_json
 from ktbench.favor_plus_pilot_diagnostics import cpu_tree,equal_tree,finite_tree
@@ -188,7 +188,7 @@ def execute(plan_path,record,to):
         path=PARENT_CHECKPOINT;prior=torch.load(path,map_location='cpu',weights_only=True)
         parent_recovery.validate(prior,c['parent_contract'])
         if (prior['component_sha256']!=c['parent_component_sha256'] or prior['projection_sha256']!=c['parent_projection_sha256']
-                or prior['optimizer_state_dict']['param_groups']!=c['parent_optimizer_param_groups']):raise ValueError('parent migration components mismatch')
+                or not optimizer_groups_equal(prior['optimizer_state_dict']['param_groups'],c['parent_optimizer_param_groups'])):raise ValueError('parent migration components mismatch')
     else:
         path=root/'checkpoints'/f'checkpoint_{previous:03d}.pt'
         prior=torch.load(path,map_location='cpu',weights_only=True);validate(prior,c)

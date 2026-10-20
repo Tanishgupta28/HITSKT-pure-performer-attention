@@ -11,20 +11,20 @@ from ktbench.favor_plus_resource_telemetry import device_snapshot,nvml_snapshot,
 
 HERE=Path(__file__).resolve().parent
 ROOT=HERE.parents[2]
-PLAN=ROOT/'experiments/hitskt_favor_plus_v1/assist2017/assist50_continuation_20261020_v1/prepared_plan.json'
+PLAN=ROOT/'experiments/hitskt_favor_plus_v1/assist2017/assist50_continuation_20261020_v2/prepared_plan.json'
 mode=sys.argv[1] if len(sys.argv)>1 else 'admit'
 if mode not in ('admit','release'):raise ValueError('admit or release only')
-record_path=HERE/'allocation_record.json'
+record_path=HERE/'allocation_record_v2.json'
 if mode=='admit':
     # This operator execution window records existing owner permission and new
     # actual scope approval; it is not an allocation/scheduler command or lease.
     plan,contract,_,_=load_plan(PLAN)
     old=json.loads((HERE.parent/'assist20_recovery_20261020_v1/allocation_record.json').read_text())
     now=dt.datetime.now(dt.timezone.utc)
-    old.update(job_id='local-assist50-continuation-20261020-v1',starts_utc=now.isoformat(),
+    old.update(job_id='local-assist50-continuation-20261020-v2',starts_utc=now.isoformat(),
         expires_utc=(now+dt.timedelta(hours=2)).isoformat(),
         owner_confirmation_evidence=str(HERE/'OWNER_AND_CONTINUATION_AUTHORIZATION.md'),
-        conflict_evidence=str(HERE/'resource_admission.json'))
+        conflict_evidence=str(HERE/'resource_admission_v2.json'))
     old['continuation_approval']=contract['user_approval']
     old['user_approval']=dict(approved=True,evidence=str(HERE/'OWNER_AND_CONTINUATION_AUTHORIZATION.md'),actions=[CUDA_VALIDATION,ACTION])
     with record_path.open('x') as f:json.dump(old,f,indent=2);f.write('\n')
@@ -43,6 +43,6 @@ result=dict(observed_utc=dt.datetime.now(dt.timezone.utc).isoformat(),resource_u
     inventory=dict(returncode=inventory.returncode,stdout=inventory.stdout.strip(),stderr=inventory.stderr.strip()),
     scope='PID namespace/NVML/exposure and preserved allocation-owner authority; no claim of independent scheduler visibility')
 result['status']='PASS' if not(snapshot['conflicts'] or snapshot['inaccessible_fd_pids'] or snapshot['light_processes']) and memory.get('compute_processes')==[] and memory['free_bytes']>=10*1024**3 and int(cgroup['memory.limit_in_bytes'])-int(cgroup['memory.usage_in_bytes'])>=2*1024**3 else 'STOP'
-with (HERE/('resource_admission.json' if mode=='admit' else 'resource_release.json')).open('x') as f:
+with (HERE/('resource_admission_v2.json' if mode=='admit' else 'resource_release_v2.json')).open('x') as f:
     json.dump(result,f,indent=2);f.write('\n')
 print(json.dumps(result,indent=2))

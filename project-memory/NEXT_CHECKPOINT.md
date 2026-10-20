@@ -2,8 +2,10 @@
 
 LATEST user APPROVED30 additional/50TOTAL updates. Prior pending-approval gate
 below is historical. Read [FAVOR_ASSIST50_STATE.md](FAVOR_ASSIST50_STATE.md).
-New controller/recovery and100 CPU cases PASS; prepared plan
-`experiments/hitskt_favor_plus_v1/assist2017/assist50_continuation_20261020_v1/prepared_plan.json`.
+V1 pre-initialization metadata tuple/list comparison rejected before anyCUDA/update;
+failure preserved, no automaticretry. JSON roundtrip fix and101CPUcases PASS.
+Corrected prepared plan
+`experiments/hitskt_favor_plus_v1/assist2017/assist50_continuation_20261020_v2/prepared_plan.json`.
 Before GPU: run the NEW finite preflight with exact assigned MIG env; record owner
 allocation+actual scope approval, no conflicts/Light/RAM issues. Then stage30,
 verify30, stage40, verify40, stage50, verify50, sequential separate processes.

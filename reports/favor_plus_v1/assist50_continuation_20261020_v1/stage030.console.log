@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/capstone/scripts/assist50_favor_plus.py", line 34, in <module>
+    if __name__=='__main__':main()
+  File "/workspace/capstone/scripts/assist50_favor_plus.py", line 22, in main
+    result=prepare(a.run_id) if a.action=='prepare' else (execute if a.action=='stage' else verify)(
+  File "/workspace/capstone/ktbench/favor_plus_assist50.py", line 191, in execute
+    or prior['optimizer_state_dict']['param_groups']!=c['parent_optimizer_param_groups']):raise ValueError('parent migration components mismatch')
+ValueError: parent migration components mismatch

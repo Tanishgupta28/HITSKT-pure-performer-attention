@@ -4,6 +4,11 @@ Updated: 2026-10-20 UTC
 
 ## Latest:20→50 explicitly approved; controller and CPU controls ready
 
+Correction: v1 attemptedlaunch rejected beforeCUDA for Adam betas tuple/list
+metadata mismatch (0updates). Preserved failure, fixed exact JSON representation
+comparison;101 CPU controls PASS. Use newv2 plan/output/record; sameparent20 and
+30unusedcalls, no scientific setting change. See latest note in FAVOR_ASSIST50_STATE.
+
 Latest user now grants30 additional/50TOTAL only, subject to independent current
 authorized device availability; prior owner-confirmed research transfer retained.
 Designe795a87 precedes execution. New separatecontroller/recovery validates exact20

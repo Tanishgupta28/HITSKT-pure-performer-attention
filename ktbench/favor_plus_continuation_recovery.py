@@ -1,6 +1,7 @@
 """Separate20→50 checkpoint contract; the original20 files remain immutable."""
 from __future__ import annotations
 import hashlib
+import json
 import os
 from pathlib import Path
 import tempfile
@@ -12,6 +13,15 @@ KIND='assist2017_favor_plus_continuation20_to50_v1'
 CHECKPOINT_UPDATES=(25,30,35,40,45,50)
 COMPONENTS={'state_dict','optimizer_state_dict','rng_state','sampler','contract',
             'reference_eval_logits','next_update_probe'}
+
+
+def optimizer_groups_equal(left,right):
+    """JSON plans represent Adam betas tuples as lists; numeric values stay exact.
+
+    This compares the entire metadata (including IDs/options), never just LR.
+    Saved Adam tensors and raw optimizer reload still require exact tree equality.
+    """
+    return json.dumps(left,sort_keys=True,allow_nan=False)==json.dumps(right,sort_keys=True,allow_nan=False)
 
 
 def validate(payload,contract):
@@ -41,7 +51,7 @@ def validate(payload,contract):
     if not finite_tree(payload):raise FloatingPointError('nonfinite checkpoint/model/Adam/RNG')
     opt=payload['optimizer_state_dict'];count=contract['parameter_tensor_count']
     ids=[i for g in opt['param_groups'] for i in g['params']]
-    if (opt['param_groups']!=contract['parent_optimizer_param_groups']
+    if (not optimizer_groups_equal(opt['param_groups'],contract['parent_optimizer_param_groups'])
             or len(opt['state'])!=count or len(ids)!=count or len(set(ids))!=count
             or set(ids)!=set(opt['state'])):
         raise ValueError('original Adam hyperparameters/parameter coverage changed')

@@ -1258,3 +1258,15 @@ Nextfreshadmission thenstage30/recovery30/40/recovery40/50/recovery50; stop50 or
 firstfailure, newatomic25/30/35/40/45/50. Exactparent20 prediction/nextgrad proof
 and fullfrozenvalidation20 replay requiredbefore21; maintain all severe/resource
 gates. NewcampaignGPU/metricsNOTRUN at this checkpoint; inspect terminalfiles.
+
+
+## 2026-10-20 — Pre-CUDA contract serialization rejection corrected
+
+Initial continuationv1 rejected at parent group comparison BEFORE initialize/
+CUDA/Adam: tuplebetas in .pt vs listbetas in JSON plan, identical numeric values.
+Preserved traceback/admission/quarantined study_failure, zero newupdates/CUDA.
+No failed optimizer step exists to retry. New equality checks full exact JSON
+group content; rawoptimizer state reload still exact. On-diskJSON fixture regression
+added;101CPUcases PASS(30new+71prior). Freshv2 plan fromsameoriginal20 state uses
+unchanged30additionalapproval/configuration/thresholds; noattention/datasetchange.
+Oldattempt/source retained inGit and artifacts; freshresourceadmission required.

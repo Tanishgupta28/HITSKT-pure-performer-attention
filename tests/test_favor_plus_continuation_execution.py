@@ -42,6 +42,7 @@ def tiny_state():
         parent_checkpoint_sha256=PARENT_SHA256,parent_optimizer_param_groups=cpu_tree(opt.state_dict()['param_groups']),
         parent_projection_sha256={k:r.digest(v) for k,v in weights.items() if k.endswith('.projection')},
         source_sha256={'synthetic':'CPU_ONLY_UNIT_FIXTURE'})
+    contract=json.loads(json.dumps(contract))  # same on-disk JSON representation as real plan
     payload=cpu_tree(net.checkpoint())
     payload.update(kind=r.KIND,contract=contract,optimizer_updates=25,optimizer_step_calls=25,additional_optimizer_calls=5,
         optimizer_state_dict=cpu_tree(opt.state_dict()),rng_state=cpu_tree(capture_rng_state()),
@@ -56,6 +57,16 @@ def test_new_atomic_roundtrip_and_no_overwrite(tmp_path,tiny_state):
     assert receipt['updates']==25 and receipt['additional_optimizer_calls']==5
     assert equal_tree(value,torch.load(path,map_location='cpu',weights_only=True))
     with pytest.raises(FileExistsError):r.atomic_checkpoint(path,value,contract)
+
+
+def test_json_plan_preserves_all_adam_group_values(tiny_state):
+    value,contract,_=tiny_state
+    saved=value['optimizer_state_dict']['param_groups'];planned=contract['parent_optimizer_param_groups']
+    assert isinstance(saved[0]['betas'],tuple) and isinstance(planned[0]['betas'],list)
+    assert r.optimizer_groups_equal(saved,planned)
+    changed=copy.deepcopy(planned);changed[0]['betas'][0]=.8
+    assert not r.optimizer_groups_equal(saved,changed)
+    assert r.validate(value,contract)['status']=='PASS'
 
 
 @pytest.mark.parametrize('corruption',['weights','adam','rng','projection','cursor','samples','source','config','calls','additional','groups'])
