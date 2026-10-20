@@ -66,3 +66,11 @@ assist2017/assist_bounded_review_20261020_v2 and assist_bounded100_20261020_v1_s
 Prior CPU v1 preparation retained, final v2 binds stricter hold/containment controls.
 Scoped publication only to capstone-gpu research/hitskt-favor-plus-v1; preserve
 unrelated README/SAKT log. Next work requires user decision after reviewing abort.
+
+
+Publication verified: scientific report/evidence/source commit
+97b22b70108ff0aca4677f4999d37fdf4318210f equals remote research branch; remote main
+f465d84838e5f8b1c637736e362a945c20cfde10 unchanged.153 new experiment artifacts
+tracked/hash-matching; memory strict validation PASS. Current handoff-only commit
+adds publication status, no experiment/restart. No work pending except the next
+user decision; unrelated README/SAKT log still the only dirt.

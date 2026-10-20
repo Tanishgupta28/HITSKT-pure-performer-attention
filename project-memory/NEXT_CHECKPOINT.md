@@ -5,8 +5,10 @@ for a resource conflict after14 successful updates. Read USER_DIRECTIVES,
 CURRENT_STATE, [FAVOR_ASSIST_BOUNDED_STATE.md](FAVOR_ASSIST_BOUNDED_STATE.md) and
 reports/favor_plus_v1/ASSIST_BOUNDED_TRAINING_VALIDATION_PILOT.md.
 
-Publish scoped evidence/source/tests/report/memory to capstone-gpu branch
-research/hitskt-favor-plus-v1, verify remote, then STOP for next user decision.
+Scientific code/evidence/report published and remote equality verified at
+97b22b70108ff0aca4677f4999d37fdf4318210f on capstone-gpu research branch. All153
+new experiment artifacts are tracked/hash-matching; main unchanged. Publish this
+small handoff update, verify remote, then STOP for next user decision.
 Do not resume failed assist_bounded100_20261020_v1_s020: no milestone20 or14
 checkpoint, no valid optimizer continuation; consumed14 calls and no step retry.
 No automatic GPU watcher or replacement training. Source-bound v2 CPU plan and
