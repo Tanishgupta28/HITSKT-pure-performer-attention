@@ -1,5 +1,15 @@
 # Next checkpoint
 
+Latest user clarification (20 October2026): allocation FIRST. Preserve all
+LightSAKT2 work; do not stop it solely to release GPU resources before actual
+HiTSKT assignment. Do not initialize CUDA or train without verified authorization.
+No allocation evidence received. Current task is administrator-request guidance;
+no process/GPU probe, signals, hold release or restart. Prior publication complete
+at8377716832d4d4e9de10d5bf896c628188f210ad. Older sequencing below is historical
+where it conflicts with this clarification. Next bounded action: obtain the exact
+owner/node/UUID/job/window/exclusivity/no-conflict/container access confirmation in
+`reports/favor_plus_v1/ADMINISTRATOR_ALLOCATION_CONFIRMATION_REQUEST.md`.
+
 20 October 2026 UTC — LightSAKT2 preservation/hold complete; GPU ownership blocked.
 Read [USER_DIRECTIVES.md](USER_DIRECTIVES.md) and
 [FAVOR_PRIORITY_HANDOFF_STATE.md](FAVOR_PRIORITY_HANDOFF_STATE.md).

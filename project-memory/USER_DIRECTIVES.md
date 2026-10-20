@@ -2,7 +2,22 @@
 
 Updated: 2026-10-20 UTC
 
-## 2026-10-20 — Verified LightSAKT2 shutdown and bounded FAVOR+ GPU work (latest)
+## 2026-10-20 — Allocation-first clarification (latest)
+
+- User confirms both research projects are theirs but has no administrator or
+  scheduler evidence of exclusive MIG allocation. Project ownership/prioritization
+  is not permission to displace other reservations.
+- Preserve all LightSAKT2 checkpoints/results. Do not stop LightSAKT2 solely to
+  release GPU resources before HiTSKT allocation is confirmed. This supersedes
+  the earlier shutdown-before-allocation order; do not restart anything either.
+- No CUDA initialization or HiTSKT training without verified authorization and
+  allocation. Current request is administrator-confirmation guidance only.
+  No GPU/process probes, signals, hold release, training or allocation changes.
+- Prior handoff observed LightSAKT2 already stopped and sent zero signals. That
+  historical observation is not a fresh process-status claim. Existing hold and
+  all artifacts remain unchanged; no external reservation evidence received.
+
+## 2026-10-20 — Verified LightSAKT2 shutdown and bounded FAVOR+ GPU work (superseded order)
 
 - User explicitly authorizes stopping ONLY their verified LightSAKT2 training
   workload, preserving all artifacts and disabling automatic relaunches. Prior

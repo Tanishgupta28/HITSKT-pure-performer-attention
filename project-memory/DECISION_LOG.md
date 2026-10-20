@@ -1099,3 +1099,15 @@ New report/evidence/memory documents blocker and next bounded gates. No ELU+1/
 data/model/pipeline/DKT changes or main merge. Publish scoped research docs,
 then stop for actual allocation; no repeat execution approval for newly authorized
 bounded stages once resource/correctness gates genuinely pass.
+
+
+## 2026-10-20 — Allocation-first user clarification
+
+User has no administrator/scheduler exclusivity evidence. Both projects are
+owned by user, but this does not override other reservations. Preserve all
+LightSAKT2 checkpoints/results; no stopping solely for GPU release before HiTSKT
+assignment. No CUDA/training without verified authorization. Supersedes earlier
+shutdown-first order, without requesting any restart or hold release. Current
+work limited to memory and administrator-request documentation; no fresh process/
+GPU probes or operational changes. Prior stopped status/zero signals preserved
+as historical evidence. Next task is obtaining authoritative assignment details.

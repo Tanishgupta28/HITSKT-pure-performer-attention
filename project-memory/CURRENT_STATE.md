@@ -2,7 +2,17 @@
 
 Updated: 2026-10-20 UTC
 
-## LightSAKT2 handoff and GPU authorization — latest
+## Allocation-first clarification — latest
+
+User has no exclusive-allocation evidence. Preserve LightSAKT2; do not stop it
+solely for GPU release until HiTSKT allocation is confirmed. No CUDA or training
+without verified authorization. This supersedes prior shutdown-first sequencing.
+Current turn changes memory/documentation only, no fresh GPU/process inspection,
+no signals/hold release/restart/training. Prior stopped status remains historical.
+Next action: obtain administrator confirmation described in
+`reports/favor_plus_v1/ADMINISTRATOR_ALLOCATION_CONFIRMATION_REQUEST.md`.
+
+## LightSAKT2 handoff and GPU authorization — historical
 
 User permits stopping verified LightSAKT2 only and staged CUDA/five ASSIST
 updates after genuine exclusive allocation/correctness; no repeat approval for

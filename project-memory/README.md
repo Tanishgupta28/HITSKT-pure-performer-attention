@@ -30,6 +30,12 @@ remain intact; platform changes do not alter research source or live runs.
 
 ## Current short status
 
+Latest clarification: allocation first. User has no exclusive-allocation evidence;
+LightSAKT2 must not be stopped solely to free a GPU before confirmation. Preserve
+all artifacts and existing hold; no CUDA/training/resource changes. Obtain the
+administrator confirmation described in the allocation request report. No fresh
+process/GPU observation in this clarification. Prior handoff below is historical.
+
 20 October: LightSAKT2 was already interrupted, no signals sent.813 completed/
 142 pending/2 interrupted, zero live training. Restart hold and nine CPU control
 tests pass;7915 artifacts and epoch2 recovery state preserved. User now authorizes
