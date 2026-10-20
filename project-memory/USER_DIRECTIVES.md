@@ -2,7 +2,24 @@
 
 Updated: 2026-10-20 UTC
 
-## 2026-10-20 — Fresh recoverable20-update study (latest)
+## 2026-10-20 — Inspect20 and prepare50TOTAL; approval gate (latest)
+
+- Verify existing5/10/20 checkpoints/model/Adam/RNG/configuration and investigate
+  ActionEncoder .2131 error with the unchanged .20 REVIEW threshold. CPU-only
+  preparation is authorized now; preserve the completed20 campaign unchanged.
+- Check current workload/device/allocation evidence without disturbing LightSAKT2
+  or other research jobs. No new GPU execution while continuation approval is pending.
+- Obtain explicit NEW approval BEFORE30 additional optimizer calls. On approval,
+  resume the EXACT20 checkpoint/Adam/RNG/sampler/projections, never restart at0.
+  Stop at50TOTAL; compare20/30/40/50 with the same frozen validation sample and
+  separate numerical stability from predictive performance. No full training.
+- Existing owner-confirmed research allocation is historical authority, not a
+  fresh experiment grant or proof against unseen reservations. Fresh availability
+  admission required before any later CUDA initialization. Unknown holders block.
+- No threshold relaxation, unrelated baseline changes, Light interruption,
+  artifact overwrite or unsupported superiority/final-performance claims.
+
+## 2026-10-20 — Fresh recoverable20-update study (historical)
 
 - Authorize ONE new fresh ASSIST2017 max20-update pilot, not resuming the lost14.
   Keep m128/seed42/fixed projections/original optimizer/nonattention/data/protocol,

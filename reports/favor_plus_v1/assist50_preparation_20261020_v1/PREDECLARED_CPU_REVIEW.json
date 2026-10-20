@@ -1,0 +1,17 @@
+{
+  "kind": "assist20_to50_cpu_preparation_v1",
+  "base_commit": "9dcfe5ca439dcca1e84bd27fc2f26a3de16de69b",
+  "execution_status": "CPU_ONLY; NO_CONTINUATION_APPROVAL_RECEIVED",
+  "parent_checkpoint_sha256": "0388e984b8bed21210455be561524a041c892b98b2a87b50fa3ecb1c3ade86f4",
+  "scope": [
+    "CPU weights_only reload/integrity of preserved checkpoints5/10/20; source/data/config/RNG/projection/sampler checks",
+    "Replay independent float64 feature-kernel and exact softmax references on all24 saved Action prefixes:6 frozen training examples at0/5/10/20",
+    "Compare output/weight errors, feature ESS, Q/K norms/drift and FP32-versus-FP64 scan on saved representations; no model training",
+    "Frozen update20 representations only:128/256/512 features at eight preselected projection seeds0..7; descriptive sampling variance, no feature-count selection or model change",
+    "One read-only synchronous process/NVML/exposure/Light hold observation, no CUDA context",
+    "Freeze proposed30-additional-update schedule and exact next sampler identities; execution requires later explicit user approval"
+  ],
+  "bounds": {"cpu_threads": 1, "maximum_prefix_positions": 32, "projection_seeds": [0,1,2,3,4,5,6,7], "features": [128,256,512], "cuda_initializations": 0, "optimizer_calls": 0},
+  "unchanged_review_relative_l2": 0.20,
+  "inference_limits": "Six diagnostic examples are a small correlated cohort; check raw tensor duplicates. Fixed-m seed variability and FP32/FP64 comparisons can support a finite-feature explanation, not prove future training quality or statistical significance. No test split, no architecture change, no new training."
+}
