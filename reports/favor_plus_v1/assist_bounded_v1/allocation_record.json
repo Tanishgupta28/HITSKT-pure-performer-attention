@@ -1,0 +1,29 @@
+{
+  "allocation_kind": "owner_confirmed_existing_research_allocation",
+  "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+  "exclusive": true,
+  "owner": "Tanishgupta28 / user-confirmed HiTSKT research allocation",
+  "job_id": "local-assist-bounded100-20261020-v1",
+  "job_reference_kind": "local execution identifier; no scheduler job ID claimed",
+  "owner_confirms_existing_allocation": true,
+  "owner_confirmation_evidence": "reports/favor_plus_v1/assist_bounded_v1/OWNER_AND_STUDY_AUTHORIZATION.md",
+  "resource_transfer": {
+    "from_project": "LightSAKT2",
+    "to_model": "hitskt_favor_plus_v1",
+    "authorized": true
+  },
+  "starts_utc": "2026-10-20T11:48:44.674898+00:00",
+  "expires_utc": "2026-10-20T13:48:44.674898+00:00",
+  "window_scope": "operator-imposed two-hour execution ceiling, not independently observed scheduler expiry",
+  "known_conflicting_reservation": false,
+  "known_explicit_restriction": false,
+  "conflict_evidence": "reports/favor_plus_v1/assist_bounded_v1/resource_admission.json",
+  "user_approval": {
+    "approved": true,
+    "evidence": "reports/favor_plus_v1/assist_bounded_v1/OWNER_AND_STUDY_AUTHORIZATION.md",
+    "actions": [
+      "favor_plus_cuda_validation",
+      "favor_plus_assist2017_bounded_100_update_validation_pilot"
+    ]
+  }
+}

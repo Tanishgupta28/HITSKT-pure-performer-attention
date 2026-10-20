@@ -1,0 +1,36 @@
+Running 99 items in this shard
+...........................F.......................................................................                                                  [100%]
+========================================================================= FAILURES =========================================================================
+____________________________________________ test_continuation_probe_preserves_rng_and_never_updates_parameters ____________________________________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7ffefe666ef0>
+
+    def test_continuation_probe_preserves_rng_and_never_updates_parameters(monkeypatch):
+        model,ex,batch,item,dataset=tiny_setup()
+        optimizer=torch.optim.Adam(model.parameters(),lr=.001)
+        # CPU-only fixture; trap CUDA calls in shared RNG helpers.
+        monkeypatch.setattr(torch.cuda,'is_available',lambda:False)
+        monkeypatch.setattr(b,'collate_selected',lambda *args:batch)
+        before=b.cpu_tree(model.state_dict());rng=torch.get_rng_state().clone()
+        first=b.continuation_probe(model,optimizer,dataset,item)
+        second=b.continuation_probe(model,optimizer,dataset,item)
+        assert first==second and first['optimizer_step_calls']==0
+        assert torch.equal(rng,torch.get_rng_state())
+>       assert b.equal_tree(before,model.state_dict()) and optimizer.state_dict()['state']=={}
+E       AssertionError: assert (False)
+E        +  where False = <function equal_tree at 0x7ffefe5d57e0>({'action_encoder.correct.weight': tensor([[ 0.9863, -0.6059, -1.4875, -1.3771, -1.1973,  0.4111, -0.2363, -1.6361],\n  ...6, -0.1508,  0.1349,  0.0080],\n        [-0.0665,  0.1250,  0.1346, -0.3312, -0.1098,  0.1441,  0.2743, -0.2282]]), ...}, OrderedDict([('action_encoder.question.weight', tensor([[ 0.0000,  0.0000,  0.0000,  0.0000,  0.0000,  0.0000,  0.0000...([[ 0.2213,  0.0775, -0.2931,  0.0300, -0.1813, -0.1116,  0.1529,  0.2835]])), ('prediction.bias', tensor([-0.1071]))]))
+E        +    where <function equal_tree at 0x7ffefe5d57e0> = b.equal_tree
+E        +    and   OrderedDict([('action_encoder.question.weight', tensor([[ 0.0000,  0.0000,  0.0000,  0.0000,  0.0000,  0.0000,  0.0000...([[ 0.2213,  0.0775, -0.2931,  0.0300, -0.1813, -0.1116,  0.1529,  0.2835]])), ('prediction.bias', tensor([-0.1071]))]) = <bound method Module.state_dict of HiTSKTFavorPlus(\n  (action_encoder): ActionEncoder(\n    (question): Embedding(10, 8...t(p=0.1, inplace=False)\n        )\n      )\n    )\n  )\n  (prediction): Linear(in_features=8, out_features=1, bias=True)\n)>()
+E        +      where <bound method Module.state_dict of HiTSKTFavorPlus(\n  (action_encoder): ActionEncoder(\n    (question): Embedding(10, 8...t(p=0.1, inplace=False)\n        )\n      )\n    )\n  )\n  (prediction): Linear(in_features=8, out_features=1, bias=True)\n)> = HiTSKTFavorPlus(\n  (action_encoder): ActionEncoder(\n    (question): Embedding(10, 8, padding_idx=0)\n    (skill): Embed...ut(p=0.1, inplace=False)\n        )\n      )\n    )\n  )\n  (prediction): Linear(in_features=8, out_features=1, bias=True)\n).state_dict
+
+tests/test_favor_plus_bounded_assist.py:127: AssertionError
+===================================================================== warnings summary =====================================================================
+tests/test_favor_plus_bounded_assist.py::test_severe_instability_stops_without_tolerance_relaxation[kwargs5]
+  /usr/local/lib/python3.10/dist-packages/numpy/lib/function_base.py:4573: RuntimeWarning: invalid value encountered in subtract
+    diff_b_a = subtract(b, a)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+----------------------------- generated xml file: /workspace/capstone/reports/favor_plus_v1/assist_bounded_v1/targeted_cpu.xml -----------------------------
+================================================================= short test summary info ==================================================================
+FAILED tests/test_favor_plus_bounded_assist.py::test_continuation_probe_preserves_rng_and_never_updates_parameters - AssertionError: assert (False)
+1 failed, 98 passed, 1 warning in 2.54s

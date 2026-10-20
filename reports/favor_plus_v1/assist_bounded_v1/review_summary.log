@@ -1,0 +1,71 @@
+{
+  "saved_cpe_qkv_change": {
+    "q": {
+      "cosine": {
+        "count": 128,
+        "minimum": 0.9891738702237137,
+        "median": 0.9929198735565972,
+        "p90": 0.9955379488216557,
+        "p95": 0.9959227831322804,
+        "maximum": 0.9963779466992377,
+        "mean": 0.9927842098511257
+      },
+      "relative_change": 0.1200555726872474,
+      "norm_ratio": {
+        "count": 128,
+        "minimum": 0.9658680259011011,
+        "median": 1.0030770769088009,
+        "p90": 1.0248378899276323,
+        "p95": 1.025819645499185,
+        "maximum": 1.0344965630654304,
+        "mean": 1.002889967834298
+      }
+    },
+    "k": {
+      "cosine": {
+        "count": 128,
+        "minimum": 0.98495752440594,
+        "median": 0.9930237623074183,
+        "p90": 0.997185005599005,
+        "p95": 0.9972423245727523,
+        "maximum": 0.997557056384822,
+        "mean": 0.9924826929617967
+      },
+      "relative_change": 0.11866233858735205,
+      "norm_ratio": {
+        "count": 128,
+        "minimum": 0.9739004704656186,
+        "median": 1.0030770466675922,
+        "p90": 1.0175643729037682,
+        "p95": 1.0203382303551767,
+        "maximum": 1.0284050986387052,
+        "mean": 1.0025600855094634
+      }
+    },
+    "v": {
+      "cosine": {
+        "count": 128,
+        "minimum": 0.9889306314704243,
+        "median": 0.9931001396785041,
+        "p90": 0.9953631639760742,
+        "p95": 0.9955157117929072,
+        "maximum": 0.9959045174767642,
+        "mean": 0.9932317875579358
+      },
+      "relative_change": 0.11549626804576979,
+      "norm_ratio": {
+        "count": 128,
+        "minimum": 0.9755684329448281,
+        "median": 0.9976166910837132,
+        "p90": 1.0199128940745503,
+        "p95": 1.0211256981618917,
+        "maximum": 1.026249584043272,
+        "mean": 1.000198554677692
+      }
+    }
+  },
+  "prepared_plan_sha256": "abcbab053bb23cbdcc1fd0aee2ac018c11cdcd4f30206ba142100136dc3d3791",
+  "maximum_independent_feature_kernel_error": 8.314731697045552e-07,
+  "decision": "Proceed with authorized bounded diagnostic pilot only; original REVIEW_REQUIRED retained; no numerical correctness defect observed",
+  "limitations": "six examples/first32 valid-position prefixes, not full attention contexts; fixed deployed projection can respond adversely to learned Q/K directions; finite-seed diagnostic variance is not statistical significance or proof of full-training quality"
+}

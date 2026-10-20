@@ -1,0 +1,39 @@
+{
+  "observed_utc": "2026-10-20T11:48:08.514142+00:00",
+  "authority": "owner explicitly confirms research allocation and authorizes this bounded100-update study; no scheduler proof invented",
+  "cuda_initialized": false,
+  "processes": {
+    "project_module_processes": [],
+    "visible_gpu_handle_owners": [],
+    "inaccessible_fd_directories": 0,
+    "visibility_limit": "Only processes visible in this PID namespace; no external scheduler reservation evidence"
+  },
+  "conflicting_visible_gpu_processes": [],
+  "conflict_policy": "unchanged production guard excludes only strictly verified read-only NVIDIA queries; raw handle snapshot and admission observation are sequential",
+  "light_hold_active": true,
+  "light_hold_sha256": "65214c2c53852024e970fd0a176f71968f204ec0748635a7e6f46de3ed64c234",
+  "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+  "device_exposure": [
+    "MIG-d2fcfd79-720e-5218-82c9-0a132be68920"
+  ],
+  "inventory": {
+    "returncode": 0,
+    "stdout": "GPU 0: NVIDIA H100 80GB HBM3 (UUID: GPU-5a568e3c-e96c-169f-b063-f4478340ff51)\n  MIG 3g.40gb     Device  0: (UUID: MIG-d2fcfd79-720e-5218-82c9-0a132be68920)",
+    "stderr": ""
+  },
+  "memory": {
+    "total_bytes": 42278584320,
+    "free_bytes": 42238869504,
+    "used_bytes": 39714816
+  },
+  "memory_cgroup": {
+    "memory.limit_in_bytes": "96636764160",
+    "memory.usage_in_bytes": "20019859456",
+    "memory.oom_control": "oom_kill_disable 0\nunder_oom 0\noom_kill 2"
+  },
+  "disk_free_bytes": 187859271680,
+  "known_conflicting_reservations": false,
+  "known_explicit_restrictions": [],
+  "visibility": "PID/container-visible processes; Kubernetes403 inherited; no independent scheduler metadata; owner statement is allocation authority",
+  "admission_status": "PASS"
+}

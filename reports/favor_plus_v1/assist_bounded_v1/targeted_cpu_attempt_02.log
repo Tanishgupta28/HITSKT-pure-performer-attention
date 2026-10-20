@@ -1,0 +1,10 @@
+Running 99 items in this shard
+...................................................................................................                                                  [100%]
+===================================================================== warnings summary =====================================================================
+tests/test_favor_plus_bounded_assist.py::test_severe_instability_stops_without_tolerance_relaxation[kwargs5]
+  /usr/local/lib/python3.10/dist-packages/numpy/lib/function_base.py:4573: RuntimeWarning: invalid value encountered in subtract
+    diff_b_a = subtract(b, a)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+----------------------------- generated xml file: /workspace/capstone/reports/favor_plus_v1/assist_bounded_v1/targeted_cpu.xml -----------------------------
+99 passed, 1 warning in 2.59s
