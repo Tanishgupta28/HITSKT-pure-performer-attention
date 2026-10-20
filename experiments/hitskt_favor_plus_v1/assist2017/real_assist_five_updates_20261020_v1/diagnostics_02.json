@@ -1,0 +1,371 @@
+{
+  "after_optimizer_updates": 2,
+  "diagnostic_wall_seconds": 0.16740406199824065,
+  "fixed_training_example_eval_bce": 0.9462597966194153,
+  "fixed_training_target": 1558,
+  "mode": "eval; fixed input; QKV evolves with weights",
+  "stages": {
+    "action_encoder.layers.0.attention": {
+      "feature_kernel_agreement": "PASS",
+      "feature_versus_exact_softmax": {
+        "max_abs": 0.6276773442820943,
+        "mse": 0.006017320766801223,
+        "relative_l2": 0.19842923663120657,
+        "rmse": 0.07757139141978325
+      },
+      "features": 128,
+      "heads": 4,
+      "implementation_error": {
+        "max_abs": 4.639337036760338e-07,
+        "mse": 3.750223211271657e-15,
+        "relative_l2": 1.5579095482630599e-07,
+        "rmse": 6.123906605486124e-08
+      },
+      "kernel_statistics": {
+        "absolute_log_kernel_error": {
+          "count": 2112,
+          "maximum": 2.332933084607757,
+          "mean": 0.4026356855903327,
+          "median": 0.32271695816039514,
+          "minimum": 4.933543972462928e-06,
+          "p90": 0.8346561631646496,
+          "p95": 1.0452048780955694
+        },
+        "feature_ess": {
+          "count": 2112,
+          "maximum": 34.34933137208386,
+          "mean": 8.893385417322287,
+          "median": 8.250566178524421,
+          "minimum": 1.1047296222190393,
+          "p90": 16.41082066840236,
+          "p95": 19.63852011392329
+        },
+        "iid_log10_cv_squared": {
+          "count": 2112,
+          "maximum": 1.4892213867086792,
+          "mean": 0.3553683540307898,
+          "median": 0.3574224909009487,
+          "minimum": -1.050127156615129,
+          "p90": 0.8283146943013796,
+          "p95": 0.9617945164243539
+        },
+        "mean_attention_total_variation": 0.14690066643997451,
+        "mean_exact_to_feature_kl": 0.07797660415602041,
+        "signed_log_kernel_error": {
+          "count": 2112,
+          "maximum": 2.332933084607757,
+          "mean": -0.12486273456388854,
+          "median": -0.18391485009048347,
+          "minimum": -1.6162584672598386,
+          "p90": 0.5094175523326487,
+          "p95": 0.7720755916724624
+        }
+      },
+      "norms_all_valid_tokens": {
+        "key": {
+          "count": 664,
+          "maximum": 5.943341161114647,
+          "mean": 4.661562091937114,
+          "median": 4.668379024051906,
+          "minimum": 3.3807297531494043,
+          "p90": 5.1403142468824745,
+          "p95": 5.276499413752524
+        },
+        "query": {
+          "count": 664,
+          "maximum": 5.645396301202446,
+          "mean": 4.560128604763786,
+          "median": 4.5649756723911725,
+          "minimum": 3.3509882031590976,
+          "p90": 5.025928820693632,
+          "p95": 5.1273730153494395
+        }
+      },
+      "oracle": "independent NumPy/SciPy float64",
+      "p95_ratio_to_initial": {
+        "key": 1.0003255599784806,
+        "query": 1.0000237454326986
+      },
+      "prefix_positions_including_eos": 32,
+      "production_versus_exact_softmax": {
+        "max_abs": 0.6276772529831104,
+        "mse": 0.00601732272877793,
+        "relative_l2": 0.19842926898061286,
+        "rmse": 0.07757140406604698
+      },
+      "review_flags": []
+    },
+    "correct_padding_encoder.layers.0.attention": {
+      "feature_kernel_agreement": "PASS",
+      "feature_versus_exact_softmax": {
+        "max_abs": 0.896050277108253,
+        "mse": 0.01208368826176973,
+        "relative_l2": 0.2246458378502461,
+        "rmse": 0.10992583073040535
+      },
+      "features": 128,
+      "heads": 4,
+      "implementation_error": {
+        "max_abs": 4.6896266955864796e-07,
+        "mse": 2.7242453103054447e-15,
+        "relative_l2": 1.0550266288617834e-07,
+        "rmse": 5.219430342772518e-08
+      },
+      "kernel_statistics": {
+        "absolute_log_kernel_error": {
+          "count": 2112,
+          "maximum": 1.7939551348259961,
+          "mean": 0.4613956408346509,
+          "median": 0.38410321296551386,
+          "minimum": 0.0004800028621248509,
+          "p90": 0.9705331241826318,
+          "p95": 1.0663689474519298
+        },
+        "feature_ess": {
+          "count": 2112,
+          "maximum": 33.27833599305839,
+          "mean": 9.150529847506363,
+          "median": 7.879559119579449,
+          "minimum": 1.1573666312417779,
+          "p90": 17.792953783553873,
+          "p95": 20.398330275402763
+        },
+        "iid_log10_cv_squared": {
+          "count": 2112,
+          "maximum": 1.1658143239874212,
+          "mean": 0.13656974039478584,
+          "median": 0.15282774614708206,
+          "minimum": -0.8916958728911325,
+          "p90": 0.6715934840449729,
+          "p95": 0.8295274292281356
+        },
+        "mean_attention_total_variation": 0.15089637528947977,
+        "mean_exact_to_feature_kl": 0.0979615506777779,
+        "signed_log_kernel_error": {
+          "count": 2112,
+          "maximum": 1.7939551348259961,
+          "mean": -0.21088512639370857,
+          "median": -0.27207894003595234,
+          "minimum": -1.1941953410947217,
+          "p90": 0.5102317858995937,
+          "p95": 0.8481343295992804
+        }
+      },
+      "norms_all_valid_tokens": {
+        "key": {
+          "count": 272,
+          "maximum": 5.346685857146817,
+          "mean": 4.50376168325616,
+          "median": 4.476495493139124,
+          "minimum": 3.48358286513194,
+          "p90": 5.070328460456797,
+          "p95": 5.162720896715113
+        },
+        "query": {
+          "count": 272,
+          "maximum": 5.641642968161831,
+          "mean": 4.770958098609198,
+          "median": 4.754795339220234,
+          "minimum": 3.8092724888478386,
+          "p90": 5.308161172860675,
+          "p95": 5.494886114629011
+        }
+      },
+      "oracle": "independent NumPy/SciPy float64",
+      "p95_ratio_to_initial": {
+        "key": 1.002742440051835,
+        "query": 1.0163817130716735
+      },
+      "prefix_positions_including_eos": 32,
+      "production_versus_exact_softmax": {
+        "max_abs": 0.8960503448337351,
+        "mse": 0.012083686652475202,
+        "relative_l2": 0.22464582289118223,
+        "rmse": 0.10992582341049442
+      },
+      "review_flags": [
+        "softmax_relative_l2_above_review_trigger"
+      ]
+    },
+    "decoder.layers.0.attention": {
+      "feature_kernel_agreement": "PASS",
+      "feature_versus_exact_softmax": {
+        "max_abs": 0.37673759747973395,
+        "mse": 0.0029977859166344183,
+        "relative_l2": 0.10929090579616249,
+        "rmse": 0.05475204029654437
+      },
+      "features": 128,
+      "heads": 4,
+      "implementation_error": {
+        "max_abs": 2.992605563356676e-07,
+        "mse": 1.8168620442148145e-15,
+        "relative_l2": 8.491898375042278e-08,
+        "rmse": 4.2624664740204283e-08
+      },
+      "kernel_statistics": {
+        "absolute_log_kernel_error": {
+          "count": 2112,
+          "maximum": 2.3902513027232826,
+          "mean": 0.4394756738942656,
+          "median": 0.3605342482425577,
+          "minimum": 1.854953727145614e-05,
+          "p90": 0.9189946449733931,
+          "p95": 1.0509721329438864
+        },
+        "feature_ess": {
+          "count": 2112,
+          "maximum": 30.522530384510386,
+          "mean": 10.813823760824015,
+          "median": 10.866596306573895,
+          "minimum": 1.1006995080995854,
+          "p90": 17.828250365783404,
+          "p95": 20.172889403999555
+        },
+        "iid_log10_cv_squared": {
+          "count": 2112,
+          "maximum": 1.1911117451657183,
+          "mean": 0.1339144067127039,
+          "median": 0.03805554802301475,
+          "minimum": -0.7698089795617864,
+          "p90": 0.694474357568912,
+          "p95": 0.8156495857241082
+        },
+        "mean_attention_total_variation": 0.09001584190097067,
+        "mean_exact_to_feature_kl": 0.04260723126001645,
+        "signed_log_kernel_error": {
+          "count": 2112,
+          "maximum": 2.3902513027232826,
+          "mean": -0.2932546347185528,
+          "median": -0.3053882549679893,
+          "minimum": -1.325425734211592,
+          "p90": 0.14694162500215768,
+          "p95": 0.3964576933253224
+        }
+      },
+      "norms_all_valid_tokens": {
+        "key": {
+          "count": 272,
+          "maximum": 5.53040734439521,
+          "mean": 4.518155341952893,
+          "median": 4.462072786615321,
+          "minimum": 3.6820319588047847,
+          "p90": 4.984184557067421,
+          "p95": 5.021845399971133
+        },
+        "query": {
+          "count": 272,
+          "maximum": 5.670663183657621,
+          "mean": 4.582576643142983,
+          "median": 4.600312834027946,
+          "minimum": 3.724203419269937,
+          "p90": 5.044586219793403,
+          "p95": 5.164478370582322
+        }
+      },
+      "oracle": "independent NumPy/SciPy float64",
+      "p95_ratio_to_initial": {
+        "key": 0.9954643682005999,
+        "query": 1.0012858033225407
+      },
+      "prefix_positions_including_eos": 32,
+      "production_versus_exact_softmax": {
+        "max_abs": 0.3767375306770942,
+        "mse": 0.002997786297183859,
+        "relative_l2": 0.10929091273304739,
+        "rmse": 0.05475204377175211
+      },
+      "review_flags": []
+    },
+    "session_encoder.layers.0.attention": {
+      "feature_kernel_agreement": "PASS",
+      "feature_versus_exact_softmax": {
+        "max_abs": 0.22800239939900452,
+        "mse": 0.0005838863251799337,
+        "relative_l2": 0.046867612124397974,
+        "rmse": 0.024163739883965266
+      },
+      "features": 128,
+      "heads": 4,
+      "implementation_error": {
+        "max_abs": 2.1998800603384439e-07,
+        "mse": 1.7671872054536352e-15,
+        "relative_l2": 8.16218906871386e-08,
+        "rmse": 4.2037925798659896e-08
+      },
+      "kernel_statistics": {
+        "absolute_log_kernel_error": {
+          "count": 112,
+          "maximum": 1.3791681553869874,
+          "mean": 0.5792590151358498,
+          "median": 0.49392849922577153,
+          "minimum": 0.005838711964944801,
+          "p90": 1.142908574599664,
+          "p95": 1.2120255223129661
+        },
+        "feature_ess": {
+          "count": 112,
+          "maximum": 16.49660895250189,
+          "mean": 7.641143508674641,
+          "median": 7.968758511901837,
+          "minimum": 1.6812568554427434,
+          "p90": 12.69210582835308,
+          "p95": 13.410136675606122
+        },
+        "iid_log10_cv_squared": {
+          "count": 112,
+          "maximum": 1.6281226469702255,
+          "mean": 0.4878388251999523,
+          "median": 0.2365389792488276,
+          "minimum": -0.37921628396655893,
+          "p90": 1.3578979345784639,
+          "p95": 1.467737002359228
+        },
+        "mean_attention_total_variation": 0.04966121808748956,
+        "mean_exact_to_feature_kl": 0.013655514564647678,
+        "signed_log_kernel_error": {
+          "count": 112,
+          "maximum": 1.1074498755663549,
+          "mean": -0.3624625861033874,
+          "median": -0.4096793399138018,
+          "minimum": -1.3791681553869874,
+          "p90": 0.40481044362315366,
+          "p95": 0.6604026375027093
+        }
+      },
+      "norms_all_valid_tokens": {
+        "key": {
+          "count": 28,
+          "maximum": 5.456762806196201,
+          "mean": 4.8311118961403094,
+          "median": 4.805998947250192,
+          "minimum": 4.232421701767807,
+          "p90": 5.2057159622880365,
+          "p95": 5.249295911627389
+        },
+        "query": {
+          "count": 28,
+          "maximum": 6.057479141548079,
+          "mean": 4.955499955685163,
+          "median": 5.0297388480846505,
+          "minimum": 4.010091865836229,
+          "p90": 5.787916194406392,
+          "p95": 5.884900625587582
+        }
+      },
+      "oracle": "independent NumPy/SciPy float64",
+      "p95_ratio_to_initial": {
+        "key": 0.9951207631139096,
+        "query": 0.9953452523036224
+      },
+      "prefix_positions_including_eos": 7,
+      "production_versus_exact_softmax": {
+        "max_abs": 0.22800219358685309,
+        "mse": 0.0005838857743272599,
+        "relative_l2": 0.04686759001636563,
+        "rmse": 0.024163728485630274
+      },
+      "review_flags": []
+    }
+  }
+}

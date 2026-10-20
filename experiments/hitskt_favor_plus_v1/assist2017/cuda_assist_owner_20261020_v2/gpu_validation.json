@@ -1,0 +1,385 @@
+{
+  "access_guard_sha256": "bc73005c4df387b1fd871454a5f6fc030c53ddb8a7a26e8732ff1dc2c7065ca2",
+  "allocation_resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+  "checkpoint_sha256": "27b319b4e90763f3d225dbafcbb6317e5d2d6407225b1e654ce4f068453fe54e",
+  "features": 128,
+  "full_model_cpu_cuda_max_abs_logit_difference": 2.384185791015625e-07,
+  "full_model_cpu_cuda_max_abs_parameter_gradient_difference": 1.1920928955078125e-07,
+  "full_model_peak_allocated_bytes": 152380928,
+  "full_model_shift_gradients_checkpoint": "PASS",
+  "full_model_wall_seconds": 0.5873158390168101,
+  "kernels": [
+    {
+      "chunk": 16,
+      "features": 128,
+      "independent_gradient_max_abs": [
+        2.4404010610283924e-10,
+        3.821634271788509e-10,
+        1.4376589068526568e-10
+      ],
+      "length": 17,
+      "max_abs_gradients": [
+        1.3096723705530167e-10,
+        2.3283064365386963e-10,
+        1.1641532182693481e-10
+      ],
+      "max_abs_output": 5.960464477539063e-08,
+      "output_and_gradients_finite": true,
+      "peak_allocated_bytes": 70067200,
+      "positions_per_second": 63.09436070610877,
+      "seconds": 0.2694377090083435,
+      "status": "PASS"
+    },
+    {
+      "chunk": 32,
+      "features": 128,
+      "independent_gradient_max_abs": [
+        2.4404010610283924e-10,
+        3.821634271788509e-10,
+        1.4376589068526568e-10
+      ],
+      "length": 17,
+      "max_abs_gradients": [
+        1.3096723705530167e-10,
+        2.3283064365386963e-10,
+        1.1641532182693481e-10
+      ],
+      "max_abs_output": 5.960464477539063e-08,
+      "output_and_gradients_finite": true,
+      "peak_allocated_bytes": 70172160,
+      "positions_per_second": 1026.4760150310467,
+      "seconds": 0.016561517026275396,
+      "status": "PASS"
+    },
+    {
+      "chunk": 64,
+      "features": 128,
+      "independent_gradient_max_abs": [
+        2.4404010610283924e-10,
+        3.821634271788509e-10,
+        1.4376589068526568e-10
+      ],
+      "length": 17,
+      "max_abs_gradients": [
+        1.3096723705530167e-10,
+        2.3283064365386963e-10,
+        1.1641532182693481e-10
+      ],
+      "max_abs_output": 5.960464477539063e-08,
+      "output_and_gradients_finite": true,
+      "peak_allocated_bytes": 70172160,
+      "positions_per_second": 1026.329397934904,
+      "seconds": 0.016563882934860885,
+      "status": "PASS"
+    },
+    {
+      "chunk": 16,
+      "features": 128,
+      "independent_gradient_max_abs": [
+        3.063363176317742e-11,
+        6.473612006966268e-11,
+        2.931091572797376e-11
+      ],
+      "length": 65,
+      "max_abs_gradients": [
+        2.5658638408421197e-11,
+        4.979483492206782e-11,
+        2.9103830456733704e-11
+      ],
+      "max_abs_output": 1.1920928955078125e-07,
+      "output_and_gradients_finite": true,
+      "peak_allocated_bytes": 70836224,
+      "positions_per_second": 1025.5924610072095,
+      "seconds": 0.06337800098117441,
+      "status": "PASS"
+    },
+    {
+      "chunk": 32,
+      "features": 128,
+      "independent_gradient_max_abs": [
+        3.063363176317742e-11,
+        6.473612006966268e-11,
+        2.931091572797376e-11
+      ],
+      "length": 65,
+      "max_abs_gradients": [
+        2.5658638408421197e-11,
+        4.979483492206782e-11,
+        2.9103830456733704e-11
+      ],
+      "max_abs_output": 1.1920928955078125e-07,
+      "output_and_gradients_finite": true,
+      "peak_allocated_bytes": 73092096,
+      "positions_per_second": 1075.1400663997003,
+      "seconds": 0.06045723904389888,
+      "status": "PASS"
+    },
+    {
+      "chunk": 64,
+      "features": 128,
+      "independent_gradient_max_abs": [
+        3.063363176317742e-11,
+        6.473612006966268e-11,
+        2.931091572797376e-11
+      ],
+      "length": 65,
+      "max_abs_gradients": [
+        2.5658638408421197e-11,
+        4.979483492206782e-11,
+        2.9103830456733704e-11
+      ],
+      "max_abs_output": 1.1920928955078125e-07,
+      "output_and_gradients_finite": true,
+      "peak_allocated_bytes": 77450240,
+      "positions_per_second": 1083.9175649750823,
+      "seconds": 0.059967659995891154,
+      "status": "PASS"
+    },
+    {
+      "chunk": 16,
+      "features": 128,
+      "independent_gradient_max_abs": null,
+      "length": 257,
+      "max_abs_gradients": [
+        6.328493718649186e-12,
+        3.012701199622825e-11,
+        1.4551915228366852e-11
+      ],
+      "max_abs_output": 1.1920928955078125e-07,
+      "output_and_gradients_finite": true,
+      "peak_allocated_bytes": 73324544,
+      "positions_per_second": 1089.3176329783425,
+      "seconds": 0.23592751298565418,
+      "status": "PASS"
+    },
+    {
+      "chunk": 32,
+      "features": 128,
+      "independent_gradient_max_abs": null,
+      "length": 257,
+      "max_abs_gradients": [
+        6.328493718649186e-12,
+        3.012701199622825e-11,
+        1.4551915228366852e-11
+      ],
+      "max_abs_output": 1.1920928955078125e-07,
+      "output_and_gradients_finite": true,
+      "peak_allocated_bytes": 75171840,
+      "positions_per_second": 1111.1141377553222,
+      "seconds": 0.23129936994519085,
+      "status": "PASS"
+    },
+    {
+      "chunk": 64,
+      "features": 128,
+      "independent_gradient_max_abs": null,
+      "length": 257,
+      "max_abs_gradients": [
+        6.328493718649186e-12,
+        3.012701199622825e-11,
+        1.4551915228366852e-11
+      ],
+      "max_abs_output": 1.1920928955078125e-07,
+      "output_and_gradients_finite": true,
+      "peak_allocated_bytes": 79486976,
+      "positions_per_second": 1081.3920542443548,
+      "seconds": 0.2376566380262375,
+      "status": "PASS"
+    },
+    {
+      "chunk": 16,
+      "features": 128,
+      "independent_gradient_max_abs": null,
+      "length": 939,
+      "max_abs_gradients": [
+        1.9895196601282805e-12,
+        4.547473508864641e-12,
+        5.4569682106375694e-12
+      ],
+      "max_abs_output": 1.7881393432617188e-07,
+      "output_and_gradients_finite": true,
+      "peak_allocated_bytes": 81870336,
+      "positions_per_second": 1096.6927317956438,
+      "seconds": 0.8562106529716402,
+      "status": "PASS"
+    },
+    {
+      "chunk": 32,
+      "features": 128,
+      "independent_gradient_max_abs": null,
+      "length": 939,
+      "max_abs_gradients": [
+        1.9895196601282805e-12,
+        4.547473508864641e-12,
+        5.4569682106375694e-12
+      ],
+      "max_abs_output": 1.7881393432617188e-07,
+      "output_and_gradients_finite": true,
+      "peak_allocated_bytes": 82538496,
+      "positions_per_second": 1114.575655712479,
+      "seconds": 0.8424730929546058,
+      "status": "PASS"
+    },
+    {
+      "chunk": 64,
+      "features": 128,
+      "independent_gradient_max_abs": null,
+      "length": 939,
+      "max_abs_gradients": [
+        1.9895196601282805e-12,
+        4.547473508864641e-12,
+        5.4569682106375694e-12
+      ],
+      "max_abs_output": 1.7881393432617188e-07,
+      "output_and_gradients_finite": true,
+      "peak_allocated_bytes": 86104576,
+      "positions_per_second": 1109.4211387889438,
+      "seconds": 0.846387334051542,
+      "status": "PASS"
+    },
+    {
+      "chunk": 16,
+      "features": 128,
+      "independent_gradient_max_abs": null,
+      "length": 3925,
+      "max_abs_gradients": [
+        7.919782451376589e-13,
+        1.3749001936957939e-12,
+        1.3642420526593924e-12
+      ],
+      "max_abs_output": 1.1920928955078125e-07,
+      "output_and_gradients_finite": true,
+      "peak_allocated_bytes": 120293376,
+      "positions_per_second": 1091.2944549768172,
+      "seconds": 3.5966461499920115,
+      "status": "PASS"
+    },
+    {
+      "chunk": 32,
+      "features": 128,
+      "independent_gradient_max_abs": null,
+      "length": 3925,
+      "max_abs_gradients": [
+        7.919782451376589e-13,
+        1.3749001936957939e-12,
+        1.3642420526593924e-12
+      ],
+      "max_abs_output": 1.1920928955078125e-07,
+      "output_and_gradients_finite": true,
+      "peak_allocated_bytes": 115740160,
+      "positions_per_second": 1117.151641278165,
+      "seconds": 3.5133994839852676,
+      "status": "PASS"
+    },
+    {
+      "chunk": 64,
+      "features": 128,
+      "independent_gradient_max_abs": null,
+      "length": 3925,
+      "max_abs_gradients": [
+        7.919782451376589e-13,
+        1.3749001936957939e-12,
+        1.3642420526593924e-12
+      ],
+      "max_abs_output": 1.1920928955078125e-07,
+      "output_and_gradients_finite": true,
+      "peak_allocated_bytes": 116173824,
+      "positions_per_second": 1115.565809356309,
+      "seconds": 3.5183939549606293,
+      "status": "PASS"
+    },
+    {
+      "chunk": 16,
+      "features": 128,
+      "independent_gradient_max_abs": null,
+      "length": 13081,
+      "max_abs_gradients": [
+        3.410605131648481e-13,
+        3.410605131648481e-13,
+        2.2737367544323206e-13
+      ],
+      "max_abs_output": 1.1920928955078125e-07,
+      "output_and_gradients_finite": true,
+      "peak_allocated_bytes": 235791872,
+      "positions_per_second": 1092.6900287099756,
+      "seconds": 11.971373085048981,
+      "status": "PASS"
+    },
+    {
+      "chunk": 32,
+      "features": 128,
+      "independent_gradient_max_abs": null,
+      "length": 13081,
+      "max_abs_gradients": [
+        3.410605131648481e-13,
+        3.410605131648481e-13,
+        2.2737367544323206e-13
+      ],
+      "max_abs_output": 1.1920928955078125e-07,
+      "output_and_gradients_finite": true,
+      "peak_allocated_bytes": 216523264,
+      "positions_per_second": 1114.1614524365732,
+      "seconds": 11.740668258978985,
+      "status": "PASS"
+    },
+    {
+      "chunk": 64,
+      "features": 128,
+      "independent_gradient_max_abs": null,
+      "length": 13081,
+      "max_abs_gradients": [
+        3.410605131648481e-13,
+        3.410605131648481e-13,
+        2.2737367544323206e-13
+      ],
+      "max_abs_output": 1.1920928955078125e-07,
+      "output_and_gradients_finite": true,
+      "peak_allocated_bytes": 216523264,
+      "positions_per_second": 1116.5460832867907,
+      "seconds": 11.715593467932194,
+      "status": "PASS"
+    }
+  ],
+  "oracle_sha256": "11148db1c52458aeb03a0b1af99b301179eaf956d2decb68ceafcbf7426faf98",
+  "profile": "assist2017",
+  "raw_response_own_label_future_padding_checks": "PASS",
+  "runtime": {
+    "cuda_runtime": "12.5",
+    "cudnn_allow_tf32": false,
+    "cudnn_benchmark": false,
+    "cudnn_deterministic": true,
+    "deterministic_algorithms": true,
+    "device": "cuda:0",
+    "float32_matmul_precision": "highest",
+    "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+    "gpu_capability": [
+      9,
+      0
+    ],
+    "matmul_allow_tf32": false,
+    "numpy": "1.24.4",
+    "python": "3.10.12",
+    "threads": 1,
+    "torch": "2.4.0a0+f70bd71a48.nv24.06"
+  },
+  "scope": "bounded synthetic GPU verification",
+  "script_sha256": "a6d35184b4e8d02750b990e50d4be2b83702a389f4379f8663b777bbe8158bdc",
+  "source": {
+    "git_head": "1fa0bab2e3ddb5846d3f8f7905e2df2e25ba85e7",
+    "source_sha256": {
+      "ktbench/batching.py": "baffe36d07b869498fbd8eaee12da9317b1b451a0061b52845a47b21d51c2ea5",
+      "ktbench/data/session_store.py": "6c695bc23da5c4b8116d29b5a099c16bb5669a99eb5cdfb9c378ace81d39f218",
+      "ktbench/favor_plus_pipeline.py": "b457c695f5b3672551a03551b8c247c86a78eaf0664236d87d6a4441fbcb2171",
+      "ktbench/hitskt_registry.py": "a2ea1bcc35ad634688a4776564d42147def529b5060e0c315e45437042af1448",
+      "ktbench/metrics.py": "6b57353631c67f5afd5b2785e3787ffdcf15086c0212a9bac75bba199eab6727",
+      "ktbench/models/favor_plus.py": "e6ebc03554a08b9a61204fa481eae6bb0fbe8fe455302df37c78ecd7a72eb2af",
+      "ktbench/models/hitskt.py": "627e3715eb1bd386139a7ba69eb603e6ac49dafe111f46e53ea731c03f55c515",
+      "ktbench/models/hitskt_favor_plus.py": "5a90cc69b4eefb7ffd1ea30c78d36cd9bf531537803a5f51c4d3cb97089c7e8b",
+      "ktbench/models/performer.py": "1b517922893f8573d294fbb036b0f7af6bb9e8d4a1a7808d50db52682d323004",
+      "scripts/evaluate_hitskt_favor_plus.py": "e4c1e0b9f43ef1c2a8b70c97d71c8510d605ff4431f41b54b66560c4e4936b4d",
+      "scripts/train_hitskt_favor_plus.py": "7641a16f41cb0852ac288c2e881b85b4ff085103000d83dfcd2b0c18aea08bb6"
+    }
+  },
+  "status": "PASS",
+  "total_wall_seconds": 88.39384685398545
+}

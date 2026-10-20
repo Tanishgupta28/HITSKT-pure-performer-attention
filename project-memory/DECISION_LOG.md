@@ -1129,3 +1129,37 @@ metrics, model/data/DKT edits, watcher or allocation change. Fresh report/eviden
 under reports/favor_plus_v1/EXISTING_ALLOCATION_REUSE_STATUS_20261020.md and
 existing_allocation_reuse_20261020_v1/inspection.json in HiTSKT. Preserve all
 original artifacts and scoped branch publication; later full training needs approval.
+
+
+## 2026-10-20 — Explicit allocation owner confirmation; first CUDA/real pilot
+
+User explicitly confirms H100 server/research allocation and authorizes transfer
+from LightSAKT2, staged CUDA and <=5 real ASSIST updates. Accept owner statement;
+Kubernetes403 is only visibility limitation, no repeated administrator request.
+Narrow owner-transfer guard for exact historical MIG, process/exposure/hold checks,
+independent CUDA gradients/raw-response masks and actual parameter-update evidence
+added. No attention math/nonattention architecture/data/protocol/tolerance change.
+
+Pre-CUDA guard rejected PID2730863; exited before identification. Readmission
+passed. First CUDA attempt passed4 cases then aborted for GPU handle PID2731414,
+also exited unidentified; no retrospective claim of harmlessness or true training
+conflict. Preserved logs/source snapshots/failure. Overbroad guard corrected for
+strictly read-only trusted nvidia-smi queries; compute/unknown/reset still blocked.
+81 final targeted CPU tests pass (25new+56existing),229 suite not repeated.
+Fresh source-bound plan and final CUDA run _v2 pass18 cases through13081 plus
+full-model own/future label gradients, BOS/EOS/PAD and exact checkpoint. Real
+ASSIST run _v1 completes exactly5 actual Adam updates/292 targets, all finite,
+nonzero parameter changes and exact checkpoint/optimizer/RNG roundtrip. Separate
+fresh CPU payload verification passes, all61 Adam counters5, no extra update.
+
+BCE1.104535/0.810827/0.735960/0.765223/0.659244; allocated287.890MiB/reserved368MiB,
+measured pilot execution5.332492s, full CUDA harness88.393847s. Approximation
+REVIEW_REQUIRED: CorrectPaddingEncoder fixed-prefix relative-softmax error
+0.181169→0.236181, crossing predeclared0.20 after update1. Modest2.386% p95 norm
+growth and median ESS>2 do not remove that concern. Independent feature-kernel
+max error5.33e-7 passes. No AUC, accuracy, test or validation, convergence or
+full-training readiness claim. Checkpoints local/ignored with hashes, bounded
+NPZ/JSON/source/log evidence published. GPU processes exited and memory baseline
+restored, Light hold intact, OOM counter unchanged. No Light/DKT/ELU+1/historical
+artifact modification. Next training/shape/validation pilot requires explicit
+new approval/budget; stop after scoped publication, no automatic training/polling.

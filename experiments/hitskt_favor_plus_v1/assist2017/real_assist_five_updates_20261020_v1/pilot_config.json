@@ -1,0 +1,283 @@
+{
+  "allocation_record": {
+    "allocation_kind": "owner_confirmed_existing_research_allocation",
+    "conflict_evidence": "reports/favor_plus_v1/first_real_cuda_pilot_20261020_v1/resource_admission.json",
+    "exclusive": true,
+    "expires_utc": "2026-10-20T12:44:44.083619+00:00",
+    "job_id": "local-bounded-scope-first-real-favor-cuda-20261020-v1",
+    "job_reference_kind": "local execution identifier; no scheduler job ID claimed",
+    "known_conflicting_reservation": false,
+    "known_explicit_restriction": false,
+    "owner": "Tanishgupta28 / user-confirmed HiTSKT research allocation",
+    "owner_confirmation_evidence": "reports/favor_plus_v1/first_real_cuda_pilot_20261020_v1/OWNER_AUTHORIZATION.md",
+    "owner_confirms_existing_allocation": true,
+    "resource_transfer": {
+      "authorized": true,
+      "from_project": "LightSAKT2",
+      "to_model": "hitskt_favor_plus_v1"
+    },
+    "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+    "starts_utc": "2026-10-20T10:44:44.083619+00:00",
+    "user_approval": {
+      "actions": [
+        "favor_plus_cuda_validation",
+        "favor_plus_assist2017_five_step_pilot"
+      ],
+      "approved": true,
+      "evidence": "reports/favor_plus_v1/first_real_cuda_pilot_20261020_v1/OWNER_AUTHORIZATION.md"
+    },
+    "window_scope": "operator-imposed two-hour execution ceiling, not independently observed scheduler expiry"
+  },
+  "cuda_validation_checkpoint_sha256": "27b319b4e90763f3d225dbafcbb6317e5d2d6407225b1e654ce4f068453fe54e",
+  "cuda_validation_sha256": "46b1b74be308398ded98bf7f9bd1148f6fb0c367b61dc6838969d680717ea356",
+  "full_training_ready": false,
+  "kind": "bounded_real_assist2017_favor_plus_cuda_pilot",
+  "model": "hitskt_favor_plus_v1",
+  "prepared_plan": {
+    "cpu_environment": {
+      "numpy": "1.24.4",
+      "python": "3.10.12",
+      "torch": "2.4.0a0+f70bd71a48.nv24.6"
+    },
+    "created_utc": "2026-10-20T10:47:42.944642+00:00",
+    "cuda_measurements": null,
+    "cuda_status": "NOT RUN",
+    "dataset": "assist2017",
+    "dataset_identity": {
+      "files": {
+        "_SUCCESS": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1",
+        "correct.npy": "6517980aa4aaab188099102b1084e45039070ca4a41e8821bc156530fcb0354a",
+        "metadata.json": "c2355cbe82c6a5ec6e3b6e10877e9951039739aadcd63fe74694be2c961f89b3",
+        "question.npy": "0391e7d2e56f48dd413735b70139ad9ed9bcf777b52a6df178a86de077daa67a",
+        "session_number.npy": "cfb357844d2a97675067a5014962387bcc92157dde6c2843534a92fc840676a5",
+        "session_offsets.npy": "588af771daad2badfecfd9e5c46dbc8d2227829c28be8317253d08b118ef6c89",
+        "session_split.npy": "4a1031af04d5afe5c2abb866cfee482410c898a892eeefba523fc88220577b35",
+        "session_student.npy": "d83a0c8b43f686cb48b94c7b368fa43216c069902598df62677fc3af824811a5",
+        "skill.npy": "dedbc8ea88bd780c72ab82ead70e3c9a79a43cbb1275e7832bfea129ba42ffd8",
+        "student_offsets.npy": "c26731bf541dfc71e5ef30c9fd025e62e0b8859a0aaf650dc4122437b098c473",
+        "timestamp_ms.npy": "53f29de4bd69f788e0851b8df22adf85a6210f820a4d972091949706e240d96c"
+      },
+      "metadata": {
+        "action_chunking": false,
+        "action_truncation": false,
+        "format_version": 2,
+        "interactions": 885335,
+        "maximum_session_length": 938,
+        "num_questions": 3158,
+        "num_skills": 102,
+        "processed_timestamp_unit": "milliseconds",
+        "sessions": 12402,
+        "split_sessions": {
+          "test": 1977,
+          "train": 8448,
+          "validation": 1977
+        },
+        "students": 1388,
+        "timestamp_hours_divisor": 3600000
+      }
+    },
+    "favor_config": {
+      "accumulation_dtype": "float32",
+      "chunk_size": 32,
+      "features": 128,
+      "projection_seed": 42
+    },
+    "format_version": 1,
+    "full_training_ready": false,
+    "host_memory": {
+      "cgroup_headroom_bytes": 76493656064,
+      "cgroup_limit_bytes": 96636764160,
+      "cgroup_usage_bytes": 20143108096,
+      "peak_process_rss_bytes": 567955456
+    },
+    "kind": "assist2017_favor_plus_real_pilot_preparation",
+    "limits": {
+      "batch_size": 1,
+      "diagnostic_prefix_positions": 32,
+      "max_cuda_allocated_bytes": 8589934592,
+      "max_execution_seconds": 900,
+      "max_optimizer_updates": 5,
+      "max_padded_tokens": 2048,
+      "max_process_rss_bytes": 4294967296,
+      "max_step_seconds": 120,
+      "minimum_cgroup_headroom_bytes": 2147483648
+    },
+    "model": "hitskt_favor_plus_v1",
+    "model_config": {
+      "action_layers": 1,
+      "correct_layers": 1,
+      "decoder_layers": 1,
+      "dropout": 0.1,
+      "feedforward_width": 2048,
+      "heads": 4,
+      "num_questions": 3158,
+      "num_skills": 102,
+      "session_layers": 1,
+      "width": 256
+    },
+    "model_forward_passes": 0,
+    "note": "bounded preparation only; no validation/test evaluation",
+    "optimizer_updates": 0,
+    "profile": {
+      "action_layers": 1,
+      "bucket_size": 512,
+      "context_sessions_including_target": 16,
+      "correct_layers": 1,
+      "decoder_layers": 1,
+      "dropout": 0.1,
+      "epoch_ceiling": 100,
+      "feedforward_width": 2048,
+      "heads": 4,
+      "history_sessions": 15,
+      "learning_rate": 5e-05,
+      "maximum_batch_size": 64,
+      "model": "hitskt_favor_plus_v1",
+      "optimizer": "Adam",
+      "session_layers": 1,
+      "token_budget": 32768,
+      "weight_decay": 0.0,
+      "width": 256
+    },
+    "protocol": "HiTSKT_V1_chronological_within_student_retrospective_teacher_forced",
+    "requested_updates": 5,
+    "seed": 42,
+    "selected": [
+      {
+        "dataset_index": 880,
+        "history_end_exclusive": 1558,
+        "history_lengths": [
+          19,
+          27,
+          33,
+          24,
+          47,
+          10
+        ],
+        "history_start": 1552,
+        "padded_tokens": 363,
+        "split": "train",
+        "student": 178,
+        "target_length": 67,
+        "target_session": 1558
+      },
+      {
+        "dataset_index": 3573,
+        "history_end_exclusive": 6312,
+        "history_lengths": [
+          55,
+          17,
+          51,
+          4
+        ],
+        "history_start": 6308,
+        "padded_tokens": 290,
+        "split": "train",
+        "student": 703,
+        "target_length": 60,
+        "target_session": 6312
+      },
+      {
+        "dataset_index": 2156,
+        "history_end_exclusive": 3823,
+        "history_lengths": [
+          42,
+          61,
+          4,
+          31,
+          47,
+          2,
+          59
+        ],
+        "history_start": 3816,
+        "padded_tokens": 485,
+        "split": "train",
+        "student": 431,
+        "target_length": 42,
+        "target_session": 3823
+      },
+      {
+        "dataset_index": 2863,
+        "history_end_exclusive": 5066,
+        "history_lengths": [
+          26
+        ],
+        "history_start": 5065,
+        "padded_tokens": 91,
+        "split": "train",
+        "student": 567,
+        "target_length": 61,
+        "target_session": 5066
+      },
+      {
+        "dataset_index": 3968,
+        "history_end_exclusive": 6972,
+        "history_lengths": [
+          33,
+          57,
+          30
+        ],
+        "history_start": 6969,
+        "padded_tokens": 241,
+        "split": "train",
+        "student": 776,
+        "target_length": 62,
+        "target_session": 6972
+      }
+    ],
+    "selection": "original seed42 epoch1 sampler; first eligible whole train sessions; no label selection",
+    "skipped_oversize_singletons": 0,
+    "source": {
+      "git_head": "1fa0bab2e3ddb5846d3f8f7905e2df2e25ba85e7",
+      "source_sha256": {
+        "ktbench/batching.py": "baffe36d07b869498fbd8eaee12da9317b1b451a0061b52845a47b21d51c2ea5",
+        "ktbench/config.py": "650f7ab21ca3428d212c3b6b7e3c012a055ac85ee48cabc4dc82d6a65a3b464c",
+        "ktbench/data/session_store.py": "6c695bc23da5c4b8116d29b5a099c16bb5669a99eb5cdfb9c378ace81d39f218",
+        "ktbench/favor_plus_gpu_access.py": "bc73005c4df387b1fd871454a5f6fc030c53ddb8a7a26e8732ff1dc2c7065ca2",
+        "ktbench/favor_plus_pilot_diagnostics.py": "c1ae1a51cfe3878c6a39f06cacfe9163c6ef93bc6f5bf004106665509de82062",
+        "ktbench/favor_plus_pipeline.py": "b457c695f5b3672551a03551b8c247c86a78eaf0664236d87d6a4441fbcb2171",
+        "ktbench/favor_plus_real_pilot.py": "f08cc2b286be48aef989b5ca6067fc218006671a5acf32558f1ef0fe8107c187",
+        "ktbench/hitskt_registry.py": "a2ea1bcc35ad634688a4776564d42147def529b5060e0c315e45437042af1448",
+        "ktbench/metrics.py": "6b57353631c67f5afd5b2785e3787ffdcf15086c0212a9bac75bba199eab6727",
+        "ktbench/models/favor_plus.py": "e6ebc03554a08b9a61204fa481eae6bb0fbe8fe455302df37c78ecd7a72eb2af",
+        "ktbench/models/hitskt.py": "627e3715eb1bd386139a7ba69eb603e6ac49dafe111f46e53ea731c03f55c515",
+        "ktbench/models/hitskt_favor_plus.py": "5a90cc69b4eefb7ffd1ea30c78d36cd9bf531537803a5f51c4d3cb97089c7e8b",
+        "ktbench/models/performer.py": "1b517922893f8573d294fbb036b0f7af6bb9e8d4a1a7808d50db52682d323004",
+        "ktbench/training.py": "ead48df5fd636d7a6e715f9c16eedbd562a7063e3f30a588401844d302eb6859",
+        "scripts/evaluate_hitskt_favor_plus.py": "e4c1e0b9f43ef1c2a8b70c97d71c8510d605ff4431f41b54b66560c4e4936b4d",
+        "scripts/favor_plus_quality_common.py": "11148db1c52458aeb03a0b1af99b301179eaf956d2decb68ceafcbf7426faf98",
+        "scripts/pilot_hitskt_favor_plus_real.py": "2e83e0807b381274bc13c082c799f108c0b5a5a242d1b7ec832dc94dedffc63d",
+        "scripts/train_hitskt_favor_plus.py": "7641a16f41cb0852ac288c2e881b85b4ff085103000d83dfcd2b0c18aea08bb6",
+        "scripts/validate_favor_plus_gpu.py": "a6d35184b4e8d02750b990e50d4be2b83702a389f4379f8663b777bbe8158bdc"
+      }
+    },
+    "status": "PREPARED_NOT_RUN",
+    "store_path": "/workspace/capstone/data/processed/assist2017/full/session_store",
+    "verified_dataset_plan_sha256": "da20efaa58cb7fd8d5ee2ccd1ee16a84b3b89cf6d17d26e622ab174ecc456d00"
+  },
+  "prepared_plan_sha256": "0d73bc8f8f9e9beae96d1b70dfc95558d089e077dbd2294524c557970efcefdf",
+  "source": {
+    "git_head": "1fa0bab2e3ddb5846d3f8f7905e2df2e25ba85e7",
+    "source_sha256": {
+      "ktbench/batching.py": "baffe36d07b869498fbd8eaee12da9317b1b451a0061b52845a47b21d51c2ea5",
+      "ktbench/config.py": "650f7ab21ca3428d212c3b6b7e3c012a055ac85ee48cabc4dc82d6a65a3b464c",
+      "ktbench/data/session_store.py": "6c695bc23da5c4b8116d29b5a099c16bb5669a99eb5cdfb9c378ace81d39f218",
+      "ktbench/favor_plus_gpu_access.py": "bc73005c4df387b1fd871454a5f6fc030c53ddb8a7a26e8732ff1dc2c7065ca2",
+      "ktbench/favor_plus_pilot_diagnostics.py": "c1ae1a51cfe3878c6a39f06cacfe9163c6ef93bc6f5bf004106665509de82062",
+      "ktbench/favor_plus_pipeline.py": "b457c695f5b3672551a03551b8c247c86a78eaf0664236d87d6a4441fbcb2171",
+      "ktbench/favor_plus_real_pilot.py": "f08cc2b286be48aef989b5ca6067fc218006671a5acf32558f1ef0fe8107c187",
+      "ktbench/hitskt_registry.py": "a2ea1bcc35ad634688a4776564d42147def529b5060e0c315e45437042af1448",
+      "ktbench/metrics.py": "6b57353631c67f5afd5b2785e3787ffdcf15086c0212a9bac75bba199eab6727",
+      "ktbench/models/favor_plus.py": "e6ebc03554a08b9a61204fa481eae6bb0fbe8fe455302df37c78ecd7a72eb2af",
+      "ktbench/models/hitskt.py": "627e3715eb1bd386139a7ba69eb603e6ac49dafe111f46e53ea731c03f55c515",
+      "ktbench/models/hitskt_favor_plus.py": "5a90cc69b4eefb7ffd1ea30c78d36cd9bf531537803a5f51c4d3cb97089c7e8b",
+      "ktbench/models/performer.py": "1b517922893f8573d294fbb036b0f7af6bb9e8d4a1a7808d50db52682d323004",
+      "ktbench/training.py": "ead48df5fd636d7a6e715f9c16eedbd562a7063e3f30a588401844d302eb6859",
+      "scripts/evaluate_hitskt_favor_plus.py": "e4c1e0b9f43ef1c2a8b70c97d71c8510d605ff4431f41b54b66560c4e4936b4d",
+      "scripts/favor_plus_quality_common.py": "11148db1c52458aeb03a0b1af99b301179eaf956d2decb68ceafcbf7426faf98",
+      "scripts/pilot_hitskt_favor_plus_real.py": "2e83e0807b381274bc13c082c799f108c0b5a5a242d1b7ec832dc94dedffc63d",
+      "scripts/train_hitskt_favor_plus.py": "7641a16f41cb0852ac288c2e881b85b4ff085103000d83dfcd2b0c18aea08bb6",
+      "scripts/validate_favor_plus_gpu.py": "a6d35184b4e8d02750b990e50d4be2b83702a389f4379f8663b777bbe8158bdc"
+    }
+  },
+  "validation_test_evaluations": 0
+}

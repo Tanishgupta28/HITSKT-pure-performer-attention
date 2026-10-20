@@ -1,0 +1,44 @@
+{
+  "execution_status": "PASS",
+  "kind": "bounded_real_assist2017_favor_plus_cuda_pilot",
+  "optimizer_step_calls": 5,
+  "optimizer_updates_returned": 5,
+  "checkpoint_sha256": "56f1511233cdc89b694bdf73abee6a80c9c214ba7db62fb440ec20d193107ec7",
+  "checkpoint_reload_max_abs_logit_difference": 0.0,
+  "checkpoint_optimizer_rng_integrity": "PASS",
+  "approximation_review_flags": [
+    "softmax_relative_l2_above_review_trigger"
+  ],
+  "approximation_review_status": "REVIEW_REQUIRED",
+  "peak_cuda_allocated_bytes": 301874176,
+  "peak_cuda_reserved_bytes": 385875968,
+  "host_memory": {
+    "peak_process_rss_bytes": 1982488576,
+    "cgroup_limit_bytes": 96636764160,
+    "cgroup_usage_bytes": 21418885120,
+    "cgroup_headroom_bytes": 75217879040
+  },
+  "execution_wall_seconds": 5.332492456072941,
+  "runtime": {
+    "device": "cuda:0",
+    "python": "3.10.12",
+    "torch": "2.4.0a0+f70bd71a48.nv24.06",
+    "numpy": "1.24.4",
+    "threads": 1,
+    "float32_matmul_precision": "highest",
+    "cudnn_benchmark": false,
+    "cudnn_deterministic": true,
+    "cudnn_allow_tf32": false,
+    "matmul_allow_tf32": false,
+    "deterministic_algorithms": true,
+    "cuda_runtime": "12.5",
+    "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+    "gpu_capability": [
+      9,
+      0
+    ]
+  },
+  "full_training_ready": false,
+  "validation_test_evaluations": 0,
+  "limitation": "five updates do not establish convergence, validation/test AUC or general approximation quality"
+}

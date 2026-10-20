@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "checkpoint_sha256": "56f1511233cdc89b694bdf73abee6a80c9c214ba7db62fb440ec20d193107ec7",
+  "checkpoint_bytes": 83798716,
+  "format_version": 2,
+  "variant": "hitskt_favor_plus_v1",
+  "optimizer_updates": 5,
+  "adam_step_values": [
+    5
+  ],
+  "model_and_optimizer_finite": true,
+  "rng_state_preserved": true,
+  "model_tensor_count": 65,
+  "adam_parameter_states": 61,
+  "cuda_calls": 0,
+  "model_forwards": 0,
+  "additional_optimizer_updates": 0,
+  "scope": "Fresh-process payload integrity only; exact CUDA-logit/optimizer/RNG roundtrip was separately checked in the pilot"
+}

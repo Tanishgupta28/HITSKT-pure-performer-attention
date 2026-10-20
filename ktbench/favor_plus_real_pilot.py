@@ -23,7 +23,7 @@ import torch
 
 from ktbench.batching import collate_hitskt, example_shape, padded_token_cost
 from ktbench.data.session_store import RollingSessionDataset, SessionStore, make_session_dataloader
-from ktbench.favor_plus_gpu_access import REAL_PILOT, require_gpu_authorization
+from ktbench.favor_plus_gpu_access import REAL_PILOT, require_execution_access
 from ktbench.favor_plus_pipeline import (ROOT, PROTOCOL, fresh_run, model_config, profile_for,
     runtime, sha256, source_identity, write_json)
 from ktbench.favor_plus_pilot_diagnostics import (cpu_tree, equal_tree, finite_tree,
@@ -269,7 +269,7 @@ def bounded_updates(selected, steps, perform, check, record):
 def execute(prepared_path: Path, allocation: dict, cuda_validation: Path, run_id: str):
     """Future CUDA-only execution. Never call without new user approval/allocation."""
     def authorize():
-        return require_gpu_authorization(allocation, os.environ.get("CUDA_VISIBLE_DEVICES"), REAL_PILOT)
+        return require_execution_access(allocation, os.environ.get("CUDA_VISIBLE_DEVICES"), REAL_PILOT)
     authorize()  # before plan IO, seeding, model construction, output creation or ANY CUDA API
     plan, dataset = load_prepared_plan(prepared_path)
     validation = require_cuda_verification(cuda_validation, allocation)
@@ -337,10 +337,15 @@ def execute(prepared_path: Path, allocation: dict, cuda_validation: Path, run_id
             torch.cuda.synchronize(0)
             stamp = time.perf_counter()
             stages = fixed_example_diagnostics(net, fixed_batch, baseline=baseline, save_prefix=save)
+            with torch.no_grad():
+                fixed_logits = net(fixed_batch)
+                fixed_bce = float(masked_bce_loss(fixed_logits, fixed_batch.target_labels,
+                    fixed_batch.target_metric_mask).cpu())
             torch.cuda.synchronize(0)
             row = {"after_optimizer_updates": step, "fixed_training_target": plan["selected"][0]["target_session"],
                    "mode": "eval; fixed input; QKV evolves with weights", "stages": stages,
-                   "diagnostic_wall_seconds": time.perf_counter()-stamp}
+                   "diagnostic_wall_seconds": time.perf_counter()-stamp,
+                   "fixed_training_example_eval_bce": fixed_bce}
             write_json(output/f"diagnostics_{step:02d}.json", row)
             snapshots.append(row)
             boundary()
@@ -374,15 +379,23 @@ def execute(prepared_path: Path, allocation: dict, cuda_validation: Path, run_id
                 optimizer_step_calls_before_update=counter.calls)
             if time.perf_counter()-stamp > LIMITS["max_step_seconds"]:
                 raise TimeoutError("pilot forward/backward exceeds120 seconds; optimizer not stepped")
+            before_parameters = [p.detach().clone() for p in net.parameters()]
             counter.apply(optimizer)
             torch.cuda.synchronize(0)
             seconds = time.perf_counter()-stamp
             if not finite_tree(net.state_dict()) or not finite_tree(optimizer.state_dict()):
                 raise FloatingPointError("nonfinite model/Adam state after update; stop without reset")
+            parameter_change = math.hypot(*(float((p.detach()-old).double().norm().item())
+                for p, old in zip(net.parameters(), before_parameters)))
+            del before_parameters
+            if not math.isfinite(parameter_change) or parameter_change == 0:
+                raise FloatingPointError("optimizer returned without a finite nonzero parameter update")
             if seconds > LIMITS["max_step_seconds"]:
                 raise TimeoutError("pilot update exceeds120-second acceptance budget")
             row = dict(update=step, optimizer_step_calls=counter.calls, optimizer_updates_returned=counter.returned,
                 loss=float(loss.detach().cpu()), gradient_l2_norm=grad_norm,
+                gradients_finite=True, adam_state_finite=True, model_state_finite=True,
+                parameters_changed=True, parameter_update_l2_norm=parameter_change,
                 supervised_targets=int(batch.target_metric_mask.sum()), padded_tokens=item["padded_tokens"],
                 synchronized_training_wall_seconds=seconds,
                 targets_per_second=item["target_length"]/seconds,

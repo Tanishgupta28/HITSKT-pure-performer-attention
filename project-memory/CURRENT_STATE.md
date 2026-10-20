@@ -2,7 +2,40 @@
 
 Updated: 2026-10-20 UTC
 
-## Existing-reservation reuse recheck — latest,09:24 UTC
+## First real FAVOR+ CUDA/pilot — latest completed milestone
+
+Owner explicitly confirmed existing H100 allocation and transfer; accepted as
+permission, no administrator re-request solely for Kubernetes403. Exact historical
+MIG free/exposed; LightSAKT2 stopped/held, no unrelated signals or restart.
+Scoped guard now recognizes that owner transfer and checks release/conflicts.
+Final81 targeted CPU cases PASS (25new+56existing; full229 not repeated).
+
+CUDA final run cuda_assist_owner_20261020_v2 PASS:18 length/chunk cases through
+13081, independent outputs/gradients, full ASSIST hierarchy own-label/future/PAD/
+BOS/EOS and exact checkpoint. Prior attempt aborted at resource gate after4
+passes; PIDs exited unidentified. Initial sources/logs preserved; strict trusted
+read-only NVIDIA-query classification corrected, no tolerance/math change.
+
+Real ASSIST train pilot real_assist_five_updates_20261020_v1 PASS: exactly5 Adam
+updates/292 labels, seed42/m128/B1/cost2048, all gradients/model/Adam finite,
+nonzero parameter updates, exact CUDA checkpoint/optimizer/RNG reload. Losses
+1.1045346260/0.8108273149/0.7359604239/0.7652230859/0.6592436433. Peak allocated
+301874176 bytes (287.890MiB), reserved368MiB; pilot execution5.332492s.
+Fresh CPU checkpoint load PASS, all61 Adam step counters5, no extra updates.
+
+Approximation REVIEW_REQUIRED: fixed CorrectPaddingEncoder prefix relative L2
+vs exact softmax0.181169→0.236181 (trigger0.20 crossed after update1). Max p95
+Q/K norm growth2.386%, median ESS remains>2. Production vs independent feature
+kernel max error5.33e-7 passes. Stable optimization is not adequate softmax
+quality or convergence. No AUC/accuracy/validation/test, full training not cleared.
+See [FAVOR_FIRST_REAL_CUDA_PILOT_STATE.md](FAVOR_FIRST_REAL_CUDA_PILOT_STATE.md)
+and reports/favor_plus_v1/FIRST_REAL_CUDA_PILOT_RESULTS.md. New checkpoints local
+and hashed; JSON/NPZ/log/source evidence published. Final resource check: GPU
+handles gone, memory back to baseline, Light hold active, OOM counter unchanged.
+No ELU+1/dataset/core FAVOR+ math/LightSAKT2/DKT changes. Next training stage
+requires new explicit budget/approval; no repeat pilot, watcher or full training.
+
+## Existing-reservation reuse recheck — historical,09:24 UTC
 
 Renewed user authorization permits stopping only owned LightSAKT2 now and reuse
 of an existing allocation if its actual terms permit HiTSKT with no conflicts.

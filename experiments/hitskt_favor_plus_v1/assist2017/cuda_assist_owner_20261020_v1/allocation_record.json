@@ -1,0 +1,29 @@
+{
+  "allocation_kind": "owner_confirmed_existing_research_allocation",
+  "conflict_evidence": "reports/favor_plus_v1/first_real_cuda_pilot_20261020_v1/resource_admission.json",
+  "exclusive": true,
+  "expires_utc": "2026-10-20T12:44:44.083619+00:00",
+  "job_id": "local-bounded-scope-first-real-favor-cuda-20261020-v1",
+  "job_reference_kind": "local execution identifier; no scheduler job ID claimed",
+  "known_conflicting_reservation": false,
+  "known_explicit_restriction": false,
+  "owner": "Tanishgupta28 / user-confirmed HiTSKT research allocation",
+  "owner_confirmation_evidence": "reports/favor_plus_v1/first_real_cuda_pilot_20261020_v1/OWNER_AUTHORIZATION.md",
+  "owner_confirms_existing_allocation": true,
+  "resource_transfer": {
+    "authorized": true,
+    "from_project": "LightSAKT2",
+    "to_model": "hitskt_favor_plus_v1"
+  },
+  "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+  "starts_utc": "2026-10-20T10:44:44.083619+00:00",
+  "user_approval": {
+    "actions": [
+      "favor_plus_cuda_validation",
+      "favor_plus_assist2017_five_step_pilot"
+    ],
+    "approved": true,
+    "evidence": "reports/favor_plus_v1/first_real_cuda_pilot_20261020_v1/OWNER_AUTHORIZATION.md"
+  },
+  "window_scope": "operator-imposed two-hour execution ceiling, not independently observed scheduler expiry"
+}

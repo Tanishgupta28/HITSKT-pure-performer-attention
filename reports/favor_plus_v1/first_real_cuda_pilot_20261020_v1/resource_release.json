@@ -1,0 +1,23 @@
+{
+  "observed_utc": "2026-10-20T10:53:32.683275+00:00",
+  "scope": "one final read-only release check after both owned foreground CUDA processes exited",
+  "cuda_processes_started_by_this_check": 0,
+  "processes": {
+    "project_module_processes": [],
+    "visible_gpu_handle_owners": [],
+    "inaccessible_fd_directories": 0,
+    "visibility_limit": "Only processes visible in this PID namespace; no external scheduler reservation evidence"
+  },
+  "light_hold_active": true,
+  "memory_cgroup": {
+    "memory.limit_in_bytes": "96636764160",
+    "memory.usage_in_bytes": "19980480512",
+    "memory.oom_control": "oom_kill_disable 0\nunder_oom 0\noom_kill 2"
+  },
+  "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+  "memory": {
+    "total_bytes": 42278584320,
+    "free_bytes": 42238803968,
+    "used_bytes": 39780352
+  }
+}

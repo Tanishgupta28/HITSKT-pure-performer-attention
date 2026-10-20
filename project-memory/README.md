@@ -30,6 +30,16 @@ remain intact; platform changes do not alter research source or live runs.
 
 ## Current short status
 
+Latest completed20 October: existing H100 owner allocation accepted and reused.
+CUDA18 staged cases/full-model/checkpoint PASS. Real ASSIST pilot completed
+exactly5 updates, all finite/nonzero, checkpoint exact.81 targeted CPU cases PASS.
+Approximation REVIEW_REQUIRED: CorrectPaddingEncoder relative softmax error
+18.1%→23.6%, despite modest norm growth. Full training NOT CLEARED. No test metrics,
+Light/DKT/original artifact changes or active training. See
+[FAVOR_FIRST_REAL_CUDA_PILOT_STATE.md](FAVOR_FIRST_REAL_CUDA_PILOT_STATE.md).
+Publish scoped research evidence then wait for next-stage approval; earlier
+allocation blockers/permission sequencing below are historical.
+
 Latest09:24UTC recheck: LightSAKT2 inactive, restart hold intact, no signals.
 No visible GPU handle owners; MIG nearly empty. Existing reservation reuse is
 still unverified (no assignment/transfer/window/no-conflict evidence); a new

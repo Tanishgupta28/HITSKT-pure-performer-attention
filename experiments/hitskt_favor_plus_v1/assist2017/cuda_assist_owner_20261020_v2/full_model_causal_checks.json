@@ -1,0 +1,31 @@
+{
+  "bos_eos_metric_count_and_padding": "PASS",
+  "raw_response_checks": [
+    {
+      "future_correctness_embedding_gradients_zero": true,
+      "other_batch_row_exact": true,
+      "own_and_earlier_predictions_exact": true,
+      "response_position": 0
+    },
+    {
+      "future_correctness_embedding_gradients_zero": true,
+      "other_batch_row_exact": true,
+      "own_and_earlier_predictions_exact": true,
+      "response_position": 1
+    },
+    {
+      "future_correctness_embedding_gradients_zero": true,
+      "other_batch_row_exact": true,
+      "own_and_earlier_predictions_exact": true,
+      "response_position": 2
+    },
+    {
+      "future_correctness_embedding_gradients_zero": true,
+      "other_batch_row_exact": true,
+      "own_and_earlier_predictions_exact": true,
+      "response_position": 3
+    }
+  ],
+  "status": "PASS",
+  "variable_action_session_target_lengths": true
+}

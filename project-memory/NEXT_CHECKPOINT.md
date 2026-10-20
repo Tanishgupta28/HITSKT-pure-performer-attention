@@ -1,29 +1,35 @@
 # Next checkpoint
 
-20 October2026,09:24UTC single reuse inspection complete. Latest user authorizes
-stopping verified LightSAKT2 and permits legitimate existing-reservation transfer;
-no new booking required if existing terms allow it. No live LightSAKT2 trainer/
-controller/recovery or GPU handles; hold intact. No signals or restart needed.
-7915 old files present/same size,8 key hashes/recovery archive unchanged.
-No visible GPU owners now, MIG nearly empty, but reservations remain unverified.
+20 October2026: owner-authorized H100 reuse, final CUDA verification and exactly
+five real ASSIST updates completed. Read latest USER_DIRECTIVES, CURRENT_STATE,
+[FAVOR_FIRST_REAL_CUDA_PILOT_STATE.md](FAVOR_FIRST_REAL_CUDA_PILOT_STATE.md), and
+`reports/favor_plus_v1/FIRST_REAL_CUDA_PILOT_RESULTS.md`.
 
-Stop before CUDA for specific missing evidence: existing allocation identity,
-owner/account/project transfer permission, valid UTC window and no conflicting
-current/queued reservations. No scheduler assignment exposed; Kubernetes403.
-Obtain existing record/administrator confirmation, not a new allocation by default.
-No polling/watchers/further redundant audits. Report and fresh evidence:
-`reports/favor_plus_v1/EXISTING_ALLOCATION_REUSE_STATUS_20261020.md` and
-`reports/favor_plus_v1/existing_allocation_reuse_20261020_v1/inspection.json`.
+CUDA run cuda_assist_owner_20261020_v2 PASS; real run
+real_assist_five_updates_20261020_v1 PASS with approximation REVIEW_REQUIRED.
+Source-bound successful plan real_pilot_prepare_cpu_20261020_owner_v2. All under
+experiments/hitskt_favor_plus_v1/assist2017/. Five actual Adam calls only, no sixth,
+checkpoint/source/data hashes preserved. Pilot checkpoint56f1511233cdc89b694bdf73abee6a80c9c214ba7db62fb440ec20d193107ec7
+is local/ignored; payload loaded freshly on CPU, exact CUDA reload separately PASS.
+NPZ bounded-prefix evidence, JSON/configs/logs/source snapshots and hash inventory
+are committed. Do not erase the incomplete first CUDA attempt or stale plans.
 
-Current execution scope remains conditionally authorized: actual allocation
-confirmation, narrowly tested guard update for verified transfer of protected MIG,
-fresh source-bound preparation, then unchanged staged128-feature CUDA PASS before
-<=5 ASSIST train-only updates seed42/B1/cost2048. No fabricated lease, bypass,
-full training, test evaluation, unrelated termination, DKT reset or model change.
-No repeat execution approval for these bounded phases once resource/correctness
-gates pass. Larger/full training requires next explicit user approval.
+Complete scoped commit/push to capstone-gpu research branch only, verify remote,
+then STOP. No further training authorized under the completed five-update budget,
+no watcher, LightSAKT2 restart, DKT repair/resume, main merge or historical edits.
+Preserve unrelated README/SAKT log and older LightSAKT2 dirty work.
 
-Earlier checkpoint preserved in
-[NEXT_CHECKPOINT_history_before_existing_allocation_recheck.md](NEXT_CHECKPOINT_history_before_existing_allocation_recheck.md).
-Update/publish scoped report/memory on research branch only; preserve unrelated
-README/SAKT log, older LightSAKT2 dirty state and all original artifacts.
+Next scientific decision: user review of fixed CorrectPaddingEncoder prefix
+relative-softmax error0.181169→0.236181 (threshold0.20 crossed after update1),
+then separately approve a bounded larger ASSIST training/validation/shape pilot
+with a predeclared budget. No automatic feature-count or architecture changes.
+Before full ASSIST/Junyi/EdNet, cover original15-history/long-session/B64/cost32768
+shapes, measure actual resource/throughput and learned-norm/approximation evolution,
+then validation-selected checkpoints and independent metrics after authorized
+full runs. Five updates do not establish convergence/AUC or publication readiness.
+
+Owner allocation confirmation is now durable: do not require administrator proof
+again solely for Kubernetes403. Actual conflict/restriction checks remain required
+for any newly authorized GPU work; no unknown job termination or fabricated leases.
+Current task's operator window bounds that task only. Earlier checkpoint preserved
+in [NEXT_CHECKPOINT_history_before_first_real_cuda_pilot.md](NEXT_CHECKPOINT_history_before_first_real_cuda_pilot.md).

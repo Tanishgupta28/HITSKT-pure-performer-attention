@@ -2,7 +2,26 @@
 
 Updated: 2026-10-20 UTC
 
-## 2026-10-20 — Renewed LightSAKT2 shutdown and existing-allocation transfer (latest)
+## 2026-10-20 — Owner confirms existing H100 allocation; execute bounded CUDA/pilot (latest)
+
+- User explicitly confirms H100 GPU/server allocated to them/research project
+  and authorizes transferring former LightSAKT2 MIG to HiTSKT. Accept this owner
+  confirmation as allocation permission; Kubernetes403 alone is not a blocker.
+  Do not repeat administrator requests. Independently verify current exact UUID,
+  accessibility, no conflicting workloads/known reservations or explicit restriction.
+- Use current genuine FAVOR+,128 features/seed42 and unchanged staged numerical/
+  resource gates. All required CUDA checks must PASS before genuine ASSIST train-
+  only <=5 Adam updates, B1/cost2048/original architecture/data/protocol, no test.
+- Narrowly update historical protected-resource guard to recognize this explicit
+  owner-authorized transfer while retaining conflict/restriction checks. Metadata
+  must identify owner statement honestly; do not claim administrator/scheduler proof.
+- Preserve all LightSAKT2/original ELU+1/checkpoints/results/datasets/audits/DKT.
+  No LightSAKT2 restart, unrelated signals, full training/HPO/seeds/main merge.
+  Stop on numerical/correctness/resource failure or actual conflict/restriction.
+- Save all attempted evidence and FIRST_REAL_CUDA_PILOT_RESULTS.md, update memory,
+  commit/push scoped verified changes on research/hitskt-favor-plus-v1 only.
+
+## 2026-10-20 — Renewed LightSAKT2 shutdown and existing-allocation transfer (historical)
 
 - User owns both projects and again explicitly authorizes stopping verified
   LightSAKT2 training, preserving all outputs and preventing future launches;
