@@ -1,0 +1,68 @@
+{
+  "kind": "assist20_recovery_v1_design",
+  "created_utc": "2026-10-20T13:25:26.410789+00:00",
+  "base_commit": "8d4175b88bb73bbf42ef220a41abada1cf6c2bf3",
+  "model": "hitskt_favor_plus_v1",
+  "dataset": "assist2017",
+  "seed": 42,
+  "favor": {
+    "features": 128,
+    "projection_seed": 42,
+    "chunk_size": 32,
+    "accumulation_dtype": "float32"
+  },
+  "limits": {
+    "max_optimizer_updates": 20,
+    "max_execution_seconds": 2700,
+    "max_step_seconds": 120,
+    "max_cuda_allocated_bytes": 8589934592,
+    "max_process_rss_bytes": 4294967296,
+    "minimum_cgroup_headroom_bytes": 2147483648,
+    "batch_size": 1,
+    "max_padded_tokens": 2048
+  },
+  "severe_stops": {
+    "feature_kernel_max_abs": 5e-05,
+    "stage_median_relative_l2": 0.75,
+    "any_prefix_relative_l2": 1.5,
+    "stage_median_pair_ess_min": 1.25,
+    "qk_p95_growth_ratio": 2.0,
+    "gradient_l2_max": 100.0,
+    "single_update_bce_max": 20.0,
+    "always": [
+      "nonfinite loss/logits/gradients/model/Adam",
+      "failed exact causal/own-label invariants",
+      "GPU/RAM/time gate or workload conflict",
+      "checkpoint/model/Adam/RNG reload mismatch"
+    ]
+  },
+  "historical_review_triggers": {
+    "softmax_relative_l2": 0.2,
+    "median_pair_feature_ess": 2.0,
+    "qk_p95_growth_ratio": 2.0,
+    "outcome": "original REVIEW_REQUIRED retained; no retrospective relaxation"
+  },
+  "frozen_original_plan": "experiments/hitskt_favor_plus_v1/assist2017/assist_bounded_review_20261020_v2/prepared_plan.json",
+  "frozen_original_plan_sha256": "abcbab053bb23cbdcc1fd0aee2ac018c11cdcd4f30206ba142100136dc3d3791",
+  "samples": "first20 from preserved epoch1/seed42 training order;21st train example is next-step probe only, never optimizer-stepped; same six diagnostic examples and32 validation sessions",
+  "checkpoint_updates": [
+    5,
+    10,
+    20
+  ],
+  "diagnostic_updates": [
+    0,
+    5,
+    10,
+    20
+  ],
+  "validation_updates": [
+    0,
+    20
+  ],
+  "execution": "one campaign, planned stages0\u21925\u219210\u219220. Each stage exits and must have a successful independent fresh-process verify-only recovery (zero Adam calls) before next stage. No failed-step or conflict restart. No automatic50/100 continuation.",
+  "checkpoint": "CPU payload validated/serialized/loaded exactly in temporary file; fsync; atomic no-overwrite hardlink publication and directory fsync. Digest receipt plus embedded component hashes; model,Adam,RNG,projections,sampler and exact selected identities,config/data/source hashes.",
+  "recovery": "CPU synthetic fresh-process test before CUDA; actual CUDA fresh-process prediction exact equality, Adam states/counters/hash equality, restored-RNG next train-mode forward/loss/gradient digest, zero optimizer calls, before stages6 and11 and after20. Existing18 CUDA science hashes remain prerequisite.",
+  "telemetry": "single synchronous /proc identity-first snapshots at boundaries, immutable PID start-time/UID/executable identity plus approved flag summary and GPU nodes; strictly trusted read-only monitors allowed, unknown or inaccessible GPU processes block. Cache hostRSS/allocated/reserved peaks before conflicts; no CUDA APIs in conflict handler.",
+  "decision": "retain all original warning thresholds/outcomes. Failed old process identities remain NOT VERIFIED. New evidence may identify actual current monitors but cannot retrospectively identify old PIDs. Full training never authorized."
+}

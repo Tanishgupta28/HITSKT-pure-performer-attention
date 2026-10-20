@@ -2,7 +2,26 @@
 
 Updated: 2026-10-20 UTC
 
-## 2026-10-20 — Approximation review and conditional bounded ASSIST pilot (latest)
+## 2026-10-20 — Fresh recoverable20-update study (latest)
+
+- Authorize ONE new fresh ASSIST2017 max20-update pilot, not resuming the lost14.
+  Keep m128/seed42/fixed projections/original optimizer/nonattention/data/protocol,
+  B1/cost2048/8GiB allocator/host limits. Keep existing frozen validation sample;
+  validation at0/20 only. No test,50/100 continuation or full training.
+- First improve immediate conflict identity/strict monitor classification and
+  atomic validated checkpoints5/10/20 containing model/Adam/RNG/projections,
+  exact sampler cursor/sample IDs and source/data/config hashes. Fresh-process
+  recovery verifies predictions/state/next-step behavior with ZERO Adam calls.
+- Existing owner-confirmed H100 research allocation remains permission; fresh
+  current device/conflict/hold/RAM admission before CUDA. Unknown/compute jobs
+  remain blocked; no unrelated signals, no admin re-request solely for403.
+- Preserve previous failed attempt/evidence and .20 REVIEW/severe stops unchanged.
+  If conflict occurs, STOP without automatic step retry/reset/restart; preserve
+  latest valid checkpoint plus cached resource/memory and immediate PID evidence.
+- Save ASSIST_20_UPDATE_VALIDATION_RESULTS.md, durable memory and scoped changes;
+  commit/push only FAVOR+ branch. No Light/DKT/original artifacts/main changes.
+
+## 2026-10-20 — Approximation review and conditional bounded ASSIST pilot (historical)
 
 - Continue eac2a375 on FAVOR+ research branch. Preserve prior REVIEW_REQUIRED and
   its0.20 threshold. Review multi-example train-only frozen prefixes and128/256/
