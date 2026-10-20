@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/workspace/capstone/scripts/bounded_assist_favor_plus.py", line 24, in <module>
+    if __name__=='__main__':main()
+  File "/workspace/capstone/scripts/bounded_assist_favor_plus.py", line 22, in main
+    result=execute_stage(args.plan,json.loads(args.allocation.read_text()),args.run_id,args.to,args.previous_checkpoint)
+  File "/workspace/capstone/ktbench/favor_plus_bounded_assist.py", line 499, in execute_stage
+    boundary()
+  File "/workspace/capstone/ktbench/favor_plus_bounded_assist.py", line 394, in boundary
+    authorize_bounded(allocation)
+  File "/workspace/capstone/ktbench/favor_plus_bounded_assist.py", line 251, in authorize_bounded
+    return require_execution_access(allocation, os.environ.get('CUDA_VISIBLE_DEVICES'), CUDA_VALIDATION)
+  File "/workspace/capstone/ktbench/favor_plus_gpu_access.py", line 133, in require_execution_access
+    raise RuntimeError(f"conflicting GPU handle owners at execution boundary: {conflicts}")
+RuntimeError: conflicting GPU handle owners at execution boundary: [2751270]

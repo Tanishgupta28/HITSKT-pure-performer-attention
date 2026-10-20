@@ -1163,3 +1163,30 @@ NPZ/JSON/source/log evidence published. GPU processes exited and memory baseline
 restored, Light hold intact, OOM counter unchanged. No Light/DKT/ELU+1/historical
 artifact modification. Next training/shape/validation pilot requires explicit
 new approval/budget; stop after scoped publication, no automatic training/polling.
+
+
+## 2026-10-20 — Bounded approximation review and resource-aborted ASSIST attempt
+
+User authorized conditional100-total-update/45min/m128/seed42/B1/cost2048/8GiB
+study with frozen validation and20/50/100 review, not full training. Design b45906a
+precedes data measurements. Six training strata/1152 frozen feature comparisons:
+CPE deployed median .1365→.1981 vs independent feature reference max8.315e-7 PASS;
+original .181→.236 REVIEW_REQUIRED/.20 retained. Q/K drift/concentration supports
+finite-feature alignment explanation,512 improves medians not all tails. Diagnostic
+continuation scientifically admissible; no general approximation acceptance.
+
+Preflight owner MIG/hold/no-conflicts PASS. New source1966fa1 study s020 completed
+14 finite/nonzero Adam updates then stopped for GPU-holder2751270; identity gone
+before inspection. No restart or override; milestone20/50/100 and continuation
+NOT VERIFIED, no14 checkpoint. Only initial sampled validation AUC.505231540/BCE
+.742138526 from32 sessions/3157 labels. Recorded270.119MiB/stage10.035558s; final
+RSS/reserved high-water missing, not invented.102 targeted CPU cases PASS,70 prior
+pilot artifacts rehashed unchanged; Light held, GPU released and OOM unchanged.
+Old five-pilot auxiliary fixed-example 'eval BCE' was actually train-mode/dropout,
+confirmed by CPU mode/RNG tests; new report corrects interpretation without editing
+original files or invalidating actual training losses/attention comparisons.
+REVIEW further bounded study/NO-GO full training. Need safer conflict identity and
+failure memory telemetry, conflict-free interval and new explicit budget/version,
+then learned-state validation/continuation and original-shape profiling. Evidence:
+reports/favor_plus_v1/ASSIST_BOUNDED_TRAINING_VALIDATION_PILOT.md and
+reports/favor_plus_v1/assist_bounded_v1/. No historical/Light/DKT/main changes.

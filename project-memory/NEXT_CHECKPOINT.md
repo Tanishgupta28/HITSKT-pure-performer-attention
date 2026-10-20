@@ -1,35 +1,26 @@
 # Next checkpoint
 
-20 October2026: owner-authorized H100 reuse, final CUDA verification and exactly
-five real ASSIST updates completed. Read latest USER_DIRECTIVES, CURRENT_STATE,
-[FAVOR_FIRST_REAL_CUDA_PILOT_STATE.md](FAVOR_FIRST_REAL_CUDA_PILOT_STATE.md), and
-`reports/favor_plus_v1/FIRST_REAL_CUDA_PILOT_RESULTS.md`.
+20 October2026: bounded study completed its authorized safe attempt, then stopped
+for a resource conflict after14 successful updates. Read USER_DIRECTIVES,
+CURRENT_STATE, [FAVOR_ASSIST_BOUNDED_STATE.md](FAVOR_ASSIST_BOUNDED_STATE.md) and
+reports/favor_plus_v1/ASSIST_BOUNDED_TRAINING_VALIDATION_PILOT.md.
 
-CUDA run cuda_assist_owner_20261020_v2 PASS; real run
-real_assist_five_updates_20261020_v1 PASS with approximation REVIEW_REQUIRED.
-Source-bound successful plan real_pilot_prepare_cpu_20261020_owner_v2. All under
-experiments/hitskt_favor_plus_v1/assist2017/. Five actual Adam calls only, no sixth,
-checkpoint/source/data hashes preserved. Pilot checkpoint56f1511233cdc89b694bdf73abee6a80c9c214ba7db62fb440ec20d193107ec7
-is local/ignored; payload loaded freshly on CPU, exact CUDA reload separately PASS.
-NPZ bounded-prefix evidence, JSON/configs/logs/source snapshots and hash inventory
-are committed. Do not erase the incomplete first CUDA attempt or stale plans.
+Publish scoped evidence/source/tests/report/memory to capstone-gpu branch
+research/hitskt-favor-plus-v1, verify remote, then STOP for next user decision.
+Do not resume failed assist_bounded100_20261020_v1_s020: no milestone20 or14
+checkpoint, no valid optimizer continuation; consumed14 calls and no step retry.
+No automatic GPU watcher or replacement training. Source-bound v2 CPU plan and
+initial3157-label validation evidence preserved;20/50/100 NOT VERIFIED. Full
+training not authorized or scientifically cleared. All source/test commands and
+actual limitations are in the report and evidence inventory.
 
-Complete scoped commit/push to capstone-gpu research branch only, verify remote,
-then STOP. No further training authorized under the completed five-update budget,
-no watcher, LightSAKT2 restart, DKT repair/resume, main merge or historical edits.
-Preserve unrelated README/SAKT log and older LightSAKT2 dirty work.
+Next bounded study needs immediate sanitized conflict identity and final memory
+telemetry, an actual conflict-free interval within existing owner allocation,
+fresh preparation/new explicit versioned update budget, then reviewed20→50→100
+milestones. Keep original0.20 approximation REVIEW and fixed128 policy visible.
+Do not re-ask administrator solely for Kubernetes403 or override unknown jobs.
+No LightSAKT2 restart, DKT/EdNet work, ELU+1/dataset/history modifications or main
+merge. Preserve unrelated root README/SAKT log edits and all old evidence.
 
-Next scientific decision: user review of fixed CorrectPaddingEncoder prefix
-relative-softmax error0.181169→0.236181 (threshold0.20 crossed after update1),
-then separately approve a bounded larger ASSIST training/validation/shape pilot
-with a predeclared budget. No automatic feature-count or architecture changes.
-Before full ASSIST/Junyi/EdNet, cover original15-history/long-session/B64/cost32768
-shapes, measure actual resource/throughput and learned-norm/approximation evolution,
-then validation-selected checkpoints and independent metrics after authorized
-full runs. Five updates do not establish convergence/AUC or publication readiness.
-
-Owner allocation confirmation is now durable: do not require administrator proof
-again solely for Kubernetes403. Actual conflict/restriction checks remain required
-for any newly authorized GPU work; no unknown job termination or fabricated leases.
-Current task's operator window bounds that task only. Earlier checkpoint preserved
-in [NEXT_CHECKPOINT_history_before_first_real_cuda_pilot.md](NEXT_CHECKPOINT_history_before_first_real_cuda_pilot.md).
+Historical five-update handoff:
+[NEXT_CHECKPOINT_history_before_assist_bounded.md](NEXT_CHECKPOINT_history_before_assist_bounded.md).

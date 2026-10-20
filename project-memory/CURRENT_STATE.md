@@ -2,7 +2,21 @@
 
 Updated: 2026-10-20 UTC
 
-## First real FAVOR+ CUDA/pilot — latest completed milestone
+## Bounded ASSIST study — latest,20 October2026
+
+Phase1 supports bounded diagnostics only: six-example CPE median error .1365→.1981,
+original .181→.236 REVIEW_REQUIRED/.20 unchanged; independent feature kernel PASS.
+New seeded100-update study RESOURCE-ABORTED after14 finite successful Adam updates
+when unknown GPU-holder2751270 was detected. No retry/20/50/100 milestones/checkpoints.
+Only initial sampled validation (3157 labels) AUC.505231540/BCE.742138526, not trained
+performance. Recorded270.119MiB/stage10.035558s; final RSS/reserved peak not captured.
+102 targeted CPU PASS;70 old pilot artifacts freshly byte-identical. Corrected
+interpretation: prior auxiliary fixed-example 'eval BCE' actually used train-mode
+dropout; original files/losses/attention comparisons preserved. No full training.
+Light stopped/held; own GPU released, no watcher/signals. REVIEW next bounded study,
+NO-GO full training. Read [FAVOR_ASSIST_BOUNDED_STATE.md](FAVOR_ASSIST_BOUNDED_STATE.md).
+
+## First real FAVOR+ CUDA/pilot — prior completed milestone
 
 Owner explicitly confirmed existing H100 allocation and transfer; accepted as
 permission, no administrator re-request solely for Kubernetes403. Exact historical

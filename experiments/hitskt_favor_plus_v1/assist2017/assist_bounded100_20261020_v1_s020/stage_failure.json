@@ -1,0 +1,10 @@
+{
+  "execution_status": "FAIL",
+  "failure_type": "RuntimeError",
+  "message": "conflicting GPU handle owners at execution boundary: [2751270]",
+  "note": "no automatic retry or optimizer reset; inspect all applied-step records",
+  "optimizer_step_calls": 14,
+  "optimizer_updates": 14,
+  "phase": "optimizer_update_14",
+  "stage_execution_seconds": 10.035558052943088
+}

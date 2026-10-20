@@ -1,0 +1,60 @@
+{
+  "cpu_review_v1_vs_v2_frozen_grid_and_48_arrays": "byte-identical",
+  "v1_source": {
+    "git_head": "b45906abd62a2481a788232915f64e8cb11fc006",
+    "source_sha256": {
+      "ktbench/batching.py": "baffe36d07b869498fbd8eaee12da9317b1b451a0061b52845a47b21d51c2ea5",
+      "ktbench/config.py": "650f7ab21ca3428d212c3b6b7e3c012a055ac85ee48cabc4dc82d6a65a3b464c",
+      "ktbench/data/session_store.py": "6c695bc23da5c4b8116d29b5a099c16bb5669a99eb5cdfb9c378ace81d39f218",
+      "ktbench/favor_plus_bounded_assist.py": "6751474a6f3fbfef69190ee7ee0dafc211133dd6202ad3145d14c92effe2a3f1",
+      "ktbench/favor_plus_gpu_access.py": "bc73005c4df387b1fd871454a5f6fc030c53ddb8a7a26e8732ff1dc2c7065ca2",
+      "ktbench/favor_plus_pilot_diagnostics.py": "c1ae1a51cfe3878c6a39f06cacfe9163c6ef93bc6f5bf004106665509de82062",
+      "ktbench/favor_plus_pipeline.py": "b457c695f5b3672551a03551b8c247c86a78eaf0664236d87d6a4441fbcb2171",
+      "ktbench/favor_plus_real_pilot.py": "f08cc2b286be48aef989b5ca6067fc218006671a5acf32558f1ef0fe8107c187",
+      "ktbench/hitskt_registry.py": "a2ea1bcc35ad634688a4776564d42147def529b5060e0c315e45437042af1448",
+      "ktbench/metrics.py": "6b57353631c67f5afd5b2785e3787ffdcf15086c0212a9bac75bba199eab6727",
+      "ktbench/models/favor_plus.py": "e6ebc03554a08b9a61204fa481eae6bb0fbe8fe455302df37c78ecd7a72eb2af",
+      "ktbench/models/hitskt.py": "627e3715eb1bd386139a7ba69eb603e6ac49dafe111f46e53ea731c03f55c515",
+      "ktbench/models/hitskt_favor_plus.py": "5a90cc69b4eefb7ffd1ea30c78d36cd9bf531537803a5f51c4d3cb97089c7e8b",
+      "ktbench/models/performer.py": "1b517922893f8573d294fbb036b0f7af6bb9e8d4a1a7808d50db52682d323004",
+      "ktbench/training.py": "ead48df5fd636d7a6e715f9c16eedbd562a7063e3f30a588401844d302eb6859",
+      "scripts/bounded_assist_favor_plus.py": "a1a87daf622bc2282a7850b33920ba588a814ae0cd446aa9f7271578fb70311d",
+      "scripts/evaluate_hitskt_favor_plus.py": "e4c1e0b9f43ef1c2a8b70c97d71c8510d605ff4431f41b54b66560c4e4936b4d",
+      "scripts/favor_plus_quality_common.py": "11148db1c52458aeb03a0b1af99b301179eaf956d2decb68ceafcbf7426faf98",
+      "scripts/pilot_hitskt_favor_plus_real.py": "2e83e0807b381274bc13c082c799f108c0b5a5a242d1b7ec832dc94dedffc63d",
+      "scripts/train_hitskt_favor_plus.py": "7641a16f41cb0852ac288c2e881b85b4ff085103000d83dfcd2b0c18aea08bb6",
+      "scripts/validate_favor_plus_gpu.py": "a6d35184b4e8d02750b990e50d4be2b83702a389f4379f8663b777bbe8158bdc"
+    }
+  },
+  "v2_source": {
+    "git_head": "b45906abd62a2481a788232915f64e8cb11fc006",
+    "source_sha256": {
+      "ktbench/batching.py": "baffe36d07b869498fbd8eaee12da9317b1b451a0061b52845a47b21d51c2ea5",
+      "ktbench/config.py": "650f7ab21ca3428d212c3b6b7e3c012a055ac85ee48cabc4dc82d6a65a3b464c",
+      "ktbench/data/session_store.py": "6c695bc23da5c4b8116d29b5a099c16bb5669a99eb5cdfb9c378ace81d39f218",
+      "ktbench/favor_plus_bounded_assist.py": "6f42c7af928a6706ca08bfb1ea2fc597b97536cb2213e373f8c5dca36843ba25",
+      "ktbench/favor_plus_gpu_access.py": "bc73005c4df387b1fd871454a5f6fc030c53ddb8a7a26e8732ff1dc2c7065ca2",
+      "ktbench/favor_plus_pilot_diagnostics.py": "c1ae1a51cfe3878c6a39f06cacfe9163c6ef93bc6f5bf004106665509de82062",
+      "ktbench/favor_plus_pipeline.py": "b457c695f5b3672551a03551b8c247c86a78eaf0664236d87d6a4441fbcb2171",
+      "ktbench/favor_plus_real_pilot.py": "f08cc2b286be48aef989b5ca6067fc218006671a5acf32558f1ef0fe8107c187",
+      "ktbench/hitskt_registry.py": "a2ea1bcc35ad634688a4776564d42147def529b5060e0c315e45437042af1448",
+      "ktbench/metrics.py": "6b57353631c67f5afd5b2785e3787ffdcf15086c0212a9bac75bba199eab6727",
+      "ktbench/models/favor_plus.py": "e6ebc03554a08b9a61204fa481eae6bb0fbe8fe455302df37c78ecd7a72eb2af",
+      "ktbench/models/hitskt.py": "627e3715eb1bd386139a7ba69eb603e6ac49dafe111f46e53ea731c03f55c515",
+      "ktbench/models/hitskt_favor_plus.py": "5a90cc69b4eefb7ffd1ea30c78d36cd9bf531537803a5f51c4d3cb97089c7e8b",
+      "ktbench/models/performer.py": "1b517922893f8573d294fbb036b0f7af6bb9e8d4a1a7808d50db52682d323004",
+      "ktbench/training.py": "ead48df5fd636d7a6e715f9c16eedbd562a7063e3f30a588401844d302eb6859",
+      "scripts/bounded_assist_favor_plus.py": "a1a87daf622bc2282a7850b33920ba588a814ae0cd446aa9f7271578fb70311d",
+      "scripts/evaluate_hitskt_favor_plus.py": "e4c1e0b9f43ef1c2a8b70c97d71c8510d605ff4431f41b54b66560c4e4936b4d",
+      "scripts/favor_plus_quality_common.py": "11148db1c52458aeb03a0b1af99b301179eaf956d2decb68ceafcbf7426faf98",
+      "scripts/pilot_hitskt_favor_plus_real.py": "2e83e0807b381274bc13c082c799f108c0b5a5a242d1b7ec832dc94dedffc63d",
+      "scripts/train_hitskt_favor_plus.py": "7641a16f41cb0852ac288c2e881b85b4ff085103000d83dfcd2b0c18aea08bb6",
+      "scripts/validate_favor_plus_gpu.py": "a6d35184b4e8d02750b990e50d4be2b83702a389f4379f8663b777bbe8158bdc"
+    }
+  },
+  "v1_plan_sha256": "2d119821ad911b8f1e450b1785b31d7ea8c9351625e782ee7f799277e2a0cb9a",
+  "v2_plan_sha256": "abcbab053bb23cbdcc1fd0aee2ac018c11cdcd4f30206ba142100136dc3d3791",
+  "source_refresh": "metadata admission, nonfinite failure handling and pre-review checkpoint preservation only; no scientific source/math change",
+  "unrelated_readme_sha256": "e5754c28ae89a628d46e0269523115404be13aba55d252a92c90ece2bf8ac6b8",
+  "unrelated_sakt_log_sha256": "0f5546314e0911001954ca04e2fccdad7be7e09dce685fb8d61f5fe7a7af76ff"
+}

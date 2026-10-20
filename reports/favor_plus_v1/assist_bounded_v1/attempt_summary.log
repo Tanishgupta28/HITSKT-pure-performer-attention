@@ -1,0 +1,61 @@
+{
+  "overall_status": "RESOURCE_ABORTED;scientific larger-pilot milestones NOT VERIFIED",
+  "stopped_at": {
+    "execution_status": "FAIL",
+    "failure_type": "RuntimeError",
+    "message": "conflicting GPU handle owners at execution boundary: [2751270]",
+    "note": "no automatic retry or optimizer reset; inspect all applied-step records",
+    "optimizer_step_calls": 14,
+    "optimizer_updates": 14,
+    "phase": "optimizer_update_14",
+    "stage_execution_seconds": 10.035558052943088
+  },
+  "completed_updates": 14,
+  "supervised_training_targets": 752,
+  "training_bce_first": 1.100964903831482,
+  "training_bce_last": 0.7159138321876526,
+  "training_bce_target_weighted": 0.7940045206787738,
+  "gradient_l2_range": [
+    1.9841733688567027,
+    7.8544173822695456
+  ],
+  "all_recorded_gradients_adam_finite": true,
+  "all_recorded_parameters_changed": true,
+  "synchronized_training_interval_seconds": 2.6660991142271087,
+  "per_update_seconds_mean": 0.19043565101622204,
+  "per_update_seconds_max": 0.3538328870199621,
+  "peak_recorded_cuda_allocated_bytes": 283240448,
+  "host_peak_at_baseline_bytes": 1579597824,
+  "final_process_peak_rss": null,
+  "final_peak_cuda_reserved_bytes": null,
+  "memory_limitations": "failure manifest omitted final RSS/reserved high-water; baseline values are lower bounds; per-update allocated maxima saved; NVML peak not sampled",
+  "milestones_20_50_100": "NOT REACHED / NOT VERIFIED",
+  "independent_cached_validation": {
+    "roc_auc": 0.5052315400090389,
+    "accuracy": 0.5258156477668673,
+    "precision": 0.33925925925925926,
+    "recall": 0.4308560677328316,
+    "f1": 0.37961044343141315,
+    "mse": 0.26987825819086514,
+    "bce_from_cached_float32_probabilities": 0.7421385030594425
+  },
+  "cached_metric_max_abs_differences": {
+    "roc_auc": 0.0,
+    "accuracy": 0.0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 5.551115123125783e-17,
+    "mse": 0.0
+  },
+  "cached_bce_difference_from_logit_loss": 2.2936163079911864e-08,
+  "cache_limit": "float32 probabilities support metric/count check; full logit-based BCE independently replay requires logits/checkpoint",
+  "old_pilot_preservation": {
+    "files_checked": 70,
+    "failures": [],
+    "prior_inventory_sha256": "17ff28d2b7b4f9d4f63fd94ae247c00eba643f8f5332c7b9a18069e6694c1604"
+  },
+  "checkpoint_14": "NOT SAVED; abort preceded first20 checkpoint; no optimizer reset/recovery/replay",
+  "test_evaluations": 0,
+  "full_training_ready": false,
+  "next_stage": "REVIEW; identify GPU-holding conflict and improve failure telemetry before separately authorized new bounded attempt; NO-GO full training"
+}

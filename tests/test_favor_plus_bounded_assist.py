@@ -143,3 +143,31 @@ def test_released_restart_hold_refuses_cuda(monkeypatch,tmp_path):
     monkeypatch.setattr(b,'LIGHT_HOLD',hold)
     with pytest.raises(RuntimeError,match='not active'):
         b.authorize_bounded({'user_approval':{'actions':[b.ACTION]}})
+
+
+def test_validation_disables_dropout_and_restores_training_mode(monkeypatch):
+    model,ex,batch,item,dataset=tiny_setup()
+    monkeypatch.setattr(b,'collate_selected',lambda *args:batch)
+    observed=[]
+    handle=model.register_forward_pre_hook(lambda module,args:observed.append([
+        m.training for m in module.modules() if isinstance(m,torch.nn.Dropout)]))
+    before=torch.get_rng_state().clone()
+    try:b.evaluate(model,dataset,[item])
+    finally:handle.remove()
+    assert observed and not any(observed[0])
+    assert model.training and all(m.training for m in model.modules() if isinstance(m,torch.nn.Dropout))
+    assert torch.equal(before,torch.get_rng_state())
+
+
+def test_legacy_helper_restores_train_mode_so_no_grad_is_not_eval():
+    model,ex,batch,item,dataset=tiny_setup()
+    before=torch.get_rng_state().clone()
+    b.fixed_example_diagnostics(model,batch)
+    assert model.training and torch.equal(before,torch.get_rng_state())
+    seen=[]
+    handle=model.register_forward_pre_hook(lambda module,args:seen.append([
+        m.training for m in module.modules() if isinstance(m,torch.nn.Dropout)]))
+    try:
+        with torch.no_grad():model(batch)
+    finally:handle.remove()
+    assert all(seen[0]) and not torch.equal(before,torch.get_rng_state())

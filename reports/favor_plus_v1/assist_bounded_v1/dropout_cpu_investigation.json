@@ -1,0 +1,68 @@
+{
+  "dropout_modules": [
+    {
+      "name": "action_encoder.layers.0.attention.dropout",
+      "p": 0.1,
+      "training": true
+    },
+    {
+      "name": "action_encoder.layers.0.feedforward.2",
+      "p": 0.1,
+      "training": true
+    },
+    {
+      "name": "action_encoder.layers.0.feedforward.4",
+      "p": 0.1,
+      "training": true
+    },
+    {
+      "name": "session_encoder.layers.0.attention.dropout",
+      "p": 0.1,
+      "training": true
+    },
+    {
+      "name": "session_encoder.layers.0.feedforward.2",
+      "p": 0.1,
+      "training": true
+    },
+    {
+      "name": "session_encoder.layers.0.feedforward.4",
+      "p": 0.1,
+      "training": true
+    },
+    {
+      "name": "correct_padding_encoder.layers.0.attention.dropout",
+      "p": 0.1,
+      "training": true
+    },
+    {
+      "name": "correct_padding_encoder.layers.0.feedforward.2",
+      "p": 0.1,
+      "training": true
+    },
+    {
+      "name": "correct_padding_encoder.layers.0.feedforward.4",
+      "p": 0.1,
+      "training": true
+    },
+    {
+      "name": "decoder.layers.0.attention.dropout",
+      "p": 0.1,
+      "training": true
+    },
+    {
+      "name": "decoder.layers.0.feedforward.2",
+      "p": 0.1,
+      "training": true
+    },
+    {
+      "name": "decoder.layers.0.feedforward.4",
+      "p": 0.1,
+      "training": true
+    }
+  ],
+  "initial_cpu_eval_bce": 1.1044232845306396,
+  "initial_cpu_train_bce": 1.1116119623184204,
+  "max_logit_difference": 0.18877297639846802,
+  "root_training": true
+}

@@ -30,6 +30,15 @@ remain intact; platform changes do not alter research source or live runs.
 
 ## Current short status
 
+Latest bounded study: CPU review supports contained diagnostics, but new CUDA run
+aborted after14 finite updates for unidentified GPU holder. Only initialization
+validation;20/50/100 NOT REACHED, no checkpoint/retry.102 targeted CPU PASS.
+REVIEW another bounded attempt/NO-GO full training. Read
+[FAVOR_ASSIST_BOUNDED_STATE.md](FAVOR_ASSIST_BOUNDED_STATE.md); old fixed-example
+BCE dropout-mode interpretation is corrected there and in the new report.
+
+Earlier five-update milestone (historical):
+
 Latest completed20 October: existing H100 owner allocation accepted and reused.
 CUDA18 staged cases/full-model/checkpoint PASS. Real ASSIST pilot completed
 exactly5 updates, all finite/nonzero, checkpoint exact.81 targeted CPU cases PASS.
