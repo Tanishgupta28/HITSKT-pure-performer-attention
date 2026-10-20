@@ -4,9 +4,10 @@ Fresh20-update study COMPLETED; read USER_DIRECTIVES, CURRENT_STATE and
 [FAVOR_ASSIST20_STATE.md](FAVOR_ASSIST20_STATE.md), plus
 `reports/favor_plus_v1/ASSIST_20_UPDATE_VALIDATION_RESULTS.md`.
 
-Publish scoped new source/tests/report/evidence/memory to capstone-gpu branch
-research/hitskt-favor-plus-v1, verify remote equality, then STOP for next user
-instruction. No running training or recovery process; no50/100/full training
+Scientific report/evidence published at6dfba44de7c6daf1e72c1bd591c077f7e0858c0d
+on capstone-gpu research branch, remote equality verified;196 noncheckpoint
+artifacts tracked/hash-matching,3 checkpoints preserved locally, main unchanged.
+Publish this handoff-only update, verify remote, then STOP for next user instruction. No running training or recovery process; no50/100/full training
 permission. Never recreate completed stage/verify directories or oldfailed14 run.
 Current source1595785 science/control hashes remain bound to checkpoint5/10/20.
 

@@ -77,3 +77,11 @@ bounded profile and approval. Keep retrospective within-student/timing qualifica
 no test metrics or significance without complete runs/replay. Currenttask complete:
 publish scoped results/memory on capstone-gpu research branch, verify remote, STOP.
 Do not start50, recreate currentrun, change old sealed contract, resumeDKT orLight.
+
+
+Publication verified: scientific report/evidence commit
+6dfba44de7c6daf1e72c1bd591c077f7e0858c0d equals remote research branch;
+main remains f465d84838e5f8b1c637736e362a945c20cfde10.196 noncheckpoint experiment
+files tracked/hash-matching;3 checkpoint binaries remain local/ignored with
+published hashes. Strict memory validation PASS. This final handoff-only update
+changes no experiment/code/state. STOP for user decision; no further training.
