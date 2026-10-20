@@ -2,7 +2,24 @@
 
 Updated: 2026-10-20 UTC
 
-## 2026-10-20 — Inspect20 and prepare50TOTAL; approval gate (latest)
+## 2026-10-20 — Explicit20→50 continuation approval (latest)
+
+- User now APPROVES exactly30 additional ASSIST2017 optimizer calls, maximum50
+  total, from exact20 checkpoint preserving model/Adam/RNG/configuration. Record
+  loss/gradient/approximation/resources/throughput and verify30/40/50 checkpoints.
+- BEFORE any GPU execution verify explicitly authorized exclusive compute use
+  of assigned MIG and adequate resources. Existing allocation-owner confirmation
+  remains evidence; no conflicting job/reservation or restriction may be ignored.
+  Stop before CUDA if permission/independence/current resources cannot be verified.
+- Preserve0.20 REVIEW and fixed scientific settings. Investigate Action.2131;
+  no silent architecture/projection/optimizer/data/threshold changes. No test
+  evaluation, full training, extra seeds, failed-step automatic retry or >50.
+- Never restart/change/interfere with LightSAKT2 or unrelated baselines/jobs.
+  Preserve all old artifacts, checkpoint20 and earlier source-bound contracts.
+- Produce detailed stability/reproducibility report and GO/NO-GO decision;
+  commit/push verified research-branch changes only, then STOP for further approval.
+
+## 2026-10-20 — Inspect20 and prepare50TOTAL; approval gate (historical)
 
 - Verify existing5/10/20 checkpoints/model/Adam/RNG/configuration and investigate
   ActionEncoder .2131 error with the unchanged .20 REVIEW threshold. CPU-only

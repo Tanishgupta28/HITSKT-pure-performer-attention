@@ -1,0 +1,33 @@
+{
+  "observed_utc": "2026-10-20T17:05:46.093405+00:00",
+  "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+  "snapshot": {
+    "observed_utc": "2026-10-20T17:05:46.040969+00:00",
+    "own_pid": 2844342,
+    "holders": [],
+    "conflicts": [],
+    "light_processes": [],
+    "inaccessible_fd_pids": [],
+    "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+  },
+  "nvml": {
+    "total_bytes": 42278584320,
+    "free_bytes": 42238869504,
+    "used_bytes": 39714816,
+    "compute_processes": []
+  },
+  "exposed_devices": [
+    "MIG-d2fcfd79-720e-5218-82c9-0a132be68920"
+  ],
+  "light_hold_status": "USER_TRAINING_HOLD_ACTIVE",
+  "light_hold_sha256": "65214c2c53852024e970fd0a176f71968f204ec0748635a7e6f46de3ed64c234",
+  "cgroup": {
+    "memory.limit_in_bytes": "96636764160",
+    "memory.usage_in_bytes": "20350697472",
+    "memory.oom_control": "oom_kill_disable 0\nunder_oom 0\noom_kill 2"
+  },
+  "cuda_initialized": false,
+  "allocation_authority": "existing explicit owner confirmation of H100/server research allocation and transferred MIG; latest explicit continuation approval, not an administrator/scheduler lease",
+  "new_separate_device_claimed": false,
+  "status": "PASS"
+}

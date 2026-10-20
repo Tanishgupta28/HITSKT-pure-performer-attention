@@ -1,0 +1,20 @@
+{
+  "kind": "assist2017_favor_plus_exact20_to50_v1",
+  "base_commit": "902ae6cde7f639b94852d6ac75c67f2a82630e8f",
+  "approved_proposal_sha256": "a077ef4ef5a76e240ae06c125fb4e4de93aa092cee5559b2de2b74297d433bd9",
+  "parent_checkpoint_sha256": "0388e984b8bed21210455be561524a041c892b98b2a87b50fa3ecb1c3ade86f4",
+  "optimizer_updates_completed_before_this_study": 20,
+  "max_additional_optimizer_calls": 30,
+  "max_total_optimizer_updates": 50,
+  "training_stage_endpoints": [30,40,50],
+  "atomic_checkpoint_updates": [25,30,35,40,45,50],
+  "diagnostic_and_frozen_validation_updates": [20,30,40,50],
+  "scientific_configuration": "exact parent20 model/optimizer/projection/precision/data/splits/metric configuration; m128, seed42, B1/padded-cost2048; no new seed or feature count",
+  "execution_limits": {"max_execution_seconds":2700,"max_step_seconds":120,"max_cuda_allocated_bytes":8589934592,"max_process_rss_bytes":4294967296,"minimum_cgroup_headroom_bytes":2147483648,"batch_size":1,"max_padded_tokens":2048},
+  "review_and_severe_stops": "byte-identical rules from original20 design; .20 REVIEW retained; no tolerance relaxation",
+  "parent_recovery": "in a fresh CUDA process before update21, strict parent20 integrity and original no-step recovery must match exact logits/next loss/all-gradient digest and Adam/RNG/projections; zero Adam calls. Re-evaluate same frozen validation20 and require exact probabilities/labels and metrics against saved20 baseline. Verify actual update21 pre-Adam behavior matches parent probe.",
+  "checkpoint_recovery": "CPU validation/fsync/roundtrip/atomic no-overwrite publication at25/30/35/40/45/50; separate fresh CUDA no-step recovery at30/40/50 before next stage. Preserve all model/Adam/RNG/projection/source/data/config/sampler51 IDs. Entry51 is probe-only, never stepped. Actual31/41 must match preceding checkpoint proofs.",
+  "resource_policy": "existing explicitly owner-confirmed research MIG transfer plus actual user scope approval; exact UUID/exposure/hold/current visible process and NVML checks before any CUDA, unknown/inaccessible/compute conflict blocks. Operator2h metadata ceiling is not a scheduler lease. No job/allocation changes or repeated background monitoring.",
+  "failure_policy": "stop without restarting/retrying failed optimizer calls; preserve latest atomic checkpoint and cached resource/conflict evidence. No test evaluation/full training/HPO/extra seeds/LightSAKT2 or DKT changes.",
+  "interpretation": "Action approximation remains REVIEW even if engineering severe stops pass. Sampled validation describes preliminary predictive behavior, not full performance, superiority or convergence. Report20/30/40/50 separately from training stability. No authorization beyond50."
+}
