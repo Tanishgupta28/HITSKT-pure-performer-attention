@@ -2,7 +2,24 @@
 
 Updated: 2026-10-20 UTC
 
-## 2026-10-20 — Owner confirms existing H100 allocation; execute bounded CUDA/pilot (latest)
+## 2026-10-20 — Approximation review and conditional bounded ASSIST pilot (latest)
+
+- Continue eac2a375 on FAVOR+ research branch. Preserve prior REVIEW_REQUIRED and
+  its0.20 threshold. Review multi-example train-only frozen prefixes and128/256/
+  512 projections before any new training; stop for correctness/numerical risk.
+- User authorizes conditional genuine ASSIST training/validation pilot only:
+  seed42/m128/fixed projections/original optimizer and nonattention/data/protocol,
+  B1/cost2048/max100 total updates/max45min/8GiB allocator. Review at20 before50
+  and at50 before100. Freeze a bounded validation-only sample before training.
+  No test, full training, extra seeds/HPO, architecture change or failed-step retry.
+- Existing owner-confirmed H100 allocation permission persists. Fresh admission
+  must verify exact exposed MIG, Light hold/stopped, no conflicts/restrictions,
+  RAM/VRAM. No unrelated signals, Light restart, DKT or historical changes.
+- Predeclare severe stops and monitoring before diagnostics/execution, record
+  all attempts/milestone checkpoints/continuation integrity and sampled metrics.
+  Commit/push scoped code/evidence/report/memory only to research branch.
+
+## 2026-10-20 — Owner confirms existing H100 allocation; execute bounded CUDA/pilot (historical)
 
 - User explicitly confirms H100 GPU/server allocated to them/research project
   and authorizes transferring former LightSAKT2 MIG to HiTSKT. Accept this owner

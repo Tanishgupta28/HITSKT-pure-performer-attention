@@ -1,0 +1,87 @@
+{
+  "kind": "assist2017_favor_plus_bounded_v1_predeclared_design",
+  "created_utc": "2026-10-20T11:41:23.344393+00:00",
+  "base_commit": "eac2a375683b48c6510bd3b3fc1f2ddc82357fb7",
+  "model": "hitskt_favor_plus_v1",
+  "dataset": "assist2017",
+  "seed": 42,
+  "initialization": "fresh seed42;100 total updates from initialization, not100 additional to prior five; no independent replication claim",
+  "favor": {
+    "features": 128,
+    "projection_seed": 42,
+    "chunk_size": 32,
+    "accumulation_dtype": "float32"
+  },
+  "milestones": [
+    0,
+    20,
+    50,
+    100
+  ],
+  "limits": {
+    "max_optimizer_updates": 100,
+    "max_execution_seconds": 2700,
+    "max_step_seconds": 120,
+    "max_cuda_allocated_bytes": 8589934592,
+    "max_process_rss_bytes": 4294967296,
+    "minimum_cgroup_headroom_bytes": 2147483648,
+    "batch_size": 1,
+    "max_padded_tokens": 2048
+  },
+  "selection": {
+    "training": "first100 eligible whole sessions from original epoch1 seed42 length-bucket sampler; no labels/scores used; oversized singleton skipped, not truncated",
+    "diagnostic": "six strata: target lengths1..32/33..128/129+ crossed with histories1..4/5..15; first eligible target ID in each stratum; prefer distinct students; if stratum empty record absent, no metric-based replacement",
+    "validation": "32 unique whole validation targets: round robin same six strata, ascending target ID within each stratum;cost<=2048; original rolling within-student histories including earlier validation responses; no test targets; require>=500 supervised labels and>=25 of each class, otherwise stop before training"
+  },
+  "frozen_review": {
+    "weight_states": [
+      "fresh seed42",
+      "original preserved five-update checkpoint"
+    ],
+    "features": [
+      128,
+      256,
+      512
+    ],
+    "projection_seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "projection_policy": "new independent fixed diagnostic projections only; Q/K/V frozen; include deployed128 projection separately; no feature tuning or training runs",
+    "prefix_positions": 32,
+    "oracle": "independent NumPy/SciPy float64 causal attention",
+    "statistics": "per-stage/example relative L2, maxabs, per-query error distributions, TV/KL, pair ESS and Q/K p95; aggregate median/p90 across examples and diagnostic projection seeds",
+    "root_cause": "decompose saved CPE step0 vs5 by cross-combining frozen Q,K,V,projection; compare log-kernel/weight errors, ESS; no counterfactual training"
+  },
+  "historical_review_triggers": {
+    "softmax_relative_l2": 0.2,
+    "median_pair_feature_ess": 2.0,
+    "qk_p95_growth_ratio": 2.0,
+    "outcome": "original REVIEW_REQUIRED retained; no retrospective relaxation"
+  },
+  "prospective_severe_stops": {
+    "feature_kernel_max_abs": 5e-05,
+    "stage_median_relative_l2": 0.75,
+    "any_prefix_relative_l2": 1.5,
+    "stage_median_pair_ess_min": 1.25,
+    "qk_p95_growth_ratio": 2.0,
+    "gradient_l2_max": 100.0,
+    "single_update_bce_max": 20.0,
+    "always": [
+      "nonfinite loss/logits/gradients/model/Adam",
+      "failed exact causal/own-label invariants",
+      "GPU/RAM/time gate or workload conflict",
+      "checkpoint/model/Adam/RNG reload mismatch"
+    ]
+  },
+  "interpretation": "new conservative diagnostic containment thresholds, not a proof of scientific approximation adequacy; originals stay REVIEW; no monotonic-loss requirement or AUC-based tuning",
+  "monitoring": "loss/gradient/Adam/parameter finite and resource boundary each update; Q/K/ESS/error on six frozen training examples plus frozen validation metrics at0/20/50/100; inspect each milestone before explicit continuation; no test split",
+  "checkpoint": "new milestone model/Adam/RNG/cursor checkpoints; fresh-process continuation at20 and50; before continuation reproduce eval logits exactly and next train-mode forward/loss/gradients under restored RNG without optimizer call; maximum100 Adam calls across stages",
+  "decision": "Phase1 may authorize bounded diagnostic study only if feature-kernel/finite/severe checks pass. Full training never automatic. Larger-shape profiling and validation-selected complete runs remain separate work."
+}
