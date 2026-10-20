@@ -1,0 +1,28 @@
+{
+  "adam_and_model_finite": true,
+  "gradient_l2": 7.8544173822695456,
+  "gradients_finite": true,
+  "optimizer_step_calls": 12,
+  "optimizer_updates": 12,
+  "padded_tokens": 144,
+  "parameter_update_l2": 0.04076344709061361,
+  "resources": {
+    "allocated_bytes": 180465664,
+    "calls": 12,
+    "host": {
+      "cgroup_headroom_bytes": 75134640128,
+      "cgroup_limit_bytes": 96636764160,
+      "cgroup_usage_bytes": 21502124032,
+      "peak_process_rss_bytes": 1742802944
+    },
+    "observed_utc": "2026-10-20T13:44:53.741614+00:00",
+    "peak_allocated_bytes": 235918336,
+    "peak_reserved_bytes": 312475648,
+    "phase": "post_adam",
+    "reserved_bytes": 312475648
+  },
+  "supervised_targets": 60,
+  "synchronized_training_seconds": 0.2653149969410151,
+  "training_bce": 0.9209970235824585,
+  "update": 12
+}

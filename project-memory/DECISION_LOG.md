@@ -1190,3 +1190,37 @@ failure memory telemetry, conflict-free interval and new explicit budget/version
 then learned-state validation/continuation and original-shape profiling. Evidence:
 reports/favor_plus_v1/ASSIST_BOUNDED_TRAINING_VALIDATION_PILOT.md and
 reports/favor_plus_v1/assist_bounded_v1/. No historical/Light/DKT/main changes.
+
+
+## 2026-10-20 — Recoverable20 study completes, monitoring race addressed
+
+User authorizes one fresh20-update pilot, same128/seed42/B1/cost2048/original
+Adam/nonattention/data/protocol/frozenvalidation, atomic checkpoints5/10/20 and
+fresh-process no-step recovery; no full training. Design9a247ad predates changes;
+executed source1595785. Identity-first synchronous guard reproduces old FD→identity
+race in CPU fixture, verifies actual root-owned read-only queries and blocks all
+unknown/compute/reused/changed/inaccessible owners.20 actual monitor PIDs captured,
+no interruption or unrelated signals; old2751270/2731414/2730863 still unknown.
+153 pre-GPU CPU cases plusone literal oldrace proof PASS(154distinct,52new).
+Owner MIG/H100 allocation accepted, freshadmission noCUDA/compute conflicts,
+Light held, no repeated admin/Kubernetes request. New campaign assist20_recovery_
+20261020_v1 completes exactly20 real Adam calls/1090targets, all finite/nonzero,
+then stops. Checkpoint5/10/20 atomic/nooverwrite/fullmodel/Adam/RNG/sampler IDs/
+projections/source/data/config contract validates; each fresh CUDA recovery has
+exact predictions and next gradient/loss digest, ZERO optimizer calls. Actual6/11
+match checkpoint proofs. First14 scalartraining observations exactly reproduce
+old14 log, not lostweights recovery. Allprevious153+70 artifacts and8Markdown
+reports unchanged,11datahashes/scientificsource retained.
+
+Initial→20 frozen3157-label validation BCE.742138526→.741282668,
+AUC.505231540→.508313409, accuracy.525815648→.502692430; precision/MSE worsen,
+recall/F1 improve. Preliminary/mixed, no convergence/significance/fullresult claim.
+CPE median error0/5/10/20=.136497/.205068/.169183/.142362; Action20=.213145
+and4/6 prefixes>.20. OriginalREVIEW/.20/severestops retained; feature kernelmax
+1.01250e-6 PASS, QK p95growthmax1.01785x; allcausalchecks exact. m128 not proven
+forfull/highnorm/longcontext. Peak270.119MiB allocated/358MiBreserved/1.844GiBRSS,
+traininterval5.505974s/stageexecution30.041795s/recovery9.255054s/campaign267.593s.
+No GPUcompute remains afterrelease, hold/OOM unchanged. GO separatelyapproved
+50TOTAL continuation(30more) via explicit contract migration; NO-GO full training.
+Current budget exhausted; publish research-only thenstop. Report ASSIST_20_UPDATE_
+VALIDATION_RESULTS.md underreports/favor_plus_v1/ and corresponding evidence.

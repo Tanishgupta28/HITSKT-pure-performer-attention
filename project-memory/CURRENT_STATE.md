@@ -2,7 +2,22 @@
 
 Updated: 2026-10-20 UTC
 
-## Bounded ASSIST study — latest,20 October2026
+## Recoverable20-update ASSIST study — completed
+
+Exactly20 real updates PASS; atomic5/10/20 checkpoints and fresh CUDA no-step
+recovery PASS, zero extra Adam calls.154 targeted CPU cases PASS, prior229 inherited.
+GPU guard exit race reproduced;20 current monitor PIDs positively identified as
+trusted read-only, unknowns remain blocked; old2751270 remains unidentified.
+Frozen sampled validation AUC.505231540→.508313409/BCE.742138526→.741282668,
+accuracy decreased.525815648→.502692430. No convergence/performance claim.
+CPE median error.1365→.2051→.1692→.1424; Action20.2131 still>.20 REVIEW. All severe
+criteria pass; numerical/Adam/gradients finite. Peaks270.119MiB allocated/358MiB
+reserved/1.844GiBRSS; campaign267.593s inclgaps. Own CUDA work stopped/released,
+Light held, no signals/watchers/test/full training.223 prior artifacts+8 reports
+unchanged. GO separately approved50TOTAL diagnostic continuation, NO-GO full
+training; current20 budget exhausted. See [FAVOR_ASSIST20_STATE.md](FAVOR_ASSIST20_STATE.md).
+
+## Bounded ASSIST study — prior resource-aborted attempt
 
 Phase1 supports bounded diagnostics only: six-example CPE median error .1365→.1981,
 original .181→.236 REVIEW_REQUIRED/.20 unchanged; independent feature kernel PASS.

@@ -1,28 +1,26 @@
 # Next checkpoint
 
-20 October2026: bounded study completed its authorized safe attempt, then stopped
-for a resource conflict after14 successful updates. Read USER_DIRECTIVES,
-CURRENT_STATE, [FAVOR_ASSIST_BOUNDED_STATE.md](FAVOR_ASSIST_BOUNDED_STATE.md) and
-reports/favor_plus_v1/ASSIST_BOUNDED_TRAINING_VALIDATION_PILOT.md.
+Fresh20-update study COMPLETED; read USER_DIRECTIVES, CURRENT_STATE and
+[FAVOR_ASSIST20_STATE.md](FAVOR_ASSIST20_STATE.md), plus
+`reports/favor_plus_v1/ASSIST_20_UPDATE_VALIDATION_RESULTS.md`.
 
-Scientific code/evidence/report published and remote equality verified at
-97b22b70108ff0aca4677f4999d37fdf4318210f on capstone-gpu research branch. All153
-new experiment artifacts are tracked/hash-matching; main unchanged. Publish this
-small handoff update, verify remote, then STOP for next user decision.
-Do not resume failed assist_bounded100_20261020_v1_s020: no milestone20 or14
-checkpoint, no valid optimizer continuation; consumed14 calls and no step retry.
-No automatic GPU watcher or replacement training. Source-bound v2 CPU plan and
-initial3157-label validation evidence preserved;20/50/100 NOT VERIFIED. Full
-training not authorized or scientifically cleared. All source/test commands and
-actual limitations are in the report and evidence inventory.
+Publish scoped new source/tests/report/evidence/memory to capstone-gpu branch
+research/hitskt-favor-plus-v1, verify remote equality, then STOP for next user
+instruction. No running training or recovery process; no50/100/full training
+permission. Never recreate completed stage/verify directories or oldfailed14 run.
+Current source1595785 science/control hashes remain bound to checkpoint5/10/20.
 
-Next bounded study needs immediate sanitized conflict identity and final memory
-telemetry, an actual conflict-free interval within existing owner allocation,
-fresh preparation/new explicit versioned update budget, then reviewed20→50→100
-milestones. Keep original0.20 approximation REVIEW and fixed128 policy visible.
-Do not re-ask administrator solely for Kubernetes403 or override unknown jobs.
-No LightSAKT2 restart, DKT/EdNet work, ELU+1/dataset/history modifications or main
-merge. Preserve unrelated root README/SAKT log edits and all old evidence.
-
-Historical five-update handoff:
-[NEXT_CHECKPOINT_history_before_assist_bounded.md](NEXT_CHECKPOINT_history_before_assist_bounded.md).
+Recommend separately approved50TOTAL continuation (30additional), preserving
+checkpoint20 SHA0388e984b8bed21210455be561524a041c892b98b2a87b50fa3ecb1c3ade86f4,
+model/Adam/RNG/sampler/projection identity and data/protocol. A new version must
+explicitly migrate the sealed20-update contract; do not mutate old checkpoint/
+plan or pass50 to current controller. Keep.20 REVIEW and severe criteria; no
+feature selection from test metrics or invented statistical significance.
+Broader history/batch backward profiling and learned-state approximation are
+required before full ASSIST; Junyi/EdNet need their own profile/data checks and
+later full-training authorization. OldPID2751270 remains unknown despite practical
+monitor/race fix; actual conflicts still stop, no unrelated signals/new admin
+re-request solely for403. Light held; no DKT repair/resume, main merge or watcher.
+Preserve unrelated README/SAKT dirt and local checkpoint binaries (not in Git).
+Historical cursor:
+[NEXT_CHECKPOINT_history_before_assist20.md](NEXT_CHECKPOINT_history_before_assist20.md).

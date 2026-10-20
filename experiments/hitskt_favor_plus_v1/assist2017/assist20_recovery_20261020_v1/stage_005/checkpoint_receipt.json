@@ -1,0 +1,24 @@
+{
+  "adam_parameter_states": 61,
+  "atomic_no_overwrite": true,
+  "component_sha256": {
+    "contract": "431cd288c1d95b27e66ed7844586055428771915a5a224df4005de237edc6530",
+    "next_update_probe": "f1fec66ac30660862d3d10f0a3fe4b57dd99b5091fb6d8d43f3734f9d9f2d4b3",
+    "optimizer_state_dict": "b73dbba1b903f46eb757dad11eaca3fe91747a63e2558f2a195c1ef554b8fe7b",
+    "reference_eval_logits": "b06aa57401c73f176bc2c60e4ec1e3be2bdde66929f0bc8ffd9abff6514b1e48",
+    "rng_state": "f158e474c7a89e38bc442fd45149933c2e5da0f21b0ec8ad9c90330716d36596",
+    "sampler": "c4acd71f11e57549d89c1aabf6768e2965a2e2ebcccca97b798d1e70ff5b1196",
+    "state_dict": "78c190ca038f1e40adbf9273502ffee391316aa75bfdbd1d8c0d5c63433f1986"
+  },
+  "path": "experiments/hitskt_favor_plus_v1/assist2017/assist20_recovery_20261020_v1/checkpoints/checkpoint_005.pt",
+  "projection_sha256": {
+    "action_encoder.layers.0.attention.projection": "0e30074b32eb36787646a586ce5bd759a5ce6d998d0585f239093f30bf45520c",
+    "correct_padding_encoder.layers.0.attention.projection": "2a3c51ffb0b77fc527b2678299da5142d7abee50440c3bd44bfa4f09cfe89a3f",
+    "decoder.layers.0.attention.projection": "14215fed57abbe0dfee2f0f0e66ab4f821305b6dc76aac1419ab628473661fef",
+    "session_encoder.layers.0.attention.projection": "723816c7c411dbedc108dd227a8819b2025bcacc871c88cbfefe2c850dcad125"
+  },
+  "sampler_cursor": 5,
+  "sha256": "93fca2f31a2441c30781904c89e1b5719761526ea7ca5e5442bab6f1d0d4cb0a",
+  "status": "PASS",
+  "updates": 5
+}

@@ -1,0 +1,95 @@
+{
+  "status": "PASS",
+  "optimizer_calls_during_recovery": 0,
+  "eval_prediction_max_abs_difference": 0.0,
+  "next_train_forward_loss_all_gradient_digest": "EXACT",
+  "model_adam_rng_projection_integrity": "PASS",
+  "optimizer_updates": 10,
+  "checkpoint_sha256": "a47a81892b15240a7423ad73acb4c32141c315cfac3fa0ed0f2c9485aef22e16",
+  "recovery_execution_seconds": 2.866609139018692,
+  "resources": {
+    "observed_utc": "2026-10-20T13:44:04.947402+00:00",
+    "phase": "after_recovery_proof",
+    "calls": 10,
+    "host": {
+      "peak_process_rss_bytes": 1851346944,
+      "cgroup_limit_bytes": 96636764160,
+      "cgroup_usage_bytes": 21546979328,
+      "cgroup_headroom_bytes": 75089784832
+    },
+    "campaign_elapsed_seconds": 151.878503,
+    "snapshot": {
+      "observed_utc": "2026-10-20T13:44:04.945686+00:00",
+      "own_pid": 2785546,
+      "holders": [
+        {
+          "pid": 2785643,
+          "identity_complete": true,
+          "verified_read_only": true,
+          "start_time_ticks": 72364232,
+          "uid": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "parent_pid": 2785642,
+          "state": "R (running)",
+          "comm": "nvidia-smi",
+          "executable": "/usr/bin/nvidia-smi",
+          "executable_device": 2305,
+          "executable_inode": 71042318,
+          "argv_sha256": "78d413cb0c836e84edc79f6d7edaeafecb39b9c52fecb9b5959f1c3633c88c54",
+          "python_module": null,
+          "cwd_category": "other",
+          "approved_option_names": [],
+          "trusted_binary_sha256": "a7d6645d5d4554ce7f5e7ae68cef9fb32d21721eaa2c271f7a58ef6c21039263",
+          "nvidia_handles": [
+            "/dev/nvidia-uvm",
+            "/dev/nvidia0",
+            "/dev/nvidiactl"
+          ],
+          "classification": "trusted_read_only_monitor"
+        }
+      ],
+      "conflicts": [],
+      "light_processes": [],
+      "inaccessible_fd_pids": [],
+      "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+    },
+    "allocated_bytes": 151783936,
+    "reserved_bytes": 201326592,
+    "peak_allocated_bytes": 185181184,
+    "peak_reserved_bytes": 201326592
+  },
+  "source": {
+    "git_head": "1595785e93027691bd9d913a208ab34c59a0d827",
+    "source_sha256": {
+      "ktbench/models/favor_plus.py": "e6ebc03554a08b9a61204fa481eae6bb0fbe8fe455302df37c78ecd7a72eb2af",
+      "ktbench/models/hitskt_favor_plus.py": "5a90cc69b4eefb7ffd1ea30c78d36cd9bf531537803a5f51c4d3cb97089c7e8b",
+      "ktbench/favor_plus_pipeline.py": "b457c695f5b3672551a03551b8c247c86a78eaf0664236d87d6a4441fbcb2171",
+      "ktbench/models/hitskt.py": "627e3715eb1bd386139a7ba69eb603e6ac49dafe111f46e53ea731c03f55c515",
+      "ktbench/models/performer.py": "1b517922893f8573d294fbb036b0f7af6bb9e8d4a1a7808d50db52682d323004",
+      "ktbench/hitskt_registry.py": "a2ea1bcc35ad634688a4776564d42147def529b5060e0c315e45437042af1448",
+      "ktbench/batching.py": "baffe36d07b869498fbd8eaee12da9317b1b451a0061b52845a47b21d51c2ea5",
+      "ktbench/data/session_store.py": "6c695bc23da5c4b8116d29b5a099c16bb5669a99eb5cdfb9c378ace81d39f218",
+      "ktbench/metrics.py": "6b57353631c67f5afd5b2785e3787ffdcf15086c0212a9bac75bba199eab6727",
+      "scripts/train_hitskt_favor_plus.py": "7641a16f41cb0852ac288c2e881b85b4ff085103000d83dfcd2b0c18aea08bb6",
+      "scripts/evaluate_hitskt_favor_plus.py": "e4c1e0b9f43ef1c2a8b70c97d71c8510d605ff4431f41b54b66560c4e4936b4d",
+      "ktbench/favor_plus_real_pilot.py": "f08cc2b286be48aef989b5ca6067fc218006671a5acf32558f1ef0fe8107c187",
+      "ktbench/favor_plus_gpu_access.py": "bc73005c4df387b1fd871454a5f6fc030c53ddb8a7a26e8732ff1dc2c7065ca2",
+      "ktbench/favor_plus_pilot_diagnostics.py": "c1ae1a51cfe3878c6a39f06cacfe9163c6ef93bc6f5bf004106665509de82062",
+      "ktbench/config.py": "650f7ab21ca3428d212c3b6b7e3c012a055ac85ee48cabc4dc82d6a65a3b464c",
+      "ktbench/training.py": "ead48df5fd636d7a6e715f9c16eedbd562a7063e3f30a588401844d302eb6859",
+      "scripts/pilot_hitskt_favor_plus_real.py": "2e83e0807b381274bc13c082c799f108c0b5a5a242d1b7ec832dc94dedffc63d",
+      "scripts/validate_favor_plus_gpu.py": "a6d35184b4e8d02750b990e50d4be2b83702a389f4379f8663b777bbe8158bdc",
+      "scripts/favor_plus_quality_common.py": "11148db1c52458aeb03a0b1af99b301179eaf956d2decb68ceafcbf7426faf98",
+      "ktbench/favor_plus_bounded_assist.py": "6f42c7af928a6706ca08bfb1ea2fc597b97536cb2213e373f8c5dca36843ba25",
+      "ktbench/favor_plus_resource_telemetry.py": "ce1d3b46fd2cbbb9d202f71d68dbcd0392db36b087be85dadaf56ddb71e23eeb",
+      "ktbench/favor_plus_pilot_recovery.py": "a13bc6b154d214239d24f447968585d6b58686ea996c8e4ca4c937d634159810",
+      "ktbench/favor_plus_assist20.py": "647a35ab22e1d890efd1d91f211d3e017e5cd1ba2f06cee572a016c2101b9a60",
+      "scripts/assist20_favor_plus.py": "1df4aa2107993bd0a380a7e6eb32eb64824e16ba7e73ba1c7cc6b978e0366eb4"
+    }
+  },
+  "test_evaluations": 0
+}

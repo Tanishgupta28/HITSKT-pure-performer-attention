@@ -1,0 +1,44 @@
+{
+  "kind": "assist20_verified_observation_summary",
+  "status": "20_UPDATES_AND_RECOVERY_PASS;APPROXIMATION_REVIEW_REMAINS",
+  "base_commit": "8d4175b88bb73bbf42ef220a41abada1cf6c2bf3",
+  "executed_source_commit": "1595785",
+  "optimizer_updates": 20,
+  "optimizer_calls_in_all_recovery_processes": 0,
+  "supervised_training_targets": 1090,
+  "training_loss_first": 1.100964903831482,
+  "training_loss_last": 0.6977814435958862,
+  "training_bce_target_weighted": 0.7709905318163951,
+  "all_recorded_gradient_model_adam_finite": true,
+  "all_parameter_deltas_positive": true,
+  "gradient_l2_range": [
+    1.9841733688567027,
+    7.8544173822695456
+  ],
+  "peak_cuda_allocated_bytes": 283240448,
+  "peak_cuda_reserved_bytes": 375390208,
+  "peak_process_rss_bytes": 1980022784,
+  "minimum_observed_cgroup_headroom_bytes": 74958024704,
+  "synchronized_training_seconds": 5.505974477040581,
+  "update_seconds_mean": 0.2752987238520291,
+  "update_seconds_max": 0.7803937640273944,
+  "training_stage_execution_seconds": 30.041794723132625,
+  "recovery_execution_seconds": 9.255054160021245,
+  "campaign_elapsed_seconds": 267.592599,
+  "preservation": [
+    {
+      "inventory": "see referenced original inventory",
+      "files": 153,
+      "failures": []
+    },
+    {
+      "inventory": "see referenced original inventory",
+      "files": 70,
+      "failures": []
+    }
+  ],
+  "test_evaluations": 0,
+  "full_training_ready": false,
+  "next_decision": "GO for separately approved50-TOTAL-update diagnostic continuation (30more); REVIEW approximation; NO-GO full training",
+  "limitations": "sampled validation only; single seed42;6 train diagnostic cases/first32-position exact prefixes; original batch/history backward shapes unprofiled; PyTorch peaks exclude driver/continuous NVML peak; source/data/checkpoint access needed to reproduce"
+}

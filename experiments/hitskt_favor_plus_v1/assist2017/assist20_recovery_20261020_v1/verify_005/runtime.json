@@ -1,0 +1,19 @@
+{
+  "cuda_runtime": "12.5",
+  "cudnn_allow_tf32": false,
+  "cudnn_benchmark": false,
+  "cudnn_deterministic": true,
+  "deterministic_algorithms": true,
+  "device": "cuda:0",
+  "float32_matmul_precision": "highest",
+  "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+  "gpu_capability": [
+    9,
+    0
+  ],
+  "matmul_allow_tf32": false,
+  "numpy": "1.24.4",
+  "python": "3.10.12",
+  "threads": 1,
+  "torch": "2.4.0a0+f70bd71a48.nv24.06"
+}

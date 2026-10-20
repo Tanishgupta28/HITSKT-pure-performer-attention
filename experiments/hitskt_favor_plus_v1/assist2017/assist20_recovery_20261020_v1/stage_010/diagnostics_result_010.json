@@ -1,0 +1,163 @@
+{
+  "causal": {
+    "changed_raw_positions": [
+      0,
+      144,
+      287
+    ],
+    "requirement": "own/earlier exact equality after raw-response re-collation",
+    "status": "PASS"
+  },
+  "containment": {
+    "aggregate": {
+      "action_encoder.layers.0.attention": {
+        "max_implementation_abs": 6.035170686535807e-07,
+        "max_p95_growth_ratio": 1.0010464408316244,
+        "pair_ess_medians": {
+          "count": 6,
+          "maximum": 8.55717241919859,
+          "mean": 8.023170896644787,
+          "median": 8.193885771042183,
+          "minimum": 7.347867385611323,
+          "p90": 8.46183097750599,
+          "p95": 8.50950169835229
+        },
+        "relative_l2": {
+          "count": 6,
+          "maximum": 0.2350590709194142,
+          "mean": 0.19422770874582618,
+          "median": 0.2133263885921866,
+          "minimum": 0.09208201498406866,
+          "p90": 0.23501194282097898,
+          "p95": 0.2350355068701966
+        }
+      },
+      "correct_padding_encoder.layers.0.attention": {
+        "max_implementation_abs": 9.502876825995266e-07,
+        "max_p95_growth_ratio": 1.0161416870808373,
+        "pair_ess_medians": {
+          "count": 6,
+          "maximum": 11.363651143273202,
+          "mean": 8.940929314223984,
+          "median": 8.677115482321373,
+          "minimum": 7.352679264996215,
+          "p90": 10.752831258495236,
+          "p95": 11.058241200884218
+        },
+        "relative_l2": {
+          "count": 6,
+          "maximum": 0.20719228492039224,
+          "mean": 0.17185705410095797,
+          "median": 0.16918341518341015,
+          "minimum": 0.13793814111486657,
+          "p90": 0.19629975663120625,
+          "p95": 0.20174602077579923
+        }
+      },
+      "decoder.layers.0.attention": {
+        "max_implementation_abs": 3.8612935149284766e-07,
+        "max_p95_growth_ratio": 1.0018923053176358,
+        "pair_ess_medians": {
+          "count": 6,
+          "maximum": 10.21818277034909,
+          "mean": 9.403028484219766,
+          "median": 9.597847327201958,
+          "minimum": 7.746316425358274,
+          "p90": 10.145216557498234,
+          "p95": 10.181699663923661
+        },
+        "relative_l2": {
+          "count": 6,
+          "maximum": 0.11703954498867382,
+          "mean": 0.08053509003049925,
+          "median": 0.07958689214645498,
+          "minimum": 0.05265590223006179,
+          "p90": 0.1025479437649649,
+          "p95": 0.10979374437681935
+        }
+      },
+      "session_encoder.layers.0.attention": {
+        "max_implementation_abs": 4.3592943788084426e-07,
+        "max_p95_growth_ratio": 1.0129201274285746,
+        "pair_ess_medians": {
+          "count": 6,
+          "maximum": 6.672471439219559,
+          "mean": 5.993204523545354,
+          "median": 5.9599123251767825,
+          "minimum": 5.4662393870462225,
+          "p90": 6.442590875854746,
+          "p95": 6.557531157537153
+        },
+        "relative_l2": {
+          "count": 6,
+          "maximum": 0.14212497277559744,
+          "mean": 0.10254038779611002,
+          "median": 0.10660455525168865,
+          "minimum": 0.03765309203748799,
+          "p90": 0.13024306444762496,
+          "p95": 0.1361840186116112
+        }
+      }
+    },
+    "full_training_ready": false,
+    "original_softmax_review_trigger": 0.2,
+    "severe_failure_stages": [],
+    "status": "CONTINUE_BOUNDED_DIAGNOSTIC_ONLY"
+  },
+  "resources": {
+    "allocated_bytes": 181220864,
+    "calls": 10,
+    "campaign_elapsed_seconds": 101.312127,
+    "host": {
+      "cgroup_headroom_bytes": 74974785536,
+      "cgroup_limit_bytes": 96636764160,
+      "cgroup_usage_bytes": 21661978624,
+      "peak_process_rss_bytes": 1980022784
+    },
+    "observed_utc": "2026-10-20T13:43:14.381025+00:00",
+    "peak_allocated_bytes": 262019584,
+    "peak_reserved_bytes": 350224384,
+    "phase": "diagnostics_10",
+    "reserved_bytes": 350224384,
+    "snapshot": {
+      "conflicts": [],
+      "holders": [
+        {
+          "approved_option_names": [],
+          "argv_sha256": "78d413cb0c836e84edc79f6d7edaeafecb39b9c52fecb9b5959f1c3633c88c54",
+          "classification": "trusted_read_only_monitor",
+          "comm": "nvidia-smi",
+          "cwd_category": "other",
+          "executable": "/usr/bin/nvidia-smi",
+          "executable_device": 2305,
+          "executable_inode": 71042318,
+          "identity_complete": true,
+          "nvidia_handles": [
+            "/dev/nvidia-uvm",
+            "/dev/nvidia0",
+            "/dev/nvidiactl"
+          ],
+          "parent_pid": 2785303,
+          "pid": 2785304,
+          "python_module": null,
+          "start_time_ticks": 72359179,
+          "state": "R (running)",
+          "trusted_binary_sha256": "a7d6645d5d4554ce7f5e7ae68cef9fb32d21721eaa2c271f7a58ef6c21039263",
+          "uid": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "verified_read_only": true
+        }
+      ],
+      "inaccessible_fd_pids": [],
+      "light_processes": [],
+      "observed_utc": "2026-10-20T13:43:14.379533+00:00",
+      "own_pid": 2785191,
+      "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+    }
+  },
+  "update": 10
+}

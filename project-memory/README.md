@@ -30,6 +30,16 @@ remain intact; platform changes do not alter research source or live runs.
 
 ## Current short status
 
+Latest: recoverable20-update ASSIST pilot completed. Atomic5/10/20 and fresh CUDA
+no-step recovery PASS,154 targeted CPU controls PASS. Current read-only monitor
+activity verified/old guard race fixed; historical PID still unknown. Tiny mixed
+sampled validation changes, Action approximation>.20 REVIEW remains. GO only a
+separately approved50TOTAL diagnostic continuation; full training NO-GO. Training
+stopped, original artifacts preserved. Read
+[FAVOR_ASSIST20_STATE.md](FAVOR_ASSIST20_STATE.md).
+
+Earlier resource-aborted100-budget attempt (historical):
+
 Latest bounded study: CPU review supports contained diagnostics, but new CUDA run
 aborted after14 finite updates for unidentified GPU holder. Only initialization
 validation;20/50/100 NOT REACHED, no checkpoint/retry.102 targeted CPU PASS.

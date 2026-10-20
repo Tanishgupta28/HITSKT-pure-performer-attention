@@ -275,3 +275,23 @@ def test_actual_hold_exposure_and_unknown_conflicts_remain_required(tmp_path,mon
     else:snapshot['inaccessible_fd_pids']=[999]
     with pytest.raises(RuntimeError):
         t.admit({'user_approval':{'actions':[t.PILOT_ACTION]}},t.PILOT_ACTION,snapshot_fn=lambda:snapshot)
+
+
+def test_literal_legacy_race_blocks_verified_monitor_but_identity_first_retains_it(tmp_path,monkeypatch):
+    """Reproduce old descriptor-before-identity false conflict, no GPU process."""
+    from ktbench.favor_plus_gpu_access import conflicting_device_processes
+    binary=Path('/usr/bin/nvidia-smi')
+    if not binary.is_file():pytest.skip('fixture requires local management binary, never executes it')
+    old_root=tmp_path/'legacy';new_root=tmp_path/'identity_first';old_root.mkdir();new_root.mkdir()
+    fixture_process(old_root,executable=binary);fixture_process(new_root,executable=binary)
+    trust=t.trusted_binaries([binary]);real=os.readlink
+    def exit_after_fd(path,*args,**kwargs):
+        target=real(path,*args,**kwargs);path=Path(path)
+        if path.name=='3' and path.parent.name=='fd':
+            for name in ('exe','cmdline','stat'):(path.parent.parent/name).unlink(missing_ok=True)
+        return target
+    monkeypatch.setattr(os,'readlink',exit_after_fd)
+    assert conflicting_device_processes(old_root,own_pid=1)==[20]
+    new=t.device_snapshot(new_root,own_pid=1,trusted=trust)
+    assert not new['conflicts'] and new['holders'][0]['verified_read_only']
+    assert new['holders'][0]['exited_after_identity']
