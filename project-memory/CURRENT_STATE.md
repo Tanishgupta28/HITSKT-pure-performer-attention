@@ -2,7 +2,25 @@
 
 Updated: 2026-10-20 UTC
 
-## Allocation-first clarification — latest
+## Existing-reservation reuse recheck — latest,09:24 UTC
+
+Renewed user authorization permits stopping only owned LightSAKT2 now and reuse
+of an existing allocation if its actual terms permit HiTSKT with no conflicts.
+Single fresh inspection: no live LightSAKT2 trainer/controller/recovery or GPU
+handles; persistent restart hold remains active.813 complete/142 pending/
+2 interrupted. No signals needed/sent.7915 prior files present/same size;8 key
+artifact hashes and recovery archive hash unchanged, full audit not repeated.
+
+Sole H100 MIG now nearly empty (39,780,352 used bytes); no visible GPU-holding
+processes. Earlier unrelated-job observations are historical, not current.
+Existing reservation owner/account/project-transfer permissions/window/conflicts
+remain unverified: no scheduler assignment/tools, Kubernetes403. A NEW allocation
+is not inherently required; need confirmation of the EXISTING one's terms.
+CUDA/pilot NOT RUN. No model/data/DKT changes, training, watcher or tests. Stop
+before CUDA; report `reports/favor_plus_v1/EXISTING_ALLOCATION_REUSE_STATUS_20261020.md`,
+evidence `reports/favor_plus_v1/existing_allocation_reuse_20261020_v1/inspection.json`.
+
+## Earlier allocation-first clarification — historical
 
 User has no exclusive-allocation evidence. Preserve LightSAKT2; do not stop it
 solely for GPU release until HiTSKT allocation is confirmed. No CUDA or training

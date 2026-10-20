@@ -2,7 +2,26 @@
 
 Updated: 2026-10-20 UTC
 
-## 2026-10-20 — Allocation-first clarification (latest)
+## 2026-10-20 — Renewed LightSAKT2 shutdown and existing-allocation transfer (latest)
+
+- User owns both projects and again explicitly authorizes stopping verified
+  LightSAKT2 training, preserving all outputs and preventing future launches;
+  they do not want LightSAKT2 continued now. This supersedes the immediately
+  preceding allocation-first/no-stop instruction for verified LightSAKT2 only.
+- Inspect processes/preservation once; avoid repeated audits or availability
+  polling. Never stop unrelated processes or override another reservation.
+- Determine whether the EXISTING account/project/reservation permits HiTSKT
+  reuse with no conflicts. No new allocation is required if actual existing
+  permissions establish this. If GPU ownership/transfer permission cannot be
+  established, explain precisely and stop before CUDA; user workload ownership
+  alone does not establish allocation ownership.
+- After verified resource access run existing staged128-feature CUDA checks;
+  only after all required PASS run ASSIST train-only seed42/B1/cost2048/<=5
+  updates with diagnostics/checkpoint evidence. No test evaluation/full training,
+  original ELU+1 changes, DKT recovery, watchers or unrelated artifacts changes.
+- Update durable memory and report actual shutdown/resource/CUDA/pilot status.
+
+## 2026-10-20 — Allocation-first clarification (historical)
 
 - User confirms both research projects are theirs but has no administrator or
   scheduler evidence of exclusive MIG allocation. Project ownership/prioritization

@@ -30,6 +30,14 @@ remain intact; platform changes do not alter research source or live runs.
 
 ## Current short status
 
+Latest09:24UTC recheck: LightSAKT2 inactive, restart hold intact, no signals.
+No visible GPU handle owners; MIG nearly empty. Existing reservation reuse is
+still unverified (no assignment/transfer/window/no-conflict evidence); a new
+allocation is not inherently required. Renewed user authorization permits verified
+LightSAKT2 shutdown and conditional staged CUDA/five ASSIST updates, but not
+reservation override/full training. No CUDA/pilot run. See CURRENT_STATE and the
+existing-allocation reuse report. Earlier clarification below is historical.
+
 Latest clarification: allocation first. User has no exclusive-allocation evidence;
 LightSAKT2 must not be stopped solely to free a GPU before confirmation. Preserve
 all artifacts and existing hold; no CUDA/training/resource changes. Obtain the

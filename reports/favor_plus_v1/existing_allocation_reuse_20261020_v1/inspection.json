@@ -1,0 +1,169 @@
+{
+  "observed_utc": "2026-10-20T09:24:34.645940+00:00",
+  "inspection_count": 1,
+  "scope": "single read-only process/reservation/metadata check; no CUDA, inference, training, signals or watcher",
+  "signals_sent": 0,
+  "cuda_initialized": false,
+  "processes": {
+    "project_module_processes": [],
+    "visible_gpu_handle_owners": [],
+    "inaccessible_fd_directories": 0,
+    "visibility_limit": "Only processes visible in this PID namespace; no external scheduler reservation evidence"
+  },
+  "all_visible_light_project_processes": [
+    {
+      "pid": 1115850,
+      "ppid": 1,
+      "uid": "0\t0\t0\t0",
+      "state": "S (sleeping)",
+      "comm": "bash",
+      "module": null,
+      "project_script": null,
+      "cwd_category": "LightSAKT2",
+      "raw_argv_not_recorded": true
+    },
+    {
+      "pid": 1116552,
+      "ppid": 1115850,
+      "uid": "0\t0\t0\t0",
+      "state": "S (sleeping)",
+      "comm": "codex",
+      "module": null,
+      "project_script": null,
+      "cwd_category": "LightSAKT2",
+      "raw_argv_not_recorded": true
+    }
+  ],
+  "live_light_training_or_controller_processes": [],
+  "training_signals_required": false,
+  "light_schedule": {
+    "counts": {
+      "completed": 813,
+      "pending": 142,
+      "interrupted": 2
+    },
+    "total": 957,
+    "unfinished": [
+      {
+        "run_id": "ASSIST2015-GKT-baseline_tuning-42-e01b589e46cc",
+        "status": "interrupted",
+        "last_completed_epoch": 2,
+        "best_checkpoint": "checkpoints/ASSIST2015-GKT-baseline_tuning-42-e01b589e46cc/best.pt",
+        "waiting_for_gpu_admission": null
+      },
+      {
+        "run_id": "ASSIST2015-GKT-baseline_tuning-42-e1c69a92d6b5",
+        "status": "interrupted",
+        "last_completed_epoch": null,
+        "best_checkpoint": null,
+        "waiting_for_gpu_admission": true
+      }
+    ]
+  },
+  "preservation_presence_size_check": {
+    "file_count": 7915,
+    "missing": [],
+    "changed_size": [],
+    "full_hash_audit_not_repeated": true,
+    "prior_full_hash_pass": "/workspace/LightSAKT2/reports/priority_handoff_20261020/preservation_comparison.json"
+  },
+  "unchanged_handoff_hashes": [
+    {
+      "path": "experiments/manifest.json",
+      "matches": true
+    },
+    {
+      "path": "experiments/optimization_request.json",
+      "matches": true
+    },
+    {
+      "path": "results/raw/ASSIST2015-GKT-baseline_tuning-42-e01b589e46cc/config.json",
+      "matches": true
+    },
+    {
+      "path": "results/raw/ASSIST2015-GKT-baseline_tuning-42-e01b589e46cc/status.json",
+      "matches": true
+    },
+    {
+      "path": "results/raw/ASSIST2015-GKT-baseline_tuning-42-e01b589e46cc/history.json",
+      "matches": true
+    },
+    {
+      "path": "reports/run_logs/ASSIST2015-GKT-baseline_tuning-42-e01b589e46cc.log",
+      "matches": true
+    },
+    {
+      "path": "checkpoints/ASSIST2015-GKT-baseline_tuning-42-e01b589e46cc/best.pt",
+      "matches": true
+    },
+    {
+      "path": "checkpoints/ASSIST2015-GKT-baseline_tuning-42-e01b589e46cc/latest.pt",
+      "matches": true
+    }
+  ],
+  "hold_marker": {
+    "exists": true,
+    "sha256": "65214c2c53852024e970fd0a176f71968f204ec0748635a7e6f46de3ed64c234"
+  },
+  "local_recovery_archive": {
+    "present": true,
+    "matches_previous_hash": true
+  },
+  "existing_scheduler_environment": {
+    "SLURM_JOB_ID": null,
+    "SLURM_JOB_ACCOUNT": null,
+    "SLURM_JOB_PARTITION": null,
+    "SLURM_JOB_GPUS": null,
+    "SLURM_JOB_NODELIST": null,
+    "PBS_JOBID": null,
+    "LSB_JOBID": null
+  },
+  "scheduler_tool_available": {
+    "scontrol": false,
+    "squeue": false,
+    "qstat": false,
+    "bjobs": false,
+    "kubectl": false
+  },
+  "visible_device_files": [
+    "MIG-d2fcfd79-720e-5218-82c9-0a132be68920"
+  ],
+  "allocation_metadata_mounts_present": {
+    "/etc/podinfo": false,
+    "/run/slurm": false,
+    "/etc/slurm": false,
+    "/var/spool/slurm": false,
+    "/run/pbs": false
+  },
+  "nvml_inventory": {
+    "returncode": 0,
+    "output": "GPU 0: NVIDIA H100 80GB HBM3 (UUID: GPU-5a568e3c-e96c-169f-b063-f4478340ff51)\n  MIG 3g.40gb     Device  0: (UUID: MIG-d2fcfd79-720e-5218-82c9-0a132be68920)",
+    "stderr": ""
+  },
+  "nvml_memory": {
+    "MIG-d2fcfd79-720e-5218-82c9-0a132be68920": {
+      "handle_returncode": 0,
+      "memory_returncode": 0,
+      "total_bytes": 42278584320,
+      "free_bytes": 42238803968,
+      "used_bytes": 39780352
+    }
+  },
+  "nvml_init_returncode": 0,
+  "existing_kubernetes_allocation_read": {
+    "http_status": 403,
+    "pod_name_inferred_from_hostname": true,
+    "body_not_recorded": true
+  },
+  "memory_cgroup": {
+    "memory.limit_in_bytes": "96636764160",
+    "memory.usage_in_bytes": "19848044544",
+    "memory.oom_control": "oom_kill_disable 0\nunder_oom 0\noom_kill 2"
+  },
+  "existing_allocation_reuse_status": "NOT VERIFIED: existing reservation owner/account, permitted project transfer, valid window and absence of conflicting reservations are not established; no visible GPU handle owners in this snapshot",
+  "cuda_verification": "NOT RUN",
+  "five_step_assist_pilot": "NOT RUN",
+  "full_training": "NOT AUTHORIZED",
+  "light_shutdown_status": "Already stopped before this turn; hold active; zero signals needed or sent",
+  "memory_release_scope": "No LightSAKT2 GPU handles observed; no new shutdown occurred, so no before/after LightSAKT2 memory-release delta is claimed"
+}
