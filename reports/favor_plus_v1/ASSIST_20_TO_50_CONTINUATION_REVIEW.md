@@ -7,7 +7,7 @@ CPU review predeclared in `dd6be27` before the new measurements.
 **Checkpoint integrity PASS; approximation REVIEW remains. Conditional GO for a
 further bounded diagnostic continuation, not full training. Explicit approval
 for30 additional updates is PENDING. No CUDA context, real-data model forward,
-new validation evaluation or optimizer update was executed in this preparation.**
+new validation evaluation or real-data optimizer update was executed in this preparation.**
 
 ## Checkpoint integrity and exact recovery boundary
 
@@ -175,6 +175,8 @@ availability qualifications remain. No new predictive metrics were calculated.
 
 **71 CPU tests PASS, zero failures:**19 new preparation/approval/sampler/cap cases
 plus52 existing recovery/atomic checkpoint/resource controls. No229-suite repeat.
+Existing unit fixtures take tiny synthetic CPU Adam steps to populate recovery
+states; these are neither ASSIST2017 training nor continuation updates.
 [Log](assist50_preparation_20261020_v1/targeted_cpu.log),
 [JUnit](assist50_preparation_20261020_v1/targeted_cpu.xml).
 The new independent CPU replay took5.219s on one low-priority thread; it performs
