@@ -1288,3 +1288,21 @@ Resourcefailure3.767602s; no verifiednewTorchpeak/RSS/throughput/newtrainingloss
 Action.2131 REVIEW retained/post20stabilityNOTVERIFIED/fulltrainingNO-GO. Report
 ASSIST_50_UPDATE_VALIDATION_RESULTS.md truthfullymarks50NOTREACHED. Publishscoped
 research thenSTOP forresourceidentityevidence; no additionalCUDA/polling/training.
+
+
+## 2026-10-21 — Read-only attribution diagnosis; host mapping still unavailable
+
+Latesttask forbidsCUDA/updates, asksPIDnamespace/cgroup/NVIDIA evidence and CPU
+checks only, thenWAIT. Existing30additionalapprovalretained, no repeatrequest.
+SameMIG/GI2CI0/cap21/22/procexposureverified; ownerauthorityretained.06:59snapshot
+NVML2265424 active2885681152bytes withunknownvisibleTorchholder3136171, notown
+3136614; noassociationproved. ParentnamespaceEPERM/localNSpid/nohostproc/runtime
+socket. NVMLnamequeryNOT_FOUNDforNVMLPID/SMIInsufficientPermissions. Old67123/
+2847964 gone, sameprocessorotherwork UNKNOWN. IndependentavailabilityNO-GO.
+OfficialheaderCsizeof24/offset0,8,16,20 matchesexistingctypes; noABIlayoutdefect
+supported. MPS/prooted possibilitiesunproved. Guardunchanged/28oldsourcesretained;
+addedstandaloneread-onlyevidencecollector notaliasadmission.31CPUtestsPASS(29new
++2old).199old20+9failedfilesunchanged/Lightholdsame/nootherjobwrites/signals.
+NoCUDA/updates, total20. Admintechnicalmapping/exclusivityevidencerequestfile
+prepared/nothing sent. ReportGPU_PROCESS_ATTRIBUTION_DIAGNOSIS.md. Publishscoped
+research andWAIT nextinstruction, noautoresume/hostpermissionre-request.

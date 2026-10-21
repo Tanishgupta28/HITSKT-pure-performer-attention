@@ -1,6 +1,21 @@
 # Current state
 
-Updated: 2026-10-20 UTC
+Updated: 2026-10-21 UTC
+
+## Latest: PID-attribution diagnosis complete; unresolved, no CUDA/training
+
+Read [FAVOR_GPU_ATTRIBUTION_STATE.md](FAVOR_GPU_ATTRIBUTION_STATE.md).
+Historical67123↔2847964 relationship remainsUNKNOWN. Container exposes local
+NSpid only/parentnamespaceEPERM/nohostproc/runtime socket. ABIchecked against
+officialheaderPASS.06:59snapshot assignedsameMIG/GI2CI0 has activeNVML2265424
+and visibleunknownTorchholder3136171; theirrelationunproved, notthiscollector.
+Existingownerpermissionretained; independent availabilityNOTVERIFIED/NO-GO.
+Addedreadonlydiagnosticcollector only; productionguards/28oldsourcesunchanged.
+31CPUtestsPASS(29new+2existing),199old20+9failedattemptfilesunchanged; Lightheld.
+NoCUDA/optimizerupdates/signals/job/allocationchange. Newtask completed, total20.
+NeedhostPIDmapping/exclusivityevidence; adminrequestfileprepared/nothing sent.
+STOP andWAIT for nextinstruction even if laterprocesslistempty; do notrequest
+repeat20→50authorization or automaticallyresume priorapprovedcontinuation.
 
 ## Latest:20→50 RESOURCE IDENTITY BLOCKED;0 additional updates
 

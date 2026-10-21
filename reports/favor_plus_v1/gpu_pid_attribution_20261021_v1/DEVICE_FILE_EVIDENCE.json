@@ -1,0 +1,26 @@
+{
+  "observed_utc": "2026-10-21T07:04:39.684012+00:00",
+  "method": "read-only files, no NVML/CUDA calls",
+  "files": {
+    "/proc/driver/nvidia/capabilities/gpu0/mig/gi2/access": {
+      "status": "READ",
+      "sha256": "7d6720eaf6a75e00ce21081f32eb044e77980e683026b4821914221797a1f20f",
+      "text": "DeviceFileMinor: 21\nDeviceFileMode: 292\nDeviceFileModify: 1\n"
+    },
+    "/proc/driver/nvidia/capabilities/gpu0/mig/gi2/ci0/access": {
+      "status": "READ",
+      "sha256": "f2e8e5f0a9cbf7f4a72015dcf475a4891ddfe2f4fc6fb486a04e4eb7f366e068",
+      "text": "DeviceFileMinor: 22\nDeviceFileMode: 292\nDeviceFileModify: 1\n"
+    },
+    "/proc/driver/nvidia/gpus/0000:1b:00.0/information": {
+      "status": "READ",
+      "sha256": "a220e2ca5b6a0d8bb81edc3e25445c39391fd9ff3237d89036e68ae8b772782b",
+      "text": "Model: \t\t NVIDIA H100 80GB HBM3\nIRQ:   \t\t 18\nGPU UUID: \t GPU-5a568e3c-e96c-169f-b063-f4478340ff51\nVideo BIOS: \t 96.00.89.00.01\nBus Type: \t PCIe\nDMA Size: \t 52 bits\nDMA Mask: \t 0xfffffffffffff\nBus Location: \t 0000:1b:00.0\nDevice Minor: \t 0\nGPU Firmware: \t 535.161.08\nGPU Excluded:\t No\n"
+    },
+    "/sys/fs/cgroup/devices/devices.list": {
+      "status": "READ",
+      "sha256": "2ec1931d6881e9d78731de6fe8daec83942542c9c95b3c4c817e9e47a68a187a",
+      "text": "c 492:22 rw\nc 492:21 rw\nc 483:1 rw\nc 483:0 rw\nc 195:255 rw\nc 195:254 rw\nc 195:0 rw\nc 136:* rwm\nc 10:200 rwm\nc 5:2 rwm\nc 5:0 rwm\nc 1:9 rwm\nc 1:8 rwm\nc 1:7 rwm\nc 1:5 rwm\nc 1:3 rwm\nc *:* m\nb *:* m\n"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "observed_utc": "2026-10-21T06:59:10.338681+00:00",
+  "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+  "namespace_parent": {
+    "status": "UNAVAILABLE",
+    "errno": 1,
+    "error": "EPERM",
+    "mapping_proven": false
+  },
+  "nvml": {
+    "total_bytes": 42278584320,
+    "free_bytes": 39343947776,
+    "used_bytes": 2934636544,
+    "compute_processes": [
+      {
+        "pid": 2265424,
+        "used_gpu_memory_bytes": 2885681152,
+        "gpu_instance": 2,
+        "compute_instance": 0
+      }
+    ]
+  },
+  "no_torch_import": true,
+  "no_cuda_driver_import": true,
+  "diagnostic_decision": {
+    "status": "BLOCKED_ACTIVE_OR_UNATTRIBUTED_GPU_USE",
+    "reasons": [
+      "visible_unknown_or_compute_device_holder",
+      "active_NVML_compute_ownership_unproven"
+    ],
+    "gpu_execution_allowed": false,
+    "pid_mapping_proven": false,
+    "policy": "Evidence only; no numeric alias whitelist, process-name exemption or grant from free VRAM"
+  }
+}

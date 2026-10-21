@@ -1,5 +1,19 @@
 # Next checkpoint
 
+21OctoberdiagnosticCOMPLETE: read
+[FAVOR_GPU_ATTRIBUTION_STATE.md](FAVOR_GPU_ATTRIBUTION_STATE.md) and
+`reports/favor_plus_v1/GPU_PROCESS_ATTRIBUTION_DIAGNOSIS.md`.
+**WAIT for nextuserinstruction; NO CUDA/training during this diagnostic task.**
+OldPIDpairUNKNOWN; currentcapturedMIGactive/unattributed. Needhostprocessmapping/
+independentavailabilityevidence as specified in
+`reports/favor_plus_v1/gpu_pid_attribution_20261021_v1/GPU_ADMIN_EVIDENCE_REQUEST.md`.
+Nothing sentexternally. Existing20→50approvalpersists, do notaskagain, but no
+automaticexecution afterevidence or emptylist. Productionguarduntouched; new
+collector onlymetadata/CPUtests31PASS. Original20/failedattempts/config/Light
+preserved; total20/new0. Publishscopedverifiedresearch evidence/memory thenstop.
+
+Earlier20October continuation checkpoint (historical):
+
 LATEST: **STOP GPU/training; runtime PID identity blocked before update21**.
 Read [FAVOR_ASSIST50_STATE.md](FAVOR_ASSIST50_STATE.md) and
 `reports/favor_plus_v1/ASSIST_50_UPDATE_VALIDATION_RESULTS.md`.

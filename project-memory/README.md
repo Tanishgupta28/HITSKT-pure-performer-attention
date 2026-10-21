@@ -30,6 +30,13 @@ remain intact; platform changes do not alter research source or live runs.
 
 ## Current short status
 
+21Octoberlatest: read-onlyGPUattributiondiagnosis leaves old67123↔2847964UNKNOWN.
+Parentnamespace inaccessible; officialheaderABIcheckedPASS. AssignedMIG observed
+active/unattributedcompute, so exclusivityNOTVERIFIED/NO-GO.31CPUtestsPASS,
+productionguards/28oldsources/199+9artifactsunchanged. NoCUDA/newupdates/Light
+changes. Read [FAVOR_GPU_ATTRIBUTION_STATE.md](FAVOR_GPU_ATTRIBUTION_STATE.md).
+Preparedhostevidencerequest; WAIT for nextinstruction, no repeatapprovalrequest.
+
 Latest: approved20→50 attempt STOPPED before21 for unmapped NVML67123 vs own
 2847964. Exact20CUDArecovery PASS/0newupdates, no30/40/50metrics/checkpoints.
 103CPU controls PASS; originals/Light/DKT untouched, resource released. Need

@@ -1,0 +1,70 @@
+{
+  "status": "PASS_PRESERVATION_AND_CPU_CHECKS;GPU_IDENTITY_UNRESOLVED",
+  "observed_utc": "2026-10-21T07:08:24.254033+00:00",
+  "base_commit": "4927490049e0c5f26833d05e9219c42ddcfa6db0",
+  "manifests": [
+    {
+      "manifest": "reports/favor_plus_v1/assist20_recovery_20261020_v1/ARTIFACT_INVENTORY.json",
+      "files_verified": 199,
+      "unchanged": true
+    },
+    {
+      "manifest": "reports/favor_plus_v1/assist50_continuation_20261020_v1/EXPERIMENT_ARTIFACT_INVENTORY.json",
+      "files_verified": 9,
+      "unchanged": true
+    }
+  ],
+  "existing_source_files_unchanged": 28,
+  "checkpoints": [
+    {
+      "update": 5,
+      "sha256": "93fca2f31a2441c30781904c89e1b5719761526ea7ca5e5442bab6f1d0d4cb0a"
+    },
+    {
+      "update": 10,
+      "sha256": "a47a81892b15240a7423ad73acb4c32141c315cfac3fa0ed0f2c9485aef22e16"
+    },
+    {
+      "update": 20,
+      "sha256": "0388e984b8bed21210455be561524a041c892b98b2a87b50fa3ecb1c3ade86f4"
+    }
+  ],
+  "light_hold_sha256": "65214c2c53852024e970fd0a176f71968f204ec0748635a7e6f46de3ed64c234",
+  "unrelated_readme_sakt_unchanged": true,
+  "production_guard_modified": false,
+  "historical67123_equals2847964": "NOT VERIFIED",
+  "historical_competing_job": "NOT VERIFIED",
+  "assigned_resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+  "observed_gpu_instance": 2,
+  "observed_compute_instance": 0,
+  "active_nvml_pid_in_formal_snapshot": [
+    2265424
+  ],
+  "own_collector_pid": 3136614,
+  "namespace_parent": {
+    "status": "UNAVAILABLE",
+    "errno": 1,
+    "error": "EPERM",
+    "mapping_proven": false
+  },
+  "gpu_ownership_fully_resolved": false,
+  "independent_current_availability_verified": false,
+  "actual_cuda_execution": false,
+  "additional_optimizer_calls": 0,
+  "total_training_updates": 20,
+  "cpu_tests": {
+    "passed": 31,
+    "new": 29,
+    "existing_guard_cases": 2,
+    "failures": 0,
+    "skipped": 0
+  },
+  "source_files": {
+    "ktbench/gpu_process_diagnostics.py": "f1c308268d94fb366806e9aeb36a9306c2d4ad48dbb57ca76c61f8d769ff3f01",
+    "scripts/diagnose_hitskt_gpu_processes.py": "cc5caec9f6dc3033a2a4fb08da85352b8030d510df51870f9bd85ebab25f0a7f",
+    "tests/test_gpu_process_diagnostics.py": "cb574b54549290f251c68ae964deebd3af10e05feecf6e00efe17e141edce5d6"
+  },
+  "nvml_header_sha256": "b392329391d2d129942832af5ecae029b8cbd5775b356d35cfe697a699a912b6",
+  "nvml_library_sha256": "fb0862f58f33e93e6709482dcafb44c4665ccd24e3d34ee10c91a9e122d04bce",
+  "conclusion": "NO-GO: host PID binding absent and active unattributed GPU use observed; retain existing owner permission, wait for host evidence and next instruction"
+}

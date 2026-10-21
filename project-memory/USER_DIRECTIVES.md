@@ -1,8 +1,24 @@
 # Durable user directives
 
-Updated: 2026-10-20 UTC
+Updated: 2026-10-21 UTC
 
-## 2026-10-20 — Explicit20→50 continuation approval (latest)
+## 2026-10-21 — GPU PID attribution diagnosis ONLY (latest)
+
+- Inspect NVML67123 versus container2847964 using read-only process/namespace/
+  cgroup/NVIDIA/assigned-MIG evidence. Do not infer independence from empty local
+  process lists, weaken the guard, or declare same process without proof.
+- NO CUDA execution or optimizer updates in this diagnostic task. Preserve all
+  checkpoints/configuration/LightSAKT2/unrelated research. No job/resource changes.
+- If actual namespace mapping is established, implement/test robust attribution
+  without accepting unknown/competing processes. CPU-only tests for changes.
+  If host evidence is unavailable, specify exactly what administrator evidence
+  is needed; clearly report unresolved identity and stop.
+- Existing bounded20→50 approval persists; do not ask for it again. It is not
+  authorization to run that continuation during this diagnostic-only task.
+- Report findings/root-cause certainty/evidence/tests/resolution status, update
+  durable memory, then WAIT for the next instruction. No automatic GPU resumption.
+
+## 2026-10-20 — Explicit20→50 continuation approval (historical scope)
 
 - User now APPROVES exactly30 additional ASSIST2017 optimizer calls, maximum50
   total, from exact20 checkpoint preserving model/Adam/RNG/configuration. Record
