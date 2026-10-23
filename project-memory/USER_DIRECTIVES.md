@@ -2,7 +2,22 @@
 
 Updated: 2026-10-23 UTC
 
-## 2026-10-23 — Approved exact25→50 shared continuation (latest; COMPLETED)
+## 2026-10-23 — Post50 scientific investigation, CPU-only (latest)
+
+- Investigate Action/CPE approximation on representative identical training
+  representations, length/feature diagnostics, Q/K/concentration/stability and
+  .20 REVIEW meaning. No silent architecture/configuration/threshold change.
+- Analyze recall/F1 using TRAIN and existing validation evidence only; check
+  masks/metrics/imbalance/threshold consistency. No final test evaluation/tuning,
+  optimizer updates, CUDA execution, full training or new GPU allocation work.
+- Profile actual original ASSIST training histories/padding/batch shapes on CPU
+  initially; distinguish measured CPU memory from unverified GPU requirements.
+- Preserve exact50/all earlier checkpoints, LightSAKT2/unrelated baselines/jobs,
+  science/data/audits/history. Predeclare bounded diagnostic design, run relevant
+  CPU tests, report evidence/limitations/longer-training decision and next bounded
+  proposal. Commit validated diagnostic work on research branch only.
+
+## 2026-10-23 — Approved exact25→50 shared continuation (historical; COMPLETED)
 
 - Outcome: completed50TOTAL/25new calls, current execution scope EXHAUSTED.
   No further training without a new instruction; see FAVOR_SHARED50_FROM25_STATE.md.

@@ -1,0 +1,92 @@
+{
+  "kind": "hitskt_favor_plus_post50_cpu_investigation_v1",
+  "base_commit": "3a9617ab08b854016c5424dcf3357f623b2e4265",
+  "scope": "CPU only; zero CUDA/NVML/GPU probes/optimizer updates/test evaluations. Frozen50 model; preserve all science and checkpoints.",
+  "checkpoint50_sha256": "93ebe9d2a29be9a6e4deb278916513339de61c9ac8f72a454a31111829440a73",
+  "cohort": {
+    "original_training_cases": 6,
+    "new_training_cases": "one median-padded-cost example per original6 target-length/history-count strata, excluding original students if possible; deterministic ties by dataset index",
+    "extreme_training_cases": "maximum target length and maximum singleton padded cost, unique targets, no label/prediction selection",
+    "padded_cost_ceiling": 16384,
+    "history_sessions": 15,
+    "max_cases": 14
+  },
+  "attention": {
+    "stages": [
+      "action_encoder.layers.0.attention",
+      "correct_padding_encoder.layers.0.attention"
+    ],
+    "selected_row": "longest valid history row for Action; only target row for CPE",
+    "production_prefix_lengths": [
+      1,
+      8,
+      32,
+      128,
+      256,
+      512,
+      939
+    ],
+    "include_actual_length": true,
+    "features": [
+      128,
+      256,
+      512
+    ],
+    "diagnostic_projection_seeds": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "feature_comparison_prefix_cap": 128,
+    "original_projection": "m128 exact saved42/44 buffers; compare separately from diagnostic draws; no projection replacement in model",
+    "oracle": "explicit float64 feature and exact causal weight matrices; compensated per-feature gauge, causal masking before row normalization; crosscheck with direct pairwise logsumexp on16 positions",
+    "probes": "saved25/50 original6cases: swap Q,K,V individually and QK jointly; fixed-projection norm factors0.5/1/1.5 only frozen32-position arrays, never model/config changes",
+    "metrics": [
+      "relative_output_L2",
+      "absolute_RMSE",
+      "error_over_value_RMS",
+      "attention_total_variation",
+      "attention_entropy_effective_keys",
+      "attention_max_weight",
+      "pair_feature_ESS",
+      "head_query_error_tails",
+      "QK_norms",
+      "iid_relative_variance_proxy_distinct_from_ORF_bound"
+    ]
+  },
+  "predictive": {
+    "inputs": "saved identical validation predictions/labels at20/25/30/40/50 only; original50 selected training targets for label/update statistics",
+    "official_threshold": 0.5,
+    "predeclared_sensitivity_thresholds": [
+      0.4,
+      0.5,
+      0.6
+    ],
+    "threshold_selection": false,
+    "analysis": "independent confusion/rank-AUC, class-conditional probabilities/logit changes, crossings, near-threshold counts, per-class BCE, imbalance baselines; no new validation inference/test access"
+  },
+  "profiling": {
+    "static": "all train-only shape metadata and exact original epoch1 seed42 sampler budget32768/maxbatch64; no truncation or collated full-large batch",
+    "cpu_autograd": "up to3 deterministic real training batch shapes (median singleton, largest singleton<=2048, largest original batch<=4examples/cost2048); forward/backward only, no optimizer, live saved-storage hooks",
+    "interpretation": "CPU RSS/saved storage measured; analytical persistent/scan/FF/workspace lower bounds are not measured VRAM or complete GPU peak; no GPU runtime forecast"
+  },
+  "limits": {
+    "cuda_visible_devices": "",
+    "cpu_threads": 1,
+    "cpu_affinity": 223,
+    "nice": 10,
+    "max_process_rss_bytes": 4294967296,
+    "minimum_cgroup_headroom_bytes": 2147483648,
+    "max_execution_seconds": 1200,
+    "profile_child_timeout_seconds": 180,
+    "maximum_profile_padded_cost": 2048
+  },
+  "acceptance": {
+    "review_relative_output_l2": 0.2,
+    "feature_kernel_max_abs": 5e-05,
+    "math_reference_agreement_atol": 1e-10,
+    "policy": "unchanged review and existing severe gates; descriptive results including failures retained. No feature/threshold selection or acceptance relaxation."
+  },
+  "continuation": "No new training authorized. Final report GO/REVIEW/NO-GO and next bounded proposal only."
+}
