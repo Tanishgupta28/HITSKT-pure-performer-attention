@@ -1,0 +1,39 @@
+{
+  "observation": {
+    "observed_utc": "2026-10-23T06:47:57.752908+00:00",
+    "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+    "device": {
+      "total_bytes": 42278584320,
+      "free_bytes": 42238803968,
+      "used_bytes": 39780352,
+      "compute_processes": []
+    },
+    "utilization": {
+      "status": "unsupported",
+      "nvml_status": 3,
+      "gpu_percent": null,
+      "memory_percent": null
+    },
+    "local": {
+      "observed_utc": "2026-10-23T06:47:57.906030+00:00",
+      "own_pid": 3946061,
+      "holders": [],
+      "conflicts": [],
+      "light_processes": [],
+      "inaccessible_fd_pids": [],
+      "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+    },
+    "pid_attribution": "UNRESOLVED; self/peer not inferred"
+  },
+  "host": {
+    "cgroup_limit_bytes": 96636764160,
+    "cgroup_usage_bytes": 63576707072,
+    "cgroup_headroom_bytes": 33060057088,
+    "oom_control": "oom_kill_disable 0\nunder_oom 0\noom_kill 2"
+  },
+  "light_hold_sha256": "65214c2c53852024e970fd0a176f71968f204ec0748635a7e6f46de3ed64c234",
+  "light_hold_status": "USER_TRAINING_HOLD_ACTIVE",
+  "cuda_initialized": false,
+  "training_complete_at25": true,
+  "signals_sent": 0
+}

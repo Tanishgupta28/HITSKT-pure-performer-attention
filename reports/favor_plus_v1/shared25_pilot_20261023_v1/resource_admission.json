@@ -1,0 +1,109 @@
+{
+  "status": "PASS",
+  "scope": {
+    "initial_optimizer_updates": 20,
+    "max_total_optimizer_updates": 25,
+    "max_additional_optimizer_calls": 5,
+    "checkpoint_updates": [
+      25
+    ],
+    "recovery_probe_only_update": 26
+  },
+  "cuda_initialized": false,
+  "observations": [
+    {
+      "host": {
+        "peak_process_rss_bytes": 583249920,
+        "cgroup_limit_bytes": 96636764160,
+        "cgroup_usage_bytes": 63754035200,
+        "cgroup_headroom_bytes": 32882728960
+      },
+      "observation": {
+        "observed_utc": "2026-10-23T06:44:08.725729+00:00",
+        "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+        "device": {
+          "total_bytes": 42278584320,
+          "free_bytes": 42238869504,
+          "used_bytes": 39714816,
+          "compute_processes": []
+        },
+        "utilization": {
+          "status": "unsupported",
+          "nvml_status": 3,
+          "gpu_percent": null,
+          "memory_percent": null
+        },
+        "local": {
+          "observed_utc": "2026-10-23T06:44:08.878180+00:00",
+          "own_pid": 3944570,
+          "holders": [],
+          "conflicts": [],
+          "light_processes": [],
+          "inaccessible_fd_pids": [],
+          "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+        },
+        "pid_attribution": "UNRESOLVED; self/peer not inferred"
+      },
+      "decision": {
+        "status": "ADMIT_SHARED_WITH_LIMITED_ATTRIBUTION",
+        "reasons": [],
+        "warnings": [
+          "PID namespace identity remains unresolved",
+          "MIG utilization unsupported: cap/headroom/pacing/runtime fallback; load UNKNOWN"
+        ],
+        "reported_compute_processes": [],
+        "local_holders": [],
+        "local_visibility_gaps": [],
+        "pid_mapping_proven": false,
+        "exclusive_ownership_claimed": false
+      }
+    },
+    {
+      "host": {
+        "peak_process_rss_bytes": 597479424,
+        "cgroup_limit_bytes": 96636764160,
+        "cgroup_usage_bytes": 63769399296,
+        "cgroup_headroom_bytes": 32867364864
+      },
+      "observation": {
+        "observed_utc": "2026-10-23T06:44:09.079414+00:00",
+        "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+        "device": {
+          "total_bytes": 42278584320,
+          "free_bytes": 42238869504,
+          "used_bytes": 39714816,
+          "compute_processes": []
+        },
+        "utilization": {
+          "status": "unsupported",
+          "nvml_status": 3,
+          "gpu_percent": null,
+          "memory_percent": null
+        },
+        "local": {
+          "observed_utc": "2026-10-23T06:44:09.156392+00:00",
+          "own_pid": 3944570,
+          "holders": [],
+          "conflicts": [],
+          "light_processes": [],
+          "inaccessible_fd_pids": [],
+          "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+        },
+        "pid_attribution": "UNRESOLVED; self/peer not inferred"
+      },
+      "decision": {
+        "status": "ADMIT_SHARED_WITH_LIMITED_ATTRIBUTION",
+        "reasons": [],
+        "warnings": [
+          "PID namespace identity remains unresolved",
+          "MIG utilization unsupported: cap/headroom/pacing/runtime fallback; load UNKNOWN"
+        ],
+        "reported_compute_processes": [],
+        "local_holders": [],
+        "local_visibility_gaps": [],
+        "pid_mapping_proven": false,
+        "exclusive_ownership_claimed": false
+      }
+    }
+  ]
+}

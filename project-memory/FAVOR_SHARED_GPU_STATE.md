@@ -1,5 +1,10 @@
 # FAVOR+ shared-GPU preparation —23October2026
 
+Historical preparation below. The newly authorized CUDA20→25 pilot is now
+COMPLETE and STOPPED at25: read [FAVOR_SHARED25_STATE.md](FAVOR_SHARED25_STATE.md)
+and reports/favor_plus_v1/SHARED_GPU_25_UPDATE_PILOT_RESULTS.md. The old pending
+budget/execution notes below are preserved history, not the current state.
+
 ## Latest scope and outcome
 
 User confirms GPU intentionally shared; exclusive reservation and reliable host

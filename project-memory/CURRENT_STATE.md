@@ -2,7 +2,22 @@
 
 Updated: 2026-10-23 UTC
 
-## Latest: explicit shared-GPU mode CPU-verified/prepared; no new CUDA/training
+## Latest: shared CUDA pilot COMPLETE at25; training stopped
+
+Read [FAVOR_SHARED25_STATE.md](FAVOR_SHARED25_STATE.md). Actual study_result in
+assist25_shared_cuda_20261023_v1 proves FIVE new/25TOTAL calls and fresh CUDA25
+no-step recoveryPASS. Checkpoint25 SHAe67724a4... preserved, parent20 unchanged.
+Initial20 model/Adam/RNG/projection/next-gradient AND frozen-val replay exact.
+Losses .631209/.690848/.779485/.686953/.639422, all numerical states finite.
+Action approximation .213145→.212836 still>.20 REVIEW. Peaks250MiBallocated/
+338MiBreserved; devicewide sampled745MiB includesunattributedoverhead/peers, no
+certifiedprocess-total claim.75 CPUcasesPASS, all33 sourcehashes unchanged. Report
+`reports/favor_plus_v1/SHARED_GPU_25_UPDATE_PILOT_RESULTS.md` complete. GO with
+REVIEW separatelyapproved25→50 fromNEW25; NO-GO fulltraining. No automatic
+continuation beyond25/current scopeexhausted; STOP training and wait nextinstruction.
+No exclusive/PID attribution prerequisite in shared mode; mappingstillUNKNOWN.
+
+## Historical23October: explicit shared-GPU mode CPU-verified/prepared; no new CUDA/training
 
 Read [FAVOR_SHARED_GPU_STATE.md](FAVOR_SHARED_GPU_STATE.md) and
 `reports/favor_plus_v1/SHARED_GPU_MODE_PREPARATION.md`. User clarifies intentional

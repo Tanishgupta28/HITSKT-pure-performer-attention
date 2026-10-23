@@ -1,0 +1,183 @@
+{
+  "status": "PASS_SHARED_ENGINEERING;APPROXIMATION_REVIEW_REQUIRED",
+  "verified_utc": "2026-10-23T06:52:49.627413+00:00",
+  "actual_total_optimizer_updates": 25,
+  "actual_additional_optimizer_calls": 5,
+  "recovery_optimizer_calls": 0,
+  "checkpoint25_sha256": "e67724a4ade70fe04de9d0c1a1f0fcb8bd1acc984c3506cda5cce2685ab2b5fc",
+  "checkpoint25_bytes": 83819514,
+  "parent20_sha256": "0388e984b8bed21210455be561524a041c892b98b2a87b50fa3ecb1c3ade86f4",
+  "adam_second_moment_min": 0.0,
+  "adam_second_moment_max": 0.004183976911008358,
+  "parameter_state_delta_l2_20_to25": 0.10959156027817336,
+  "model_adam_and_gradients_finite": true,
+  "cuda_or_memory_errors_observed": 0,
+  "weighted_training_bce": 0.6823384062792376,
+  "supervised_training_targets": 301,
+  "synchronized_update_intervals_seconds": 1.7923265770077705,
+  "synchronized_interval_updates_per_second": 2.7896701773776815,
+  "synchronized_interval_targets_per_second": 167.93814467813644,
+  "stage_execution_seconds": 29.968083760002628,
+  "recovery_execution_seconds": 3.4973013720009476,
+  "resource_summary": {
+    "stage_025": {
+      "peak_allocated_bytes": 262127104,
+      "peak_reserved_bytes": 354418688,
+      "max_sampled_nvml_global_used_bytes": 780861440,
+      "minimum_observed_free_bytes": 41497722880,
+      "max_global_used_minus_own_reserved_bytes": 426442752,
+      "max_global_growth_minus_own_reserved_bytes": 386727936,
+      "peak_process_rss_bytes": 2000998400,
+      "minimum_host_headroom_bytes": 31629635584,
+      "resource_observations": 112,
+      "attributed_process_total_vram": "NOT MEASURABLE: host PID mapping unresolved"
+    },
+    "verify_025": {
+      "peak_allocated_bytes": 209480192,
+      "peak_reserved_bytes": 226492416,
+      "max_sampled_nvml_global_used_bytes": 650838016,
+      "minimum_observed_free_bytes": 41627746304,
+      "max_global_used_minus_own_reserved_bytes": 424345600,
+      "max_global_growth_minus_own_reserved_bytes": 384565248,
+      "peak_process_rss_bytes": 1866137600,
+      "minimum_host_headroom_bytes": 31807029248,
+      "resource_observations": 3,
+      "attributed_process_total_vram": "NOT MEASURABLE: host PID mapping unresolved"
+    }
+  },
+  "approximation": {
+    "action_encoder.layers.0.attention": {
+      "20": {
+        "median_relative_l2": 0.2131454770930238,
+        "max_relative_l2": 0.2347878195144589,
+        "prefixes_above_point20": 4,
+        "median_pair_ess": 8.180666651914649,
+        "minimum_individual_pair_ess": 1.0161856091484882,
+        "max_feature_kernel_abs_error": 7.191812797513464e-07,
+        "max_qk_p95_growth_from_initial": 1.001271831362875
+      },
+      "25": {
+        "median_relative_l2": 0.21283573174849407,
+        "max_relative_l2": 0.23530177293193705,
+        "prefixes_above_point20": 4,
+        "median_pair_ess": 8.193582565131358,
+        "minimum_individual_pair_ess": 1.0161406796378136,
+        "max_feature_kernel_abs_error": 6.787744727398959e-07,
+        "max_qk_p95_growth_from_initial": 1.0011724145050602
+      },
+      "max_qk_p95_growth_20_to25": 1.0002392849324442
+    },
+    "correct_padding_encoder.layers.0.attention": {
+      "20": {
+        "median_relative_l2": 0.14236169049071398,
+        "max_relative_l2": 0.17441145246203066,
+        "prefixes_above_point20": 0,
+        "median_pair_ess": 9.73212444348454,
+        "minimum_individual_pair_ess": 1.4227288605720962,
+        "max_feature_kernel_abs_error": 4.411115392538578e-07,
+        "max_qk_p95_growth_from_initial": 1.013275230526981
+      },
+      "25": {
+        "median_relative_l2": 0.1512913554234918,
+        "max_relative_l2": 0.18209733585851254,
+        "prefixes_above_point20": 0,
+        "median_pair_ess": 9.506263483343925,
+        "minimum_individual_pair_ess": 1.3924076333485336,
+        "max_feature_kernel_abs_error": 6.176626657639073e-07,
+        "max_qk_p95_growth_from_initial": 1.014771027663166
+      },
+      "max_qk_p95_growth_20_to25": 1.0047432152637643
+    },
+    "decoder.layers.0.attention": {
+      "20": {
+        "median_relative_l2": 0.07227178291739605,
+        "max_relative_l2": 0.12482615863931162,
+        "prefixes_above_point20": 0,
+        "median_pair_ess": 9.443371922740123,
+        "minimum_individual_pair_ess": 1.0952880558798395,
+        "max_feature_kernel_abs_error": 5.72222350614382e-07,
+        "max_qk_p95_growth_from_initial": 1.003281480012781
+      },
+      "25": {
+        "median_relative_l2": 0.0798391882477355,
+        "max_relative_l2": 0.1261869320782404,
+        "prefixes_above_point20": 0,
+        "median_pair_ess": 9.334983090984244,
+        "minimum_individual_pair_ess": 1.059663146312308,
+        "max_feature_kernel_abs_error": 6.825843359425932e-07,
+        "max_qk_p95_growth_from_initial": 1.0038431756197599
+      },
+      "max_qk_p95_growth_20_to25": 1.0005598584426894
+    },
+    "session_encoder.layers.0.attention": {
+      "20": {
+        "median_relative_l2": 0.09531387842305505,
+        "max_relative_l2": 0.1545038637147129,
+        "prefixes_above_point20": 0,
+        "median_pair_ess": 5.7211698324506175,
+        "minimum_individual_pair_ess": 1.1560443976241415,
+        "max_feature_kernel_abs_error": 5.267062859748428e-07,
+        "max_qk_p95_growth_from_initial": 1.0177078608628427
+      },
+      "25": {
+        "median_relative_l2": 0.0851249796472708,
+        "max_relative_l2": 0.160381410633043,
+        "prefixes_above_point20": 0,
+        "median_pair_ess": 5.541465875274354,
+        "minimum_individual_pair_ess": 1.187116885351212,
+        "max_feature_kernel_abs_error": 4.6496904837489694e-07,
+        "max_qk_p95_growth_from_initial": 1.0185105858650096
+      },
+      "max_qk_p95_growth_20_to25": 1.0025752996240784
+    }
+  },
+  "sampled_validation": {
+    "20": {
+      "accuracy": 0.5026924295216978,
+      "f1": 0.38910505836575876,
+      "loss": 0.7412826676968347,
+      "mse": 0.2705159422186416,
+      "precision": 0.33178500331785005,
+      "recall": 0.4703668861712135,
+      "roc_auc": 0.5083134090053469,
+      "targets": 3157,
+      "threshold": 0.5
+    },
+    "25": {
+      "accuracy": 0.522331327209376,
+      "f1": 0.38044371405094496,
+      "loss": 0.7270246554599142,
+      "mse": 0.2639838751808188,
+      "precision": 0.337709700948213,
+      "recall": 0.4355597365945437,
+      "roc_auc": 0.5106185212240142,
+      "targets": 3157,
+      "threshold": 0.5
+    }
+  },
+  "cached_score_metric_checks": {
+    "20": {
+      "max_score_metric_difference": 1.1102230246251565e-16,
+      "rounded_probability_bce_difference": -2.4837956580370246e-08
+    },
+    "25": {
+      "max_score_metric_difference": 5.551115123125783e-17,
+      "rounded_probability_bce_difference": -7.18078807526723e-09
+    }
+  },
+  "cpu_tests": {
+    "passed": 75,
+    "new_pilot": 20,
+    "existing_shared": 55,
+    "failures": 0,
+    "skips": 0
+  },
+  "all_33_source_files_unchanged": true,
+  "pid_mapping_proven": false,
+  "resource_budget_increased": false,
+  "test_evaluations": 0,
+  "automatic_retries": 0,
+  "other_process_signals": 0,
+  "full_training_ready": false,
+  "next_recommendation": "GO with REVIEW retained for separately approved shared25\u219250 continuation from NEW25 checkpoint; no execution now"
+}

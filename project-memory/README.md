@@ -30,6 +30,13 @@ remain intact; platform changes do not alter research source or live runs.
 
 ## Current short status
 
+Latest: shared CUDA20→25 pilot COMPLETED/FIVE new calls; fresh25 no-step recovery
+PASS. Read [FAVOR_SHARED25_STATE.md](FAVOR_SHARED25_STATE.md) and
+`reports/favor_plus_v1/SHARED_GPU_25_UPDATE_PILOT_RESULTS.md`. All states finite,
+Action.212836 still>.20 REVIEW; ownpeak250MiBallocated/338MiBreserved, sampled
+devicewide745MiB includingunattributedoverhead.75 targetedCPUcasesPASS. STOP at25;
+GO onlyseparatelyapproved25→50 fromNEW25, notold20. No fulltraining/otherjobchanges.
+
 Latest: intentionally shared H100 confirmed; separate shared mode prepared and
 CPU-verified90PASS(58new+32old), original exclusive mode untouched. Read
 [FAVOR_SHARED_GPU_STATE.md](FAVOR_SHARED_GPU_STATE.md). No exclusive allocation or

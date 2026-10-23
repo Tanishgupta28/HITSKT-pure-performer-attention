@@ -1371,3 +1371,22 @@ execution task leaves budget/window/newmodeexecution confirmation genuinelypendi
 in template. No newexclusive/admin mapping request. GO boundedsharedpilot after
 those confirmations/freshadmission; NO-GO fulltraining. No otherjobs/signals/
 allocations/Light/DKT/history/threshold changes. Publish scoped research only.
+
+## 2026-10-23 — Shared CUDA20→25 completed; zero-step fresh recovery PASS
+
+User approves sharedfixedresources and ONLY5 additional calls/25TOTAL. New
+source-boundpilotcontroller rejectsallotherendpoints/older50records; preregistered
+19da63c5... after75CPUcasesPASS(20new+55old). FreshresourcesPASS; exactparent20
+CUDA modelAdamRNGprojections+nextgrad proof and fullfrozenval20 replayPASS before21.
+Actual21–25 losses.631209/.690848/.779485/.686953/.639422; allgrad/model/Adamfinite,
+all61Adamsteps25, nonzeroparamchanges. Atomic25sha e67724a4... and separatefresh
+CUDArecoveryfixedlogitsdiff0/nextgradientexact/zeroAdamPASS; no26optimizerstep.
+Actionmedian.213145→.212836 still>.20 REVIEW (4/6 both), othersevere/causalgatesPASS.
+Ownpeak249.984MiBallocated/338reserved; sampledNVMLglobal744.688MiB includes
+unattributeddriver/workspace/peers, overheadprocessidentityunverified. Minfree
+38.648GiB, noCUDA/memoryerrors/budgetincrease/retry/signals. Stage29.968s vsupdate
+intervalsum1.792s, freshrecover3.497s; notisolatedperformance. Releasecomputeempty/
+Lightheld/OOM2 unchanged. ReportSHARED_GPU_25_UPDATE_PILOT_RESULTS.md plus evidence.
+GOwithREVIEW separatelyapproved25→50 fromNEW25 undernewscopecopy, NO-GO fulltraining.
+Currentapprovalexhausted25, STOP. Preservealloriginals/oldplans/checkpoints/datasets/
+Light/DKT/mainhistory. Publishscopedverifiedresearchthenwait, no moreGPUcalls.

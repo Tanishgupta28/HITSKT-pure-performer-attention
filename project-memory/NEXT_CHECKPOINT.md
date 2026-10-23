@@ -1,5 +1,21 @@
 # Next checkpoint
 
+LATEST: shared pilot COMPLETED25TOTAL/FIVE new calls. Read
+[FAVOR_SHARED25_STATE.md](FAVOR_SHARED25_STATE.md) and actual
+`experiments/hitskt_favor_plus_v1/assist2017/assist25_shared_cuda_20261023_v1/study_result.json`.
+STOP TRAINING; do not rerun completed stage/verify or continue from20/25 now.
+Fresh CUDA25 recovery PASS/zeroAdam; parent20 preserved, new25 hash e67724a4...
+Report `reports/favor_plus_v1/SHARED_GPU_25_UPDATE_PILOT_RESULTS.md` is complete;
+finish scopedpublication thenWAIT fornextinstruction, no furtherGPU execution.
+User explicitly caps this pilot25; GO/NO-GO25→50 recommendation is NOT execution
+permission. Need next instruction before more calls, regardless older50 scope.
+Future25→50 mustpreserve new25hash e67724a4.../Adam/RNG/projections/sampler and
+build a NEW source-bound25-parentcontract (old20→50 startsat20). Keep1GiB/.20
+review/all sharedresource/scientificgates and explicitmilestone recovery. No
+automatic continuations, fulltraining, oldartifactoverwrites/Light/DKT changes.
+
+Earlier preparation checkpoint (historical):
+
 LATEST shared-mode preparation COMPLETE. Read
 [FAVOR_SHARED_GPU_STATE.md](FAVOR_SHARED_GPU_STATE.md) and
 `reports/favor_plus_v1/SHARED_GPU_MODE_PREPARATION.md`.

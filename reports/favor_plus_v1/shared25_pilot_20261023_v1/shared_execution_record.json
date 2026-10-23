@@ -1,0 +1,23 @@
+{
+  "mode": "authorized_shared_gpu_v1",
+  "exclusive": false,
+  "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+  "action": "favor_plus_assist2017_shared_resume20_to25",
+  "shared_permission_confirmed": true,
+  "execution_approved": true,
+  "budget_and_window_acknowledged": true,
+  "limited_pid_visibility_acknowledged": true,
+  "permission_evidence": "/workspace/capstone/reports/favor_plus_v1/shared25_pilot_20261023_v1/USER_PILOT_AUTHORIZATION.md",
+  "execution_evidence": "/workspace/capstone/reports/favor_plus_v1/shared25_pilot_20261023_v1/USER_PILOT_AUTHORIZATION.md",
+  "coordination_evidence": "User explicitly approves the prepared shared limits for this five-update pilot; no other researcher consent or exclusive lease claimed",
+  "operator": "Tanishgupta28 / user-authorized research workload",
+  "starts_utc": "2026-10-23T06:44:08.283683+00:00",
+  "expires_utc": "2026-10-23T08:44:08.283683+00:00",
+  "known_explicit_restriction": false,
+  "known_incompatible_reservation": false,
+  "prepared_plan_sha256": "8b677f602950f438812e0b9d1cd7597a84a00484a58e71e95f5e8291964c2f4a",
+  "policy_sha256": "4867c950fe93e10720b3b8a967289e2d6be8fa9e7caa151479fc3340584e1f19",
+  "max_total_optimizer_updates": 25,
+  "max_additional_optimizer_calls": 5,
+  "window_scope": "Operator2h ceiling; campaign45min maximum. Not a scheduler lease."
+}

@@ -1,0 +1,127 @@
+{
+  "checkpoint_sha256": "e67724a4ade70fe04de9d0c1a1f0fcb8bd1acc984c3506cda5cce2685ab2b5fc",
+  "eval_prediction_max_abs_difference": 0.0,
+  "model_adam_rng_projection_integrity": "PASS",
+  "next_train_forward_loss_all_gradient_digest": "EXACT",
+  "optimizer_calls_during_recovery": 0,
+  "optimizer_updates": 25,
+  "recovery_execution_seconds": 3.4973013720009476,
+  "resources": {
+    "additional_optimizer_calls": 5,
+    "allocated_bytes": 151770624,
+    "calls": 25,
+    "decision": {
+      "exclusive_ownership_claimed": false,
+      "local_holders": [],
+      "local_visibility_gaps": [],
+      "pid_mapping_proven": false,
+      "reasons": [],
+      "reported_compute_processes": [
+        {
+          "compute_instance": 0,
+          "gpu_instance": 2,
+          "pid": 1398696,
+          "used_gpu_memory_bytes": 601882624
+        }
+      ],
+      "status": "ADMIT_SHARED_WITH_LIMITED_ATTRIBUTION",
+      "warnings": [
+        "PID namespace identity remains unresolved",
+        "MIG utilization unsupported: cap/headroom/pacing/runtime fallback; load UNKNOWN"
+      ]
+    },
+    "global_growth_minus_own_reserved_bytes": 384565248,
+    "global_used_minus_own_reserved_bytes": 424345600,
+    "host": {
+      "cgroup_headroom_bytes": 31807029248,
+      "cgroup_limit_bytes": 96636764160,
+      "cgroup_usage_bytes": 64829734912,
+      "peak_process_rss_bytes": 1866137600
+    },
+    "max_observed_nvml_used_bytes": 650838016,
+    "minimum_observed_free_bytes": 41627746304,
+    "nvml_baseline_used_bytes": 39780352,
+    "observation": {
+      "device": {
+        "compute_processes": [
+          {
+            "compute_instance": 0,
+            "gpu_instance": 2,
+            "pid": 1398696,
+            "used_gpu_memory_bytes": 601882624
+          }
+        ],
+        "free_bytes": 41627746304,
+        "total_bytes": 42278584320,
+        "used_bytes": 650838016
+      },
+      "local": {
+        "conflicts": [],
+        "holders": [],
+        "inaccessible_fd_pids": [],
+        "light_processes": [],
+        "observed_utc": "2026-10-23T06:45:26.534652+00:00",
+        "own_pid": 3945068,
+        "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+      },
+      "observed_utc": "2026-10-23T06:45:26.442414+00:00",
+      "pid_attribution": "UNRESOLVED; self/peer not inferred",
+      "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+      "utilization": {
+        "gpu_percent": null,
+        "memory_percent": null,
+        "nvml_status": 3,
+        "status": "unsupported"
+      }
+    },
+    "observed_utc": "2026-10-23T06:45:26.534759+00:00",
+    "overhead_attribution": "UNATTRIBUTED: driver/context/workspace/peers; not a process-total measurement",
+    "peak_allocated_bytes": 209480192,
+    "peak_reserved_bytes": 226492416,
+    "phase": "after_recovery_proof",
+    "pid_mapping_proven": false,
+    "reported_pids_added": [],
+    "reported_pids_departed": [],
+    "reserved_bytes": 226492416
+  },
+  "source": {
+    "git_head": "19da63c5f542ec803df69659d739cbfa8ed64bd1",
+    "source_sha256": {
+      "ktbench/batching.py": "baffe36d07b869498fbd8eaee12da9317b1b451a0061b52845a47b21d51c2ea5",
+      "ktbench/config.py": "650f7ab21ca3428d212c3b6b7e3c012a055ac85ee48cabc4dc82d6a65a3b464c",
+      "ktbench/data/session_store.py": "6c695bc23da5c4b8116d29b5a099c16bb5669a99eb5cdfb9c378ace81d39f218",
+      "ktbench/favor_plus_assist20.py": "647a35ab22e1d890efd1d91f211d3e017e5cd1ba2f06cee572a016c2101b9a60",
+      "ktbench/favor_plus_assist50.py": "54a7234d00d1ba42392c193c5526422eed87c7c0ee3b944923dc87d2cf10e1f3",
+      "ktbench/favor_plus_bounded_assist.py": "6f42c7af928a6706ca08bfb1ea2fc597b97536cb2213e373f8c5dca36843ba25",
+      "ktbench/favor_plus_continuation_contract.py": "dfd7086725cd84b84ccd5d878e07b3a873089f92f55a5c4785242816d0607a53",
+      "ktbench/favor_plus_continuation_recovery.py": "3b9e164aa9db6a819310d871cef5756fb535ebdbd9f37ed8f663be2954c370d1",
+      "ktbench/favor_plus_gpu_access.py": "bc73005c4df387b1fd871454a5f6fc030c53ddb8a7a26e8732ff1dc2c7065ca2",
+      "ktbench/favor_plus_pilot_diagnostics.py": "c1ae1a51cfe3878c6a39f06cacfe9163c6ef93bc6f5bf004106665509de82062",
+      "ktbench/favor_plus_pilot_recovery.py": "a13bc6b154d214239d24f447968585d6b58686ea996c8e4ca4c937d634159810",
+      "ktbench/favor_plus_pipeline.py": "b457c695f5b3672551a03551b8c247c86a78eaf0664236d87d6a4441fbcb2171",
+      "ktbench/favor_plus_real_pilot.py": "f08cc2b286be48aef989b5ca6067fc218006671a5acf32558f1ef0fe8107c187",
+      "ktbench/favor_plus_resource_telemetry.py": "ce1d3b46fd2cbbb9d202f71d68dbcd0392db36b087be85dadaf56ddb71e23eeb",
+      "ktbench/favor_plus_shared25.py": "478f66b85c02794bbe4a5407a1bd3687e961bffa32fb8fd0524fe52a32bf666c",
+      "ktbench/favor_plus_shared_assist50.py": "8923af11d8f6ac0f9b8bb593962a1db9f3f0efd37c79151271de78deedecae4c",
+      "ktbench/favor_plus_shared_gpu.py": "94d7cc88be0b4ad8799f7443d5934cb3c14f460319e8d0cf8285660889e244fa",
+      "ktbench/hitskt_registry.py": "a2ea1bcc35ad634688a4776564d42147def529b5060e0c315e45437042af1448",
+      "ktbench/metrics.py": "6b57353631c67f5afd5b2785e3787ffdcf15086c0212a9bac75bba199eab6727",
+      "ktbench/models/favor_plus.py": "e6ebc03554a08b9a61204fa481eae6bb0fbe8fe455302df37c78ecd7a72eb2af",
+      "ktbench/models/hitskt.py": "627e3715eb1bd386139a7ba69eb603e6ac49dafe111f46e53ea731c03f55c515",
+      "ktbench/models/hitskt_favor_plus.py": "5a90cc69b4eefb7ffd1ea30c78d36cd9bf531537803a5f51c4d3cb97089c7e8b",
+      "ktbench/models/performer.py": "1b517922893f8573d294fbb036b0f7af6bb9e8d4a1a7808d50db52682d323004",
+      "ktbench/training.py": "ead48df5fd636d7a6e715f9c16eedbd562a7063e3f30a588401844d302eb6859",
+      "scripts/assist20_favor_plus.py": "1df4aa2107993bd0a380a7e6eb32eb64824e16ba7e73ba1c7cc6b978e0366eb4",
+      "scripts/assist25_favor_plus_shared.py": "f00bc57e4a462b494041f318e7240f6071a4eafbdb6a233765900ac6dad05cab",
+      "scripts/assist50_favor_plus.py": "f81cf9e390c7d279ab9c0e47c22ce2d981af093dfd5c4183d6f33cfabe29b2a8",
+      "scripts/assist50_favor_plus_shared.py": "4b88ce99e7ec27a413ac3f9c8e2d4ec4324d16a27b8866d85abadb0d4e96027a",
+      "scripts/evaluate_hitskt_favor_plus.py": "e4c1e0b9f43ef1c2a8b70c97d71c8510d605ff4431f41b54b66560c4e4936b4d",
+      "scripts/favor_plus_quality_common.py": "11148db1c52458aeb03a0b1af99b301179eaf956d2decb68ceafcbf7426faf98",
+      "scripts/pilot_hitskt_favor_plus_real.py": "2e83e0807b381274bc13c082c799f108c0b5a5a242d1b7ec832dc94dedffc63d",
+      "scripts/train_hitskt_favor_plus.py": "7641a16f41cb0852ac288c2e881b85b4ff085103000d83dfcd2b0c18aea08bb6",
+      "scripts/validate_favor_plus_gpu.py": "a6d35184b4e8d02750b990e50d4be2b83702a389f4379f8663b777bbe8158bdc"
+    }
+  },
+  "status": "PASS",
+  "test_evaluations": 0
+}

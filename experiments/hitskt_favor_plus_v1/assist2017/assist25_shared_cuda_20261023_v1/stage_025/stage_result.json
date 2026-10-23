@@ -1,0 +1,387 @@
+{
+  "additional_optimizer_calls": 5,
+  "checkpoints": [
+    {
+      "adam_parameter_states": 61,
+      "additional_optimizer_calls": 5,
+      "atomic_no_overwrite": true,
+      "component_sha256": {
+        "contract": "4cd07977b483ce6b5459fbef8bfc02a95933aaea466694ddf23d5a44965e2e4f",
+        "next_update_probe": "a7302a025fd0fcfbc2ac4925593d918c03bcd3653fef5c1aef22bc4b4acd6bea",
+        "optimizer_state_dict": "2f6b830b73dae5d72137f3b8ecaacfcdcd4bf34c4c6938efee46278af1eecd04",
+        "reference_eval_logits": "25831923f85ee0fb2efba43c21b22108cfe8cdd1da5a77aae85e51969b132d6f",
+        "rng_state": "c6576206bd6f1f155747878eb925af75147af25f3ac4d42611722ec62bfcc550",
+        "sampler": "c6a9bc5b67319f8a17d54489e75054db809b632ccca7583e18d0b16d7081d2a4",
+        "state_dict": "2a29c092b663ae6ea2ac1bdef50b4a3a9f9cf5deff3a7b73f17841171b3d99bb"
+      },
+      "parent_checkpoint_sha256": "0388e984b8bed21210455be561524a041c892b98b2a87b50fa3ecb1c3ade86f4",
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist25_shared_cuda_20261023_v1/checkpoints/checkpoint_025.pt",
+      "projection_sha256": {
+        "action_encoder.layers.0.attention.projection": "0e30074b32eb36787646a586ce5bd759a5ce6d998d0585f239093f30bf45520c",
+        "correct_padding_encoder.layers.0.attention.projection": "2a3c51ffb0b77fc527b2678299da5142d7abee50440c3bd44bfa4f09cfe89a3f",
+        "decoder.layers.0.attention.projection": "14215fed57abbe0dfee2f0f0e66ab4f821305b6dc76aac1419ab628473661fef",
+        "session_encoder.layers.0.attention.projection": "723816c7c411dbedc108dd227a8819b2025bcacc871c88cbfefe2c850dcad125"
+      },
+      "sampler_cursor": 25,
+      "sha256": "e67724a4ade70fe04de9d0c1a1f0fcb8bd1acc984c3506cda5cce2685ab2b5fc",
+      "status": "PASS",
+      "updates": 25
+    }
+  ],
+  "diagnostic_result": {
+    "causal": {
+      "changed_raw_positions": [
+        0,
+        144,
+        287
+      ],
+      "requirement": "own/earlier exact equality after raw-response re-collation",
+      "status": "PASS"
+    },
+    "containment": {
+      "aggregate": {
+        "action_encoder.layers.0.attention": {
+          "max_implementation_abs": 6.787744727398959e-07,
+          "max_p95_growth_ratio": 1.0011724145050602,
+          "pair_ess_medians": {
+            "count": 6,
+            "maximum": 8.455992239209644,
+            "mean": 8.015874408699124,
+            "median": 8.193582565131358,
+            "minimum": 7.366339033565219,
+            "p90": 8.424154471689802,
+            "p95": 8.440073355449723
+          },
+          "relative_l2": {
+            "count": 6,
+            "maximum": 0.23530177293193705,
+            "mean": 0.19400386578727638,
+            "median": 0.21283573174849407,
+            "minimum": 0.09330917189102751,
+            "p90": 0.2346941659893482,
+            "p95": 0.2349979694606426
+          }
+        },
+        "correct_padding_encoder.layers.0.attention": {
+          "max_implementation_abs": 6.176626657639073e-07,
+          "max_p95_growth_ratio": 1.014771027663166,
+          "pair_ess_medians": {
+            "count": 6,
+            "maximum": 11.352565832000677,
+            "mean": 9.566635023961606,
+            "median": 9.506263483343925,
+            "minimum": 7.902327378086538,
+            "p90": 11.115456443505348,
+            "p95": 11.234011137753011
+          },
+          "relative_l2": {
+            "count": 6,
+            "maximum": 0.18209733585851254,
+            "mean": 0.1530491672149933,
+            "median": 0.1512913554234918,
+            "minimum": 0.11905217766949949,
+            "p90": 0.1742100628114388,
+            "p95": 0.17815369933497568
+          }
+        },
+        "decoder.layers.0.attention": {
+          "max_implementation_abs": 6.825843359425932e-07,
+          "max_p95_growth_ratio": 1.0038431756197599,
+          "pair_ess_medians": {
+            "count": 6,
+            "maximum": 9.583492168675564,
+            "mean": 8.923802980581634,
+            "median": 9.334983090984244,
+            "minimum": 6.956899990936634,
+            "p90": 9.537978049049816,
+            "p95": 9.560735108862689
+          },
+          "relative_l2": {
+            "count": 6,
+            "maximum": 0.1261869320782404,
+            "mean": 0.08712978918289205,
+            "median": 0.0798391882477355,
+            "minimum": 0.06633218087822776,
+            "p90": 0.11374781289848399,
+            "p95": 0.11996737248836219
+          }
+        },
+        "session_encoder.layers.0.attention": {
+          "max_implementation_abs": 4.6496904837489694e-07,
+          "max_p95_growth_ratio": 1.0185105858650096,
+          "pair_ess_medians": {
+            "count": 6,
+            "maximum": 6.886064271618929,
+            "mean": 5.411175249544544,
+            "median": 5.541465875274354,
+            "minimum": 4.085319231999467,
+            "p90": 6.5802794817373025,
+            "p95": 6.7331718766781155
+          },
+          "relative_l2": {
+            "count": 6,
+            "maximum": 0.160381410633043,
+            "mean": 0.09316359467990365,
+            "median": 0.0851249796472708,
+            "minimum": 0.041492930947764926,
+            "p90": 0.14066995057875076,
+            "p95": 0.15052568060589688
+          }
+        }
+      },
+      "full_training_ready": false,
+      "original_softmax_review_trigger": 0.2,
+      "severe_failure_stages": [],
+      "status": "CONTINUE_BOUNDED_DIAGNOSTIC_ONLY"
+    },
+    "preliminary_sampled_results": true,
+    "resources": {
+      "additional_optimizer_calls": 5,
+      "allocated_bytes": 179507200,
+      "calls": 25,
+      "decision": {
+        "exclusive_ownership_claimed": false,
+        "local_holders": [],
+        "local_visibility_gaps": [],
+        "pid_mapping_proven": false,
+        "reasons": [],
+        "reported_compute_processes": [
+          {
+            "compute_instance": 0,
+            "gpu_instance": 2,
+            "pid": 1396214,
+            "used_gpu_memory_bytes": 731906048
+          }
+        ],
+        "status": "ADMIT_SHARED_WITH_LIMITED_ATTRIBUTION",
+        "warnings": [
+          "PID namespace identity remains unresolved",
+          "MIG utilization unsupported: cap/headroom/pacing/runtime fallback; load UNKNOWN"
+        ]
+      },
+      "global_growth_minus_own_reserved_bytes": 386727936,
+      "global_used_minus_own_reserved_bytes": 426442752,
+      "host": {
+        "cgroup_headroom_bytes": 31782776832,
+        "cgroup_limit_bytes": 96636764160,
+        "cgroup_usage_bytes": 64853987328,
+        "peak_process_rss_bytes": 2000998400
+      },
+      "max_observed_nvml_used_bytes": 780861440,
+      "minimum_observed_free_bytes": 41497722880,
+      "nvml_baseline_used_bytes": 39714816,
+      "observation": {
+        "device": {
+          "compute_processes": [
+            {
+              "compute_instance": 0,
+              "gpu_instance": 2,
+              "pid": 1396214,
+              "used_gpu_memory_bytes": 731906048
+            }
+          ],
+          "free_bytes": 41497722880,
+          "total_bytes": 42278584320,
+          "used_bytes": 780861440
+        },
+        "local": {
+          "conflicts": [],
+          "holders": [],
+          "inaccessible_fd_pids": [],
+          "light_processes": [],
+          "observed_utc": "2026-10-23T06:44:50.293120+00:00",
+          "own_pid": 3944646,
+          "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+        },
+        "observed_utc": "2026-10-23T06:44:50.206769+00:00",
+        "pid_attribution": "UNRESOLVED; self/peer not inferred",
+        "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+        "utilization": {
+          "gpu_percent": null,
+          "memory_percent": null,
+          "nvml_status": 3,
+          "status": "unsupported"
+        }
+      },
+      "observed_utc": "2026-10-23T06:44:50.293202+00:00",
+      "overhead_attribution": "UNATTRIBUTED: driver/context/workspace/peers; not a process-total measurement",
+      "peak_allocated_bytes": 262127104,
+      "peak_reserved_bytes": 354418688,
+      "phase": "diagnostics_complete_25",
+      "pid_mapping_proven": false,
+      "reported_pids_added": [],
+      "reported_pids_departed": [],
+      "reserved_bytes": 354418688
+    },
+    "sampled_training_eval": {
+      "accuracy": 0.4877384196185286,
+      "f1": 0.38762214983713356,
+      "loss": 0.7506417947991343,
+      "mse": 0.27429488612074554,
+      "precision": 0.31398416886543534,
+      "recall": 0.5063829787234042,
+      "roc_auc": 0.5037990875367757,
+      "targets": 734,
+      "threshold": 0.5
+    },
+    "sampled_validation": {
+      "accuracy": 0.522331327209376,
+      "f1": 0.38044371405094496,
+      "loss": 0.7270246554599142,
+      "mse": 0.2639838751808188,
+      "precision": 0.337709700948213,
+      "recall": 0.4355597365945437,
+      "roc_auc": 0.5106185212240142,
+      "targets": 3157,
+      "threshold": 0.5
+    },
+    "test_evaluations": 0,
+    "update": 25
+  },
+  "full_training_ready": false,
+  "optimizer_step_calls": 25,
+  "optimizer_updates": 25,
+  "resources": {
+    "additional_optimizer_calls": 5,
+    "allocated_bytes": 179507200,
+    "calls": 25,
+    "decision": {
+      "exclusive_ownership_claimed": false,
+      "local_holders": [
+        {
+          "approved_option_names": [],
+          "argv_sha256": "78d413cb0c836e84edc79f6d7edaeafecb39b9c52fecb9b5959f1c3633c88c54",
+          "classification": "trusted_read_only_monitor",
+          "comm": "nvidia-smi",
+          "cwd_category": "other",
+          "executable": "/usr/bin/nvidia-smi",
+          "executable_device": 2305,
+          "executable_inode": 71042318,
+          "identity_complete": true,
+          "nvidia_handles": [
+            "/dev/nvidia-uvm",
+            "/dev/nvidia0",
+            "/dev/nvidiactl"
+          ],
+          "parent_pid": 3944891,
+          "pid": 3944892,
+          "python_module": null,
+          "start_time_ticks": 95768789,
+          "state": "R (running)",
+          "trusted_binary_sha256": "a7d6645d5d4554ce7f5e7ae68cef9fb32d21721eaa2c271f7a58ef6c21039263",
+          "uid": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "verified_read_only": true
+        }
+      ],
+      "local_visibility_gaps": [],
+      "pid_mapping_proven": false,
+      "reasons": [],
+      "reported_compute_processes": [
+        {
+          "compute_instance": 0,
+          "gpu_instance": 2,
+          "pid": 1396214,
+          "used_gpu_memory_bytes": 731906048
+        }
+      ],
+      "status": "ADMIT_SHARED_WITH_LIMITED_ATTRIBUTION",
+      "warnings": [
+        "PID namespace identity remains unresolved",
+        "visible GPU holders recorded as shared/unattributed activity",
+        "MIG utilization unsupported: cap/headroom/pacing/runtime fallback; load UNKNOWN"
+      ]
+    },
+    "global_growth_minus_own_reserved_bytes": 386727936,
+    "global_used_minus_own_reserved_bytes": 426442752,
+    "host": {
+      "cgroup_headroom_bytes": 31781412864,
+      "cgroup_limit_bytes": 96636764160,
+      "cgroup_usage_bytes": 64855351296,
+      "peak_process_rss_bytes": 2000998400
+    },
+    "max_observed_nvml_used_bytes": 780861440,
+    "minimum_observed_free_bytes": 41497722880,
+    "nvml_baseline_used_bytes": 39714816,
+    "observation": {
+      "device": {
+        "compute_processes": [
+          {
+            "compute_instance": 0,
+            "gpu_instance": 2,
+            "pid": 1396214,
+            "used_gpu_memory_bytes": 731906048
+          }
+        ],
+        "free_bytes": 41497722880,
+        "total_bytes": 42278584320,
+        "used_bytes": 780861440
+      },
+      "local": {
+        "conflicts": [],
+        "holders": [
+          {
+            "approved_option_names": [],
+            "argv_sha256": "78d413cb0c836e84edc79f6d7edaeafecb39b9c52fecb9b5959f1c3633c88c54",
+            "classification": "trusted_read_only_monitor",
+            "comm": "nvidia-smi",
+            "cwd_category": "other",
+            "executable": "/usr/bin/nvidia-smi",
+            "executable_device": 2305,
+            "executable_inode": 71042318,
+            "identity_complete": true,
+            "nvidia_handles": [
+              "/dev/nvidia-uvm",
+              "/dev/nvidia0",
+              "/dev/nvidiactl"
+            ],
+            "parent_pid": 3944891,
+            "pid": 3944892,
+            "python_module": null,
+            "start_time_ticks": 95768789,
+            "state": "R (running)",
+            "trusted_binary_sha256": "a7d6645d5d4554ce7f5e7ae68cef9fb32d21721eaa2c271f7a58ef6c21039263",
+            "uid": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "verified_read_only": true
+          }
+        ],
+        "inaccessible_fd_pids": [],
+        "light_processes": [],
+        "observed_utc": "2026-10-23T06:44:50.465029+00:00",
+        "own_pid": 3944646,
+        "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+      },
+      "observed_utc": "2026-10-23T06:44:50.298008+00:00",
+      "pid_attribution": "UNRESOLVED; self/peer not inferred",
+      "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+      "utilization": {
+        "gpu_percent": null,
+        "memory_percent": null,
+        "nvml_status": 3,
+        "status": "unsupported"
+      }
+    },
+    "observed_utc": "2026-10-23T06:44:50.465105+00:00",
+    "overhead_attribution": "UNATTRIBUTED: driver/context/workspace/peers; not a process-total measurement",
+    "peak_allocated_bytes": 262127104,
+    "peak_reserved_bytes": 354418688,
+    "phase": "stage_complete",
+    "pid_mapping_proven": false,
+    "reported_pids_added": [],
+    "reported_pids_departed": [],
+    "reserved_bytes": 354418688
+  },
+  "stage_execution_seconds": 29.968083760002628,
+  "status": "PASS",
+  "test_evaluations": 0,
+  "training_interval_seconds": 1.7923265770077705
+}
