@@ -30,6 +30,14 @@ remain intact; platform changes do not alter research source or live runs.
 
 ## Current short status
 
+23OctoberCPU-only preparation: read
+[FAVOR_HOST_ATTRIBUTION_PREPARATION_STATE.md](FAVOR_HOST_ATTRIBUTION_PREPARATION_STATE.md).
+Administrator commands/live-mapping procedure and standalone CPU witness ready;
+31 tests PASS(28new+3guard). No CUDA/NVML/GPU admission retry or real update in
+this task. Production guard/old contracts/checkpoints/Light unchanged. Host
+mapping/exclusive-availability evidence still required; total20, no automatic
+resumption. CPU witness is not NVML identity proof or an allocation grant.
+
 23Octoberlatest: fresh idle MIG admission passed under existing owner authority;
 exact checkpoint20 CUDA recovery PASS, then NVML488211 vs own3843909 blocked
 before update21. New0/total20, no30/40/50 metrics. No retries/guard changes.

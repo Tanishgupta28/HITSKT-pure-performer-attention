@@ -2,7 +2,24 @@
 
 Updated: 2026-10-23 UTC
 
-## Latest: fresh idle admission; exact20 recovery PASS; PID mismatch blocks again
+## Latest: administrator procedure and CPU witness prepared; no GPU execution
+
+Read [FAVOR_HOST_ATTRIBUTION_PREPARATION_STATE.md](FAVOR_HOST_ATTRIBUTION_PREPARATION_STATE.md).
+Task is CPU-only; no admission retry/CUDA/NVML/smi/training in this task. Detailed
+read-only administrator commands and coordinated live mapping procedure saved in
+`reports/favor_plus_v1/GPU_ADMIN_PID_ATTRIBUTION_PROCEDURE.md`; future conditional
+guard correction proposed separately, not activated. New standalone procfs CPU
+witness never grants GPU access.31 tests PASS(28new+3existing guard cases), local
+CPU witness no torch/libcuda, original28 sources/5,10,20 checkpoints/7latest failed
+files/Light hold unchanged. Most likely PID-domain/runtime hypothesis remains
+unproved. CPU witness establishes future namespace evidence only, NOT NVML domain
+or exclusive allocation. Need archived host records or separately coordinated
+future zero-update diagnostic with host observer; no such CUDA task now. Host
+evidence/identity bridge still required; total20/new0, Action REVIEW unchanged.
+Existing owner/20→50 approval retained, no repeat authorization request. STOP GPU;
+publish scoped verified preparation/memory then wait for trusted host evidence.
+
+## Historical23October: fresh idle admission; exact20 recovery PASS; PID mismatch blocks again
 
 Read [FAVOR_GPU_RECHECK_STATE.md](FAVOR_GPU_RECHECK_STATE.md) and
 `reports/favor_plus_v1/ASSIST_50_UPDATE_RECHECK_20261023.md`.

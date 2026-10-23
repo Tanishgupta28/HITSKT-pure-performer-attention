@@ -1,0 +1,50 @@
+{
+  "status": "PASS_CPU_PREPARATION;HOST_MAPPING_NOT_ESTABLISHED",
+  "base_commit": "865b384521c654cd256b449f8e30305fce50330e",
+  "cpu_tests": {
+    "passed": 31,
+    "new_witness_tests": 28,
+    "existing_guard_tests": 3,
+    "failures": 0,
+    "skips": 0
+  },
+  "cpu_container_witness_sha256": "adda5b4702bf5b7aa2abe45424b127aa00f220a67edb7302554c4cd176467c87",
+  "witness_does_not_prove_host_mapping": true,
+  "original_bound_sources_unchanged": 28,
+  "prior_failed_attempt_files_unchanged": 7,
+  "preserved_checkpoints": [
+    {
+      "update": 5,
+      "sha256": "93fca2f31a2441c30781904c89e1b5719761526ea7ca5e5442bab6f1d0d4cb0a",
+      "bytes": 83802810
+    },
+    {
+      "update": 10,
+      "sha256": "a47a81892b15240a7423ad73acb4c32141c315cfac3fa0ed0f2c9485aef22e16",
+      "bytes": 83802810
+    },
+    {
+      "update": 20,
+      "sha256": "0388e984b8bed21210455be561524a041c892b98b2a87b50fa3ecb1c3ade86f4",
+      "bytes": 83802810
+    }
+  ],
+  "light_hold_sha256": "65214c2c53852024e970fd0a176f71968f204ec0748635a7e6f46de3ed64c234",
+  "unrelated_readme_sakt_unchanged": true,
+  "procedure_bash_blocks_syntax_checked": 5,
+  "embedded_host_python_syntax_checked": true,
+  "cuda_calls": 0,
+  "nvml_calls": 0,
+  "nvidia_smi_calls": 0,
+  "real_optimizer_updates": 0,
+  "signals_sent": 0,
+  "job_or_allocation_changes": 0,
+  "total_training_updates": 20,
+  "production_guard_changed": false,
+  "host_commands_executed": false,
+  "administrator_contacted": false,
+  "new_sources": {
+    "scripts/collect_hitskt_pid_identity.py": "f28f5848dae34b705daec00478c21904705a0d504bc0dc518fa75bc13ef49926",
+    "tests/test_hitskt_host_pid_witness.py": "a7290254b00e678a9fb438c1d7bd4c7d98b6118945cc835331ffd6032ee70a27"
+  }
+}

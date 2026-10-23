@@ -1,0 +1,83 @@
+{
+  "schema": "hitskt_cpu_pid_witness_v1",
+  "observed_utc": "2026-10-23T01:34:40.848149+00:00",
+  "nonce": "39a7216b32219c8488f97bbe627c4e79",
+  "claimed_view": "container",
+  "source_requires_administrator_attestation": true,
+  "boot_id": "aa1b69d1-5512-4cc0-aa6f-7403e0dad638",
+  "clock_ticks_per_second": 100,
+  "reader_pid": 3855674,
+  "reader_namespaces": {
+    "pid": "pid:[4026559509]",
+    "pid_for_children": "pid:[4026559509]",
+    "mnt": "mnt:[4026559508]",
+    "user": "user:[4026531837]",
+    "cgroup": "cgroup:[4026531835]",
+    "time": "time:[4026531834]",
+    "time_for_children": "time:[4026531834]"
+  },
+  "proc1_namespaces": {
+    "pid": "pid:[4026559509]",
+    "pid_for_children": "pid:[4026559509]",
+    "mnt": "mnt:[4026559508]",
+    "user": "user:[4026531837]",
+    "cgroup": "cgroup:[4026531835]",
+    "time": "time:[4026531834]",
+    "time_for_children": "time:[4026531834]"
+  },
+  "processes": [
+    {
+      "pid": 3855674,
+      "status": "STABLE_SNAPSHOT",
+      "identity": {
+        "selected_status": {
+          "Pid": 3855674,
+          "Tgid": 3855674,
+          "PPid": 3855673,
+          "TracerPid": 0,
+          "NSpid": [
+            3855674
+          ],
+          "NStgid": [
+            3855674
+          ],
+          "Uid": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "start_time_ticks": 93907843,
+        "namespaces": {
+          "pid": "pid:[4026559509]",
+          "pid_for_children": "pid:[4026559509]",
+          "mnt": "mnt:[4026559508]",
+          "user": "user:[4026531837]",
+          "cgroup": "cgroup:[4026531835]",
+          "time": "time:[4026531834]",
+          "time_for_children": "time:[4026531834]"
+        },
+        "cgroup_sha256": "ccf1b5d7b273bfcc3c1d3e38419d932b751047212486d64e83b932e36eac39a7",
+        "container_ids": [
+          "1f8c6bb19b26b56374750c64d712ef4a6d35eb862af8c1c1bc1a5b9e9fe8a4fb"
+        ],
+        "pod_uids": [
+          "c5f7f8ec-4e1f-4b24-8ab5-a48350b23dc2"
+        ],
+        "executable_device": 1048661,
+        "executable_inode": 30691867,
+        "uid_map": "0          0 4294967295",
+        "gid_map": "0          0 4294967295",
+        "timens_offsets": "monotonic           0         0\nboottime            0         0"
+      },
+      "mapping_proven": false
+    }
+  ],
+  "mapping_proven": false,
+  "gpu_execution_allowed": false,
+  "no_torch_import": true,
+  "no_cuda_driver_import": true,
+  "optimizer_calls": 0,
+  "signals_sent": 0
+}

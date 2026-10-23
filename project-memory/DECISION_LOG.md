@@ -1325,3 +1325,19 @@ mapping requirements saved/nothing external sent. STOP further CUDA until truste
 runtime/host mapping or corrected attribution; approval persists, no re-ask.
 Preserve failed campaign/original20/science/Light/DKT/unrelated work. No signals,
 watchers/job/allocation changes/full training. Publish scoped evidence then wait.
+
+## 2026-10-23 — CPU-only host attribution preparation; no admission retry
+
+User requests exact trusted host evidence/admin commands and conditional guard
+design, explicitly no CUDA/training now. Reviewed old guard/failures; PID-domain/
+runtime mismatch is most likely inference, not proved. Added standalone CPU
+procfs witness with stable identity rereads/redaction/bounds/no GPU grant and
+prepared read-only host/CRI/MIG/allocation commands. CPU witness proves no NVML
+domain: need archived logs or a separately coordinated future zero-update CUDA
+diagnostic with host observer, not launched now. Guard/source28 unchanged; no
+alias/trust bypass.31 tests PASS(28new+3existing), live CPU witness no torch/libcuda.
+Original5/10/20 checkpoints,7latest failure files,Light hold/unrelated dirt hash
+checks pass. No actual NVML/smi/CUDA/optimizer/host commands/signals/job changes
+in this task. Procedure and correction proposal saved under reports/favor_plus_v1;
+nothing sent externally. Host intervention/evidence still needed, total20.
+Existing owner/bounded approval retained; stop GPU until real attribution proof.

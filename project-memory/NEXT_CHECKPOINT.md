@@ -1,5 +1,24 @@
 # Next checkpoint
 
+LatestCPU-only task COMPLETE: read
+[FAVOR_HOST_ATTRIBUTION_PREPARATION_STATE.md](FAVOR_HOST_ATTRIBUTION_PREPARATION_STATE.md) and
+`reports/favor_plus_v1/GPU_ADMIN_PID_ATTRIBUTION_PROCEDURE.md`.
+STOP GPU/admission/training now; total20/no additional updates. Administrator
+needs to collect host PID/NSpid/ns/start/boot/container/cgroup/exactMIG plus
+exclusive-allocation evidence. New standalone witness can support a coordinated
+CPU-only namespace check; commands prepared, nothing sent/admin-run by agent.
+It CANNOT prove NVML PID domain without archived host records or a separately
+coordinated future zero-update CUDA diagnostic (not authorized in this task).
+No production guard changes yet; read conditional correction proposal only.
+After actual trusted evidence, determine direct namespace alias vs proxy/MPS/
+competitor and assess tested fail-closed integration in a NEW source-bound run.
+Do not rerun failed campaigns/guessaliases/usefreeVRAM as identity. Existing
+owner/30additional-through50 approval persists but cannot bypass current safety
+block. No repeated approval request/no CUDA now/Light or unrelated changes.
+31 targeted CPU tests PASS; previous source/checkpoint hashes unchanged.
+
+Earlier23October recheck checkpoint (historical):
+
 23October recheck COMPLETE; read
 [FAVOR_GPU_RECHECK_STATE.md](FAVOR_GPU_RECHECK_STATE.md) and
 `reports/favor_plus_v1/ASSIST_50_UPDATE_RECHECK_20261023.md`.

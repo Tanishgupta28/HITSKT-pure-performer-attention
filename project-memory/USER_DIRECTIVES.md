@@ -2,7 +2,22 @@
 
 Updated: 2026-10-23 UTC
 
-## 2026-10-23 — Recheck contention; conditionally resume exact20→50 (latest)
+## 2026-10-23 — Host attribution procedure and CPU-only preparation (latest)
+
+- Review saved failures/guards; distinguish a likely namespace/runtime mismatch
+  from verified identity. Specify trusted host PID/NSpid/namespace/start-time/
+  boot/cgroup/container/MIG and exclusive-allocation evidence and exact safe
+  administrator commands, including coordinated collection while a process lives.
+- CPU-only inspection, implementation preparation and tests NOW. No CUDA,
+  training, admission retry, GPU watcher, signals, resource/job changes or host
+  intervention by the agent. Preserve all research/checkpoints/LightSAKT2.
+- Propose robust attribution only conditionally on a proved mapping, retaining
+  unknown-worker/reuse/freshness/ownership/authorization/resource checks. Do not
+  infer identity or exclusivity from free VRAM or a caller-written alias file.
+- Existing20→50 approval persists but is NOT an execution grant for this task.
+  Prepare evidence/procedure, report blockers/needed host intervention, and stop.
+
+## 2026-10-23 — Recheck contention; conditionally resume exact20→50 (historical)
 
 - User reports Parth acknowledged a concurrent job on the assigned GPU and said
   he would stop it. Treat this as user-reported context, not proof of shutdown,
