@@ -1,0 +1,13 @@
+{
+  "cuda_initialized": false,
+  "data_discarded": 0,
+  "epochs_completed": 0,
+  "existing_checkpoint50_sha256": "93ebe9d2a29be9a6e4deb278916513339de61c9ac8f72a454a31111829440a73",
+  "first_epoch_validation": "NOT RUN",
+  "new_optimizer_updates": 0,
+  "next_condition": "Actual response approving proposed larger resource budget, then fresh admission/zero-update shape profile. Full10-epoch/patience3 permission already received.",
+  "reason": "{\"status\": \"BLOCKED_RESOURCE_BUDGET\", \"incompatible_batches\": 1898, \"first_incompatible\": {\"split\": \"train\", \"epoch\": \"1\", \"batch\": 0, \"batch_size\": 64, \"padded_tokens\": 18642}, \"limits\": {\"allocator_bytes\": 1073741824, \"advisory_total_bytes\": 2147483648, \"admission_free_bytes\": 8589934592, \"runtime_free_bytes\": 6442450944, \"max_padded_tokens\": 2048, \"max_batch_size\": 1}, \"data_skipped\": 0, \"actions_truncated\": 0, \"cuda_initialized\": false}",
+  "resource_budget_profile": "existing_1gib",
+  "sequences_truncated": 0,
+  "status": "BLOCKED_BEFORE_CUDA"
+}

@@ -1,0 +1,60 @@
+{
+  "automatic_retries": 0,
+  "cpu_tests": {
+    "cpu_tests.xml": 25,
+    "curve_test.xml": 1,
+    "operator_window_tests.xml": 2
+  },
+  "cuda_model_initialized": false,
+  "data_discarded": 0,
+  "diagnostic50_sha256": "93ebe9d2a29be9a6e4deb278916513339de61c9ac8f72a454a31111829440a73",
+  "epoch1_train_sessions": 7060,
+  "failures_in_final_suites": 0,
+  "full_epochs_completed": 0,
+  "full_gpu_pipeline_status": "CPU verified; actual CUDA profile/epochs/recovery pending resource budget",
+  "full_training_authorized": true,
+  "full_validation_metrics": "NOT RUN",
+  "initial_development_failure_preserved": true,
+  "max_epochs": 10,
+  "new_real_optimizer_updates": 0,
+  "no_other_process_signals": true,
+  "patience": 3,
+  "plan_sha256": "8a0958f4572e11d9ae0d5722f595ef070c84129d9460f4b382b70c70ac2427cb",
+  "preserved": [
+    {
+      "files": 69,
+      "manifest": "reports/favor_plus_v1/post50_cpu_investigation_20261023_v1/ARTIFACT_INVENTORY.json",
+      "unchanged": true
+    },
+    {
+      "files": 774,
+      "manifest": "reports/favor_plus_v1/shared50_from25_20261023_v1/ARTIFACT_INVENTORY.json",
+      "unchanged": true
+    },
+    {
+      "files": 316,
+      "manifest": "reports/favor_plus_v1/shared25_pilot_20261023_v1/ARTIFACT_INVENTORY.json",
+      "unchanged": true
+    },
+    {
+      "files": 199,
+      "manifest": "reports/favor_plus_v1/assist20_recovery_20261020_v1/ARTIFACT_INVENTORY.json",
+      "unchanged": true
+    }
+  ],
+  "processed_checksums_verified": 11,
+  "protected_files_unchanged": {
+    "/workspace/LightSAKT2/experiments/USER_TRAINING_HOLD.json": "65214c2c53852024e970fd0a176f71968f204ec0748635a7e6f46de3ed64c234",
+    "/workspace/capstone/README.md": "e5754c28ae89a628d46e0269523115404be13aba55d252a92c90ece2bf8ac6b8",
+    "/workspace/capstone/experiments/sakt/ednet_kt1/full/independent_evaluation.console.log": "0f5546314e0911001954ca04e2fccdad7be7e09dce685fb8d61f5fe7a7af76ff"
+  },
+  "resource_budget_approval": "PENDING_ACTUAL_RESPONSE; not inferred",
+  "sequences_truncated": 0,
+  "source_files_verified": 37,
+  "status": "PREPARATION_VERIFIED;ACTUAL_EPOCH_TRAINING_BLOCKED_BY_CURRENT_BUDGET",
+  "test_evaluations": 0,
+  "train_targets": 566107,
+  "unique_cpu_tests_passed": 28,
+  "validation_sessions": 1977,
+  "validation_targets": 125800
+}

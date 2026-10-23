@@ -1,0 +1,22 @@
+{
+  "actions_truncated": 0,
+  "cuda_initialized": false,
+  "data_skipped": 0,
+  "first_incompatible": {
+    "batch": 0,
+    "batch_size": 64,
+    "epoch": "1",
+    "padded_tokens": 18642,
+    "split": "train"
+  },
+  "incompatible_batches": 1898,
+  "limits": {
+    "admission_free_bytes": 8589934592,
+    "advisory_total_bytes": 2147483648,
+    "allocator_bytes": 1073741824,
+    "max_batch_size": 1,
+    "max_padded_tokens": 2048,
+    "runtime_free_bytes": 6442450944
+  },
+  "status": "BLOCKED_RESOURCE_BUDGET"
+}

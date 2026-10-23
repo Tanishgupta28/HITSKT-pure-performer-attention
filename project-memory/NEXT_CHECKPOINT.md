@@ -1,5 +1,11 @@
 # Next checkpoint
 
+## Latest: await the resource-budget answer; full training already authorized
+
+Read [FAVOR_ASSIST_EPOCH_STATE.md](FAVOR_ASSIST_EPOCH_STATE.md) and ASSIST2017_EPOCH_TRAINING_STATUS.md. Currentnewfullrun0epochs/0updates, plan8a0958f4... valid andblockedbeforeCUDAunderexisting1GiB/B1/2048. Only resourceincreaseapprovalpending; do NOT re-askfulltraining/ownership/adminexclusivity. Ifactual8GiBanswerarrives createfreshseparateresponse-boundrecord(noassumedapproval/defaultUI),keepfrozenplan/source unchanged, freshsharedadmission→zeroAdamshapeprofile→epoch1/fullval→freshverify1→permitted2..10/pat3/time/resource stops. Finalfullvalbestreplay,no test. Ifanswerdoesnotarrive, publishverifiedpreparation/reportandWAIT; noGPUallocation/training, no dataskipping/truncation/budgetincrease. Preserve50/Light/DKT/oldartifacts/unrelateddirt/main.
+
+Earlier handoff (historical):
+
 ## Latest: post50 CPU study complete; WAIT for instruction
 
 Read [FAVOR_POST50_INVESTIGATION_STATE.md](FAVOR_POST50_INVESTIGATION_STATE.md), newreport and rawrun INVESTIGATION_RESULT.json terminalmarker. Total50/no new optimizercalls. Do notrunCUDA/newupdates/fulltraining/currentclosedcampaign. CurrentCPUprofilerrefusesCUDA-linkedengineforstrictbackward; originalwarning/sourcesnapshotpreserved. FinishverifiedresearchpublicationthenWAIT. Future50→75isproposalNOTapproval. Ifapproveduseexact50/Adam/RNG/projections/newsource-boundcontract,freshsharedadmission,samelimits/.20 REVIEW/expandedtrainingdiagnostics. Originalbatchprofiling needsseparateGPUinstruction/resourcebudget; staticevidencecurrent1GiBinsufficientformanybatches. Nevertruncate/dropdata/raisebudgetquietly. PreserveLight/DKT/ELU/allcheckpoint/history/main.

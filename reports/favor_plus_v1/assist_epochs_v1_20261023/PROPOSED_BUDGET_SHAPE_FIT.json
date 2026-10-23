@@ -1,0 +1,20 @@
+{
+  "actual_resource_approval": false,
+  "scope": "Planning only; not GPU memory measurement or permission",
+  "shape_check": {
+    "actions_truncated": 0,
+    "cuda_initialized": false,
+    "data_skipped": 0,
+    "first_incompatible": null,
+    "incompatible_batches": 0,
+    "limits": {
+      "admission_free_bytes": 17179869184,
+      "advisory_total_bytes": 10737418240,
+      "allocator_bytes": 8589934592,
+      "max_batch_size": 64,
+      "max_padded_tokens": 32768,
+      "runtime_free_bytes": 6442450944
+    },
+    "status": "PASS_ALL_SHAPES"
+  }
+}

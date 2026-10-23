@@ -1,0 +1,49 @@
+{
+  "output": "/workspace/capstone/experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1",
+  "prepared_plan_sha256": "8a0958f4572e11d9ae0d5722f595ef070c84129d9460f4b382b70c70ac2427cb",
+  "counts": {
+    "train": {
+      "sessions": 7060,
+      "labels": 566107
+    },
+    "validation": {
+      "sessions": 1977,
+      "labels": 125800
+    }
+  },
+  "training_batches_per_epoch": {
+    "1": 181,
+    "2": 182,
+    "3": 183,
+    "4": 182,
+    "5": 181,
+    "6": 182,
+    "7": 181,
+    "8": 182,
+    "9": 181,
+    "10": 181
+  },
+  "admission": {
+    "status": "BLOCKED_RESOURCE_BUDGET",
+    "incompatible_batches": 1898,
+    "first_incompatible": {
+      "split": "train",
+      "epoch": "1",
+      "batch": 0,
+      "batch_size": 64,
+      "padded_tokens": 18642
+    },
+    "limits": {
+      "allocator_bytes": 1073741824,
+      "advisory_total_bytes": 2147483648,
+      "admission_free_bytes": 8589934592,
+      "runtime_free_bytes": 6442450944,
+      "max_padded_tokens": 2048,
+      "max_batch_size": 1
+    },
+    "data_skipped": 0,
+    "actions_truncated": 0,
+    "cuda_initialized": false
+  },
+  "new_optimizer_updates": 0
+}

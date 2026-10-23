@@ -1,0 +1,22 @@
+Running 21 items in this shard
+............F........                                                                                                                                [100%]
+========================================================================= FAILURES =========================================================================
+_________________________________________ test_actual_partial_checkpoint_resume_preserves_next_updates_and_metrics _________________________________________
+
+fixture = (<ktbench.data.session_store.RollingSessionDataset object at 0x7ffff62fd540>, HiTSKTFavorPlus(
+  (action_encoder): Act..., ...}, 'parameter_tensor_count': 61, ...}, {'bad_epochs': 0, 'best_auc': None, 'best_f1': None, 'epoch': 1, ...}, ...)
+
+    def test_actual_partial_checkpoint_resume_preserves_next_updates_and_metrics(fixture):
+        train,net,opt,rows,c,progress,b,proof,root=fixture
+        def interrupted(cursor):
+            if cursor==2:
+                p.save_checkpoint(net,opt,c,progress,proof,root/'partial.pt')
+                raise InterruptedError('UNIT bounded interruption after valid checkpoint')
+>       with pytest.raises(InterruptedError):p.epoch_data(net,opt,train,rows,torch.device('cpu'),b,progress,training=True,checkpoint_callback=interrupted)
+E       Failed: DID NOT RAISE <class 'InterruptedError'>
+
+tests/test_favor_plus_assist_epochs.py:96: Failed
+-------------------------- generated xml file: /workspace/capstone/reports/favor_plus_v1/assist_epochs_v1_20261023/cpu_tests.xml ---------------------------
+================================================================= short test summary info ==================================================================
+FAILED tests/test_favor_plus_assist_epochs.py::test_actual_partial_checkpoint_resume_preserves_next_updates_and_metrics - Failed: DID NOT RAISE <class 'I...
+1 failed, 20 passed in 11.35s

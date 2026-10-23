@@ -1444,3 +1444,21 @@ validationinference/testevaluation. Total50/parenthashunchanged;allpriorfiles/
 CONDITIONALGOonlynewexplicitshort50→75proposal; NO-GOfulltraining, noexecution
 authorizednow. OriginalshapesneedboundedGPUprofile/newresourceplanapproval.
 PublishverifiedresearchthenWAIT; nootherjobs/fulltraining/threshold/configchange.
+
+## 2026-10-23 — Full ASSIST epoch task authorized/prepared, genuine budget block
+
+UserauthorizescompleteASSIST up10/localpat3/fullval, notjustmorediagnosticupdates.
+Acceptedpermission, fresh42runpreserves50. Newseparatecontroller+CLI preserves35
+oldsourcefiles/attention/commonpat5;37sources boundplan8a0958f4... Newcomplete10
+schedulestrain7060/566107andval1977/125800, nostudent/futurevisibilitymismatch,
+no skipping/truncation/testloader.28distinctCPUcasesPASS, atomics+freshCPUrestore/
+actualpartialnextupdate/RNG/metricresumeproof. FullGPU pathsUNRUN.
+Initialread-onlyMIG39.34GiBfree/computeempty/Lightinactive,sharedauthorityaccepted.
+CurrentB1/cost2048/1GiBpolicyrefusesfirstfullB64/cost18642beforeCUDA;actualmarker
+BLOCKED_BEFORE_CUDA,0newupdates/0epochs/noactualfullvalnumbers. Asyncquestion8GiB
+cap/10GiBadvisory/16GiBfree +originalB64/cost32768asked,answerpendingNOTapproval.
+No exclusive/admin/PIDpermissionrequestedagain, no guardweakened or data dropped.
+Oneinitialtestfixtureintervalissueandoperatorwindowµsrejectionpreserved/corrected,
+strictwindowunchanged;noactualoptimizerretry. ReportASSIST2017_EPOCH_TRAINING_STATUS
+andprofessorupdatehonestlystate0epochs. Fulltask remainsINCOMPLETEuntilactualbudget
+responseandprofile/epoch1checks. PublishverifiedresearchpreparationthenWAIT.

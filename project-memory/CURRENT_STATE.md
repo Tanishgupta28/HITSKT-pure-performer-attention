@@ -1,5 +1,11 @@
 # Current state
 
+## Latest: full-data epoch training PREPARED; blocked before CUDA by current budget
+
+Read [FAVOR_ASSIST_EPOCH_STATE.md](FAVOR_ASSIST_EPOCH_STATE.md). User NOW authorizes fullASSIST up10epochs/pat3; oldCPU-only/no-full-task instructions are historical. Fresh protocol run/source-boundplan8a0958f4... complete7060train/566107labels/val125800, all37sources/data identities verified. Current-limit admission refuses firstB64/cost18642 under1GiB/B1/2048; no CUDA model/newupdates/epochs/metrics. GPU observed39.34GiBfree andsharedauthorized, soleblockresourcebudget. Async8GiBcap/10advisory/16admission responsepending; notapprovedautomatically.28CPUcasesPASS. Source0.20REVIEW/model/config/oldstatespreserved. Preparepublicationandawaitactualbudgetanswer, no moreinfrastructurepolling.
+
+Earlier handoff (historical):
+
 ## Latest: post50 scientific CPU investigation COMPLETE
 
 Read [FAVOR_POST50_INVESTIGATION_STATE.md](FAVOR_POST50_INVESTIGATION_STATE.md) and POST50_APPROXIMATION_METRICS_AND_TRAINING_READINESS.md. Checkpoint50 unchanged/no new updates. Finite-feature/QK alignment errors persist; CPElong939error.263. Metricsconsistent: downward probabilityshift explains137TP→FN/323FP→TN at25→50, noimplementationdefect. Original7060train/181batches partialforwardcomponents exceed1GiB in70batches (gradientfree), actualGPUpeakunmeasured. CPUprofilerimplicitdriver-querywarning retained; guardrequiresCPU-onlybuildfuturebackward. 84distinctCPUcasesPASS. ConditionalGO onlyseparatelyapprovedshort50→75; NO-GOfulltraining. NoGPUexecution/newoptimizer/testscope now; publishverifiedresearchthenWAIT.

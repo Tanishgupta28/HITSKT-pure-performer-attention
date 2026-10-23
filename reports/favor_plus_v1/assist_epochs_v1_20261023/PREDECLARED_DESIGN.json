@@ -1,0 +1,53 @@
+{
+  "kind": "hitskt_favor_plus_assist_epochs_v1",
+  "base_commit": "df3dcb43ba264a668364f36890862c6e433d7fce",
+  "max_epochs": 10,
+  "early_stopping": {
+    "metric": "full_validation_roc_auc",
+    "patience": 3,
+    "min_delta": 0.0,
+    "strict_improvement": true
+  },
+  "initialization": "fresh seed42; original complete-data sampler/nonattention/Adam; preserve diagnostic50 unchanged; no warm-start mixing",
+  "data": "verified unchanged ASSIST2017; train and full validation only; history15/no truncation/no target filtering/no test inference",
+  "sampler": {
+    "token_budget": 32768,
+    "maximum_batch_size": 64,
+    "bucket_size": 512,
+    "seed": 42,
+    "shuffle_train": true,
+    "shuffle_validation": false
+  },
+  "features": 128,
+  "projection_policy": "fixed saved-seed42+stage offsets",
+  "dtype": "FP32/highest matmul/no TF32",
+  "resource_safety": "Existing shared memory/process visibility/Light protection/host/pacing/time/numerical guards preserved. No budget increase without actual user response.",
+  "current_budget": {
+    "allocator_bytes": 1073741824,
+    "advisory_total_bytes": 2147483648,
+    "admission_free_bytes": 8589934592,
+    "runtime_free_bytes": 6442450944,
+    "max_padded_tokens": 2048,
+    "max_batch_size": 1
+  },
+  "requested_budget_NOT_APPROVED": {
+    "allocator_bytes": 8589934592,
+    "advisory_total_bytes": 10737418240,
+    "admission_free_bytes": 17179869184,
+    "runtime_free_bytes": 6442450944,
+    "max_padded_tokens": 32768,
+    "max_batch_size": 64
+  },
+  "execution": {
+    "max_seconds": 2700,
+    "max_step_seconds": 30,
+    "pause_seconds": 0.1,
+    "host_rss_bytes": 4294967296,
+    "host_headroom_bytes": 2147483648
+  },
+  "gate": "No CUDA until actual budget authorizes all full train/validation shapes. First zero-Adam profile (with preallocated Adam-size buffers) on progressive original shapes; stop first failure. Fresh training only after PASS.",
+  "checkpoints": "atomic no-overwrite model/Adam/RNG/projections/exact epoch batch cursor/metric prefix/source/data/config at each25 batches and epoch. Fresh recovery before next epoch.",
+  "diagnostics": "Same original six train-only examples/all4stages at initialization and each epoch; extra train-only coverage in larger planning cohort retained as evidence. .20 review unchanged; original severe stops unchanged.",
+  "tests": "New CPU controller/data/selection/safety/checkpoint tests only; do not rerun historical229 suite without cause.",
+  "reporting": "Only measured full-epoch validation metrics; no sampled metrics substituted. Curves only after actual epochs. If blocked, report zero epochs explicitly."
+}

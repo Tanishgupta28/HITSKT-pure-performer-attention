@@ -1,5 +1,11 @@
 # HiTSKT capstone project memory
 
+## Latest: full ASSIST epoch run authorized; resource budget pending
+
+Read [FAVOR_ASSIST_EPOCH_STATE.md](FAVOR_ASSIST_EPOCH_STATE.md). Fresh complete-data ≤10epochs/localpat3 is authorized; current1GiB/B1/cost2048 gate refuses originalbatch64/cost18642 beforeCUDA. Complete7060train/566107labels,fullval125800 and37sources prepared;28targetedCPUcasesPASS. No newupdates/fullvalidationmetrics. Larger8GiB/10GiBadvisory/16GiBfreebudgetquestionpending; no responseinferred. Sharedpermissionalreadyaccepted/noadminorownershiprequest. Preserve50/otherjobs; awaitbudgetresponse thenprofile/epoch1/recovery beforefurtherauthorizedepochs.
+
+Earlier handoff (historical):
+
 ## Latest: post50 CPU investigation complete
 
 Read [FAVOR_POST50_INVESTIGATION_STATE.md](FAVOR_POST50_INVESTIGATION_STATE.md). Zero new updates/current50. No discovered attention/metric defect; finite-feature/alignment REVIEW persists. Broader train-only attention study, saved metric crossing analysis and original-shape CPU accounting complete. 82main+3guard CPUchecksPASS(overlap;84distinct). CPU autograd emitted implicit CUDA-device-count warning, retained; strict future CPU backward guard corrected. Original1GiB batch feasibility NO-GO; fulltraining notapproved. NoGPU model work/testevaluation. Stop for nextinstruction.

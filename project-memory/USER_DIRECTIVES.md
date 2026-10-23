@@ -2,7 +2,27 @@
 
 Updated: 2026-10-23 UTC
 
-## 2026-10-23 — Post50 scientific investigation, CPU-only (latest; COMPLETE)
+## 2026-10-23 — Authorized full ASSIST epoch training, maximum10 (latest)
+
+- User now authorizes actual complete ASSIST training, up to10 epochs after
+  epoch1 correctness/resource success, full validation each epoch and local
+  early stopping patience3. This supersedes prior CPU-only/no-full-training
+  task scope. Preserve50; fresh run if diagnostic subset is unsuitable.
+- Same verified genuine FAVOR+128/seed42/attention/nonattention/Adam/data/protocol,
+  .20 REVIEW retained; fix genuine defects only, no silent configuration changes.
+  Full training targets/histories/sequence lengths must be preserved, no skipped
+  oversize examples or truncation. No test selection/evaluation or superiority.
+- Shared research permission persists. Preserve existing memory/headroom/pacing/
+  visibility/numerical safeguards and other jobs/Light/DKT. Existing1GiB cap and
+  cost2048 cannot silently increase; original batches exceed these limits.
+  Prepare concrete runner/profile plan and establish an explicit adequate budget
+  if needed. No repeated allocation-owner/administrator permission request.
+- Save resumable/best-validation checkpoints, recovery proof, configuration/data/
+  source/RNG/projection identity and per-epoch metrics/curves/resources/timing;
+  monitor fixed TRAIN-only approximation. Stop on serious failure; no retry/reset,
+  >10 epochs or unrelated job changes. Commit validated research-branch work.
+
+## 2026-10-23 — Post50 scientific investigation, CPU-only (historical; COMPLETE)
 
 - Investigate Action/CPE approximation on representative identical training
   representations, length/feature diagnostics, Q/K/concentration/stability and
