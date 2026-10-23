@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "pre_run_new": 24,
+  "pre_run_existing": 78,
+  "initial_handoff_partition_error": "27 new +75 existing was incorrect; XML proves24 new +78 existing. Total102 unchanged.",
+  "counts": {
+    "cpu_tests.xml": {
+      "total": 102,
+      "by_module": {
+        "tests.test_favor_plus_shared25_to50": 24,
+        "tests.test_favor_plus_shared25": 20,
+        "tests.test_favor_plus_shared_continuation": 3,
+        "tests.test_favor_plus_shared_gpu": 55
+      }
+    },
+    "postrun_regression_tests.xml": {
+      "total": 175,
+      "by_module": {
+        "tests.test_favor_plus": 58,
+        "tests.test_hitskt_performer": 6,
+        "tests.test_favor_plus_continuation_execution": 32,
+        "tests.test_favor_plus_shared25_to50": 24,
+        "tests.test_favor_plus_shared_gpu": 55
+      }
+    }
+  },
+  "suite_overlap": "Do not add102+175 as distinct cases"
+}

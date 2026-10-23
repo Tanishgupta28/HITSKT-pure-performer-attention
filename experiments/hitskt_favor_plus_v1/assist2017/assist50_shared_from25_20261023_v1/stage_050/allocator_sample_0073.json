@@ -1,0 +1,78 @@
+{
+  "additional_optimizer_calls": 25,
+  "allocated_bytes": 182412288,
+  "calls": 50,
+  "decision": {
+    "exclusive_ownership_claimed": false,
+    "local_holders": [],
+    "local_visibility_gaps": [],
+    "pid_mapping_proven": false,
+    "reasons": [],
+    "reported_compute_processes": [
+      {
+        "compute_instance": 0,
+        "gpu_instance": 2,
+        "pid": 1943461,
+        "used_gpu_memory_bytes": 786432000
+      }
+    ],
+    "status": "ADMIT_SHARED_WITH_LIMITED_ATTRIBUTION",
+    "warnings": [
+      "PID namespace identity remains unresolved",
+      "MIG utilization unsupported: cap/headroom/pacing/runtime fallback; load UNKNOWN"
+    ]
+  },
+  "global_growth_minus_own_reserved_bytes": 386662400,
+  "global_used_minus_own_reserved_bytes": 426442752,
+  "host": {
+    "cgroup_headroom_bytes": 31008034816,
+    "cgroup_limit_bytes": 96636764160,
+    "cgroup_usage_bytes": 65628729344,
+    "peak_process_rss_bytes": 2057580544
+  },
+  "max_observed_nvml_used_bytes": 835387392,
+  "minimum_observed_free_bytes": 41443196928,
+  "nvml_baseline_used_bytes": 39780352,
+  "observation": {
+    "device": {
+      "compute_processes": [
+        {
+          "compute_instance": 0,
+          "gpu_instance": 2,
+          "pid": 1943461,
+          "used_gpu_memory_bytes": 786432000
+        }
+      ],
+      "free_bytes": 41443196928,
+      "total_bytes": 42278584320,
+      "used_bytes": 835387392
+    },
+    "local": {
+      "conflicts": [],
+      "holders": [],
+      "inaccessible_fd_pids": [],
+      "light_processes": [],
+      "observed_utc": "2026-10-23T10:17:12.847354+00:00",
+      "own_pid": 4006698,
+      "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+    },
+    "observed_utc": "2026-10-23T10:17:12.684394+00:00",
+    "pid_attribution": "UNRESOLVED; self/peer not inferred",
+    "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+    "utilization": {
+      "gpu_percent": null,
+      "memory_percent": null,
+      "nvml_status": 3,
+      "status": "unsupported"
+    }
+  },
+  "observed_utc": "2026-10-23T10:17:12.847447+00:00",
+  "overhead_attribution": "UNATTRIBUTED: driver/context/workspace/peers; not a process-total measurement",
+  "peak_allocated_bytes": 296044544,
+  "peak_reserved_bytes": 408944640,
+  "phase": "validation_sample_23",
+  "pid_mapping_proven": false,
+  "reported_pids_added": [],
+  "reported_pids_departed": [],
+  "reserved_bytes": 408944640
+}

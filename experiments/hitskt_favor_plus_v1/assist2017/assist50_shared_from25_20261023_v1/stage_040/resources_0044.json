@@ -1,0 +1,71 @@
+{
+  "additional_optimizer_calls": 15,
+  "calls": 40,
+  "decision": {
+    "exclusive_ownership_claimed": false,
+    "local_holders": [],
+    "local_visibility_gaps": [],
+    "pid_mapping_proven": false,
+    "reasons": [],
+    "reported_compute_processes": [
+      {
+        "compute_instance": 0,
+        "gpu_instance": 2,
+        "pid": 1939402,
+        "used_gpu_memory_bytes": 746586112
+      }
+    ],
+    "status": "ADMIT_SHARED_WITH_LIMITED_ATTRIBUTION",
+    "warnings": [
+      "PID namespace identity remains unresolved",
+      "MIG utilization unsupported: cap/headroom/pacing/runtime fallback; load UNKNOWN"
+    ]
+  },
+  "host": {
+    "cgroup_headroom_bytes": 31121776640,
+    "cgroup_limit_bytes": 96636764160,
+    "cgroup_usage_bytes": 65514987520,
+    "peak_process_rss_bytes": 2056118272
+  },
+  "max_observed_nvml_used_bytes": 795541504,
+  "minimum_observed_free_bytes": 41483042816,
+  "nvml_baseline_used_bytes": 39780352,
+  "observation": {
+    "device": {
+      "compute_processes": [
+        {
+          "compute_instance": 0,
+          "gpu_instance": 2,
+          "pid": 1939402,
+          "used_gpu_memory_bytes": 746586112
+        }
+      ],
+      "free_bytes": 41483042816,
+      "total_bytes": 42278584320,
+      "used_bytes": 795541504
+    },
+    "local": {
+      "conflicts": [],
+      "holders": [],
+      "inaccessible_fd_pids": [],
+      "light_processes": [],
+      "observed_utc": "2026-10-23T10:15:38.306331+00:00",
+      "own_pid": 4006010,
+      "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+    },
+    "observed_utc": "2026-10-23T10:15:37.983041+00:00",
+    "pid_attribution": "UNRESOLVED; self/peer not inferred",
+    "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+    "utilization": {
+      "gpu_percent": null,
+      "memory_percent": null,
+      "nvml_status": 3,
+      "status": "unsupported"
+    }
+  },
+  "observed_utc": "2026-10-23T10:15:38.306433+00:00",
+  "phase": "training_eval_sample_0",
+  "pid_mapping_proven": false,
+  "reported_pids_added": [],
+  "reported_pids_departed": []
+}

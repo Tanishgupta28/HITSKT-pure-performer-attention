@@ -2,8 +2,10 @@
 
 Updated: 2026-10-23 UTC
 
-## 2026-10-23 — Approved exact25→50 shared continuation (latest)
+## 2026-10-23 — Approved exact25→50 shared continuation (latest; COMPLETED)
 
+- Outcome: completed50TOTAL/25new calls, current execution scope EXHAUSTED.
+  No further training without a new instruction; see FAVOR_SHARED50_FROM25_STATE.md.
 - User APPROVES only25 additional optimizer calls from the preserved NEW25
   checkpoint through50TOTAL, sequential stages30/40/50 with fresh-process
   verified checkpoints. Restore model/Adam/RNG/projections/science exactly.

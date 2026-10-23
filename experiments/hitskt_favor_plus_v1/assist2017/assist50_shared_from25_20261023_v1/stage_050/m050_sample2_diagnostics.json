@@ -1,0 +1,368 @@
+[
+  {
+    "action_encoder.layers.0.attention": {
+      "feature_kernel_agreement": "PASS",
+      "feature_versus_exact_softmax": {
+        "max_abs": 0.8520109348207974,
+        "mse": 0.0071903854904569854,
+        "relative_l2": 0.2339965779139641,
+        "rmse": 0.08479614077572743
+      },
+      "features": 128,
+      "heads": 4,
+      "implementation_error": {
+        "max_abs": 5.780243435005161e-07,
+        "mse": 3.246798006479152e-15,
+        "relative_l2": 1.5423001879016933e-07,
+        "rmse": 5.698068099346613e-08
+      },
+      "kernel_statistics": {
+        "absolute_log_kernel_error": {
+          "count": 2112,
+          "maximum": 4.203025232795634,
+          "mean": 0.38575977585849924,
+          "median": 0.32610049979261024,
+          "minimum": 0.0002687011695640118,
+          "p90": 0.7530004037667918,
+          "p95": 0.9181850874722424
+        },
+        "feature_ess": {
+          "count": 2112,
+          "maximum": 32.0442115545706,
+          "mean": 9.162927142088046,
+          "median": 8.13364970429306,
+          "minimum": 1.0162634409801172,
+          "p90": 16.80977468600411,
+          "p95": 19.072958647432998
+        },
+        "iid_log10_cv_squared": {
+          "count": 2112,
+          "maximum": 1.5016410652583883,
+          "mean": 0.20266029881131753,
+          "median": 0.17403678019748142,
+          "minimum": -0.6270976857623715,
+          "p90": 0.7059784080907542,
+          "p95": 0.8824178927838786
+        },
+        "mean_attention_total_variation": 0.14360592362287822,
+        "mean_exact_to_feature_kl": 0.07755464897582443,
+        "signed_log_kernel_error": {
+          "count": 2112,
+          "maximum": 4.203025232795634,
+          "mean": -0.09906724761343319,
+          "median": -0.1685967748401884,
+          "minimum": -1.2301849930014683,
+          "p90": 0.5030181064570016,
+          "p95": 0.762389491395674
+        }
+      },
+      "norms_all_valid_tokens": {
+        "key": {
+          "count": 204,
+          "maximum": 5.642492060587487,
+          "mean": 4.646181544892017,
+          "median": 4.675937348740417,
+          "minimum": 3.753208170147116,
+          "p90": 5.113320552001959,
+          "p95": 5.204885597878277
+        },
+        "query": {
+          "count": 204,
+          "maximum": 5.804348090802036,
+          "mean": 4.558627763550899,
+          "median": 4.53166845577022,
+          "minimum": 3.621504235464617,
+          "p90": 4.959642897365598,
+          "p95": 5.19578874501652
+        }
+      },
+      "oracle": "independent NumPy/SciPy float64",
+      "p95_ratio_to_initial": {
+        "key": 1.0000693962984442,
+        "query": 0.9995322994085715
+      },
+      "prefix_positions_including_eos": 32,
+      "production_versus_exact_softmax": {
+        "max_abs": 0.8520105256808541,
+        "mse": 0.007190384964529247,
+        "relative_l2": 0.23399656935633573,
+        "rmse": 0.08479613767459722
+      },
+      "review_flags": [
+        "softmax_relative_l2_above_review_trigger"
+      ]
+    },
+    "correct_padding_encoder.layers.0.attention": {
+      "feature_kernel_agreement": "PASS",
+      "feature_versus_exact_softmax": {
+        "max_abs": 0.6930154250167365,
+        "mse": 0.010988643512635113,
+        "relative_l2": 0.22024750880758368,
+        "rmse": 0.10482673090693571
+      },
+      "features": 128,
+      "heads": 4,
+      "implementation_error": {
+        "max_abs": 5.292384828159413e-07,
+        "mse": 2.7997182145250158e-15,
+        "relative_l2": 1.093815403737044e-07,
+        "rmse": 5.291236353183456e-08
+      },
+      "kernel_statistics": {
+        "absolute_log_kernel_error": {
+          "count": 2112,
+          "maximum": 2.0937290404666316,
+          "mean": 0.5799842264429458,
+          "median": 0.5183707246304512,
+          "minimum": 0.0010655390183757218,
+          "p90": 1.053772098892411,
+          "p95": 1.187683207749761
+        },
+        "feature_ess": {
+          "count": 2112,
+          "maximum": 34.330734266659256,
+          "mean": 10.909925594039969,
+          "median": 10.025418787018769,
+          "minimum": 1.1767339770256717,
+          "p90": 20.97799258129192,
+          "p95": 24.351446301489077
+        },
+        "iid_log10_cv_squared": {
+          "count": 2112,
+          "maximum": 0.946831600390207,
+          "mean": 0.1363708671174735,
+          "median": 0.10561479032239787,
+          "minimum": -0.7431171646201088,
+          "p90": 0.6256614781519999,
+          "p95": 0.710871049685051
+        },
+        "mean_attention_total_variation": 0.14194902402751014,
+        "mean_exact_to_feature_kl": 0.07938645812735759,
+        "signed_log_kernel_error": {
+          "count": 2112,
+          "maximum": 2.0937290404666316,
+          "mean": -0.2538929484230412,
+          "median": -0.32404527526146953,
+          "minimum": -1.3087319681341567,
+          "p90": 0.5897202889891365,
+          "p95": 0.9623551732875955
+        }
+      },
+      "norms_all_valid_tokens": {
+        "key": {
+          "count": 352,
+          "maximum": 5.319851751819916,
+          "mean": 4.454164415661546,
+          "median": 4.369194906492593,
+          "minimum": 3.8220217301893866,
+          "p90": 4.982931025316986,
+          "p95": 5.175627507202306
+        },
+        "query": {
+          "count": 352,
+          "maximum": 5.519727052771697,
+          "mean": 4.621389576897626,
+          "median": 4.556323231112098,
+          "minimum": 3.6761689153465618,
+          "p90": 5.237243972438098,
+          "p95": 5.33708026880876
+        }
+      },
+      "oracle": "independent NumPy/SciPy float64",
+      "p95_ratio_to_initial": {
+        "key": 1.006163347690314,
+        "query": 1.0256616729636758
+      },
+      "prefix_positions_including_eos": 32,
+      "production_versus_exact_softmax": {
+        "max_abs": 0.6930152713368147,
+        "mse": 0.010988642844904032,
+        "relative_l2": 0.22024750211585192,
+        "rmse": 0.10482672772200816
+      },
+      "review_flags": [
+        "softmax_relative_l2_above_review_trigger"
+      ]
+    },
+    "decoder.layers.0.attention": {
+      "feature_kernel_agreement": "PASS",
+      "feature_versus_exact_softmax": {
+        "max_abs": 0.6082784196608874,
+        "mse": 0.004383670617308526,
+        "relative_l2": 0.13709493168006695,
+        "rmse": 0.06620929404025182
+      },
+      "features": 128,
+      "heads": 4,
+      "implementation_error": {
+        "max_abs": 6.732245201868103e-07,
+        "mse": 3.004211961018063e-15,
+        "relative_l2": 1.1370718413167109e-07,
+        "rmse": 5.481069203192077e-08
+      },
+      "kernel_statistics": {
+        "absolute_log_kernel_error": {
+          "count": 2112,
+          "maximum": 2.595541016578346,
+          "mean": 0.4385771387384086,
+          "median": 0.34774280825442794,
+          "minimum": 0.000518176493497613,
+          "p90": 0.9160938418931385,
+          "p95": 1.0454262423516474
+        },
+        "feature_ess": {
+          "count": 2112,
+          "maximum": 36.31114017238885,
+          "mean": 10.26342932091498,
+          "median": 8.645834983733739,
+          "minimum": 1.06674626169534,
+          "p90": 19.520970165165952,
+          "p95": 22.287463754199866
+        },
+        "iid_log10_cv_squared": {
+          "count": 2112,
+          "maximum": 1.5227188851649078,
+          "mean": 0.19114193478146943,
+          "median": 0.15906882794054789,
+          "minimum": -0.7440631246024586,
+          "p90": 0.8061803751238329,
+          "p95": 1.0555309655877883
+        },
+        "mean_attention_total_variation": 0.10143071460415022,
+        "mean_exact_to_feature_kl": 0.0409041188528679,
+        "signed_log_kernel_error": {
+          "count": 2112,
+          "maximum": 2.595541016578346,
+          "mean": -0.18048078646941984,
+          "median": -0.16473954301653174,
+          "minimum": -1.5272424494206862,
+          "p90": 0.3681498901572048,
+          "p95": 0.7031705344230342
+        }
+      },
+      "norms_all_valid_tokens": {
+        "key": {
+          "count": 352,
+          "maximum": 5.532329140065003,
+          "mean": 4.474802524337597,
+          "median": 4.457119147744255,
+          "minimum": 3.58184670462792,
+          "p90": 4.852524337645796,
+          "p95": 4.977155170762762
+        },
+        "query": {
+          "count": 352,
+          "maximum": 5.81938173623642,
+          "mean": 4.618936480404873,
+          "median": 4.580096743475318,
+          "minimum": 3.6700822378298588,
+          "p90": 5.223016839061309,
+          "p95": 5.410531811973036
+        }
+      },
+      "oracle": "independent NumPy/SciPy float64",
+      "p95_ratio_to_initial": {
+        "key": 0.9650899994787233,
+        "query": 1.0044017977352537
+      },
+      "prefix_positions_including_eos": 32,
+      "production_versus_exact_softmax": {
+        "max_abs": 0.6082778689581498,
+        "mse": 0.004383670169077,
+        "relative_l2": 0.13709492467106954,
+        "rmse": 0.06620929065529248
+      },
+      "review_flags": []
+    },
+    "session_encoder.layers.0.attention": {
+      "feature_kernel_agreement": "PASS",
+      "feature_versus_exact_softmax": {
+        "max_abs": 0.3046643051781695,
+        "mse": 0.005352491487478976,
+        "relative_l2": 0.1435915757270432,
+        "rmse": 0.07316072366699891
+      },
+      "features": 128,
+      "heads": 4,
+      "implementation_error": {
+        "max_abs": 2.980232238769531e-07,
+        "mse": 3.9807732931311676e-15,
+        "relative_l2": 1.2240440268143059e-07,
+        "rmse": 6.309336964476669e-08
+      },
+      "kernel_statistics": {
+        "absolute_log_kernel_error": {
+          "count": 12,
+          "maximum": 1.6116091967800292,
+          "mean": 0.5011501171242218,
+          "median": 0.4684945675950942,
+          "minimum": 0.06600490682980353,
+          "p90": 0.7237729490930905,
+          "p95": 1.132580525285462
+        },
+        "feature_ess": {
+          "count": 12,
+          "maximum": 10.653488846877854,
+          "mean": 5.130792389684634,
+          "median": 3.3370754584075626,
+          "minimum": 1.306459848483367,
+          "p90": 10.039394954886081,
+          "p95": 10.326914401295246
+        },
+        "iid_log10_cv_squared": {
+          "count": 12,
+          "maximum": 1.3702581014532091,
+          "mean": 0.41056597505653847,
+          "median": 0.2602597411312945,
+          "minimum": -0.1014871744060728,
+          "p90": 1.0225317412727777,
+          "p95": 1.1935814253765877
+        },
+        "mean_attention_total_variation": 0.09535384291131165,
+        "mean_exact_to_feature_kl": 0.042001124669616474,
+        "signed_log_kernel_error": {
+          "count": 12,
+          "maximum": 1.6116091967800292,
+          "mean": 0.07623575579963748,
+          "median": -0.19124711744011405,
+          "minimum": -0.5545854564440531,
+          "p90": 0.7237729490930905,
+          "p95": 1.132580525285462
+        }
+      },
+      "norms_all_valid_tokens": {
+        "key": {
+          "count": 8,
+          "maximum": 5.061192009962896,
+          "mean": 4.824516679387413,
+          "median": 4.776994746962744,
+          "minimum": 4.572735164995148,
+          "p90": 5.034850580393538,
+          "p95": 5.048021295178217
+        },
+        "query": {
+          "count": 8,
+          "maximum": 5.827149117113411,
+          "mean": 4.848139384831342,
+          "median": 4.846721531663967,
+          "minimum": 3.889696619930238,
+          "p90": 5.527333106765534,
+          "p95": 5.677241111939472
+        }
+      },
+      "oracle": "independent NumPy/SciPy float64",
+      "p95_ratio_to_initial": {
+        "key": 1.0168299093613324,
+        "query": 1.0180715769551676
+      },
+      "prefix_positions_including_eos": 2,
+      "production_versus_exact_softmax": {
+        "max_abs": 0.30466404108010786,
+        "mse": 0.005352489880643503,
+        "relative_l2": 0.14359155417371092,
+        "rmse": 0.07316071268545368
+      },
+      "review_flags": []
+    }
+  }
+]

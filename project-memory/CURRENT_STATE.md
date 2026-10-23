@@ -1,5 +1,11 @@
 # Current state
 
+## Latest: shared continuation COMPLETE at50; STOP TRAINING
+
+Read [FAVOR_SHARED50_FROM25_STATE.md](FAVOR_SHARED50_FROM25_STATE.md). Actual study_result proves25 new/50TOTAL calls. Fresh CUDA30/40/50 exact recoveryPASS/zeroAdam; checkpoints atomic/no-overwrite, original25 unchanged. Allstatesfinite; Action.212305>.20 REVIEW, CPE.192699/2cases>.20 worsening REVIEW. Ownpeak282.330MiBallocated/390reserved;287resourcechecksPASS/sharedpeerlogged/noownershipclaim.102pre/175postCPUtestsPASS(overlap); independent24prefixreplaysPASS. ReportSHARED_GPU_50_UPDATE_VALIDATION_RESULTS.md complete. SampledvalAUC.519220/BCE.692525 is exploratory, recall/F1decline. GO engineering/REVIEWapproximation, NO-GO fulltraining. CurrentapprovedscopeEXHAUSTED50; no moreGPU/optimizerwork. Preserveallotherjobs/artifacts; publishverifiedresearchthenwait.
+
+Earlier handoff (historical):
+
 ## Latest: approved shared25→50 prepared; execution pending
 
 Read [FAVOR_SHARED50_FROM25_STATE.md](FAVOR_SHARED50_FROM25_STATE.md). New user approval permits ONLY25 additional calls from exact25 to50, same limits/.20 REVIEW. New contract and102CPUtestsPASS; actual25 hash/preserved artifacts verified. Shared peer observed/read-only admission eligible, CUDA not yet run this campaign. Proceed staged fresh admission/recovery30/40/50 then STOP; no full training. Previous completed25 report remains unchanged.

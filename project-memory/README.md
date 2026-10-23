@@ -1,5 +1,11 @@
 # HiTSKT capstone project memory
 
+## Latest handoff: shared continuation completed50TOTAL
+
+Read [FAVOR_SHARED50_FROM25_STATE.md](FAVOR_SHARED50_FROM25_STATE.md) and reports/favor_plus_v1/SHARED_GPU_50_UPDATE_VALIDATION_RESULTS.md. Exactly25newupdates/fresh30/40/50recoveryPASS;trainingSTOPPED50.102pre/175postCPUcasesPASS(overlap). Allfinite/resourcesPASS, Action.212305 REVIEW and CPEworseningmedian.192699/2prefixes>.20. Peak282.330MiBallocated/390reserved. No fulltraining/testclaims;nextinstructionneededbeforefurtherwork. Previoushandoffsbelowarehistorical.
+
+Earlier handoff (historical):
+
 ## Latest handoff: approved25→50 shared continuation
 
 Read [FAVOR_SHARED50_FROM25_STATE.md](FAVOR_SHARED50_FROM25_STATE.md) before older state below. User approval is now explicit; preparation102CPUcasesPASS, fresh run/source-bound25-parent plan ready. Execute only25 new calls in verified30/40/50 stages with unchanged sharedlimits/.20 REVIEW; stop50. No full training or other workload changes.

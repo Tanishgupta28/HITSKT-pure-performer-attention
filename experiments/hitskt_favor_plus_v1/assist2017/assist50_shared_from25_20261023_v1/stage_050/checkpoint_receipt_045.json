@@ -1,0 +1,26 @@
+{
+  "adam_parameter_states": 61,
+  "additional_optimizer_calls": 25,
+  "atomic_no_overwrite": true,
+  "component_sha256": {
+    "contract": "b8874f5ae28478b159c9c8cc68998f5f295910a83f2acc1e9e5b975f59599834",
+    "next_update_probe": "c5d8e0dcdee7b2b9bc5e541594132c5b9ee4653743e5e7db96339d84cce58ead",
+    "optimizer_state_dict": "dc76d2d82c3248efd2c363e76663dd182c76536a50839430be65f61bdbc5437e",
+    "reference_eval_logits": "d93681a5ccad8149dee44c403b4bd988adbf0a5cb14de7b9e43b6c1f5c0445ac",
+    "rng_state": "baefff0d35cac00f9b89829fb0cd6fc9afc43a0499d723a43832f7de4c7cca57",
+    "sampler": "642d466d9cef3f6ddb5f5d41ebc2f297caefb850abcf2f7bac95626e3d2cbde2",
+    "state_dict": "6100a89b49a9022eb22928885e29cd6cec76436543c58b30def478ea0c3f331a"
+  },
+  "parent_checkpoint_sha256": "e67724a4ade70fe04de9d0c1a1f0fcb8bd1acc984c3506cda5cce2685ab2b5fc",
+  "path": "experiments/hitskt_favor_plus_v1/assist2017/assist50_shared_from25_20261023_v1/checkpoints/checkpoint_045.pt",
+  "projection_sha256": {
+    "action_encoder.layers.0.attention.projection": "0e30074b32eb36787646a586ce5bd759a5ce6d998d0585f239093f30bf45520c",
+    "correct_padding_encoder.layers.0.attention.projection": "2a3c51ffb0b77fc527b2678299da5142d7abee50440c3bd44bfa4f09cfe89a3f",
+    "decoder.layers.0.attention.projection": "14215fed57abbe0dfee2f0f0e66ab4f821305b6dc76aac1419ab628473661fef",
+    "session_encoder.layers.0.attention.projection": "723816c7c411dbedc108dd227a8819b2025bcacc871c88cbfefe2c850dcad125"
+  },
+  "sampler_cursor": 45,
+  "sha256": "e6d1a5854cd18169c01364e7f6dc4473e220e6bc3c84daa072d12297f2740c74",
+  "status": "PASS",
+  "updates": 45
+}

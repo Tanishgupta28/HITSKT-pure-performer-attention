@@ -1,5 +1,7 @@
 # FAVOR+ shared-GPU20→25 pilot —23October2026
 
+Latest continuation nowcompleted50; read [FAVOR_SHARED50_FROM25_STATE.md](FAVOR_SHARED50_FROM25_STATE.md). Below is the preserved historical25 milestone.
+
 **COMPLETE:25 TOTAL / FIVE new optimizer calls. STOP TRAINING.**
 Actual terminal marker:
 `experiments/hitskt_favor_plus_v1/assist2017/assist25_shared_cuda_20261023_v1/study_result.json`.

@@ -1,0 +1,210 @@
+{
+  "causal": {
+    "changed_raw_positions": [
+      0,
+      144,
+      287
+    ],
+    "requirement": "own/earlier exact equality after raw-response re-collation",
+    "status": "PASS"
+  },
+  "containment": {
+    "aggregate": {
+      "action_encoder.layers.0.attention": {
+        "max_implementation_abs": 5.243609552674222e-07,
+        "max_p95_growth_ratio": 1.0015023574763902,
+        "pair_ess_medians": {
+          "count": 6,
+          "maximum": 8.47047016013012,
+          "mean": 8.01870441439882,
+          "median": 8.20372368426904,
+          "minimum": 7.261974909500135,
+          "p90": 8.444784597224231,
+          "p95": 8.457627378677175
+        },
+        "relative_l2": {
+          "count": 6,
+          "maximum": 0.23742208465358844,
+          "mean": 0.1939649380698023,
+          "median": 0.2124007820413251,
+          "minimum": 0.09355633866943515,
+          "p90": 0.23503926361309357,
+          "p95": 0.236230674133341
+        }
+      },
+      "correct_padding_encoder.layers.0.attention": {
+        "max_implementation_abs": 6.486863695087663e-07,
+        "max_p95_growth_ratio": 1.0217690954253245,
+        "pair_ess_medians": {
+          "count": 6,
+          "maximum": 10.634367249084285,
+          "mean": 8.959812159037908,
+          "median": 8.748330706446222,
+          "minimum": 7.4886084264652935,
+          "p90": 10.602428978948723,
+          "p95": 10.618398114016504
+        },
+        "relative_l2": {
+          "count": 6,
+          "maximum": 0.19576267617609064,
+          "mean": 0.16791942931100265,
+          "median": 0.16709564159510137,
+          "minimum": 0.12848365585233945,
+          "p90": 0.19356703266351616,
+          "p95": 0.1946648544198034
+        }
+      },
+      "decoder.layers.0.attention": {
+        "max_implementation_abs": 4.5221274158624425e-07,
+        "max_p95_growth_ratio": 1.0039797175132066,
+        "pair_ess_medians": {
+          "count": 6,
+          "maximum": 10.061538863303898,
+          "mean": 9.050636339838372,
+          "median": 9.307947587602502,
+          "minimum": 6.9931306498964165,
+          "p90": 9.904377293919309,
+          "p95": 9.982958078611603
+        },
+        "relative_l2": {
+          "count": 6,
+          "maximum": 0.1278757209094812,
+          "mean": 0.09122391544952985,
+          "median": 0.08788156096343358,
+          "minimum": 0.06479102637617128,
+          "p90": 0.11705824196958797,
+          "p95": 0.12246698143953459
+        }
+      },
+      "session_encoder.layers.0.attention": {
+        "max_implementation_abs": 3.8611437847002605e-07,
+        "max_p95_growth_ratio": 1.0184511473426758,
+        "pair_ess_medians": {
+          "count": 6,
+          "maximum": 6.9830080895083695,
+          "mean": 5.557920006890957,
+          "median": 6.111472393057146,
+          "minimum": 3.4962485414130047,
+          "p90": 6.8945151769870385,
+          "p95": 6.9387616332477045
+        },
+        "relative_l2": {
+          "count": 6,
+          "maximum": 0.1501231321608878,
+          "mean": 0.09630062277076899,
+          "median": 0.10049969179647125,
+          "minimum": 0.04250000912600628,
+          "p90": 0.1312729759398182,
+          "p95": 0.14069805405035302
+        }
+      }
+    },
+    "full_training_ready": false,
+    "original_softmax_review_trigger": 0.2,
+    "severe_failure_stages": [],
+    "status": "CONTINUE_BOUNDED_DIAGNOSTIC_ONLY"
+  },
+  "preliminary_sampled_results": true,
+  "resources": {
+    "additional_optimizer_calls": 15,
+    "allocated_bytes": 179538432,
+    "calls": 40,
+    "decision": {
+      "exclusive_ownership_claimed": false,
+      "local_holders": [],
+      "local_visibility_gaps": [],
+      "pid_mapping_proven": false,
+      "reasons": [],
+      "reported_compute_processes": [
+        {
+          "compute_instance": 0,
+          "gpu_instance": 2,
+          "pid": 1939402,
+          "used_gpu_memory_bytes": 746586112
+        }
+      ],
+      "status": "ADMIT_SHARED_WITH_LIMITED_ATTRIBUTION",
+      "warnings": [
+        "PID namespace identity remains unresolved",
+        "MIG utilization unsupported: cap/headroom/pacing/runtime fallback; load UNKNOWN"
+      ]
+    },
+    "global_growth_minus_own_reserved_bytes": 386662400,
+    "global_used_minus_own_reserved_bytes": 426442752,
+    "host": {
+      "cgroup_headroom_bytes": 31193473024,
+      "cgroup_limit_bytes": 96636764160,
+      "cgroup_usage_bytes": 65443291136,
+      "peak_process_rss_bytes": 2056118272
+    },
+    "max_observed_nvml_used_bytes": 795541504,
+    "minimum_observed_free_bytes": 41483042816,
+    "nvml_baseline_used_bytes": 39780352,
+    "observation": {
+      "device": {
+        "compute_processes": [
+          {
+            "compute_instance": 0,
+            "gpu_instance": 2,
+            "pid": 1939402,
+            "used_gpu_memory_bytes": 746586112
+          }
+        ],
+        "free_bytes": 41483042816,
+        "total_bytes": 42278584320,
+        "used_bytes": 795541504
+      },
+      "local": {
+        "conflicts": [],
+        "holders": [],
+        "inaccessible_fd_pids": [],
+        "light_processes": [],
+        "observed_utc": "2026-10-23T10:15:47.735433+00:00",
+        "own_pid": 4006010,
+        "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+      },
+      "observed_utc": "2026-10-23T10:15:47.671816+00:00",
+      "pid_attribution": "UNRESOLVED; self/peer not inferred",
+      "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+      "utilization": {
+        "gpu_percent": null,
+        "memory_percent": null,
+        "nvml_status": 3,
+        "status": "unsupported"
+      }
+    },
+    "observed_utc": "2026-10-23T10:15:47.735503+00:00",
+    "overhead_attribution": "UNATTRIBUTED: driver/context/workspace/peers; not a process-total measurement",
+    "peak_allocated_bytes": 282297856,
+    "peak_reserved_bytes": 369098752,
+    "phase": "diagnostics_complete_40",
+    "pid_mapping_proven": false,
+    "reported_pids_added": [],
+    "reported_pids_departed": [],
+    "reserved_bytes": 369098752
+  },
+  "sampled_training_eval": {
+    "accuracy": 0.5313351498637602,
+    "f1": 0.3484848484848485,
+    "loss": 0.7184461073427174,
+    "mse": 0.2594454807288292,
+    "precision": 0.31399317406143346,
+    "recall": 0.39148936170212767,
+    "roc_auc": 0.5044130814821132,
+    "targets": 734,
+    "threshold": 0.5
+  },
+  "sampled_validation": {
+    "accuracy": 0.5660437123851758,
+    "f1": 0.35316336166194523,
+    "loss": 0.7004015951508542,
+    "mse": 0.25151072994284673,
+    "precision": 0.35450236966824644,
+    "recall": 0.35183443085606775,
+    "roc_auc": 0.5170466440423339,
+    "targets": 3157,
+    "threshold": 0.5
+  },
+  "test_evaluations": 0,
+  "update": 40
+}

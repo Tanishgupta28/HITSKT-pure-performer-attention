@@ -1,28 +1,64 @@
 # Shared FAVOR+ exact25→50 continuation —23October2026
 
-Latest user APPROVES25 new calls through50TOTAL under unchanged shared limits.
-Preparation ONLY at this checkpoint; CUDA not yet run in this campaign.
-Base commit61ba4215074464aceb56289856b5002e85004654; new controller
-`ktbench/favor_plus_shared25_to50.py`, CLI
-`scripts/assist50_from25_favor_plus_shared.py`, fresh run
-`experiments/hitskt_favor_plus_v1/assist2017/assist50_shared_from25_20261023_v1`.
+**COMPLETE50TOTAL /25 new real Adam calls. STOP TRAINING.**
+Actual terminal marker:
+`experiments/hitskt_favor_plus_v1/assist2017/assist50_shared_from25_20261023_v1/study_result.json`.
+No optimizer51/full training/automatic retry. Current scope exhausted.
+Report:`reports/favor_plus_v1/SHARED_GPU_50_UPDATE_VALIDATION_RESULTS.md`.
+Evidence:`reports/favor_plus_v1/shared50_from25_20261023_v1/`.
+Source/design preregistered2f1a8ff171e9782e8f5cd42cdea1e70ad6d52223 after
+102CPUcasesPASS(24new+78old; corrected from preparation partition). New35 bound sources unchanged; prior33 untouched.
 Prepared planSHA c210ab41bfa0a202f07058f67d3ea2b19e160908a01086901c16ab416a348e67.
-Parent25 SHAe67724a4ade70fe04de9d0c1a1f0fcb8bd1acc984c3506cda5cce2685ab2b5fc,
-all316 prior25/199 original20/9+8 failedattempt artifacts rehashed unchanged.
-102 targetedCPUcasesPASS(27new,75existing), no CUDA in tests. All35 sources
-bound; prior33 untouched. Preserve all model/Adam/RNG/projection/data/science.
-New contract accepts only25→30→40→50; checkpoint35/45 extra safety; verify30/40/50
-in fresh processes withzeroAdam. Checkpoint cumulative counter remainsstep-20;
-NEW-call journalsstep-25, exactly25new. No optimizer51.
-Evidence/predeclared design/auth:
-`reports/favor_plus_v1/shared50_from25_20261023_v1/`.
-Current finite read-onlypreflight:29.23GiBfree, unattributedcomputePID1706235
-uses10.1GiB; sharedmodeallowspeerswithlogging. MIGutilizationunsupportedUNKNOWN,
-Lightinactive/holdintact, hostheadroom28.88GiB. This is not a reservation.
-Keep1GiBallocator/2GiBadvisory own total/8GiBadmission/6GiBexecutionfree/B1/
-cost2048/pacing/host/time/sciencepressure stops. PIDmappingUNKNOWN/notrequired.
-Action.212836>.20 remainsREVIEW; no gate/thresholdchanges/fulltraining.
-Next: freshsharedadmission, exact25recovery/full frozenval replay and26proof,
-stage30/verify30; review measured gates then40/verify40; then50/verify50;
-STOPat50 oranyfailure, noretry. Userpermissionalreadyaccepted/nore-ask.
-Do not change Light/unrelatedjobs/DKT/oldartifacts. Publishverifiedresearchonly.
+Parent25SHAe67724a4ade70fe04de9d0c1a1f0fcb8bd1acc984c3506cda5cce2685ab2b5fc
+unchanged. New50SHA93ebe9d2a29be9a6e4deb278916513339de61c9ac8f72a454a31111829440a73.
+All checkpoints30/35/40/45/50 atomicvalidated/localignored; Git is notbinarybackup.
+Fresh CUDA30/40/50 recoveryPASS, fixedlogitsdiff0 and nextloss/logits/allgradient
+EXACT, zeroAdamcalls. Initialexact25+26gradientproof/full frozenval25 replayPASS;
+actual26/31/36/41/46 matchprecedingproof. No RNG/Adam/projection/science reset.
+Checkpoint cumulativeadditionalcounter isstep-20; newcampaign journalsstep-25.
+All61Adamstates50/finite/nonnegative2ndmoments; allnewgradsfinite/paramdeltas>0.
+25newupdates/1137targetsweightedBCE.716160914, lossrange.574839–.931072,
+gradientL2range1.602569–14.979638(<100stop), noCUDA/OOM/resourcefailure.
+Postrun175 targetedCPUregressionsPASS (overlapwith102, do notsumdistincttests).
+IndependentCPU saved-evidenceintegrity/metrics checksPASS;24directdoublepairwise
+Action/CPEprefixreplaysPASS, approximationerrorreproducedwithin1e-12.
+
+Action median20/25/30/40/50=.213145/.212836/.212707/.212401/.212305;
+**REVIEW persists>.20**,4/6prefixesabove atallmilestones;only2/6pairedcasesimprove
+25→50, worstcase .238585/headquerytail .947779. No meaningfulresolution.
+CPE medians.142362/.151291/.150477/.167096/.192699;6/6worsen25→50,+27.37%,
+2/6cases>.20 at50 REVIEW. Decoder.100696,Session.092156 at50. No roundingdefect:
+production-vs-independentfeaturekernelerrors<5e-5. QKp95growth25→50max2.284%
+(CPE), Action.133%; noexplosion. CPE Q/K/Vprefixdrift8.70/8.20/8.04%,
+Action .827/1.670/3.415%; supportsfixedfeaturealignment/learnedstatedrift risk,
+notproof ofcausalQvsKvsVcontribution. ActionESSmin1.016/CPE1.141 concentration.
+Same .20 REVIEW/severe gates unchanged; allsevere/checkedcausalgatesPASS.
+
+Frozen32validation/3157labels exploratory AUC20/25/30/40/50:
+.508313409/.510618521/.513411746/.517046644/.519220350;
+BCE.741282668/.727024655/.728324073/.700401595/.692524937.
+Recall/F1decline25→50; accuracy50.580931<majority.663288. No convergence/
+significance/superiority/finaltestclaim. Original chronologicalwithin-student
+retrospectiveteacherforcedprotocol; responseavailabilityqualificationretained.
+
+Shared admissionPASSwithvisibleunattributedpeer1706235/10.1GiB before/stage30;
+latergonewithoutoursignals. PIDmappingUNKNOWN/norequiredexclusive/adminevidence.
+UtilizationunsupportedUNKNOWN;fixedcap/headroom/pacing/latencyfallbackactive.
+Own peak282.330MiBallocated/390reserved,minfree28.572GiB,maxRSS1.918GiB.
+Globalstage30peak10.802917GiBincludespeer; notownbudgetviolation. Baseline-and-
+ownreservedsubtractedresidualmax368.750MiB UNATTRIBUTED, notcertifiedoverhead.
+2GiBtotaladvisorynotfullyattributable.287resourceboundariesPASS/limitsunchanged.
+Synchronized25updateintervalsum9.872679s/2.532241updatespersecond;stagesum93.041272s,
+freshrecoverysum9.852319s, excludesimports/preflight/reviewpauses. Notisolatedperf.
+ReleaseNVMLcomputeempty/global37.938MiB/Lightinactive/holdhash65214c2c.../OOM2
+unchanged. No Light/unrelatedjob/DKT/ELU/main/history changes orwatchers.
+Prior316/199/9+8artifacts andunrelatedREADME/SAKTdirt rehashedpreserved.
+
+Decision: GO engineeringrecovery, REVIEWapproximation, conditionalGO only
+SEPARATELY APPROVED longerboundedresearch; NO-GO fulltraining. NextreviewCPE
+worsening/Actiontails onpredeclaredbroaderTRAIN-only frozenprefixes. Nofeature/
+architecturechange implicit. BeforefullASSISTneedrepresentative/worstoriginal
+history15/token32768/maxbatch64memory/numericalprofiles undernewapproval;
+Junyi/EdNetneedownboundedpilots. Thenexplicitfullapproval/fullvalidation-selected
+checkpoint/patience5 andfreshfulltestall7metrics, preservedprotocol/seed/timing
+qualifications. No test evaluation yet. FinishscopedpublicationthenWAIT.

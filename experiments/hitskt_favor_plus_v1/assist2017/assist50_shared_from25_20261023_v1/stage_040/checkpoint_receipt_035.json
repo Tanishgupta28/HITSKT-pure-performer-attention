@@ -1,0 +1,26 @@
+{
+  "adam_parameter_states": 61,
+  "additional_optimizer_calls": 15,
+  "atomic_no_overwrite": true,
+  "component_sha256": {
+    "contract": "b8874f5ae28478b159c9c8cc68998f5f295910a83f2acc1e9e5b975f59599834",
+    "next_update_probe": "4a48ec0791cdeb046b7e021b265a92336b6c136ac4e79b7902fac4fd182a4285",
+    "optimizer_state_dict": "c79a1397069baaeeecbf55201583bd1e0d1e32e48da013619e10cf636754bf8d",
+    "reference_eval_logits": "0c0fb5fe99b45bef3e400f901ce6e8c38d381842019eae4d85a454f466e8e9fa",
+    "rng_state": "6dbd281edac7b2d40719b84d83ef932eeb0a1a7d606fe4d9a4318bc8811db28c",
+    "sampler": "a7f3694c85a27b4d4867bc974a9ffbbd0553143c414151b4738fc8f85228d503",
+    "state_dict": "80c7ba168bc565a95a131ad8412aaabd46220dd4c0dc5568d2b814690a1ee46b"
+  },
+  "parent_checkpoint_sha256": "e67724a4ade70fe04de9d0c1a1f0fcb8bd1acc984c3506cda5cce2685ab2b5fc",
+  "path": "experiments/hitskt_favor_plus_v1/assist2017/assist50_shared_from25_20261023_v1/checkpoints/checkpoint_035.pt",
+  "projection_sha256": {
+    "action_encoder.layers.0.attention.projection": "0e30074b32eb36787646a586ce5bd759a5ce6d998d0585f239093f30bf45520c",
+    "correct_padding_encoder.layers.0.attention.projection": "2a3c51ffb0b77fc527b2678299da5142d7abee50440c3bd44bfa4f09cfe89a3f",
+    "decoder.layers.0.attention.projection": "14215fed57abbe0dfee2f0f0e66ab4f821305b6dc76aac1419ab628473661fef",
+    "session_encoder.layers.0.attention.projection": "723816c7c411dbedc108dd227a8819b2025bcacc871c88cbfefe2c850dcad125"
+  },
+  "sampler_cursor": 35,
+  "sha256": "2b3ebdd235b33bd485dffc907c11065045aa921a1fd5e142be4e31a17876f7dc",
+  "status": "PASS",
+  "updates": 35
+}

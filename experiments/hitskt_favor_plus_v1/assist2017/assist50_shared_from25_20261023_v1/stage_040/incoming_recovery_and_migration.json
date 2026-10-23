@@ -1,0 +1,23 @@
+{
+  "destination_contract_sha256": "b8874f5ae28478b159c9c8cc68998f5f295910a83f2acc1e9e5b975f59599834",
+  "eval_prediction_max_abs_difference": 0.0,
+  "incoming_checkpoint_sha256": "5ec06caf1cd1d53ec81628db4cf02e80be9fd41cabbcbcac3f31a290f5fe3f75",
+  "incoming_component_sha256": {
+    "contract": "b8874f5ae28478b159c9c8cc68998f5f295910a83f2acc1e9e5b975f59599834",
+    "next_update_probe": "0752f7bb9e1e4a0681d6c8cdb4c2ac2fc91e66dd03d17a3c1c322cfe1c891980",
+    "optimizer_state_dict": "d8f5e21cc76b4ba0b6bb140dc38ced85798b8779ac5b42f7cdd65c7347b37ed6",
+    "reference_eval_logits": "291dd4a93d5549668d9cdeecdc7c1b6b244050a44f62c6506ba7e13d559d411d",
+    "rng_state": "23c7c26ab59d2401d5c45fb46295da24742edd5b60d3c8872e79aa5518c44835",
+    "sampler": "5445c21db5afdddbc54a9790be4484463c84e9eb0b5113bc399661861805a430",
+    "state_dict": "b2df8e4db9de1dad30a948233033bc01d8713f03ebf5ac25e5237abfdcc618de"
+  },
+  "model_adam_rng_projection_integrity": "PASS",
+  "next_train_forward_loss_all_gradient_digest": "EXACT",
+  "optimizer_calls_during_recovery": 0,
+  "optimizer_updates": 30,
+  "parent_checkpoint_sha256": "e67724a4ade70fe04de9d0c1a1f0fcb8bd1acc984c3506cda5cce2685ab2b5fc",
+  "source_checkpoint_unchanged": true,
+  "source_contract_sha256": "b8874f5ae28478b159c9c8cc68998f5f295910a83f2acc1e9e5b975f59599834",
+  "status": "PASS",
+  "unchanged_model_adam_rng_projections": true
+}

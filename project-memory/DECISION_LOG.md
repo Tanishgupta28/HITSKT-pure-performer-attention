@@ -1402,3 +1402,25 @@ free, Lightinactive,utilizationUNKNOWN. Sharedpermissionaccepted; noexclusive
 identityclaim/otherjobchanges. Exact25hash e67724a4.../newplanc210ab41... prepared;
 CUDA NOT RUN this campaign yet. Proceed freshadmission/stage30/40/50 plus recovery,
 retaining .20 REVIEW andlimits; stop50. No fulltraining/testevaluation/retry.
+
+## 2026-10-23 — Exact25→50 shared continuation completed; training STOPPED50
+
+Newrunassist50_shared_from25_20261023_v1 restoresNEW25SHAe67724a4... exactly,
+fullfrozenval25 replayPASS/actual26proofmatches.25realnewcalls/1137targets allfinite,
+noCUDA/OOM/resourcefailure/retry/budgetincrease. Atomic30/35/40/45/50;fresh30/40/50
+CUDAexactrecoveryPASS/zeroAdam.50SHA93ebe9d2a29be9a6e4deb278916513339de61c9ac8f72a454a31111829440a73.
+102pre/175postCPUcasesPASS(overlap),35sourcesfrozen/priors preserved. Sharedpeer
+1706235/10.1GiBlogged/notinterferedwith;minfree28.572GiB, ownpeak282.330MiBallocated/
+390reserved. Stage93.041s/recovery9.852s/updateinterval9.873s; observationaltiming.
+Actionmedian.212836→.212305 still>.20 REVIEW,4/6above;CPE.151291→.192699/all6worsen/
+2above. IndependentCPUdouble24prefixreplaysconfirmerror, notrounding; concentration/
+learnedalignmentrisk persists. SampledvalAUC.510619→.519220/BCE.727025→.692525 but
+recall/F1decline, nofinalperformance/convergence. Releaseempty/Lightheld/OOM2unchanged.
+ReportSHARED_GPU_50_UPDATE_VALIDATION_RESULTS.md. GO engineering/REVIEWapproximation;
+NO-GO fulltraining, conditionalnextboundedstudyneedsNEWinstruction. Scopeexhausted50;
+STOPCUDA/training, publishverifiedresearchthenWAIT. No otherjob/artifact/sciencechange.
+
+Test-count reconciliation: preparation handoff incorrectly described102 as27new+
+75existing. XML proves24new continuationcases+78existing(55sharedguard+20pilot25+
+3sharedcontinuation). Total102 remainsPASS; postrun175 includesoverlap, notadditive.
+Correctedfinalreport/currentstate; preservedhistoricalentry andpreregistrationcommit.

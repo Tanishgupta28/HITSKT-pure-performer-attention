@@ -1,0 +1,96 @@
+{
+  "aggregate": {
+    "action_encoder.layers.0.attention": {
+      "max_implementation_abs": 6.787744727398959e-07,
+      "max_p95_growth_ratio": 1.0011724145050602,
+      "pair_ess_medians": {
+        "count": 6,
+        "maximum": 8.455992239209644,
+        "mean": 8.015874408699124,
+        "median": 8.193582565131358,
+        "minimum": 7.366339033565219,
+        "p90": 8.424154471689802,
+        "p95": 8.440073355449723
+      },
+      "relative_l2": {
+        "count": 6,
+        "maximum": 0.23530177293193705,
+        "mean": 0.19400386578727638,
+        "median": 0.21283573174849407,
+        "minimum": 0.09330917189102751,
+        "p90": 0.2346941659893482,
+        "p95": 0.2349979694606426
+      }
+    },
+    "correct_padding_encoder.layers.0.attention": {
+      "max_implementation_abs": 6.176626657639073e-07,
+      "max_p95_growth_ratio": 1.014771027663166,
+      "pair_ess_medians": {
+        "count": 6,
+        "maximum": 11.352565832000677,
+        "mean": 9.566635023961606,
+        "median": 9.506263483343925,
+        "minimum": 7.902327378086538,
+        "p90": 11.115456443505348,
+        "p95": 11.234011137753011
+      },
+      "relative_l2": {
+        "count": 6,
+        "maximum": 0.18209733585851254,
+        "mean": 0.1530491672149933,
+        "median": 0.1512913554234918,
+        "minimum": 0.11905217766949949,
+        "p90": 0.1742100628114388,
+        "p95": 0.17815369933497568
+      }
+    },
+    "decoder.layers.0.attention": {
+      "max_implementation_abs": 6.825843359425932e-07,
+      "max_p95_growth_ratio": 1.0038431756197599,
+      "pair_ess_medians": {
+        "count": 6,
+        "maximum": 9.583492168675564,
+        "mean": 8.923802980581634,
+        "median": 9.334983090984244,
+        "minimum": 6.956899990936634,
+        "p90": 9.537978049049816,
+        "p95": 9.560735108862689
+      },
+      "relative_l2": {
+        "count": 6,
+        "maximum": 0.1261869320782404,
+        "mean": 0.08712978918289205,
+        "median": 0.0798391882477355,
+        "minimum": 0.06633218087822776,
+        "p90": 0.11374781289848399,
+        "p95": 0.11996737248836219
+      }
+    },
+    "session_encoder.layers.0.attention": {
+      "max_implementation_abs": 4.6496904837489694e-07,
+      "max_p95_growth_ratio": 1.0185105858650096,
+      "pair_ess_medians": {
+        "count": 6,
+        "maximum": 6.886064271618929,
+        "mean": 5.411175249544544,
+        "median": 5.541465875274354,
+        "minimum": 4.085319231999467,
+        "p90": 6.5802794817373025,
+        "p95": 6.7331718766781155
+      },
+      "relative_l2": {
+        "count": 6,
+        "maximum": 0.160381410633043,
+        "mean": 0.09316359467990365,
+        "median": 0.0851249796472708,
+        "minimum": 0.041492930947764926,
+        "p90": 0.14066995057875076,
+        "p95": 0.15052568060589688
+      }
+    }
+  },
+  "full_training_ready": false,
+  "original_softmax_review_trigger": 0.2,
+  "severe_failure_stages": [],
+  "status": "CONTINUE_BOUNDED_DIAGNOSTIC_ONLY"
+}
