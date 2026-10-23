@@ -1,0 +1,62 @@
+{
+  "observed_utc": "2026-10-23T00:55:12.298068+00:00",
+  "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+  "allocation_authority": "existing explicit owner-confirmed allocation/transfer and renewed bounded scope; no scheduler lease claimed",
+  "snapshot": {
+    "observed_utc": "2026-10-23T00:55:12.192495+00:00",
+    "own_pid": 3843837,
+    "holders": [
+      {
+        "pid": 3843850,
+        "identity_complete": true,
+        "verified_read_only": true,
+        "start_time_ticks": 93670966,
+        "uid": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "parent_pid": 3843849,
+        "state": "R (running)",
+        "comm": "nvidia-smi",
+        "executable": "/usr/bin/nvidia-smi",
+        "executable_device": 2305,
+        "executable_inode": 71042318,
+        "argv_sha256": "78d413cb0c836e84edc79f6d7edaeafecb39b9c52fecb9b5959f1c3633c88c54",
+        "python_module": null,
+        "cwd_category": "other",
+        "approved_option_names": [],
+        "trusted_binary_sha256": "a7d6645d5d4554ce7f5e7ae68cef9fb32d21721eaa2c271f7a58ef6c21039263",
+        "nvidia_handles": [
+          "/dev/nvidia-uvm",
+          "/dev/nvidia0",
+          "/dev/nvidiactl"
+        ],
+        "classification": "trusted_read_only_monitor"
+      }
+    ],
+    "conflicts": [],
+    "light_processes": [],
+    "inaccessible_fd_pids": [],
+    "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+  },
+  "nvml": {
+    "total_bytes": 42278584320,
+    "free_bytes": 42238803968,
+    "used_bytes": 39780352,
+    "compute_processes": []
+  },
+  "host_cgroup": {
+    "memory.limit_in_bytes": "96636764160",
+    "memory.usage_in_bytes": "63137386496",
+    "memory.oom_control": "oom_kill_disable 0\nunder_oom 0\noom_kill 2"
+  },
+  "cuda_initialized": false,
+  "light_hold_status": "USER_TRAINING_HOLD_ACTIVE",
+  "light_hold_sha256": "65214c2c53852024e970fd0a176f71968f204ec0748635a7e6f46de3ed64c234",
+  "exposed_devices": [
+    "MIG-d2fcfd79-720e-5218-82c9-0a132be68920"
+  ],
+  "status": "PASS"
+}

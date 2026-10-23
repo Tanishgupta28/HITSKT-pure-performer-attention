@@ -1,8 +1,27 @@
 # Current state
 
-Updated: 2026-10-21 UTC
+Updated: 2026-10-23 UTC
 
-## Latest: PID-attribution diagnosis complete; unresolved, no CUDA/training
+## Latest: fresh idle admission; exact20 recovery PASS; PID mismatch blocks again
+
+Read [FAVOR_GPU_RECHECK_STATE.md](FAVOR_GPU_RECHECK_STATE.md) and
+`reports/favor_plus_v1/ASSIST_50_UPDATE_RECHECK_20261023.md`.
+User reports Parth said he would stop concurrent work; current pre/post snapshots
+show no MIG compute, but no individual Parth job identity/shutdown is proved.
+Owner allocation/conditional20→50 authority retained. Fresh unchanged admission
+passed, new run assist50_continuation_20261023_v1 restored original20 exactly on
+CUDA/zeroAdamcalls. At00:55:23 guard sees NVML488211 vs own3843909; no trusted
+mapping, STOP before diagnostics20/update21. Total20/new0; no30/40/50 metrics or
+checkpoints. Do not retry failed run or launch any further GPU work now.
+Post00:55:46 NVML empty/baseline37.94MiB/Light hold same/OOM2. Repeated pattern
+supports runtime/PID-domain hypothesis, not proof; old67123↔2847964 also UNKNOWN.
+Need trusted host/runtime identity bridge, not repeated user authorization.
+32 existing targeted CPU controls PASS; old199+9 artifacts/28 sources unchanged.
+Action.213145 remains>.20 REVIEW; full training NO-GO. No guard/science/Light/DKT/
+job/allocation changes, unrelated signals or watchers. Publish scoped evidence
+and memory, then STOP until attribution is verifiably resolved.
+
+## Historical21October: PID-attribution diagnosis complete; unresolved, no CUDA/training
 
 Read [FAVOR_GPU_ATTRIBUTION_STATE.md](FAVOR_GPU_ATTRIBUTION_STATE.md).
 Historical67123↔2847964 relationship remainsUNKNOWN. Container exposes local

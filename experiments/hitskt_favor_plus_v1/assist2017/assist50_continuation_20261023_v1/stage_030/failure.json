@@ -1,0 +1,64 @@
+{
+  "conflict_snapshot": {
+    "conflicts": [],
+    "holders": [],
+    "inaccessible_fd_pids": [],
+    "light_processes": [],
+    "nvml": {
+      "compute_processes": [
+        {
+          "compute_instance": 0,
+          "gpu_instance": 2,
+          "pid": 488211,
+          "used_gpu_memory_bytes": 578813952
+        }
+      ],
+      "free_bytes": 41650814976,
+      "total_bytes": 42278584320,
+      "used_bytes": 627769344
+    },
+    "observed_utc": "2026-10-23T00:55:23.733549+00:00",
+    "own_pid": 3843909,
+    "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+  },
+  "failure_type": "ResourceConflict",
+  "last_safe_resources": {
+    "additional_optimizer_calls": 0,
+    "calls": 20,
+    "campaign_elapsed_seconds": 0.236964,
+    "host": {
+      "cgroup_headroom_bytes": 33405095936,
+      "cgroup_limit_bytes": 96636764160,
+      "cgroup_usage_bytes": 63231668224,
+      "peak_process_rss_bytes": 683765760
+    },
+    "nvml": {
+      "compute_processes": [],
+      "free_bytes": 42238803968,
+      "total_bytes": 42278584320,
+      "used_bytes": 39780352
+    },
+    "nvml_peak_observed_used_bytes": 39780352,
+    "observed_utc": "2026-10-23T00:55:20.550685+00:00",
+    "phase": "initialization",
+    "snapshot": {
+      "conflicts": [],
+      "holders": [],
+      "inaccessible_fd_pids": [],
+      "light_processes": [],
+      "observed_utc": "2026-10-23T00:55:20.517207+00:00",
+      "own_pid": 3843909,
+      "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+    }
+  },
+  "message": "unverified/competing NVML compute process",
+  "no_automatic_restart": true,
+  "no_cuda_calls_in_failure_handler": true,
+  "observed_utc": "2026-10-23T00:55:23.812067+00:00",
+  "optimizer_step_calls": 20,
+  "optimizer_updates": 20,
+  "phase": "diagnostics_20",
+  "process_execution_seconds": 3.4983609640039504,
+  "status": "FAIL",
+  "valid_published_checkpoints": []
+}

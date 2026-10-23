@@ -1,5 +1,25 @@
 # Next checkpoint
 
+23October recheck COMPLETE; read
+[FAVOR_GPU_RECHECK_STATE.md](FAVOR_GPU_RECHECK_STATE.md) and
+`reports/favor_plus_v1/ASSIST_50_UPDATE_RECHECK_20261023.md`.
+**STOP further GPU/training: NVML488211 vs own3843909 unverified after exact20
+CUDA recovery. No new Adam call; total20.** New failed campaign
+assist50_continuation_20261023_v1 quarantined; never rerun any failed directory.
+Current pre/post observations idle do not resolve runtime identity. Need trusted
+host/runtime PID-domain/container/MIG bridge, specified in
+`reports/favor_plus_v1/gpu_recheck_20261023_v1/REQUIRED_PROCESS_ATTRIBUTION.md`.
+No request sent externally. Do not ask for the already accepted owner permission
+or30-extra/50TOTAL approval again; they persist but cannot bypass the guard.
+Do not launch CUDA to guess an alias or retry from free VRAM. On real identity
+evidence: assess/test a fail-closed bridge on CPU, fresh versioned source-bound
+contract, restore SAME exact20/Adam/RNG/projections/sampler, sequential30/recovery,
+40/recovery,50/recovery only, preserving.20 REVIEW/severe/resource rules. No full
+training/Light restart/DKT/unrelated changes. Publish scoped verified evidence/
+memory and STOP.32 existing CPU controls PASS; originals unchanged.
+
+Earlier21October checkpoint (historical):
+
 21OctoberdiagnosticCOMPLETE: read
 [FAVOR_GPU_ATTRIBUTION_STATE.md](FAVOR_GPU_ATTRIBUTION_STATE.md) and
 `reports/favor_plus_v1/GPU_PROCESS_ATTRIBUTION_DIAGNOSIS.md`.

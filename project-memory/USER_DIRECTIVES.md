@@ -1,8 +1,30 @@
 # Durable user directives
 
-Updated: 2026-10-21 UTC
+Updated: 2026-10-23 UTC
 
-## 2026-10-21 — GPU PID attribution diagnosis ONLY (latest)
+## 2026-10-23 — Recheck contention; conditionally resume exact20→50 (latest)
+
+- User reports Parth acknowledged a concurrent job on the assigned GPU and said
+  he would stop it. Treat this as user-reported context, not proof of shutdown,
+  historical PID identity, or current exclusive availability.
+- Inspect current assigned MIG/process/utilization/namespace evidence read-only
+  first. Existing owner-confirmed allocation and bounded20→50 approval persist;
+  no repeated approval request is needed. Verify current exclusive availability,
+  process attribution and resources before CUDA. Unknown/conflicting workloads
+  or ambiguous ownership must STOP execution; never weaken/bypass the guard.
+- If all safety conditions are verified, resume EXACT checkpoint20 with model,
+  Adam/RNG/projections/config/sampler preserved for ONLY30 additional updates,
+  checkpoints30/40/50 and recovery tests. Stop at50; no full training or test
+  evaluation. Keep0.20 approximation REVIEW and all severe/resource criteria.
+- Monitor losses/gradients/Action approximation/numerical stability/resources/
+  throughput. Preserve historical artifacts and previous failures. Do not
+  signal/change/restart LightSAKT2 or unrelated jobs. No watchers or automatic
+  retries after resource conflict. Report verified results or precise blocker;
+  update memory and commit validated changes only on the research branch.
+- This supersedes the21October diagnostic-only execution boundary conditionally;
+  it does not establish that the old NVML/self PID mismatch was a namespace alias.
+
+## 2026-10-21 — GPU PID attribution diagnosis ONLY (historical)
 
 - Inspect NVML67123 versus container2847964 using read-only process/namespace/
   cgroup/NVIDIA/assigned-MIG evidence. Do not infer independence from empty local

@@ -1306,3 +1306,22 @@ addedstandaloneread-onlyevidencecollector notaliasadmission.31CPUtestsPASS(29new
 NoCUDA/updates, total20. Admintechnicalmapping/exclusivityevidencerequestfile
 prepared/nothing sent. ReportGPU_PROCESS_ATTRIBUTION_DIAGNOSIS.md. Publishscoped
 research andWAIT nextinstruction, noautoresume/hostpermissionre-request.
+
+## 2026-10-23 — Idle admission passes; fresh exact20 recovery; PID guard stops again
+
+User reports Parth's concurrent work/would stop; conditional20→50 approval renewed.
+Read-only native MIG compute/graphics/MPS all empty, exposed same assigned UUID,
+Light held/no unknown descriptors/adequate RAM. Existing owner authority accepted;
+fresh unchanged admission PASS, no scheduler lease claimed or new permission asked.
+New assist50_continuation_20261023_v1 exact original20 CUDA no-step recovery PASS,
+evaldiff0/all-gradient proof/modelAdamRNGprojections exact/zeroAdamcalls. Before
+diagnostics20/update21 NVML488211 vs own3843909, bindingunproved; guard stopped.
+New0/total20, no30/40/50 checkpoints/metrics; no retry. Release empty/baseline,
+Light/OOM unchanged. Pattern supports runtime/PID-domain hypothesis, not identity
+proof or assigning blame to Parth.32 existing CPU controls PASS;199+9 artifacts/
+28 sources unchanged. Action.2131 REVIEW retained. Report
+`reports/favor_plus_v1/ASSIST_50_UPDATE_RECHECK_20261023.md`; exact missing technical
+mapping requirements saved/nothing external sent. STOP further CUDA until trusted
+runtime/host mapping or corrected attribution; approval persists, no re-ask.
+Preserve failed campaign/original20/science/Light/DKT/unrelated work. No signals,
+watchers/job/allocation changes/full training. Publish scoped evidence then wait.

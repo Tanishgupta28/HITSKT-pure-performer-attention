@@ -30,6 +30,14 @@ remain intact; platform changes do not alter research source or live runs.
 
 ## Current short status
 
+23Octoberlatest: fresh idle MIG admission passed under existing owner authority;
+exact checkpoint20 CUDA recovery PASS, then NVML488211 vs own3843909 blocked
+before update21. New0/total20, no30/40/50 metrics. No retries/guard changes.
+Pre/post NVML empty; Parth's particular shutdown and old/current PID aliases
+unproved.32 existing CPU controls PASS, originals/Light preserved. Read
+[FAVOR_GPU_RECHECK_STATE.md](FAVOR_GPU_RECHECK_STATE.md). STOP GPU until trusted
+runtime/host attribution bridge; existing30-extra approval retained, no re-ask.
+
 21Octoberlatest: read-onlyGPUattributiondiagnosis leaves old67123↔2847964UNKNOWN.
 Parentnamespace inaccessible; officialheaderABIcheckedPASS. AssignedMIG observed
 active/unattributedcompute, so exclusivityNOTVERIFIED/NO-GO.31CPUtestsPASS,

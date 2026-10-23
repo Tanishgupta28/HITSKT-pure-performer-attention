@@ -1,0 +1,38 @@
+{
+  "allocation_kind": "owner_confirmed_existing_research_allocation",
+  "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+  "exclusive": true,
+  "owner": "Tanishgupta28 / user-confirmed HiTSKT research allocation",
+  "job_id": "local-assist50-continuation-20261023-v1",
+  "job_reference_kind": "local execution identifier; no scheduler job ID claimed",
+  "owner_confirms_existing_allocation": true,
+  "owner_confirmation_evidence": "/workspace/capstone/reports/favor_plus_v1/gpu_recheck_20261023_v1/CURRENT_ADMISSION_ASSESSMENT.md",
+  "resource_transfer": {
+    "from_project": "LightSAKT2",
+    "to_model": "hitskt_favor_plus_v1",
+    "authorized": true
+  },
+  "starts_utc": "2026-10-23T00:55:12.167948+00:00",
+  "expires_utc": "2026-10-23T02:55:12.167948+00:00",
+  "window_scope": "operator-imposed two-hour execution ceiling, not independently observed scheduler expiry",
+  "known_conflicting_reservation": false,
+  "known_explicit_restriction": false,
+  "conflict_evidence": "/workspace/capstone/reports/favor_plus_v1/gpu_recheck_20261023_v1/resource_admission.json",
+  "user_approval": {
+    "approved": true,
+    "evidence": "/workspace/capstone/reports/favor_plus_v1/gpu_recheck_20261023_v1/CURRENT_ADMISSION_ASSESSMENT.md",
+    "actions": [
+      "favor_plus_cuda_validation",
+      "favor_plus_assist2017_resume20_to50_thirty_additional_updates"
+    ]
+  },
+  "continuation_approval": {
+    "action": "favor_plus_assist2017_resume20_to50_thirty_additional_updates",
+    "actual_user_approval_evidence": "/workspace/capstone/reports/favor_plus_v1/assist50_continuation_20261020_v1/OWNER_AND_CONTINUATION_AUTHORIZATION.md",
+    "additional_optimizer_calls": 30,
+    "approved": true,
+    "max_total_optimizer_updates": 50,
+    "parent_checkpoint_sha256": "0388e984b8bed21210455be561524a041c892b98b2a87b50fa3ecb1c3ade86f4",
+    "prepared_plan_sha256": "a077ef4ef5a76e240ae06c125fb4e4de93aa092cee5559b2de2b74297d433bd9"
+  }
+}

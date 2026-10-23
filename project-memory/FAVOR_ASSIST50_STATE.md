@@ -1,6 +1,18 @@
 # Exact20→50 FAVOR+ continuation —20 October2026
 
-## CURRENT: resource identity blocked,20 total/0 new updates
+##23October recheck (latest)
+
+See [FAVOR_GPU_RECHECK_STATE.md](FAVOR_GPU_RECHECK_STATE.md) and
+`reports/favor_plus_v1/ASSIST_50_UPDATE_RECHECK_20261023.md`. User reports Parth
+acknowledged concurrent work/would stop; fresh assigned-MIG admission empty and
+PASS. New version assist50_continuation_20261023_v1 restores original20 exactly
+on CUDA/zeroAdamcalls, then same guard rejects NVML488211 vs own3843909 before
+diagnostics20/update21. Postexit empty/baseline. No further GPU/retry now; total20,
+new0, historical/current PID pairs UNKNOWN. Need trusted runtime identity bridge,
+not another permission.32 existing CPU controls PASS; original199+9 artifacts/
+28 sources/Light held unchanged. Action.2131 REVIEW, fulltrainingNO-GO.
+
+## Historical20October: resource identity blocked,20 total/0 new updates
 
 This supersedes the historical preparation snapshots below (preserved inb255713).
 Report: `reports/favor_plus_v1/ASSIST_50_UPDATE_VALIDATION_RESULTS.md`.

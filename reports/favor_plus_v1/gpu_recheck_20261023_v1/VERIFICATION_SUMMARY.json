@@ -1,0 +1,77 @@
+{
+  "status": "PASS_PRESERVATION_AND_RECOVERY;CONTINUATION_RESOURCE_BLOCKED",
+  "verified_utc": "2026-10-23T00:57:40.859451+00:00",
+  "base_commit": "bd076beeb4b198c7e51363793aa5e6056276ca01",
+  "run_id": "assist50_continuation_20261023_v1",
+  "prepared_plan_sha256": "d68175950f185a7ee44d540ad1091e048cebb412ba27567edb552237f44a929b",
+  "manifests": [
+    {
+      "manifest": "reports/favor_plus_v1/assist20_recovery_20261020_v1/ARTIFACT_INVENTORY.json",
+      "files": 199,
+      "unchanged": true
+    },
+    {
+      "manifest": "reports/favor_plus_v1/assist50_continuation_20261020_v1/EXPERIMENT_ARTIFACT_INVENTORY.json",
+      "files": 9,
+      "unchanged": true
+    }
+  ],
+  "existing_source_files_unchanged": 28,
+  "scientific_configuration_unchanged": true,
+  "historical20_checkpoint_sha256": "0388e984b8bed21210455be561524a041c892b98b2a87b50fa3ecb1c3ade86f4",
+  "checkpoint20_fresh_cuda_recovery": "PASS",
+  "additional_real_optimizer_calls": 0,
+  "total_training_updates": 20,
+  "new_checkpoints": 0,
+  "checkpoints30_40_50": "NOT REACHED",
+  "new_full_frozen_validation_replay": "NOT RUN",
+  "nvml_pid": 488211,
+  "own_process_pid": 3843909,
+  "pid_relationship": "UNKNOWN; no trusted host/runtime binding",
+  "parth_job_stopped": "No workers observed before/after; individual job identity not verified",
+  "cuda_execution_occurred": true,
+  "production_guards_changed": false,
+  "gpu_identity_fully_resolved": false,
+  "cpu_tests": {
+    "passed": 32,
+    "failures": 0,
+    "skipped": 0,
+    "new_tests": 0
+  },
+  "light_hold_sha256": "65214c2c53852024e970fd0a176f71968f204ec0748635a7e6f46de3ed64c234",
+  "unrelated_readme_sakt_unchanged": true,
+  "signals_sent": 0,
+  "job_or_allocation_changes": 0,
+  "automatic_retries": 0,
+  "artifact_inventory": {
+    "experiments/hitskt_favor_plus_v1/assist2017/assist50_continuation_20261023_v1/prepared_plan.json": {
+      "bytes": 111779,
+      "sha256": "d68175950f185a7ee44d540ad1091e048cebb412ba27567edb552237f44a929b"
+    },
+    "experiments/hitskt_favor_plus_v1/assist2017/assist50_continuation_20261023_v1/stage_030/admission.json": {
+      "bytes": 5941,
+      "sha256": "26ffdcc29803d650cc5820ac44d8e9c725de1b9bcbec37cd189aa3e1bff29f2c"
+    },
+    "experiments/hitskt_favor_plus_v1/assist2017/assist50_continuation_20261023_v1/stage_030/failure.json": {
+      "bytes": 2014,
+      "sha256": "d2d51c94ee019ff6a420381157eb5be69f8813926ec83b5e61e27fadf428cb98"
+    },
+    "experiments/hitskt_favor_plus_v1/assist2017/assist50_continuation_20261023_v1/stage_030/incoming_recovery_and_migration.json": {
+      "bytes": 1385,
+      "sha256": "338d3205e073367b0ec45598bec97e1061b3725a805963c0880bb7a60d1ba6af"
+    },
+    "experiments/hitskt_favor_plus_v1/assist2017/assist50_continuation_20261023_v1/stage_030/runtime.json": {
+      "bytes": 433,
+      "sha256": "cca8b5d07bdc9c8ddc1ee474a9d9c7f77d53fd7208e3c47d5e51a6f2d6e6259b"
+    },
+    "experiments/hitskt_favor_plus_v1/assist2017/assist50_continuation_20261023_v1/stage_030.console.log": {
+      "bytes": 1690,
+      "sha256": "4a6b5842f3e250415ff88d05e4fd6e0095903e72691a5a57248851e1080b5012"
+    },
+    "experiments/hitskt_favor_plus_v1/assist2017/assist50_continuation_20261023_v1/study_failure.json": {
+      "bytes": 2014,
+      "sha256": "d2d51c94ee019ff6a420381157eb5be69f8813926ec83b5e61e27fadf428cb98"
+    }
+  },
+  "final_mig_compute_processes": []
+}

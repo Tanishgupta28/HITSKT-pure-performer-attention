@@ -1,0 +1,57 @@
+{
+  "observed_utc": "2026-10-23T00:53:44.005409+00:00",
+  "observations": [
+    {
+      "uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+      "handle_status": 0,
+      "queries": {
+        "nvmlDeviceGetComputeRunningProcesses_v2": {
+          "initial_status": 0,
+          "initial_count": 0,
+          "processes": []
+        },
+        "nvmlDeviceGetGraphicsRunningProcesses_v2": {
+          "initial_status": 0,
+          "initial_count": 0,
+          "processes": []
+        },
+        "nvmlDeviceGetMPSComputeRunningProcesses_v2": {
+          "initial_status": 0,
+          "initial_count": 0,
+          "processes": []
+        }
+      },
+      "utilization": {
+        "status": 3,
+        "gpu_percent": null,
+        "memory_percent": null
+      }
+    },
+    {
+      "uuid": "GPU-5a568e3c-e96c-169f-b063-f4478340ff51",
+      "handle_status": 0,
+      "queries": {
+        "nvmlDeviceGetComputeRunningProcesses_v2": {
+          "initial_status": 4,
+          "initial_count": 0
+        },
+        "nvmlDeviceGetGraphicsRunningProcesses_v2": {
+          "initial_status": 4,
+          "initial_count": 0
+        },
+        "nvmlDeviceGetMPSComputeRunningProcesses_v2": {
+          "initial_status": 4,
+          "initial_count": 0
+        }
+      },
+      "utilization": {
+        "status": 3,
+        "gpu_percent": null,
+        "memory_percent": null
+      }
+    }
+  ],
+  "cuda_initialized": false,
+  "no_torch_import": true,
+  "no_cuda_driver_import": true
+}
