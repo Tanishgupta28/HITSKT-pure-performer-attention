@@ -1,0 +1,19 @@
+{
+  "kind": "assist2017_favor_plus_shared20_to25_pilot_v1",
+  "base_commit": "b5b9f0c4728ba1047a4a8f320e4749b9d7b8f540",
+  "scope": {
+    "initial_optimizer_updates": 20,
+    "max_total_optimizer_updates": 25,
+    "max_additional_optimizer_calls": 5,
+    "checkpoint_updates": [25],
+    "recovery_probe_only_update": 26
+  },
+  "resource_policy_sha256": "4867c950fe93e10720b3b8a967289e2d6be8fa9e7caa151479fc3340584e1f19",
+  "parent_checkpoint_sha256": "0388e984b8bed21210455be561524a041c892b98b2a87b50fa3ecb1c3ade86f4",
+  "scientific_policy": "Same genuine FAVOR+ m128/seed42/fixed projections/Adam/nonattention architecture/FP32 precision/data/protocol/sampler. No test evaluation or architecture/threshold change.",
+  "before_updates": "Fresh two-snapshot shared admission; exact20 model/Adam/RNG/projection reload and saved next logits/loss/all-gradient proof; exact frozen validation20 replay.",
+  "after_updates": "Stop at25. Atomic25 checkpoint; six original training-only numerical examples and same frozen validation sample. Separate fresh-process25 no-Adam recovery with26 only a forward/backward probe.",
+  "review_and_severe_gates": "Original.20 REVIEW and unchanged severe numerical gates; no threshold relaxation. Resource limits unchanged from approved shared policy; any CUDA/memory failure stops without retry or budget increase.",
+  "memory_reporting": "Own PyTorch allocated/reserved peaks from process creation (no peak reset). Synchronous NVML global used/free and reported processes. Global residual above own reserved and admission baseline is an UNATTRIBUTED estimate including driver/context/workspaces/peers, never certified own total.",
+  "interpretation": "Shared timing is observational, not isolated throughput. Five new updates do not establish convergence or final predictive performance. No actual continuation beyond25 without next instruction."
+}

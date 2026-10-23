@@ -2,7 +2,23 @@
 
 Updated: 2026-10-23 UTC
 
-## 2026-10-23 — Explicit shared-GPU mode; CPU validation before execution (latest)
+## 2026-10-23 — Execute shared-GPU pilot20→25 only (latest)
+
+- User confirms authorized shared use and APPROVES the prepared1GiB allocator /
+  2GiB advisory total /8GiB admission /6GiB runtime free /B1/cost2048 limits.
+  No budget increase, other-workload interruption or exclusive-GPU requirement.
+- Restore EXACT original20 model/Adam/RNG/projections/science. Only FIVE further
+  optimizer calls, updates21–25, then STOP. Current25 hard ceiling supersedes
+  the older20→50 execution scope for this pilot. Report GO/NO-GO25→50; do not
+  actually execute that continuation or full training without next instruction.
+- Fresh resource admission required; unsafe pressure/visibility/CUDA/numerical
+  failure stops, no automatic retry/budget increase. Track losses/grads/Adam,
+  CUDA errors/throughput/own allocator and any measurable nonallocator overhead
+  with shared-attribution limitations explicit. Keep .20 approximation REVIEW.
+- Fresh-process checkpoint25 recovery required. Preserve all prior artifacts,
+  LightSAKT2/unrelated jobs/DKT/ELU+1. Commit verified research-branch changes only.
+
+## 2026-10-23 — Explicit shared-GPU mode; CPU validation before execution (historical)
 
 - User clarifies H100 is intentionally shared. Exclusive ownership and complete
   host/container PID attribution are NOT prerequisites for normal operation.
