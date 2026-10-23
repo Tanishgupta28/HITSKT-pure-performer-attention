@@ -1390,3 +1390,15 @@ Lightheld/OOM2 unchanged. ReportSHARED_GPU_25_UPDATE_PILOT_RESULTS.md plus evide
 GOwithREVIEW separatelyapproved25→50 fromNEW25 undernewscopecopy, NO-GO fulltraining.
 Currentapprovalexhausted25, STOP. Preservealloriginals/oldplans/checkpoints/datasets/
 Light/DKT/mainhistory. Publishscopedverifiedresearchthenwait, no moreGPUcalls.
+
+## 2026-10-23 — New exact25→50 scope prepared before execution
+
+User approves only25 further calls from verifiedNEW25, fixedsharedlimits.
+New separate source-boundcontroller/CLI and102CPUtestsPASS(27new+75existing).
+Actual25/modelAdamRNG/projection/science/samplercontracts verified; first26samples
+match old51-entry sampler beforeextension. All316prior25/199original20/9+8failed
+artifacts unchanged. Initialsharedobservationrecordspeer1706235/10.1GiB and29.23GiB
+free, Lightinactive,utilizationUNKNOWN. Sharedpermissionaccepted; noexclusive
+identityclaim/otherjobchanges. Exact25hash e67724a4.../newplanc210ab41... prepared;
+CUDA NOT RUN this campaign yet. Proceed freshadmission/stage30/40/50 plus recovery,
+retaining .20 REVIEW andlimits; stop50. No fulltraining/testevaluation/retry.

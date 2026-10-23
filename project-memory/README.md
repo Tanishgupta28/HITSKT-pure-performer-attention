@@ -1,5 +1,11 @@
 # HiTSKT capstone project memory
 
+## Latest handoff: approved25→50 shared continuation
+
+Read [FAVOR_SHARED50_FROM25_STATE.md](FAVOR_SHARED50_FROM25_STATE.md) before older state below. User approval is now explicit; preparation102CPUcasesPASS, fresh run/source-bound25-parent plan ready. Execute only25 new calls in verified30/40/50 stages with unchanged sharedlimits/.20 REVIEW; stop50. No full training or other workload changes.
+
+Earlier handoff (historical):
+
 This directory is a compact, evidence-backed continuation index for the HiTSKT
 capstone. The Git working tree and experiment artifacts remain the source of
 truth; this memory never substitutes for code, logs, checkpoints, or results.

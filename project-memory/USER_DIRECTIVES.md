@@ -2,7 +2,23 @@
 
 Updated: 2026-10-23 UTC
 
-## 2026-10-23 — Execute shared-GPU pilot20→25 only (latest)
+## 2026-10-23 — Approved exact25→50 shared continuation (latest)
+
+- User APPROVES only25 additional optimizer calls from the preserved NEW25
+  checkpoint through50TOTAL, sequential stages30/40/50 with fresh-process
+  verified checkpoints. Restore model/Adam/RNG/projections/science exactly.
+- Recheck shared admission and retain1GiB allocator/2GiB advisory total,
+  8/6GiB free floors, B1/cost2048, pacing, host/time/resource-pressure stops.
+  Shared permission is explicit; exclusive allocation/host PID mapping is not
+  required. Do not infer PID identity or ignore missing resource telemetry.
+- Keep .20 approximation REVIEW and severe criteria unchanged; report Action
+  error honestly. Unsafe resource/numerical failure stops without retry or
+  budget increase. Preserve old artifacts/LightSAKT2/unrelated jobs/DKT/main.
+- Compare20/25/30/40/50 training stability and separately sampled validation;
+  no final held-out claims/test evaluation/full training. STOP at50. Commit
+  verified research-branch work only; no automatic further continuation.
+
+## 2026-10-23 — Execute shared-GPU pilot20→25 only (historical)
 
 - User confirms authorized shared use and APPROVES the prepared1GiB allocator /
   2GiB advisory total /8GiB admission /6GiB runtime free /B1/cost2048 limits.

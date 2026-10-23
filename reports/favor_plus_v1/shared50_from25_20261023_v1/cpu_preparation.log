@@ -1,0 +1,23 @@
+{
+  "output": "/workspace/capstone/experiments/hitskt_favor_plus_v1/assist2017/assist50_shared_from25_20261023_v1",
+  "prepared_plan_sha256": "c210ab41bfa0a202f07058f67d3ea2b19e160908a01086901c16ab416a348e67",
+  "scope": {
+    "initial_optimizer_updates": 25,
+    "max_total_optimizer_updates": 50,
+    "max_additional_optimizer_calls": 25,
+    "checkpoint_updates": [
+      30,
+      35,
+      40,
+      45,
+      50
+    ],
+    "verified_stage_endpoints": [
+      30,
+      40,
+      50
+    ],
+    "recovery_probe_only_update": 51
+  },
+  "cuda_status": "NOT RUN"
+}

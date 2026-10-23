@@ -1,5 +1,11 @@
 # Next checkpoint
 
+## Latest: approved exact25→50 execution
+
+Read [FAVOR_SHARED50_FROM25_STATE.md](FAVOR_SHARED50_FROM25_STATE.md). Use NEW scripts/assist50_from25_favor_plus_shared.py and new plan only. Fresh shared admission, exact25+26 proof and frozen25 replay, stage30/verify30→40/verify40→50/verify50. Keep all fixed resource/science/.20 REVIEW gates. Stop at50 or first failure; no retry/full training/other job changes. Current CUDA continuation not yet started; inspect actual stage terminal markers before acting.
+
+Earlier handoff (historical):
+
 LATEST: shared pilot COMPLETED25TOTAL/FIVE new calls. Read
 [FAVOR_SHARED25_STATE.md](FAVOR_SHARED25_STATE.md) and actual
 `experiments/hitskt_favor_plus_v1/assist2017/assist25_shared_cuda_20261023_v1/study_result.json`.

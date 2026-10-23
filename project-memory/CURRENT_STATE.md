@@ -1,5 +1,11 @@
 # Current state
 
+## Latest: approved shared25→50 prepared; execution pending
+
+Read [FAVOR_SHARED50_FROM25_STATE.md](FAVOR_SHARED50_FROM25_STATE.md). New user approval permits ONLY25 additional calls from exact25 to50, same limits/.20 REVIEW. New contract and102CPUtestsPASS; actual25 hash/preserved artifacts verified. Shared peer observed/read-only admission eligible, CUDA not yet run this campaign. Proceed staged fresh admission/recovery30/40/50 then STOP; no full training. Previous completed25 report remains unchanged.
+
+Earlier handoff (historical):
+
 Updated: 2026-10-23 UTC
 
 ## Latest: shared CUDA pilot COMPLETE at25; training stopped

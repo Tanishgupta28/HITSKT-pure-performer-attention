@@ -1,0 +1,33 @@
+{
+  "kind": "assist2017_favor_plus_shared25_to50_v1",
+  "base_commit": "61ba4215074464aceb56289856b5002e85004654",
+  "scope": {
+    "initial_optimizer_updates": 25,
+    "max_total_optimizer_updates": 50,
+    "max_additional_optimizer_calls": 25,
+    "checkpoint_updates": [
+      30,
+      35,
+      40,
+      45,
+      50
+    ],
+    "verified_stage_endpoints": [
+      30,
+      40,
+      50
+    ],
+    "recovery_probe_only_update": 51
+  },
+  "resource_policy_sha256": "4867c950fe93e10720b3b8a967289e2d6be8fa9e7caa151479fc3340584e1f19",
+  "parent_checkpoint_sha256": "e67724a4ade70fe04de9d0c1a1f0fcb8bd1acc984c3506cda5cce2685ab2b5fc",
+  "scientific_policy": "Unchanged genuine FAVOR+128 features/seed42/fixed ORF/Adam/nonattention/FP32/data/splits/epoch1 sampler/frozen validation. No test evaluation.",
+  "restoration": "Strict model/Adam/projection reload then saved RNG; exact25 fixed logits and saved26 logits/loss/all-gradient proof before actual26. Replay full frozen validation25 exactly.",
+  "stages": "25\u219230/fresh verify30,30\u219240/fresh verify40,40\u219250/fresh verify50; extra atomic35/45 recovery safety. No optimizer51; probe-only51.",
+  "gates": "Same .20 REVIEW and severe criteria from original20 configuration. Resource policy unchanged. Stop on failure; no retry/reset or budget increase.",
+  "diagnostic_sample": "Same six training-only cases and original frozen32-session validation cohort at25/30/40/50. No example/feature selection from metrics.",
+  "comparison": "Report original20,25 and new30,40,50 side by side; sampled exploratory performance separated from optimization stability.",
+  "checkpoint_counter_semantics": "Unchanged format2 cumulative checkpoint additional_optimizer_calls=step-20. New run receipts/journals report step-25; exactly25 new calls.",
+  "memory_reporting": "No peak reset; own allocated/reserved highwater plus sampled NVML global used/free, unattributed outside-reserved/baseline residual. No exclusive PID attribution or certified own-process total.",
+  "interpretation": "Bounded diagnostics cannot establish convergence/superiority/full training readiness. Shared timings observational; no GPU performance forecasts from CPU tests."
+}
