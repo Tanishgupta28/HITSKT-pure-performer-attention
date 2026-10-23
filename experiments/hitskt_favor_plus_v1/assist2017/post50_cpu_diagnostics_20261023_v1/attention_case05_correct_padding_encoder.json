@@ -1,0 +1,1361 @@
+{
+  "actual_positions": 289,
+  "case": 5,
+  "feature_comparison": [
+    {
+      "attention_total_variation": {
+        "count": 512,
+        "maximum": 0.3629403877547889,
+        "mean": 0.09252301673689105,
+        "median": 0.07911500046202077,
+        "minimum": 0.0,
+        "p95": 0.2043271634146918
+      },
+      "diagnostic_projection_seed": 0,
+      "error_over_value_rms": 0.1022718326430605,
+      "exact_attention_effective_keys": {
+        "count": 512,
+        "maximum": 126.49905587691191,
+        "mean": 63.04955379043835,
+        "median": 62.53357575112031,
+        "minimum": 1.0,
+        "p95": 119.84462435049286
+      },
+      "exact_attention_max_weight": {
+        "count": 512,
+        "maximum": 1.0,
+        "mean": 0.05011415660467573,
+        "median": 0.02118318129222082,
+        "minimum": 0.009692204980308441,
+        "p95": 0.15674400527365354
+      },
+      "exact_output_rms": 0.5097053529637906,
+      "features": 128,
+      "head_query_relative_l2": {
+        "count": 512,
+        "maximum": 0.4685230345374329,
+        "mean": 0.08770251175817705,
+        "median": 0.0610698234982119,
+        "minimum": 0.0,
+        "p95": 0.2551646284080084
+      },
+      "iid_log10_relative_variance_proxy": {
+        "count": 340,
+        "maximum": 1.5891654366212329,
+        "mean": 0.23825422628492063,
+        "median": 0.13985779040249358,
+        "minimum": -0.7670161877340909,
+        "p95": 1.2337237520556137
+      },
+      "key_norm": {
+        "count": 512,
+        "maximum": 5.646204449699859,
+        "mean": 4.523513829988202,
+        "median": 4.506597754493056,
+        "minimum": 3.445966846070271,
+        "p95": 5.401167453520964
+      },
+      "length": 128,
+      "output_rmse": 0.06006341365259564,
+      "pair_feature_ess": {
+        "count": 340,
+        "maximum": 29.300528138278576,
+        "mean": 10.640109323266952,
+        "median": 10.213763726151035,
+        "minimum": 1.527354982846724,
+        "p95": 19.167589109527466
+      },
+      "query_norm": {
+        "count": 512,
+        "maximum": 5.679339584696588,
+        "mean": 4.789248376657614,
+        "median": 4.784582230176271,
+        "minimum": 3.573421172588889,
+        "p95": 5.463856337084157
+      },
+      "relative_output_l2": 0.11783947981582714,
+      "value_rms": 0.5872918485994408
+    },
+    {
+      "attention_total_variation": {
+        "count": 512,
+        "maximum": 0.35063800687921187,
+        "mean": 0.14700840676136803,
+        "median": 0.1162001192329509,
+        "minimum": 0.0,
+        "p95": 0.31387026208411867
+      },
+      "diagnostic_projection_seed": 1,
+      "error_over_value_rms": 0.13715487256876943,
+      "exact_attention_effective_keys": {
+        "count": 512,
+        "maximum": 126.49905587691191,
+        "mean": 63.04955379043835,
+        "median": 62.53357575112031,
+        "minimum": 1.0,
+        "p95": 119.84462435049286
+      },
+      "exact_attention_max_weight": {
+        "count": 512,
+        "maximum": 1.0,
+        "mean": 0.05011415660467573,
+        "median": 0.02118318129222082,
+        "minimum": 0.009692204980308441,
+        "p95": 0.15674400527365354
+      },
+      "exact_output_rms": 0.5097053529637906,
+      "features": 128,
+      "head_query_relative_l2": {
+        "count": 512,
+        "maximum": 0.3907566640059403,
+        "mean": 0.12964869364468806,
+        "median": 0.11311563566425813,
+        "minimum": 0.0,
+        "p95": 0.31432901936047025
+      },
+      "iid_log10_relative_variance_proxy": {
+        "count": 340,
+        "maximum": 1.5891654366212329,
+        "mean": 0.23825422628492063,
+        "median": 0.13985779040249358,
+        "minimum": -0.7670161877340909,
+        "p95": 1.2337237520556137
+      },
+      "key_norm": {
+        "count": 512,
+        "maximum": 5.646204449699859,
+        "mean": 4.523513829988202,
+        "median": 4.506597754493056,
+        "minimum": 3.445966846070271,
+        "p95": 5.401167453520964
+      },
+      "length": 128,
+      "output_rmse": 0.08054993865533333,
+      "pair_feature_ess": {
+        "count": 340,
+        "maximum": 25.123674975308113,
+        "mean": 8.093241611247116,
+        "median": 6.5732225025611495,
+        "minimum": 1.108962346243127,
+        "p95": 18.32969097270609
+      },
+      "query_norm": {
+        "count": 512,
+        "maximum": 5.679339584696588,
+        "mean": 4.789248376657614,
+        "median": 4.784582230176271,
+        "minimum": 3.573421172588889,
+        "p95": 5.463856337084157
+      },
+      "relative_output_l2": 0.15803235768853227,
+      "value_rms": 0.5872918485994408
+    },
+    {
+      "attention_total_variation": {
+        "count": 512,
+        "maximum": 0.37939429619368753,
+        "mean": 0.138868387677494,
+        "median": 0.1049283510980747,
+        "minimum": 0.0,
+        "p95": 0.3068560432182662
+      },
+      "diagnostic_projection_seed": 2,
+      "error_over_value_rms": 0.0939180602680231,
+      "exact_attention_effective_keys": {
+        "count": 512,
+        "maximum": 126.49905587691191,
+        "mean": 63.04955379043835,
+        "median": 62.53357575112031,
+        "minimum": 1.0,
+        "p95": 119.84462435049286
+      },
+      "exact_attention_max_weight": {
+        "count": 512,
+        "maximum": 1.0,
+        "mean": 0.05011415660467573,
+        "median": 0.02118318129222082,
+        "minimum": 0.009692204980308441,
+        "p95": 0.15674400527365354
+      },
+      "exact_output_rms": 0.5097053529637906,
+      "features": 128,
+      "head_query_relative_l2": {
+        "count": 512,
+        "maximum": 0.3375601078336998,
+        "mean": 0.09240287244019382,
+        "median": 0.07288401042503634,
+        "minimum": 0.0,
+        "p95": 0.2143461013209524
+      },
+      "iid_log10_relative_variance_proxy": {
+        "count": 340,
+        "maximum": 1.5891654366212329,
+        "mean": 0.23825422628492063,
+        "median": 0.13985779040249358,
+        "minimum": -0.7670161877340909,
+        "p95": 1.2337237520556137
+      },
+      "key_norm": {
+        "count": 512,
+        "maximum": 5.646204449699859,
+        "mean": 4.523513829988202,
+        "median": 4.506597754493056,
+        "minimum": 3.445966846070271,
+        "p95": 5.401167453520964
+      },
+      "length": 128,
+      "output_rmse": 0.05515731123168098,
+      "pair_feature_ess": {
+        "count": 340,
+        "maximum": 35.41980165164404,
+        "mean": 7.410230516198151,
+        "median": 5.602368942351234,
+        "minimum": 1.0375210618785407,
+        "p95": 17.95287221980657
+      },
+      "query_norm": {
+        "count": 512,
+        "maximum": 5.679339584696588,
+        "mean": 4.789248376657614,
+        "median": 4.784582230176271,
+        "minimum": 3.573421172588889,
+        "p95": 5.463856337084157
+      },
+      "relative_output_l2": 0.10821411019318718,
+      "value_rms": 0.5872918485994408
+    },
+    {
+      "attention_total_variation": {
+        "count": 512,
+        "maximum": 0.3250311076274048,
+        "mean": 0.10313692319899903,
+        "median": 0.08877996872588964,
+        "minimum": 0.0,
+        "p95": 0.19313522112481668
+      },
+      "diagnostic_projection_seed": 3,
+      "error_over_value_rms": 0.07521760622858491,
+      "exact_attention_effective_keys": {
+        "count": 512,
+        "maximum": 126.49905587691191,
+        "mean": 63.04955379043835,
+        "median": 62.53357575112031,
+        "minimum": 1.0,
+        "p95": 119.84462435049286
+      },
+      "exact_attention_max_weight": {
+        "count": 512,
+        "maximum": 1.0,
+        "mean": 0.05011415660467573,
+        "median": 0.02118318129222082,
+        "minimum": 0.009692204980308441,
+        "p95": 0.15674400527365354
+      },
+      "exact_output_rms": 0.5097053529637906,
+      "features": 128,
+      "head_query_relative_l2": {
+        "count": 512,
+        "maximum": 0.41397065190647764,
+        "mean": 0.06827257645708096,
+        "median": 0.049807777550284135,
+        "minimum": 0.0,
+        "p95": 0.19337584770693528
+      },
+      "iid_log10_relative_variance_proxy": {
+        "count": 340,
+        "maximum": 1.5891654366212329,
+        "mean": 0.23825422628492063,
+        "median": 0.13985779040249358,
+        "minimum": -0.7670161877340909,
+        "p95": 1.2337237520556137
+      },
+      "key_norm": {
+        "count": 512,
+        "maximum": 5.646204449699859,
+        "mean": 4.523513829988202,
+        "median": 4.506597754493056,
+        "minimum": 3.445966846070271,
+        "p95": 5.401167453520964
+      },
+      "length": 128,
+      "output_rmse": 0.04417468700921045,
+      "pair_feature_ess": {
+        "count": 340,
+        "maximum": 24.728420344515914,
+        "mean": 7.485881117338737,
+        "median": 6.189643299029804,
+        "minimum": 1.0743335306626955,
+        "p95": 18.919262869569977
+      },
+      "query_norm": {
+        "count": 512,
+        "maximum": 5.679339584696588,
+        "mean": 4.789248376657614,
+        "median": 4.784582230176271,
+        "minimum": 3.573421172588889,
+        "p95": 5.463856337084157
+      },
+      "relative_output_l2": 0.0866671043424349,
+      "value_rms": 0.5872918485994408
+    },
+    {
+      "attention_total_variation": {
+        "count": 512,
+        "maximum": 0.17236063678410823,
+        "mean": 0.07160538584601528,
+        "median": 0.06542803809745551,
+        "minimum": 0.0,
+        "p95": 0.1278068885929908
+      },
+      "diagnostic_projection_seed": 0,
+      "error_over_value_rms": 0.05268432109819384,
+      "exact_attention_effective_keys": {
+        "count": 512,
+        "maximum": 126.49905587691191,
+        "mean": 63.04955379043835,
+        "median": 62.53357575112031,
+        "minimum": 1.0,
+        "p95": 119.84462435049286
+      },
+      "exact_attention_max_weight": {
+        "count": 512,
+        "maximum": 1.0,
+        "mean": 0.05011415660467573,
+        "median": 0.02118318129222082,
+        "minimum": 0.009692204980308441,
+        "p95": 0.15674400527365354
+      },
+      "exact_output_rms": 0.5097053529637906,
+      "features": 256,
+      "head_query_relative_l2": {
+        "count": 512,
+        "maximum": 0.22946801798699581,
+        "mean": 0.052047116903006445,
+        "median": 0.043757988429988216,
+        "minimum": 0.0,
+        "p95": 0.12142055984957713
+      },
+      "iid_log10_relative_variance_proxy": {
+        "count": 340,
+        "maximum": 1.2881354409572516,
+        "mean": -0.06277576937906061,
+        "median": -0.16117220526148768,
+        "minimum": -1.0680461833980721,
+        "p95": 0.9326937563916325
+      },
+      "key_norm": {
+        "count": 512,
+        "maximum": 5.646204449699859,
+        "mean": 4.523513829988202,
+        "median": 4.506597754493056,
+        "minimum": 3.445966846070271,
+        "p95": 5.401167453520964
+      },
+      "length": 128,
+      "output_rmse": 0.030941072329964785,
+      "pair_feature_ess": {
+        "count": 340,
+        "maximum": 49.87838476710606,
+        "mean": 15.183627253093961,
+        "median": 12.554607455823632,
+        "minimum": 1.554234172849509,
+        "p95": 34.331266279046204
+      },
+      "query_norm": {
+        "count": 512,
+        "maximum": 5.679339584696588,
+        "mean": 4.789248376657614,
+        "median": 4.784582230176271,
+        "minimum": 3.573421172588889,
+        "p95": 5.463856337084157
+      },
+      "relative_output_l2": 0.060703840267816146,
+      "value_rms": 0.5872918485994408
+    },
+    {
+      "attention_total_variation": {
+        "count": 512,
+        "maximum": 0.26338738697441383,
+        "mean": 0.0798537717031153,
+        "median": 0.0662208004794739,
+        "minimum": 0.0,
+        "p95": 0.1620849226838233
+      },
+      "diagnostic_projection_seed": 1,
+      "error_over_value_rms": 0.0716256349217743,
+      "exact_attention_effective_keys": {
+        "count": 512,
+        "maximum": 126.49905587691191,
+        "mean": 63.04955379043835,
+        "median": 62.53357575112031,
+        "minimum": 1.0,
+        "p95": 119.84462435049286
+      },
+      "exact_attention_max_weight": {
+        "count": 512,
+        "maximum": 1.0,
+        "mean": 0.05011415660467573,
+        "median": 0.02118318129222082,
+        "minimum": 0.009692204980308441,
+        "p95": 0.15674400527365354
+      },
+      "exact_output_rms": 0.5097053529637906,
+      "features": 256,
+      "head_query_relative_l2": {
+        "count": 512,
+        "maximum": 0.27849764905645213,
+        "mean": 0.06545847863361717,
+        "median": 0.04593582458899767,
+        "minimum": 0.0,
+        "p95": 0.1728331921509086
+      },
+      "iid_log10_relative_variance_proxy": {
+        "count": 340,
+        "maximum": 1.2881354409572516,
+        "mean": -0.06277576937906061,
+        "median": -0.16117220526148768,
+        "minimum": -1.0680461833980721,
+        "p95": 0.9326937563916325
+      },
+      "key_norm": {
+        "count": 512,
+        "maximum": 5.646204449699859,
+        "mean": 4.523513829988202,
+        "median": 4.506597754493056,
+        "minimum": 3.445966846070271,
+        "p95": 5.401167453520964
+      },
+      "length": 128,
+      "output_rmse": 0.042065151540317494,
+      "pair_feature_ess": {
+        "count": 340,
+        "maximum": 42.956103123215556,
+        "mean": 13.96422580792922,
+        "median": 12.072335635887494,
+        "minimum": 1.908271259821801,
+        "p95": 30.70698066878364
+      },
+      "query_norm": {
+        "count": 512,
+        "maximum": 5.679339584696588,
+        "mean": 4.789248376657614,
+        "median": 4.784582230176271,
+        "minimum": 3.573421172588889,
+        "p95": 5.463856337084157
+      },
+      "relative_output_l2": 0.08252836917587913,
+      "value_rms": 0.5872918485994408
+    },
+    {
+      "attention_total_variation": {
+        "count": 512,
+        "maximum": 0.3129061632924705,
+        "mean": 0.13859384649729495,
+        "median": 0.12138212243103483,
+        "minimum": 0.0,
+        "p95": 0.2650969885199607
+      },
+      "diagnostic_projection_seed": 2,
+      "error_over_value_rms": 0.1068337286257361,
+      "exact_attention_effective_keys": {
+        "count": 512,
+        "maximum": 126.49905587691191,
+        "mean": 63.04955379043835,
+        "median": 62.53357575112031,
+        "minimum": 1.0,
+        "p95": 119.84462435049286
+      },
+      "exact_attention_max_weight": {
+        "count": 512,
+        "maximum": 1.0,
+        "mean": 0.05011415660467573,
+        "median": 0.02118318129222082,
+        "minimum": 0.009692204980308441,
+        "p95": 0.15674400527365354
+      },
+      "exact_output_rms": 0.5097053529637906,
+      "features": 256,
+      "head_query_relative_l2": {
+        "count": 512,
+        "maximum": 0.3848669538505802,
+        "mean": 0.10346088587837171,
+        "median": 0.08145592603341271,
+        "minimum": 0.0,
+        "p95": 0.22665516673578978
+      },
+      "iid_log10_relative_variance_proxy": {
+        "count": 340,
+        "maximum": 1.2881354409572516,
+        "mean": -0.06277576937906061,
+        "median": -0.16117220526148768,
+        "minimum": -1.0680461833980721,
+        "p95": 0.9326937563916325
+      },
+      "key_norm": {
+        "count": 512,
+        "maximum": 5.646204449699859,
+        "mean": 4.523513829988202,
+        "median": 4.506597754493056,
+        "minimum": 3.445966846070271,
+        "p95": 5.401167453520964
+      },
+      "length": 128,
+      "output_rmse": 0.06274257797737956,
+      "pair_feature_ess": {
+        "count": 340,
+        "maximum": 50.890687159652664,
+        "mean": 11.055399138041055,
+        "median": 9.040892101956704,
+        "minimum": 1.2939139418431953,
+        "p95": 25.523143493246124
+      },
+      "query_norm": {
+        "count": 512,
+        "maximum": 5.679339584696588,
+        "mean": 4.789248376657614,
+        "median": 4.784582230176271,
+        "minimum": 3.573421172588889,
+        "p95": 5.463856337084157
+      },
+      "relative_output_l2": 0.12309577996885739,
+      "value_rms": 0.5872918485994408
+    },
+    {
+      "attention_total_variation": {
+        "count": 512,
+        "maximum": 0.221418366789953,
+        "mean": 0.07805042023835859,
+        "median": 0.07295512290651773,
+        "minimum": 0.0,
+        "p95": 0.15308341151664362
+      },
+      "diagnostic_projection_seed": 3,
+      "error_over_value_rms": 0.04776921754283547,
+      "exact_attention_effective_keys": {
+        "count": 512,
+        "maximum": 126.49905587691191,
+        "mean": 63.04955379043835,
+        "median": 62.53357575112031,
+        "minimum": 1.0,
+        "p95": 119.84462435049286
+      },
+      "exact_attention_max_weight": {
+        "count": 512,
+        "maximum": 1.0,
+        "mean": 0.05011415660467573,
+        "median": 0.02118318129222082,
+        "minimum": 0.009692204980308441,
+        "p95": 0.15674400527365354
+      },
+      "exact_output_rms": 0.5097053529637906,
+      "features": 256,
+      "head_query_relative_l2": {
+        "count": 512,
+        "maximum": 0.22165859899812956,
+        "mean": 0.045423325745687956,
+        "median": 0.033865648974291465,
+        "minimum": 0.0,
+        "p95": 0.11953674201432435
+      },
+      "iid_log10_relative_variance_proxy": {
+        "count": 340,
+        "maximum": 1.2881354409572516,
+        "mean": -0.06277576937906061,
+        "median": -0.16117220526148768,
+        "minimum": -1.0680461833980721,
+        "p95": 0.9326937563916325
+      },
+      "key_norm": {
+        "count": 512,
+        "maximum": 5.646204449699859,
+        "mean": 4.523513829988202,
+        "median": 4.506597754493056,
+        "minimum": 3.445966846070271,
+        "p95": 5.401167453520964
+      },
+      "length": 128,
+      "output_rmse": 0.02805447207688068,
+      "pair_feature_ess": {
+        "count": 340,
+        "maximum": 37.46989956649827,
+        "mean": 9.982639267700236,
+        "median": 7.403463734025865,
+        "minimum": 1.5705154745829664,
+        "p95": 25.13425850073502
+      },
+      "query_norm": {
+        "count": 512,
+        "maximum": 5.679339584696588,
+        "mean": 4.789248376657614,
+        "median": 4.784582230176271,
+        "minimum": 3.573421172588889,
+        "p95": 5.463856337084157
+      },
+      "relative_output_l2": 0.0550405678766212,
+      "value_rms": 0.5872918485994408
+    },
+    {
+      "attention_total_variation": {
+        "count": 512,
+        "maximum": 0.17912684514534244,
+        "mean": 0.06209688285512683,
+        "median": 0.058981685089955015,
+        "minimum": 0.0,
+        "p95": 0.10877923032714
+      },
+      "diagnostic_projection_seed": 0,
+      "error_over_value_rms": 0.05273977972730831,
+      "exact_attention_effective_keys": {
+        "count": 512,
+        "maximum": 126.49905587691191,
+        "mean": 63.04955379043835,
+        "median": 62.53357575112031,
+        "minimum": 1.0,
+        "p95": 119.84462435049286
+      },
+      "exact_attention_max_weight": {
+        "count": 512,
+        "maximum": 1.0,
+        "mean": 0.05011415660467573,
+        "median": 0.02118318129222082,
+        "minimum": 0.009692204980308441,
+        "p95": 0.15674400527365354
+      },
+      "exact_output_rms": 0.5097053529637906,
+      "features": 512,
+      "head_query_relative_l2": {
+        "count": 512,
+        "maximum": 0.1782510340308484,
+        "mean": 0.052220476677449765,
+        "median": 0.04259654936336534,
+        "minimum": 0.0,
+        "p95": 0.12036849302341808
+      },
+      "iid_log10_relative_variance_proxy": {
+        "count": 340,
+        "maximum": 0.9871054452932704,
+        "mean": -0.36380576504304185,
+        "median": -0.46220220092546893,
+        "minimum": -1.3690761790620534,
+        "p95": 0.6316637607276513
+      },
+      "key_norm": {
+        "count": 512,
+        "maximum": 5.646204449699859,
+        "mean": 4.523513829988202,
+        "median": 4.506597754493056,
+        "minimum": 3.445966846070271,
+        "p95": 5.401167453520964
+      },
+      "length": 128,
+      "output_rmse": 0.03097364273077821,
+      "pair_feature_ess": {
+        "count": 340,
+        "maximum": 66.07247417835853,
+        "mean": 23.10283123465606,
+        "median": 19.83060499380531,
+        "minimum": 2.7781897512218183,
+        "p95": 53.149351968002215
+      },
+      "query_norm": {
+        "count": 512,
+        "maximum": 5.679339584696588,
+        "mean": 4.789248376657614,
+        "median": 4.784582230176271,
+        "minimum": 3.573421172588889,
+        "p95": 5.463856337084157
+      },
+      "relative_output_l2": 0.06076774071662257,
+      "value_rms": 0.5872918485994408
+    },
+    {
+      "attention_total_variation": {
+        "count": 512,
+        "maximum": 0.15784542560080592,
+        "mean": 0.05167613893622151,
+        "median": 0.04902583987897895,
+        "minimum": 0.0,
+        "p95": 0.08284188127843316
+      },
+      "diagnostic_projection_seed": 1,
+      "error_over_value_rms": 0.03984202114859406,
+      "exact_attention_effective_keys": {
+        "count": 512,
+        "maximum": 126.49905587691191,
+        "mean": 63.04955379043835,
+        "median": 62.53357575112031,
+        "minimum": 1.0,
+        "p95": 119.84462435049286
+      },
+      "exact_attention_max_weight": {
+        "count": 512,
+        "maximum": 1.0,
+        "mean": 0.05011415660467573,
+        "median": 0.02118318129222082,
+        "minimum": 0.009692204980308441,
+        "p95": 0.15674400527365354
+      },
+      "exact_output_rms": 0.5097053529637906,
+      "features": 512,
+      "head_query_relative_l2": {
+        "count": 512,
+        "maximum": 0.21214159047687783,
+        "mean": 0.038008500037596885,
+        "median": 0.03159107169795956,
+        "minimum": 0.0,
+        "p95": 0.09369162632238028
+      },
+      "iid_log10_relative_variance_proxy": {
+        "count": 340,
+        "maximum": 0.9871054452932704,
+        "mean": -0.36380576504304185,
+        "median": -0.46220220092546893,
+        "minimum": -1.3690761790620534,
+        "p95": 0.6316637607276513
+      },
+      "key_norm": {
+        "count": 512,
+        "maximum": 5.646204449699859,
+        "mean": 4.523513829988202,
+        "median": 4.506597754493056,
+        "minimum": 3.445966846070271,
+        "p95": 5.401167453520964
+      },
+      "length": 128,
+      "output_rmse": 0.023398894252295823,
+      "pair_feature_ess": {
+        "count": 340,
+        "maximum": 64.67361084935622,
+        "mean": 23.40206347195302,
+        "median": 21.90682382003643,
+        "minimum": 2.503117966175942,
+        "p95": 45.48891191310967
+      },
+      "query_norm": {
+        "count": 512,
+        "maximum": 5.679339584696588,
+        "mean": 4.789248376657614,
+        "median": 4.784582230176271,
+        "minimum": 3.573421172588889,
+        "p95": 5.463856337084157
+      },
+      "relative_output_l2": 0.0459067069165312,
+      "value_rms": 0.5872918485994408
+    },
+    {
+      "attention_total_variation": {
+        "count": 512,
+        "maximum": 0.5323715164329916,
+        "mean": 0.11248291134285467,
+        "median": 0.08125024290210185,
+        "minimum": 0.0,
+        "p95": 0.24526204911418664
+      },
+      "diagnostic_projection_seed": 2,
+      "error_over_value_rms": 0.1175840312410494,
+      "exact_attention_effective_keys": {
+        "count": 512,
+        "maximum": 126.49905587691191,
+        "mean": 63.04955379043835,
+        "median": 62.53357575112031,
+        "minimum": 1.0,
+        "p95": 119.84462435049286
+      },
+      "exact_attention_max_weight": {
+        "count": 512,
+        "maximum": 1.0,
+        "mean": 0.05011415660467573,
+        "median": 0.02118318129222082,
+        "minimum": 0.009692204980308441,
+        "p95": 0.15674400527365354
+      },
+      "exact_output_rms": 0.5097053529637906,
+      "features": 512,
+      "head_query_relative_l2": {
+        "count": 512,
+        "maximum": 0.6425223078800857,
+        "mean": 0.09799687019785171,
+        "median": 0.0705856307338241,
+        "minimum": 0.0,
+        "p95": 0.24796699586967133
+      },
+      "iid_log10_relative_variance_proxy": {
+        "count": 340,
+        "maximum": 0.9871054452932704,
+        "mean": -0.36380576504304185,
+        "median": -0.46220220092546893,
+        "minimum": -1.3690761790620534,
+        "p95": 0.6316637607276513
+      },
+      "key_norm": {
+        "count": 512,
+        "maximum": 5.646204449699859,
+        "mean": 4.523513829988202,
+        "median": 4.506597754493056,
+        "minimum": 3.445966846070271,
+        "p95": 5.401167453520964
+      },
+      "length": 128,
+      "output_rmse": 0.0690561430733303,
+      "pair_feature_ess": {
+        "count": 340,
+        "maximum": 57.32108027123434,
+        "mean": 17.60949588108792,
+        "median": 15.482828607551518,
+        "minimum": 1.0451536438200006,
+        "p95": 42.153524972130896
+      },
+      "query_norm": {
+        "count": 512,
+        "maximum": 5.679339584696588,
+        "mean": 4.789248376657614,
+        "median": 4.784582230176271,
+        "minimum": 3.573421172588889,
+        "p95": 5.463856337084157
+      },
+      "relative_output_l2": 0.13548247565341157,
+      "value_rms": 0.5872918485994408
+    },
+    {
+      "attention_total_variation": {
+        "count": 512,
+        "maximum": 0.2718413304787679,
+        "mean": 0.0887156850971429,
+        "median": 0.06694907102648873,
+        "minimum": 0.0,
+        "p95": 0.2369752958790967
+      },
+      "diagnostic_projection_seed": 3,
+      "error_over_value_rms": 0.06592976492099527,
+      "exact_attention_effective_keys": {
+        "count": 512,
+        "maximum": 126.49905587691191,
+        "mean": 63.04955379043835,
+        "median": 62.53357575112031,
+        "minimum": 1.0,
+        "p95": 119.84462435049286
+      },
+      "exact_attention_max_weight": {
+        "count": 512,
+        "maximum": 1.0,
+        "mean": 0.05011415660467573,
+        "median": 0.02118318129222082,
+        "minimum": 0.009692204980308441,
+        "p95": 0.15674400527365354
+      },
+      "exact_output_rms": 0.5097053529637906,
+      "features": 512,
+      "head_query_relative_l2": {
+        "count": 512,
+        "maximum": 0.20847749374328278,
+        "mean": 0.060800607869173365,
+        "median": 0.048970497587621564,
+        "minimum": 0.0,
+        "p95": 0.14106880497893903
+      },
+      "iid_log10_relative_variance_proxy": {
+        "count": 340,
+        "maximum": 0.9871054452932704,
+        "mean": -0.36380576504304185,
+        "median": -0.46220220092546893,
+        "minimum": -1.3690761790620534,
+        "p95": 0.6316637607276513
+      },
+      "key_norm": {
+        "count": 512,
+        "maximum": 5.646204449699859,
+        "mean": 4.523513829988202,
+        "median": 4.506597754493056,
+        "minimum": 3.445966846070271,
+        "p95": 5.401167453520964
+      },
+      "length": 128,
+      "output_rmse": 0.03872001351817788,
+      "pair_feature_ess": {
+        "count": 340,
+        "maximum": 69.77977418553162,
+        "mean": 16.756721991179926,
+        "median": 12.729044193016101,
+        "minimum": 1.0240216770924369,
+        "p95": 45.29059556976602
+      },
+      "query_norm": {
+        "count": 512,
+        "maximum": 5.679339584696588,
+        "mean": 4.789248376657614,
+        "median": 4.784582230176271,
+        "minimum": 3.573421172588889,
+        "p95": 5.463856337084157
+      },
+      "relative_output_l2": 0.07596548337786152,
+      "value_rms": 0.5872918485994408
+    }
+  ],
+  "production_lengths": [
+    {
+      "attention_total_variation": {
+        "count": 4,
+        "maximum": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "minimum": 0.0,
+        "p95": 0.0
+      },
+      "error_over_value_rms": 0.0,
+      "exact_attention_effective_keys": {
+        "count": 4,
+        "maximum": 1.0,
+        "mean": 1.0,
+        "median": 1.0,
+        "minimum": 1.0,
+        "p95": 1.0
+      },
+      "exact_attention_max_weight": {
+        "count": 4,
+        "maximum": 1.0,
+        "mean": 1.0,
+        "median": 1.0,
+        "minimum": 1.0,
+        "p95": 1.0
+      },
+      "exact_output_rms": 0.5306401596306475,
+      "feature_kernel_agreement": "PASS",
+      "head_query_relative_l2": {
+        "count": 4,
+        "maximum": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "minimum": 0.0,
+        "p95": 0.0
+      },
+      "iid_log10_relative_variance_proxy": {
+        "count": 4,
+        "maximum": -0.0896903992213458,
+        "mean": -0.3771311296723951,
+        "median": -0.32590896586707185,
+        "minimum": -0.7670161877340909,
+        "p95": -0.0949910611605991
+      },
+      "key_norm": {
+        "count": 4,
+        "maximum": 4.44962638180529,
+        "mean": 4.224327760462031,
+        "median": 4.30088489251018,
+        "minimum": 3.8459148750224723,
+        "p95": 4.4382245688184
+      },
+      "length": 1,
+      "output_rmse": 0.0,
+      "pair_feature_ess": {
+        "count": 4,
+        "maximum": 21.133406620895617,
+        "mean": 10.923482557758877,
+        "median": 9.633553957118204,
+        "minimum": 3.293415695903481,
+        "p95": 20.256600879527593
+      },
+      "production_vs_feature_max_abs": 1.1920928955078125e-07,
+      "query_norm": {
+        "count": 4,
+        "maximum": 5.088162122260814,
+        "mean": 4.59739610916173,
+        "median": 4.62582535651539,
+        "minimum": 4.049771601355325,
+        "p95": 5.048604146702701
+      },
+      "relative_output_l2": 0.0,
+      "value_rms": 0.5306401596306475
+    },
+    {
+      "attention_total_variation": {
+        "count": 32,
+        "maximum": 0.23438427949432156,
+        "mean": 0.06885858002074119,
+        "median": 0.05163280301009543,
+        "minimum": 0.0,
+        "p95": 0.1901999188358086
+      },
+      "error_over_value_rms": 0.08180303375206598,
+      "exact_attention_effective_keys": {
+        "count": 32,
+        "maximum": 7.9890844636049865,
+        "mean": 4.443316641134931,
+        "median": 4.408134712443343,
+        "minimum": 1.0,
+        "p95": 7.942443449495062
+      },
+      "exact_attention_max_weight": {
+        "count": 32,
+        "maximum": 1.0,
+        "mean": 0.3671352391143679,
+        "median": 0.2512249134681524,
+        "minimum": 0.13111428386220061,
+        "p95": 1.0
+      },
+      "exact_output_rms": 0.5376030075353454,
+      "feature_kernel_agreement": "PASS",
+      "head_query_relative_l2": {
+        "count": 32,
+        "maximum": 0.24293110826887626,
+        "mean": 0.0688290334463921,
+        "median": 0.05565426693162818,
+        "minimum": 0.0,
+        "p95": 0.21068224465386465
+      },
+      "iid_log10_relative_variance_proxy": {
+        "count": 144,
+        "maximum": 0.9866171861556703,
+        "mean": 0.10507384498584274,
+        "median": 0.006070579059462844,
+        "minimum": -0.7670161877340909,
+        "p95": 0.9520714502014604
+      },
+      "key_norm": {
+        "count": 32,
+        "maximum": 5.343077094228138,
+        "mean": 4.377994031888881,
+        "median": 4.357758547598978,
+        "minimum": 3.4560511358068773,
+        "p95": 5.314298817512107
+      },
+      "length": 8,
+      "output_rmse": 0.048200693102781626,
+      "pair_feature_ess": {
+        "count": 144,
+        "maximum": 21.133406620895606,
+        "mean": 8.007248124617506,
+        "median": 7.525773412875962,
+        "minimum": 2.55323901486397,
+        "p95": 14.711190643381554
+      },
+      "production_vs_feature_max_abs": 3.2098191793394903e-07,
+      "query_norm": {
+        "count": 32,
+        "maximum": 5.460656625040679,
+        "mean": 4.798559264148334,
+        "median": 4.820532216524509,
+        "minimum": 4.049771601355325,
+        "p95": 5.432617240111464
+      },
+      "relative_output_l2": 0.08965852576561824,
+      "value_rms": 0.5892286739495685
+    },
+    {
+      "attention_total_variation": {
+        "count": 128,
+        "maximum": 0.4746626823516306,
+        "mean": 0.13304256109057314,
+        "median": 0.11047218929169211,
+        "minimum": 0.0,
+        "p95": 0.3728498656848327
+      },
+      "error_over_value_rms": 0.16143489287869336,
+      "exact_attention_effective_keys": {
+        "count": 128,
+        "maximum": 31.921990551998817,
+        "mean": 16.227317267795073,
+        "median": 16.270873748131955,
+        "minimum": 1.0,
+        "p95": 30.206142577262668
+      },
+      "exact_attention_max_weight": {
+        "count": 128,
+        "maximum": 1.0,
+        "mean": 0.14238600775464882,
+        "median": 0.06910679560104804,
+        "minimum": 0.03544194143886632,
+        "p95": 0.5499160712517254
+      },
+      "exact_output_rms": 0.5168974335339023,
+      "feature_kernel_agreement": "PASS",
+      "head_query_relative_l2": {
+        "count": 128,
+        "maximum": 0.5399948868122872,
+        "mean": 0.14017366264695497,
+        "median": 0.10779978525233141,
+        "minimum": 0.0,
+        "p95": 0.47060803957680114
+      },
+      "iid_log10_relative_variance_proxy": {
+        "count": 300,
+        "maximum": 0.9857210891993735,
+        "mean": 0.08942958084120042,
+        "median": 0.028263936504685505,
+        "minimum": -0.7670161877340909,
+        "p95": 0.8132355763500102
+      },
+      "key_norm": {
+        "count": 128,
+        "maximum": 5.343077094228138,
+        "mean": 4.515700348878891,
+        "median": 4.544263207802181,
+        "minimum": 3.4560511358068773,
+        "p95": 5.189182894337125
+      },
+      "length": 32,
+      "output_rmse": 0.09370984535407695,
+      "pair_feature_ess": {
+        "count": 300,
+        "maximum": 22.921824578701102,
+        "mean": 8.168580875150802,
+        "median": 7.299238811812765,
+        "minimum": 1.2913334437600004,
+        "p95": 17.20572221902196
+      },
+      "production_vs_feature_max_abs": 5.163852068168495e-07,
+      "query_norm": {
+        "count": 128,
+        "maximum": 5.460656625040679,
+        "mean": 4.675642539421649,
+        "median": 4.715655350067417,
+        "minimum": 3.892770871800012,
+        "p95": 5.369761455614544
+      },
+      "relative_output_l2": 0.18129292055757656,
+      "value_rms": 0.580480735503031
+    },
+    {
+      "attention_total_variation": {
+        "count": 512,
+        "maximum": 0.4746626823516307,
+        "mean": 0.1440518321414458,
+        "median": 0.11717009475313173,
+        "minimum": 0.0,
+        "p95": 0.37413237826081985
+      },
+      "error_over_value_rms": 0.16442810491734333,
+      "exact_attention_effective_keys": {
+        "count": 512,
+        "maximum": 126.49905587691191,
+        "mean": 63.04955379043835,
+        "median": 62.53357575112031,
+        "minimum": 1.0,
+        "p95": 119.84462435049286
+      },
+      "exact_attention_max_weight": {
+        "count": 512,
+        "maximum": 1.0,
+        "mean": 0.05011415660467573,
+        "median": 0.02118318129222082,
+        "minimum": 0.009692204980308441,
+        "p95": 0.15674400527365354
+      },
+      "exact_output_rms": 0.5097053529637906,
+      "feature_kernel_agreement": "PASS",
+      "head_query_relative_l2": {
+        "count": 512,
+        "maximum": 0.6190877645241951,
+        "mean": 0.14684357469348158,
+        "median": 0.09438958180236197,
+        "minimum": 0.0,
+        "p95": 0.4785508253188538
+      },
+      "iid_log10_relative_variance_proxy": {
+        "count": 340,
+        "maximum": 1.5891654366212329,
+        "mean": 0.23825422628492063,
+        "median": 0.13985779040249358,
+        "minimum": -0.7670161877340909,
+        "p95": 1.2337237520556137
+      },
+      "key_norm": {
+        "count": 512,
+        "maximum": 5.646204449699859,
+        "mean": 4.523513829988202,
+        "median": 4.506597754493056,
+        "minimum": 3.445966846070271,
+        "p95": 5.401167453520964
+      },
+      "length": 128,
+      "output_rmse": 0.09656728569860937,
+      "pair_feature_ess": {
+        "count": 340,
+        "maximum": 23.373487853903217,
+        "mean": 7.772035426806154,
+        "median": 6.842306951559939,
+        "minimum": 1.1571255979442827,
+        "p95": 16.903661018940216
+      },
+      "production_vs_feature_max_abs": 6.823164155067563e-07,
+      "query_norm": {
+        "count": 512,
+        "maximum": 5.679339584696588,
+        "mean": 4.789248376657614,
+        "median": 4.784582230176271,
+        "minimum": 3.573421172588889,
+        "p95": 5.463856337084157
+      },
+      "relative_output_l2": 0.1894570758127186,
+      "value_rms": 0.5872918485994408
+    },
+    {
+      "attention_total_variation": {
+        "count": 1024,
+        "maximum": 0.5644717869963749,
+        "mean": 0.15443250186721097,
+        "median": 0.12172381384251355,
+        "minimum": 0.0,
+        "p95": 0.3868065439372561
+      },
+      "error_over_value_rms": 0.17455145903851718,
+      "exact_attention_effective_keys": {
+        "count": 1024,
+        "maximum": 253.8898788608265,
+        "mean": 125.69537912353138,
+        "median": 126.17662028480188,
+        "minimum": 1.0,
+        "p95": 237.82558403895442
+      },
+      "exact_attention_max_weight": {
+        "count": 1024,
+        "maximum": 1.0,
+        "mean": 0.028903945413608995,
+        "median": 0.010643401907669308,
+        "minimum": 0.0047363880857911765,
+        "p95": 0.09139068498282131
+      },
+      "exact_output_rms": 0.5054978395746946,
+      "feature_kernel_agreement": "PASS",
+      "head_query_relative_l2": {
+        "count": 1024,
+        "maximum": 0.7416938237622489,
+        "mean": 0.15147380297209675,
+        "median": 0.09548031235348976,
+        "minimum": 0.0,
+        "p95": 0.5009424043758856
+      },
+      "iid_log10_relative_variance_proxy": {
+        "count": 340,
+        "maximum": 1.5557868304078966,
+        "mean": 0.2162003071745362,
+        "median": 0.12668103894307015,
+        "minimum": -0.8823839771236306,
+        "p95": 1.1554645694045231
+      },
+      "key_norm": {
+        "count": 1024,
+        "maximum": 5.876517995945115,
+        "mean": 4.587023434810518,
+        "median": 4.557330382477273,
+        "minimum": 3.41479609022655,
+        "p95": 5.545158341754557
+      },
+      "length": 256,
+      "output_rmse": 0.10234097940545657,
+      "pair_feature_ess": {
+        "count": 340,
+        "maximum": 25.496378640418182,
+        "mean": 8.404185320032052,
+        "median": 7.609667483793402,
+        "minimum": 1.141559266774664,
+        "p95": 18.129395600767893
+      },
+      "production_vs_feature_max_abs": 1.1676000761795535e-06,
+      "query_norm": {
+        "count": 1024,
+        "maximum": 5.679339584696588,
+        "mean": 4.814582923633532,
+        "median": 4.83960274577165,
+        "minimum": 3.573421172588889,
+        "p95": 5.430051674884895
+      },
+      "relative_output_l2": 0.20245581957691874,
+      "value_rms": 0.5863083584014822
+    },
+    {
+      "attention_total_variation": {
+        "count": 1156,
+        "maximum": 0.5644717869963749,
+        "mean": 0.1583252237540732,
+        "median": 0.12322856544342667,
+        "minimum": 0.0,
+        "p95": 0.39689348786818324
+      },
+      "error_over_value_rms": 0.1795484457345409,
+      "exact_attention_effective_keys": {
+        "count": 1156,
+        "maximum": 287.5964424519659,
+        "mean": 141.7757321762175,
+        "median": 141.83893263716703,
+        "minimum": 1.0,
+        "p95": 268.39892161133366
+      },
+      "exact_attention_max_weight": {
+        "count": 1156,
+        "maximum": 1.0,
+        "mean": 0.026222352299832545,
+        "median": 0.00963837926905409,
+        "minimum": 0.004303437496297845,
+        "p95": 0.07899930017854928
+      },
+      "exact_output_rms": 0.5043548977448042,
+      "feature_kernel_agreement": "PASS",
+      "head_query_relative_l2": {
+        "count": 1156,
+        "maximum": 0.7599553772385453,
+        "mean": 0.1550591503516641,
+        "median": 0.0981860625786191,
+        "minimum": 0.0,
+        "p95": 0.5222211906803111
+      },
+      "iid_log10_relative_variance_proxy": {
+        "count": 340,
+        "maximum": 1.5291693583912926,
+        "mean": 0.23748512277328873,
+        "median": 0.1524386702899745,
+        "minimum": -0.7670161877340909,
+        "p95": 1.1905778971819756
+      },
+      "key_norm": {
+        "count": 1156,
+        "maximum": 5.876517995945115,
+        "mean": 4.596842154686684,
+        "median": 4.565607463967971,
+        "minimum": 3.41479609022655,
+        "p95": 5.587853433683229
+      },
+      "length": 289,
+      "output_rmse": 0.10503259332702124,
+      "pair_feature_ess": {
+        "count": 340,
+        "maximum": 27.78500191019937,
+        "mean": 8.976607701189371,
+        "median": 7.926212293645621,
+        "minimum": 1.2144720674068965,
+        "p95": 19.526022238567556
+      },
+      "production_vs_feature_max_abs": 1.2830461977308971e-06,
+      "query_norm": {
+        "count": 1156,
+        "maximum": 5.679339584696588,
+        "mean": 4.816834894868115,
+        "median": 4.84558193680833,
+        "minimum": 3.573421172588889,
+        "p95": 5.413528221988653
+      },
+      "relative_output_l2": 0.20825135989889026,
+      "value_rms": 0.5849819133623134
+    }
+  ],
+  "selection": {
+    "dataset_index": 62,
+    "history_end_exclusive": 102,
+    "history_lengths": [
+      61,
+      37,
+      58,
+      62,
+      18,
+      14
+    ],
+    "history_start": 96,
+    "padded_tokens": 674,
+    "selection": "original_frozen_case",
+    "split": "train",
+    "stratum": 5,
+    "student": 12,
+    "target_length": 288,
+    "target_session": 102
+  },
+  "stage": "correct_padding_encoder.layers.0.attention"
+}

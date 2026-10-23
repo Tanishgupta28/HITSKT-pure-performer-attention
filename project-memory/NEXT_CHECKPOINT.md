@@ -1,5 +1,11 @@
 # Next checkpoint
 
+## Latest: post50 CPU study complete; WAIT for instruction
+
+Read [FAVOR_POST50_INVESTIGATION_STATE.md](FAVOR_POST50_INVESTIGATION_STATE.md), newreport and rawrun INVESTIGATION_RESULT.json terminalmarker. Total50/no new optimizercalls. Do notrunCUDA/newupdates/fulltraining/currentclosedcampaign. CurrentCPUprofilerrefusesCUDA-linkedengineforstrictbackward; originalwarning/sourcesnapshotpreserved. FinishverifiedresearchpublicationthenWAIT. Future50→75isproposalNOTapproval. Ifapproveduseexact50/Adam/RNG/projections/newsource-boundcontract,freshsharedadmission,samelimits/.20 REVIEW/expandedtrainingdiagnostics. Originalbatchprofiling needsseparateGPUinstruction/resourcebudget; staticevidencecurrent1GiBinsufficientformanybatches. Nevertruncate/dropdata/raisebudgetquietly. PreserveLight/DKT/ELU/allcheckpoint/history/main.
+
+Earlier handoff (historical):
+
 ## Latest: complete50TOTAL; wait for next instruction
 
 Read [FAVOR_SHARED50_FROM25_STATE.md](FAVOR_SHARED50_FROM25_STATE.md), completed report and actual study_result. STOP at50: no furtherGPU/optimizerwork/fulltraining/currentrecordreuse. Fresh30/40/50 exact recoveryPASS/zeroAdam;50sha93ebe9d2... locallypreserved. Finishscopedpublicationandverifyremote, thenWAIT. Futureworkrequiresnewinstruction/scopedcontract fromEXACT50 withAdam/RNG/projections/sampler preserved. Prioritizebroadertrain-onlyCPE/Actiontailreview; originalhistory/batchprofiling remainsunverified. Keepallfixedsharedlimits/.20 REVIEW/severestops. Do notreruncompleted/failedcampaigns, changeotherjobs/Light/DKT/ELU/main, orresetoptimizer. No automaticcontinuation or watcher.

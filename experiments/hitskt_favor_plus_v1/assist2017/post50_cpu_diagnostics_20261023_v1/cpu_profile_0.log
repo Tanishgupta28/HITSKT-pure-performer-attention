@@ -1,0 +1,31 @@
+/usr/local/lib/python3.10/dist-packages/torch/autograd/graph.py:767: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 2: out of memory (Triggered internally at /opt/pytorch/pytorch/c10/cuda/CUDAFunctions.cpp:108.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+{
+  "selection": {
+    "indices": [
+      5385
+    ],
+    "name": "median_singleton"
+  },
+  "padded_tokens": 344,
+  "peak_unique_live_saved_activation_bytes": 30417093,
+  "saved_storage_phase_peaks": {
+    "forward": 19876880,
+    "backward": 30417093
+  },
+  "forward_saved_live_bytes": 19876880,
+  "remaining_saved_live_bytes": 0,
+  "pack_calls": 5259,
+  "cpu_forward_backward_seconds": 0.6644042700063437,
+  "host": {
+    "peak_process_rss_bytes": 832524288,
+    "cgroup_limit_bytes": 96636764160,
+    "cgroup_usage_bytes": 65003622400,
+    "cgroup_headroom_bytes": 31633141760
+  },
+  "gradients_finite": true,
+  "optimizer_calls": 0,
+  "cuda_initialized": false,
+  "test_evaluations": 0,
+  "interpretation": "Measured CPU RSS and autograd saved storage, not CUDA peak. No Adam constructed or called; saved-storage measure excludes unsaved temporaries/allocator metadata."
+}

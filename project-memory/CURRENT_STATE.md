@@ -1,5 +1,11 @@
 # Current state
 
+## Latest: post50 scientific CPU investigation COMPLETE
+
+Read [FAVOR_POST50_INVESTIGATION_STATE.md](FAVOR_POST50_INVESTIGATION_STATE.md) and POST50_APPROXIMATION_METRICS_AND_TRAINING_READINESS.md. Checkpoint50 unchanged/no new updates. Finite-feature/QK alignment errors persist; CPElong939error.263. Metricsconsistent: downward probabilityshift explains137TP→FN/323FP→TN at25→50, noimplementationdefect. Original7060train/181batches partialforwardcomponents exceed1GiB in70batches (gradientfree), actualGPUpeakunmeasured. CPUprofilerimplicitdriver-querywarning retained; guardrequiresCPU-onlybuildfuturebackward. 84distinctCPUcasesPASS. ConditionalGO onlyseparatelyapprovedshort50→75; NO-GOfulltraining. NoGPUexecution/newoptimizer/testscope now; publishverifiedresearchthenWAIT.
+
+Earlier handoff (historical):
+
 ## Latest: shared continuation COMPLETE at50; STOP TRAINING
 
 Read [FAVOR_SHARED50_FROM25_STATE.md](FAVOR_SHARED50_FROM25_STATE.md). Actual study_result proves25 new/50TOTAL calls. Fresh CUDA30/40/50 exact recoveryPASS/zeroAdam; checkpoints atomic/no-overwrite, original25 unchanged. Allstatesfinite; Action.212305>.20 REVIEW, CPE.192699/2cases>.20 worsening REVIEW. Ownpeak282.330MiBallocated/390reserved;287resourcechecksPASS/sharedpeerlogged/noownershipclaim.102pre/175postCPUtestsPASS(overlap); independent24prefixreplaysPASS. ReportSHARED_GPU_50_UPDATE_VALIDATION_RESULTS.md complete. SampledvalAUC.519220/BCE.692525 is exploratory, recall/F1decline. GO engineering/REVIEWapproximation, NO-GO fulltraining. CurrentapprovedscopeEXHAUSTED50; no moreGPU/optimizerwork. Preserveallotherjobs/artifacts; publishverifiedresearchthenwait.

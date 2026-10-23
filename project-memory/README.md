@@ -1,5 +1,11 @@
 # HiTSKT capstone project memory
 
+## Latest: post50 CPU investigation complete
+
+Read [FAVOR_POST50_INVESTIGATION_STATE.md](FAVOR_POST50_INVESTIGATION_STATE.md). Zero new updates/current50. No discovered attention/metric defect; finite-feature/alignment REVIEW persists. Broader train-only attention study, saved metric crossing analysis and original-shape CPU accounting complete. 82main+3guard CPUchecksPASS(overlap;84distinct). CPU autograd emitted implicit CUDA-device-count warning, retained; strict future CPU backward guard corrected. Original1GiB batch feasibility NO-GO; fulltraining notapproved. NoGPU model work/testevaluation. Stop for nextinstruction.
+
+Earlier handoff (historical):
+
 ## Latest handoff: shared continuation completed50TOTAL
 
 Read [FAVOR_SHARED50_FROM25_STATE.md](FAVOR_SHARED50_FROM25_STATE.md) and reports/favor_plus_v1/SHARED_GPU_50_UPDATE_VALIDATION_RESULTS.md. Exactly25newupdates/fresh30/40/50recoveryPASS;trainingSTOPPED50.102pre/175postCPUcasesPASS(overlap). Allfinite/resourcesPASS, Action.212305 REVIEW and CPEworseningmedian.192699/2prefixes>.20. Peak282.330MiBallocated/390reserved. No fulltraining/testclaims;nextinstructionneededbeforefurtherwork. Previoushandoffsbelowarehistorical.

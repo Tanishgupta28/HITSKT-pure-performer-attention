@@ -1,0 +1,22 @@
+{
+  "full_train_targets": 566107,
+  "full_train_positive": 210894,
+  "full_train_prevalence": 0.37253381427892607,
+  "pilot50_targets": 2528,
+  "pilot50_positive": 1055,
+  "pilot50_target_fraction_of_full_train": 0.004465586894350362,
+  "checkpoint_prediction_bias": {
+    "25": -0.04531748220324516,
+    "50": -0.04535591974854469
+  },
+  "prediction_bias_change25_to50": -3.843754529953003e-05,
+  "prediction_weight_relative_drift25_to50": 0.00586676923558116,
+  "mean_validation_logit_change25_to50": -0.24468392497970423,
+  "positive_weighted_bce_change25_to50": 0.04164569700313225,
+  "negative_weighted_bce_change25_to50": -0.07614542303934825,
+  "no_new_validation_inference": true,
+  "no_threshold_change": true,
+  "optimizer_calls": 0,
+  "cuda_initialized": false,
+  "interpretation": "Output shift is measured; direct scalar prediction bias changes far less than mean logit. Weight/representation contributions not causally isolated. Pilot/validation cohorts are small and class-skewed relative to full training."
+}

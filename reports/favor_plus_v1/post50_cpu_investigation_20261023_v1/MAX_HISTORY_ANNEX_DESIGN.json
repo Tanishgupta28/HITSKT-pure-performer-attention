@@ -1,0 +1,28 @@
+{
+  "kind": "post50_cpu_max_history_coverage_annex_v1",
+  "selection": {
+    "dataset_index": 1623,
+    "target_session": 2878,
+    "history_start": 2871,
+    "history_end_exclusive": 2878,
+    "student": 323,
+    "split": "train",
+    "history_lengths": [
+      166,
+      156,
+      51,
+      190,
+      100,
+      147,
+      938
+    ],
+    "target_length": 61,
+    "padded_tokens": 6643
+  },
+  "checkpoint50_sha256": "93ebe9d2a29be9a6e4deb278916513339de61c9ac8f72a454a31111829440a73",
+  "reason": "Primary predeclared14-case cohort did not contain the longest training history row. Prospectively add one deterministic metadata-only maximum-history case; do not change primary cohort/feature comparison.",
+  "scope": "one frozen50 CPU no-grad forward; saved production m128 only; exact comparison at128/256/512/full maximum; no new validation/GPU/backward/optimizer/test work",
+  "max_process_rss_bytes": 4294967296,
+  "minimum_host_headroom_bytes": 2147483648,
+  "source_script_sha256": "e7771dae0d1a742253d7974eb27e45965682eec67d2c3bef6d0fd925e8a938a6"
+}

@@ -1,0 +1,11 @@
+{
+  "parameter_gradient_buffer_bytes": 27725828,
+  "reason": "Original component_sum counts weights+full grads+Adam. zero_grad(set_to_none=True) means full gradient buffers need not coexist with peak forward activations; remove one parameter-sized gradient copy for concurrent-forward accounting.",
+  "forward_weights_adam_buffers_bytes": 83701772,
+  "forward_component_accounting_GiB_median": 0.9790398674085736,
+  "forward_component_accounting_GiB_max": 1.069165764376521,
+  "batches_forward_components_above1GiB": 70,
+  "original_batches": 181,
+  "combined_gradient_free_forward_plus_one_chunk_state_GiB_max": 2.071178420446813,
+  "interpretation": "Forward components omit other saved tensors and workspaces; one-chunk-state accounting is not a complete peak. Saved CPU activation accounting is1.74\u00d7 these selected retained components in2 small profiles; do not extrapolate a certified GPU peak."
+}

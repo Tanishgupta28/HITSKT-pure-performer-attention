@@ -1,0 +1,65 @@
+{
+  "cuda_initialized": false,
+  "optimizer_calls": 0,
+  "results": [
+    {
+      "cpu_forward_backward_seconds": 0.6644042700063437,
+      "cuda_initialized": false,
+      "forward_saved_live_bytes": 19876880,
+      "gradients_finite": true,
+      "host": {
+        "cgroup_headroom_bytes": 31633141760,
+        "cgroup_limit_bytes": 96636764160,
+        "cgroup_usage_bytes": 65003622400,
+        "peak_process_rss_bytes": 832524288
+      },
+      "interpretation": "Measured CPU RSS and autograd saved storage, not CUDA peak. No Adam constructed or called; saved-storage measure excludes unsaved temporaries/allocator metadata.",
+      "optimizer_calls": 0,
+      "pack_calls": 5259,
+      "padded_tokens": 344,
+      "peak_unique_live_saved_activation_bytes": 30417093,
+      "remaining_saved_live_bytes": 0,
+      "saved_storage_phase_peaks": {
+        "backward": 30417093,
+        "forward": 19876880
+      },
+      "selection": {
+        "indices": [
+          5385
+        ],
+        "name": "median_singleton"
+      },
+      "test_evaluations": 0
+    },
+    {
+      "cpu_forward_backward_seconds": 1.5773744069738314,
+      "cuda_initialized": false,
+      "forward_saved_live_bytes": 99912952,
+      "gradients_finite": true,
+      "host": {
+        "cgroup_headroom_bytes": 31656300544,
+        "cgroup_limit_bytes": 96636764160,
+        "cgroup_usage_bytes": 64980463616,
+        "peak_process_rss_bytes": 1069699072
+      },
+      "interpretation": "Measured CPU RSS and autograd saved storage, not CUDA peak. No Adam constructed or called; saved-storage measure excludes unsaved temporaries/allocator metadata.",
+      "optimizer_calls": 0,
+      "pack_calls": 10349,
+      "padded_tokens": 2047,
+      "peak_unique_live_saved_activation_bytes": 104330498,
+      "remaining_saved_live_bytes": 0,
+      "saved_storage_phase_peaks": {
+        "backward": 104330498,
+        "forward": 99912952
+      },
+      "selection": {
+        "indices": [
+          713
+        ],
+        "name": "largest_singleton_under2048"
+      },
+      "test_evaluations": 0
+    }
+  ],
+  "test_evaluations": 0
+}

@@ -1424,3 +1424,23 @@ Test-count reconciliation: preparation handoff incorrectly described102 as27new+
 75existing. XML proves24new continuationcases+78existing(55sharedguard+20pilot25+
 3sharedcontinuation). Total102 remainsPASS; postrun175 includesoverlap, notadditive.
 Correctedfinalreport/currentstate; preservedhistoricalentry andpreregistrationcommit.
+
+## 2026-10-23 — Post50 CPU diagnosis complete, REVIEW retained/no new training
+
+Designpreregistered8b0b6838...;14newlyforwardedTRAINcases+1prospectivehistorymaxannex,
+128/256/512frozenseedgrid, identicalQKVexactreferences/kernelagreementmax1.771e-6.
+Action/CPE finitefeature/alignmenterror, nofoundmask/normalization/projectiondefect.
+CPEQKswapexplainspairedmeanerrorrise; normsensitivewithoutnormexplosion.
+Metriccode/labelsconsistent:461crossings25→50,137TP→FN/323FP→TN/1reverse;
+BCEclassdecomposition explainsdecliningF1withimprovedBCE; weakAUCnotconvergence.
+Only2528pilotlabels/.447%fulltrain. Actualtrain7060/181originalbatches; gradient-
+freepartialforwardcomponents>1GiB in70/181, GPUpeakNOTMEASURED.2smallCPUprofiles
+finitegrad/noAdam, butlibraryinternalsattemptcudaGetDeviceCountandwarnerror2;
+strictno-probeintentnotmet, noCUDAmodelexecutionrequested/Torchinitfalse. Preserve
+warning/actualsource snapshot; futurestrictCPUbackwardguardrequiresCPU-onlybuild,
+2newchecksPASS.82main+3guard(overlap)=84distinctCPUcasesPASS, noCUDA/newupdates/
+validationinference/testevaluation. Total50/parenthashunchanged;allpriorfiles/
+35sources/11datahashes/Lightheld/unrelatedfilespreserved. ReportPOST50_... complete.
+CONDITIONALGOonlynewexplicitshort50→75proposal; NO-GOfulltraining, noexecution
+authorizednow. OriginalshapesneedboundedGPUprofile/newresourceplanapproval.
+PublishverifiedresearchthenWAIT; nootherjobs/fulltraining/threshold/configchange.

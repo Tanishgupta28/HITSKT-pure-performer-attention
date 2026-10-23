@@ -1,0 +1,14 @@
+{
+  "status": "CPU_COMPUTE_COMPLETED_WITH_GPU_DRIVER_QUERY_WARNING",
+  "observed_warning_logs": [
+    "experiments/hitskt_favor_plus_v1/assist2017/post50_cpu_diagnostics_20261023_v1/cpu_profile_0.log",
+    "experiments/hitskt_favor_plus_v1/assist2017/post50_cpu_diagnostics_20261023_v1/cpu_profile_1.log"
+  ],
+  "internal_cuda_device_count_query_attempt_observed": true,
+  "predeclared_no_gpu_probes_strictly_satisfied": false,
+  "torch_cuda_initialized": false,
+  "cuda_tensor_or_model_operations_requested": 0,
+  "optimizer_calls": 0,
+  "cause": "CUDA-linked PyTorch CPU autograd performs device enumeration. Warning reports error2/out of memory; virtual-address limit interaction is plausible but not isolated. Not evidence of VRAM exhaustion.",
+  "response": "No repeat device probe or CUDA experiment. Preserve logs/results; require CPU-only PyTorch before future strict CPU backward profiling. No architecture/threshold/scientific change."
+}

@@ -1,0 +1,95 @@
+{
+  "train_examples": 7060,
+  "train_target_labels": 566107,
+  "target_length": {
+    "minimum": 1.0,
+    "median": 63.0,
+    "mean": 80.18512747875354,
+    "p95": 206.0,
+    "maximum": 938.0,
+    "count": 7060
+  },
+  "history_count": {
+    "minimum": 1.0,
+    "median": 3.0,
+    "mean": 3.487960339943343,
+    "p95": 7.0,
+    "maximum": 15.0,
+    "count": 7060
+  },
+  "historical_session_length": {
+    "minimum": 1.0,
+    "median": 60.0,
+    "mean": 76.1602842639594,
+    "p95": 196.0,
+    "maximum": 938.0,
+    "count": 24625
+  },
+  "singleton_padded_cost": {
+    "minimum": 13.0,
+    "median": 354.0,
+    "mean": 533.192209631728,
+    "p95": 1562.0499999999993,
+    "maximum": 7164.0,
+    "count": 7060
+  },
+  "singleton_cost_above2048": 158,
+  "original_batch_count": 181,
+  "original_batch_size": {
+    "minimum": 4.0,
+    "median": 37.0,
+    "mean": 39.005524861878456,
+    "p95": 64.0,
+    "maximum": 64.0,
+    "count": 181
+  },
+  "original_padded_cost": {
+    "minimum": 7606.0,
+    "median": 31612.0,
+    "mean": 27575.1546961326,
+    "p95": 32651.0,
+    "maximum": 32766.0,
+    "count": 181
+  },
+  "original_padding_fraction": {
+    "minimum": 0.3261912376079309,
+    "median": 0.45340066080668284,
+    "mean": 0.48548289296060504,
+    "p95": 0.7182521050489874,
+    "maximum": 0.7954192808473318,
+    "count": 181
+  },
+  "parameter_bytes": 27725828,
+  "buffer_bytes": 524288,
+  "component_sum_bytes": {
+    "minimum": 403950979.0,
+    "median": 1078961881.0,
+    "mean": 975569580.082873,
+    "p95": 1150114455.0,
+    "maximum": 1175733826.0,
+    "count": 181
+  },
+  "workspace_component_bytes": {
+    "minimum": 88080384.0,
+    "median": 566231040.0,
+    "mean": 570633900.5524862,
+    "p95": 947912704.0,
+    "maximum": 1103101952.0,
+    "count": 181
+  },
+  "profile_cases": [
+    {
+      "name": "median_singleton",
+      "indices": [
+        5385
+      ]
+    },
+    {
+      "name": "largest_singleton_under2048",
+      "indices": [
+        713
+      ]
+    }
+  ],
+  "limitations": "Static CPU component accounting, not measured GPU peak; exact train shapes/sampler, no test labels or prediction selection."
+}

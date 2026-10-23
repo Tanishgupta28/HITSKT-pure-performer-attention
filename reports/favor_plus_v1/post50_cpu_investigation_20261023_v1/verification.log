@@ -1,0 +1,66 @@
+{
+  "status": "CPU_FINDINGS_VERIFIED;APPROXIMATION_REVIEW;CPU_ISOLATION_WARNING_RETAINED",
+  "checkpoint50_sha256": "93ebe9d2a29be9a6e4deb278916513339de61c9ac8f72a454a31111829440a73",
+  "original_total_optimizer_updates": 50,
+  "new_optimizer_updates": 0,
+  "model_cuda_operations_requested": 0,
+  "implicit_device_count_warning": "observed in2 CPU-profile logs; strict no-probe intent not satisfied; current runner refuses CUDA-linked CPU backward",
+  "fresh_validation_inference": 0,
+  "test_evaluations": 0,
+  "tests": {
+    "cpu_tests.xml": {
+      "passed": 82,
+      "failures": 0,
+      "skips": 0
+    },
+    "cpu_isolation_guard_tests.xml": {
+      "passed": 3,
+      "failures": 0,
+      "skips": 0
+    }
+  },
+  "unique_cases_across_these_suites": 84,
+  "memory": {
+    "train_examples": 7060,
+    "train_labels": 566107,
+    "original_batches": 181,
+    "original_component_sum_GiB_median": 1.0048615569248796,
+    "original_component_sum_GiB_max": 1.094987453892827,
+    "original_batches_component_sum_above1GiB": 93,
+    "max_one_weighted_state_trajectory_GiB": 1.02734375,
+    "max_combined_accounted_components_GiB": 2.097000109963119,
+    "caveat": "Partial component accounting only, not measured VRAM or safe allocation recommendation"
+  },
+  "preserved": [
+    {
+      "manifest": "reports/favor_plus_v1/shared50_from25_20261023_v1/ARTIFACT_INVENTORY.json",
+      "files": 774,
+      "unchanged": true
+    },
+    {
+      "manifest": "reports/favor_plus_v1/shared25_pilot_20261023_v1/ARTIFACT_INVENTORY.json",
+      "files": 316,
+      "unchanged": true
+    },
+    {
+      "manifest": "reports/favor_plus_v1/assist20_recovery_20261020_v1/ARTIFACT_INVENTORY.json",
+      "files": 199,
+      "unchanged": true
+    },
+    {
+      "manifest": "reports/favor_plus_v1/assist50_continuation_20261020_v1/EXPERIMENT_ARTIFACT_INVENTORY.json",
+      "files": 9,
+      "unchanged": true
+    },
+    {
+      "manifest": "reports/favor_plus_v1/assist50_retry_20261023_v1/VERIFICATION_SUMMARY.json",
+      "files": 8,
+      "unchanged": true
+    }
+  ],
+  "protected_unrelated_files_unchanged": true,
+  "all35_prior_sources_unchanged": true,
+  "all11_processed_hashes_unchanged": true,
+  "full_training": "NO-GO",
+  "longer_bounded_training": "CONDITIONAL GO with explicit approval and persistent approximation REVIEW; no execution now"
+}
