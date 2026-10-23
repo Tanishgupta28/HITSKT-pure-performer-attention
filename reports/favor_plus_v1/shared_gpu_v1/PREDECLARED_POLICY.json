@@ -1,0 +1,23 @@
+{
+  "admission_free_bytes": 8589934592,
+  "admission_sample_spacing_seconds": 0.2,
+  "admission_samples": 2,
+  "advisory_total_vram_budget_bytes": 2147483648,
+  "allocator_cap_bytes": 1073741824,
+  "allow_unsupported_mig_utilization": true,
+  "batch_size": 1,
+  "driver_overhead_allowance_bytes": 1073741824,
+  "host_headroom_bytes": 2147483648,
+  "host_process_rss_bytes": 4294967296,
+  "inter_update_pause_seconds": 0.1,
+  "max_additional_optimizer_calls": 30,
+  "max_admission_utilization_pct": 75,
+  "max_execution_seconds": 2700,
+  "max_padded_tokens": 2048,
+  "max_step_seconds": 30,
+  "max_telemetry_age_seconds": 5,
+  "max_total_optimizer_updates": 50,
+  "mode": "authorized_shared_gpu_v1",
+  "reserved_cap_bytes": 1073741824,
+  "runtime_free_bytes": 6442450944
+}

@@ -30,6 +30,14 @@ remain intact; platform changes do not alter research source or live runs.
 
 ## Current short status
 
+Latest: intentionally shared H100 confirmed; separate shared mode prepared and
+CPU-verified90PASS(58new+32old), original exclusive mode untouched. Read
+[FAVOR_SHARED_GPU_STATE.md](FAVOR_SHARED_GPU_STATE.md). No exclusive allocation or
+host PID mapping required in new mode; all activity logged/unattributed, strict
+resource/scientific gates retained. Exact20 shared plan ready; NO CUDA/real update
+this task, total20. Existing permission accepted; acknowledge1GiB allocator/2GiB
+advisory total budget/window and instruct execution after report. No full run.
+
 Latest23October04:46+ renewed GPU permission acted on: exact20 CUDA recovery
 PASS again, then NVML1094328 vs own3909540 blocks before21. Separate minimal
 zero-optimizer CUDA probe comparesv1/v2/v3: ALL return1101056 vs own3910470,

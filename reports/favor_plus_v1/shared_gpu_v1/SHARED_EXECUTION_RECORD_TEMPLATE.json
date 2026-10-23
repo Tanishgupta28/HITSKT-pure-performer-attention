@@ -1,0 +1,23 @@
+{
+  "mode": "authorized_shared_gpu_v1",
+  "exclusive": false,
+  "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+  "action": "favor_plus_assist2017_shared_resume20_to50",
+  "shared_permission_confirmed": true,
+  "permission_evidence": "/workspace/capstone/reports/favor_plus_v1/shared_gpu_v1/USER_SHARED_AUTHORIZATION.md",
+  "execution_approved": false,
+  "execution_evidence": "PENDING: user instruction to execute the CPU-verified shared policy",
+  "budget_and_window_acknowledged": false,
+  "coordination_evidence": "PENDING: accept1GiB allocator/2GiB advisory total and bounded window with shared-workload coordinator",
+  "limited_pid_visibility_acknowledged": true,
+  "operator": "Tanishgupta28 / research workload operator",
+  "starts_utc": null,
+  "expires_utc": null,
+  "known_explicit_restriction": false,
+  "known_incompatible_reservation": false,
+  "prepared_plan_sha256": "190dcb1c271035a111bc0b60f6f27b604e73b6141c099d66c3825fdcc5a12d0c",
+  "policy_sha256": "4867c950fe93e10720b3b8a967289e2d6be8fa9e7caa151479fc3340584e1f19",
+  "max_total_optimizer_updates": 50,
+  "max_additional_optimizer_calls": 30,
+  "note": "Template only. Existing shared-use permission accepted; no exclusive allocation/host-PID map required. Do not fabricate confirmations."
+}

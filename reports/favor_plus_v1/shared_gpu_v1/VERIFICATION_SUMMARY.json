@@ -1,0 +1,57 @@
+{
+  "status": "CPU_VERIFIED_SHARED_MODE_PREPARED;CUDA_UNRUN",
+  "verified_utc": "2026-10-23T06:08:31.184107+00:00",
+  "base_commit": "efa8a21db5fa2bb9c6414a46ddbb558206b47c32",
+  "cpu_tests": {
+    "passed": 90,
+    "new_shared": 58,
+    "existing_continuation": 32,
+    "failed": 0,
+    "skipped": 0
+  },
+  "prepared_plan_sha256": "190dcb1c271035a111bc0b60f6f27b604e73b6141c099d66c3825fdcc5a12d0c",
+  "policy_sha256": "4867c950fe93e10720b3b8a967289e2d6be8fa9e7caa151479fc3340584e1f19",
+  "original_bound_sources_unchanged": 28,
+  "new_shared_bound_sources": 31,
+  "scientific_contract_fields_unchanged": true,
+  "preserved_checkpoints": [
+    {
+      "update": 5,
+      "sha256": "93fca2f31a2441c30781904c89e1b5719761526ea7ca5e5442bab6f1d0d4cb0a",
+      "bytes": 83802810
+    },
+    {
+      "update": 10,
+      "sha256": "a47a81892b15240a7423ad73acb4c32141c315cfac3fa0ed0f2c9485aef22e16",
+      "bytes": 83802810
+    },
+    {
+      "update": 20,
+      "sha256": "0388e984b8bed21210455be561524a041c892b98b2a87b50fa3ecb1c3ade86f4",
+      "bytes": 83802810
+    }
+  ],
+  "latest_failed_attempt_files_unchanged": 8,
+  "light_hold_sha256": "65214c2c53852024e970fd0a176f71968f204ec0748635a7e6f46de3ed64c234",
+  "unrelated_readme_sakt_unchanged": true,
+  "exclusive_policy_changed": false,
+  "cuda_execution": false,
+  "real_optimizer_calls": 0,
+  "total_real_training_updates": 20,
+  "new_real_checkpoints": 0,
+  "shared_use_permission_confirmed": true,
+  "execution_budget_window_confirmation_pending": true,
+  "pid_mapping_proven": false,
+  "exclusive_allocation_required_for_shared_mode": false,
+  "process_signals": 0,
+  "other_job_or_allocation_changes": 0,
+  "background_watchers": 0,
+  "resource_observation_sha256": "ea89c5217811308cc6a8f2502cbbb1ef6928b590f43c32cdf5fb442859ffb0c3",
+  "cpu_checkpoint_verification_sha256": "fbfaf20bbb1e30e579d6dbb782c83c6ac3152a7b30ec753124244ff44e9faeea",
+  "prepared_experiment_files": {
+    "experiments/hitskt_favor_plus_v1/assist2017/assist50_shared_prepare_20261023_v1/prepared_plan.json": {
+      "bytes": 110745,
+      "sha256": "190dcb1c271035a111bc0b60f6f27b604e73b6141c099d66c3825fdcc5a12d0c"
+    }
+  }
+}

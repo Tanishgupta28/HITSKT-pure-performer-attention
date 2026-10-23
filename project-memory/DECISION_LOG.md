@@ -1354,3 +1354,20 @@ own3910470; APIversion switch notfix. ExplicitGPUgrantaccepted/no newpermission
 asked. Postexit empty/baseline/Lightsame, no unrelatedsignals/guardchanges/retries.
 Evidence/result in reports/favor_plus_v1/assist50_retry_20261023_v1. Stop further
 GPUattempts until real identity bridge; preserve exact20/remaining30scope/science.
+
+## 2026-10-23 — Explicitly authorized shared-resource mode; exclusive assumptions superseded
+
+User clarifies H100 intentionallyshared/noadminPIDmapping; noexclusiveownership
+prerequisite in NEW mode. Retained all old exclusive/scientific source28, added
+separate shared policy/controller/CLI and source-bound plan. Unattributed peers
+logged/churntracked, no aliases.1GiBallocator/2GiBadvisorytotal/8+6GiBfree floors/
+30supdate/.1spacing/45min/explicitpermissionwindow/Light/numerical/recovery gates.
+90CPUcases PASS(58new+32old), synthetic20→50+atomic/freshrecovery/partialAdamfailure
+tested. Actual20/61Adamstate CPUreload exact, source/data/science preserved. Plan
+190dcb1c... fromsameparent20, noGPUupdates, total20. FiniteposttestNVML06:00eligible
+39.34GiBfree/utilunsupportedUNKNOWN, noCUDA/torch/libcuda incollector. Report
+SHARED_GPU_MODE_PREPARATION.md. Existing sharedpermissionaccepted; report-before-
+execution task leaves budget/window/newmodeexecution confirmation genuinelypending
+in template. No newexclusive/admin mapping request. GO boundedsharedpilot after
+those confirmations/freshadmission; NO-GO fulltraining. No otherjobs/signals/
+allocations/Light/DKT/history/threshold changes. Publish scoped research only.

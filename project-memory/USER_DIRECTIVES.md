@@ -2,7 +2,27 @@
 
 Updated: 2026-10-23 UTC
 
-## 2026-10-23 — Renewed request to continue bounded work (latest)
+## 2026-10-23 — Explicit shared-GPU mode; CPU validation before execution (latest)
+
+- User clarifies H100 is intentionally shared. Exclusive ownership and complete
+  host/container PID attribution are NOT prerequisites for normal operation.
+  Prepare a SEPARATE explicit shared mode; retain historical exclusive policy.
+- Confirm existing shared-use permission, observe resource/process/utilization
+  telemetry without treating free VRAM as permission or guessing PID identity.
+  Unknown peers are expected, must be recorded/monitored rather than whitelisted
+  as self or silently ignored. Keep namespace mapping explicitly unresolved.
+- Conservative allocator/batch/headroom/time limits, memory pressure/CUDA error
+  stops, no interference/signals/job changes/Light restart/full training. Preserve
+  exact20/Adam/RNG/projections/scientific configuration and historical artifacts.
+- Prepare only the bounded20→50 continuation (30 more updates) under the new
+  shared policy, CPU-validate FIRST and report readiness/required coordination
+  BEFORE GPU execution. No CUDA/training in this preparation turn. A finite
+  metadata-only NVML resource observation after CPU tests is not CUDA execution.
+- Existing user GPU/shared-use permission persists; do not demand new exclusive
+  allocation or administrator PID mapping. Shared policy risk/budget/window and
+  explicit execution scope must be recorded truthfully before later launch.
+
+## 2026-10-23 — Renewed request to continue bounded work (historical)
 
 - User states the GPU is idle and instructs continuation. Treat this as renewed
   execution direction for the existing exact20→50 bounded scope, superseding

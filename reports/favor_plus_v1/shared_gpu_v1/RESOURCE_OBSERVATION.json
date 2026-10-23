@@ -1,0 +1,167 @@
+{
+  "purpose": "read-only resource eligibility after CPU tests, NOT execution authorization",
+  "observations": [
+    {
+      "observation": {
+        "observed_utc": "2026-10-23T06:00:06.596351+00:00",
+        "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+        "device": {
+          "total_bytes": 42278584320,
+          "free_bytes": 42238869504,
+          "used_bytes": 39714816,
+          "compute_processes": []
+        },
+        "utilization": {
+          "status": "unsupported",
+          "nvml_status": 3,
+          "gpu_percent": null,
+          "memory_percent": null
+        },
+        "local": {
+          "observed_utc": "2026-10-23T06:00:06.702461+00:00",
+          "own_pid": 3931737,
+          "holders": [],
+          "conflicts": [],
+          "light_processes": [],
+          "inaccessible_fd_pids": [],
+          "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+        },
+        "pid_attribution": "UNRESOLVED; self/peer not inferred"
+      },
+      "host": {
+        "peak_process_rss_bytes": 30658560,
+        "cgroup_headroom_bytes": 33014824960,
+        "cgroup_limit_bytes": 96636764160,
+        "cgroup_usage_bytes": 63621939200
+      },
+      "resource_assessment": {
+        "status": "ADMIT_SHARED_WITH_LIMITED_ATTRIBUTION",
+        "reasons": [],
+        "warnings": [
+          "PID namespace identity remains unresolved",
+          "MIG utilization unsupported: cap/headroom/pacing/runtime fallback; load UNKNOWN"
+        ],
+        "reported_compute_processes": [],
+        "local_holders": [],
+        "local_visibility_gaps": [],
+        "pid_mapping_proven": false,
+        "exclusive_ownership_claimed": false
+      }
+    },
+    {
+      "observation": {
+        "observed_utc": "2026-10-23T06:00:06.903588+00:00",
+        "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+        "device": {
+          "total_bytes": 42278584320,
+          "free_bytes": 42238869504,
+          "used_bytes": 39714816,
+          "compute_processes": []
+        },
+        "utilization": {
+          "status": "unsupported",
+          "nvml_status": 3,
+          "gpu_percent": null,
+          "memory_percent": null
+        },
+        "local": {
+          "observed_utc": "2026-10-23T06:00:07.238639+00:00",
+          "own_pid": 3931737,
+          "holders": [
+            {
+              "pid": 3931744,
+              "identity_complete": true,
+              "verified_read_only": true,
+              "start_time_ticks": 95500443,
+              "uid": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "parent_pid": 3931743,
+              "state": "R (running)",
+              "comm": "nvidia-smi",
+              "executable": "/usr/bin/nvidia-smi",
+              "executable_device": 2305,
+              "executable_inode": 71042318,
+              "argv_sha256": "78d413cb0c836e84edc79f6d7edaeafecb39b9c52fecb9b5959f1c3633c88c54",
+              "python_module": null,
+              "cwd_category": "other",
+              "approved_option_names": [],
+              "trusted_binary_sha256": "a7d6645d5d4554ce7f5e7ae68cef9fb32d21721eaa2c271f7a58ef6c21039263",
+              "nvidia_handles": [
+                "/dev/nvidia-caps/nvidia-cap21",
+                "/dev/nvidia-uvm",
+                "/dev/nvidia0",
+                "/dev/nvidiactl"
+              ],
+              "classification": "trusted_read_only_monitor"
+            }
+          ],
+          "conflicts": [],
+          "light_processes": [],
+          "inaccessible_fd_pids": [],
+          "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+        },
+        "pid_attribution": "UNRESOLVED; self/peer not inferred"
+      },
+      "host": {
+        "peak_process_rss_bytes": 31232000,
+        "cgroup_headroom_bytes": 32957960192,
+        "cgroup_limit_bytes": 96636764160,
+        "cgroup_usage_bytes": 63678803968
+      },
+      "resource_assessment": {
+        "status": "ADMIT_SHARED_WITH_LIMITED_ATTRIBUTION",
+        "reasons": [],
+        "warnings": [
+          "PID namespace identity remains unresolved",
+          "visible GPU holders recorded as shared/unattributed activity",
+          "MIG utilization unsupported: cap/headroom/pacing/runtime fallback; load UNKNOWN"
+        ],
+        "reported_compute_processes": [],
+        "local_holders": [
+          {
+            "pid": 3931744,
+            "identity_complete": true,
+            "verified_read_only": true,
+            "start_time_ticks": 95500443,
+            "uid": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "parent_pid": 3931743,
+            "state": "R (running)",
+            "comm": "nvidia-smi",
+            "executable": "/usr/bin/nvidia-smi",
+            "executable_device": 2305,
+            "executable_inode": 71042318,
+            "argv_sha256": "78d413cb0c836e84edc79f6d7edaeafecb39b9c52fecb9b5959f1c3633c88c54",
+            "python_module": null,
+            "cwd_category": "other",
+            "approved_option_names": [],
+            "trusted_binary_sha256": "a7d6645d5d4554ce7f5e7ae68cef9fb32d21721eaa2c271f7a58ef6c21039263",
+            "nvidia_handles": [
+              "/dev/nvidia-caps/nvidia-cap21",
+              "/dev/nvidia-uvm",
+              "/dev/nvidia0",
+              "/dev/nvidiactl"
+            ],
+            "classification": "trusted_read_only_monitor"
+          }
+        ],
+        "local_visibility_gaps": [],
+        "pid_mapping_proven": false,
+        "exclusive_ownership_claimed": false
+      }
+    }
+  ],
+  "no_torch_import": true,
+  "no_cuda_driver_import": true,
+  "cuda_initialized": false,
+  "optimizer_calls": 0,
+  "gpu_execution_authorized_by_snapshot": false
+}

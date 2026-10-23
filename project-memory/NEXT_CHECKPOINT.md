@@ -1,5 +1,27 @@
 # Next checkpoint
 
+LATEST shared-mode preparation COMPLETE. Read
+[FAVOR_SHARED_GPU_STATE.md](FAVOR_SHARED_GPU_STATE.md) and
+`reports/favor_plus_v1/SHARED_GPU_MODE_PREPARATION.md`.
+User explicitly supersedes exclusive-ownership prerequisite for NEW shared mode.
+Do NOT demand host mapping/admin exclusivity again for shared use. Old unresolved
+PID pairs remain UNKNOWN, old exclusive guard preserved.90 CPU cases PASS,
+actual20 state/source/data verified, new shared plan prepared; no CUDA/real updates
+in this task. Current budget/window and new-mode execution flags in
+`reports/favor_plus_v1/shared_gpu_v1/SHARED_EXECUTION_RECORD_TEMPLATE.json` are
+truthfully pending; existing shared-GPU permission already confirmed. Await actual
+acceptance of1GiB allocator/2GiB advisory total budget/window and instruction to
+execute following CPU-first report. Then complete a fresh scoped record (<=2h),
+fresh two-snapshot resource admission; use scripts/assist50_favor_plus_shared.py
+ONLY with exact shared plan, first20 GPU recovery/full frozen validation exact,
+30/verify30→40/verify40→50/verify50, max30 additional; stop50 or unsafe pressure/
+CUDA/numerical failure. No auto retry/background polling/other-job changes/full
+training. Peer presence/different PIDs alone do not stop NEW shared mode; logging
+and memory/visibility/time/allocator/scientific checks remain mandatory. Preserve
+all checkpoints/Light/DKT/old artifacts and original.20 REVIEW.
+
+Earlier exclusive-mode checkpoint (historical):
+
 Latestrenewed GPU work COMPLETE but training blockedbefore21. Read
 `reports/favor_plus_v1/assist50_retry_20261023_v1/RESULT.md`. GPU permission is
 explicit/accepted; CUDA exact20 recovery succeeded again in newfailedv2.

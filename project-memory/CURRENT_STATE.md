@@ -2,7 +2,28 @@
 
 Updated: 2026-10-23 UTC
 
-## Latest: renewed GPU direction executed; exact20 recovery PASS, PID issue persists
+## Latest: explicit shared-GPU mode CPU-verified/prepared; no new CUDA/training
+
+Read [FAVOR_SHARED_GPU_STATE.md](FAVOR_SHARED_GPU_STATE.md) and
+`reports/favor_plus_v1/SHARED_GPU_MODE_PREPARATION.md`. User clarifies intentional
+sharing; NEW shared mode no longer requires exclusive allocation/host PID map.
+Old exclusive mode/28 bound sources and artifacts unchanged. New policy/controller/
+CLI use1GiB allocator,2GiB advisory total,8/6GiB admission/runtime free floors,
+fresh successful memory/process telemetry, explicit unsupported-utilization
+fallback, peer/churn logging, pacing/.1s and30s/45min bounds. PID identity stays
+UNKNOWN; no aliases/ownership claims. Protected Light hold/resource/science gates
+retained.90CPUtests PASS(58new+32existing), actual20/61Adam states CPUreload exact.
+Real shared prepared planSHA190dcb1c271035a111bc0b60f6f27b604e73b6141c099d66c3825fdcc5a12d0c;
+sameparent20/Adam/RNG/projections/sampler/science/.20 REVIEW. Two post-test read-only
+NVML samples06:00UTC eligible,39.34GiB free/utilization unsupported UNKNOWN;
+no torch/libcuda loaded in collector, no CUDA/real update in this task. Total20.
+Existing shared-use permission accepted; record budget/window acknowledgment
+and instruction to execute new CPU-verified shared mode before launch (current
+task is report-before-execution). Template truthfully false/pending for those
+fields. No administrator/exclusive/PID mapping prerequisite for shared mode.
+GO conditional bounded shared pilot, NO-GO full training; stop for nextinstruction.
+
+## Historical23October: renewed GPU direction executed; exact20 recovery PASS, PID issue persists
 
 User explicitly says continue/work on GPU, superseding precedingCPU-only scope.
 Fresh empty-MIG admission passed; new assist50_continuation_20261023_v2 restored
