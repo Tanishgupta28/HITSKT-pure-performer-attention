@@ -2,7 +2,24 @@
 
 Updated: 2026-10-23 UTC
 
-## Latest: administrator procedure and CPU witness prepared; no GPU execution
+## Latest: renewed GPU direction executed; exact20 recovery PASS, PID issue persists
+
+User explicitly says continue/work on GPU, superseding precedingCPU-only scope.
+Fresh empty-MIG admission passed; new assist50_continuation_20261023_v2 restored
+exact20 on CUDA/modelAdamRNGprojections/nextgradient proof PASS/zeroAdamcalls.
+04:46:57 guard rejected NVML1094328 vs own3909540 before21; live in-process
+metadata captured before exit, no mapping/no guard change/no retry of failed dir.
+Then one newly authorized zero-optimizer CUDA metadata probe: local3910470 vs
+NVML1101056 in ALL native interfacesv1/v2/v3. v3 switch doesnotfixidentity. Probe
+allocates4-byte tensor, no model/data/checkpoint/forward/backward/Adam. Release
+empty/baseline37.94MiB/no unknown holder or Light trainer, hold unchanged.
+Report `reports/favor_plus_v1/assist50_retry_20261023_v1/RESULT.md` and JSON/log
+evidence. NewGPU execution occurred; no CPU-only restriction/permission request.
+Total20/new0, no30/40/50metrics. Need runtime identity binding, not anotherGPU
+grant; cannot label NVML process competitor or self without proof. Stop further
+GPU attempts now; preserve old failures/checkpoint/science/.20 REVIEW/Light/DKT.
+
+## Historical23October: administrator procedure and CPU witness prepared; no GPU execution
 
 Read [FAVOR_HOST_ATTRIBUTION_PREPARATION_STATE.md](FAVOR_HOST_ATTRIBUTION_PREPARATION_STATE.md).
 Task is CPU-only; no admission retry/CUDA/NVML/smi/training in this task. Detailed

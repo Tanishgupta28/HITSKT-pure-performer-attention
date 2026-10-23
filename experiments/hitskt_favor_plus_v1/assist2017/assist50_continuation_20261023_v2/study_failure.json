@@ -1,0 +1,94 @@
+{
+  "conflict_snapshot": {
+    "conflicts": [],
+    "holders": [],
+    "inaccessible_fd_pids": [],
+    "light_processes": [],
+    "nvml": {
+      "compute_processes": [
+        {
+          "compute_instance": 0,
+          "gpu_instance": 2,
+          "pid": 1094328,
+          "used_gpu_memory_bytes": 578813952
+        }
+      ],
+      "free_bytes": 41650814976,
+      "total_bytes": 42278584320,
+      "used_bytes": 627769344
+    },
+    "observed_utc": "2026-10-23T04:46:57.778888+00:00",
+    "own_pid": 3909540,
+    "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+  },
+  "failure_type": "ResourceConflict",
+  "last_safe_resources": {
+    "additional_optimizer_calls": 0,
+    "calls": 20,
+    "campaign_elapsed_seconds": 0.300445,
+    "host": {
+      "cgroup_headroom_bytes": 33317416960,
+      "cgroup_limit_bytes": 96636764160,
+      "cgroup_usage_bytes": 63319347200,
+      "peak_process_rss_bytes": 683438080
+    },
+    "nvml": {
+      "compute_processes": [],
+      "free_bytes": 42238869504,
+      "total_bytes": 42278584320,
+      "used_bytes": 39714816
+    },
+    "nvml_peak_observed_used_bytes": 39714816,
+    "observed_utc": "2026-10-23T04:46:54.710266+00:00",
+    "phase": "initialization",
+    "snapshot": {
+      "conflicts": [],
+      "holders": [
+        {
+          "approved_option_names": [],
+          "argv_sha256": "78d413cb0c836e84edc79f6d7edaeafecb39b9c52fecb9b5959f1c3633c88c54",
+          "classification": "trusted_read_only_monitor",
+          "comm": "nvidia-smi",
+          "cwd_category": "other",
+          "executable": "/usr/bin/nvidia-smi",
+          "executable_device": 2305,
+          "executable_inode": 71042318,
+          "identity_complete": true,
+          "nvidia_handles": [
+            "/dev/nvidia-uvm",
+            "/dev/nvidia0",
+            "/dev/nvidiactl"
+          ],
+          "parent_pid": 3909552,
+          "pid": 3909553,
+          "python_module": null,
+          "start_time_ticks": 95061188,
+          "state": "R (running)",
+          "trusted_binary_sha256": "a7d6645d5d4554ce7f5e7ae68cef9fb32d21721eaa2c271f7a58ef6c21039263",
+          "uid": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "verified_read_only": true
+        }
+      ],
+      "inaccessible_fd_pids": [],
+      "light_processes": [],
+      "observed_utc": "2026-10-23T04:46:54.613139+00:00",
+      "own_pid": 3909540,
+      "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+    }
+  },
+  "message": "unverified/competing NVML compute process",
+  "no_automatic_restart": true,
+  "no_cuda_calls_in_failure_handler": true,
+  "observed_utc": "2026-10-23T04:46:57.871742+00:00",
+  "optimizer_step_calls": 20,
+  "optimizer_updates": 20,
+  "phase": "diagnostics_20",
+  "process_execution_seconds": 3.4619251219555736,
+  "status": "FAIL",
+  "valid_published_checkpoints": []
+}

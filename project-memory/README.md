@@ -30,6 +30,13 @@ remain intact; platform changes do not alter research source or live runs.
 
 ## Current short status
 
+Latest23October04:46+ renewed GPU permission acted on: exact20 CUDA recovery
+PASS again, then NVML1094328 vs own3909540 blocks before21. Separate minimal
+zero-optimizer CUDA probe comparesv1/v2/v3: ALL return1101056 vs own3910470,
+so v3 alone isnotfix. No newAdamcall/total20/no guard change. Read
+`reports/favor_plus_v1/assist50_retry_20261023_v1/RESULT.md`. Need actual runtime
+mapping, not repeated GPU authorization; stop further retries. Light preserved.
+
 23OctoberCPU-only preparation: read
 [FAVOR_HOST_ATTRIBUTION_PREPARATION_STATE.md](FAVOR_HOST_ATTRIBUTION_PREPARATION_STATE.md).
 Administrator commands/live-mapping procedure and standalone CPU witness ready;

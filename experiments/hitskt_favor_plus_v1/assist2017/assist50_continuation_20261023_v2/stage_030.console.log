@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/workspace/capstone/reports/favor_plus_v1/assist50_retry_20261023_v1/execute_with_identity_capture.py", line 15, in <module>
+    result = execute(PLAN, record, 30)
+  File "/workspace/capstone/ktbench/favor_plus_assist50.py", line 234, in execute
+    if previous==20:diagnose(20)
+  File "/workspace/capstone/ktbench/favor_plus_assist50.py", line 213, in diagnose
+    phase=f'diagnostics_{step}';b.check(phase)
+  File "/workspace/capstone/ktbench/favor_plus_assist50.py", line 138, in check
+    raise telemetry.ResourceConflict('unverified/competing NVML compute process',{**snapshot,'nvml':memory})
+ktbench.favor_plus_resource_telemetry.ResourceConflict: unverified/competing NVML compute process

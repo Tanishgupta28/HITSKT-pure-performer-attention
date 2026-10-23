@@ -1341,3 +1341,16 @@ checks pass. No actual NVML/smi/CUDA/optimizer/host commands/signals/job changes
 in this task. Procedure and correction proposal saved under reports/favor_plus_v1;
 nothing sent externally. Host intervention/evidence still needed, total20.
 Existing owner/bounded approval retained; stop GPU until real attribution proof.
+
+## 2026-10-23 — Renewed GPU instruction executed; all NVML API versions differ
+
+User again directscontinuation and expressly permitsGPU, superseding priorCPU
+scope. Fresh source-bound continuationv2 exact20 CUDA recovery PASS, then unchanged
+guard rejectsNVML1094328 vs own3909540 before21. Captured own live process/ns/
+NVIDIAfd/library metadata beforeexit, mappingunproved. No newAdamcalls. On further
+GPUpermission clarification, ran one bounded4-byte-tensor CUDA context diagnostic,
+no model/data/forward/backward/optimizer: nativeNVMLv1/v2/v3 ALL report1101056 vs
+own3910470; APIversion switch notfix. ExplicitGPUgrantaccepted/no newpermission
+asked. Postexit empty/baseline/Lightsame, no unrelatedsignals/guardchanges/retries.
+Evidence/result in reports/favor_plus_v1/assist50_retry_20261023_v1. Stop further
+GPUattempts until real identity bridge; preserve exact20/remaining30scope/science.

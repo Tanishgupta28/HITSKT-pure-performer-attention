@@ -2,7 +2,20 @@
 
 Updated: 2026-10-23 UTC
 
-## 2026-10-23 — Host attribution procedure and CPU-only preparation (latest)
+## 2026-10-23 — Renewed request to continue bounded work (latest)
+
+- User states the GPU is idle and instructs continuation. Treat this as renewed
+  execution direction for the existing exact20→50 bounded scope, superseding
+  the immediately preceding CPU-only task boundary. No full-training approval.
+- User subsequently explicitly reiterates that GPU work is permitted; do not
+  maintain a CPU-only restriction or request that permission again. Bounded
+  zero-optimizer runtime diagnostics are within the current investigation.
+- Retain current resource/identity/scientific safeguards, checkpoint20/Adam/RNG/
+  projection/configuration integrity and .20 REVIEW threshold. Verify actual
+  current conditions; do not equate user-reported idle VRAM with PID identity or
+  bypass a guard. No unrelated/LightSAKT2 signals, resource changes or watchers.
+
+## 2026-10-23 — Host attribution procedure and CPU-only preparation (historical)
 
 - Review saved failures/guards; distinguish a likely namespace/runtime mismatch
   from verified identity. Specify trusted host PID/NSpid/namespace/start-time/

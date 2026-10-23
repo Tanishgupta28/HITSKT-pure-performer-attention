@@ -1,0 +1,39 @@
+{
+  "own_pid": 3910470,
+  "nvml_interfaces": {
+    "nvmlDeviceGetComputeRunningProcesses": {
+      "initial_status": 7,
+      "count": 1,
+      "read_status": 0,
+      "processes": [
+        {
+          "pid": 1101056,
+          "used_bytes": 260046848
+        }
+      ]
+    },
+    "nvmlDeviceGetComputeRunningProcesses_v2": {
+      "initial_status": 7,
+      "count": 1,
+      "read_status": 0,
+      "processes": [
+        {
+          "pid": 1101056,
+          "used_bytes": 260046848
+        }
+      ]
+    },
+    "nvmlDeviceGetComputeRunningProcesses_v3": {
+      "initial_status": 7,
+      "count": 1,
+      "read_status": 0,
+      "processes": [
+        {
+          "pid": 1101056,
+          "used_bytes": 260046848
+        }
+      ]
+    }
+  },
+  "optimizer_calls": 0
+}

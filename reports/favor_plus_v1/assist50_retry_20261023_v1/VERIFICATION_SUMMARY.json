@@ -1,0 +1,48 @@
+{
+  "status": "CUDA_RECOVERY_PASS;GPU_PID_IDENTITY_UNRESOLVED",
+  "cuda_used": true,
+  "total_training_updates": 20,
+  "additional_optimizer_calls": 0,
+  "checkpoint20_sha256": "0388e984b8bed21210455be561524a041c892b98b2a87b50fa3ecb1c3ade86f4",
+  "bound_sources_unchanged": 28,
+  "all_nvml_interfaces_pid": 1101056,
+  "probe_own_pid": 3910470,
+  "new_guard_tests_passed": 3,
+  "production_guard_changed": false,
+  "light_hold_unchanged": true,
+  "final_gpu_compute": [],
+  "experiment_files": {
+    "experiments/hitskt_favor_plus_v1/assist2017/assist50_continuation_20261023_v2/prepared_plan.json": {
+      "bytes": 111779,
+      "sha256": "d187954d3149b8bd5cf7370e34ba07fa8ce015fac0722b487780bac6ed56c006"
+    },
+    "experiments/hitskt_favor_plus_v1/assist2017/assist50_continuation_20261023_v2/stage_030/admission.json": {
+      "bytes": 5950,
+      "sha256": "8be7338c1f5a7f65099f7adb3413c8cdba79231856804d61891326cf3b381b4d"
+    },
+    "experiments/hitskt_favor_plus_v1/assist2017/assist50_continuation_20261023_v2/stage_030/failure.json": {
+      "bytes": 2987,
+      "sha256": "a4c3816d423679038e471c68b5b02aa4615f28da6ad1df54d73246f5c33fd52d"
+    },
+    "experiments/hitskt_favor_plus_v1/assist2017/assist50_continuation_20261023_v2/stage_030/incoming_recovery_and_migration.json": {
+      "bytes": 1385,
+      "sha256": "ff24a887deb7c57d61f9dd7bb55f56ab8a281af9fffaeeb091f84a0cb343c58e"
+    },
+    "experiments/hitskt_favor_plus_v1/assist2017/assist50_continuation_20261023_v2/stage_030/monitor_event_001.json": {
+      "bytes": 1273,
+      "sha256": "a53313e3d5d8dd95a7b79033bc5edcdbe9f473aa26e35dc5c6d03e61caa3a1fa"
+    },
+    "experiments/hitskt_favor_plus_v1/assist2017/assist50_continuation_20261023_v2/stage_030/runtime.json": {
+      "bytes": 433,
+      "sha256": "cca8b5d07bdc9c8ddc1ee474a9d9c7f77d53fd7208e3c47d5e51a6f2d6e6259b"
+    },
+    "experiments/hitskt_favor_plus_v1/assist2017/assist50_continuation_20261023_v2/stage_030.console.log": {
+      "bytes": 739,
+      "sha256": "6e8272817d9f9997c67874d5b27c646661247e300c9224b47ba1d5cfcc9c0a27"
+    },
+    "experiments/hitskt_favor_plus_v1/assist2017/assist50_continuation_20261023_v2/study_failure.json": {
+      "bytes": 2987,
+      "sha256": "a4c3816d423679038e471c68b5b02aa4615f28da6ad1df54d73246f5c33fd52d"
+    }
+  }
+}

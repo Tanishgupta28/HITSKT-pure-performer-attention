@@ -1,0 +1,293 @@
+{
+  "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+  "own_pid": 3910470,
+  "source": "live CUDA context with native NVML metadata",
+  "nvml_interfaces": {
+    "nvmlDeviceGetComputeRunningProcesses": {
+      "initial_status": 7,
+      "count": 1,
+      "read_status": 0,
+      "processes": [
+        {
+          "pid": 1101056,
+          "used_bytes": 260046848
+        }
+      ]
+    },
+    "nvmlDeviceGetComputeRunningProcesses_v2": {
+      "initial_status": 7,
+      "count": 1,
+      "read_status": 0,
+      "processes": [
+        {
+          "pid": 1101056,
+          "used_bytes": 260046848
+        }
+      ]
+    },
+    "nvmlDeviceGetComputeRunningProcesses_v3": {
+      "initial_status": 7,
+      "count": 1,
+      "read_status": 0,
+      "processes": [
+        {
+          "pid": 1101056,
+          "used_bytes": 260046848
+        }
+      ]
+    }
+  },
+  "identity": [
+    {
+      "pid": 1101056,
+      "status": "NOT_VISIBLE",
+      "mapping_proven": false
+    },
+    {
+      "pid": 3910470,
+      "status": "VISIBLE_IDENTITY_SNAPSHOT",
+      "mapping_proven": false,
+      "identity": {
+        "pid": 3910470,
+        "identity_complete": true,
+        "verified_read_only": false,
+        "start_time_ticks": 95077255,
+        "uid": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "parent_pid": 3910453,
+        "state": "R (running)",
+        "comm": "pt_main_thread",
+        "executable": "/usr/bin/python3.10",
+        "executable_device": 1048661,
+        "executable_inode": 30691867,
+        "argv_sha256": "d046919ad606c48bff16c25f282bc46a1cbbebedd875e9531cf1de173756260f",
+        "python_module": null,
+        "cwd_category": "HiTSKT"
+      },
+      "selected_status": {
+        "Pid": 3910470,
+        "Tgid": 3910470,
+        "PPid": 3910453,
+        "TracerPid": 0,
+        "NSpid": [
+          3910470
+        ],
+        "NStgid": [
+          3910470
+        ],
+        "Uid": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "cap_sys_admin": false,
+        "cap_sys_ptrace": false
+      },
+      "cgroup": {
+        "sha256": "ccf1b5d7b273bfcc3c1d3e38419d932b751047212486d64e83b932e36eac39a7",
+        "hierarchies": [
+          {
+            "hierarchy": 13,
+            "controllers": [
+              "rdma"
+            ],
+            "root_only": false,
+            "path_sha256": "68839239e9dedfbd7dac3c1de9f7e5c54961f453b6fb9b6cb7ae02aa92ed2f82",
+            "kubepods": true,
+            "pod_uid": "c5f7f8ec-4e1f-4b24-8ab5-a48350b23dc2",
+            "container_id_sha256": "932d4952e9660218f3413b1db03d1d82337232b1fc5f099978383d6f48360ad7"
+          },
+          {
+            "hierarchy": 12,
+            "controllers": [
+              "blkio"
+            ],
+            "root_only": false,
+            "path_sha256": "68839239e9dedfbd7dac3c1de9f7e5c54961f453b6fb9b6cb7ae02aa92ed2f82",
+            "kubepods": true,
+            "pod_uid": "c5f7f8ec-4e1f-4b24-8ab5-a48350b23dc2",
+            "container_id_sha256": "932d4952e9660218f3413b1db03d1d82337232b1fc5f099978383d6f48360ad7"
+          },
+          {
+            "hierarchy": 11,
+            "controllers": [
+              "devices"
+            ],
+            "root_only": false,
+            "path_sha256": "68839239e9dedfbd7dac3c1de9f7e5c54961f453b6fb9b6cb7ae02aa92ed2f82",
+            "kubepods": true,
+            "pod_uid": "c5f7f8ec-4e1f-4b24-8ab5-a48350b23dc2",
+            "container_id_sha256": "932d4952e9660218f3413b1db03d1d82337232b1fc5f099978383d6f48360ad7"
+          },
+          {
+            "hierarchy": 10,
+            "controllers": [
+              "misc"
+            ],
+            "root_only": false,
+            "path_sha256": "68839239e9dedfbd7dac3c1de9f7e5c54961f453b6fb9b6cb7ae02aa92ed2f82",
+            "kubepods": true,
+            "pod_uid": "c5f7f8ec-4e1f-4b24-8ab5-a48350b23dc2",
+            "container_id_sha256": "932d4952e9660218f3413b1db03d1d82337232b1fc5f099978383d6f48360ad7"
+          },
+          {
+            "hierarchy": 9,
+            "controllers": [
+              "freezer"
+            ],
+            "root_only": false,
+            "path_sha256": "68839239e9dedfbd7dac3c1de9f7e5c54961f453b6fb9b6cb7ae02aa92ed2f82",
+            "kubepods": true,
+            "pod_uid": "c5f7f8ec-4e1f-4b24-8ab5-a48350b23dc2",
+            "container_id_sha256": "932d4952e9660218f3413b1db03d1d82337232b1fc5f099978383d6f48360ad7"
+          },
+          {
+            "hierarchy": 8,
+            "controllers": [
+              "hugetlb"
+            ],
+            "root_only": false,
+            "path_sha256": "68839239e9dedfbd7dac3c1de9f7e5c54961f453b6fb9b6cb7ae02aa92ed2f82",
+            "kubepods": true,
+            "pod_uid": "c5f7f8ec-4e1f-4b24-8ab5-a48350b23dc2",
+            "container_id_sha256": "932d4952e9660218f3413b1db03d1d82337232b1fc5f099978383d6f48360ad7"
+          },
+          {
+            "hierarchy": 7,
+            "controllers": [
+              "cpuset"
+            ],
+            "root_only": false,
+            "path_sha256": "68839239e9dedfbd7dac3c1de9f7e5c54961f453b6fb9b6cb7ae02aa92ed2f82",
+            "kubepods": true,
+            "pod_uid": "c5f7f8ec-4e1f-4b24-8ab5-a48350b23dc2",
+            "container_id_sha256": "932d4952e9660218f3413b1db03d1d82337232b1fc5f099978383d6f48360ad7"
+          },
+          {
+            "hierarchy": 6,
+            "controllers": [
+              "perf_event"
+            ],
+            "root_only": false,
+            "path_sha256": "68839239e9dedfbd7dac3c1de9f7e5c54961f453b6fb9b6cb7ae02aa92ed2f82",
+            "kubepods": true,
+            "pod_uid": "c5f7f8ec-4e1f-4b24-8ab5-a48350b23dc2",
+            "container_id_sha256": "932d4952e9660218f3413b1db03d1d82337232b1fc5f099978383d6f48360ad7"
+          },
+          {
+            "hierarchy": 5,
+            "controllers": [
+              "pids"
+            ],
+            "root_only": false,
+            "path_sha256": "68839239e9dedfbd7dac3c1de9f7e5c54961f453b6fb9b6cb7ae02aa92ed2f82",
+            "kubepods": true,
+            "pod_uid": "c5f7f8ec-4e1f-4b24-8ab5-a48350b23dc2",
+            "container_id_sha256": "932d4952e9660218f3413b1db03d1d82337232b1fc5f099978383d6f48360ad7"
+          },
+          {
+            "hierarchy": 4,
+            "controllers": [
+              "net_cls",
+              "net_prio"
+            ],
+            "root_only": false,
+            "path_sha256": "68839239e9dedfbd7dac3c1de9f7e5c54961f453b6fb9b6cb7ae02aa92ed2f82",
+            "kubepods": true,
+            "pod_uid": "c5f7f8ec-4e1f-4b24-8ab5-a48350b23dc2",
+            "container_id_sha256": "932d4952e9660218f3413b1db03d1d82337232b1fc5f099978383d6f48360ad7"
+          },
+          {
+            "hierarchy": 3,
+            "controllers": [
+              "memory"
+            ],
+            "root_only": false,
+            "path_sha256": "68839239e9dedfbd7dac3c1de9f7e5c54961f453b6fb9b6cb7ae02aa92ed2f82",
+            "kubepods": true,
+            "pod_uid": "c5f7f8ec-4e1f-4b24-8ab5-a48350b23dc2",
+            "container_id_sha256": "932d4952e9660218f3413b1db03d1d82337232b1fc5f099978383d6f48360ad7"
+          },
+          {
+            "hierarchy": 2,
+            "controllers": [
+              "cpu",
+              "cpuacct"
+            ],
+            "root_only": false,
+            "path_sha256": "68839239e9dedfbd7dac3c1de9f7e5c54961f453b6fb9b6cb7ae02aa92ed2f82",
+            "kubepods": true,
+            "pod_uid": "c5f7f8ec-4e1f-4b24-8ab5-a48350b23dc2",
+            "container_id_sha256": "932d4952e9660218f3413b1db03d1d82337232b1fc5f099978383d6f48360ad7"
+          },
+          {
+            "hierarchy": 1,
+            "controllers": [
+              "name=systemd"
+            ],
+            "root_only": false,
+            "path_sha256": "68839239e9dedfbd7dac3c1de9f7e5c54961f453b6fb9b6cb7ae02aa92ed2f82",
+            "kubepods": true,
+            "pod_uid": "c5f7f8ec-4e1f-4b24-8ab5-a48350b23dc2",
+            "container_id_sha256": "932d4952e9660218f3413b1db03d1d82337232b1fc5f099978383d6f48360ad7"
+          },
+          {
+            "hierarchy": 0,
+            "controllers": [],
+            "root_only": true,
+            "path_sha256": "8a5edab282632443219e051e4ade2d1d5bbc671c781051bf1437897cbdfea0f1",
+            "kubepods": false,
+            "pod_uid": null,
+            "container_id_sha256": null
+          }
+        ]
+      },
+      "namespace_links": {
+        "pid": "pid:[4026559509]",
+        "pid_for_children": "pid:[4026559509]",
+        "mnt": "mnt:[4026559508]",
+        "cgroup": "cgroup:[4026531835]",
+        "user": "user:[4026531837]"
+      },
+      "namespace_inodes": {
+        "pid": 4026559509,
+        "mnt": 4026559508,
+        "cgroup": 4026531835,
+        "user": 4026531837
+      },
+      "start_time_ticks": 95077255
+    }
+  ],
+  "before_snapshot": {
+    "observed_utc": "2026-10-23T04:49:36.549311+00:00",
+    "own_pid": 3910470,
+    "holders": [],
+    "conflicts": [],
+    "light_processes": [],
+    "inaccessible_fd_pids": [],
+    "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+  },
+  "before_memory": {
+    "total_bytes": 42278584320,
+    "free_bytes": 42238803968,
+    "used_bytes": 39780352,
+    "compute_processes": []
+  },
+  "host_before": {
+    "peak_process_rss_bytes": 581193728,
+    "cgroup_limit_bytes": 96636764160,
+    "cgroup_usage_bytes": 63214616576,
+    "cgroup_headroom_bytes": 33422147584
+  },
+  "cuda_context_created": true,
+  "requested_tensor_bytes": 4,
+  "optimizer_calls": 0,
+  "training_forward_backward_calls": 0,
+  "guard_modified": false,
+  "identity_exception_installed": false
+}

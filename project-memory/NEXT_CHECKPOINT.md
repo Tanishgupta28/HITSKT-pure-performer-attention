@@ -1,5 +1,20 @@
 # Next checkpoint
 
+Latestrenewed GPU work COMPLETE but training blockedbefore21. Read
+`reports/favor_plus_v1/assist50_retry_20261023_v1/RESULT.md`. GPU permission is
+explicit/accepted; CUDA exact20 recovery succeeded again in newfailedv2.
+Fresh live CPU metadata captures NVML1094328 vs own3909540. Then authorized
+minimal CUDA probe proves ALL NVMLv1/v2/v3 report1101056 vs own3910470; usingv3
+alone cannotfixidentity. No alias/guard/science change or additionalAdamcall.
+After exit resource empty/Lightheld. STOP furtherGPU retries now. Need trusted
+runtime/host identity binding as previously specified, not anotherpermission
+grant or free-VRAM observation. Do not rerun any failed directory or reset20.
+Preserve remaining30-additional-through50scope/Adam/RNG/projections/.20 REVIEW.
+Source-bound guard correction must be tested on actual evidence before another
+fresh continuation; no full training/Light/DKT changes. Publishscoped evidence.
+
+EarlierCPU-only preparation checkpoint (historical):
+
 LatestCPU-only task COMPLETE: read
 [FAVOR_HOST_ATTRIBUTION_PREPARATION_STATE.md](FAVOR_HOST_ATTRIBUTION_PREPARATION_STATE.md) and
 `reports/favor_plus_v1/GPU_ADMIN_PID_ATTRIBUTION_PROCEDURE.md`.
