@@ -1,0 +1,80 @@
+{
+  "status": "PASS",
+  "optimizer_calls": 0,
+  "fixed_logit_max_abs_difference": 0.0,
+  "next_probe": "EXACT",
+  "epoch": 2,
+  "checkpoint_sha256": "5d247f2cd94a3bd6c2b7cdb9e4ad2007bd9a10d6bef74c877ddedcf77ac4bce4",
+  "resources": {
+    "phase": "recovery_complete",
+    "observation": {
+      "observed_utc": "2026-10-24T02:16:44.539318+00:00",
+      "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+      "device": {
+        "total_bytes": 42278584320,
+        "free_bytes": 41617260544,
+        "used_bytes": 661323776,
+        "compute_processes": [
+          {
+            "pid": 74877,
+            "used_gpu_memory_bytes": 612368384,
+            "gpu_instance": 2,
+            "compute_instance": 0
+          }
+        ]
+      },
+      "utilization": {
+        "status": "unsupported",
+        "nvml_status": 3,
+        "gpu_percent": null,
+        "memory_percent": null
+      },
+      "local": {
+        "observed_utc": "2026-10-24T02:16:44.652311+00:00",
+        "own_pid": 17252,
+        "holders": [],
+        "conflicts": [],
+        "light_processes": [],
+        "inaccessible_fd_pids": [],
+        "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+      },
+      "pid_attribution": "UNRESOLVED; self/peer not inferred"
+    },
+    "host": {
+      "peak_process_rss_bytes": 1734418432,
+      "cgroup_limit_bytes": 96636764160,
+      "cgroup_usage_bytes": 67943473152,
+      "cgroup_headroom_bytes": 28693291008
+    },
+    "decision": {
+      "status": "ADMIT_SHARED_WITH_LIMITED_ATTRIBUTION",
+      "reasons": [],
+      "warnings": [
+        "PID namespace identity remains unresolved",
+        "MIG utilization unsupported: cap/headroom/pacing/runtime fallback; load UNKNOWN"
+      ],
+      "reported_compute_processes": [
+        {
+          "pid": 74877,
+          "used_gpu_memory_bytes": 612368384,
+          "gpu_instance": 2,
+          "compute_instance": 0
+        }
+      ],
+      "local_holders": [],
+      "local_visibility_gaps": [],
+      "pid_mapping_proven": false,
+      "exclusive_ownership_claimed": false
+    },
+    "pids_added": [
+      74877
+    ],
+    "pids_departed": [],
+    "pid_mapping_proven": false,
+    "cached_allocator": null,
+    "allocated_bytes": 151783936,
+    "reserved_bytes": 236978176,
+    "peak_allocated_bytes": 222198784,
+    "peak_reserved_bytes": 236978176
+  }
+}

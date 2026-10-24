@@ -1,0 +1,1010 @@
+{
+  "status": "PASS",
+  "cases": [
+    {
+      "case": 0,
+      "split": "train",
+      "shape": {
+        "indices": [
+          880
+        ],
+        "target_sessions": [
+          1558
+        ],
+        "batch_size": 1,
+        "padded_tokens": 363,
+        "supervised_targets": 67
+      },
+      "seconds": 0.6454366290709004,
+      "loss": 1.100964903831482,
+      "gradient_l2": 5.633856746149022,
+      "resources": {
+        "phase": "after_profile",
+        "observation": {
+          "observed_utc": "2026-10-24T02:05:33.675691+00:00",
+          "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+          "device": {
+            "total_bytes": 42278584320,
+            "free_bytes": 41562734592,
+            "used_bytes": 715849728,
+            "compute_processes": [
+              {
+                "pid": 48799,
+                "used_gpu_memory_bytes": 666894336,
+                "gpu_instance": 2,
+                "compute_instance": 0
+              }
+            ]
+          },
+          "utilization": {
+            "status": "unsupported",
+            "nvml_status": 3,
+            "gpu_percent": null,
+            "memory_percent": null
+          },
+          "local": {
+            "observed_utc": "2026-10-24T02:05:33.831296+00:00",
+            "own_pid": 15134,
+            "holders": [],
+            "conflicts": [],
+            "light_processes": [],
+            "inaccessible_fd_pids": [],
+            "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+          },
+          "pid_attribution": "UNRESOLVED; self/peer not inferred"
+        },
+        "host": {
+          "peak_process_rss_bytes": 1654071296,
+          "cgroup_limit_bytes": 96636764160,
+          "cgroup_usage_bytes": 66336468992,
+          "cgroup_headroom_bytes": 30300295168
+        },
+        "decision": {
+          "status": "ADMIT_SHARED_WITH_LIMITED_ATTRIBUTION",
+          "reasons": [],
+          "warnings": [
+            "PID namespace identity remains unresolved",
+            "MIG utilization unsupported: cap/headroom/pacing/runtime fallback; load UNKNOWN"
+          ],
+          "reported_compute_processes": [
+            {
+              "pid": 48799,
+              "used_gpu_memory_bytes": 666894336,
+              "gpu_instance": 2,
+              "compute_instance": 0
+            }
+          ],
+          "local_holders": [],
+          "local_visibility_gaps": [],
+          "pid_mapping_proven": false,
+          "exclusive_ownership_claimed": false
+        },
+        "pids_added": [],
+        "pids_departed": [],
+        "pid_mapping_proven": false,
+        "cached_allocator": {
+          "allocated_bytes": 84661760,
+          "reserved_bytes": 98566144,
+          "peak_allocated_bytes": 84661760,
+          "peak_reserved_bytes": 98566144,
+          "observed_utc": "2026-10-24T02:05:32.981963+00:00"
+        },
+        "allocated_bytes": 180209152,
+        "reserved_bytes": 291504128,
+        "peak_allocated_bytes": 241295360,
+        "peak_reserved_bytes": 291504128
+      },
+      "optimizer_calls": 0
+    },
+    {
+      "case": 1,
+      "split": "train",
+      "shape": {
+        "batch_size": 64,
+        "indices": [
+          1210,
+          3680,
+          357,
+          4935,
+          7054,
+          1377,
+          2645,
+          51,
+          4121,
+          5723,
+          1715,
+          1442,
+          110,
+          5222,
+          4591,
+          3001,
+          1015,
+          4426,
+          575,
+          5275,
+          4285,
+          390,
+          50,
+          4690,
+          1842,
+          3692,
+          6941,
+          4357,
+          5050,
+          7026,
+          3521,
+          5649,
+          4166,
+          49,
+          976,
+          3677,
+          1474,
+          5651,
+          1867,
+          5164,
+          4524,
+          3063,
+          5486,
+          2080,
+          1568,
+          4358,
+          2785,
+          1926,
+          2247,
+          6907,
+          1808,
+          5507,
+          3931,
+          5235,
+          5365,
+          2246,
+          4122,
+          6264,
+          2498,
+          3085,
+          1383,
+          1327,
+          6206,
+          3403
+        ],
+        "padded_tokens": 7606,
+        "supervised_targets": 1513,
+        "target_sessions": [
+          2147,
+          6494,
+          636,
+          8670,
+          12394,
+          2450,
+          4687,
+          83,
+          7246,
+          10051,
+          3046,
+          2560,
+          195,
+          9174,
+          8072,
+          5311,
+          1795,
+          7779,
+          1018,
+          9264,
+          7535,
+          692,
+          82,
+          8247,
+          3268,
+          6512,
+          12202,
+          7655,
+          8864,
+          12346,
+          6223,
+          9919,
+          7326,
+          81,
+          1730,
+          6491,
+          2617,
+          9921,
+          3314,
+          9071,
+          7953,
+          5420,
+          9632,
+          3694,
+          2780,
+          7656,
+          4935,
+          3422,
+          3983,
+          12138,
+          3208,
+          9671,
+          6913,
+          9195,
+          9416,
+          3982,
+          7247,
+          11001,
+          4424,
+          5459,
+          2456,
+          2357,
+          10898,
+          6015
+        ]
+      },
+      "seconds": 0.2441465670708567,
+      "loss": 0.789578378200531,
+      "gradient_l2": 1.3575795851368797,
+      "resources": {
+        "phase": "after_profile",
+        "observation": {
+          "observed_utc": "2026-10-24T02:05:34.282465+00:00",
+          "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+          "device": {
+            "total_bytes": 42278584320,
+            "free_bytes": 40096825344,
+            "used_bytes": 2181758976,
+            "compute_processes": [
+              {
+                "pid": 48799,
+                "used_gpu_memory_bytes": 2132803584,
+                "gpu_instance": 2,
+                "compute_instance": 0
+              }
+            ]
+          },
+          "utilization": {
+            "status": "unsupported",
+            "nvml_status": 3,
+            "gpu_percent": null,
+            "memory_percent": null
+          },
+          "local": {
+            "observed_utc": "2026-10-24T02:05:34.545860+00:00",
+            "own_pid": 15134,
+            "holders": [],
+            "conflicts": [],
+            "light_processes": [],
+            "inaccessible_fd_pids": [],
+            "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+          },
+          "pid_attribution": "UNRESOLVED; self/peer not inferred"
+        },
+        "host": {
+          "peak_process_rss_bytes": 1663782912,
+          "cgroup_limit_bytes": 96636764160,
+          "cgroup_usage_bytes": 66408005632,
+          "cgroup_headroom_bytes": 30228758528
+        },
+        "decision": {
+          "status": "ADMIT_SHARED_WITH_LIMITED_ATTRIBUTION",
+          "reasons": [],
+          "warnings": [
+            "PID namespace identity remains unresolved",
+            "MIG utilization unsupported: cap/headroom/pacing/runtime fallback; load UNKNOWN"
+          ],
+          "reported_compute_processes": [
+            {
+              "pid": 48799,
+              "used_gpu_memory_bytes": 2132803584,
+              "gpu_instance": 2,
+              "compute_instance": 0
+            }
+          ],
+          "local_holders": [],
+          "local_visibility_gaps": [],
+          "pid_mapping_proven": false,
+          "exclusive_ownership_claimed": false
+        },
+        "pids_added": [],
+        "pids_departed": [],
+        "pid_mapping_proven": false,
+        "cached_allocator": {
+          "allocated_bytes": 151770624,
+          "reserved_bytes": 291504128,
+          "peak_allocated_bytes": 241295360,
+          "peak_reserved_bytes": 291504128,
+          "observed_utc": "2026-10-24T02:05:34.013382+00:00"
+        },
+        "allocated_bytes": 182313984,
+        "reserved_bytes": 1755316224,
+        "peak_allocated_bytes": 1524348416,
+        "peak_reserved_bytes": 1755316224
+      },
+      "optimizer_calls": 0
+    },
+    {
+      "case": 2,
+      "split": "train",
+      "shape": {
+        "batch_size": 12,
+        "indices": [
+          5893,
+          1858,
+          5442,
+          1316,
+          3275,
+          2241,
+          4878,
+          3910,
+          3115,
+          2834,
+          6932,
+          4510
+        ],
+        "padded_tokens": 31612,
+        "supervised_targets": 2028,
+        "target_sessions": [
+          10347,
+          3297,
+          9552,
+          2338,
+          5795,
+          3972,
+          8569,
+          6879,
+          5511,
+          5014,
+          12183,
+          7923
+        ]
+      },
+      "seconds": 1.1790507230907679,
+      "loss": 0.7046862840652466,
+      "gradient_l2": 2.082192322853939,
+      "resources": {
+        "phase": "after_profile",
+        "observation": {
+          "observed_utc": "2026-10-24T02:05:35.867054+00:00",
+          "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+          "device": {
+            "total_bytes": 42278584320,
+            "free_bytes": 39073415168,
+            "used_bytes": 3205169152,
+            "compute_processes": [
+              {
+                "pid": 48799,
+                "used_gpu_memory_bytes": 3156213760,
+                "gpu_instance": 2,
+                "compute_instance": 0
+              }
+            ]
+          },
+          "utilization": {
+            "status": "unsupported",
+            "nvml_status": 3,
+            "gpu_percent": null,
+            "memory_percent": null
+          },
+          "local": {
+            "observed_utc": "2026-10-24T02:05:35.983727+00:00",
+            "own_pid": 15134,
+            "holders": [],
+            "conflicts": [],
+            "light_processes": [],
+            "inaccessible_fd_pids": [],
+            "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+          },
+          "pid_attribution": "UNRESOLVED; self/peer not inferred"
+        },
+        "host": {
+          "peak_process_rss_bytes": 1665875968,
+          "cgroup_limit_bytes": 96636764160,
+          "cgroup_usage_bytes": 66340782080,
+          "cgroup_headroom_bytes": 30295982080
+        },
+        "decision": {
+          "status": "ADMIT_SHARED_WITH_LIMITED_ATTRIBUTION",
+          "reasons": [],
+          "warnings": [
+            "PID namespace identity remains unresolved",
+            "MIG utilization unsupported: cap/headroom/pacing/runtime fallback; load UNKNOWN"
+          ],
+          "reported_compute_processes": [
+            {
+              "pid": 48799,
+              "used_gpu_memory_bytes": 3156213760,
+              "gpu_instance": 2,
+              "compute_instance": 0
+            }
+          ],
+          "local_holders": [],
+          "local_visibility_gaps": [],
+          "pid_mapping_proven": false,
+          "exclusive_ownership_claimed": false
+        },
+        "pids_added": [],
+        "pids_departed": [],
+        "pid_mapping_proven": false,
+        "cached_allocator": {
+          "allocated_bytes": 151770624,
+          "reserved_bytes": 1755316224,
+          "peak_allocated_bytes": 1524348416,
+          "peak_reserved_bytes": 1755316224,
+          "observed_utc": "2026-10-24T02:05:34.659230+00:00"
+        },
+        "allocated_bytes": 182035456,
+        "reserved_bytes": 2778726400,
+        "peak_allocated_bytes": 1578392576,
+        "peak_reserved_bytes": 2778726400
+      },
+      "optimizer_calls": 0
+    },
+    {
+      "case": 3,
+      "split": "train",
+      "shape": {
+        "batch_size": 64,
+        "indices": [
+          328,
+          5824,
+          5673,
+          457,
+          6237,
+          6999,
+          2633,
+          1499,
+          4849,
+          578,
+          5796,
+          1296,
+          384,
+          3435,
+          4125,
+          178,
+          4851,
+          5238,
+          5351,
+          6756,
+          6680,
+          107,
+          4615,
+          6549,
+          2704,
+          3666,
+          5115,
+          2903,
+          212,
+          3905,
+          5801,
+          106,
+          2632,
+          480,
+          3810,
+          6174,
+          6904,
+          1244,
+          1802,
+          3727,
+          2905,
+          1256,
+          3188,
+          5217,
+          1409,
+          181,
+          169,
+          231,
+          3260,
+          5571,
+          1406,
+          3855,
+          6757,
+          479,
+          2358,
+          1396,
+          4830,
+          4174,
+          1243,
+          2770,
+          679,
+          3312,
+          2859,
+          130
+        ],
+        "padded_tokens": 32766,
+        "supervised_targets": 4654,
+        "target_sessions": [
+          582,
+          10229,
+          9964,
+          804,
+          10953,
+          12300,
+          4663,
+          2656,
+          8517,
+          1024,
+          10178,
+          2301,
+          683,
+          6072,
+          7253,
+          311,
+          8519,
+          9198,
+          9388,
+          11874,
+          11740,
+          189,
+          8113,
+          11512,
+          4789,
+          6470,
+          8986,
+          5139,
+          374,
+          6871,
+          10183,
+          188,
+          4662,
+          841,
+          6715,
+          10834,
+          12130,
+          2211,
+          3194,
+          6572,
+          5141,
+          2231,
+          5640,
+          9164,
+          2501,
+          314,
+          296,
+          409,
+          5766,
+          9786,
+          2498,
+          6790,
+          11875,
+          840,
+          4180,
+          2480,
+          8481,
+          7337,
+          2210,
+          4907,
+          1202,
+          5856,
+          5059,
+          227
+        ]
+      },
+      "seconds": 0.4741420750506222,
+      "loss": 0.7317456007003784,
+      "gradient_l2": 1.1910732469455525,
+      "resources": {
+        "phase": "after_profile",
+        "observation": {
+          "observed_utc": "2026-10-24T02:05:36.608908+00:00",
+          "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+          "device": {
+            "total_bytes": 42278584320,
+            "free_bytes": 37487968256,
+            "used_bytes": 4790616064,
+            "compute_processes": [
+              {
+                "pid": 48799,
+                "used_gpu_memory_bytes": 4741660672,
+                "gpu_instance": 2,
+                "compute_instance": 0
+              }
+            ]
+          },
+          "utilization": {
+            "status": "unsupported",
+            "nvml_status": 3,
+            "gpu_percent": null,
+            "memory_percent": null
+          },
+          "local": {
+            "observed_utc": "2026-10-24T02:05:36.723721+00:00",
+            "own_pid": 15134,
+            "holders": [],
+            "conflicts": [],
+            "light_processes": [],
+            "inaccessible_fd_pids": [],
+            "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+          },
+          "pid_attribution": "UNRESOLVED; self/peer not inferred"
+        },
+        "host": {
+          "peak_process_rss_bytes": 1667780608,
+          "cgroup_limit_bytes": 96636764160,
+          "cgroup_usage_bytes": 66341187584,
+          "cgroup_headroom_bytes": 30295576576
+        },
+        "decision": {
+          "status": "ADMIT_SHARED_WITH_LIMITED_ATTRIBUTION",
+          "reasons": [],
+          "warnings": [
+            "PID namespace identity remains unresolved",
+            "MIG utilization unsupported: cap/headroom/pacing/runtime fallback; load UNKNOWN"
+          ],
+          "reported_compute_processes": [
+            {
+              "pid": 48799,
+              "used_gpu_memory_bytes": 4741660672,
+              "gpu_instance": 2,
+              "compute_instance": 0
+            }
+          ],
+          "local_holders": [],
+          "local_visibility_gaps": [],
+          "pid_mapping_proven": false,
+          "exclusive_ownership_claimed": false
+        },
+        "pids_added": [],
+        "pids_departed": [],
+        "pid_mapping_proven": false,
+        "cached_allocator": {
+          "allocated_bytes": 151770624,
+          "reserved_bytes": 2778726400,
+          "peak_allocated_bytes": 1578392576,
+          "peak_reserved_bytes": 2778726400,
+          "observed_utc": "2026-10-24T02:05:36.085429+00:00"
+        },
+        "allocated_bytes": 182380544,
+        "reserved_bytes": 4364173312,
+        "peak_allocated_bytes": 2977500672,
+        "peak_reserved_bytes": 4364173312
+      },
+      "optimizer_calls": 0
+    },
+    {
+      "case": 4,
+      "split": "train",
+      "shape": {
+        "batch_size": 58,
+        "indices": [
+          4413,
+          45,
+          162,
+          2089,
+          627,
+          1521,
+          5790,
+          4383,
+          791,
+          5464,
+          5581,
+          5011,
+          1702,
+          2945,
+          43,
+          5647,
+          4136,
+          4173,
+          6301,
+          4555,
+          6754,
+          66,
+          4071,
+          1415,
+          2090,
+          5561,
+          2024,
+          4036,
+          5818,
+          6588,
+          2177,
+          4827,
+          6419,
+          6193,
+          5822,
+          2702,
+          6837,
+          774,
+          1417,
+          5950,
+          6833,
+          4137,
+          4026,
+          1982,
+          3283,
+          3900,
+          4805,
+          3983,
+          5644,
+          3554,
+          161,
+          1418,
+          3411,
+          2005,
+          3555,
+          6420,
+          6190,
+          4587
+        ],
+        "padded_tokens": 32649,
+        "supervised_targets": 3715,
+        "target_sessions": [
+          7754,
+          71,
+          276,
+          3703,
+          1113,
+          2695,
+          10164,
+          7699,
+          1407,
+          9593,
+          9802,
+          8799,
+          3025,
+          5216,
+          69,
+          9912,
+          7269,
+          7336,
+          11068,
+          8000,
+          11872,
+          109,
+          7157,
+          2512,
+          3704,
+          9770,
+          3586,
+          7096,
+          10215,
+          11578,
+          3861,
+          8478,
+          11277,
+          10873,
+          10224,
+          4787,
+          12010,
+          1374,
+          2514,
+          10447,
+          12001,
+          7270,
+          7080,
+          3518,
+          5806,
+          6863,
+          8437,
+          7002,
+          9909,
+          6282,
+          275,
+          2515,
+          6023,
+          3556,
+          6283,
+          11278,
+          10865,
+          8063
+        ]
+      },
+      "seconds": 0.6047555170953274,
+      "loss": 0.7446474432945251,
+      "gradient_l2": 1.2575592015619232,
+      "resources": {
+        "phase": "after_profile",
+        "observation": {
+          "observed_utc": "2026-10-24T02:05:37.539827+00:00",
+          "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+          "device": {
+            "total_bytes": 42278584320,
+            "free_bytes": 35917201408,
+            "used_bytes": 6361382912,
+            "compute_processes": [
+              {
+                "pid": 48799,
+                "used_gpu_memory_bytes": 6312427520,
+                "gpu_instance": 2,
+                "compute_instance": 0
+              }
+            ]
+          },
+          "utilization": {
+            "status": "unsupported",
+            "nvml_status": 3,
+            "gpu_percent": null,
+            "memory_percent": null
+          },
+          "local": {
+            "observed_utc": "2026-10-24T02:05:37.733932+00:00",
+            "own_pid": 15134,
+            "holders": [],
+            "conflicts": [],
+            "light_processes": [],
+            "inaccessible_fd_pids": [],
+            "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+          },
+          "pid_attribution": "UNRESOLVED; self/peer not inferred"
+        },
+        "host": {
+          "peak_process_rss_bytes": 1668288512,
+          "cgroup_limit_bytes": 96636764160,
+          "cgroup_usage_bytes": 66344833024,
+          "cgroup_headroom_bytes": 30291931136
+        },
+        "decision": {
+          "status": "ADMIT_SHARED_WITH_LIMITED_ATTRIBUTION",
+          "reasons": [],
+          "warnings": [
+            "PID namespace identity remains unresolved",
+            "MIG utilization unsupported: cap/headroom/pacing/runtime fallback; load UNKNOWN"
+          ],
+          "reported_compute_processes": [
+            {
+              "pid": 48799,
+              "used_gpu_memory_bytes": 6312427520,
+              "gpu_instance": 2,
+              "compute_instance": 0
+            }
+          ],
+          "local_holders": [],
+          "local_visibility_gaps": [],
+          "pid_mapping_proven": false,
+          "exclusive_ownership_claimed": false
+        },
+        "pids_added": [],
+        "pids_departed": [],
+        "pid_mapping_proven": false,
+        "cached_allocator": {
+          "allocated_bytes": 151770624,
+          "reserved_bytes": 4364173312,
+          "peak_allocated_bytes": 2977500672,
+          "peak_reserved_bytes": 4364173312,
+          "observed_utc": "2026-10-24T02:05:36.887074+00:00"
+        },
+        "allocated_bytes": 184229376,
+        "reserved_bytes": 5934940160,
+        "peak_allocated_bytes": 3379311616,
+        "peak_reserved_bytes": 5934940160
+      },
+      "optimizer_calls": 0
+    },
+    {
+      "case": 5,
+      "split": "validation",
+      "shape": {
+        "batch_size": 13,
+        "indices": [
+          348,
+          349,
+          427,
+          1817,
+          1818,
+          1819,
+          1820,
+          1821,
+          106,
+          244,
+          324,
+          691,
+          692
+        ],
+        "padded_tokens": 32766,
+        "supervised_targets": 979,
+        "target_sessions": [
+          2158,
+          2159,
+          2638,
+          11398,
+          11399,
+          11400,
+          11401,
+          11402,
+          655,
+          1518,
+          2015,
+          4281,
+          4282
+        ]
+      },
+      "seconds": 0.1923245550133288,
+      "loss": 0.7984485030174255,
+      "gradient_l2": null,
+      "resources": {
+        "phase": "after_profile",
+        "observation": {
+          "observed_utc": "2026-10-24T02:05:38.112243+00:00",
+          "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+          "device": {
+            "total_bytes": 42278584320,
+            "free_bytes": 35430662144,
+            "used_bytes": 6847922176,
+            "compute_processes": [
+              {
+                "pid": 48799,
+                "used_gpu_memory_bytes": 6798966784,
+                "gpu_instance": 2,
+                "compute_instance": 0
+              }
+            ]
+          },
+          "utilization": {
+            "status": "unsupported",
+            "nvml_status": 3,
+            "gpu_percent": null,
+            "memory_percent": null
+          },
+          "local": {
+            "observed_utc": "2026-10-24T02:05:38.263060+00:00",
+            "own_pid": 15134,
+            "holders": [],
+            "conflicts": [],
+            "light_processes": [],
+            "inaccessible_fd_pids": [],
+            "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+          },
+          "pid_attribution": "UNRESOLVED; self/peer not inferred"
+        },
+        "host": {
+          "peak_process_rss_bytes": 1668956160,
+          "cgroup_limit_bytes": 96636764160,
+          "cgroup_usage_bytes": 66345152512,
+          "cgroup_headroom_bytes": 30291611648
+        },
+        "decision": {
+          "status": "ADMIT_SHARED_WITH_LIMITED_ATTRIBUTION",
+          "reasons": [],
+          "warnings": [
+            "PID namespace identity remains unresolved",
+            "MIG utilization unsupported: cap/headroom/pacing/runtime fallback; load UNKNOWN"
+          ],
+          "reported_compute_processes": [
+            {
+              "pid": 48799,
+              "used_gpu_memory_bytes": 6798966784,
+              "gpu_instance": 2,
+              "compute_instance": 0
+            }
+          ],
+          "local_holders": [],
+          "local_visibility_gaps": [],
+          "pid_mapping_proven": false,
+          "exclusive_ownership_claimed": false
+        },
+        "pids_added": [],
+        "pids_departed": [],
+        "pid_mapping_proven": false,
+        "cached_allocator": {
+          "allocated_bytes": 151770624,
+          "reserved_bytes": 5934940160,
+          "peak_allocated_bytes": 3379311616,
+          "peak_reserved_bytes": 5934940160,
+          "observed_utc": "2026-10-24T02:05:37.892164+00:00"
+        },
+        "allocated_bytes": 152617984,
+        "reserved_bytes": 6421479424,
+        "peak_allocated_bytes": 3379311616,
+        "peak_reserved_bytes": 6421479424
+      },
+      "optimizer_calls": 0
+    }
+  ],
+  "optimizer_calls": 0,
+  "adam_moment_bytes_reserved": 55451656,
+  "runtime": {
+    "device": "cuda:0",
+    "python": "3.10.12",
+    "torch": "2.4.0a0+f70bd71a48.nv24.06",
+    "numpy": "1.24.4",
+    "threads": 1,
+    "float32_matmul_precision": "highest",
+    "cudnn_benchmark": false,
+    "cudnn_deterministic": true,
+    "cudnn_allow_tf32": false,
+    "matmul_allow_tf32": false,
+    "deterministic_algorithms": true,
+    "cuda_runtime": "12.5",
+    "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+    "gpu_capability": [
+      9,
+      0
+    ]
+  },
+  "plan_sha256": "8a0958f4572e11d9ae0d5722f595ef070c84129d9460f4b382b70c70ac2427cb",
+  "budget_profile": "requested_8gib"
+}

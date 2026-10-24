@@ -1462,3 +1462,31 @@ Oneinitialtestfixtureintervalissueandoperatorwindowµsrejectionpreserved/correct
 strictwindowunchanged;noactualoptimizerretry. ReportASSIST2017_EPOCH_TRAINING_STATUS
 andprofessorupdatehonestlystate0epochs. Fulltask remainsINCOMPLETEuntilactualbudget
 responseandprofile/epoch1checks. PublishverifiedresearchpreparationthenWAIT.
+
+## 2026-10-24 — Resource budget approved; six-case CUDA profile PASS
+
+Actual user approval accepted for8GiB allocator/reservation,10GiB advisory,
+16GiB admission; runtime/host/pacing/30s/45min protections retained. Separate
+response-bound record preserves original frozen design/source/data/plan.
+Six progressive train/validation shape cases PASS/zeroAdam; gradients finite,
+peak3.147229GiBallocated/5.980469GiBreserved. Freshfull epoch1 now RUNNING.
+No measured full-epoch validation yet. Do not retry/duplicate process or claim
+completion without actual terminal files. No source/model/split/threshold changes.
+
+## 2026-10-24 — Eight complete FAVOR+ ASSIST epochs verified; time-bounded stop
+
+Actual profile/full-run budget approval recorded; six-case zero-Adam CUDA profile
+PASS. Freshseed42 complete epochs1..8/1454calls, all566107train/125800validation
+labels each, no test/skip/truncation. Allstatesfinite/noCUDA-OOM/severefailure.
+Controller declined9 under45min headroom, NOT patience3/max10; selected7 fullval
+replay within2498.133s bit-identical; all8 fresh recoveryPASS/0Adam and independent
+CPUmetricmax6.888404e-9. BestAUC7 .703466903/F1.508813934;maxF1epoch6 .532809339.
+Epoch8 decline and .20 REVIEW Action/CPE/Decoder retained (no silentfix/feature
+change). PeakGPU3.192142allocated/7.990234reservedGiB,host1.841232GiB. Process
+namespace/utilization attribution unresolved, sharedprotectionsunchanged; after
+exitfree39.337952/noNVMLcompute/Lightinactive. Original50/37sources/11datahashes/
+Light/unrelateddirt preserved. CPUreport filename mismatch corrected with true
+audit data/errorrecords retained, no trainingretry. ReportASSIST2017_EPOCH_TRAINING_RESULTS
+andverified10701-file noncheckpoint archive. GO qualifiedprofessorresults, REVIEW
+fidelity/NO-GO unqualifiedpublication/all-datasettraining. No moreGPU/optimizer
+work now; finishverifiedpublicationthenWAIT for nextboundedtime/science decision.

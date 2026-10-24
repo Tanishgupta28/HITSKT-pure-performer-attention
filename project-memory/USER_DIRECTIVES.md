@@ -1,6 +1,19 @@
 # Durable user directives
 
-Updated: 2026-10-23 UTC
+Updated: 2026-10-24 UTC
+
+## 2026-10-24 — Profile and full-run resource budget APPROVED (latest)
+
+Actual response: “Approve profile and full-run budget”. Accept the proposed
+8 GiB allocator/reservation, 10 GiB advisory total, 16 GiB admission free floor
+and original B64/cost32768. Full ASSIST ≤10 epochs/patience3 permission persists.
+Execute zero-Adam CUDA shape profile first, then epoch1/full validation/fresh
+recovery; proceed through permitted epochs only after PASS, until patience3,
+max10 or the unchanged safety/time stops. Do not re-ask this budget approval.
+Keep runtime free6GiB, hostRSS4/headroom2GiB, pacing0.1s, step30s/campaign45min,
+shared visibility/Light protection, numerical stops and .20 REVIEW unchanged.
+No automatic resize/retry, final test inference, data omission/truncation or
+other-workload changes. Approval/record: `reports/favor_plus_v1/assist_epochs_execution_20261024_v1/`.
 
 ## 2026-10-23 — Authorized full ASSIST epoch training, maximum10 (latest)
 

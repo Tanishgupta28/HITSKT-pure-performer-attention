@@ -1,0 +1,21 @@
+{
+  "status": "MEASURED_EPOCH_TRAINING_VERIFIED_WITH_APPROXIMATION_REVIEW",
+  "epochs": 8,
+  "optimizer_updates": 1454,
+  "independent_metric_max_abs_difference": 6.8884034032379304e-09,
+  "resources": {
+    "observations": 5293,
+    "allocator_observations": 5257,
+    "all_admitted_with_limits": true,
+    "peak_allocated_bytes": 3427535872,
+    "peak_reserved_bytes": 8579448832,
+    "min_sampled_device_free_bytes": 33272692736,
+    "max_sampled_device_used_bytes": 9005891584,
+    "max_reported_nvml_process_bytes": 8956936192,
+    "peak_host_rss_bytes": 1977008128,
+    "minimum_shared_host_headroom_bytes": 23646740480,
+    "utilization": "MIG UNSUPPORTED; UNKNOWN",
+    "pid_mapping": "UNRESOLVED; no process-total/self/peer attribution claimed",
+    "campaign_elapsed_through_final_gpu_receipt_seconds": 2498.133225917816
+  }
+}

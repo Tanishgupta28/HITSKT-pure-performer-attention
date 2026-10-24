@@ -1,0 +1,2293 @@
+{
+  "all_training_targets_per_epoch": 566107,
+  "all_validation_targets_per_epoch": 125800,
+  "best_full_validation_replay": {
+    "arrays_exact": true,
+    "checkpoint_sha256": "07b944e71683c415cc5c00fad42648d22cb5b8fa790bc39c3c5d24b50c781781",
+    "comparison_abs": {
+      "accuracy": 0.0,
+      "bce": 0.0,
+      "f1": 0.0,
+      "mse": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "roc_auc": 0.0
+    },
+    "epoch": 7,
+    "optimizer_calls": 0,
+    "recovery": {
+      "epoch": 7,
+      "fixed_logit_max_abs_difference": 0.0,
+      "next_probe": "EXACT",
+      "optimizer_calls": 0,
+      "status": "PASS"
+    },
+    "resources": {
+      "allocated_bytes": 151783936,
+      "cached_allocator": {
+        "allocated_bytes": 152389632,
+        "observed_utc": "2026-10-24T02:47:05.372561+00:00",
+        "peak_allocated_bytes": 799080960,
+        "peak_reserved_bytes": 5966397440,
+        "reserved_bytes": 5966397440
+      },
+      "decision": {
+        "exclusive_ownership_claimed": false,
+        "local_holders": [
+          {
+            "approved_option_names": [],
+            "argv_sha256": "78d413cb0c836e84edc79f6d7edaeafecb39b9c52fecb9b5959f1c3633c88c54",
+            "classification": "trusted_read_only_monitor",
+            "comm": "nvidia-smi",
+            "cwd_category": "other",
+            "executable": "/usr/bin/nvidia-smi",
+            "executable_device": 2305,
+            "executable_inode": 71042318,
+            "identity_complete": true,
+            "nvidia_handles": [
+              "/dev/nvidia-caps/nvidia-cap21",
+              "/dev/nvidia-uvm",
+              "/dev/nvidia0",
+              "/dev/nvidiactl"
+            ],
+            "parent_pid": 22852,
+            "pid": 22853,
+            "python_module": null,
+            "start_time_ticks": 102982343,
+            "state": "R (running)",
+            "trusted_binary_sha256": "a7d6645d5d4554ce7f5e7ae68cef9fb32d21721eaa2c271f7a58ef6c21039263",
+            "uid": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "verified_read_only": true
+          }
+        ],
+        "local_visibility_gaps": [],
+        "pid_mapping_proven": false,
+        "reasons": [],
+        "reported_compute_processes": [
+          {
+            "compute_instance": 0,
+            "gpu_instance": 2,
+            "pid": 143875,
+            "used_gpu_memory_bytes": 6341787648
+          }
+        ],
+        "status": "ADMIT_SHARED_WITH_LIMITED_ATTRIBUTION",
+        "warnings": [
+          "PID namespace identity remains unresolved",
+          "visible GPU holders recorded as shared/unattributed activity",
+          "MIG utilization unsupported: cap/headroom/pacing/runtime fallback; load UNKNOWN"
+        ]
+      },
+      "host": {
+        "cgroup_headroom_bytes": 23953268736,
+        "cgroup_limit_bytes": 96636764160,
+        "cgroup_usage_bytes": 72683495424,
+        "peak_process_rss_bytes": 1750749184
+      },
+      "observation": {
+        "device": {
+          "compute_processes": [
+            {
+              "compute_instance": 0,
+              "gpu_instance": 2,
+              "pid": 143875,
+              "used_gpu_memory_bytes": 6341787648
+            }
+          ],
+          "free_bytes": 35887841280,
+          "total_bytes": 42278584320,
+          "used_bytes": 6390743040
+        },
+        "local": {
+          "conflicts": [],
+          "holders": [
+            {
+              "approved_option_names": [],
+              "argv_sha256": "78d413cb0c836e84edc79f6d7edaeafecb39b9c52fecb9b5959f1c3633c88c54",
+              "classification": "trusted_read_only_monitor",
+              "comm": "nvidia-smi",
+              "cwd_category": "other",
+              "executable": "/usr/bin/nvidia-smi",
+              "executable_device": 2305,
+              "executable_inode": 71042318,
+              "identity_complete": true,
+              "nvidia_handles": [
+                "/dev/nvidia-caps/nvidia-cap21",
+                "/dev/nvidia-uvm",
+                "/dev/nvidia0",
+                "/dev/nvidiactl"
+              ],
+              "parent_pid": 22852,
+              "pid": 22853,
+              "python_module": null,
+              "start_time_ticks": 102982343,
+              "state": "R (running)",
+              "trusted_binary_sha256": "a7d6645d5d4554ce7f5e7ae68cef9fb32d21721eaa2c271f7a58ef6c21039263",
+              "uid": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "verified_read_only": true
+            }
+          ],
+          "inaccessible_fd_pids": [],
+          "light_processes": [],
+          "observed_utc": "2026-10-24T02:47:06.014642+00:00",
+          "own_pid": 22688,
+          "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+        },
+        "observed_utc": "2026-10-24T02:47:05.839784+00:00",
+        "pid_attribution": "UNRESOLVED; self/peer not inferred",
+        "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+        "utilization": {
+          "gpu_percent": null,
+          "memory_percent": null,
+          "nvml_status": 3,
+          "status": "unsupported"
+        }
+      },
+      "peak_allocated_bytes": 799080960,
+      "peak_reserved_bytes": 5966397440,
+      "phase": "best_validation_replay_complete",
+      "pid_mapping_proven": false,
+      "pids_added": [],
+      "pids_departed": [],
+      "reserved_bytes": 5966397440
+    },
+    "status": "PASS",
+    "test_evaluations": 0,
+    "unchanged_metric_tolerance": 1e-06,
+    "validation": {
+      "accuracy": 0.6852543720190779,
+      "bce": 0.5990377875565535,
+      "f1": 0.5088139335822655,
+      "loss": 0.5990377875565535,
+      "mse": 0.20576391891476595,
+      "precision": 0.6209464983195567,
+      "recall": 0.43098520511096167,
+      "roc_auc": 0.7034669030290922,
+      "targets": 125800,
+      "threshold": 0.5
+    }
+  },
+  "checkpoint50_preserved": true,
+  "data_discarded": 0,
+  "epochs": [
+    {
+      "attention": {
+        "review_threshold": 0.2,
+        "severe_failure_stages": [],
+        "stages": {
+          "action_encoder.layers.0.attention": {
+            "cases_above_review": 5,
+            "kernel_reference_max_abs": 5.801362543689237e-07,
+            "max_p95_growth_ratio": 1.0127851237878105,
+            "maximum_relative_l2": 0.27051120569126474,
+            "median_pair_ess": 8.046040818965995,
+            "median_relative_l2": 0.2249425739758672,
+            "minimum_case_pair_ess_median": 7.2409064891923185
+          },
+          "correct_padding_encoder.layers.0.attention": {
+            "cases_above_review": 6,
+            "kernel_reference_max_abs": 9.597228578517303e-07,
+            "max_p95_growth_ratio": 1.1332632098490418,
+            "maximum_relative_l2": 0.578484319853823,
+            "median_pair_ess": 2.0287819674666228,
+            "median_relative_l2": 0.5070493665794015,
+            "minimum_case_pair_ess_median": 1.628185333978355
+          },
+          "decoder.layers.0.attention": {
+            "cases_above_review": 6,
+            "kernel_reference_max_abs": 1.840447945544721e-06,
+            "max_p95_growth_ratio": 1.144518850995393,
+            "maximum_relative_l2": 0.4942395629919104,
+            "median_pair_ess": 6.379661691514082,
+            "median_relative_l2": 0.3334372835765913,
+            "minimum_case_pair_ess_median": 5.5534157658719865
+          },
+          "session_encoder.layers.0.attention": {
+            "cases_above_review": 0,
+            "kernel_reference_max_abs": 5.427125051582493e-07,
+            "max_p95_growth_ratio": 1.0724392163088965,
+            "maximum_relative_l2": 0.19248819248342963,
+            "median_pair_ess": 2.369902122452795,
+            "median_relative_l2": 0.0641964812507283,
+            "minimum_case_pair_ess_median": 2.2287267455705817
+          }
+        },
+        "status": "CONTINUE_BOUNDED_DIAGNOSTIC_ONLY"
+      },
+      "checkpoint_sha256": "092976de6ffddb5aece5cef9b0a35ac8c86d72f0df8767856da9f14a5e4d2b70",
+      "cumulative_updates": 181,
+      "epoch": 1,
+      "fresh_recovery": "PASS_EXACT_ZERO_ADAM",
+      "gradient_l2_max": 1.7812483341662184,
+      "gradient_l2_min": 0.18728482892411552,
+      "max_batch_bce": 0.7564313411712646,
+      "measured_update_seconds": 158.8559990519425,
+      "median_update_seconds": 0.7603071400662884,
+      "optimizer_updates": 181,
+      "training": {
+        "accuracy": 0.6466357066773596,
+        "bce": 0.6389423789605803,
+        "f1": 0.38084744188925684,
+        "loss": 0.6389423789605803,
+        "mse": 0.2232822382374524,
+        "precision": 0.5483617954294271,
+        "recall": 0.2917294944379641,
+        "roc_auc": 0.6297286804241935,
+        "targets": 566107,
+        "threshold": 0.5
+      },
+      "training_labels_per_wall_second": 2297.445769444927,
+      "training_wall_seconds": 246.407122,
+      "validation": {
+        "accuracy": 0.6585532591414944,
+        "bce": 0.6279001631418358,
+        "f1": 0.3820813073625457,
+        "loss": 0.6279001631418358,
+        "mse": 0.21859501757435063,
+        "precision": 0.605563155494756,
+        "recall": 0.27908540685944855,
+        "roc_auc": 0.649592121875189,
+        "targets": 125800,
+        "threshold": 0.5
+      }
+    },
+    {
+      "attention": {
+        "review_threshold": 0.2,
+        "severe_failure_stages": [],
+        "stages": {
+          "action_encoder.layers.0.attention": {
+            "cases_above_review": 5,
+            "kernel_reference_max_abs": 7.283319696238522e-07,
+            "max_p95_growth_ratio": 1.0288250272578177,
+            "maximum_relative_l2": 0.2874232709216621,
+            "median_pair_ess": 8.152172836405418,
+            "median_relative_l2": 0.2359788014263789,
+            "minimum_case_pair_ess_median": 7.206753095390754
+          },
+          "correct_padding_encoder.layers.0.attention": {
+            "cases_above_review": 6,
+            "kernel_reference_max_abs": 1.0086333253056523e-06,
+            "max_p95_growth_ratio": 1.153656418600602,
+            "maximum_relative_l2": 0.5943998840456653,
+            "median_pair_ess": 1.3388168901889488,
+            "median_relative_l2": 0.5169642008020803,
+            "minimum_case_pair_ess_median": 1.146483152459747
+          },
+          "decoder.layers.0.attention": {
+            "cases_above_review": 6,
+            "kernel_reference_max_abs": 3.3914800876555518e-06,
+            "max_p95_growth_ratio": 1.2317352484115132,
+            "maximum_relative_l2": 0.6108977665285059,
+            "median_pair_ess": 5.345910979489362,
+            "median_relative_l2": 0.4670880635833895,
+            "minimum_case_pair_ess_median": 4.081751532577723
+          },
+          "session_encoder.layers.0.attention": {
+            "cases_above_review": 1,
+            "kernel_reference_max_abs": 3.6244300405385843e-07,
+            "max_p95_growth_ratio": 1.0851136478959902,
+            "maximum_relative_l2": 0.20183426211058136,
+            "median_pair_ess": 4.0905059625998685,
+            "median_relative_l2": 0.06584242317519798,
+            "minimum_case_pair_ess_median": 2.6744381346513952
+          }
+        },
+        "status": "CONTINUE_BOUNDED_DIAGNOSTIC_ONLY"
+      },
+      "checkpoint_sha256": "5d247f2cd94a3bd6c2b7cdb9e4ad2007bd9a10d6bef74c877ddedcf77ac4bce4",
+      "cumulative_updates": 363,
+      "epoch": 2,
+      "fresh_recovery": "PASS_EXACT_ZERO_ADAM",
+      "gradient_l2_max": 1.2452988903042466,
+      "gradient_l2_min": 0.1798586169344024,
+      "max_batch_bce": 0.6542408466339111,
+      "measured_update_seconds": 159.04080368950963,
+      "median_update_seconds": 0.7881498539354652,
+      "optimizer_updates": 182,
+      "training": {
+        "accuracy": 0.6792744127876885,
+        "bce": 0.605684050302208,
+        "f1": 0.43116417648588445,
+        "loss": 0.605684050302208,
+        "mse": 0.20870901744731674,
+        "precision": 0.6354150314424755,
+        "recall": 0.3262823977922558,
+        "roc_auc": 0.6850895194085274,
+        "targets": 566107,
+        "threshold": 0.5
+      },
+      "training_labels_per_wall_second": 2282.9764715426245,
+      "training_wall_seconds": 247.968828,
+      "validation": {
+        "accuracy": 0.6636327503974563,
+        "bce": 0.6214299986614521,
+        "f1": 0.5028841296507325,
+        "loss": 0.6214299986614521,
+        "mse": 0.21575716517654742,
+        "precision": 0.5701840850360977,
+        "recall": 0.4497940484196368,
+        "roc_auc": 0.6740895141452214,
+        "targets": 125800,
+        "threshold": 0.5
+      }
+    },
+    {
+      "attention": {
+        "review_threshold": 0.2,
+        "severe_failure_stages": [],
+        "stages": {
+          "action_encoder.layers.0.attention": {
+            "cases_above_review": 5,
+            "kernel_reference_max_abs": 8.265660702555522e-07,
+            "max_p95_growth_ratio": 1.0440140959170934,
+            "maximum_relative_l2": 0.28925242030835263,
+            "median_pair_ess": 8.15292575361552,
+            "median_relative_l2": 0.2413809125579952,
+            "minimum_case_pair_ess_median": 7.082895204546929
+          },
+          "correct_padding_encoder.layers.0.attention": {
+            "cases_above_review": 6,
+            "kernel_reference_max_abs": 1.2921294427759022e-06,
+            "max_p95_growth_ratio": 1.1687380233544484,
+            "maximum_relative_l2": 0.567221836925708,
+            "median_pair_ess": 1.2718272692219414,
+            "median_relative_l2": 0.5068657400790375,
+            "minimum_case_pair_ess_median": 1.1367575859328158
+          },
+          "decoder.layers.0.attention": {
+            "cases_above_review": 6,
+            "kernel_reference_max_abs": 2.665540950519407e-06,
+            "max_p95_growth_ratio": 1.2900119906146832,
+            "maximum_relative_l2": 0.6284149240950427,
+            "median_pair_ess": 4.838520485313418,
+            "median_relative_l2": 0.553815352894357,
+            "minimum_case_pair_ess_median": 3.5944866822616675
+          },
+          "session_encoder.layers.0.attention": {
+            "cases_above_review": 0,
+            "kernel_reference_max_abs": 3.6560666250018414e-07,
+            "max_p95_growth_ratio": 1.0859357417542168,
+            "maximum_relative_l2": 0.19780088648155458,
+            "median_pair_ess": 3.85184266541508,
+            "median_relative_l2": 0.07014977470414735,
+            "minimum_case_pair_ess_median": 2.9640467916986317
+          }
+        },
+        "status": "CONTINUE_BOUNDED_DIAGNOSTIC_ONLY"
+      },
+      "checkpoint_sha256": "39260fbd907381ca7982413535d58070332d019b59870c4f3b25748d9b2c3d15",
+      "cumulative_updates": 546,
+      "epoch": 3,
+      "fresh_recovery": "PASS_EXACT_ZERO_ADAM",
+      "gradient_l2_max": 0.9103264417316685,
+      "gradient_l2_min": 0.1917457025947131,
+      "max_batch_bce": 0.6373744606971741,
+      "measured_update_seconds": 159.31219260871876,
+      "median_update_seconds": 0.790268711047247,
+      "optimizer_updates": 183,
+      "training": {
+        "accuracy": 0.6872640684534902,
+        "bce": 0.5968758071208682,
+        "f1": 0.45778461086133604,
+        "loss": 0.5968758071208682,
+        "mse": 0.20485802254507424,
+        "precision": 0.6463908252754667,
+        "recall": 0.3543818221476192,
+        "roc_auc": 0.6993166955634164,
+        "targets": 566107,
+        "threshold": 0.5
+      },
+      "training_labels_per_wall_second": 2277.8402422439663,
+      "training_wall_seconds": 248.527965,
+      "validation": {
+        "accuracy": 0.6779411764705883,
+        "bce": 0.6077520913084664,
+        "f1": 0.44688664691668145,
+        "loss": 0.6077520913084664,
+        "mse": 0.2095645575544152,
+        "precision": 0.6377167348529126,
+        "recall": 0.34396015467383995,
+        "roc_auc": 0.6867316684562809,
+        "targets": 125800,
+        "threshold": 0.5
+      }
+    },
+    {
+      "attention": {
+        "review_threshold": 0.2,
+        "severe_failure_stages": [],
+        "stages": {
+          "action_encoder.layers.0.attention": {
+            "cases_above_review": 5,
+            "kernel_reference_max_abs": 6.49974497710093e-07,
+            "max_p95_growth_ratio": 1.0500281428225315,
+            "maximum_relative_l2": 0.2929352371279686,
+            "median_pair_ess": 8.12488901733152,
+            "median_relative_l2": 0.24759596364599157,
+            "minimum_case_pair_ess_median": 6.909114060465702
+          },
+          "correct_padding_encoder.layers.0.attention": {
+            "cases_above_review": 6,
+            "kernel_reference_max_abs": 8.266674482726444e-07,
+            "max_p95_growth_ratio": 1.1410027087896197,
+            "maximum_relative_l2": 0.560687494293713,
+            "median_pair_ess": 1.5400432238226882,
+            "median_relative_l2": 0.4643142315869533,
+            "minimum_case_pair_ess_median": 1.203937011280165
+          },
+          "decoder.layers.0.attention": {
+            "cases_above_review": 6,
+            "kernel_reference_max_abs": 2.5607375848668568e-06,
+            "max_p95_growth_ratio": 1.3194955502633925,
+            "maximum_relative_l2": 0.6860311011400829,
+            "median_pair_ess": 4.645253604969419,
+            "median_relative_l2": 0.5348285724041874,
+            "minimum_case_pair_ess_median": 3.035289551193876
+          },
+          "session_encoder.layers.0.attention": {
+            "cases_above_review": 1,
+            "kernel_reference_max_abs": 5.200708421693179e-07,
+            "max_p95_growth_ratio": 1.1356588479152243,
+            "maximum_relative_l2": 0.22814965894412997,
+            "median_pair_ess": 3.4823129623462203,
+            "median_relative_l2": 0.08588783091698829,
+            "minimum_case_pair_ess_median": 2.453153138703824
+          }
+        },
+        "status": "CONTINUE_BOUNDED_DIAGNOSTIC_ONLY"
+      },
+      "checkpoint_sha256": "c3433c921d9f59bf6d2a214df6011d1cc8985e9a0b75b69c76cc5eda7a741f35",
+      "cumulative_updates": 728,
+      "epoch": 4,
+      "fresh_recovery": "PASS_EXACT_ZERO_ADAM",
+      "gradient_l2_max": 0.9842171349167677,
+      "gradient_l2_min": 0.1557758137448876,
+      "max_batch_bce": 0.628176748752594,
+      "measured_update_seconds": 159.57809130696114,
+      "median_update_seconds": 0.7981608280097134,
+      "optimizer_updates": 182,
+      "training": {
+        "accuracy": 0.6924998277710751,
+        "bce": 0.5903133099877056,
+        "f1": 0.4721774144643485,
+        "loss": 0.5903133099877056,
+        "mse": 0.20199311851129328,
+        "precision": 0.6548061559162391,
+        "recall": 0.36920443445522394,
+        "roc_auc": 0.7093195870085821,
+        "targets": 566107,
+        "threshold": 0.5
+      },
+      "training_labels_per_wall_second": 2282.3149771978146,
+      "training_wall_seconds": 248.040698,
+      "validation": {
+        "accuracy": 0.6792527821939587,
+        "bce": 0.6065421473965735,
+        "f1": 0.49092881834927204,
+        "loss": 0.6065421473965735,
+        "mse": 0.2090463618257109,
+        "precision": 0.6141801881431909,
+        "recall": 0.4088769334229993,
+        "roc_auc": 0.6923102290559555,
+        "targets": 125800,
+        "threshold": 0.5
+      }
+    },
+    {
+      "attention": {
+        "review_threshold": 0.2,
+        "severe_failure_stages": [],
+        "stages": {
+          "action_encoder.layers.0.attention": {
+            "cases_above_review": 5,
+            "kernel_reference_max_abs": 8.751413772545291e-07,
+            "max_p95_growth_ratio": 1.0554397582490846,
+            "maximum_relative_l2": 0.28629460496592085,
+            "median_pair_ess": 8.058871766152588,
+            "median_relative_l2": 0.2538866618412282,
+            "minimum_case_pair_ess_median": 6.6692616696744995
+          },
+          "correct_padding_encoder.layers.0.attention": {
+            "cases_above_review": 6,
+            "kernel_reference_max_abs": 9.447972835197049e-07,
+            "max_p95_growth_ratio": 1.185964877249751,
+            "maximum_relative_l2": 0.6049007518646787,
+            "median_pair_ess": 1.376363396220849,
+            "median_relative_l2": 0.5379221772616529,
+            "minimum_case_pair_ess_median": 1.1971349825979787
+          },
+          "decoder.layers.0.attention": {
+            "cases_above_review": 6,
+            "kernel_reference_max_abs": 2.5254467970192707e-06,
+            "max_p95_growth_ratio": 1.3536277699368742,
+            "maximum_relative_l2": 0.6991587110286993,
+            "median_pair_ess": 4.374257343202366,
+            "median_relative_l2": 0.5957610408476663,
+            "minimum_case_pair_ess_median": 3.285419879366203
+          },
+          "session_encoder.layers.0.attention": {
+            "cases_above_review": 1,
+            "kernel_reference_max_abs": 5.992619411809841e-07,
+            "max_p95_growth_ratio": 1.1500199690161654,
+            "maximum_relative_l2": 0.2237183386489097,
+            "median_pair_ess": 2.450811075562517,
+            "median_relative_l2": 0.07117768507056865,
+            "minimum_case_pair_ess_median": 2.0093314348021503
+          }
+        },
+        "status": "CONTINUE_BOUNDED_DIAGNOSTIC_ONLY"
+      },
+      "checkpoint_sha256": "efc413747068682ea73ff70965d0e00616afbac6c4d82d09cd5fd4e8c7b79af8",
+      "cumulative_updates": 909,
+      "epoch": 5,
+      "fresh_recovery": "PASS_EXACT_ZERO_ADAM",
+      "gradient_l2_max": 0.8788392943202498,
+      "gradient_l2_min": 0.2142243319321671,
+      "max_batch_bce": 0.6305260062217712,
+      "measured_update_seconds": 160.15081528702285,
+      "median_update_seconds": 0.8007986849406734,
+      "optimizer_updates": 181,
+      "training": {
+        "accuracy": 0.6954692310817566,
+        "bce": 0.5869266296685053,
+        "f1": 0.4819070000871517,
+        "loss": 0.5869266296685053,
+        "mse": 0.20055032188086908,
+        "precision": 0.6579571471947087,
+        "recall": 0.3801815129875672,
+        "roc_auc": 0.7140392836899717,
+        "targets": 566107,
+        "threshold": 0.5
+      },
+      "training_labels_per_wall_second": 2303.8994935643045,
+      "training_wall_seconds": 245.716882,
+      "validation": {
+        "accuracy": 0.6831558028616852,
+        "bce": 0.6019084189934079,
+        "f1": 0.49815549260308467,
+        "loss": 0.6019084189934079,
+        "mse": 0.2070139705558871,
+        "precision": 0.6213058635093119,
+        "recall": 0.4157489912575656,
+        "roc_auc": 0.6983171293267918,
+        "targets": 125800,
+        "threshold": 0.5
+      }
+    },
+    {
+      "attention": {
+        "review_threshold": 0.2,
+        "severe_failure_stages": [],
+        "stages": {
+          "action_encoder.layers.0.attention": {
+            "cases_above_review": 5,
+            "kernel_reference_max_abs": 6.367925611816538e-07,
+            "max_p95_growth_ratio": 1.0563818396167362,
+            "maximum_relative_l2": 0.28744742838174087,
+            "median_pair_ess": 8.034931528441172,
+            "median_relative_l2": 0.25751590575841804,
+            "minimum_case_pair_ess_median": 6.483956484512399
+          },
+          "correct_padding_encoder.layers.0.attention": {
+            "cases_above_review": 6,
+            "kernel_reference_max_abs": 1.5045993385365275e-06,
+            "max_p95_growth_ratio": 1.154840721156151,
+            "maximum_relative_l2": 0.5261721973876708,
+            "median_pair_ess": 1.6377573687502152,
+            "median_relative_l2": 0.4454713348273859,
+            "minimum_case_pair_ess_median": 1.3656550839584145
+          },
+          "decoder.layers.0.attention": {
+            "cases_above_review": 6,
+            "kernel_reference_max_abs": 1.6482379927573731e-06,
+            "max_p95_growth_ratio": 1.368068480485268,
+            "maximum_relative_l2": 0.751543068233025,
+            "median_pair_ess": 4.343734222614136,
+            "median_relative_l2": 0.6504142726641327,
+            "minimum_case_pair_ess_median": 3.1260911654547527
+          },
+          "session_encoder.layers.0.attention": {
+            "cases_above_review": 2,
+            "kernel_reference_max_abs": 4.390779986263027e-07,
+            "max_p95_growth_ratio": 1.1761669414092755,
+            "maximum_relative_l2": 0.23140896328690494,
+            "median_pair_ess": 2.2345067896021655,
+            "median_relative_l2": 0.10406585373376338,
+            "minimum_case_pair_ess_median": 1.8201331366025264
+          }
+        },
+        "status": "CONTINUE_BOUNDED_DIAGNOSTIC_ONLY"
+      },
+      "checkpoint_sha256": "57b00123a517d33ea590001f76dcaed7dd09bc2ff4668dc6f681871a90163b1a",
+      "cumulative_updates": 1091,
+      "epoch": 6,
+      "fresh_recovery": "PASS_EXACT_ZERO_ADAM",
+      "gradient_l2_max": 0.7499229205828293,
+      "gradient_l2_min": 0.1720045030492102,
+      "max_batch_bce": 0.6258981823921204,
+      "measured_update_seconds": 157.73317433462944,
+      "median_update_seconds": 0.798093422956299,
+      "optimizer_updates": 182,
+      "training": {
+        "accuracy": 0.6991222507405844,
+        "bce": 0.5828388359602772,
+        "f1": 0.49260182727567914,
+        "loss": 0.5828388359602772,
+        "mse": 0.198792935263959,
+        "precision": 0.6625239388767358,
+        "recall": 0.3920500346145457,
+        "roc_auc": 0.7196455142648768,
+        "targets": 566107,
+        "threshold": 0.5
+      },
+      "training_labels_per_wall_second": 2325.7440558326143,
+      "training_wall_seconds": 243.408985,
+      "validation": {
+        "accuracy": 0.6787042925278219,
+        "bce": 0.604903506696319,
+        "f1": 0.5328093394209097,
+        "loss": 0.604903506696319,
+        "mse": 0.20837272749713273,
+        "precision": 0.5920217821273536,
+        "recall": 0.484364492266308,
+        "roc_auc": 0.7002705117270392,
+        "targets": 125800,
+        "threshold": 0.5
+      }
+    },
+    {
+      "attention": {
+        "review_threshold": 0.2,
+        "severe_failure_stages": [],
+        "stages": {
+          "action_encoder.layers.0.attention": {
+            "cases_above_review": 5,
+            "kernel_reference_max_abs": 5.983856679048216e-07,
+            "max_p95_growth_ratio": 1.0616509473074984,
+            "maximum_relative_l2": 0.2916264414273172,
+            "median_pair_ess": 7.920025242173225,
+            "median_relative_l2": 0.26393090212251524,
+            "minimum_case_pair_ess_median": 6.4008803731682535
+          },
+          "correct_padding_encoder.layers.0.attention": {
+            "cases_above_review": 6,
+            "kernel_reference_max_abs": 1.571063457328492e-06,
+            "max_p95_growth_ratio": 1.1897404959078057,
+            "maximum_relative_l2": 0.5976821042075781,
+            "median_pair_ess": 1.6583898592961188,
+            "median_relative_l2": 0.4755916986587193,
+            "minimum_case_pair_ess_median": 1.3642521716165152
+          },
+          "decoder.layers.0.attention": {
+            "cases_above_review": 6,
+            "kernel_reference_max_abs": 2.005213363576175e-06,
+            "max_p95_growth_ratio": 1.3876753532510988,
+            "maximum_relative_l2": 0.7483629151425921,
+            "median_pair_ess": 4.388124107693466,
+            "median_relative_l2": 0.564818498515762,
+            "minimum_case_pair_ess_median": 3.40884982443915
+          },
+          "session_encoder.layers.0.attention": {
+            "cases_above_review": 2,
+            "kernel_reference_max_abs": 4.485237283802235e-07,
+            "max_p95_growth_ratio": 1.18508003061809,
+            "maximum_relative_l2": 0.2507411390554246,
+            "median_pair_ess": 1.9615255701463317,
+            "median_relative_l2": 0.16772844203741386,
+            "minimum_case_pair_ess_median": 1.4132989364940665
+          }
+        },
+        "status": "CONTINUE_BOUNDED_DIAGNOSTIC_ONLY"
+      },
+      "checkpoint_sha256": "07b944e71683c415cc5c00fad42648d22cb5b8fa790bc39c3c5d24b50c781781",
+      "cumulative_updates": 1272,
+      "epoch": 7,
+      "fresh_recovery": "PASS_EXACT_ZERO_ADAM",
+      "gradient_l2_max": 0.8493315770661811,
+      "gradient_l2_min": 0.18713770032195098,
+      "max_batch_bce": 0.6283013820648193,
+      "measured_update_seconds": 160.64789505838417,
+      "median_update_seconds": 0.7935246210545301,
+      "optimizer_updates": 181,
+      "training": {
+        "accuracy": 0.7005795724129891,
+        "bce": 0.5809755742409968,
+        "f1": 0.4984406161785332,
+        "loss": 0.5809755742409968,
+        "mse": 0.19801269216944237,
+        "precision": 0.6628758067054935,
+        "recall": 0.3993712481151669,
+        "roc_auc": 0.7219933139117602,
+        "targets": 566107,
+        "threshold": 0.5
+      },
+      "training_labels_per_wall_second": 2290.4938011329427,
+      "training_wall_seconds": 247.155002,
+      "validation": {
+        "accuracy": 0.6852543720190779,
+        "bce": 0.5990377875565535,
+        "f1": 0.5088139335822655,
+        "loss": 0.5990377875565535,
+        "mse": 0.20576391891476595,
+        "precision": 0.6209464983195567,
+        "recall": 0.43098520511096167,
+        "roc_auc": 0.7034669030290922,
+        "targets": 125800,
+        "threshold": 0.5
+      }
+    },
+    {
+      "attention": {
+        "review_threshold": 0.2,
+        "severe_failure_stages": [],
+        "stages": {
+          "action_encoder.layers.0.attention": {
+            "cases_above_review": 5,
+            "kernel_reference_max_abs": 1.3475000095741763e-06,
+            "max_p95_growth_ratio": 1.0747756588367632,
+            "maximum_relative_l2": 0.288561293762862,
+            "median_pair_ess": 7.845523873594302,
+            "median_relative_l2": 0.2625622121637746,
+            "minimum_case_pair_ess_median": 6.4679128695825145
+          },
+          "correct_padding_encoder.layers.0.attention": {
+            "cases_above_review": 6,
+            "kernel_reference_max_abs": 1.2871388705981701e-06,
+            "max_p95_growth_ratio": 1.2144614244107474,
+            "maximum_relative_l2": 0.5936579688210604,
+            "median_pair_ess": 1.6017160226831437,
+            "median_relative_l2": 0.5034309740160268,
+            "minimum_case_pair_ess_median": 1.3907671069467544
+          },
+          "decoder.layers.0.attention": {
+            "cases_above_review": 6,
+            "kernel_reference_max_abs": 2.7953744354825005e-06,
+            "max_p95_growth_ratio": 1.3993956986821707,
+            "maximum_relative_l2": 0.6795311547645777,
+            "median_pair_ess": 4.440516642770013,
+            "median_relative_l2": 0.5625027035805181,
+            "minimum_case_pair_ess_median": 3.5086718408923625
+          },
+          "session_encoder.layers.0.attention": {
+            "cases_above_review": 2,
+            "kernel_reference_max_abs": 6.004670501935649e-07,
+            "max_p95_growth_ratio": 1.2053706062129934,
+            "maximum_relative_l2": 0.24980457269126916,
+            "median_pair_ess": 2.4726009851610216,
+            "median_relative_l2": 0.11197432548418879,
+            "minimum_case_pair_ess_median": 2.217723461320668
+          }
+        },
+        "status": "CONTINUE_BOUNDED_DIAGNOSTIC_ONLY"
+      },
+      "checkpoint_sha256": "e0fe6216e05abb2a2bd1de906d6a3f6e0319e2538ad994ad1363c446311f344b",
+      "cumulative_updates": 1454,
+      "epoch": 8,
+      "fresh_recovery": "PASS_EXACT_ZERO_ADAM",
+      "gradient_l2_max": 1.2463799170763998,
+      "gradient_l2_min": 0.17364474285376394,
+      "max_batch_bce": 0.6167766451835632,
+      "measured_update_seconds": 159.65396354638506,
+      "median_update_seconds": 0.7888387884595431,
+      "optimizer_updates": 182,
+      "training": {
+        "accuracy": 0.7015475872935681,
+        "bce": 0.5796967463945566,
+        "f1": 0.5012045062705179,
+        "loss": 0.5796967463945566,
+        "mse": 0.19748132130134893,
+        "precision": 0.6640330428524492,
+        "recall": 0.40250552410215557,
+        "roc_auc": 0.7234526293643273,
+        "targets": 566107,
+        "threshold": 0.5
+      },
+      "training_labels_per_wall_second": 2308.203795916322,
+      "training_wall_seconds": 245.258673,
+      "validation": {
+        "accuracy": 0.6818282988871224,
+        "bce": 0.6005638162358198,
+        "f1": 0.428363324764353,
+        "loss": 0.6005638162358198,
+        "mse": 0.20654471044558886,
+        "precision": 0.6684346585844179,
+        "recall": 0.3151689643577673,
+        "roc_auc": 0.7004398789403754,
+        "targets": 125800,
+        "threshold": 0.5
+      }
+    }
+  ],
+  "epochs_completed": 8,
+  "gradient_model_adam_all_finite": true,
+  "independent_metric_max_abs_difference": 6.8884034032379304e-09,
+  "initial_attention": {
+    "review_threshold": 0.2,
+    "severe_failure_stages": [],
+    "stages": {
+      "action_encoder.layers.0.attention": {
+        "cases_above_review": 4,
+        "kernel_reference_max_abs": 6.560209999673106e-07,
+        "max_p95_growth_ratio": 1.0,
+        "maximum_relative_l2": 0.23581723296626336,
+        "median_pair_ess": 8.16032386039763,
+        "median_relative_l2": 0.2131758601926153,
+        "minimum_case_pair_ess_median": 7.350384002427145
+      },
+      "correct_padding_encoder.layers.0.attention": {
+        "cases_above_review": 0,
+        "kernel_reference_max_abs": 5.936506902309846e-07,
+        "max_p95_growth_ratio": 1.0,
+        "maximum_relative_l2": 0.16213115651654034,
+        "median_pair_ess": 9.637484801201985,
+        "median_relative_l2": 0.13649678355865927,
+        "minimum_case_pair_ess_median": 8.802697382955614
+      },
+      "decoder.layers.0.attention": {
+        "cases_above_review": 0,
+        "kernel_reference_max_abs": 5.112888237235325e-07,
+        "max_p95_growth_ratio": 1.0,
+        "maximum_relative_l2": 0.13600272080194656,
+        "median_pair_ess": 9.190253196536908,
+        "median_relative_l2": 0.10145184886292435,
+        "minimum_case_pair_ess_median": 7.319851746496251
+      },
+      "session_encoder.layers.0.attention": {
+        "cases_above_review": 0,
+        "kernel_reference_max_abs": 4.5566674589103684e-07,
+        "max_p95_growth_ratio": 1.0,
+        "maximum_relative_l2": 0.10793091054313718,
+        "median_pair_ess": 7.71818847092822,
+        "median_relative_l2": 0.07049182260247569,
+        "minimum_case_pair_ess_median": 5.574955667000534
+      }
+    },
+    "status": "CONTINUE_BOUNDED_DIAGNOSTIC_ONLY"
+  },
+  "light_hold_preserved": true,
+  "local_checkpoint_inventory": [
+    {
+      "bytes": 86862390,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_001.pt",
+      "sha256": "092976de6ffddb5aece5cef9b0a35ac8c86d72f0df8767856da9f14a5e4d2b70"
+    },
+    {
+      "bytes": 84381366,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_001_batch_0025.pt",
+      "sha256": "35058587b94dd15480ebe254b46538bbe0d3bf4f70161d877bd2a582e074540a"
+    },
+    {
+      "bytes": 84880566,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_001_batch_0050.pt",
+      "sha256": "9bee29eed732fdb57aaa6b7883f1a24e9d5333479e9275ae7863f786c3116329"
+    },
+    {
+      "bytes": 85286134,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_001_batch_0075.pt",
+      "sha256": "9fdae548d795aeb95d4bc6d2506333c569ea219057ee65eb3fd34014ef7b9565"
+    },
+    {
+      "bytes": 85710518,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_001_batch_0100.pt",
+      "sha256": "e3e4d082cc1bf87be6402956b13dcb91a25404d498040c83ecf92207c1aa281a"
+    },
+    {
+      "bytes": 86135414,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_001_batch_0125.pt",
+      "sha256": "e7b2f6b3a782484747c59521c13c73d28074e5f2e84db46c92e428d81dab4421"
+    },
+    {
+      "bytes": 86374006,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_001_batch_0150.pt",
+      "sha256": "06fdaa201cb6b64c5de359c6725332e6f945d1f08f5b24139e9ef3b42c4d5baf"
+    },
+    {
+      "bytes": 86748278,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_001_batch_0175.pt",
+      "sha256": "70d01aa53408b1996b50aca71136b4cb331cac695ee3ac37a5514092f0cc4af8"
+    },
+    {
+      "bytes": 86861878,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_001_batch_0181.pt",
+      "sha256": "9169feb606bf7eea39b378507137bcc00635b05dd44ad7e1d527ba409326f143"
+    },
+    {
+      "bytes": 86862390,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_002.pt",
+      "sha256": "5d247f2cd94a3bd6c2b7cdb9e4ad2007bd9a10d6bef74c877ddedcf77ac4bce4"
+    },
+    {
+      "bytes": 84509046,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_002_batch_0025.pt",
+      "sha256": "d974907f106c694e0e08f3b27b4c4a2e30ab204621119ed5bcd494de18e44053"
+    },
+    {
+      "bytes": 84943094,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_002_batch_0050.pt",
+      "sha256": "acccccb85d9186c38a83b1fcd239192bac943e0a02e3a00f51b8f1f737e3e693"
+    },
+    {
+      "bytes": 85298614,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_002_batch_0075.pt",
+      "sha256": "d876999238fbe788003201761b51c393d4196186d897f821c2fd13d0e836602b"
+    },
+    {
+      "bytes": 85545270,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_002_batch_0100.pt",
+      "sha256": "31de292a09c4b78d7af02d78d15d470b0dc7bce2d8588f0c91d302d2e4e33103"
+    },
+    {
+      "bytes": 85937014,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_002_batch_0125.pt",
+      "sha256": "091e3f6f62a89e511d7de49a7b6a56f4d5a790bab9cb3c1efc96d73ad101990a"
+    },
+    {
+      "bytes": 86385334,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_002_batch_0150.pt",
+      "sha256": "afc7fbfb7481db619c56a67752df6adec80ee8d9a6ae327691e4c10022416677"
+    },
+    {
+      "bytes": 86819446,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_002_batch_0175.pt",
+      "sha256": "88c835fadee4483172847b45e088e4e76019e97227f9b829fb70d9857220388b"
+    },
+    {
+      "bytes": 86862390,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_002_batch_0182.pt",
+      "sha256": "9fca6681f8740f30d5ae1d3a500c7a616165990583f1b20608445bacf3356593"
+    },
+    {
+      "bytes": 86862390,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_003.pt",
+      "sha256": "39260fbd907381ca7982413535d58070332d019b59870c4f3b25748d9b2c3d15"
+    },
+    {
+      "bytes": 84434230,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_003_batch_0025.pt",
+      "sha256": "aeaabbffc72ea419f3996ffd1d419eeff06da6dd20308a2caf56b37d23e74fc0"
+    },
+    {
+      "bytes": 84729974,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_003_batch_0050.pt",
+      "sha256": "5f7d4e90de5f6ea32cf12f77ab4e1fa969018894df8285b91ca7f7132eebacc6"
+    },
+    {
+      "bytes": 84981494,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_003_batch_0075.pt",
+      "sha256": "67bf067e05e0c86fb3581f7324a81a09fd055dcdea3ec3e8ff80fd81e90f24d3"
+    },
+    {
+      "bytes": 85458038,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_003_batch_0100.pt",
+      "sha256": "2a056e908da57ebed2476fa2ab47285d8f833539da6b8b302c79b75b33206e41"
+    },
+    {
+      "bytes": 85948790,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_003_batch_0125.pt",
+      "sha256": "6e43d0b0b66556b5c491ce98f8dc974ddd649b8596a48dd9f99ddd9ed3834c94"
+    },
+    {
+      "bytes": 86264694,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_003_batch_0150.pt",
+      "sha256": "dbbd24679b81ec43cf4860018c9c1ba797e35a0803acf88eff3314596befcf3c"
+    },
+    {
+      "bytes": 86707574,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_003_batch_0175.pt",
+      "sha256": "59e757a80c6c0b7f2dcaa1c7ffa7f18a5c097e4e3e054291b8f6b63e71e2641a"
+    },
+    {
+      "bytes": 86862390,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_003_batch_0183.pt",
+      "sha256": "c9389c18bc8ea91cf340ee4233758a1359bb573dfd6848e6c91c2c00fdef6485"
+    },
+    {
+      "bytes": 86862390,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_004.pt",
+      "sha256": "c3433c921d9f59bf6d2a214df6011d1cc8985e9a0b75b69c76cc5eda7a741f35"
+    },
+    {
+      "bytes": 84539894,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_004_batch_0025.pt",
+      "sha256": "248fe3801ef7b4ae3f7261e49f16b843100f14c6306a190b98bfee4081de7d6b"
+    },
+    {
+      "bytes": 84973814,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_004_batch_0050.pt",
+      "sha256": "bad1e87e8b43c3ce290ec526ffa6179947f460e31dfe80df79b70dae83fe54ee"
+    },
+    {
+      "bytes": 85428918,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_004_batch_0075.pt",
+      "sha256": "f88c67c06287e4053f9133f556a226fa744036cc11f5c337d0407863c8b1e362"
+    },
+    {
+      "bytes": 85761206,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_004_batch_0100.pt",
+      "sha256": "52501bec2ba5cd1e5bf72fc9dc77880dd020c6964a9ca61e12081e34c50f97b8"
+    },
+    {
+      "bytes": 86141494,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_004_batch_0125.pt",
+      "sha256": "b537794d66b5f1fdbaabf8d44179de326cb145dfa6ad7485703ce615bda47c5b"
+    },
+    {
+      "bytes": 86377910,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_004_batch_0150.pt",
+      "sha256": "54241aad72ef0a21ab37f6a645e423d14d402c55a14e8152fc0ef8c9aa344134"
+    },
+    {
+      "bytes": 86721846,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_004_batch_0175.pt",
+      "sha256": "34a13f5b2820a87511a8a943b67591f78659404bd4652bf1ed075c7c9010fbd5"
+    },
+    {
+      "bytes": 86862390,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_004_batch_0182.pt",
+      "sha256": "66a13d5b0395e9a16752407b2ef70ef1fd709467f5a75dc7ce9dbda85cf11e27"
+    },
+    {
+      "bytes": 86862390,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_005.pt",
+      "sha256": "efc413747068682ea73ff70965d0e00616afbac6c4d82d09cd5fd4e8c7b79af8"
+    },
+    {
+      "bytes": 84439670,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_005_batch_0025.pt",
+      "sha256": "17ed92c155b5d8b83477b10c5648707d5f70c0fdf5a83bb20a9e6607941681e7"
+    },
+    {
+      "bytes": 84822710,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_005_batch_0050.pt",
+      "sha256": "8054c5cd23022ed9f52f67c13ea1d420d230d1d8883407161c2de5cb0191ac2d"
+    },
+    {
+      "bytes": 85079030,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_005_batch_0075.pt",
+      "sha256": "a79310dc1e08bab2fb3e6cdddc2169be264a766c314d02b340fa51f510d64500"
+    },
+    {
+      "bytes": 85504438,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_005_batch_0100.pt",
+      "sha256": "3dc6617b2aae18a976cadcafd52e2e906cda066b2051a183f1c16860f65f4e41"
+    },
+    {
+      "bytes": 85825718,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_005_batch_0125.pt",
+      "sha256": "9524e22ae2392d8084da2bb637ae4d9cd7c342b11c69a6afd97afeacce77683b"
+    },
+    {
+      "bytes": 86304118,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_005_batch_0150.pt",
+      "sha256": "a729933ca9f1a82d60d3e27a9c35e50bfc9c663fb348c535a968d7924737171d"
+    },
+    {
+      "bytes": 86743798,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_005_batch_0175.pt",
+      "sha256": "f3d9f7e5a399eea7ebd535c5773d8145ca9bdb91ad64133d2089624dcf500419"
+    },
+    {
+      "bytes": 86862390,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_005_batch_0181.pt",
+      "sha256": "8d720eb3fe7317ac2fed168d85cd56113054e15cf41a71bc89b6c1cbeff185dc"
+    },
+    {
+      "bytes": 86862390,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_006.pt",
+      "sha256": "57b00123a517d33ea590001f76dcaed7dd09bc2ff4668dc6f681871a90163b1a"
+    },
+    {
+      "bytes": 84463414,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_006_batch_0025.pt",
+      "sha256": "2a2feef0204fa2e113444d250ae4861d2f339ef71364bfd192459c82c4c02a1d"
+    },
+    {
+      "bytes": 84881270,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_006_batch_0050.pt",
+      "sha256": "3dfcb25c930dffddd46dba39c46d175c0bb0a1c85e6bc4def4eeeda15b52427a"
+    },
+    {
+      "bytes": 85128886,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_006_batch_0075.pt",
+      "sha256": "1600d98ed729bdd6f6b0059ac8d1a200728e556707ed887609bc2df91d9959c2"
+    },
+    {
+      "bytes": 85477686,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_006_batch_0100.pt",
+      "sha256": "ee927da5b6a63c05a4e7d1d41df8ec0eb036bf64dcb713eddb1024f663c9ef89"
+    },
+    {
+      "bytes": 85937910,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_006_batch_0125.pt",
+      "sha256": "162c76b960ffa1f359a203cce83ae37a7a502df3b4486b9948369eb3be0ccd93"
+    },
+    {
+      "bytes": 86380854,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_006_batch_0150.pt",
+      "sha256": "76179219204ddb46477d0222b8dbaac8b36699ef6d4382efde6c4594c66e5dac"
+    },
+    {
+      "bytes": 86815670,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_006_batch_0175.pt",
+      "sha256": "7adf343568a89290b1fc6845118d5a4e1eb687eede6b4d66c3ec46c80d0b7182"
+    },
+    {
+      "bytes": 86862390,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_006_batch_0182.pt",
+      "sha256": "08b0909a8966a7668973f5ddc87d0fbff1d87b5d00104e67ce1b93f724e77ba6"
+    },
+    {
+      "bytes": 86862390,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_007.pt",
+      "sha256": "07b944e71683c415cc5c00fad42648d22cb5b8fa790bc39c3c5d24b50c781781"
+    },
+    {
+      "bytes": 84435894,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_007_batch_0025.pt",
+      "sha256": "1b90a0878ba3c109d6fda3f8b9f438649d280806b75a4f5650f3a42edb81b205"
+    },
+    {
+      "bytes": 84844470,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_007_batch_0050.pt",
+      "sha256": "e0eda0a453b8aeb4fb58b92e66c6f448bb133263de9e576b2d175a49ce33725b"
+    },
+    {
+      "bytes": 85340790,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_007_batch_0075.pt",
+      "sha256": "0f35275a66315d13e06b38d7312e684bef4cd217c59f47e5e6533a2c4f05058d"
+    },
+    {
+      "bytes": 85835446,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_007_batch_0100.pt",
+      "sha256": "b3ae88afa66163cffe1e36b81501269ca2096bccf0bf8f049e7aed142dcc6ff9"
+    },
+    {
+      "bytes": 86201974,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_007_batch_0125.pt",
+      "sha256": "9603a243347dbf84a5026a34a8c85945292cdea9e67a1e7b9701725cbd42c151"
+    },
+    {
+      "bytes": 86495990,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_007_batch_0150.pt",
+      "sha256": "1cbc87a66e2a3971a0bffa37b4516262bb6ec76ffd7d2799acba8cf6ee35e051"
+    },
+    {
+      "bytes": 86770166,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_007_batch_0175.pt",
+      "sha256": "61d49779bafd899a200259e40426efcc050aaf3ae0bdb3d63e844d6d07ecac3d"
+    },
+    {
+      "bytes": 86862390,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_007_batch_0181.pt",
+      "sha256": "2bff5f54dde78a17c75245724866e62fbe05041248bed4ffbebd4810454631cb"
+    },
+    {
+      "bytes": 86862390,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_008.pt",
+      "sha256": "e0fe6216e05abb2a2bd1de906d6a3f6e0319e2538ad994ad1363c446311f344b"
+    },
+    {
+      "bytes": 84499638,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_008_batch_0025.pt",
+      "sha256": "c0d01521f93d37d484fd9a8cbf922500291be362acbea05581ae72b1cff817d3"
+    },
+    {
+      "bytes": 84736630,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_008_batch_0050.pt",
+      "sha256": "cf62d3bfa3e06e5ee76c33052fbfa12adfcac8d708c7d1da9c23d2a27d8df0ea"
+    },
+    {
+      "bytes": 84985590,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_008_batch_0075.pt",
+      "sha256": "3eb374ba8447042f1adabff0e16adc7c9c7e93bf7b4e76f52a75ed45252e6f16"
+    },
+    {
+      "bytes": 85478710,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_008_batch_0100.pt",
+      "sha256": "200a1443a80b556917bbd598f12063e28a33eb53bc8e49d0b9175f4e49d71640"
+    },
+    {
+      "bytes": 85914870,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_008_batch_0125.pt",
+      "sha256": "0307b58ea787058f7bfd66cda6b1ccbf8b1b7c783a52e530a8ba34bc42ef523e"
+    },
+    {
+      "bytes": 86332918,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_008_batch_0150.pt",
+      "sha256": "8a4017d48f3e1aba0b4d7d122aab3c8f1c97df95d3fa0ab28ea6f8af4ce99eeb"
+    },
+    {
+      "bytes": 86747126,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_008_batch_0175.pt",
+      "sha256": "7b2eb4ff0fbaae544f081c13b07468b8acfc09df9b37c98083084c4f5e18a62f"
+    },
+    {
+      "bytes": 86862390,
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_008_batch_0182.pt",
+      "sha256": "99fc9d481a25b8574e2a58b7ca155c2b8880cd0d8475c9e5e75210178260a821"
+    }
+  ],
+  "optimizer_updates": 1454,
+  "processed_checksums_verified": 11,
+  "profile": {
+    "adam_moment_bytes_reserved": 55451656,
+    "budget_profile": "requested_8gib",
+    "cases": [
+      {
+        "case": 0,
+        "gradient_l2": 5.633856746149022,
+        "loss": 1.100964903831482,
+        "optimizer_calls": 0,
+        "resources": {
+          "allocated_bytes": 180209152,
+          "cached_allocator": {
+            "allocated_bytes": 84661760,
+            "observed_utc": "2026-10-24T02:05:32.981963+00:00",
+            "peak_allocated_bytes": 84661760,
+            "peak_reserved_bytes": 98566144,
+            "reserved_bytes": 98566144
+          },
+          "decision": {
+            "exclusive_ownership_claimed": false,
+            "local_holders": [],
+            "local_visibility_gaps": [],
+            "pid_mapping_proven": false,
+            "reasons": [],
+            "reported_compute_processes": [
+              {
+                "compute_instance": 0,
+                "gpu_instance": 2,
+                "pid": 48799,
+                "used_gpu_memory_bytes": 666894336
+              }
+            ],
+            "status": "ADMIT_SHARED_WITH_LIMITED_ATTRIBUTION",
+            "warnings": [
+              "PID namespace identity remains unresolved",
+              "MIG utilization unsupported: cap/headroom/pacing/runtime fallback; load UNKNOWN"
+            ]
+          },
+          "host": {
+            "cgroup_headroom_bytes": 30300295168,
+            "cgroup_limit_bytes": 96636764160,
+            "cgroup_usage_bytes": 66336468992,
+            "peak_process_rss_bytes": 1654071296
+          },
+          "observation": {
+            "device": {
+              "compute_processes": [
+                {
+                  "compute_instance": 0,
+                  "gpu_instance": 2,
+                  "pid": 48799,
+                  "used_gpu_memory_bytes": 666894336
+                }
+              ],
+              "free_bytes": 41562734592,
+              "total_bytes": 42278584320,
+              "used_bytes": 715849728
+            },
+            "local": {
+              "conflicts": [],
+              "holders": [],
+              "inaccessible_fd_pids": [],
+              "light_processes": [],
+              "observed_utc": "2026-10-24T02:05:33.831296+00:00",
+              "own_pid": 15134,
+              "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+            },
+            "observed_utc": "2026-10-24T02:05:33.675691+00:00",
+            "pid_attribution": "UNRESOLVED; self/peer not inferred",
+            "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+            "utilization": {
+              "gpu_percent": null,
+              "memory_percent": null,
+              "nvml_status": 3,
+              "status": "unsupported"
+            }
+          },
+          "peak_allocated_bytes": 241295360,
+          "peak_reserved_bytes": 291504128,
+          "phase": "after_profile",
+          "pid_mapping_proven": false,
+          "pids_added": [],
+          "pids_departed": [],
+          "reserved_bytes": 291504128
+        },
+        "seconds": 0.6454366290709004,
+        "shape": {
+          "batch_size": 1,
+          "indices": [
+            880
+          ],
+          "padded_tokens": 363,
+          "supervised_targets": 67,
+          "target_sessions": [
+            1558
+          ]
+        },
+        "split": "train"
+      },
+      {
+        "case": 1,
+        "gradient_l2": 1.3575795851368797,
+        "loss": 0.789578378200531,
+        "optimizer_calls": 0,
+        "resources": {
+          "allocated_bytes": 182313984,
+          "cached_allocator": {
+            "allocated_bytes": 151770624,
+            "observed_utc": "2026-10-24T02:05:34.013382+00:00",
+            "peak_allocated_bytes": 241295360,
+            "peak_reserved_bytes": 291504128,
+            "reserved_bytes": 291504128
+          },
+          "decision": {
+            "exclusive_ownership_claimed": false,
+            "local_holders": [],
+            "local_visibility_gaps": [],
+            "pid_mapping_proven": false,
+            "reasons": [],
+            "reported_compute_processes": [
+              {
+                "compute_instance": 0,
+                "gpu_instance": 2,
+                "pid": 48799,
+                "used_gpu_memory_bytes": 2132803584
+              }
+            ],
+            "status": "ADMIT_SHARED_WITH_LIMITED_ATTRIBUTION",
+            "warnings": [
+              "PID namespace identity remains unresolved",
+              "MIG utilization unsupported: cap/headroom/pacing/runtime fallback; load UNKNOWN"
+            ]
+          },
+          "host": {
+            "cgroup_headroom_bytes": 30228758528,
+            "cgroup_limit_bytes": 96636764160,
+            "cgroup_usage_bytes": 66408005632,
+            "peak_process_rss_bytes": 1663782912
+          },
+          "observation": {
+            "device": {
+              "compute_processes": [
+                {
+                  "compute_instance": 0,
+                  "gpu_instance": 2,
+                  "pid": 48799,
+                  "used_gpu_memory_bytes": 2132803584
+                }
+              ],
+              "free_bytes": 40096825344,
+              "total_bytes": 42278584320,
+              "used_bytes": 2181758976
+            },
+            "local": {
+              "conflicts": [],
+              "holders": [],
+              "inaccessible_fd_pids": [],
+              "light_processes": [],
+              "observed_utc": "2026-10-24T02:05:34.545860+00:00",
+              "own_pid": 15134,
+              "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+            },
+            "observed_utc": "2026-10-24T02:05:34.282465+00:00",
+            "pid_attribution": "UNRESOLVED; self/peer not inferred",
+            "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+            "utilization": {
+              "gpu_percent": null,
+              "memory_percent": null,
+              "nvml_status": 3,
+              "status": "unsupported"
+            }
+          },
+          "peak_allocated_bytes": 1524348416,
+          "peak_reserved_bytes": 1755316224,
+          "phase": "after_profile",
+          "pid_mapping_proven": false,
+          "pids_added": [],
+          "pids_departed": [],
+          "reserved_bytes": 1755316224
+        },
+        "seconds": 0.2441465670708567,
+        "shape": {
+          "batch_size": 64,
+          "indices": [
+            1210,
+            3680,
+            357,
+            4935,
+            7054,
+            1377,
+            2645,
+            51,
+            4121,
+            5723,
+            1715,
+            1442,
+            110,
+            5222,
+            4591,
+            3001,
+            1015,
+            4426,
+            575,
+            5275,
+            4285,
+            390,
+            50,
+            4690,
+            1842,
+            3692,
+            6941,
+            4357,
+            5050,
+            7026,
+            3521,
+            5649,
+            4166,
+            49,
+            976,
+            3677,
+            1474,
+            5651,
+            1867,
+            5164,
+            4524,
+            3063,
+            5486,
+            2080,
+            1568,
+            4358,
+            2785,
+            1926,
+            2247,
+            6907,
+            1808,
+            5507,
+            3931,
+            5235,
+            5365,
+            2246,
+            4122,
+            6264,
+            2498,
+            3085,
+            1383,
+            1327,
+            6206,
+            3403
+          ],
+          "padded_tokens": 7606,
+          "supervised_targets": 1513,
+          "target_sessions": [
+            2147,
+            6494,
+            636,
+            8670,
+            12394,
+            2450,
+            4687,
+            83,
+            7246,
+            10051,
+            3046,
+            2560,
+            195,
+            9174,
+            8072,
+            5311,
+            1795,
+            7779,
+            1018,
+            9264,
+            7535,
+            692,
+            82,
+            8247,
+            3268,
+            6512,
+            12202,
+            7655,
+            8864,
+            12346,
+            6223,
+            9919,
+            7326,
+            81,
+            1730,
+            6491,
+            2617,
+            9921,
+            3314,
+            9071,
+            7953,
+            5420,
+            9632,
+            3694,
+            2780,
+            7656,
+            4935,
+            3422,
+            3983,
+            12138,
+            3208,
+            9671,
+            6913,
+            9195,
+            9416,
+            3982,
+            7247,
+            11001,
+            4424,
+            5459,
+            2456,
+            2357,
+            10898,
+            6015
+          ]
+        },
+        "split": "train"
+      },
+      {
+        "case": 2,
+        "gradient_l2": 2.082192322853939,
+        "loss": 0.7046862840652466,
+        "optimizer_calls": 0,
+        "resources": {
+          "allocated_bytes": 182035456,
+          "cached_allocator": {
+            "allocated_bytes": 151770624,
+            "observed_utc": "2026-10-24T02:05:34.659230+00:00",
+            "peak_allocated_bytes": 1524348416,
+            "peak_reserved_bytes": 1755316224,
+            "reserved_bytes": 1755316224
+          },
+          "decision": {
+            "exclusive_ownership_claimed": false,
+            "local_holders": [],
+            "local_visibility_gaps": [],
+            "pid_mapping_proven": false,
+            "reasons": [],
+            "reported_compute_processes": [
+              {
+                "compute_instance": 0,
+                "gpu_instance": 2,
+                "pid": 48799,
+                "used_gpu_memory_bytes": 3156213760
+              }
+            ],
+            "status": "ADMIT_SHARED_WITH_LIMITED_ATTRIBUTION",
+            "warnings": [
+              "PID namespace identity remains unresolved",
+              "MIG utilization unsupported: cap/headroom/pacing/runtime fallback; load UNKNOWN"
+            ]
+          },
+          "host": {
+            "cgroup_headroom_bytes": 30295982080,
+            "cgroup_limit_bytes": 96636764160,
+            "cgroup_usage_bytes": 66340782080,
+            "peak_process_rss_bytes": 1665875968
+          },
+          "observation": {
+            "device": {
+              "compute_processes": [
+                {
+                  "compute_instance": 0,
+                  "gpu_instance": 2,
+                  "pid": 48799,
+                  "used_gpu_memory_bytes": 3156213760
+                }
+              ],
+              "free_bytes": 39073415168,
+              "total_bytes": 42278584320,
+              "used_bytes": 3205169152
+            },
+            "local": {
+              "conflicts": [],
+              "holders": [],
+              "inaccessible_fd_pids": [],
+              "light_processes": [],
+              "observed_utc": "2026-10-24T02:05:35.983727+00:00",
+              "own_pid": 15134,
+              "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+            },
+            "observed_utc": "2026-10-24T02:05:35.867054+00:00",
+            "pid_attribution": "UNRESOLVED; self/peer not inferred",
+            "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+            "utilization": {
+              "gpu_percent": null,
+              "memory_percent": null,
+              "nvml_status": 3,
+              "status": "unsupported"
+            }
+          },
+          "peak_allocated_bytes": 1578392576,
+          "peak_reserved_bytes": 2778726400,
+          "phase": "after_profile",
+          "pid_mapping_proven": false,
+          "pids_added": [],
+          "pids_departed": [],
+          "reserved_bytes": 2778726400
+        },
+        "seconds": 1.1790507230907679,
+        "shape": {
+          "batch_size": 12,
+          "indices": [
+            5893,
+            1858,
+            5442,
+            1316,
+            3275,
+            2241,
+            4878,
+            3910,
+            3115,
+            2834,
+            6932,
+            4510
+          ],
+          "padded_tokens": 31612,
+          "supervised_targets": 2028,
+          "target_sessions": [
+            10347,
+            3297,
+            9552,
+            2338,
+            5795,
+            3972,
+            8569,
+            6879,
+            5511,
+            5014,
+            12183,
+            7923
+          ]
+        },
+        "split": "train"
+      },
+      {
+        "case": 3,
+        "gradient_l2": 1.1910732469455525,
+        "loss": 0.7317456007003784,
+        "optimizer_calls": 0,
+        "resources": {
+          "allocated_bytes": 182380544,
+          "cached_allocator": {
+            "allocated_bytes": 151770624,
+            "observed_utc": "2026-10-24T02:05:36.085429+00:00",
+            "peak_allocated_bytes": 1578392576,
+            "peak_reserved_bytes": 2778726400,
+            "reserved_bytes": 2778726400
+          },
+          "decision": {
+            "exclusive_ownership_claimed": false,
+            "local_holders": [],
+            "local_visibility_gaps": [],
+            "pid_mapping_proven": false,
+            "reasons": [],
+            "reported_compute_processes": [
+              {
+                "compute_instance": 0,
+                "gpu_instance": 2,
+                "pid": 48799,
+                "used_gpu_memory_bytes": 4741660672
+              }
+            ],
+            "status": "ADMIT_SHARED_WITH_LIMITED_ATTRIBUTION",
+            "warnings": [
+              "PID namespace identity remains unresolved",
+              "MIG utilization unsupported: cap/headroom/pacing/runtime fallback; load UNKNOWN"
+            ]
+          },
+          "host": {
+            "cgroup_headroom_bytes": 30295576576,
+            "cgroup_limit_bytes": 96636764160,
+            "cgroup_usage_bytes": 66341187584,
+            "peak_process_rss_bytes": 1667780608
+          },
+          "observation": {
+            "device": {
+              "compute_processes": [
+                {
+                  "compute_instance": 0,
+                  "gpu_instance": 2,
+                  "pid": 48799,
+                  "used_gpu_memory_bytes": 4741660672
+                }
+              ],
+              "free_bytes": 37487968256,
+              "total_bytes": 42278584320,
+              "used_bytes": 4790616064
+            },
+            "local": {
+              "conflicts": [],
+              "holders": [],
+              "inaccessible_fd_pids": [],
+              "light_processes": [],
+              "observed_utc": "2026-10-24T02:05:36.723721+00:00",
+              "own_pid": 15134,
+              "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+            },
+            "observed_utc": "2026-10-24T02:05:36.608908+00:00",
+            "pid_attribution": "UNRESOLVED; self/peer not inferred",
+            "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+            "utilization": {
+              "gpu_percent": null,
+              "memory_percent": null,
+              "nvml_status": 3,
+              "status": "unsupported"
+            }
+          },
+          "peak_allocated_bytes": 2977500672,
+          "peak_reserved_bytes": 4364173312,
+          "phase": "after_profile",
+          "pid_mapping_proven": false,
+          "pids_added": [],
+          "pids_departed": [],
+          "reserved_bytes": 4364173312
+        },
+        "seconds": 0.4741420750506222,
+        "shape": {
+          "batch_size": 64,
+          "indices": [
+            328,
+            5824,
+            5673,
+            457,
+            6237,
+            6999,
+            2633,
+            1499,
+            4849,
+            578,
+            5796,
+            1296,
+            384,
+            3435,
+            4125,
+            178,
+            4851,
+            5238,
+            5351,
+            6756,
+            6680,
+            107,
+            4615,
+            6549,
+            2704,
+            3666,
+            5115,
+            2903,
+            212,
+            3905,
+            5801,
+            106,
+            2632,
+            480,
+            3810,
+            6174,
+            6904,
+            1244,
+            1802,
+            3727,
+            2905,
+            1256,
+            3188,
+            5217,
+            1409,
+            181,
+            169,
+            231,
+            3260,
+            5571,
+            1406,
+            3855,
+            6757,
+            479,
+            2358,
+            1396,
+            4830,
+            4174,
+            1243,
+            2770,
+            679,
+            3312,
+            2859,
+            130
+          ],
+          "padded_tokens": 32766,
+          "supervised_targets": 4654,
+          "target_sessions": [
+            582,
+            10229,
+            9964,
+            804,
+            10953,
+            12300,
+            4663,
+            2656,
+            8517,
+            1024,
+            10178,
+            2301,
+            683,
+            6072,
+            7253,
+            311,
+            8519,
+            9198,
+            9388,
+            11874,
+            11740,
+            189,
+            8113,
+            11512,
+            4789,
+            6470,
+            8986,
+            5139,
+            374,
+            6871,
+            10183,
+            188,
+            4662,
+            841,
+            6715,
+            10834,
+            12130,
+            2211,
+            3194,
+            6572,
+            5141,
+            2231,
+            5640,
+            9164,
+            2501,
+            314,
+            296,
+            409,
+            5766,
+            9786,
+            2498,
+            6790,
+            11875,
+            840,
+            4180,
+            2480,
+            8481,
+            7337,
+            2210,
+            4907,
+            1202,
+            5856,
+            5059,
+            227
+          ]
+        },
+        "split": "train"
+      },
+      {
+        "case": 4,
+        "gradient_l2": 1.2575592015619232,
+        "loss": 0.7446474432945251,
+        "optimizer_calls": 0,
+        "resources": {
+          "allocated_bytes": 184229376,
+          "cached_allocator": {
+            "allocated_bytes": 151770624,
+            "observed_utc": "2026-10-24T02:05:36.887074+00:00",
+            "peak_allocated_bytes": 2977500672,
+            "peak_reserved_bytes": 4364173312,
+            "reserved_bytes": 4364173312
+          },
+          "decision": {
+            "exclusive_ownership_claimed": false,
+            "local_holders": [],
+            "local_visibility_gaps": [],
+            "pid_mapping_proven": false,
+            "reasons": [],
+            "reported_compute_processes": [
+              {
+                "compute_instance": 0,
+                "gpu_instance": 2,
+                "pid": 48799,
+                "used_gpu_memory_bytes": 6312427520
+              }
+            ],
+            "status": "ADMIT_SHARED_WITH_LIMITED_ATTRIBUTION",
+            "warnings": [
+              "PID namespace identity remains unresolved",
+              "MIG utilization unsupported: cap/headroom/pacing/runtime fallback; load UNKNOWN"
+            ]
+          },
+          "host": {
+            "cgroup_headroom_bytes": 30291931136,
+            "cgroup_limit_bytes": 96636764160,
+            "cgroup_usage_bytes": 66344833024,
+            "peak_process_rss_bytes": 1668288512
+          },
+          "observation": {
+            "device": {
+              "compute_processes": [
+                {
+                  "compute_instance": 0,
+                  "gpu_instance": 2,
+                  "pid": 48799,
+                  "used_gpu_memory_bytes": 6312427520
+                }
+              ],
+              "free_bytes": 35917201408,
+              "total_bytes": 42278584320,
+              "used_bytes": 6361382912
+            },
+            "local": {
+              "conflicts": [],
+              "holders": [],
+              "inaccessible_fd_pids": [],
+              "light_processes": [],
+              "observed_utc": "2026-10-24T02:05:37.733932+00:00",
+              "own_pid": 15134,
+              "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+            },
+            "observed_utc": "2026-10-24T02:05:37.539827+00:00",
+            "pid_attribution": "UNRESOLVED; self/peer not inferred",
+            "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+            "utilization": {
+              "gpu_percent": null,
+              "memory_percent": null,
+              "nvml_status": 3,
+              "status": "unsupported"
+            }
+          },
+          "peak_allocated_bytes": 3379311616,
+          "peak_reserved_bytes": 5934940160,
+          "phase": "after_profile",
+          "pid_mapping_proven": false,
+          "pids_added": [],
+          "pids_departed": [],
+          "reserved_bytes": 5934940160
+        },
+        "seconds": 0.6047555170953274,
+        "shape": {
+          "batch_size": 58,
+          "indices": [
+            4413,
+            45,
+            162,
+            2089,
+            627,
+            1521,
+            5790,
+            4383,
+            791,
+            5464,
+            5581,
+            5011,
+            1702,
+            2945,
+            43,
+            5647,
+            4136,
+            4173,
+            6301,
+            4555,
+            6754,
+            66,
+            4071,
+            1415,
+            2090,
+            5561,
+            2024,
+            4036,
+            5818,
+            6588,
+            2177,
+            4827,
+            6419,
+            6193,
+            5822,
+            2702,
+            6837,
+            774,
+            1417,
+            5950,
+            6833,
+            4137,
+            4026,
+            1982,
+            3283,
+            3900,
+            4805,
+            3983,
+            5644,
+            3554,
+            161,
+            1418,
+            3411,
+            2005,
+            3555,
+            6420,
+            6190,
+            4587
+          ],
+          "padded_tokens": 32649,
+          "supervised_targets": 3715,
+          "target_sessions": [
+            7754,
+            71,
+            276,
+            3703,
+            1113,
+            2695,
+            10164,
+            7699,
+            1407,
+            9593,
+            9802,
+            8799,
+            3025,
+            5216,
+            69,
+            9912,
+            7269,
+            7336,
+            11068,
+            8000,
+            11872,
+            109,
+            7157,
+            2512,
+            3704,
+            9770,
+            3586,
+            7096,
+            10215,
+            11578,
+            3861,
+            8478,
+            11277,
+            10873,
+            10224,
+            4787,
+            12010,
+            1374,
+            2514,
+            10447,
+            12001,
+            7270,
+            7080,
+            3518,
+            5806,
+            6863,
+            8437,
+            7002,
+            9909,
+            6282,
+            275,
+            2515,
+            6023,
+            3556,
+            6283,
+            11278,
+            10865,
+            8063
+          ]
+        },
+        "split": "train"
+      },
+      {
+        "case": 5,
+        "gradient_l2": null,
+        "loss": 0.7984485030174255,
+        "optimizer_calls": 0,
+        "resources": {
+          "allocated_bytes": 152617984,
+          "cached_allocator": {
+            "allocated_bytes": 151770624,
+            "observed_utc": "2026-10-24T02:05:37.892164+00:00",
+            "peak_allocated_bytes": 3379311616,
+            "peak_reserved_bytes": 5934940160,
+            "reserved_bytes": 5934940160
+          },
+          "decision": {
+            "exclusive_ownership_claimed": false,
+            "local_holders": [],
+            "local_visibility_gaps": [],
+            "pid_mapping_proven": false,
+            "reasons": [],
+            "reported_compute_processes": [
+              {
+                "compute_instance": 0,
+                "gpu_instance": 2,
+                "pid": 48799,
+                "used_gpu_memory_bytes": 6798966784
+              }
+            ],
+            "status": "ADMIT_SHARED_WITH_LIMITED_ATTRIBUTION",
+            "warnings": [
+              "PID namespace identity remains unresolved",
+              "MIG utilization unsupported: cap/headroom/pacing/runtime fallback; load UNKNOWN"
+            ]
+          },
+          "host": {
+            "cgroup_headroom_bytes": 30291611648,
+            "cgroup_limit_bytes": 96636764160,
+            "cgroup_usage_bytes": 66345152512,
+            "peak_process_rss_bytes": 1668956160
+          },
+          "observation": {
+            "device": {
+              "compute_processes": [
+                {
+                  "compute_instance": 0,
+                  "gpu_instance": 2,
+                  "pid": 48799,
+                  "used_gpu_memory_bytes": 6798966784
+                }
+              ],
+              "free_bytes": 35430662144,
+              "total_bytes": 42278584320,
+              "used_bytes": 6847922176
+            },
+            "local": {
+              "conflicts": [],
+              "holders": [],
+              "inaccessible_fd_pids": [],
+              "light_processes": [],
+              "observed_utc": "2026-10-24T02:05:38.263060+00:00",
+              "own_pid": 15134,
+              "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+            },
+            "observed_utc": "2026-10-24T02:05:38.112243+00:00",
+            "pid_attribution": "UNRESOLVED; self/peer not inferred",
+            "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+            "utilization": {
+              "gpu_percent": null,
+              "memory_percent": null,
+              "nvml_status": 3,
+              "status": "unsupported"
+            }
+          },
+          "peak_allocated_bytes": 3379311616,
+          "peak_reserved_bytes": 6421479424,
+          "phase": "after_profile",
+          "pid_mapping_proven": false,
+          "pids_added": [],
+          "pids_departed": [],
+          "reserved_bytes": 6421479424
+        },
+        "seconds": 0.1923245550133288,
+        "shape": {
+          "batch_size": 13,
+          "indices": [
+            348,
+            349,
+            427,
+            1817,
+            1818,
+            1819,
+            1820,
+            1821,
+            106,
+            244,
+            324,
+            691,
+            692
+          ],
+          "padded_tokens": 32766,
+          "supervised_targets": 979,
+          "target_sessions": [
+            2158,
+            2159,
+            2638,
+            11398,
+            11399,
+            11400,
+            11401,
+            11402,
+            655,
+            1518,
+            2015,
+            4281,
+            4282
+          ]
+        },
+        "split": "validation"
+      }
+    ],
+    "optimizer_calls": 0,
+    "plan_sha256": "8a0958f4572e11d9ae0d5722f595ef070c84129d9460f4b382b70c70ac2427cb",
+    "runtime": {
+      "cuda_runtime": "12.5",
+      "cudnn_allow_tf32": false,
+      "cudnn_benchmark": false,
+      "cudnn_deterministic": true,
+      "deterministic_algorithms": true,
+      "device": "cuda:0",
+      "float32_matmul_precision": "highest",
+      "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+      "gpu_capability": [
+        9,
+        0
+      ],
+      "matmul_allow_tf32": false,
+      "numpy": "1.24.4",
+      "python": "3.10.12",
+      "threads": 1,
+      "torch": "2.4.0a0+f70bd71a48.nv24.06"
+    },
+    "status": "PASS"
+  },
+  "resources": {
+    "all_admitted_with_limits": true,
+    "allocator_observations": 5257,
+    "campaign_elapsed_through_final_gpu_receipt_seconds": 2498.133225917816,
+    "max_reported_nvml_process_bytes": 8956936192,
+    "max_sampled_device_used_bytes": 9005891584,
+    "min_sampled_device_free_bytes": 33272692736,
+    "minimum_shared_host_headroom_bytes": 23646740480,
+    "observations": 5293,
+    "peak_allocated_bytes": 3427535872,
+    "peak_host_rss_bytes": 1977008128,
+    "peak_reserved_bytes": 8579448832,
+    "pid_mapping": "UNRESOLVED; no process-total/self/peer attribution claimed",
+    "utilization": "MIG UNSUPPORTED; UNKNOWN"
+  },
+  "sequences_truncated": 0,
+  "source_files_unchanged": 37,
+  "source_plan_sha256": "8a0958f4572e11d9ae0d5722f595ef070c84129d9460f4b382b70c70ac2427cb",
+  "status": "MEASURED_EPOCH_TRAINING_VERIFIED_WITH_APPROXIMATION_REVIEW",
+  "terminal": {
+    "auc_selected_checkpoint_f1": 0.5088139335822655,
+    "best_checkpoint_path": "/workspace/capstone/experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_007.pt",
+    "best_checkpoint_sha256": "07b944e71683c415cc5c00fad42648d22cb5b8fa790bc39c3c5d24b50c781781",
+    "best_epoch": 7,
+    "best_validation_auc": 0.7034669030290922,
+    "best_validation_f1": 0.5328093394209097,
+    "best_validation_f1_epoch": 6,
+    "early_stopping_patience": 3,
+    "early_stopping_triggered": false,
+    "epochs_completed": 8,
+    "max_epochs_authorized": 10,
+    "no_automatic_more_training": true,
+    "optimizer_updates": 1454,
+    "status": "TIME_BOUNDED_EPOCH_TRAINING_COMPLETE",
+    "stop_reason": "controller declined another complete epoch under unchanged45min campaign cap",
+    "test_evaluations": 0,
+    "time_stop_receipt_sha256": "a712ee368d9ad3aa9a318db6774d264a5dd45a909fbe64ffaf9d071048ad3a8d"
+  },
+  "test_evaluations": 0,
+  "unrelated_dirty_files_preserved": true
+}

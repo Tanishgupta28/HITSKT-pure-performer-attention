@@ -1,0 +1,145 @@
+{
+  "status": "PASS",
+  "optimizer_calls": 0,
+  "fixed_logit_max_abs_difference": 0.0,
+  "next_probe": "EXACT",
+  "epoch": 6,
+  "checkpoint_sha256": "57b00123a517d33ea590001f76dcaed7dd09bc2ff4668dc6f681871a90163b1a",
+  "resources": {
+    "phase": "recovery_complete",
+    "observation": {
+      "observed_utc": "2026-10-24T02:36:27.899680+00:00",
+      "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+      "device": {
+        "total_bytes": 42278584320,
+        "free_bytes": 41617260544,
+        "used_bytes": 661323776,
+        "compute_processes": [
+          {
+            "pid": 120581,
+            "used_gpu_memory_bytes": 612368384,
+            "gpu_instance": 2,
+            "compute_instance": 0
+          }
+        ]
+      },
+      "utilization": {
+        "status": "unsupported",
+        "nvml_status": 3,
+        "gpu_percent": null,
+        "memory_percent": null
+      },
+      "local": {
+        "observed_utc": "2026-10-24T02:36:28.142377+00:00",
+        "own_pid": 20784,
+        "holders": [
+          {
+            "pid": 20883,
+            "identity_complete": true,
+            "verified_read_only": true,
+            "start_time_ticks": 102918553,
+            "uid": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "parent_pid": 20882,
+            "state": "R (running)",
+            "comm": "nvidia-smi",
+            "executable": "/usr/bin/nvidia-smi",
+            "executable_device": 2305,
+            "executable_inode": 71042318,
+            "argv_sha256": "78d413cb0c836e84edc79f6d7edaeafecb39b9c52fecb9b5959f1c3633c88c54",
+            "python_module": null,
+            "cwd_category": "other",
+            "approved_option_names": [],
+            "trusted_binary_sha256": "a7d6645d5d4554ce7f5e7ae68cef9fb32d21721eaa2c271f7a58ef6c21039263",
+            "nvidia_handles": [
+              "/dev/nvidia-caps/nvidia-cap21",
+              "/dev/nvidia-caps/nvidia-cap22",
+              "/dev/nvidia-uvm",
+              "/dev/nvidia0",
+              "/dev/nvidiactl"
+            ],
+            "classification": "trusted_read_only_monitor"
+          }
+        ],
+        "conflicts": [],
+        "light_processes": [],
+        "inaccessible_fd_pids": [],
+        "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+      },
+      "pid_attribution": "UNRESOLVED; self/peer not inferred"
+    },
+    "host": {
+      "peak_process_rss_bytes": 1724837888,
+      "cgroup_limit_bytes": 96636764160,
+      "cgroup_usage_bytes": 71075958784,
+      "cgroup_headroom_bytes": 25560805376
+    },
+    "decision": {
+      "status": "ADMIT_SHARED_WITH_LIMITED_ATTRIBUTION",
+      "reasons": [],
+      "warnings": [
+        "PID namespace identity remains unresolved",
+        "visible GPU holders recorded as shared/unattributed activity",
+        "MIG utilization unsupported: cap/headroom/pacing/runtime fallback; load UNKNOWN"
+      ],
+      "reported_compute_processes": [
+        {
+          "pid": 120581,
+          "used_gpu_memory_bytes": 612368384,
+          "gpu_instance": 2,
+          "compute_instance": 0
+        }
+      ],
+      "local_holders": [
+        {
+          "pid": 20883,
+          "identity_complete": true,
+          "verified_read_only": true,
+          "start_time_ticks": 102918553,
+          "uid": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "parent_pid": 20882,
+          "state": "R (running)",
+          "comm": "nvidia-smi",
+          "executable": "/usr/bin/nvidia-smi",
+          "executable_device": 2305,
+          "executable_inode": 71042318,
+          "argv_sha256": "78d413cb0c836e84edc79f6d7edaeafecb39b9c52fecb9b5959f1c3633c88c54",
+          "python_module": null,
+          "cwd_category": "other",
+          "approved_option_names": [],
+          "trusted_binary_sha256": "a7d6645d5d4554ce7f5e7ae68cef9fb32d21721eaa2c271f7a58ef6c21039263",
+          "nvidia_handles": [
+            "/dev/nvidia-caps/nvidia-cap21",
+            "/dev/nvidia-caps/nvidia-cap22",
+            "/dev/nvidia-uvm",
+            "/dev/nvidia0",
+            "/dev/nvidiactl"
+          ],
+          "classification": "trusted_read_only_monitor"
+        }
+      ],
+      "local_visibility_gaps": [],
+      "pid_mapping_proven": false,
+      "exclusive_ownership_claimed": false
+    },
+    "pids_added": [
+      120581
+    ],
+    "pids_departed": [],
+    "pid_mapping_proven": false,
+    "cached_allocator": null,
+    "allocated_bytes": 151783936,
+    "reserved_bytes": 236978176,
+    "peak_allocated_bytes": 222198784,
+    "peak_reserved_bytes": 236978176
+  }
+}

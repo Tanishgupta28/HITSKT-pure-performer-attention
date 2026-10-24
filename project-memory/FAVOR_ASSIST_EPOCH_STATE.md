@@ -1,3 +1,84 @@
+# ASSIST full epoch training — COMPLETE, 24 October 2026
+
+Eight complete epochs/1454 fresh optimizer calls. Training STOPPED, no active
+GPU work. Root study_result=TIME_BOUNDED_EPOCH_TRAINING_COMPLETE; not tenepochs
+orpatience3. Controller declined9 at2451.736s (remaining248.264<required354.566);
+final selected validation replay finished2498.133s, inside45min. Do not reset
+timer/retry/duplicate old campaign. All actual losses/gradients/model/Adam finite.
+
+Authoritative new report: `reports/favor_plus_v1/ASSIST2017_EPOCH_TRAINING_RESULTS.md`.
+Professor update, all metric CSV, graphs, verified summary, approval, diagnostics,
+metric proof, corrected postprocessing/failure records and verified raw archive:
+`reports/favor_plus_v1/assist_epochs_execution_20261024_v1/`.
+Runroot: `experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1`.
+The frozen source37/data11/plan8a0958f4... remain unchanged. No test inference.
+Complete7060train/566107labels and1977val/125800 each epoch, no target skips or
+sequence truncation. Seed42/features128/originalAdam/nonattention/batches/protocol.
+Historical commonpat5/max100 unchanged; this user-run usespat3/max10.
+
+All8 exact fresh CUDA recovery proofs PASS (0 extraAdam); best7 fullval logits/
+probabilities/labels bit-identical and seven metric differences0. Independent
+sklearn/NumPyfloat64 proof all8PASS max6.888404e-9 (tolerance1e-6 unchanged).
+Best AUC epoch7 .703466903,accuracy.685254372,precision.620946498,recall.430985205,
+F1.508813934,BCE.599037788. Highest F1 epoch6 .532809339. Latest8 AUC.700439879/
+F1.428363325/BCE.600563816; decline kept, not hidden/tuned.
+Epoch7 best checkpointSHA07b944e71683c415cc5c00fad42648d22cb5b8fa790bc39c3c5d24b50c781781.
+Epoch8 latest resumableSHAe0fe6216e05abb2a2bd1de906d6a3f6e0319e2538ad994ad1363c446311f344b.
+72atomic checkpoints locally preserved; binaries not uploaded toGit. New raw
+noncheckpoint files10701 archived/roundtripSHA-verified inNEW_RUN_EVIDENCE.tar.gz
+(~9.92MiB); original local raw directories remain untracked/unchanged. Git tracks
+selected receipts/metrics and archive, not all raw-resource JSON copies.
+
+GPU sharedH100MIGUUIDd2fcfd79... sameapproveddevice. Cap8GiB/totaladvisory10/
+admission16/runtime6/hostRSS4/headroom2/pacing.1s/step30s/45min retained.
+5293resource/5257allocator receipts allPASS; peakallocated3.192142/reserved7.990234
+GiB (little reservation margin),hostRSS1.841232,lowestGPUfree30.987610GiB.
+No private/exclusive/PID-mapping claim: attribution unresolved,MIGutilUNKNOWN;
+process-total/overhead cannotbe certified. Afterexit39.337952GiBfree/no reported
+NVMLcompute/no visibleLight trainers. Nootherjobs signaled/modified. Light hold
+SHA65214c2c... and original50SHA93ebe9d2... preserved.
+
+Approximation REVIEW unchanged .20. Latest8 Action.262562/CPE.503431/Decoder
+.562503; Session.111974. CPEpairESS initial9.637→min1.271827(epoch3)→1.601716.
+No severestop (medianerror.75/prefix1.5/ESS1.25/growth2/kernel5e-5). Max
+production-vs-feature-reference3.391481e-6, QKp95growth≤1.399396: supports
+finite-feature/concentration limitation, not discovered arithmetic/mask bug.
+No architecture/projection/threshold/feature changes. Epoch8 F1 decline explained
+by score shift:12845thresholdflips,6087TP→FN/576reverse,5631FP→TN/551reverse;
+positivepredictions33027→22436. No metric/label/order mismatch or test tuning.
+
+A CPU postprocessing output-name typo caused one summary failure; the true
+all8PASS metric audit existed at earlierfilename. Correct-name exact-byte link
+and futuredestination fixed; originalscript/error/correction preserved. No GPU/
+optimizer replay for this fix. Original one-epoch proof was superseded byall8
+inoriginalfilename; row1 and tool-output evidence retained (not falsely claimed
+separate immutable initialJSON).
+
+Researchdecision: GO qualifiedprofessor fullvalidation results; REVIEW/NO-GO
+unqualified longer/all-dataset/publication claims until approximation assessment.
+No resultdiscard/retraining required merely to make a warning pass. Nextchoice:
+frozenTRAIN-only learnedfeature/concentration analysis at7/8, then explicit
+finite-time continuation decision ifdesired. Preserve exactLATEST8 Adam/RNG/
+projections/sampler for9/10, never silently resumeBEST7/resetfromzero/modify
+featurecountmidrun. Current closed source-bound campaign must not restart.
+Untouched finaltest reserved for frozen finaldecision, no superiority/convergence.
+Publishresearchbranchonly (no main/forcepush), preserving unrelatedREADME/SAKT
+dirt, Light/DKT/ELU/allhistoricalfiles. Thenwait for userinstruction.
+
+Earlier approval/preparation state (historical):
+
+# Latest update — 24 October 2026
+
+User explicitly approved the proposed profile/full-run resource budget.
+Approval/record: `reports/favor_plus_v1/assist_epochs_execution_20261024_v1/`.
+The old pending approval below is historical. Run the frozen plan with the
+approved8GiB allocator/10GiB advisory/16GiB admission, retaining all other
+limits. Current new CUDA profile/epochs have not yet started. No source/plan
+changes, failed-attempt restart or diagnostic50 overwrite is authorized.
+Profile must PASS before any full-data optimizer updates.
+
+Earlier preparation state (historical):
+
 # Full ASSIST2017 FAVOR+ epoch task —23October2026
 
 USER AUTHORIZES complete-data fresh training up to10epochs,full validation each,

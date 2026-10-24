@@ -1,0 +1,80 @@
+{
+  "checkpoint_sha256": "efc413747068682ea73ff70965d0e00616afbac6c4d82d09cd5fd4e8c7b79af8",
+  "epoch": 5,
+  "fixed_logit_max_abs_difference": 0.0,
+  "next_probe": "EXACT",
+  "optimizer_calls": 0,
+  "resources": {
+    "allocated_bytes": 151783936,
+    "cached_allocator": null,
+    "decision": {
+      "exclusive_ownership_claimed": false,
+      "local_holders": [],
+      "local_visibility_gaps": [],
+      "pid_mapping_proven": false,
+      "reasons": [],
+      "reported_compute_processes": [
+        {
+          "compute_instance": 0,
+          "gpu_instance": 2,
+          "pid": 109357,
+          "used_gpu_memory_bytes": 612368384
+        }
+      ],
+      "status": "ADMIT_SHARED_WITH_LIMITED_ATTRIBUTION",
+      "warnings": [
+        "PID namespace identity remains unresolved",
+        "MIG utilization unsupported: cap/headroom/pacing/runtime fallback; load UNKNOWN"
+      ]
+    },
+    "host": {
+      "cgroup_headroom_bytes": 26344083456,
+      "cgroup_limit_bytes": 96636764160,
+      "cgroup_usage_bytes": 70292680704,
+      "peak_process_rss_bytes": 1730211840
+    },
+    "observation": {
+      "device": {
+        "compute_processes": [
+          {
+            "compute_instance": 0,
+            "gpu_instance": 2,
+            "pid": 109357,
+            "used_gpu_memory_bytes": 612368384
+          }
+        ],
+        "free_bytes": 41617260544,
+        "total_bytes": 42278584320,
+        "used_bytes": 661323776
+      },
+      "local": {
+        "conflicts": [],
+        "holders": [],
+        "inaccessible_fd_pids": [],
+        "light_processes": [],
+        "observed_utc": "2026-10-24T02:31:35.906727+00:00",
+        "own_pid": 19924,
+        "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+      },
+      "observed_utc": "2026-10-24T02:31:35.817573+00:00",
+      "pid_attribution": "UNRESOLVED; self/peer not inferred",
+      "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+      "utilization": {
+        "gpu_percent": null,
+        "memory_percent": null,
+        "nvml_status": 3,
+        "status": "unsupported"
+      }
+    },
+    "peak_allocated_bytes": 222198784,
+    "peak_reserved_bytes": 236978176,
+    "phase": "recovery_complete",
+    "pid_mapping_proven": false,
+    "pids_added": [
+      109357
+    ],
+    "pids_departed": [],
+    "reserved_bytes": 236978176
+  },
+  "status": "PASS"
+}

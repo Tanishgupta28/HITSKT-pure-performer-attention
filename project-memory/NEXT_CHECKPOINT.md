@@ -1,5 +1,25 @@
 # Next checkpoint
 
+## Latest: eight full ASSIST epochs COMPLETE; training stopped
+
+24 October 2026. Approved budget used successfully. Complete epochs1..8/1454
+fresh Adam updates, all training566107/validation125800 labels per epoch.
+Best AUC epoch7=0.703466903/F1=0.508813934/BCE=0.599037788; maximum F1
+0.532809339 at epoch6. Eight exact fresh checkpoint recoveries PASS; selected7
+full-validation replay bit-identical. Independent CPU metrics all8 PASS,
+max difference6.888404e-9. No test evaluation, truncation, data omission or
+other-job changes. Stopped BEFORE9 because next full epoch would not fit
+unchanged45min headroom; patience3 NOT triggered (bad_epochs1). GPU campaign
+2498.133s=41min38s; no timer reset/automatic continuation. No GPU work active.
+Peak3.192142GiB allocated/7.990234GiB reserved,1.841232GiB hostRSS; no CUDA/OOM/
+nonfinite/resource/severe failure. .20 REVIEW persists: latest Action.262562,
+CPE.503431,Decoder.562503. Valid results, not softmax-fidelity/publication PASS.
+Read [FAVOR_ASSIST_EPOCH_STATE.md](FAVOR_ASSIST_EPOCH_STATE.md) for exact artifacts.
+Finish scoped report/archive/memory publication then WAIT; do not restart this
+closed campaign. New bounded time-window decision needed for any continuation.
+
+Earlier handoff (historical):
+
 ## Latest: await the resource-budget answer; full training already authorized
 
 Read [FAVOR_ASSIST_EPOCH_STATE.md](FAVOR_ASSIST_EPOCH_STATE.md) and ASSIST2017_EPOCH_TRAINING_STATUS.md. Currentnewfullrun0epochs/0updates, plan8a0958f4... valid andblockedbeforeCUDAunderexisting1GiB/B1/2048. Only resourceincreaseapprovalpending; do NOT re-askfulltraining/ownership/adminexclusivity. Ifactual8GiBanswerarrives createfreshseparateresponse-boundrecord(noassumedapproval/defaultUI),keepfrozenplan/source unchanged, freshsharedadmission→zeroAdamshapeprofile→epoch1/fullval→freshverify1→permitted2..10/pat3/time/resource stops. Finalfullvalbestreplay,no test. Ifanswerdoesnotarrive, publishverifiedpreparation/reportandWAIT; noGPUallocation/training, no dataskipping/truncation/budgetincrease. Preserve50/Light/DKT/oldartifacts/unrelateddirt/main.

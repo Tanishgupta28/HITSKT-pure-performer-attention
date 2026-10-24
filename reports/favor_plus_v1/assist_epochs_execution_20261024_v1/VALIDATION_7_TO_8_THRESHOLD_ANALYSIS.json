@@ -1,0 +1,22 @@
+{
+  "changed_classifications": 12845,
+  "conclusion": "F1 decline accompanies fewer positive predictions, lost true positives and lower recall at unchanged threshold; no metric/label/order mismatch. This does not prove convergence or diagnose causal optimizer dynamics.",
+  "false_negative_to_true_positive": 576,
+  "false_positive_to_true_negative": 5631,
+  "mean_probability_epoch7": 0.40500799191310194,
+  "mean_probability_epoch8": 0.3618897234286302,
+  "mean_probability_shift": -0.043118268484471804,
+  "positive_label_fraction": 0.3782511923688394,
+  "positive_labels": 47584,
+  "positive_predictions_epoch7": 33027,
+  "positive_predictions_epoch8": 22436,
+  "prediction_sha256": [
+    "44a02c74931a9e22c3e7e3c1f4adcac6428b5fbc504e57d736d63a6aee0ff339",
+    "fa1d0688c2dbff940980373f7072a3c107ea1fa8d9e168af09bb60ffad561400"
+  ],
+  "split": "same complete validation sample125800; no test data",
+  "threshold": 0.5,
+  "threshold_changed": false,
+  "true_negative_to_false_positive": 551,
+  "true_positive_to_false_negative": 6087
+}

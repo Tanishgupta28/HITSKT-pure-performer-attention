@@ -1,0 +1,29 @@
+{
+  "checkpoint": {
+    "atomic_no_overwrite": true,
+    "epoch": 2,
+    "optimizer_updates": 363,
+    "path": "/workspace/capstone/experiments/hitskt_favor_plus_v1/assist2017/assist2017_full_epochs_pat3_20261023_v1/checkpoints/epoch_002.pt",
+    "projection_sha256": {
+      "action_encoder.layers.0.attention.projection": "0e30074b32eb36787646a586ce5bd759a5ce6d998d0585f239093f30bf45520c",
+      "correct_padding_encoder.layers.0.attention.projection": "2a3c51ffb0b77fc527b2678299da5142d7abee50440c3bd44bfa4f09cfe89a3f",
+      "decoder.layers.0.attention.projection": "14215fed57abbe0dfee2f0f0e66ab4f821305b6dc76aac1419ab628473661fef",
+      "session_encoder.layers.0.attention.projection": "723816c7c411dbedc108dd227a8819b2025bcacc871c88cbfefe2c850dcad125"
+    },
+    "sha256": "5d247f2cd94a3bd6c2b7cdb9e4ad2007bd9a10d6bef74c877ddedcf77ac4bce4",
+    "status": "PASS"
+  },
+  "epoch": 2,
+  "validation": {
+    "accuracy": 0.6636327503974563,
+    "bce": 0.6214299986614521,
+    "f1": 0.5028841296507325,
+    "loss": 0.6214299986614521,
+    "mse": 0.21575716517654742,
+    "precision": 0.5701840850360977,
+    "recall": 0.4497940484196368,
+    "roc_auc": 0.6740895141452214,
+    "targets": 125800,
+    "threshold": 0.5
+  }
+}
