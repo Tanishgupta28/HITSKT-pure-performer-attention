@@ -1509,3 +1509,24 @@ compact72prefixbundle/fullrawhashes/36JSONarchive, all originaldata/checkpoints
 preserved. REVIEW/NO-GO automaticfulltraining. Onlyproposesmatched20-update
 futurepilot withnewexplicitboundedinstruction/resourceadmission; noactionnow.
 FinishverifiedresearchpublicationthenWAIT; no testselection/otherjobchanges.
+
+## 2026-10-24 — Four-arm CUDA verification and new matched-training gate
+
+User authorizes currentCUDA verification, explicitly requires newapproval before
+anyoptimizerupdate. No newstepsperformed. FP32ORF512 L65/chunk16/norm3 fails
+independentreference5e-5 gate; originalfailure/executedsource preserved. CPU
+reconstruction6.582114e-5 vsFP64attention4.629215e-7 supports rounding cause,
+notchanging.20softmaxREVIEW. Separate explicit all-four FP64attention config
+passes96CUDAcases,fullmodelinvariants/fourfreshreloads,oldclockinherited.
+110CPUtestsPASS(22new/88existing). Nativehistoricalsource/model/data unchanged.
+Same14initialTRAINcases: ORF512betterAction(.152904 vsanti512.179270), anti512
+betterCPE(.049956 vsORF512.066212). Somecases>.20,normstressworsens; nofull
+winner orlearnedretentionclaim. Newformat4commonpool policy nothistorical128draw.
+Measuredmoment-reservedlive393/987MiB128/512,maxrealF/B.563s,noAdamworkspace/
+throughputmeasurement. Preparefresh20/arm80total/15minproposal (same8GiBshared
+limits,seed42/data/Adam,32sampleval0/5/20,no test,auditdraws17/101). Approval
+questionpending; false templatecannotexecute. Mainreport
+`reports/favor_plus_v1/FOUR_ARM_CUDA_COMPARISON_AND_TRAINING_PROPOSAL.md` and
+state`FAVOR_FOUR_ARM_CUDA_STATE.md`; archive2186noncheckpointreceipts entrySHA
+verified,5newinitialcheckpoints localonly. FinishpublicationthenWAIT unlessactual
+newapprovalarrives; no silentretry,budgetincrease,fulltraining orotherjobchange.

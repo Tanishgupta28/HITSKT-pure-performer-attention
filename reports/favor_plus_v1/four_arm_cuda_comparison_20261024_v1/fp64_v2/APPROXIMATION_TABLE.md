@@ -1,0 +1,6 @@
+| Stage | ORF128 | ORF512 | Antithetic128 | Antithetic512 |
+|---|---:|---:|---:|---:|
+| ActionEncoder | 0.243430 (12/14 REVIEW) | 0.152904 (1/14 REVIEW) | 0.251865 (11/14 REVIEW) | 0.179270 (2/14 REVIEW) |
+| SessionEncoder | 0.038142 (0/14 REVIEW) | 0.024416 (0/14 REVIEW) | 0.049660 (0/14 REVIEW) | 0.015897 (0/14 REVIEW) |
+| CorrectPaddingEncoder | 0.156680 (1/14 REVIEW) | 0.066212 (0/14 REVIEW) | 0.075872 (0/14 REVIEW) | 0.049956 (0/14 REVIEW) |
+| Decoder | 0.082800 (0/14 REVIEW) | 0.058666 (0/14 REVIEW) | 0.089765 (0/14 REVIEW) | 0.058187 (0/14 REVIEW) |

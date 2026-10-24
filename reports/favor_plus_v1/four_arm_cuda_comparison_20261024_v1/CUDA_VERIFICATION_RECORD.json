@@ -1,0 +1,25 @@
+{
+  "action": "favor_plus_four_arm_cuda_verification_only_v1",
+  "actual_training_approval_evidence": "",
+  "campaign_started_unix": 1792818164.766299,
+  "cuda_verification_approved": true,
+  "expires_utc": "2026-10-24T07:02:44.766299+00:00",
+  "known_explicit_restriction": false,
+  "known_incompatible_reservation": false,
+  "limits": {
+    "admission_free_bytes": 17179869184,
+    "advisory_total_bytes": 10737418240,
+    "allocator_bytes": 8589934592,
+    "max_campaign_seconds": 2700,
+    "max_step_seconds": 30,
+    "pause_seconds": 0.1,
+    "runtime_free_bytes": 6442450944
+  },
+  "max_optimizer_updates": 0,
+  "prepared_plan_sha256": "e12d20ecbc3ec4ac7989e6a8e149a8cd0e1aead2c358d09852c43e9bd62ce71a",
+  "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+  "scope_evidence": "/workspace/capstone/reports/favor_plus_v1/four_arm_cuda_comparison_20261024_v1/USER_EXECUTION_SCOPE.md",
+  "shared_permission_confirmed": true,
+  "starts_utc": "2026-10-24T05:02:44.766299+00:00",
+  "training_approved": false
+}

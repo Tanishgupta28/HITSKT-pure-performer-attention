@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/capstone/scripts/compare_favor_plus_cuda.py", line 219, in <module>
+    if __name__=='__main__':main()
+  File "/workspace/capstone/scripts/compare_favor_plus_cuda.py", line 216, in main
+    {'verify':worker,'reload':verify_reload,'compare':real_attention_comparison}[a.action](a.arm)
+  File "/workspace/capstone/scripts/compare_favor_plus_cuda.py", line 113, in worker
+    if (actual.cpu().double()-ref).abs().max()>5e-5 or not all(torch.allclose(a.cpu().double(),b,atol=5e-5,rtol=1e-3) for a,b in zip(grads,rg)):raise AssertionError('independent feature reference rule failed')
+AssertionError: independent feature reference rule failed

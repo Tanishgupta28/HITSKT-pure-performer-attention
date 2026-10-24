@@ -1,5 +1,22 @@
 # Durable user directives
 
+## 2026-10-24 — Four-arm CUDA verification; training requires new approval (latest)
+
+User authorizes verifying originalORF128/512 and antithetic128/512 onCUDA with
+controlled identical TRAIN inputs, existing authorized sharedGPU limits. Avoid
+repeated infrastructure audits; minimal admission/ongoing pressure checks only.
+Fresh matched initialization/architecture/data order/seed/optimizer/budgets;
+never use trained7/8 weights to claim fair training comparison. Preserve all
+historical artifacts/.20 threshold/no finaltest/no other-job/Light interruption.
+BEFORE ANY additional optimizer updates, report measured memory/runtime/step
+proposal and obtain explicit approval. Currentoptimizer permissionZERO despite
+prior closed full-run approval. Prepare concrete ≤20updates/arm proposal only;
+learning stability/preliminary validation afterapproval, no newfulltraining.
+Design: `reports/favor_plus_v1/four_arm_cuda_comparison_20261024_v1/`.
+Commit verified research-branch work only.
+
+Earlier directives (historical):
+
 ## 2026-10-24 — Frozen post-epoch8 approximation investigation (latest)
 
 User prioritizes causes/corrections of Action/CPE approximation before more

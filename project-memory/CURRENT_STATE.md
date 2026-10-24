@@ -1,5 +1,18 @@
 # Current state
 
+## Latest: four-arm CUDA comparison complete; training approval pending
+
+24 October 2026. Read [FAVOR_FOUR_ARM_CUDA_STATE.md](FAVOR_FOUR_ARM_CUDA_STATE.md).
+Zero new optimizer updates. FP32 ORF512 strictstressFAIL preserved, antiFP32
+unrun; separate explicit all-four FP64attention PASS96 CUDA cases/fullmodel/
+freshcheckpointreload.110CPU testsPASS(22new/88existing). SameinitialTRAIN
+inputs showmixedstageimprovements, .20 REVIEW remains; antithetic learning/
+newAUC/F1 NOT RUN. Fresh20perarm80total/15min proposal requiresnewexplicit
+approval. Actualmemory~393/987MiBlive128/512, cap8GiBunchanged. NoGPUworkactive,
+no test/otherjobchanges. Preserveall oldresults; publishscopedevidenceandWAIT.
+
+Earlier handoff (historical):
+
 ## Latest: post-epoch8 frozen investigation COMPLETE; no new training
 
 24 October 2026. Read [FAVOR_POSTEPOCH8_INVESTIGATION_STATE.md](FAVOR_POSTEPOCH8_INVESTIGATION_STATE.md).

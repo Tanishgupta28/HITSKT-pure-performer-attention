@@ -1,5 +1,21 @@
 # Next checkpoint
 
+## Latest: finish publication, then wait for matched-training approval
+
+Read [FAVOR_FOUR_ARM_CUDA_STATE.md](FAVOR_FOUR_ARM_CUDA_STATE.md) and
+`reports/favor_plus_v1/FOUR_ARM_CUDA_COMPARISON_AND_TRAINING_PROPOSAL.md`.
+CUDA comparison terminalCOMPLETE, ZERO optimizer updates. Do not rerunfailed
+FP32/closedFP64readiness. Fresh20/arm proposal80max/15min is NOTapproved;
+asyncapprovalquestionpending. Noelapsedtime/defaultselection=approval.
+Afteractualnewapprovalonly: verifyfrozenplan/sources/data/currentsharedresource
+admission, createactualscope-boundrecord,new15minclock, sequentialarmtrain20
+thenfreshrecovereach; keepFP64attention/commonpool/seed42/data/Adam/.20 and
+8GiBsharedsafeguards, no fulltraining/test/otherjobactions. Ifnoreply publish
+verifiedimplementation/report/memoryresearchbranch only andWAIT. Original7/8/
+50/ELU/FAVOR/Light/DKT/source37/data11 andunrelateddirtmustremain unchanged.
+
+Earlier handoff (historical):
+
 ## Latest: post-epoch8 frozen investigation COMPLETE; no new training
 
 24 October 2026. Read [FAVOR_POSTEPOCH8_INVESTIGATION_STATE.md](FAVOR_POSTEPOCH8_INVESTIGATION_STATE.md).

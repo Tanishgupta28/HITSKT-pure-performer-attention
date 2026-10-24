@@ -1,0 +1,30 @@
+{
+  "action": "favor_plus_four_arm_matched20_training_v1",
+  "actual_training_approval_evidence": "",
+  "approval_is_proposal": true,
+  "arms": [
+    "orf128",
+    "orf512",
+    "anti128",
+    "anti512"
+  ],
+  "campaign_started_unix": null,
+  "expires_utc": "SET_ONLY_AFTER_EXPLICIT_APPROVAL",
+  "known_explicit_restriction": false,
+  "known_incompatible_reservation": false,
+  "limits": {
+    "admission_free_bytes": 17179869184,
+    "advisory_total_bytes": 10737418240,
+    "allocator_bytes": 8589934592,
+    "max_campaign_seconds": 2700,
+    "max_step_seconds": 30,
+    "pause_seconds": 0.1,
+    "runtime_free_bytes": 6442450944
+  },
+  "maximum_updates_per_arm": 20,
+  "prepared_plan_sha256": "d1ff9b3d858d9a0ce49905aedcd66e8bc672a7254acc630cdb5c239774004c15",
+  "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+  "shared_permission_confirmed": true,
+  "starts_utc": "SET_ONLY_AFTER_EXPLICIT_APPROVAL",
+  "training_approved": false
+}

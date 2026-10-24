@@ -1,5 +1,19 @@
 # HiTSKT capstone project memory
 
+## Latest: four-arm CUDA comparison complete; training approval pending
+
+24 October 2026. Read [FAVOR_FOUR_ARM_CUDA_STATE.md](FAVOR_FOUR_ARM_CUDA_STATE.md).
+Zero new optimizer updates. FP32 ORF512 stress-reference FAIL preserved;
+explicit separate FP64-attention all-four configuration PASS96 CUDA cases,
+full-model invariants and four exact fresh reloads. Final110CPU testsPASS
+(22new/88existing). Same initialTRAINinputs:512 helps; ORF512betterAction,
+anti512betterCPE, .20 REVIEW persists. Learned behavior/new AUC NOT VERIFIED.
+Fresh20/arm×4 proposal prepared,15min ceiling,existing8GiBsharedcap; explicit
+approval question pending. Do not train untilactualreply/newrecord. Old8epochs,
+best7/ELU/data/Light/DKT unchanged; publishverifiedwork thenWAIT.
+
+Earlier handoff (historical):
+
 ## Latest: post-epoch8 frozen investigation COMPLETE; no new training
 
 24 October 2026. Read [FAVOR_POSTEPOCH8_INVESTIGATION_STATE.md](FAVOR_POSTEPOCH8_INVESTIGATION_STATE.md).

@@ -1,0 +1,79 @@
+{
+  "arms": [
+    "orf128",
+    "orf512",
+    "anti128",
+    "anti512"
+  ],
+  "attention_accumulation_dtype": "float64",
+  "base_commit": "33a17cf9e744342b2436d818554d4c619135e66b",
+  "campaign_clock": "inherited from initialFP32 record; no45min timer reset",
+  "causal_invariance": "exact",
+  "checkpoint_reload": "exact",
+  "cpu_cuda_output_atol": 5e-05,
+  "current_cuda_verification_authorized": true,
+  "current_optimizer_updates_authorized": 0,
+  "fp32_failed_attempt_preserved": true,
+  "gradient_atol": 5e-05,
+  "gradient_rtol": 0.001,
+  "initialization": "fresh seed42; all learned parameters and post-factory CPU RNG identical; never load historical trained weights",
+  "kernel_chunks": [
+    16,
+    32
+  ],
+  "kernel_lengths": [
+    17,
+    65,
+    257,
+    939
+  ],
+  "kernel_norms": [
+    0.35,
+    1.0,
+    3.0
+  ],
+  "kind": "favor_plus_four_arm_shared_cuda_readiness_fp64_v2",
+  "norm_stress": [
+    0.5,
+    1.0,
+    1.5
+  ],
+  "numerical_tolerances_changed": false,
+  "parameter_and_model_output_dtype": "float32",
+  "projection_policy": "all arms use one nested512-row Gaussian ORF pool/head/stage seed42+offset; ORF uses firstM, antithetic uses firstM/2 plus negatives. Native historical sampler unchanged; matched ORF128 is explicitly a different fixed draw from historical128 for some heads",
+  "proposed_training": {
+    "batch_size": 1,
+    "data_order": "same fixed first20 bounded training examples from original deterministic seed42 sampler; all four arms identical",
+    "diagnostics": "same fixed train inputs, native and independent audit projections, short/long prefixes at0/5/20",
+    "maximum_steps_per_arm": 20,
+    "optimizer": "original Adam LR5e-5/betas.9,.999/eps1e-8/wd0/no clipping",
+    "padded_cost_maximum": 2048,
+    "seed": 42,
+    "status": "NOT AUTHORIZED; explicit new approval required before any Adam.step",
+    "total_steps_maximum": 80,
+    "validation": "same frozen32 validation sessions, exploratory only, at0/5/20 after approval"
+  },
+  "real_inputs": "same14 previously fixed TRAIN examples; initial frozen QKV only, no trained7/8weights as fair-comparison evidence",
+  "real_prefixes": [
+    8,
+    32,
+    128,
+    256,
+    512,
+    "full_valid_selected_row"
+  ],
+  "reason": "CPU reconstruction of original512 stress failure: FP32 outputerror6.582114e-5>5e-5; supported FP64 accumulation gives4.629215e-7. All four arms get identical explicit precision.",
+  "resource_limits": {
+    "admission_free_bytes": 17179869184,
+    "advisory_total_bytes": 10737418240,
+    "allocator_bytes": 8589934592,
+    "host_headroom_bytes": 2147483648,
+    "host_rss_bytes": 4294967296,
+    "max_campaign_seconds": 2700,
+    "max_step_seconds": 30,
+    "pause_seconds": 0.1,
+    "runtime_free_bytes": 6442450944
+  },
+  "review_threshold": 0.2,
+  "stop": "first correctness/numerical/resource failure; no automatic retry or resource increase; no other-job signals"
+}

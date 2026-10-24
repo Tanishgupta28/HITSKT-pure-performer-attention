@@ -1,0 +1,32 @@
+{
+  "cpu_only": true,
+  "cuda_execution": false,
+  "initial_cuda_failure_detail": "combined independent rule failed; original worker did not serialize separate GPU deltas before raising",
+  "max_query_norm": 29.051294326782227,
+  "optimizer_updates": 0,
+  "query_norm_median": 23.758466720581055,
+  "rows": [
+    {
+      "accumulation": "float32",
+      "gradient_rule_pass": true,
+      "max_abs_gradients": [
+        4.933125674201448e-07,
+        9.814335002987506e-07,
+        2.348532757850963e-08
+      ],
+      "max_abs_output": 6.582114274022999e-05,
+      "output_rule_pass": false
+    },
+    {
+      "accumulation": "float64",
+      "gradient_rule_pass": true,
+      "max_abs_gradients": [
+        1.2872221552551188e-09,
+        1.8280433278228259e-09,
+        5.682862791456245e-10
+      ],
+      "max_abs_output": 4.6292153932370184e-07,
+      "output_rule_pass": true
+    }
+  ]
+}
