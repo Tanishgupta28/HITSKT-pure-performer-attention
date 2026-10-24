@@ -1,0 +1,23 @@
+{
+  "cases": "same14 fixed TRAIN examples; original full target/history lengths",
+  "conditions": [
+    "original_feature_model",
+    "exact_at_CorrectPadding_only",
+    "exact_at_all_four_stages"
+  ],
+  "cpu_only": true,
+  "kind": "frozen_training_only_end_to_end_sensitivity_annex",
+  "metrics": [
+    "masked training-logit/probability differences",
+    "fixed0.5 classification changes only, no AUC/accuracy/BCE or seed/feature selection"
+  ],
+  "optimizer_calls": 0,
+  "purpose": "distinguish stage-local raw relative output errors from final prediction sensitivity; exact-counterfactual is not a trained softmax baseline or proof of better predictions",
+  "states": [
+    "7",
+    "8"
+  ],
+  "test_evaluations": 0,
+  "validation_inference": 0,
+  "weights": "unchanged learned weights; temporary in-memory operator substitution and exact restoration; no checkpoint serialization of counterfactual model"
+}

@@ -1,0 +1,4 @@
+# Preserve framework-generated failed-test evidence verbatim, including spacing.
+# Source code, final passing logs and scientific acceptance rules are unaffected.
+antithetic_regression_tests_initial.log -whitespace
+antithetic_regression_tests_initial.xml -whitespace

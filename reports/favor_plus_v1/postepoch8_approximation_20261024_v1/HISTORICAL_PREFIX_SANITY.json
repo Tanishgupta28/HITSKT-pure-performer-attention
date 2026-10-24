@@ -1,0 +1,583 @@
+{
+  "acceptance_tolerance_changed": false,
+  "comparisons": [
+    {
+      "absolute_difference": 5.841919245574978e-08,
+      "case": 0,
+      "old_relative_l2": 0.2223869683755513,
+      "reconstructed_cpu_relative_l2": 0.22238702679474376,
+      "stage": "action_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "absolute_difference": 6.458990453594993e-09,
+      "case": 0,
+      "old_relative_l2": 0.06370588979916054,
+      "reconstructed_cpu_relative_l2": 0.06370588334017009,
+      "stage": "session_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "absolute_difference": 5.661092580822036e-09,
+      "case": 0,
+      "old_relative_l2": 0.10497172851805102,
+      "reconstructed_cpu_relative_l2": 0.10497172285695844,
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "absolute_difference": 6.79251081769916e-09,
+      "case": 0,
+      "old_relative_l2": 0.06800602074935796,
+      "reconstructed_cpu_relative_l2": 0.06800602754186878,
+      "stage": "decoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "absolute_difference": 3.5787889318683597e-08,
+      "case": 1,
+      "old_relative_l2": 0.20396475200967934,
+      "reconstructed_cpu_relative_l2": 0.20396478779756866,
+      "stage": "action_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "absolute_difference": 5.301623237641273e-10,
+      "case": 1,
+      "old_relative_l2": 0.03692954298947369,
+      "reconstructed_cpu_relative_l2": 0.03692954351963602,
+      "stage": "session_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "absolute_difference": 3.9452607847323407e-10,
+      "case": 1,
+      "old_relative_l2": 0.13498462672686212,
+      "reconstructed_cpu_relative_l2": 0.1349846271213882,
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "absolute_difference": 2.0899777603000658e-09,
+      "case": 1,
+      "old_relative_l2": 0.053554816555725755,
+      "reconstructed_cpu_relative_l2": 0.053554814465747995,
+      "stage": "decoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "absolute_difference": 2.4276887389262924e-08,
+      "case": 2,
+      "old_relative_l2": 0.23581723296626336,
+      "reconstructed_cpu_relative_l2": 0.23581725724315075,
+      "stage": "action_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "absolute_difference": 1.8898467207817404e-08,
+      "case": 2,
+      "old_relative_l2": 0.10793091054313718,
+      "reconstructed_cpu_relative_l2": 0.10793089164466997,
+      "stage": "session_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "absolute_difference": 1.4935667425053367e-09,
+      "case": 2,
+      "old_relative_l2": 0.14716200753227193,
+      "reconstructed_cpu_relative_l2": 0.1471620060387052,
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "absolute_difference": 7.850049527080571e-09,
+      "case": 2,
+      "old_relative_l2": 0.13600272080194656,
+      "reconstructed_cpu_relative_l2": 0.13600272865199609,
+      "stage": "decoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "absolute_difference": 4.74337314704254e-08,
+      "case": 3,
+      "old_relative_l2": 0.1780260583203176,
+      "reconstructed_cpu_relative_l2": 0.17802610575404906,
+      "stage": "action_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "absolute_difference": 1.7130950893951002e-08,
+      "case": 3,
+      "old_relative_l2": 0.07348327693880356,
+      "reconstructed_cpu_relative_l2": 0.07348329406975446,
+      "stage": "session_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "absolute_difference": 7.365247162161026e-09,
+      "case": 3,
+      "old_relative_l2": 0.16213115651654034,
+      "reconstructed_cpu_relative_l2": 0.1621311638817875,
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "absolute_difference": 9.843719728230838e-09,
+      "case": 3,
+      "old_relative_l2": 0.10145057012031058,
+      "reconstructed_cpu_relative_l2": 0.10145057996403031,
+      "stage": "decoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "absolute_difference": 2.578150941345836e-08,
+      "case": 4,
+      "old_relative_l2": 0.09255738377778258,
+      "reconstructed_cpu_relative_l2": 0.092557409559292,
+      "stage": "action_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "absolute_difference": 3.463682808624302e-08,
+      "case": 4,
+      "old_relative_l2": 0.07380101342086938,
+      "reconstructed_cpu_relative_l2": 0.0738009787840413,
+      "stage": "session_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "absolute_difference": 1.3103664237013035e-08,
+      "case": 4,
+      "old_relative_l2": 0.1380089403904564,
+      "reconstructed_cpu_relative_l2": 0.13800895349412065,
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "absolute_difference": 1.1089495294269724e-09,
+      "case": 4,
+      "old_relative_l2": 0.10269086714405103,
+      "reconstructed_cpu_relative_l2": 0.10269086825300056,
+      "stage": "decoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "absolute_difference": 5.02435550941982e-08,
+      "case": 5,
+      "old_relative_l2": 0.23530440263914312,
+      "reconstructed_cpu_relative_l2": 0.23530445288269822,
+      "stage": "action_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "absolute_difference": 2.712866102594358e-08,
+      "case": 5,
+      "old_relative_l2": 0.06750036826614782,
+      "reconstructed_cpu_relative_l2": 0.06750034113748679,
+      "stage": "session_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "absolute_difference": 7.819685177157254e-10,
+      "case": 5,
+      "old_relative_l2": 0.13260831953957125,
+      "reconstructed_cpu_relative_l2": 0.13260831875760273,
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "absolute_difference": 1.6286676035592862e-09,
+      "case": 5,
+      "old_relative_l2": 0.10145312760553811,
+      "reconstructed_cpu_relative_l2": 0.1014531259768705,
+      "stage": "decoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "absolute_difference": 1.0287603213754437e-08,
+      "case": 0,
+      "old_relative_l2": 0.283331917571492,
+      "reconstructed_cpu_relative_l2": 0.2833319278590952,
+      "stage": "action_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "absolute_difference": 2.117081482344574e-09,
+      "case": 0,
+      "old_relative_l2": 0.06612606747055794,
+      "reconstructed_cpu_relative_l2": 0.06612606535347645,
+      "stage": "session_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "absolute_difference": 1.3939528975548399e-09,
+      "case": 0,
+      "old_relative_l2": 0.3032206186179555,
+      "reconstructed_cpu_relative_l2": 0.3032206200119084,
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "absolute_difference": 1.5599754710216018e-08,
+      "case": 0,
+      "old_relative_l2": 0.437435870856195,
+      "reconstructed_cpu_relative_l2": 0.4374358552564403,
+      "stage": "decoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "absolute_difference": 2.4030473499969673e-08,
+      "case": 1,
+      "old_relative_l2": 0.2445298866735385,
+      "reconstructed_cpu_relative_l2": 0.244529910704012,
+      "stage": "action_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "absolute_difference": 2.7405390096157944e-08,
+      "case": 1,
+      "old_relative_l2": 0.16224746178602933,
+      "reconstructed_cpu_relative_l2": 0.16224743438063924,
+      "stage": "session_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "absolute_difference": 2.7069577634986075e-08,
+      "case": 1,
+      "old_relative_l2": 0.44466511298169437,
+      "reconstructed_cpu_relative_l2": 0.444665140051272,
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "absolute_difference": 7.155658321433833e-08,
+      "case": 1,
+      "old_relative_l2": 0.5490916100103657,
+      "reconstructed_cpu_relative_l2": 0.5490916815669489,
+      "stage": "decoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "absolute_difference": 1.6460083240854573e-08,
+      "case": 2,
+      "old_relative_l2": 0.2916264414273172,
+      "reconstructed_cpu_relative_l2": 0.29162642496723395,
+      "stage": "action_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "absolute_difference": 2.756255840230537e-08,
+      "case": 2,
+      "old_relative_l2": 0.23273432350367484,
+      "reconstructed_cpu_relative_l2": 0.23273429594111644,
+      "stage": "session_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "absolute_difference": 2.41957515134672e-08,
+      "case": 2,
+      "old_relative_l2": 0.5976821042075781,
+      "reconstructed_cpu_relative_l2": 0.5976821284033296,
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "absolute_difference": 3.685140570475198e-08,
+      "case": 2,
+      "old_relative_l2": 0.7105167529391273,
+      "reconstructed_cpu_relative_l2": 0.710516789790533,
+      "stage": "decoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "absolute_difference": 3.964431394276602e-09,
+      "case": 3,
+      "old_relative_l2": 0.23953091318718045,
+      "reconstructed_cpu_relative_l2": 0.23953091715161184,
+      "stage": "action_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "absolute_difference": 2.674512764033743e-08,
+      "case": 3,
+      "old_relative_l2": 0.09129154217510826,
+      "reconstructed_cpu_relative_l2": 0.0912915689202359,
+      "stage": "session_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "absolute_difference": 3.3035557622795864e-09,
+      "case": 3,
+      "old_relative_l2": 0.5065182843357443,
+      "reconstructed_cpu_relative_l2": 0.5065182876393001,
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "absolute_difference": 9.642696952028018e-08,
+      "case": 3,
+      "old_relative_l2": 0.5805453870211585,
+      "reconstructed_cpu_relative_l2": 0.5805454834481281,
+      "stage": "decoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "absolute_difference": 1.6029225349822873e-08,
+      "case": 4,
+      "old_relative_l2": 0.12352013606755448,
+      "reconstructed_cpu_relative_l2": 0.12352012003832913,
+      "stage": "action_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "absolute_difference": 5.2095440183919095e-09,
+      "case": 4,
+      "old_relative_l2": 0.2507411390554246,
+      "reconstructed_cpu_relative_l2": 0.2507411338458806,
+      "stage": "session_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "absolute_difference": 1.727566201203956e-09,
+      "case": 4,
+      "old_relative_l2": 0.5327497851495786,
+      "reconstructed_cpu_relative_l2": 0.5327497834220124,
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "absolute_difference": 3.871184994785892e-08,
+      "case": 4,
+      "old_relative_l2": 0.7483629151425921,
+      "reconstructed_cpu_relative_l2": 0.7483629538544421,
+      "stage": "decoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "absolute_difference": 3.79825373375553e-08,
+      "case": 5,
+      "old_relative_l2": 0.2864979342647839,
+      "reconstructed_cpu_relative_l2": 0.28649797224732126,
+      "stage": "action_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "absolute_difference": 2.2602841626140346e-08,
+      "case": 5,
+      "old_relative_l2": 0.17320942228879838,
+      "reconstructed_cpu_relative_l2": 0.17320939968595675,
+      "stage": "session_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "absolute_difference": 1.784767000856391e-09,
+      "case": 5,
+      "old_relative_l2": 0.4441948712044274,
+      "reconstructed_cpu_relative_l2": 0.4441948729891944,
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "absolute_difference": 1.0193494259791436e-07,
+      "case": 5,
+      "old_relative_l2": 0.5350223432035617,
+      "reconstructed_cpu_relative_l2": 0.5350224451385043,
+      "stage": "decoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "absolute_difference": 3.493817740674032e-08,
+      "case": 0,
+      "old_relative_l2": 0.27444854921501716,
+      "reconstructed_cpu_relative_l2": 0.27444858415319456,
+      "stage": "action_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "absolute_difference": 2.5986926222021367e-09,
+      "case": 0,
+      "old_relative_l2": 0.08109194476379324,
+      "reconstructed_cpu_relative_l2": 0.08109194736248586,
+      "stage": "session_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "absolute_difference": 1.9329399469913966e-08,
+      "case": 0,
+      "old_relative_l2": 0.30606546550340313,
+      "reconstructed_cpu_relative_l2": 0.30606544617400366,
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "absolute_difference": 2.089185113796077e-08,
+      "case": 0,
+      "old_relative_l2": 0.6133360264959747,
+      "reconstructed_cpu_relative_l2": 0.6133360056041236,
+      "stage": "decoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "absolute_difference": 8.061279976878666e-10,
+      "case": 1,
+      "old_relative_l2": 0.25067587511253214,
+      "reconstructed_cpu_relative_l2": 0.25067587591866014,
+      "stage": "action_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "absolute_difference": 8.405934406874316e-09,
+      "case": 1,
+      "old_relative_l2": 0.11988442590444708,
+      "reconstructed_cpu_relative_l2": 0.11988443431038148,
+      "stage": "session_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "absolute_difference": 2.4045254176652264e-08,
+      "case": 1,
+      "old_relative_l2": 0.48344214249903383,
+      "reconstructed_cpu_relative_l2": 0.483442166544288,
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "absolute_difference": 2.5520017210567403e-09,
+      "case": 1,
+      "old_relative_l2": 0.48702486806215933,
+      "reconstructed_cpu_relative_l2": 0.48702487061416105,
+      "stage": "decoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "absolute_difference": 9.364768549513514e-08,
+      "case": 2,
+      "old_relative_l2": 0.2807462695494586,
+      "reconstructed_cpu_relative_l2": 0.2807463631971441,
+      "stage": "action_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "absolute_difference": 2.1443882169958073e-08,
+      "case": 2,
+      "old_relative_l2": 0.2110541222238826,
+      "reconstructed_cpu_relative_l2": 0.21105410078000042,
+      "stage": "session_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "absolute_difference": 3.396157044477377e-08,
+      "case": 2,
+      "old_relative_l2": 0.5936579688210604,
+      "reconstructed_cpu_relative_l2": 0.5936580027826308,
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "absolute_difference": 6.520523043729298e-08,
+      "case": 2,
+      "old_relative_l2": 0.6795311547645777,
+      "reconstructed_cpu_relative_l2": 0.6795312199698081,
+      "stage": "decoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "absolute_difference": 2.387741004916677e-09,
+      "case": 3,
+      "old_relative_l2": 0.2301878995787518,
+      "reconstructed_cpu_relative_l2": 0.2301878971910108,
+      "stage": "action_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "absolute_difference": 1.4357724301139463e-08,
+      "case": 3,
+      "old_relative_l2": 0.07638546864929023,
+      "reconstructed_cpu_relative_l2": 0.07638545429156593,
+      "stage": "session_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "absolute_difference": 6.082219172753867e-09,
+      "case": 3,
+      "old_relative_l2": 0.5234198055330198,
+      "reconstructed_cpu_relative_l2": 0.523419811615239,
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "absolute_difference": 1.387305270661443e-09,
+      "case": 3,
+      "old_relative_l2": 0.5116693806650614,
+      "reconstructed_cpu_relative_l2": 0.5116693820523667,
+      "stage": "decoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "absolute_difference": 1.3904924961449794e-08,
+      "case": 4,
+      "old_relative_l2": 0.1285191131433568,
+      "reconstructed_cpu_relative_l2": 0.12851909923843183,
+      "stage": "action_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "absolute_difference": 1.577828492860256e-08,
+      "case": 4,
+      "old_relative_l2": 0.24980457269126916,
+      "reconstructed_cpu_relative_l2": 0.24980458846955408,
+      "stage": "session_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "absolute_difference": 9.338680495574181e-09,
+      "case": 4,
+      "old_relative_l2": 0.5541833507971052,
+      "reconstructed_cpu_relative_l2": 0.5541833601357857,
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "absolute_difference": 4.393811725567076e-08,
+      "case": 4,
+      "old_relative_l2": 0.6447416074595128,
+      "reconstructed_cpu_relative_l2": 0.6447416513976301,
+      "stage": "decoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "absolute_difference": 4.261561031837502e-08,
+      "case": 5,
+      "old_relative_l2": 0.288561293762862,
+      "reconstructed_cpu_relative_l2": 0.2885613363784723,
+      "stage": "action_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "absolute_difference": 2.6953178300370695e-09,
+      "case": 5,
+      "old_relative_l2": 0.10406422506393051,
+      "reconstructed_cpu_relative_l2": 0.10406422236861268,
+      "stage": "session_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "absolute_difference": 1.189960446845717e-08,
+      "case": 5,
+      "old_relative_l2": 0.46326579108822913,
+      "reconstructed_cpu_relative_l2": 0.4632658029878336,
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "absolute_difference": 2.8064274903982778e-08,
+      "case": 5,
+      "old_relative_l2": 0.5056402204241202,
+      "reconstructed_cpu_relative_l2": 0.5056402484883951,
+      "stage": "decoder.layers.0.attention",
+      "state": "8"
+    }
+  ],
+  "max_absolute_relative_error_difference": 1.0193494259791436e-07,
+  "note": "Diagnostic cross-runtime continuity only; no validation/test inference or new checkpoint replay acceptance criterion."
+}

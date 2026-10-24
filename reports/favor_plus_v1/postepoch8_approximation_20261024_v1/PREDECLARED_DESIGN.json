@@ -1,0 +1,359 @@
+{
+  "base_commit": "24206be171bbf3d973ad388e484d1828ecd32492",
+  "candidate": "first-valid-key translation preserves exact softmax and causality; antithetic positive features retain Gaussian kernel expectation; prototype only if frozen evidence supports it, separate opt-in code, never replace existing model",
+  "checkpoints": {
+    "7": "07b944e71683c415cc5c00fad42648d22cb5b8fa790bc39c3c5d24b50c781781",
+    "8": "e0fe6216e05abb2a2bd1de906d6a3f6e0319e2538ad994ad1363c446311f344b"
+  },
+  "cohort_policy": "reuse previously selected14 TRAIN-only length/history-stratified cases; no selection on new error/validation scores",
+  "controls": {
+    "qk_scale": [
+      0.5,
+      1.0,
+      1.5
+    ],
+    "qkv_swaps": [
+      "initial",
+      "trained_q_only",
+      "trained_k_only",
+      "trained_v_only",
+      "trained_qk",
+      "trained_qkv"
+    ],
+    "scale_note": "diagnostic temperature counterfactual, NOT a target-preserving correction"
+  },
+  "cpu_only": true,
+  "feature_kernel_atol": 5e-05,
+  "feature_sweep": {
+    "arms": [
+      "original_ORF",
+      "first_valid_key_centering_ORF",
+      "antithetic_ORF"
+    ],
+    "counts": [
+      128,
+      256,
+      512
+    ],
+    "independent_seeds": [
+      17,
+      101,
+      202,
+      303
+    ],
+    "nested_pool_features": 512,
+    "notes": "same frozen QKV and masks; counts nested within each independent512pool; actual saved128draw is separately reported; no validation performance used",
+    "prefix_limit": 128,
+    "states": [
+      "saved_epoch7",
+      "saved_epoch8"
+    ]
+  },
+  "hard_limits": {
+    "cpu_threads": 1,
+    "max_action_seconds": 1200,
+    "max_example_padded_cost": 16384,
+    "min_shared_host_headroom_gib": 2,
+    "peak_rss_gib": 4
+  },
+  "kind": "postepoch8_frozen_approximation_investigation_v1",
+  "metrics": [
+    "raw outputrelativeL2/RMSE/value-normalized error",
+    "attention TV/entropy/effectivekeys",
+    "pair-featureESS",
+    "QKnorm/alignment/pairnorm",
+    "original feature-kernelagreement FP32/64",
+    "causal/mask/no-future-projection gauge controls",
+    "per-draw paired improvement distributions"
+  ],
+  "no_cuda": true,
+  "optimizer_calls": 0,
+  "prefixes": [
+    1,
+    8,
+    32,
+    128,
+    256,
+    512,
+    "full_selected_row"
+  ],
+  "review_threshold": 0.2,
+  "saved_projection_identity": "exact regenerate seeds42/43/44/45; ORFblocks and radii summaries",
+  "scientific_decision": "do not turn diagnostic gain into AUC claim or silently change feature count/normalization; no further full training",
+  "stages": [
+    "action_encoder.layers.0.attention",
+    "session_encoder.layers.0.attention",
+    "correct_padding_encoder.layers.0.attention",
+    "decoder.layers.0.attention"
+  ],
+  "states": [
+    "reconstructed_seed42_initialization",
+    "saved_epoch7",
+    "saved_epoch8"
+  ],
+  "test_evaluations": 0,
+  "training_cohort": [
+    {
+      "dataset_index": 3,
+      "history_end_exclusive": 4,
+      "history_lengths": [
+        71,
+        65,
+        68,
+        49
+      ],
+      "history_start": 0,
+      "padded_tokens": 322,
+      "selection": "original_frozen_case",
+      "split": "train",
+      "stratum": 0,
+      "student": 1,
+      "target_length": 28,
+      "target_session": 4
+    },
+    {
+      "dataset_index": 39,
+      "history_end_exclusive": 60,
+      "history_lengths": [
+        57,
+        78,
+        133,
+        146,
+        49,
+        93,
+        105,
+        79,
+        128
+      ],
+      "history_start": 51,
+      "padded_tokens": 1360,
+      "selection": "original_frozen_case",
+      "split": "train",
+      "stratum": 1,
+      "student": 7,
+      "target_length": 26,
+      "target_session": 60
+    },
+    {
+      "dataset_index": 9,
+      "history_end_exclusive": 15,
+      "history_lengths": [
+        50
+      ],
+      "history_start": 14,
+      "padded_tokens": 141,
+      "selection": "original_frozen_case",
+      "split": "train",
+      "stratum": 2,
+      "student": 2,
+      "target_length": 87,
+      "target_session": 15
+    },
+    {
+      "dataset_index": 17,
+      "history_end_exclusive": 26,
+      "history_lengths": [
+        48,
+        25,
+        38,
+        31,
+        69
+      ],
+      "history_start": 21,
+      "padded_tokens": 436,
+      "selection": "original_frozen_case",
+      "split": "train",
+      "stratum": 3,
+      "student": 3,
+      "target_length": 79,
+      "target_session": 26
+    },
+    {
+      "dataset_index": 52,
+      "history_end_exclusive": 87,
+      "history_lengths": [
+        123
+      ],
+      "history_start": 86,
+      "padded_tokens": 353,
+      "selection": "original_frozen_case",
+      "split": "train",
+      "stratum": 4,
+      "student": 11,
+      "target_length": 226,
+      "target_session": 87
+    },
+    {
+      "dataset_index": 62,
+      "history_end_exclusive": 102,
+      "history_lengths": [
+        61,
+        37,
+        58,
+        62,
+        18,
+        14
+      ],
+      "history_start": 96,
+      "padded_tokens": 674,
+      "selection": "original_frozen_case",
+      "split": "train",
+      "stratum": 5,
+      "student": 12,
+      "target_length": 288,
+      "target_session": 102
+    },
+    {
+      "dataset_index": 1012,
+      "history_end_exclusive": 1792,
+      "history_lengths": [
+        9,
+        18,
+        29
+      ],
+      "history_start": 1789,
+      "padded_tokens": 117,
+      "selection": "median_cost_new_stratum",
+      "split": "train",
+      "stratum": 0,
+      "student": 204,
+      "target_length": 22,
+      "target_session": 1792
+    },
+    {
+      "dataset_index": 2938,
+      "history_end_exclusive": 5197,
+      "history_lengths": [
+        21,
+        72,
+        57,
+        50,
+        23,
+        42,
+        49,
+        45
+      ],
+      "history_start": 5189,
+      "padded_tokens": 614,
+      "selection": "median_cost_new_stratum",
+      "split": "train",
+      "stratum": 1,
+      "student": 581,
+      "target_length": 20,
+      "target_session": 5197
+    },
+    {
+      "dataset_index": 5634,
+      "history_end_exclusive": 9894,
+      "history_lengths": [
+        99
+      ],
+      "history_start": 9893,
+      "padded_tokens": 231,
+      "selection": "median_cost_new_stratum",
+      "split": "train",
+      "stratum": 2,
+      "student": 1102,
+      "target_length": 128,
+      "target_session": 9894
+    },
+    {
+      "dataset_index": 5552,
+      "history_end_exclusive": 9753,
+      "history_lengths": [
+        94,
+        140,
+        125,
+        104,
+        59
+      ],
+      "history_start": 9748,
+      "padded_tokens": 785,
+      "selection": "median_cost_new_stratum",
+      "split": "train",
+      "stratum": 3,
+      "student": 1085,
+      "target_length": 73,
+      "target_session": 9753
+    },
+    {
+      "dataset_index": 6496,
+      "history_end_exclusive": 11418,
+      "history_lengths": [
+        77,
+        41
+      ],
+      "history_start": 11416,
+      "padded_tokens": 533,
+      "selection": "median_cost_new_stratum",
+      "split": "train",
+      "stratum": 4,
+      "student": 1276,
+      "target_length": 373,
+      "target_session": 11418
+    },
+    {
+      "dataset_index": 5289,
+      "history_end_exclusive": 9284,
+      "history_lengths": [
+        191,
+        178,
+        149,
+        188,
+        144,
+        202
+      ],
+      "history_start": 9278,
+      "padded_tokens": 1412,
+      "selection": "median_cost_new_stratum",
+      "split": "train",
+      "stratum": 5,
+      "student": 1031,
+      "target_length": 186,
+      "target_session": 9284
+    },
+    {
+      "dataset_index": 1622,
+      "history_end_exclusive": 2877,
+      "history_lengths": [
+        166,
+        156,
+        51,
+        190,
+        100,
+        147
+      ],
+      "history_start": 2871,
+      "padded_tokens": 2092,
+      "selection": "extreme_target_length",
+      "split": "train",
+      "student": 323,
+      "target_length": 938,
+      "target_session": 2877
+    },
+    {
+      "dataset_index": 2852,
+      "history_end_exclusive": 5040,
+      "history_lengths": [
+        118,
+        187,
+        110,
+        60,
+        64,
+        186,
+        84,
+        639,
+        78,
+        373,
+        31
+      ],
+      "history_start": 5029,
+      "padded_tokens": 7164,
+      "selection": "extreme_padded_tokens",
+      "split": "train",
+      "student": 564,
+      "target_length": 111,
+      "target_session": 5040
+    }
+  ]
+}

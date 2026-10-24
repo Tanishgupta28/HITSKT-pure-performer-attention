@@ -1,5 +1,21 @@
 # Durable user directives
 
+## 2026-10-24 — Frozen post-epoch8 approximation investigation (latest)
+
+User prioritizes causes/corrections of Action/CPE approximation before more
+training. Review all eight epochs/checkpoints/curves; compare identical TRAIN
+representations against exact softmax, norms/concentration/projections/masks/
+normalization, possible feature limitations. Separate controlled diagnostics;
+if a valid correction emerges, separate opt-in experimental configuration and
+regression tests. Preserve best7/latest8/all results/.20 threshold. No new full
+training, optimizer updates, untouched-test evaluation or other-job interference.
+Use bounded CPU diagnostics first; no GPU resource polling/initialization needed.
+Design: `reports/favor_plus_v1/postepoch8_approximation_20261024_v1/PREDECLARED_DESIGN.json`.
+Commit verified research-branch changes only. Existing GPU permission is not
+revoked, but it is not permission for additional training during investigation.
+
+Earlier directives (historical):
+
 Updated: 2026-10-24 UTC
 
 ## 2026-10-24 — Profile and full-run resource budget APPROVED (latest)

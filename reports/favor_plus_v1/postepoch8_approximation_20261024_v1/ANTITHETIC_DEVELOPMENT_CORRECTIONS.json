@@ -1,0 +1,11 @@
+{
+  "correction": "reserve format3 for separate experimental checkpoints; original ELU1 and FAVOR+v1 format2 untouched",
+  "initial_regression": {
+    "failed": 1,
+    "passed": 86,
+    "reason": "prototype format1 collided with historical ELU loader format; rejected by state mismatch instead of explicit format gate"
+  },
+  "optimizer_calls": 0,
+  "original_research_changed": false,
+  "projection_policy": "explicit nested512 base pool aligns exact diagnostic feature draws across counts; recorded in experimental config before any training"
+}

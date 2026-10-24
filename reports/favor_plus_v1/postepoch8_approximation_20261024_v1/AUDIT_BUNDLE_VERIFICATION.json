@@ -1,0 +1,1091 @@
+{
+  "bundle_bytes": 7342634,
+  "bundle_sha256": "e8a6ed8b99c205ef1752bc271515edf9424de96103564f4e910f48531248eb28",
+  "cases": [
+    {
+      "case": 0,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/initial_case00_action_encoder.npz",
+      "full_source_sha256": "1428497cbdab79b11ccde9e153aa04cb05293e6470c238bec6da33b685721d2b",
+      "length": 32,
+      "prefix": "initial_c00_action_encoder",
+      "projection_key": "action_encoder_projection",
+      "stage": "action_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "case": 0,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/initial_case00_session_encoder.npz",
+      "full_source_sha256": "f480c5883b49094a6fa80be10974d38f4b8f375f0017e331bef855eb2aed16dd",
+      "length": 5,
+      "prefix": "initial_c00_session_encoder",
+      "projection_key": "session_encoder_projection",
+      "stage": "session_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "case": 0,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/initial_case00_correct_padding_encoder.npz",
+      "full_source_sha256": "ab24b1f00411087738f5c60f90bff12fa40a3ae3d03029a4040c28fb45f7ff24",
+      "length": 29,
+      "prefix": "initial_c00_correct_padding_encoder",
+      "projection_key": "correct_padding_encoder_projection",
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "case": 0,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/initial_case00_decoder.npz",
+      "full_source_sha256": "e8661efbbb8adbed86457b594a967cb013ba047d3adeac060977c8bfea0156f1",
+      "length": 29,
+      "prefix": "initial_c00_decoder",
+      "projection_key": "decoder_projection",
+      "stage": "decoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "case": 1,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/initial_case01_action_encoder.npz",
+      "full_source_sha256": "06eed5e16640247f00ea9a8e687e69c46e60bae136344d32db9bc3985905a541",
+      "length": 32,
+      "prefix": "initial_c01_action_encoder",
+      "projection_key": "action_encoder_projection",
+      "stage": "action_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "case": 1,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/initial_case01_session_encoder.npz",
+      "full_source_sha256": "e3a45108f5a6ed50f3293fcf43c3d4d9aff1c7b1e9b316516580851d27c647a9",
+      "length": 10,
+      "prefix": "initial_c01_session_encoder",
+      "projection_key": "session_encoder_projection",
+      "stage": "session_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "case": 1,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/initial_case01_correct_padding_encoder.npz",
+      "full_source_sha256": "c376cc900f4d257e04ff300bc012c8c1aa89dfce440b81aa2103a0426bc9d4b8",
+      "length": 27,
+      "prefix": "initial_c01_correct_padding_encoder",
+      "projection_key": "correct_padding_encoder_projection",
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "case": 1,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/initial_case01_decoder.npz",
+      "full_source_sha256": "7876e7cd69ea56b21bcd70b3857a27b3672e94ece9f39775123f3eb0dbf6f93d",
+      "length": 27,
+      "prefix": "initial_c01_decoder",
+      "projection_key": "decoder_projection",
+      "stage": "decoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "case": 2,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/initial_case02_action_encoder.npz",
+      "full_source_sha256": "7c3ed7f55f08765ce1240bd67fdd61ed7713668ef3fe74ff24f0bbe57d48cefd",
+      "length": 32,
+      "prefix": "initial_c02_action_encoder",
+      "projection_key": "action_encoder_projection",
+      "stage": "action_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "case": 2,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/initial_case02_session_encoder.npz",
+      "full_source_sha256": "a5995492cd65de50ab023d81e30b4fca0f4f50ce676223c5936e339aba731144",
+      "length": 2,
+      "prefix": "initial_c02_session_encoder",
+      "projection_key": "session_encoder_projection",
+      "stage": "session_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "case": 2,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/initial_case02_correct_padding_encoder.npz",
+      "full_source_sha256": "8a6bea394c1aab644d281fb994aa4679300213db86159fcaba96057e8a0b5117",
+      "length": 32,
+      "prefix": "initial_c02_correct_padding_encoder",
+      "projection_key": "correct_padding_encoder_projection",
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "case": 2,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/initial_case02_decoder.npz",
+      "full_source_sha256": "cc4ed3c6d8e391f98356e36a3a2e6253004e92915e42c88c09bd78636df46ad5",
+      "length": 32,
+      "prefix": "initial_c02_decoder",
+      "projection_key": "decoder_projection",
+      "stage": "decoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "case": 3,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/initial_case03_action_encoder.npz",
+      "full_source_sha256": "56ff8b6d70a8d2b393ef1e250484b39e7068c985189f6ee79cd7691145d7ace5",
+      "length": 32,
+      "prefix": "initial_c03_action_encoder",
+      "projection_key": "action_encoder_projection",
+      "stage": "action_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "case": 3,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/initial_case03_session_encoder.npz",
+      "full_source_sha256": "00507dc066f2ca99bacb8a566ce25776564ea657b55f79843520e812586437f1",
+      "length": 6,
+      "prefix": "initial_c03_session_encoder",
+      "projection_key": "session_encoder_projection",
+      "stage": "session_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "case": 3,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/initial_case03_correct_padding_encoder.npz",
+      "full_source_sha256": "305911dfa07bcd2bdbe39e639cc14e0c40ce0cfcbbe5d3ba7497ff0782c23fc1",
+      "length": 32,
+      "prefix": "initial_c03_correct_padding_encoder",
+      "projection_key": "correct_padding_encoder_projection",
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "case": 3,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/initial_case03_decoder.npz",
+      "full_source_sha256": "fbb61132c55ebc6c132cdde3fa5d4743983e68eb4a84de5359713c5019966dd3",
+      "length": 32,
+      "prefix": "initial_c03_decoder",
+      "projection_key": "decoder_projection",
+      "stage": "decoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "case": 4,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/initial_case04_action_encoder.npz",
+      "full_source_sha256": "7bebca1e6a982353cd71f67e89cb38361010a8db8501e7bd65c3bc13639a0347",
+      "length": 32,
+      "prefix": "initial_c04_action_encoder",
+      "projection_key": "action_encoder_projection",
+      "stage": "action_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "case": 4,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/initial_case04_session_encoder.npz",
+      "full_source_sha256": "ab29056f9895ed2c98dcbfc0288c702479caee62571a79be01d3d59ed787e82c",
+      "length": 2,
+      "prefix": "initial_c04_session_encoder",
+      "projection_key": "session_encoder_projection",
+      "stage": "session_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "case": 4,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/initial_case04_correct_padding_encoder.npz",
+      "full_source_sha256": "8f5cf4f02c5bc8932f581ed2be581c145196b2708307bd6e47bf58e13e82ce9a",
+      "length": 32,
+      "prefix": "initial_c04_correct_padding_encoder",
+      "projection_key": "correct_padding_encoder_projection",
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "case": 4,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/initial_case04_decoder.npz",
+      "full_source_sha256": "9d490fe840114c0fa5c063ae0a3999db1facaf23acb266a35d6a1a6f92e0ce46",
+      "length": 32,
+      "prefix": "initial_c04_decoder",
+      "projection_key": "decoder_projection",
+      "stage": "decoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "case": 5,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/initial_case05_action_encoder.npz",
+      "full_source_sha256": "9d43a1e0640f0c568637dc44b4d0d5911d11c91f4e69254c147b399ac88864ac",
+      "length": 32,
+      "prefix": "initial_c05_action_encoder",
+      "projection_key": "action_encoder_projection",
+      "stage": "action_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "case": 5,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/initial_case05_session_encoder.npz",
+      "full_source_sha256": "249993d3df23927aad56320db84550f6f23266b08645459dc7786fd883bf7cb9",
+      "length": 7,
+      "prefix": "initial_c05_session_encoder",
+      "projection_key": "session_encoder_projection",
+      "stage": "session_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "case": 5,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/initial_case05_correct_padding_encoder.npz",
+      "full_source_sha256": "f0cc82d6a22c612a561f154230a97162e28a2b49b22dacf223ace15169e65b7b",
+      "length": 32,
+      "prefix": "initial_c05_correct_padding_encoder",
+      "projection_key": "correct_padding_encoder_projection",
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "case": 5,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/initial_case05_decoder.npz",
+      "full_source_sha256": "4d6f84eaaa57bc52496cd4f0fb7eff5c2a78df63ff903d7afc57f982bb3885fd",
+      "length": 32,
+      "prefix": "initial_c05_decoder",
+      "projection_key": "decoder_projection",
+      "stage": "decoder.layers.0.attention",
+      "state": "initial"
+    },
+    {
+      "case": 0,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/7_case00_action_encoder.npz",
+      "full_source_sha256": "1d66875c61c53dd9c2814673e965f0b2e501aa823c4b6de55a2217a2cfb936d0",
+      "length": 32,
+      "prefix": "7_c00_action_encoder",
+      "projection_key": "action_encoder_projection",
+      "stage": "action_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "case": 0,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/7_case00_session_encoder.npz",
+      "full_source_sha256": "963847b268875e07af7eb4b581bedf3198fa4b1b478114f5b1998e6a0ca3a1ce",
+      "length": 5,
+      "prefix": "7_c00_session_encoder",
+      "projection_key": "session_encoder_projection",
+      "stage": "session_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "case": 0,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/7_case00_correct_padding_encoder.npz",
+      "full_source_sha256": "7a33e7ed8c3d14e3b4e819ac1006b04e20ff9d24d9becb84b793e0eb86e36b19",
+      "length": 29,
+      "prefix": "7_c00_correct_padding_encoder",
+      "projection_key": "correct_padding_encoder_projection",
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "case": 0,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/7_case00_decoder.npz",
+      "full_source_sha256": "213ab5dba658133016294deaee972cf76429325992cde5e842ce86cdd2a53757",
+      "length": 29,
+      "prefix": "7_c00_decoder",
+      "projection_key": "decoder_projection",
+      "stage": "decoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "case": 1,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/7_case01_action_encoder.npz",
+      "full_source_sha256": "6989fd10ec94ae300a43264a4186d8d57ae1354dbd386381695af4f63b8f13a4",
+      "length": 32,
+      "prefix": "7_c01_action_encoder",
+      "projection_key": "action_encoder_projection",
+      "stage": "action_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "case": 1,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/7_case01_session_encoder.npz",
+      "full_source_sha256": "d3265fc0611edada0f04ce7b5eee1b9146683c0b13d43734cb463407e8e0fd48",
+      "length": 10,
+      "prefix": "7_c01_session_encoder",
+      "projection_key": "session_encoder_projection",
+      "stage": "session_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "case": 1,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/7_case01_correct_padding_encoder.npz",
+      "full_source_sha256": "8add76cae140cd89d1d6fbdca81c41bf18f2e0c09422cb2fe89cb64634df2577",
+      "length": 27,
+      "prefix": "7_c01_correct_padding_encoder",
+      "projection_key": "correct_padding_encoder_projection",
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "case": 1,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/7_case01_decoder.npz",
+      "full_source_sha256": "91fcdc5e43394161419455dfc67b3a1906c7925fceb175428ed34b564478709b",
+      "length": 27,
+      "prefix": "7_c01_decoder",
+      "projection_key": "decoder_projection",
+      "stage": "decoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "case": 2,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/7_case02_action_encoder.npz",
+      "full_source_sha256": "4de42811f81d21a7982a9800c295120a50f72ad7e1e4fcfd507c6e5e1d4b3b5f",
+      "length": 32,
+      "prefix": "7_c02_action_encoder",
+      "projection_key": "action_encoder_projection",
+      "stage": "action_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "case": 2,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/7_case02_session_encoder.npz",
+      "full_source_sha256": "e9dac9a8dacba42d5b43976f769838f3f09ab7ec35bbab7e7b53ca8edf370ff8",
+      "length": 2,
+      "prefix": "7_c02_session_encoder",
+      "projection_key": "session_encoder_projection",
+      "stage": "session_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "case": 2,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/7_case02_correct_padding_encoder.npz",
+      "full_source_sha256": "6196b9229136ad8fb02b359f883ca21302b2d6ec43ad5ab2511da14487021cf1",
+      "length": 32,
+      "prefix": "7_c02_correct_padding_encoder",
+      "projection_key": "correct_padding_encoder_projection",
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "case": 2,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/7_case02_decoder.npz",
+      "full_source_sha256": "4c7d253fb639cdcba6f717d6ca2b62e818d70035733ce6c1648c57fdae618517",
+      "length": 32,
+      "prefix": "7_c02_decoder",
+      "projection_key": "decoder_projection",
+      "stage": "decoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "case": 3,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/7_case03_action_encoder.npz",
+      "full_source_sha256": "304320b51105a96b94312272892c61aaedd1cbb57c145e05c1c49f1ed78bea80",
+      "length": 32,
+      "prefix": "7_c03_action_encoder",
+      "projection_key": "action_encoder_projection",
+      "stage": "action_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "case": 3,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/7_case03_session_encoder.npz",
+      "full_source_sha256": "e4d77a8056735012f67551b2ba4b4ebe471745d10b00af2acb1723e9d40e74c1",
+      "length": 6,
+      "prefix": "7_c03_session_encoder",
+      "projection_key": "session_encoder_projection",
+      "stage": "session_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "case": 3,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/7_case03_correct_padding_encoder.npz",
+      "full_source_sha256": "25de7cfa0f1c15eca47dad1c1487880f5dd5b283bd29dba93eedd6d649f2a543",
+      "length": 32,
+      "prefix": "7_c03_correct_padding_encoder",
+      "projection_key": "correct_padding_encoder_projection",
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "case": 3,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/7_case03_decoder.npz",
+      "full_source_sha256": "b0a18cf32e31943a341b5bc8415a43a4cc04e99a25e9e28cb7c2510f97483cd7",
+      "length": 32,
+      "prefix": "7_c03_decoder",
+      "projection_key": "decoder_projection",
+      "stage": "decoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "case": 4,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/7_case04_action_encoder.npz",
+      "full_source_sha256": "c2c60ee3422e98a998df8d31b0c23159fba97914110b3ecdb4ffde3991416cc5",
+      "length": 32,
+      "prefix": "7_c04_action_encoder",
+      "projection_key": "action_encoder_projection",
+      "stage": "action_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "case": 4,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/7_case04_session_encoder.npz",
+      "full_source_sha256": "26ac824384db5cb429e3ead608e33d6c3ed74772c46e8bbc17d2ce0363e2c9c8",
+      "length": 2,
+      "prefix": "7_c04_session_encoder",
+      "projection_key": "session_encoder_projection",
+      "stage": "session_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "case": 4,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/7_case04_correct_padding_encoder.npz",
+      "full_source_sha256": "4e49580a0c270c03e95ac6ecca4bf142fb27d3c4f7e3656e8720ccbc0f385dc4",
+      "length": 32,
+      "prefix": "7_c04_correct_padding_encoder",
+      "projection_key": "correct_padding_encoder_projection",
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "case": 4,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/7_case04_decoder.npz",
+      "full_source_sha256": "ac88cb4662521c49e509fba65b9b6aebbcb709ae018840b8fa8efa0eec6fdcc5",
+      "length": 32,
+      "prefix": "7_c04_decoder",
+      "projection_key": "decoder_projection",
+      "stage": "decoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "case": 5,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/7_case05_action_encoder.npz",
+      "full_source_sha256": "a203883f1c467a398e5f1f717e7cacbcc37487c78a26354537116a384620f9f5",
+      "length": 32,
+      "prefix": "7_c05_action_encoder",
+      "projection_key": "action_encoder_projection",
+      "stage": "action_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "case": 5,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/7_case05_session_encoder.npz",
+      "full_source_sha256": "f8c63094facc3fdf6b85303ef332e153958ed0790b83cbc1461426224c747320",
+      "length": 7,
+      "prefix": "7_c05_session_encoder",
+      "projection_key": "session_encoder_projection",
+      "stage": "session_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "case": 5,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/7_case05_correct_padding_encoder.npz",
+      "full_source_sha256": "67e4956ec561273af6be78b8f3569de000a14376094014e4dcb9ab1010363d39",
+      "length": 32,
+      "prefix": "7_c05_correct_padding_encoder",
+      "projection_key": "correct_padding_encoder_projection",
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "case": 5,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/7_case05_decoder.npz",
+      "full_source_sha256": "d7b93912815c4808a270f21e174e7e4996245ec51409e3eded393dd3a3277490",
+      "length": 32,
+      "prefix": "7_c05_decoder",
+      "projection_key": "decoder_projection",
+      "stage": "decoder.layers.0.attention",
+      "state": "7"
+    },
+    {
+      "case": 0,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/8_case00_action_encoder.npz",
+      "full_source_sha256": "3b8dc49b85e3b2f074f49afb57b92fc15c2855e1a9ffda495d4eb07a9642ee3d",
+      "length": 32,
+      "prefix": "8_c00_action_encoder",
+      "projection_key": "action_encoder_projection",
+      "stage": "action_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "case": 0,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/8_case00_session_encoder.npz",
+      "full_source_sha256": "900907ad7b7c9d90224d7a81d298139441b242ef0bdbe705330e58710ccf487c",
+      "length": 5,
+      "prefix": "8_c00_session_encoder",
+      "projection_key": "session_encoder_projection",
+      "stage": "session_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "case": 0,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/8_case00_correct_padding_encoder.npz",
+      "full_source_sha256": "211709e058b2b9e24e174e499fec49e19c67662745ffb81ea55f4b16ccd6555d",
+      "length": 29,
+      "prefix": "8_c00_correct_padding_encoder",
+      "projection_key": "correct_padding_encoder_projection",
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "case": 0,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/8_case00_decoder.npz",
+      "full_source_sha256": "2ffbb5b8b2ea109b385591f3ffaa7a3e97bb363f5b680c2135a04114a9d2e37e",
+      "length": 29,
+      "prefix": "8_c00_decoder",
+      "projection_key": "decoder_projection",
+      "stage": "decoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "case": 1,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/8_case01_action_encoder.npz",
+      "full_source_sha256": "a76f2637c2d2b196c89b2ecf14b5c910c8c348323d830ea8ddfbc8de9d63a3ec",
+      "length": 32,
+      "prefix": "8_c01_action_encoder",
+      "projection_key": "action_encoder_projection",
+      "stage": "action_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "case": 1,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/8_case01_session_encoder.npz",
+      "full_source_sha256": "867034ac4f83c267350860b98108554ff6babf587d39c0153aab8023308bccd4",
+      "length": 10,
+      "prefix": "8_c01_session_encoder",
+      "projection_key": "session_encoder_projection",
+      "stage": "session_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "case": 1,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/8_case01_correct_padding_encoder.npz",
+      "full_source_sha256": "f45a71e2f683323bee1e7ed211fda6922e0e5285403de43177d15fa4cf24e7ed",
+      "length": 27,
+      "prefix": "8_c01_correct_padding_encoder",
+      "projection_key": "correct_padding_encoder_projection",
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "case": 1,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/8_case01_decoder.npz",
+      "full_source_sha256": "e7eb0b38907077bc573978479271c130657aac95c36844a0e85f0f4dd9c0018b",
+      "length": 27,
+      "prefix": "8_c01_decoder",
+      "projection_key": "decoder_projection",
+      "stage": "decoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "case": 2,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/8_case02_action_encoder.npz",
+      "full_source_sha256": "15abbc58696177311490e75d39160b1eca79f7782410551140739469db5453fe",
+      "length": 32,
+      "prefix": "8_c02_action_encoder",
+      "projection_key": "action_encoder_projection",
+      "stage": "action_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "case": 2,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/8_case02_session_encoder.npz",
+      "full_source_sha256": "74b2a9ade0655250b0d0ea1a9326f148aebf198b4f1ced1c9e1786e8a3ae4cba",
+      "length": 2,
+      "prefix": "8_c02_session_encoder",
+      "projection_key": "session_encoder_projection",
+      "stage": "session_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "case": 2,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/8_case02_correct_padding_encoder.npz",
+      "full_source_sha256": "47415b341680f9a01d79a5661fbf5b06b5b5b912b059e92c0b4ef6e09be850fe",
+      "length": 32,
+      "prefix": "8_c02_correct_padding_encoder",
+      "projection_key": "correct_padding_encoder_projection",
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "case": 2,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/8_case02_decoder.npz",
+      "full_source_sha256": "263ed6d63cd928d0578163921a249c515973b71ec75cf125f5fa1fc4a27215a3",
+      "length": 32,
+      "prefix": "8_c02_decoder",
+      "projection_key": "decoder_projection",
+      "stage": "decoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "case": 3,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/8_case03_action_encoder.npz",
+      "full_source_sha256": "f3dcd9077dd5ba34898352332dd2b43d1ad03611a40d661998da54e95fea5896",
+      "length": 32,
+      "prefix": "8_c03_action_encoder",
+      "projection_key": "action_encoder_projection",
+      "stage": "action_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "case": 3,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/8_case03_session_encoder.npz",
+      "full_source_sha256": "1f1e387f1d2a595e6e62054e19f6aaa53aaf81f8cc0e96533b70941b9ab21f64",
+      "length": 6,
+      "prefix": "8_c03_session_encoder",
+      "projection_key": "session_encoder_projection",
+      "stage": "session_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "case": 3,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/8_case03_correct_padding_encoder.npz",
+      "full_source_sha256": "6effea76454ef97af543c123fef13e244a3b101786c882e15e1109b63f5a7a40",
+      "length": 32,
+      "prefix": "8_c03_correct_padding_encoder",
+      "projection_key": "correct_padding_encoder_projection",
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "case": 3,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/8_case03_decoder.npz",
+      "full_source_sha256": "062a692d77299eaaeb3312d3ba1e51d9e02a96eab8fb1edf043a655eda2e9e09",
+      "length": 32,
+      "prefix": "8_c03_decoder",
+      "projection_key": "decoder_projection",
+      "stage": "decoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "case": 4,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/8_case04_action_encoder.npz",
+      "full_source_sha256": "922070f0ad6e0d4e2b281ca9728fb46f9ee5b06caa896eff3030951996c317d9",
+      "length": 32,
+      "prefix": "8_c04_action_encoder",
+      "projection_key": "action_encoder_projection",
+      "stage": "action_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "case": 4,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/8_case04_session_encoder.npz",
+      "full_source_sha256": "853f829285f7a432669e6219aa2016643a800e0f5b365395d7baabb88acfa10a",
+      "length": 2,
+      "prefix": "8_c04_session_encoder",
+      "projection_key": "session_encoder_projection",
+      "stage": "session_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "case": 4,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/8_case04_correct_padding_encoder.npz",
+      "full_source_sha256": "b801d7b1c7e4ea22283a7db72ad1a86e27d7875d4955d27b71da4e0a7c03b801",
+      "length": 32,
+      "prefix": "8_c04_correct_padding_encoder",
+      "projection_key": "correct_padding_encoder_projection",
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "case": 4,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/8_case04_decoder.npz",
+      "full_source_sha256": "29da8b9e1dbafbbd2b83242facf477f5a5d6d30acc39e09434c880094f8249ec",
+      "length": 32,
+      "prefix": "8_c04_decoder",
+      "projection_key": "decoder_projection",
+      "stage": "decoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "case": 5,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/8_case05_action_encoder.npz",
+      "full_source_sha256": "fcf7846fe8235adb8295347c6bd9d9abe68109d0f3521ef85f01aeee8fbf7d70",
+      "length": 32,
+      "prefix": "8_c05_action_encoder",
+      "projection_key": "action_encoder_projection",
+      "stage": "action_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "case": 5,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/8_case05_session_encoder.npz",
+      "full_source_sha256": "3b9831c48b87843bfe49848bfc2995bc2b0af6cc03a90e41e3488232d419c7df",
+      "length": 7,
+      "prefix": "8_c05_session_encoder",
+      "projection_key": "session_encoder_projection",
+      "stage": "session_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "case": 5,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/8_case05_correct_padding_encoder.npz",
+      "full_source_sha256": "df8ca4b5ee7b52c6d20a3dc328bbe6eadc1b326243a18281dbdbe6189f5f7cac",
+      "length": 32,
+      "prefix": "8_c05_correct_padding_encoder",
+      "projection_key": "correct_padding_encoder_projection",
+      "stage": "correct_padding_encoder.layers.0.attention",
+      "state": "8"
+    },
+    {
+      "case": 5,
+      "full_source_path": "experiments/hitskt_favor_plus_v1/assist2017/postepoch8_frozen_20261024_v1/8_case05_decoder.npz",
+      "full_source_sha256": "19343f076824cca1de4f0ca353991fc1a806c0a6e766a81a5c255166fb4b4d0c",
+      "length": 32,
+      "prefix": "8_c05_decoder",
+      "projection_key": "decoder_projection",
+      "stage": "decoder.layers.0.attention",
+      "state": "8"
+    }
+  ],
+  "checks": [
+    {
+      "feature_reference_max_abs": 3.8797010049052005e-07,
+      "prefix": "initial_c00_action_encoder",
+      "relative_output_l2": 0.22238702679474376
+    },
+    {
+      "feature_reference_max_abs": 2.589554499721203e-07,
+      "prefix": "initial_c00_session_encoder",
+      "relative_output_l2": 0.06370588334017009
+    },
+    {
+      "feature_reference_max_abs": 3.653620250787526e-07,
+      "prefix": "initial_c00_correct_padding_encoder",
+      "relative_output_l2": 0.10497172285695844
+    },
+    {
+      "feature_reference_max_abs": 3.5762786865234375e-07,
+      "prefix": "initial_c00_decoder",
+      "relative_output_l2": 0.06800602754186878
+    },
+    {
+      "feature_reference_max_abs": 4.357639196150842e-07,
+      "prefix": "initial_c01_action_encoder",
+      "relative_output_l2": 0.20396478779756866
+    },
+    {
+      "feature_reference_max_abs": 2.5747170373513484e-07,
+      "prefix": "initial_c01_session_encoder",
+      "relative_output_l2": 0.03692954351963602
+    },
+    {
+      "feature_reference_max_abs": 4.6638823625322345e-07,
+      "prefix": "initial_c01_correct_padding_encoder",
+      "relative_output_l2": 0.1349846271213882
+    },
+    {
+      "feature_reference_max_abs": 3.316303689437916e-07,
+      "prefix": "initial_c01_decoder",
+      "relative_output_l2": 0.053554814465747995
+    },
+    {
+      "feature_reference_max_abs": 7.57905640136336e-07,
+      "prefix": "initial_c02_action_encoder",
+      "relative_output_l2": 0.23581725724315075
+    },
+    {
+      "feature_reference_max_abs": 3.5762786865234375e-07,
+      "prefix": "initial_c02_session_encoder",
+      "relative_output_l2": 0.10793089164466997
+    },
+    {
+      "feature_reference_max_abs": 3.9022969855473377e-07,
+      "prefix": "initial_c02_correct_padding_encoder",
+      "relative_output_l2": 0.1471620060387052
+    },
+    {
+      "feature_reference_max_abs": 5.854032359975392e-07,
+      "prefix": "initial_c02_decoder",
+      "relative_output_l2": 0.13600272865199609
+    },
+    {
+      "feature_reference_max_abs": 3.7516357705895745e-07,
+      "prefix": "initial_c03_action_encoder",
+      "relative_output_l2": 0.17802610575404906
+    },
+    {
+      "feature_reference_max_abs": 2.8845259092413755e-07,
+      "prefix": "initial_c03_session_encoder",
+      "relative_output_l2": 0.07348329406975446
+    },
+    {
+      "feature_reference_max_abs": 3.990162575906453e-07,
+      "prefix": "initial_c03_correct_padding_encoder",
+      "relative_output_l2": 0.1621311638817875
+    },
+    {
+      "feature_reference_max_abs": 4.288684756215133e-07,
+      "prefix": "initial_c03_decoder",
+      "relative_output_l2": 0.10145057996403031
+    },
+    {
+      "feature_reference_max_abs": 3.553579714932198e-07,
+      "prefix": "initial_c04_action_encoder",
+      "relative_output_l2": 0.092557409559292
+    },
+    {
+      "feature_reference_max_abs": 1.7318886025297076e-07,
+      "prefix": "initial_c04_session_encoder",
+      "relative_output_l2": 0.0738009787840413
+    },
+    {
+      "feature_reference_max_abs": 4.037264578204969e-07,
+      "prefix": "initial_c04_correct_padding_encoder",
+      "relative_output_l2": 0.13800895349412065
+    },
+    {
+      "feature_reference_max_abs": 4.078225677162095e-07,
+      "prefix": "initial_c04_decoder",
+      "relative_output_l2": 0.10269086825300056
+    },
+    {
+      "feature_reference_max_abs": 3.536531745784721e-07,
+      "prefix": "initial_c05_action_encoder",
+      "relative_output_l2": 0.23530445288269822
+    },
+    {
+      "feature_reference_max_abs": 3.354616520123699e-07,
+      "prefix": "initial_c05_session_encoder",
+      "relative_output_l2": 0.06750034113748679
+    },
+    {
+      "feature_reference_max_abs": 4.641543034505924e-07,
+      "prefix": "initial_c05_correct_padding_encoder",
+      "relative_output_l2": 0.13260831875760273
+    },
+    {
+      "feature_reference_max_abs": 4.5802985393361695e-07,
+      "prefix": "initial_c05_decoder",
+      "relative_output_l2": 0.1014531259768705
+    },
+    {
+      "feature_reference_max_abs": 5.52777474016608e-07,
+      "prefix": "7_c00_action_encoder",
+      "relative_output_l2": 0.2833319278590952
+    },
+    {
+      "feature_reference_max_abs": 4.0952801416693774e-07,
+      "prefix": "7_c00_session_encoder",
+      "relative_output_l2": 0.06612606535347645
+    },
+    {
+      "feature_reference_max_abs": 5.414246724289029e-07,
+      "prefix": "7_c00_correct_padding_encoder",
+      "relative_output_l2": 0.3032206200119084
+    },
+    {
+      "feature_reference_max_abs": 8.338974404331623e-07,
+      "prefix": "7_c00_decoder",
+      "relative_output_l2": 0.4374358552564403
+    },
+    {
+      "feature_reference_max_abs": 6.093961857356334e-07,
+      "prefix": "7_c01_action_encoder",
+      "relative_output_l2": 0.244529910704012
+    },
+    {
+      "feature_reference_max_abs": 5.636813205089908e-07,
+      "prefix": "7_c01_session_encoder",
+      "relative_output_l2": 0.16224743438063924
+    },
+    {
+      "feature_reference_max_abs": 9.463603207471305e-07,
+      "prefix": "7_c01_correct_padding_encoder",
+      "relative_output_l2": 0.444665140051272
+    },
+    {
+      "feature_reference_max_abs": 6.927619315560962e-07,
+      "prefix": "7_c01_decoder",
+      "relative_output_l2": 0.5490916815669489
+    },
+    {
+      "feature_reference_max_abs": 8.991726864193694e-07,
+      "prefix": "7_c02_action_encoder",
+      "relative_output_l2": 0.29162642496723395
+    },
+    {
+      "feature_reference_max_abs": 3.5762786865234375e-07,
+      "prefix": "7_c02_session_encoder",
+      "relative_output_l2": 0.23273429594111644
+    },
+    {
+      "feature_reference_max_abs": 1.582390828813729e-06,
+      "prefix": "7_c02_correct_padding_encoder",
+      "relative_output_l2": 0.5976821284033296
+    },
+    {
+      "feature_reference_max_abs": 2.588227056898873e-06,
+      "prefix": "7_c02_decoder",
+      "relative_output_l2": 0.710516789790533
+    },
+    {
+      "feature_reference_max_abs": 5.090008534658352e-07,
+      "prefix": "7_c03_action_encoder",
+      "relative_output_l2": 0.23953091715161184
+    },
+    {
+      "feature_reference_max_abs": 4.562118294249018e-07,
+      "prefix": "7_c03_session_encoder",
+      "relative_output_l2": 0.0912915689202359
+    },
+    {
+      "feature_reference_max_abs": 8.577037498014306e-07,
+      "prefix": "7_c03_correct_padding_encoder",
+      "relative_output_l2": 0.5065182876393001
+    },
+    {
+      "feature_reference_max_abs": 1.3696965831533348e-06,
+      "prefix": "7_c03_decoder",
+      "relative_output_l2": 0.5805454834481281
+    },
+    {
+      "feature_reference_max_abs": 4.5897203881928306e-07,
+      "prefix": "7_c04_action_encoder",
+      "relative_output_l2": 0.12352012003832913
+    },
+    {
+      "feature_reference_max_abs": 4.76837158203125e-07,
+      "prefix": "7_c04_session_encoder",
+      "relative_output_l2": 0.2507411338458806
+    },
+    {
+      "feature_reference_max_abs": 8.175533606769037e-07,
+      "prefix": "7_c04_correct_padding_encoder",
+      "relative_output_l2": 0.5327497834220124
+    },
+    {
+      "feature_reference_max_abs": 1.3380415830877013e-06,
+      "prefix": "7_c04_decoder",
+      "relative_output_l2": 0.7483629538544421
+    },
+    {
+      "feature_reference_max_abs": 6.022959484486279e-07,
+      "prefix": "7_c05_action_encoder",
+      "relative_output_l2": 0.28649797224732126
+    },
+    {
+      "feature_reference_max_abs": 3.3264185073100805e-07,
+      "prefix": "7_c05_session_encoder",
+      "relative_output_l2": 0.17320939968595675
+    },
+    {
+      "feature_reference_max_abs": 8.050590458719142e-07,
+      "prefix": "7_c05_correct_padding_encoder",
+      "relative_output_l2": 0.4441948729891944
+    },
+    {
+      "feature_reference_max_abs": 1.1575741790670335e-06,
+      "prefix": "7_c05_decoder",
+      "relative_output_l2": 0.5350224451385043
+    },
+    {
+      "feature_reference_max_abs": 6.126396923100685e-07,
+      "prefix": "8_c00_action_encoder",
+      "relative_output_l2": 0.27444858415319456
+    },
+    {
+      "feature_reference_max_abs": 5.975744383768244e-07,
+      "prefix": "8_c00_session_encoder",
+      "relative_output_l2": 0.08109194736248586
+    },
+    {
+      "feature_reference_max_abs": 6.944881461024011e-07,
+      "prefix": "8_c00_correct_padding_encoder",
+      "relative_output_l2": 0.30606544617400366
+    },
+    {
+      "feature_reference_max_abs": 1.5359899063760452e-06,
+      "prefix": "8_c00_decoder",
+      "relative_output_l2": 0.6133360056041236
+    },
+    {
+      "feature_reference_max_abs": 5.169588940256986e-07,
+      "prefix": "8_c01_action_encoder",
+      "relative_output_l2": 0.25067587591866014
+    },
+    {
+      "feature_reference_max_abs": 4.772841668554406e-07,
+      "prefix": "8_c01_session_encoder",
+      "relative_output_l2": 0.11988443431038148
+    },
+    {
+      "feature_reference_max_abs": 7.577463085883807e-07,
+      "prefix": "8_c01_correct_padding_encoder",
+      "relative_output_l2": 0.483442166544288
+    },
+    {
+      "feature_reference_max_abs": 9.712787902016462e-07,
+      "prefix": "8_c01_decoder",
+      "relative_output_l2": 0.48702487061416105
+    },
+    {
+      "feature_reference_max_abs": 6.469142397325101e-07,
+      "prefix": "8_c02_action_encoder",
+      "relative_output_l2": 0.2807463631971441
+    },
+    {
+      "feature_reference_max_abs": 3.6896376176542844e-07,
+      "prefix": "8_c02_session_encoder",
+      "relative_output_l2": 0.21105410078000042
+    },
+    {
+      "feature_reference_max_abs": 7.505365811066866e-07,
+      "prefix": "8_c02_correct_padding_encoder",
+      "relative_output_l2": 0.5936580027826308
+    },
+    {
+      "feature_reference_max_abs": 1.8385955027344636e-06,
+      "prefix": "8_c02_decoder",
+      "relative_output_l2": 0.6795312199698081
+    },
+    {
+      "feature_reference_max_abs": 6.280910803818651e-07,
+      "prefix": "8_c03_action_encoder",
+      "relative_output_l2": 0.2301878971910108
+    },
+    {
+      "feature_reference_max_abs": 4.046651544964419e-07,
+      "prefix": "8_c03_session_encoder",
+      "relative_output_l2": 0.07638545429156593
+    },
+    {
+      "feature_reference_max_abs": 8.172312810916793e-07,
+      "prefix": "8_c03_correct_padding_encoder",
+      "relative_output_l2": 0.523419811615239
+    },
+    {
+      "feature_reference_max_abs": 1.277347771291848e-06,
+      "prefix": "8_c03_decoder",
+      "relative_output_l2": 0.5116693820523667
+    },
+    {
+      "feature_reference_max_abs": 5.671169109877638e-07,
+      "prefix": "8_c04_action_encoder",
+      "relative_output_l2": 0.12851909923843183
+    },
+    {
+      "feature_reference_max_abs": 4.918216889304716e-07,
+      "prefix": "8_c04_session_encoder",
+      "relative_output_l2": 0.24980458846955408
+    },
+    {
+      "feature_reference_max_abs": 1.4287529942480504e-06,
+      "prefix": "8_c04_correct_padding_encoder",
+      "relative_output_l2": 0.5541833601357857
+    },
+    {
+      "feature_reference_max_abs": 1.4647248989252404e-06,
+      "prefix": "8_c04_decoder",
+      "relative_output_l2": 0.6447416513976301
+    },
+    {
+      "feature_reference_max_abs": 8.195583039993792e-07,
+      "prefix": "8_c05_action_encoder",
+      "relative_output_l2": 0.2885613363784723
+    },
+    {
+      "feature_reference_max_abs": 4.402418789517526e-07,
+      "prefix": "8_c05_session_encoder",
+      "relative_output_l2": 0.10406422236861268
+    },
+    {
+      "feature_reference_max_abs": 9.672487109035899e-07,
+      "prefix": "8_c05_correct_padding_encoder",
+      "relative_output_l2": 0.4632658029878336
+    },
+    {
+      "feature_reference_max_abs": 1.0366153258556388e-06,
+      "prefix": "8_c05_decoder",
+      "relative_output_l2": 0.5056402484883951
+    }
+  ],
+  "full_168_array_files": "preserved locally; hashes in RAW_ARRAY_MANIFEST.json, not all uploaded toGit",
+  "scope": "original six frozen TRAIN cases, initial/7/8,all4stages,prefix\u226432; CPU reconstructed arrays, no labels or test samples",
+  "status": "PASS72_prefixes_roundtrip_and_independent_kernel_checks"
+}

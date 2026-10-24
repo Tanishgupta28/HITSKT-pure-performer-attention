@@ -1,0 +1,33 @@
+{
+  "benchmark": {
+    "backward": false,
+    "case": 12,
+    "device": "CPU",
+    "positions": 128,
+    "repetitions": 3,
+    "stage": "correct_padding_encoder.layers.0.attention",
+    "warmups": 1
+  },
+  "cohort": "same14 frozen TRAINcases",
+  "comparison": "new production antithetic helper versus independent explicit feature/exact-softmax references; original saved estimator retained separately; no seed tuning",
+  "features_total": [
+    128,
+    256,
+    512
+  ],
+  "kind": "prospective_antithetic_default_policy_cpu_replay",
+  "optimizer_calls": 0,
+  "prefix_limit": 128,
+  "projection_pool_features": 512,
+  "stage_projection_seeds": [
+    42,
+    43,
+    44,
+    45
+  ],
+  "states": [
+    "7",
+    "8"
+  ],
+  "test_evaluations": 0
+}

@@ -1,5 +1,24 @@
 # Current state
 
+## Latest: post-epoch8 frozen investigation COMPLETE; no new training
+
+24 October 2026. Read [FAVOR_POSTEPOCH8_INVESTIGATION_STATE.md](FAVOR_POSTEPOCH8_INVESTIGATION_STATE.md).
+Original7/8/source37/data11/180published nonmemory artifacts preserved. CPU-only
+14TRAINcases/initial+7+8/fourstages: production-reference≤3.11334e-6; FP64 removes
+arithmetic residual but not softmaxerror. Strongest supportedinference is learned
+fixed-projection alignment plus finite-feature/value geometry, not originalbug.
+CPEsaved128 .142→.566 vsindependent128 .114→.183, featureESS/mass evidence.
+Feature512/antitheticpartlyhelps; newopt-in experiment variant/format3 isCPU
+prototype only, no registry/default change/training/AUC/GPU claim.125uniqueCPU
+PASS (47new/78existing), original.20 REVIEW retained. No optimizer/CUDA/newval/
+test inference or other-job changes. Fullrawarrayslocalhashes; compact72prefix
+bundle andJSONarchiveverified. Retain AUC7 .703467/maxF1epoch6 .532809.
+REVIEW/NO-GO automaticfulltraining; propose separatelyapprovedsmallmatchedpilot
+only after GPUmemoryadmission/newtimewindow. Finishresearchpublication thenWAIT;
+do not resumeclosed8epochcampaign or silently change saved projections.
+
+Earlier handoff (historical):
+
 ## Latest: eight full ASSIST epochs COMPLETE; training stopped
 
 24 October 2026. Approved budget used successfully. Complete epochs1..8/1454

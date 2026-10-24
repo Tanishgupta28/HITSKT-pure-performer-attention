@@ -1,0 +1,19 @@
+{
+  "cases": [
+    12,
+    13
+  ],
+  "features_total": 512,
+  "gradient": false,
+  "kind": "prospective_512_antithetic_long_extreme_cpu_replay",
+  "optimizer_calls": 0,
+  "prefix": "full selected valid row, up to939 includingEOS",
+  "seed_policy": "default42+stageoffset, nested512pool",
+  "selection": "previously frozen longest-target and highest-cost cohort extremes; not selected by errors",
+  "stages": "all4",
+  "states": [
+    "7",
+    "8"
+  ],
+  "test_evaluations": 0
+}

@@ -1,0 +1,21 @@
+{
+  "cpu_runtime": {
+    "cuda_build": null,
+    "numpy": "1.24.4",
+    "torch": "2.4.1+cpu"
+  },
+  "design_sha256": "0ad383d72a53e2bf7388b28bcc2174c5d71fde6b875679cbdb63c8d55717b876",
+  "initial_host": {
+    "cgroup_headroom_bytes": 23974035456,
+    "cgroup_limit_bytes": 96636764160,
+    "cgroup_usage_bytes": 72662728704,
+    "peak_process_rss_bytes": 388816896
+  },
+  "optimizer_calls": 0,
+  "parent_plan_sha256": "8a0958f4572e11d9ae0d5722f595ef070c84129d9460f4b382b70c70ac2427cb",
+  "sources": {
+    "ktbench/favor_plus_frozen_investigation.py": "990db75a33f2448818956a0b7d382cbfbbde2ecccaadfc268d7d9b22de382d05",
+    "scripts/investigate_favor_plus_epoch8.py": "1e578cb0e67f004029b28b7facd3e06f22573639a8790ff93a3564a391ee65ec"
+  },
+  "test_evaluations": 0
+}

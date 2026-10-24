@@ -1,0 +1,11 @@
+Looking in indexes: https://download.pytorch.org/whl/cpu, https://pypi.ngc.nvidia.com
+WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7ffff5e628f0>: Failed to establish a new connection: [Errno -2] Name or service not known')': /torch/
+WARNING: Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7ffff5e629b0>: Failed to establish a new connection: [Errno -2] Name or service not known')': /torch/
+WARNING: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7ffff5e62ef0>: Failed to establish a new connection: [Errno -2] Name or service not known')': /torch/
+WARNING: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7ffff5e630a0>: Failed to establish a new connection: [Errno -2] Name or service not known')': /torch/
+WARNING: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7ffff5e63250>: Failed to establish a new connection: [Errno -2] Name or service not known')': /torch/
+Collecting torch==2.4.1
+  Downloading https://download-r2.pytorch.org/whl/cpu/torch-2.4.1%2Bcpu-cp310-cp310-linux_x86_64.whl (194.9 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 194.9/194.9 MB 21.5 MB/s eta 0:00:00
+Installing collected packages: torch
+Successfully installed torch-2.4.1+cpu

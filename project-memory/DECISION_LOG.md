@@ -1490,3 +1490,22 @@ audit data/errorrecords retained, no trainingretry. ReportASSIST2017_EPOCH_TRAIN
 andverified10701-file noncheckpoint archive. GO qualifiedprofessorresults, REVIEW
 fidelity/NO-GO unqualifiedpublication/all-datasettraining. No moreGPU/optimizer
 work now; finishverifiedpublicationthenWAIT for nextboundedtime/science decision.
+
+## 2026-10-24 — Frozen post-epoch8 study complete; antithetic CPU prototype only
+
+14frozenTRAINcases,initial/7/8,168captures/4032gridcomparisons andprospective
+annexes done CPU-only/zeroAdam/noCUDA/newval/test. Originalimplementationmath/
+mask/seed/normalization regressionsPASS, prod-feature≤3.113e-6; original37sources/
+11data/7+8/180publishednonmemoryfilespreserved. Strongest supportedcauselearned
+fixed-projectionalignment: CPEsaved128error.142→.566 vsfresh128.114→.183, ESS
+collapse/dominantfeaturemass andK/Vswap evidence. Not causaltrainingproof; more
+featureshelpbutDecoderandlongcasesstill>.20. AntitheticpositiveORF separate
+variant/format3 implementedCPU-only, originalarchitecture/registryunchanged,
+nottrained/GPUvalidated/noAUC. Firstkeycentering/temperaturecontrolsnotadopted.
+Initialprototypeformatcollisionfixed/preserved; 125uniqueCPUtestsPASS(47new).
+ExactopTRAINsensitivitynotpredictivemetric. Existing8epochresultsremainvalid
+qualified; furthertrainingnotdemonstratedfidelityfix. Newreport/summary/plots,
+compact72prefixbundle/fullrawhashes/36JSONarchive, all originaldata/checkpoints
+preserved. REVIEW/NO-GO automaticfulltraining. Onlyproposesmatched20-update
+futurepilot withnewexplicitboundedinstruction/resourceadmission; noactionnow.
+FinishverifiedresearchpublicationthenWAIT; no testselection/otherjobchanges.

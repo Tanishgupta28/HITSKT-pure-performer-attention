@@ -1,0 +1,139 @@
+..........................F............................................................                                                              [100%]
+========================================================================= FAILURES =========================================================================
+______________________________________________ test_full_model_padding_eos_gradients_and_checkpoint_identity _______________________________________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-63/test_full_model_padding_eos_gr0')
+
+    def test_full_model_padding_eos_gradients_and_checkpoint_identity(tmp_path):
+        model=net();batch=collate([example(5,3),example(2,1)])
+        loss=masked_bce_loss(model(batch),batch.target_labels,batch.target_metric_mask);loss.backward()
+        assert all(p.grad is not None and torch.isfinite(p.grad).all() for p in model.parameters())
+        model.eval()
+        with torch.no_grad():original=model(batch)
+        assert batch.target_attention_mask.sum()==9 and batch.target_metric_mask.sum()==7
+        batch.target_correct_input[~batch.target_attention_mask]=1;batch.history_correct[~batch.history_mask]=1
+        with torch.no_grad():assert torch.equal(original,model(batch))
+        path=tmp_path/'experimental.pt';torch.save(model.checkpoint(),path)
+        saved=torch.load(path,weights_only=True);assert saved['variant']==VARIANT and saved['antithetic_config']['features_total']==12
+        loaded=HiTSKTFavorPlusAntithetic.from_checkpoint(path).eval()
+        with torch.no_grad():assert torch.equal(original,loaded(batch))
+        with pytest.raises(ValueError):HiTSKTFavorPlus.from_checkpoint(path)
+>       with pytest.raises(ValueError):HiTSKT.from_checkpoint(path)
+
+tests/test_favor_plus_antithetic_experimental.py:113: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+ktbench/models/hitskt.py:159: in from_checkpoint
+    model.load_state_dict(payload["state_dict"], strict=True)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = HiTSKT(
+  (action_encoder): ActionEncoder(
+    (question): Embedding(22, 16, padding_idx=0)
+    (skill): Embedding(7, ...t(p=0.0, inplace=False)
+        )
+      )
+    )
+  )
+  (prediction): Linear(in_features=16, out_features=1, bias=True)
+)
+state_dict = OrderedDict([('action_encoder.question.weight', tensor([[ 0.0000,  0.0000,  0.0000,  0.0000,  0.0000,  0.0000,  0.0000...     0.0858,  0.1262,  0.2051,  0.2123, -0.2410,  0.1742,  0.1571,  0.0677]])), ('prediction.bias', tensor([0.0306]))])
+strict = True, assign = False
+
+    def load_state_dict(self, state_dict: Mapping[str, Any],
+                        strict: bool = True, assign: bool = False):
+        r"""Copy parameters and buffers from :attr:`state_dict` into this module and its descendants.
+    
+        If :attr:`strict` is ``True``, then
+        the keys of :attr:`state_dict` must exactly match the keys returned
+        by this module's :meth:`~torch.nn.Module.state_dict` function.
+    
+        .. warning::
+            If :attr:`assign` is ``True`` the optimizer must be created after
+            the call to :attr:`load_state_dict` unless
+            :func:`~torch.__future__.get_swap_module_params_on_conversion` is ``True``.
+    
+        Args:
+            state_dict (dict): a dict containing parameters and
+                persistent buffers.
+            strict (bool, optional): whether to strictly enforce that the keys
+                in :attr:`state_dict` match the keys returned by this module's
+                :meth:`~torch.nn.Module.state_dict` function. Default: ``True``
+            assign (bool, optional): When ``False``, the properties of the tensors
+                in the current module are preserved while when ``True``, the
+                properties of the Tensors in the state dict are preserved. The only
+                exception is the ``requires_grad`` field of :class:`~torch.nn.Parameter`s
+                for which the value from the module is preserved.
+                Default: ``False``
+    
+        Returns:
+            ``NamedTuple`` with ``missing_keys`` and ``unexpected_keys`` fields:
+                * **missing_keys** is a list of str containing any keys that are expected
+                    by this module but missing from the provided ``state_dict``.
+                * **unexpected_keys** is a list of str containing the keys that are not
+                    expected by this module but present in the provided ``state_dict``.
+    
+        Note:
+            If a parameter or buffer is registered as ``None`` and its corresponding key
+            exists in :attr:`state_dict`, :meth:`load_state_dict` will raise a
+            ``RuntimeError``.
+        """
+        if not isinstance(state_dict, Mapping):
+            raise TypeError(f"Expected state_dict to be dict-like, got {type(state_dict)}.")
+    
+        missing_keys: List[str] = []
+        unexpected_keys: List[str] = []
+        error_msgs: List[str] = []
+    
+        # copy state_dict so _load_from_state_dict can modify it
+        metadata = getattr(state_dict, '_metadata', None)
+        state_dict = OrderedDict(state_dict)
+        if metadata is not None:
+            # mypy isn't aware that "_metadata" exists in state_dict
+            state_dict._metadata = metadata  # type: ignore[attr-defined]
+    
+        def load(module, local_state_dict, prefix=''):
+            local_metadata = {} if metadata is None else metadata.get(prefix[:-1], {})
+            if assign:
+                local_metadata['assign_to_params_buffers'] = assign
+            module._load_from_state_dict(
+                local_state_dict, prefix, local_metadata, True, missing_keys, unexpected_keys, error_msgs)
+            for name, child in module._modules.items():
+                if child is not None:
+                    child_prefix = prefix + name + '.'
+                    child_state_dict = {k: v for k, v in local_state_dict.items() if k.startswith(child_prefix)}
+                    load(child, child_state_dict, child_prefix)  # noqa: F821
+    
+            # Note that the hook can modify missing_keys and unexpected_keys.
+            incompatible_keys = _IncompatibleKeys(missing_keys, unexpected_keys)
+            for hook in module._load_state_dict_post_hooks.values():
+                out = hook(module, incompatible_keys)
+                assert out is None, (
+                    "Hooks registered with ``register_load_state_dict_post_hook`` are not"
+                    "expected to return new values, if incompatible_keys need to be modified,"
+                    "it should be done inplace."
+                )
+    
+        load(self, state_dict)
+        del load
+    
+        if strict:
+            if len(unexpected_keys) > 0:
+                error_msgs.insert(
+                    0, 'Unexpected key(s) in state_dict: {}. '.format(
+                        ', '.join(f'"{k}"' for k in unexpected_keys)))
+            if len(missing_keys) > 0:
+                error_msgs.insert(
+                    0, 'Missing key(s) in state_dict: {}. '.format(
+                        ', '.join(f'"{k}"' for k in missing_keys)))
+    
+        if len(error_msgs) > 0:
+>           raise RuntimeError('Error(s) in loading state_dict for {}:\n\t{}'.format(
+                               self.__class__.__name__, "\n\t".join(error_msgs)))
+E           RuntimeError: Error(s) in loading state_dict for HiTSKT:
+E           	Unexpected key(s) in state_dict: "action_encoder.layers.0.attention.projection", "session_encoder.layers.0.attention.projection", "correct_padding_encoder.layers.0.attention.projection", "decoder.layers.0.attention.projection".
+
+/tmp/hitskt_cpu_diag_20261024/lib/python3.10/site-packages/torch/nn/modules/module.py:2215: RuntimeError
+------------ generated xml file: /workspace/capstone/reports/favor_plus_v1/postepoch8_approximation_20261024_v1/antithetic_regression_tests.xml ------------
+================================================================= short test summary info ==================================================================
+FAILED tests/test_favor_plus_antithetic_experimental.py::test_full_model_padding_eos_gradients_and_checkpoint_identity - RuntimeError: Error(s) in loadin...
+1 failed, 86 passed in 4.18s

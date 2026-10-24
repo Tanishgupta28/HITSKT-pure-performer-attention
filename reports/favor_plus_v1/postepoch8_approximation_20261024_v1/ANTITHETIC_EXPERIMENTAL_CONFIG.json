@@ -1,0 +1,35 @@
+{
+  "antithetic_config": {
+    "accumulation_dtype": "float32",
+    "chunk_size": 32,
+    "features_total": 512,
+    "projection_pool_features": 512,
+    "projection_seed": 42,
+    "redraw": "fixed",
+    "sampling": "gaussian_orthogonal_antithetic_nested_pool_v1",
+    "stabilization": "causal_per_feature_max_v1"
+  },
+  "checkpoint_format": 3,
+  "cuda_status": "NOT RUN",
+  "future_experiment_namespace": "separate new run under experiments/hitskt_favor_plus_v1; never reuse historical directories",
+  "independent_gaussian_directions_per_head": 256,
+  "nonattention_model_config": {
+    "action_layers": 1,
+    "correct_layers": 1,
+    "decoder_layers": 1,
+    "dropout": 0.1,
+    "feedforward_width": 2048,
+    "heads": 4,
+    "num_questions": 3158,
+    "num_skills": 102,
+    "session_layers": 1,
+    "width": 256
+  },
+  "positive_features_total_per_head": 512,
+  "scientific_status": "variance-reduction prototype, not a complete correction; original .20 review threshold unchanged",
+  "source": "ktbench/models/favor_plus_antithetic_experimental.py",
+  "test_auc": null,
+  "training_status": "NOT RUN; no CLI/registry switched",
+  "validation_auc": null,
+  "variant": "hitskt_favor_plus_antithetic_experimental_v1"
+}

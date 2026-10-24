@@ -1,0 +1,33 @@
+{
+  "arms": [
+    "saved128",
+    "independent_ORF128"
+  ],
+  "cohort": "same14 preselected TRAIN examples",
+  "features": 128,
+  "kind": "prospective_initial_vs_trained_draw_gap_annex",
+  "metrics": [
+    "paired approximation errors",
+    "pairESS",
+    "dominant original feature mass/index share",
+    "maximum pair/projection cosine",
+    "QK pair sum geometry"
+  ],
+  "new_projection_seeds": false,
+  "not_a_training_intervention": true,
+  "optimizer_calls": 0,
+  "prefix_limit": 128,
+  "reason": "main frozen grid showed saved CPE128 much worse than independent128; test whether saved draw was already unusually bad before learning",
+  "seeds": [
+    17,
+    101,
+    202,
+    303
+  ],
+  "states": [
+    "initial",
+    "7",
+    "8"
+  ],
+  "test_evaluations": 0
+}
