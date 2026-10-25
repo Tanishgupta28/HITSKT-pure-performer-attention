@@ -1,5 +1,20 @@
 # HiTSKT capstone project memory
 
+## Latest: memory-efficient matched runner CPU-verified; CUDA window pending
+
+Read [FAVOR_MICROBATCH_MEMORY_STATE.md](FAVOR_MICROBATCH_MEMORY_STATE.md) and
+`reports/favor_plus_v1/MEMORY_EFFICIENT_MATCHED_TRAINING_PREPARATION.md`.
+Physical2+target-weighted accumulation in originalB8groups preferred;physical4
+speedcandidate. Allinteractions/order/masks preserved;7499Adamupdates/arm.
+49newCPUtestsPASS +62regressions;112actualmaskcollationsPASS/11datafileschecked.
+ZeroCUDA/GPUqueries/actualdataupdates. Prepared15min/156sandboxAdamprofile,
+8GiBsharedguardsunchanged/prospective<=6GiBallocatedANDreservedacceptance.
+NEW executionwindow approval pending; noneassumed. Finalv3plan/code/format6
+trainingpipeline prepared; actualmemory/Adamruntime/newETA NOT MEASURED.
+PublishthenWAIT forprofilewindow; no7h/fulltraining, finaltest orotherjobactions.
+
+Earlier handoff (historical):
+
 ## Latest: batch-8 GPU profile passed; longer training budget unapproved
 
 25 October 2026. Read [FAVOR_B8_PROFILE_STATE.md](FAVOR_B8_PROFILE_STATE.md).

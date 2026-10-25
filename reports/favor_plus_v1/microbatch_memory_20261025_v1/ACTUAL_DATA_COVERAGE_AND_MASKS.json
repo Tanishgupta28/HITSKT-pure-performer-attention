@@ -1,0 +1,51 @@
+{
+  "status": "PASS_REAL_DATA_MASK_ORDER_CONTEXT_AND_MATCHED_INITIALIZATION",
+  "plan_sha256": "362a7f8b4db4625d8a6e1d0773d9bab57e7a0f3118217a5e825a61b032a8d632",
+  "actual_microbatches_collated": 112,
+  "physical_choices_cpu_checked": [
+    1,
+    2,
+    4
+  ],
+  "all_original_valid_tokens_and_shifted_labels_equal": true,
+  "data_identity_files_verified": 11,
+  "identities": {
+    "orf128": {
+      "fresh_learned_sha256": "8bff7c7fe12767611a154449aba7c033a87229175c8bf4a438f9fad24defdbfa",
+      "fresh_cpu_rng_sha256": "7cc9775cad1620c2f7737bdc650e022e549cd9dcedff727cb23d464db6dd8461",
+      "seed": 42,
+      "validation_ids_sha256": "f9f545cedc50e9b7a89ad82e788f4ff9746bbd4cd90bd1d0416f7e5c1e7c124f",
+      "validation_labels_sha256": "27b1a12bed18a9e3f4e5f629eb7820a90eb78e6bf0916d5dc7dd3ab97a8b6749",
+      "target_counts": {
+        "train": {
+          "labels": 566107,
+          "sessions": 7060
+        },
+        "validation": {
+          "labels": 125800,
+          "sessions": 1977
+        }
+      }
+    },
+    "orf512": {
+      "fresh_learned_sha256": "8bff7c7fe12767611a154449aba7c033a87229175c8bf4a438f9fad24defdbfa",
+      "fresh_cpu_rng_sha256": "7cc9775cad1620c2f7737bdc650e022e549cd9dcedff727cb23d464db6dd8461",
+      "seed": 42,
+      "validation_ids_sha256": "f9f545cedc50e9b7a89ad82e788f4ff9746bbd4cd90bd1d0416f7e5c1e7c124f",
+      "validation_labels_sha256": "27b1a12bed18a9e3f4e5f629eb7820a90eb78e6bf0916d5dc7dd3ab97a8b6749",
+      "target_counts": {
+        "train": {
+          "labels": 566107,
+          "sessions": 7060
+        },
+        "validation": {
+          "labels": 125800,
+          "sessions": 1977
+        }
+      }
+    }
+  },
+  "cuda_initialized": false,
+  "real_dataset_optimizer_updates": 0,
+  "test_evaluations": 0
+}

@@ -1,0 +1,66 @@
+{
+  "status": "PASS_PRIOR_MEASUREMENTS_REVERIFIED_FROM_RAW_RECEIPTS",
+  "CUDA_executions_this_task": 0,
+  "results": {
+    "orf128": {
+      "artifacts": [
+        {
+          "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_orf128_512_pair_b8_20261025_v2/orf128/full_shape_profile/profile_result.json",
+          "sha256": "8554e3ac4c42d27e3a5346ee3117d6dfe339e6badfc39e0f4ff8286665ab5d0b",
+          "status": "PASS_ZERO_UPDATE_FULL_SHAPES",
+          "allocator": {
+            "allocated_bytes": 151770624,
+            "peak_allocated_bytes": 2508116992,
+            "peak_reserved_bytes": 4718592000,
+            "reserved_bytes": 4718592000
+          }
+        },
+        {
+          "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_orf128_512_pair_b8_20261025_v2/orf128/runtime_profile/runtime_profile_result.json",
+          "sha256": "1df24d0e512f62c5898ebc6f87ce40e9c59351c409e7e49c7587e69ede8f98f7",
+          "status": "PASS_ZERO_UPDATE_RUNTIME_PROFILE",
+          "allocator": {
+            "allocated_bytes": 151783936,
+            "peak_allocated_bytes": 1775491072,
+            "peak_reserved_bytes": 2998927360,
+            "reserved_bytes": 2998927360
+          }
+        }
+      ],
+      "verified_peak_bytes": {
+        "peak_allocated_bytes": 2508116992,
+        "peak_reserved_bytes": 4718592000
+      }
+    },
+    "orf512": {
+      "artifacts": [
+        {
+          "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_orf128_512_pair_b8_20261025_v2/orf512/full_shape_profile/profile_result.json",
+          "sha256": "b1eeb89751dcca194e11b3ea8d35397399820f05640fa40b2d392623845ab8e8",
+          "status": "PASS_ZERO_UPDATE_FULL_SHAPES",
+          "allocator": {
+            "allocated_bytes": 153343488,
+            "peak_allocated_bytes": 8240346624,
+            "peak_reserved_bytes": 8577351680,
+            "reserved_bytes": 2692743168
+          }
+        },
+        {
+          "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_orf128_512_pair_b8_20261025_v2/orf512/runtime_profile/runtime_profile_result.json",
+          "sha256": "12999f6ecfd02cffe38bcaf43ffdcd7ce9ce6fa722f5e290b4ce816a0a3a5144",
+          "status": "PASS_ZERO_UPDATE_RUNTIME_PROFILE",
+          "allocator": {
+            "allocated_bytes": 153356800,
+            "peak_allocated_bytes": 5551174656,
+            "peak_reserved_bytes": 8577351680,
+            "reserved_bytes": 6465519616
+          }
+        }
+      ],
+      "verified_peak_bytes": {
+        "peak_allocated_bytes": 8240346624,
+        "peak_reserved_bytes": 8577351680
+      }
+    }
+  }
+}

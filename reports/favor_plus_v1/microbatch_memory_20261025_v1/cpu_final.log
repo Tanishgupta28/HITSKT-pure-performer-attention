@@ -1,0 +1,47 @@
+............................................F..............................................................                                          [100%]
+========================================================================= FAILURES =========================================================================
+___________________________________________________ test_eight_GiB_cap_and_runtime_memory_floor_retained ___________________________________________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-78/test_eight_GiB_cap_and_runtime0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fffb618f580>
+
+    def test_eight_GiB_cap_and_runtime_memory_floor_retained(tmp_path,monkeypatch):
+        path=tmp_path/'plan.json';path.write_text('{}');r=record(path);monkeypatch.setenv('CUDA_VISIBLE_DEVICES',pair.shared.TRANSFERRED_MIG)
+        monkeypatch.setattr(pair.shared,'check_exposure_and_hold',lambda *a:None)
+        obs=dict(resource_uuid=pair.shared.TRANSFERRED_MIG,device=dict(total_bytes=40*pair.GIB,free_bytes=20*pair.GIB,used_bytes=20*pair.GIB,compute_processes=[]),
+            utilization=dict(status='unsupported',nvml_status=3),local=dict(holders=[],inaccessible_fd_pids=[],light_processes=[]))
+        monkeypatch.setattr(pair.shared,'observe',lambda *a:obs);monkeypatch.setattr(pair,'host_memory',lambda:dict(peak_process_rss_bytes=pair.GIB,cgroup_headroom_bytes=20*pair.GIB))
+        for name in ('memory_allocated','memory_reserved','max_memory_allocated','max_memory_reserved'):
+            monkeypatch.setattr(torch.cuda,name,lambda:9*pair.GIB)
+        boundary=policy.Boundaries(path,r,tmp_path,policy.PROFILE)
+>       with pytest.raises(MemoryError):boundary.check('cap')
+
+tests/test_favor_plus_microbatch.py:232: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <ktbench.favor_plus_micro_profile.Boundaries object at 0x7fffb618db10>, phase = 'cap'
+
+    def check(self, phase, *, cuda=True, admission=False):
+        deadline = authorize(self.record, self.path, self.action)
+        if self.clock is not None:
+            if (self.clock['parent_sha256'] != pair.sha256(self.clock['parent_path'])
+                    or self.clock['campaign_started_unix'] != self.record['campaign_started_unix']
+                    or not self.record['campaign_started_unix'] <= self.clock['arm_started_unix'] <= time.time()
+                    or time.time() >= min(deadline, self.clock['arm_started_unix']+self.record['per_arm_seconds'])):
+                raise TimeoutError('immutable parent/arm clock expired or changed')
+        pair.shared.check_exposure_and_hold(pair.shared.TRANSFERRED_MIG)
+        obs = pair.shared.observe(pair.shared.TRANSFERRED_MIG); host = pair.host_memory()
+        decision = pair.shared.assess(obs, host, admission=admission)
+        if obs['device'].get('free_bytes', 0) < pair.LIMITS['admission_free_bytes' if admission else 'runtime_free_bytes']:
+            decision['status'] = 'STOP'; decision['reasons'].append('unchanged paired headroom floor')
+        self.last = dict(phase=phase, observation=obs, host=host, decision=decision, cached_own_allocator=self.cached)
+        self.n += 1; pair.write_json(self.output/f'resources_{self.n:05d}.json', self.last)
+        if decision['status'] == 'STOP':
+>           raise pair.shared.SharedResourceStop('; '.join(decision['reasons']), self.last)
+E           ktbench.favor_plus_shared_gpu.SharedResourceStop: missing/stale observation timestamp
+
+ktbench/favor_plus_micro_profile.py:207: SharedResourceStop
+------------------------ generated xml file: /workspace/capstone/reports/favor_plus_v1/microbatch_memory_20261025_v1/cpu_final.xml -------------------------
+================================================================= short test summary info ==================================================================
+FAILED tests/test_favor_plus_microbatch.py::test_eight_GiB_cap_and_runtime_memory_floor_retained - ktbench.favor_plus_shared_gpu.SharedResourceStop: miss...
+1 failed, 106 passed in 24.51s

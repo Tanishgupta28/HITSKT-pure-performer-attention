@@ -1,5 +1,18 @@
 # Durable user directives
 
+## 2026-10-25 — Memory-efficient matched training preparation (latest)
+
+Investigate physical batches/gradient accumulation/length-aware batching while
+preserving all interactions, splits, seeds, masks and matched conditions. Prepare
+bounded real forward/backward/Adam CUDA profiling, but **NO CUDA execution until
+separately authorized execution window**. Existing8GiB/shared guards unchanged;
+seven-hour campaign still NOT approved. No invented new measurements/ETA. Preserve
+originals/other jobs; implement and CPU-verify executable preparation, document
+microbatch loss weighting/dropout/numerical differences, recommend headroom and
+exact future commands. Actual timing/memory selection requires new profile.
+
+Earlier directives (historical):
+
 ## 2026-10-25 — B8 profiling explicitly APPROVED; training still not approved (latest)
 
 User explicitly approves one maximum10-minute ZERO-optimizer GPU profiling

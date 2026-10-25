@@ -1,0 +1,119 @@
+.........................FF...............                                                                                                           [100%]
+========================================================================= FAILURES =========================================================================
+___________________________________ test_partial_logical_epoch_checkpoint_resume_is_exact_and_namespace_separate[orf128] ___________________________________
+
+fixture = (<ktbench.data.session_store.RollingSessionDataset object at 0x7fffb70c9cc0>, PairedEpochModel(
+  (core): HiTSKTFavorP...encoder.layers.0.attention.projection': 'ae49881cb3fa852fa986a817a63dd938d85b8a29e586a420a2723342e9c5564d'}, ...}, ...)
+
+    def test_partial_logical_epoch_checkpoint_resume_is_exact_and_namespace_separate(fixture):
+        ds,net,opt,_,b,c,progress,root=fixture;rows=pair.shape_manifest(ds,[[0,1],[2,3]])
+        c['sampler_schedule']={'train':{'1':[r['target_sessions'] for r in rows]}}
+        proof=pair.make_batch(ds,pair.shape_manifest(ds,[[0]])[0])
+        def interrupted(cursor):
+            if cursor==1:
+                epochs.save_checkpoint(net,opt,c,progress,proof,root/'partial.pt')
+                raise InterruptedError('synthetic')
+        with pytest.raises(InterruptedError):
+            micro.epoch_data(net,opt,ds,rows,'cpu',b,progress,training=True,physical_batch=1,checkpoint_callback=interrupted,checkpoint_interval=1)
+        value=torch.load(root/'partial.pt',weights_only=True)
+        expected=micro.epoch_data(net,opt,ds,rows,'cpu',b,progress,training=True,physical_batch=1)
+        final=pair.cpu_tree(dict(model=net.state_dict(),adam=opt.state_dict(),rng=pair.capture_rng_state()))
+        other=pair.fresh_model(net.config,c['arm']);otheropt=torch.optim.Adam(other.parameters(),lr=5e-5)
+        assert epochs.restore(value,other,otheropt,c,proof)['optimizer_calls']==0
+        actual=micro.epoch_data(other,otheropt,ds,rows,'cpu',b,copy.deepcopy(value['progress']),training=True,physical_batch=1)
+        assert actual[0]==expected[0] and np.array_equal(actual[1],expected[1])
+        assert pair.equal_tree(final,pair.cpu_tree(dict(model=other.state_dict(),adam=otheropt.state_dict(),rng=pair.capture_rng_state())))
+        with pytest.raises(ValueError):pair.PairedEpochModel.from_checkpoint(root/'partial.pt')
+>       with pytest.raises(FileExistsError):epochs.save_checkpoint(other,otheropt,c,value['progress'],proof,root/'partial.pt')
+
+tests/test_favor_plus_microbatch.py:126: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+ktbench/favor_plus_micro_epochs.py:56: in save_checkpoint
+    validate_checkpoint(value, c)
+ktbench/favor_plus_micro_epochs.py:46: in validate_checkpoint
+    return pair.checkpoint_validate(_base_view(value), c)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+v = {'comparison_config': {'accumulation_dtype': 'float64', 'arm': 'orf128', 'chunk_size': 32, 'pool_features': 512, ...},...encoder.layers.0.attention.projection': 'ae49881cb3fa852fa986a817a63dd938d85b8a29e586a420a2723342e9c5564d'}, ...}, ...}
+c = {'arm': 'orf128', 'comparison_config': {'accumulation_dtype': 'float64', 'arm': 'orf128', 'chunk_size': 32, 'pool_feat...ssion_encoder.layers.0.attention.projection': 'ae49881cb3fa852fa986a817a63dd938d85b8a29e586a420a2723342e9c5564d'}, ...}
+
+    def checkpoint_validate(v,c):
+        if (v.get('kind')!=KIND or v.get('format_version')!=FORMAT or v.get('variant')!=KIND or v.get('contract')!=c
+            or v.get('config')!=c['model_config'] or v.get('comparison_config')!=c['comparison_config']):raise ValueError('paired checkpoint identity mismatch')
+        if set(v.get('component_sha256',{}))!=set(COMPONENTS):raise ValueError('checkpoint hashes missing')
+        for name in COMPONENTS:
+            if digest(v[name])!=v['component_sha256'][name]:raise ValueError('checkpoint corruption:'+name)
+        if not finite_tree(v):raise FloatingPointError('nonfinite checkpoint')
+        if {n:digest(x) for n,x in v['state_dict'].items() if n.endswith('.projection')}!=c['expected_projection_sha256']:raise ValueError('fixed projections changed')
+        p=v['progress'];epoch=p['epoch'];step=p['optimizer_updates'];schedule=c['sampler_schedule']['train']
+        if type(epoch) is not int or not 1<=epoch<=8 or type(step) is not int or not 0<=p['next_batch']<=len(schedule[str(epoch)]):raise ValueError('invalid epoch/cursor')
+        expected=sum(len(rows) for e,rows in schedule.items() if int(e)<epoch)+p['next_batch']
+        if step!=expected or p['optimizer_step_calls']!=step:raise ValueError('Adam/sampler counters mismatch')
+        opt=v['optimizer_state_dict']
+        if not optimizer_groups_equal(opt['param_groups'],c['expected_optimizer_groups']):raise ValueError('Adam settings changed')
+        if len(opt['state'])!=(c['parameter_tensor_count'] if step else 0):raise ValueError('Adam state coverage')
+>       if step and any(float(x['step'])!=step or not (x['exp_avg_sq']>=0).all() for x in opt['state'].values()):raise ValueError('Adam counters/moments mismatch')
+E       ValueError: Adam counters/moments mismatch
+
+ktbench/favor_plus_paired_epochs.py:272: ValueError
+___________________________________ test_partial_logical_epoch_checkpoint_resume_is_exact_and_namespace_separate[orf512] ___________________________________
+
+fixture = (<ktbench.data.session_store.RollingSessionDataset object at 0x7fffb710ca30>, PairedEpochModel(
+  (core): HiTSKTFavorP...encoder.layers.0.attention.projection': '62f4f218712d2f4c1c98dc3b1a7474dceb024c6102ce785803e059a70c375ca7'}, ...}, ...)
+
+    def test_partial_logical_epoch_checkpoint_resume_is_exact_and_namespace_separate(fixture):
+        ds,net,opt,_,b,c,progress,root=fixture;rows=pair.shape_manifest(ds,[[0,1],[2,3]])
+        c['sampler_schedule']={'train':{'1':[r['target_sessions'] for r in rows]}}
+        proof=pair.make_batch(ds,pair.shape_manifest(ds,[[0]])[0])
+        def interrupted(cursor):
+            if cursor==1:
+                epochs.save_checkpoint(net,opt,c,progress,proof,root/'partial.pt')
+                raise InterruptedError('synthetic')
+        with pytest.raises(InterruptedError):
+            micro.epoch_data(net,opt,ds,rows,'cpu',b,progress,training=True,physical_batch=1,checkpoint_callback=interrupted,checkpoint_interval=1)
+        value=torch.load(root/'partial.pt',weights_only=True)
+        expected=micro.epoch_data(net,opt,ds,rows,'cpu',b,progress,training=True,physical_batch=1)
+        final=pair.cpu_tree(dict(model=net.state_dict(),adam=opt.state_dict(),rng=pair.capture_rng_state()))
+        other=pair.fresh_model(net.config,c['arm']);otheropt=torch.optim.Adam(other.parameters(),lr=5e-5)
+        assert epochs.restore(value,other,otheropt,c,proof)['optimizer_calls']==0
+        actual=micro.epoch_data(other,otheropt,ds,rows,'cpu',b,copy.deepcopy(value['progress']),training=True,physical_batch=1)
+        assert actual[0]==expected[0] and np.array_equal(actual[1],expected[1])
+        assert pair.equal_tree(final,pair.cpu_tree(dict(model=other.state_dict(),adam=otheropt.state_dict(),rng=pair.capture_rng_state())))
+        with pytest.raises(ValueError):pair.PairedEpochModel.from_checkpoint(root/'partial.pt')
+>       with pytest.raises(FileExistsError):epochs.save_checkpoint(other,otheropt,c,value['progress'],proof,root/'partial.pt')
+
+tests/test_favor_plus_microbatch.py:126: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+ktbench/favor_plus_micro_epochs.py:56: in save_checkpoint
+    validate_checkpoint(value, c)
+ktbench/favor_plus_micro_epochs.py:46: in validate_checkpoint
+    return pair.checkpoint_validate(_base_view(value), c)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+v = {'comparison_config': {'accumulation_dtype': 'float64', 'arm': 'orf512', 'chunk_size': 32, 'pool_features': 512, ...},...encoder.layers.0.attention.projection': '62f4f218712d2f4c1c98dc3b1a7474dceb024c6102ce785803e059a70c375ca7'}, ...}, ...}
+c = {'arm': 'orf512', 'comparison_config': {'accumulation_dtype': 'float64', 'arm': 'orf512', 'chunk_size': 32, 'pool_feat...ssion_encoder.layers.0.attention.projection': '62f4f218712d2f4c1c98dc3b1a7474dceb024c6102ce785803e059a70c375ca7'}, ...}
+
+    def checkpoint_validate(v,c):
+        if (v.get('kind')!=KIND or v.get('format_version')!=FORMAT or v.get('variant')!=KIND or v.get('contract')!=c
+            or v.get('config')!=c['model_config'] or v.get('comparison_config')!=c['comparison_config']):raise ValueError('paired checkpoint identity mismatch')
+        if set(v.get('component_sha256',{}))!=set(COMPONENTS):raise ValueError('checkpoint hashes missing')
+        for name in COMPONENTS:
+            if digest(v[name])!=v['component_sha256'][name]:raise ValueError('checkpoint corruption:'+name)
+        if not finite_tree(v):raise FloatingPointError('nonfinite checkpoint')
+        if {n:digest(x) for n,x in v['state_dict'].items() if n.endswith('.projection')}!=c['expected_projection_sha256']:raise ValueError('fixed projections changed')
+        p=v['progress'];epoch=p['epoch'];step=p['optimizer_updates'];schedule=c['sampler_schedule']['train']
+        if type(epoch) is not int or not 1<=epoch<=8 or type(step) is not int or not 0<=p['next_batch']<=len(schedule[str(epoch)]):raise ValueError('invalid epoch/cursor')
+        expected=sum(len(rows) for e,rows in schedule.items() if int(e)<epoch)+p['next_batch']
+        if step!=expected or p['optimizer_step_calls']!=step:raise ValueError('Adam/sampler counters mismatch')
+        opt=v['optimizer_state_dict']
+        if not optimizer_groups_equal(opt['param_groups'],c['expected_optimizer_groups']):raise ValueError('Adam settings changed')
+        if len(opt['state'])!=(c['parameter_tensor_count'] if step else 0):raise ValueError('Adam state coverage')
+>       if step and any(float(x['step'])!=step or not (x['exp_avg_sq']>=0).all() for x in opt['state'].values()):raise ValueError('Adam counters/moments mismatch')
+E       ValueError: Adam counters/moments mismatch
+
+ktbench/favor_plus_paired_epochs.py:272: ValueError
+----------------------- generated xml file: /workspace/capstone/reports/favor_plus_v1/microbatch_memory_20261025_v1/cpu_initial.xml ------------------------
+================================================================= short test summary info ==================================================================
+FAILED tests/test_favor_plus_microbatch.py::test_partial_logical_epoch_checkpoint_resume_is_exact_and_namespace_separate[orf128] - ValueError: Adam count...
+FAILED tests/test_favor_plus_microbatch.py::test_partial_logical_epoch_checkpoint_resume_is_exact_and_namespace_separate[orf512] - ValueError: Adam count...
+2 failed, 40 passed in 5.66s

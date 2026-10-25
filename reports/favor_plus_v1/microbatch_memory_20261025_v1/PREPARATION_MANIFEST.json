@@ -1,0 +1,51 @@
+{
+  "status": "PASS_EXACT_BYTE_ARCHIVE_ROUNDTRIP",
+  "archive": "reports/favor_plus_v1/microbatch_memory_20261025_v1/cpu_prepared_plans_v1_v2_v3.tar.gz",
+  "sha256": "3a1173ed08bb4410c4fb0f061ebee13c9646b8a491978133da58525041772cfb",
+  "bytes": 25206,
+  "files": [
+    {
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_orf128_512_logical8_micro_20261025_v1/CPU_VALIDATION_STOP.json",
+      "sha256": "61ba23964436e3e8d8b3aca5a9a4c1932b8d2f4fd353e39d0b7a661ca677a03a",
+      "bytes": 254
+    },
+    {
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_orf128_512_logical8_micro_20261025_v1/PROFILE_SCOPE_TEMPLATE.json",
+      "sha256": "aece4c60b84e8174d5b8289b45d0b016d7d5ce2ee98a8b00e923706c5babd4e3",
+      "bytes": 963
+    },
+    {
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_orf128_512_logical8_micro_20261025_v1/prepared_plan.json",
+      "sha256": "021d6b6f12d467405595377f948f1022d7b2e1986d3afca30a74734eaedfb3c8",
+      "bytes": 37268
+    },
+    {
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_orf128_512_logical8_micro_20261025_v2/CPU_DESIGN_SUPERSEDED.json",
+      "sha256": "ed90b136b903874408022813d580d07317443963aecffd341ff3dee9745ea0c6",
+      "bytes": 265
+    },
+    {
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_orf128_512_logical8_micro_20261025_v2/PROFILE_SCOPE_TEMPLATE.json",
+      "sha256": "2cdfa37bd70b4cde54481cd36557d711695f4bdcaf15c8b3fbbcbcd8ac0d3a5b",
+      "bytes": 963
+    },
+    {
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_orf128_512_logical8_micro_20261025_v2/prepared_plan.json",
+      "sha256": "13c25e22eb86f85788487f48e8a99035257b15b575760671d92251947b8291a9",
+      "bytes": 37268
+    },
+    {
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_orf128_512_logical8_micro_20261025_v3/PROFILE_SCOPE_TEMPLATE.json",
+      "sha256": "d4012239cf63159d3f552fc871d725bb4ae53f5820fa774a6a773cb2f80f2dd8",
+      "bytes": 963
+    },
+    {
+      "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_orf128_512_logical8_micro_20261025_v3/prepared_plan.json",
+      "sha256": "362a7f8b4db4625d8a6e1d0773d9bab57e7a0f3118217a5e825a61b032a8d632",
+      "bytes": 37792
+    }
+  ],
+  "selected_plan_version": 3,
+  "all_prior_CPU_drafts_preserved": true,
+  "actual_GPU_evidence_files": 0
+}

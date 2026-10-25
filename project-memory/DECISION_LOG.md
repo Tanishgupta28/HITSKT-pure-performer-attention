@@ -1599,3 +1599,20 @@ preserved (80otherarrays/4untrainedIOproxybinarieslocal). Nootherjobactions,
 exclusiveownershipclaim, PIDmappingresolution, watcher orpublicationreadiness.
 Report B8_GPU_PROFILE_AND_TRAINING_BUDGET.md; state FAVOR_B8_PROFILE_STATE.md.
 PublishverifiedresearchbranchworkthenWAIT, notautomatictrainingorresizing.
+
+## 2026-10-25 — Preserve logical-B8 objective with microbatch accumulation
+
+User requires separateCUDAwindow; no newGPU/probe/actualdataoptimizer activity.
+Reverifiedoldpeaks1282.335866/4.394531GiB,5127.674421/7.988281. CPUimplementation
+physical2preferred/4candidate keeps all originalgroups/order/targetweightedBCE,
+7499Adam updates/arm;dropout/reduction differencesexplicit. Actual112microbatch
+mask/contextcollationsPASS,11datafiles/matchedinitchecked.49newCPUtestsPASS plus
+62regressions. CPU v1Pathloaderbugfixed/tested;v2postsplitworstcoverage augmented;
+all drafts/failures preserved, finalv3frozenSHA362a7f8b4db4625d8a6e1d0773d9bab57e7a0f3118217a5e825a61b032a8d632.
+Separate15min156sandboxAdamprofile prepared;prospective6GiBheadroomacceptance
+with8GiBsharedsafeguardsunchanged. Profilewindowasyncapprovalrequested butnot
+received/assumed. Actualnewmemory/Adamtime/8epochETA unmeasured, old6.13hproxy
+notportable. Separateformat6epochpipeline readyonCPU; profiles/newtrainingbudget
+approval/freshepochgate stillrequired. No GPU/AUC/convergence/superiorityclaim.
+Report MEMORY_EFFICIENT_MATCHED_TRAINING_PREPARATION.md; state
+FAVOR_MICROBATCH_MEMORY_STATE.md. PublishverifiedresearchbranchthenWAIT.

@@ -1,5 +1,24 @@
 # Next checkpoint
 
+## Latest: publish CPU memory preparation; wait for separate profile window
+
+Read [FAVOR_MICROBATCH_MEMORY_STATE.md](FAVOR_MICROBATCH_MEMORY_STATE.md) and new
+MEMORY_EFFICIENT_MATCHED_TRAINING_PREPARATION report. NO CUDA/actualdataupdates
+this task. Finalv3microplan source-bound andCPUverified;49new+62regressionpasses,
+112realmaskcollations. Recommendedphysical2/logical8 weightedaccumulation;
+physical4speedcandidate; actualnewmemory/runtimeNOTMEASURED. Source-bound900s/
+156sandboxAdamprofile andfuturefulltrainingcommands prepared. Existing8GiB/shared
+safeguardsunchanged; chooseonlybotharms<=6GiBallocated/reserved +freshrecovery.
+Anasyncquestionrequests new<=15min/<=160profilewindow. No replyyet/noneassumed;
+onlyactualexplicitreplypermits creatingrecord/freshclock/launchingprofile.
+Finish report/archive/memoryvalidation/scopedcommitpush capstone-gpu research
+branch;preservealloldresults/drafts/main/README-SAKTdirt, thenWAIT ifnoreply.
+No7hourcampaign/epochtrainingapproval, nofinaltest/otherjob actions. Afterfuture
+profile reportactualpeaks/Adamtime/commonphysicalchoice/newETA; stillrequire
+separate actualepochruntimeapproval. NeverreusePROFILE_ONLY sandboxweights.
+
+Earlier handoff (historical):
+
 ## Latest: publish completed B8 profiling evidence, then WAIT
 
 Read [FAVOR_B8_PROFILE_STATE.md](FAVOR_B8_PROFILE_STATE.md) and

@@ -1,0 +1,8 @@
+{
+  "status": "FAIL_INITIAL_CPU_PLAN_RELOAD",
+  "path": "experiments/hitskt_favor_plus_v1/assist2017/assist2017_orf128_512_logical8_micro_20261025_v1",
+  "exception": "AttributeError: str object has no attribute open",
+  "fix": "convert persisted JSON paths back to Path; add actual reload during preparation; use fresh v2 namespace",
+  "cuda_executions": 0,
+  "real_dataset_optimizer_updates": 0
+}

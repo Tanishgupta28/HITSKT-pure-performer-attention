@@ -1,0 +1,378 @@
+{
+  "status": "CPU_PREPARED_NOT_AUTHORIZED",
+  "plan": "/workspace/capstone/experiments/hitskt_favor_plus_v1/assist2017/assist2017_orf128_512_logical8_micro_20261025_v1/prepared_plan.json",
+  "source_bound": true,
+  "cuda_initialized": false,
+  "optimizer_steps": 0,
+  "profile_proposed_max_optimizer_updates": 160,
+  "accounting": {
+    "1": {
+      "epochs": {
+        "1": {
+          "logical_updates": 935,
+          "physical_forwards": 7060,
+          "supervised_targets": 566107,
+          "padded_tokens": 3764337,
+          "max_padded_cost": 7164
+        },
+        "2": {
+          "logical_updates": 937,
+          "physical_forwards": 7060,
+          "supervised_targets": 566107,
+          "padded_tokens": 3764337,
+          "max_padded_cost": 7164
+        },
+        "3": {
+          "logical_updates": 943,
+          "physical_forwards": 7060,
+          "supervised_targets": 566107,
+          "padded_tokens": 3764337,
+          "max_padded_cost": 7164
+        },
+        "4": {
+          "logical_updates": 939,
+          "physical_forwards": 7060,
+          "supervised_targets": 566107,
+          "padded_tokens": 3764337,
+          "max_padded_cost": 7164
+        },
+        "5": {
+          "logical_updates": 939,
+          "physical_forwards": 7060,
+          "supervised_targets": 566107,
+          "padded_tokens": 3764337,
+          "max_padded_cost": 7164
+        },
+        "6": {
+          "logical_updates": 934,
+          "physical_forwards": 7060,
+          "supervised_targets": 566107,
+          "padded_tokens": 3764337,
+          "max_padded_cost": 7164
+        },
+        "7": {
+          "logical_updates": 938,
+          "physical_forwards": 7060,
+          "supervised_targets": 566107,
+          "padded_tokens": 3764337,
+          "max_padded_cost": 7164
+        },
+        "8": {
+          "logical_updates": 934,
+          "physical_forwards": 7060,
+          "supervised_targets": 566107,
+          "padded_tokens": 3764337,
+          "max_padded_cost": 7164
+        }
+      },
+      "logical_updates": 7499,
+      "physical_forwards": 56480,
+      "max_components": {
+        "128": {
+          "row": {
+            "batch_size": 8,
+            "indices": [
+              947,
+              1044,
+              4092,
+              1332,
+              941,
+              6522,
+              939,
+              4222
+            ],
+            "padded_tokens": 29455,
+            "supervised_targets": 852,
+            "target_sessions": [
+              1671,
+              1844,
+              7190,
+              2367,
+              1665,
+              11459,
+              1663,
+              7421
+            ]
+          },
+          "physical_batches": 8,
+          "padded_tokens": 26594,
+          "largest_component_bytes": 369473552,
+          "component_notice": "retained-component accounting only, NOT measured peak or proof of fit"
+        },
+        "512": {
+          "row": {
+            "batch_size": 8,
+            "indices": [
+              947,
+              1044,
+              4092,
+              1332,
+              941,
+              6522,
+              939,
+              4222
+            ],
+            "padded_tokens": 29455,
+            "supervised_targets": 852,
+            "target_sessions": [
+              1671,
+              1844,
+              7190,
+              2367,
+              1665,
+              11459,
+              1663,
+              7421
+            ]
+          },
+          "physical_batches": 8,
+          "padded_tokens": 26594,
+          "largest_component_bytes": 745117712,
+          "component_notice": "retained-component accounting only, NOT measured peak or proof of fit"
+        }
+      }
+    },
+    "2": {
+      "epochs": {
+        "1": {
+          "logical_updates": 935,
+          "physical_forwards": 3561,
+          "supervised_targets": 566107,
+          "padded_tokens": 4219210,
+          "max_padded_cost": 13286
+        },
+        "2": {
+          "logical_updates": 937,
+          "physical_forwards": 3559,
+          "supervised_targets": 566107,
+          "padded_tokens": 4221007,
+          "max_padded_cost": 13085
+        },
+        "3": {
+          "logical_updates": 943,
+          "physical_forwards": 3560,
+          "supervised_targets": 566107,
+          "padded_tokens": 4224711,
+          "max_padded_cost": 11008
+        },
+        "4": {
+          "logical_updates": 939,
+          "physical_forwards": 3561,
+          "supervised_targets": 566107,
+          "padded_tokens": 4213154,
+          "max_padded_cost": 10622
+        },
+        "5": {
+          "logical_updates": 939,
+          "physical_forwards": 3566,
+          "supervised_targets": 566107,
+          "padded_tokens": 4218644,
+          "max_padded_cost": 12347
+        },
+        "6": {
+          "logical_updates": 934,
+          "physical_forwards": 3560,
+          "supervised_targets": 566107,
+          "padded_tokens": 4212368,
+          "max_padded_cost": 12499
+        },
+        "7": {
+          "logical_updates": 938,
+          "physical_forwards": 3565,
+          "supervised_targets": 566107,
+          "padded_tokens": 4215106,
+          "max_padded_cost": 11505
+        },
+        "8": {
+          "logical_updates": 934,
+          "physical_forwards": 3562,
+          "supervised_targets": 566107,
+          "padded_tokens": 4206439,
+          "max_padded_cost": 13327
+        }
+      },
+      "logical_updates": 7499,
+      "physical_forwards": 28494,
+      "max_components": {
+        "128": {
+          "row": {
+            "batch_size": 5,
+            "indices": [
+              1623,
+              1340,
+              4495,
+              3350,
+              6215
+            ],
+            "padded_tokens": 32263,
+            "supervised_targets": 781,
+            "target_sessions": [
+              2878,
+              2381,
+              7897,
+              5918,
+              10915
+            ]
+          },
+          "physical_batches": 3,
+          "padded_tokens": 20233,
+          "largest_component_bytes": 603863056,
+          "component_notice": "retained-component accounting only, NOT measured peak or proof of fit"
+        },
+        "512": {
+          "row": {
+            "batch_size": 5,
+            "indices": [
+              1623,
+              1340,
+              4495,
+              3350,
+              6215
+            ],
+            "padded_tokens": 32263,
+            "supervised_targets": 781,
+            "target_sessions": [
+              2878,
+              2381,
+              7897,
+              5918,
+              10915
+            ]
+          },
+          "physical_batches": 3,
+          "padded_tokens": 20233,
+          "largest_component_bytes": 1311528976,
+          "component_notice": "retained-component accounting only, NOT measured peak or proof of fit"
+        }
+      }
+    },
+    "4": {
+      "epochs": {
+        "1": {
+          "logical_updates": 935,
+          "physical_forwards": 1814,
+          "supervised_targets": 566107,
+          "padded_tokens": 4533503,
+          "max_padded_cost": 21640
+        },
+        "2": {
+          "logical_updates": 937,
+          "physical_forwards": 1811,
+          "supervised_targets": 566107,
+          "padded_tokens": 4538750,
+          "max_padded_cost": 29942
+        },
+        "3": {
+          "logical_updates": 943,
+          "physical_forwards": 1814,
+          "supervised_targets": 566107,
+          "padded_tokens": 4538693,
+          "max_padded_cost": 21376
+        },
+        "4": {
+          "logical_updates": 939,
+          "physical_forwards": 1811,
+          "supervised_targets": 566107,
+          "padded_tokens": 4520985,
+          "max_padded_cost": 22337
+        },
+        "5": {
+          "logical_updates": 939,
+          "physical_forwards": 1814,
+          "supervised_targets": 566107,
+          "padded_tokens": 4530224,
+          "max_padded_cost": 22637
+        },
+        "6": {
+          "logical_updates": 934,
+          "physical_forwards": 1811,
+          "supervised_targets": 566107,
+          "padded_tokens": 4525419,
+          "max_padded_cost": 22841
+        },
+        "7": {
+          "logical_updates": 938,
+          "physical_forwards": 1820,
+          "supervised_targets": 566107,
+          "padded_tokens": 4525621,
+          "max_padded_cost": 22290
+        },
+        "8": {
+          "logical_updates": 934,
+          "physical_forwards": 1811,
+          "supervised_targets": 566107,
+          "padded_tokens": 4533477,
+          "max_padded_cost": 21922
+        }
+      },
+      "logical_updates": 7499,
+      "physical_forwards": 14506,
+      "max_components": {
+        "128": {
+          "row": {
+            "batch_size": 5,
+            "indices": [
+              1623,
+              1340,
+              4495,
+              3350,
+              6215
+            ],
+            "padded_tokens": 32263,
+            "supervised_targets": 781,
+            "target_sessions": [
+              2878,
+              2381,
+              7897,
+              5918,
+              10915
+            ]
+          },
+          "physical_batches": 2,
+          "padded_tokens": 30734,
+          "largest_component_bytes": 1229164560,
+          "component_notice": "retained-component accounting only, NOT measured peak or proof of fit"
+        },
+        "512": {
+          "row": {
+            "batch_size": 5,
+            "indices": [
+              1623,
+              1340,
+              4495,
+              3350,
+              6215
+            ],
+            "padded_tokens": 32263,
+            "supervised_targets": 781,
+            "target_sessions": [
+              2878,
+              2381,
+              7897,
+              5918,
+              10915
+            ]
+          },
+          "physical_batches": 2,
+          "padded_tokens": 30734,
+          "largest_component_bytes": 2832945168,
+          "component_notice": "retained-component accounting only, NOT measured peak or proof of fit"
+        }
+      }
+    }
+  },
+  "length_sort": {
+    "2": {
+      "ordered_padded_tokens": 33730639,
+      "sorted_padded_tokens": 32248667,
+      "executed": false,
+      "choice": "NOT SELECTED; within-group reorder changes dropout assignment and metric order; no cross-group reordering allowed"
+    },
+    "4": {
+      "ordered_padded_tokens": 36246672,
+      "sorted_padded_tokens": 34965989,
+      "executed": false,
+      "choice": "NOT SELECTED; within-group reorder changes dropout assignment and metric order; no cross-group reordering allowed"
+    }
+  }
+}

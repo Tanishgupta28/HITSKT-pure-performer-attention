@@ -1,5 +1,20 @@
 # Current state
 
+## Latest: logical-B8 accumulation preparation complete; no new GPU work
+
+25 October2026. Read [FAVOR_MICROBATCH_MEMORY_STATE.md](FAVOR_MICROBATCH_MEMORY_STATE.md).
+Newphysical2/4 adapters preserve originallogicalgroups/data/masks/seed/settings,
+weightedtargetBCE/oneAdam per group.49newCPUtestsPASS and62regressions exercised;
+112actualmicrocollations/11datafilesPASS. Finalv3CPUplanSHA362a7f8b4db4625d8a6e1d0773d9bab57e7a0f3118217a5e825a61b032a8d632.
+Separate900s/156realAdamprofile prepared; noactualexecutionwindow granted.
+8GiBguardsunchanged, botharmsneed<=6GiBallocated/reserved tochoosephysicalpolicy.
+OriginalB8peaksreverified; newactualGPUmemory/Adamruntime/8epochETA NOTMEASURED.
+ZeroCUDA/GPUqueries/actualdataupdates/testmetrics. Format6fullval/epochpipeline
+preparedbutnotGPUverified/trainingapproved. PreserveallCPUdrafts+oldartifacts;
+publishresearchbranchthenWAIT unlessexplicitnewprofileapprovalarrives.
+
+Earlier handoff (historical):
+
 ## Latest: batch-8 profile complete; two-hour training budget NO-GO
 
 25 October2026. Read [FAVOR_B8_PROFILE_STATE.md](FAVOR_B8_PROFILE_STATE.md).
