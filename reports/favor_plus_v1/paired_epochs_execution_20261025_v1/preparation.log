@@ -1,0 +1,17 @@
+{
+  "status": "PREPARED_NOT_TRAINING_AUTHORIZED",
+  "plan": "/workspace/capstone/experiments/hitskt_favor_plus_v1/assist2017/assist2017_orf128_512_pair_epochs_20261025_v1/prepared_plan.json",
+  "plan_sha256": "9192d6636d5792c1727a4dfbfb31cd405432f60cadebb83c7f037dd6e6660fdb",
+  "fresh_parameters_and_cpu_rng_matched": true,
+  "train_updates_per_arm": 1454,
+  "counts": {
+    "train": {
+      "sessions": 7060,
+      "labels": 566107
+    },
+    "validation": {
+      "sessions": 1977,
+      "labels": 125800
+    }
+  }
+}

@@ -1,5 +1,21 @@
 # Next checkpoint
 
+## Latest: finish publication; wait for NEW B8 profile reply
+
+Read [FAVOR_PAIRED_EPOCH_WIRING_STATE.md](FAVOR_PAIRED_EPOCH_WIRING_STATE.md) and
+`reports/favor_plus_v1/MATCHED_EPOCH_EXECUTION_AND_MEMORY_PROFILE.md`.
+Two-arm epochwiringcomplete; rawB64studyterminal512allocationfailure, preserveit.
+Newrootassist2017_orf128_512_pair_b8_20261025_v2 isCPU-only/newprofileunrun.
+Asyncapprovalpendingfor≤10minzeroAdam profile, NOTtraining. Noresponse/default
+isnotapproval. Afteractualnewreplyonly: NEWsource-boundprofileclock/admission,
+same8GiBsharedguards, sequential128/512zero-step profiles, firstfailurestop/no
+resize/retry. No realoptimizerupdates/full8/2h unlessseparateactualtraining/time
+approvalrecord.7499updates/armneednewruntimeestimate,notold1454stepETA. Ifnonew
+reply finishreport/archive/commitpushresearchbranchandWAIT. NoGPUwatcher,
+PIDmappingreaudit,otherjob/Light/DKT/ELU/data/oldresults/mainchanges.
+
+Earlier handoff (historical):
+
 ## Latest: publish performance plan, then wait for bounded execution instruction
 
 Read [FAVOR_PERFORMANCE_PLAN_STATE.md](FAVOR_PERFORMANCE_PLAN_STATE.md) and

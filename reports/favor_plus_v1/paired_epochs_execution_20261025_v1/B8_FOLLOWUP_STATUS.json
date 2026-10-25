@@ -1,0 +1,20 @@
+{
+  "status": "B8_SOURCE_DATA_AND_FULL_COVERAGE_RELOAD_PASS",
+  "source_plan_sha256": "cb3bbc9168b712d187a0b2e998c01816b204e2683f74d2e3a01bc5cf0d866edb",
+  "max_batch_size": 8,
+  "real_updates": 0,
+  "gpu_profile": "NOT RUN",
+  "train_counts": {
+    "train": {
+      "labels": 566107,
+      "sessions": 7060
+    },
+    "validation": {
+      "labels": 125800,
+      "sessions": 1977
+    }
+  },
+  "planned_updates_per_arm": 7499,
+  "initial_weights_matched": true,
+  "source_failure_preserved": true
+}

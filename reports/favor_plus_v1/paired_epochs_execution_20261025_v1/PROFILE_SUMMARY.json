@@ -1,0 +1,251 @@
+{
+  "arms": {
+    "orf128": {
+      "cases": [
+        {
+          "batch_size": 1,
+          "gradient_l2": 5.669221464391877,
+          "index": 0,
+          "observed_loss": 1.103076457977295,
+          "padded_tokens": 363,
+          "peak_allocated_GiB": 0.28874969482421875,
+          "peak_reserved_GiB": 0.322265625,
+          "seconds": 0.8464153949171305,
+          "split": "train"
+        },
+        {
+          "batch_size": 7,
+          "gradient_l2": 1.5813358763419094,
+          "index": 1,
+          "observed_loss": 0.7515893578529358,
+          "padded_tokens": 606,
+          "peak_allocated_GiB": 0.344571590423584,
+          "peak_reserved_GiB": 0.392578125,
+          "seconds": 0.14674008009023964,
+          "split": "train"
+        },
+        {
+          "batch_size": 4,
+          "gradient_l2": 2.2453808553189,
+          "index": 2,
+          "observed_loss": 0.7367461323738098,
+          "padded_tokens": 21299,
+          "peak_allocated_GiB": 1.2803325653076172,
+          "peak_reserved_GiB": 1.5078125,
+          "seconds": 1.736734620993957,
+          "split": "train"
+        },
+        {
+          "batch_size": 20,
+          "gradient_l2": 1.5791986323052039,
+          "index": 3,
+          "observed_loss": 0.7182294726371765,
+          "padded_tokens": 31515,
+          "peak_allocated_GiB": 2.777315139770508,
+          "peak_reserved_GiB": 3.267578125,
+          "seconds": 1.1082269961480051,
+          "split": "train"
+        },
+        {
+          "batch_size": 10,
+          "gradient_l2": 1.2830988032408253,
+          "index": 4,
+          "observed_loss": 0.6943682432174683,
+          "padded_tokens": 31842,
+          "peak_allocated_GiB": 2.777315139770508,
+          "peak_reserved_GiB": 3.267578125,
+          "seconds": 2.335884938016534,
+          "split": "train"
+        },
+        {
+          "batch_size": 14,
+          "gradient_l2": 2.1825823448868666,
+          "index": 5,
+          "observed_loss": 0.7109923958778381,
+          "padded_tokens": 32218,
+          "peak_allocated_GiB": 2.777315139770508,
+          "peak_reserved_GiB": 3.447265625,
+          "seconds": 2.031976683996618,
+          "split": "train"
+        },
+        {
+          "batch_size": 58,
+          "gradient_l2": 0.680296574665599,
+          "index": 6,
+          "observed_loss": 0.7408387660980225,
+          "padded_tokens": 32748,
+          "peak_allocated_GiB": 6.005212306976318,
+          "peak_reserved_GiB": 7.466796875,
+          "seconds": 0.7497854570392519,
+          "split": "train"
+        },
+        {
+          "batch_size": 64,
+          "gradient_l2": 1.2098242655891498,
+          "index": 7,
+          "observed_loss": 0.7323266863822937,
+          "padded_tokens": 32766,
+          "peak_allocated_GiB": 6.005212306976318,
+          "peak_reserved_GiB": 7.580078125,
+          "seconds": 0.7462443117983639,
+          "split": "train"
+        },
+        {
+          "batch_size": 13,
+          "gradient_l2": null,
+          "index": 8,
+          "observed_loss": 0.8001427054405212,
+          "padded_tokens": 32766,
+          "peak_allocated_GiB": 6.005212306976318,
+          "peak_reserved_GiB": 7.806640625,
+          "seconds": 0.24651731294579804,
+          "split": "validation"
+        }
+      ],
+      "completed_cases": 9,
+      "expected_cases": 9,
+      "max_validated_peak_allocated_GiB": 6.005212306976318,
+      "max_validated_peak_reserved_GiB": 7.806640625,
+      "min_observed_free_GiB": 31.39776611328125,
+      "optimizer_updates": 0,
+      "peak_host_RSS_GiB": 1.5386199951171875,
+      "status": "PASS"
+    },
+    "orf512": {
+      "cases": [
+        {
+          "batch_size": 1,
+          "gradient_l2": 5.662457057152362,
+          "index": 0,
+          "observed_loss": 1.1027946472167969,
+          "padded_tokens": 363,
+          "peak_allocated_GiB": 0.632476806640625,
+          "peak_reserved_GiB": 0.755859375,
+          "seconds": 0.8671033319551498,
+          "split": "train"
+        },
+        {
+          "batch_size": 7,
+          "gradient_l2": 1.5830310733426327,
+          "index": 1,
+          "observed_loss": 0.7523574233055115,
+          "padded_tokens": 606,
+          "peak_allocated_GiB": 0.8535895347595215,
+          "peak_reserved_GiB": 1.021484375,
+          "seconds": 0.12831966090016067,
+          "split": "train"
+        },
+        {
+          "batch_size": 4,
+          "gradient_l2": 2.245982972497416,
+          "index": 2,
+          "observed_loss": 0.7365339398384094,
+          "padded_tokens": 21299,
+          "peak_allocated_GiB": 3.8412914276123047,
+          "peak_reserved_GiB": 4.5390625,
+          "seconds": 2.260807672981173,
+          "split": "train"
+        }
+      ],
+      "completed_cases": 3,
+      "expected_cases": 9,
+      "failure": {
+        "checkpoints": [],
+        "last_cached_resources": {
+          "cached_own_allocator": {
+            "allocated_bytes": 183619072,
+            "peak_allocated_bytes": 4124555264,
+            "peak_reserved_bytes": 4873781248,
+            "reserved_bytes": 4873781248
+          },
+          "decision": {
+            "exclusive_ownership_claimed": false,
+            "local_holders": [],
+            "local_visibility_gaps": [],
+            "pid_mapping_proven": false,
+            "reasons": [],
+            "reported_compute_processes": [
+              {
+                "compute_instance": 0,
+                "gpu_instance": 2,
+                "pid": 3964086,
+                "used_gpu_memory_bytes": 5251268608
+              }
+            ],
+            "status": "ADMIT_SHARED_WITH_LIMITED_ATTRIBUTION",
+            "warnings": [
+              "PID namespace identity remains unresolved",
+              "MIG utilization unsupported: cap/headroom/pacing/runtime fallback; load UNKNOWN"
+            ]
+          },
+          "host": {
+            "cgroup_headroom_bytes": 21172580352,
+            "cgroup_limit_bytes": 96636764160,
+            "cgroup_usage_bytes": 75464183808,
+            "peak_process_rss_bytes": 1608998912
+          },
+          "observation": {
+            "device": {
+              "compute_processes": [
+                {
+                  "compute_instance": 0,
+                  "gpu_instance": 2,
+                  "pid": 3964086,
+                  "used_gpu_memory_bytes": 5251268608
+                }
+              ],
+              "free_bytes": 36978360320,
+              "total_bytes": 42278584320,
+              "used_bytes": 5300224000
+            },
+            "local": {
+              "conflicts": [],
+              "holders": [],
+              "inaccessible_fd_pids": [],
+              "light_processes": [],
+              "observed_utc": "2026-10-25T06:38:23.339820+00:00",
+              "own_pid": 260012,
+              "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+            },
+            "observed_utc": "2026-10-25T06:38:23.232963+00:00",
+            "pid_attribution": "UNRESOLVED; self/peer not inferred",
+            "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+            "utilization": {
+              "gpu_percent": null,
+              "memory_percent": null,
+              "nvml_status": 3,
+              "status": "unsupported"
+            }
+          },
+          "own_allocator": {
+            "allocated_bytes": 153343488,
+            "peak_allocated_bytes": 4124555264,
+            "peak_reserved_bytes": 4873781248,
+            "reserved_bytes": 4873781248
+          },
+          "phase": "before_profile"
+        },
+        "message": "NVML_SUCCESS == r INTERNAL ASSERT FAILED at \"/opt/pytorch/pytorch/c10/cuda/CUDACachingAllocator.cpp\":841, please report a bug to PyTorch. ",
+        "no_cuda_calls_in_handler": true,
+        "phase": "profile",
+        "progress": {
+          "optimizer_updates": 0
+        },
+        "status": "STOP_NO_RETRY",
+        "type": "RuntimeError"
+      },
+      "max_validated_peak_allocated_GiB": 3.8412914276123047,
+      "max_validated_peak_reserved_GiB": 4.5390625,
+      "min_observed_free_GiB": 34.43878173828125,
+      "optimizer_updates": 0,
+      "peak_host_RSS_GiB": 1.4984970092773438,
+      "status": "FAIL_STOP"
+    }
+  },
+  "new_epoch_validation_results": 0,
+  "profile_wall_method": "execution_record start timestamp to PROFILE_SEQUENCE_STOP filesystem mtime; not a CUDA-kernel runtime",
+  "profile_wall_seconds_record_to_terminal_file": 31.703711986541748,
+  "real_ASSIST_optimizer_updates": 0,
+  "status": "STOP_512_ALLOCATION_FAILURE_NO_TRAINING",
+  "training_approved": false
+}

@@ -1,5 +1,18 @@
 # Current state
 
+## Latest: paired epoch controller implemented; no new training
+
+25 October2026. Read [FAVOR_PAIRED_EPOCH_WIRING_STATE.md](FAVOR_PAIRED_EPOCH_WIRING_STATE.md).
+Executable8epochORF128/512 controller+format5recovery/IDmetrics implemented,
+66CPUtestsPASS. Realprofile1289/9PASS6.005GiBlive/7.807reserve;512allocationFAIL
+atB20cost31515 thenNVMLreportingassert. Originalstudy STOP(no retry/resize).
+NewB8CPU-onlymatchedplanpreserveswholedata/orderbut7499updates/arm vs1454,
+GPUprofilependingactualnewapprovalquestion. Newtraining/epochAUC0;2hpair not
+approvedandtimeunknown. 8GiBhardcap/sharedguards/.20/originals/otherjobs unchanged.
+FinishpublicationthenWAIT; do notrerunfailedscope orinferpendingapproval.
+
+Earlier handoff (historical):
+
 ## Latest: performance-improvement plan prepared; no new training
 
 25 October2026. Read [FAVOR_PERFORMANCE_PLAN_STATE.md](FAVOR_PERFORMANCE_PLAN_STATE.md).

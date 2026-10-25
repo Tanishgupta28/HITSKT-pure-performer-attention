@@ -1,0 +1,11 @@
+{
+  "failed_case_index": 3,
+  "batch_size": 20,
+  "padded_tokens": 31515,
+  "flattened_history_rows": 91,
+  "max_action_length": 285,
+  "max_target_length": 266,
+  "one_history_weighted_state_GiB_512_fp64": 0.0888671875,
+  "chunk32_weighted_state_component_GiB": 2.84375,
+  "warning": "Analytical component, NOT observed failed allocation or complete GPU peak; failure trace does not name attention stage"
+}

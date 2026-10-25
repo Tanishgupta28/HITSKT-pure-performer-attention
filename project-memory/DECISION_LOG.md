@@ -1553,3 +1553,26 @@ Currentfour-armrunner/native128epochcontrollercannot silentlyexecute newstudy;
 newreviewed scope/wiring/tests andexplicitboundedinstruction needed. Report
 `reports/favor_plus_v1/PERFORMANCE_IMPROVEMENT_EXPERIMENT_PLAN.md`, state
 `FAVOR_PERFORMANCE_PLAN_STATE.md`; publishverifiedresearchbranch thenWAIT.
+
+## 2026-10-25 — Executable paired epochs; real512 profile allocation failure
+
+NewFORMAT5 two-armcontroller/CLI implements identicalfresh42 ORF128/512 FP64,
+samecomplete8epoch schedules, fullvalIDs/AUCselection, atomicmodel/Adam/RNG/
+projection/cursor/prefixcheckpoint, freshno-step recovery, fixed32+128/audit
+TRAINdiagnostics andfinite34stagecampaign.66CPUtestsPASS(51new/15old),tiny
+syntheticoptimizersnotrealASSISTupdates. Currenttask3/sharedpermission/8GiB
+scope supported600szeroupdateprofileonly; no2htrainingpermissioninferred.
+Actual1289/9PASS6.005212GiBlive/7.806641reserved.5123/9thenbackwardallocation
+failure atB20cost31515; sourceCpp841 issecondaryNVMLreportOOMassert, not an
+ownershipguardfailure. Cached3.841GiBpeak NOTfailedinstantpeak; exactsize/status
+notcaptured. Wholecampaign31.704s. Stop/no retry/resize/runtimepatch; oneexit
+snapshot39.337952GiBfree/noNVMLworkers/Lightvisible,nootherjobactions.
+Originalfailedroot/source/data/checkpoints preserved. New CPU-only B8 freshpair
+plan preservesalltargetorder/lengths/labels, butchangesbothupdatecount1454→7499;
+noaccumulation, old.703467trajectorynotclaimedidentical. InitialrelativepathCPU
+prepbugfixedandpreserved; actualnewplanreloadPASS. B8profileNOTRUN,explicitnew
+≤10minzero-stepprofileapprovalquestionpending; noresponseisnotapproval. No full
+validationortrainingresultsinvented;2hbudgetNOTapproved/timeunknown. Report
+`reports/favor_plus_v1/MATCHED_EPOCH_EXECUTION_AND_MEMORY_PROFILE.md`, state
+`FAVOR_PAIRED_EPOCH_WIRING_STATE.md`. FinishscopedpublicationthenWAIT unless
+actualnewreplyarrives. Preserve8GiB/.20/historicalmodels/Light/DKT/main/dirt.

@@ -1,0 +1,38 @@
+{
+  "CUDA_initialized_after": false,
+  "CUDA_initialized_before": false,
+  "host": {
+    "cgroup_headroom_bytes": 22008156160,
+    "cgroup_limit_bytes": 96636764160,
+    "cgroup_usage_bytes": 74628608000,
+    "peak_process_rss_bytes": 577327104
+  },
+  "kind": "ONE_READ_ONLY_AFTER_EXIT_OBSERVATION",
+  "observation": {
+    "device": {
+      "compute_processes": [],
+      "free_bytes": 42238803968,
+      "total_bytes": 42278584320,
+      "used_bytes": 39780352
+    },
+    "local": {
+      "conflicts": [],
+      "holders": [],
+      "inaccessible_fd_pids": [],
+      "light_processes": [],
+      "observed_utc": "2026-10-25T06:44:51.457124+00:00",
+      "own_pid": 261091,
+      "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+    },
+    "observed_utc": "2026-10-25T06:44:51.211293+00:00",
+    "pid_attribution": "UNRESOLVED; self/peer not inferred",
+    "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+    "utilization": {
+      "gpu_percent": null,
+      "memory_percent": null,
+      "nvml_status": 3,
+      "status": "unsupported"
+    }
+  },
+  "optimizer_updates": 0
+}

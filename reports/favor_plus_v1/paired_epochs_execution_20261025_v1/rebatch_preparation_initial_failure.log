@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/capstone/scripts/prepare_favor_plus_paired_rebatch.py", line 9, in <module>
+    a=p.parse_args();print(json.dumps(prepare(a.parent_plan,a.run_id,a.maximum_batch_size),indent=2))
+  File "/workspace/capstone/ktbench/favor_plus_paired_rebatch.py", line 39, in prepare
+    plan['source_sha256'].update({str(parent_path.relative_to(pair.ROOT)):pair.sha256(parent_path),
+  File "/usr/lib/python3.10/pathlib.py", line 818, in relative_to
+    raise ValueError("{!r} is not in the subpath of {!r}"
+ValueError: 'experiments/hitskt_favor_plus_v1/assist2017/assist2017_orf128_512_pair_epochs_20261025_v1/prepared_plan.json' is not in the subpath of '/workspace/capstone' OR one path is relative and the other is absolute.

@@ -1,0 +1,21 @@
+{
+  "status": "CPU_PREPARED_NEW_PROFILE_REQUIRED",
+  "plan": "/workspace/capstone/experiments/hitskt_favor_plus_v1/assist2017/assist2017_orf128_512_pair_b8_20261025_v2/prepared_plan.json",
+  "plan_sha256": "cb3bbc9168b712d187a0b2e998c01816b204e2683f74d2e3a01bc5cf0d866edb",
+  "maximum_batch_size": 8,
+  "train_updates_per_arm": 7499,
+  "train_batches_per_epoch": {
+    "1": 935,
+    "2": 937,
+    "3": 943,
+    "4": 939,
+    "5": 939,
+    "6": 934,
+    "7": 938,
+    "8": 934
+  },
+  "max_padded_tokens": 32751,
+  "real_optimizer_updates": 0,
+  "CUDA_initialized": false,
+  "training_runtime_estimate": "NOT ESTIMABLE before new profile; old2h proposal is not validated"
+}

@@ -1,5 +1,18 @@
 # HiTSKT capstone project memory
 
+## Latest: paired epoch controller implemented;512 full-shape profile stopped
+
+25 October2026. Read [FAVOR_PAIRED_EPOCH_WIRING_STATE.md](FAVOR_PAIRED_EPOCH_WIRING_STATE.md).
+Newtwoarm8epochdriver/FORMAT5/atomicrecovery+metrics+diagnostics implemented,
+66CPUtestsPASS(51new/15old). Actual600s-scopedzero-stepGPUprofile128PASS9/9,
+512FAILafter3casesallocation+secondaryNVMLreportingassert; rootterminal/no retry.
+No actualnewupdates/epochAUC. NewcommonB8 full-dataCPUplan7499updates/arm ready;
+GPUprofileNOTRUN,new≤10minzero-stepprofileapprovalpending. No2htrainingbudget
+approval. Keep8GiBguards/.20/source/data/history/otherjobs unchanged; finish
+verifiedpublicationthenWAIT foractualscopedreply.
+
+Earlier handoff (historical):
+
 ## Latest: performance-improvement plan prepared; no new training
 
 25 October2026. Read [FAVOR_PERFORMANCE_PLAN_STATE.md](FAVOR_PERFORMANCE_PLAN_STATE.md).

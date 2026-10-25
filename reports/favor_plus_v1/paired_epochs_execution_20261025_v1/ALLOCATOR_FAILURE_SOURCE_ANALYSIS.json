@@ -1,0 +1,14 @@
+{
+  "assertion_line841": "  TORCH_INTERNAL_ASSERT(NVML_SUCCESS == r);",
+  "caller_line1087": "      std::string proc_info = reportProcessMemoryInfo(device);",
+  "function": "reportProcessMemoryInfo",
+  "function_begin_line": 801,
+  "global_runtime_modified": false,
+  "interpretation": "allocation failure was followed by secondary NVML error-reporting assertion; compatible with8GiB per-process cap pressure. Exact failed allocation size/instantaneous peak/NVML returncode not captured, so cap-vs-fragmentation cannot be distinguished conclusively.",
+  "not_evidence_of": "another owner, solved PID mapping, attention-equation defect or a need to increaseGPUquota",
+  "path": "/opt/pytorch/pytorch/c10/cuda/CUDACachingAllocator.cpp",
+  "per_process_fraction_context": "alloc_block returns cudaErrorMemoryAllocation if total_allocated_memory+requested_size exceeds allowed_memory_maximum; see2387..2391",
+  "sha256": "59ea161a303833f710b7529006fa9009817a7d150a4b2f3ee4bcd8332d15f0af",
+  "status": "BUNDLED_SOURCE_MATCHES_REPORTED_ASSERTION_LOCATION",
+  "verified_call_context": "malloc failure branch first requires params.err==cudaErrorMemoryAllocation, then calls reportProcessMemoryInfo before throwing standard OOM and before stats.num_ooms increment"
+}

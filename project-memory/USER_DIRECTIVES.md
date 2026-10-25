@@ -1,5 +1,19 @@
 # Durable user directives
 
+## 2026-10-25 — Executable matched epochs and bounded profiling (latest)
+
+User requests completed ORF128/512 execution wiring, comparablefresh8epoch
+plans, representativeGPUprofile ifauthorized,8GiB/resourceguardsunchanged.
+Do NOT auto-start2htraining without explicitruntime/resourceapproval. No
+untouchedtest/otherjobs/historicalartifactchanges or baseline-superiorityclaim.
+Routinechoices autonomous; askonlyessentialblockingdecisions. Currenttask3
+supportsreferenced≤10minzero-updateprofile underexisting sharedpermission;
+trainingpermissionnotinferred. Originalprofile nowterminal512allocationFAIL;
+newcommonB8 CPUfollowup prepared, newboundedprofileapprovalquestionpending.
+Read FAVOR_PAIRED_EPOCH_WIRING_STATE.md foractualwork/evidence/exactnextstep.
+
+Earlier directives (historical):
+
 ## 2026-10-25 — Performance-improvement planning (latest)
 
 User prioritizes measurable HiTSKT performance: inspect existing mechanisms,
