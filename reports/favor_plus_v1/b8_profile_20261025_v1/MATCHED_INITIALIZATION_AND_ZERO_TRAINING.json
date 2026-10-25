@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "matched_keys": [
+    "model_config",
+    "seed",
+    "sampler",
+    "Adam_groups",
+    "data_identity",
+    "target_counts",
+    "initial_weights",
+    "initial_CPU_RNG",
+    "threshold",
+    "protocol"
+  ],
+  "only_attention_configuration_difference": "arm/original feature count128vs512",
+  "real_training_checkpoints": 0,
+  "real_optimizer_updates": 0,
+  "approved_long_campaign_created": false
+}

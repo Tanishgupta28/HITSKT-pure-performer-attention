@@ -1,0 +1,125 @@
+{
+  "arms": {
+    "orf128": {
+      "core_cases": 9,
+      "core_status": "PASS_ZERO_UPDATE_FULL_SHAPES",
+      "initial_native32_approximation": {
+        "action_encoder.layers.0.attention": {
+          "cases": 6,
+          "maximum": 0.2500135107473606,
+          "median": 0.2023385024784621,
+          "review_cases": 3
+        },
+        "correct_padding_encoder.layers.0.attention": {
+          "cases": 6,
+          "maximum": 0.17190225356105043,
+          "median": 0.15453868960664258,
+          "review_cases": 0
+        },
+        "decoder.layers.0.attention": {
+          "cases": 6,
+          "maximum": 0.11494914621636626,
+          "median": 0.0779145422101754,
+          "review_cases": 0
+        },
+        "session_encoder.layers.0.attention": {
+          "cases": 6,
+          "maximum": 0.059734880450977024,
+          "median": 0.03857593857177048,
+          "review_cases": 0
+        }
+      },
+      "min_device_free_GiB": 34.58331298828125,
+      "optimizer_updates": 0,
+      "peak_allocated_GiB": 2.3358659744262695,
+      "peak_host_RSS_GiB": 1.7047538757324219,
+      "peak_reserved_GiB": 4.39453125,
+      "runtime_estimate": {
+        "caveat": "stratified initial-model timing plus untrained IO proxies; not an upper bound, learned-state benchmark or completion guarantee",
+        "checkpoint_proxy_seconds": 280.85809219814837,
+        "diagnostics_proxy_seconds": 34.6699894212652,
+        "real_Adam_step_cost_measured": false,
+        "recovery_proxy_seconds": 7.201489543542266,
+        "subtotal_seconds": 8131.202581948135,
+        "training_body_proxy_seconds": 7061.571148378076,
+        "validation_proxy_seconds": 653.7766045052558,
+        "with_planning_reserve_seconds": 10164.003227435169,
+        "worker_startup_proxy_seconds": 93.12525790184736
+      },
+      "runtime_status": "PASS_ZERO_UPDATE_RUNTIME_PROFILE",
+      "unclassified_worker_overhead_proxy_seconds": 5.477956347167492,
+      "weighted_train_FB_seconds": 0.39083154532541264,
+      "weighted_train_body_seconds": 0.9416683755671524,
+      "weighted_validation_body_seconds": 0.25759519484052634,
+      "weights_projections_unchanged": true
+    },
+    "orf512": {
+      "core_cases": 9,
+      "core_status": "PASS_ZERO_UPDATE_FULL_SHAPES",
+      "initial_native32_approximation": {
+        "action_encoder.layers.0.attention": {
+          "cases": 6,
+          "maximum": 0.18168373114961126,
+          "median": 0.13265517858910855,
+          "review_cases": 0
+        },
+        "correct_padding_encoder.layers.0.attention": {
+          "cases": 6,
+          "maximum": 0.07177489012134972,
+          "median": 0.05721014100673451,
+          "review_cases": 0
+        },
+        "decoder.layers.0.attention": {
+          "cases": 6,
+          "maximum": 0.07146454497106644,
+          "median": 0.061369914821374286,
+          "review_cases": 0
+        },
+        "session_encoder.layers.0.attention": {
+          "cases": 6,
+          "maximum": 0.14333275460803313,
+          "median": 0.03167542482401607,
+          "review_cases": 0
+        }
+      },
+      "min_device_free_GiB": 31.10284423828125,
+      "optimizer_updates": 0,
+      "peak_allocated_GiB": 7.6744208335876465,
+      "peak_host_RSS_GiB": 1.7295722961425781,
+      "peak_reserved_GiB": 7.98828125,
+      "runtime_estimate": {
+        "caveat": "stratified initial-model timing plus untrained IO proxies; not an upper bound, learned-state benchmark or completion guarantee",
+        "checkpoint_proxy_seconds": 274.56037643831223,
+        "diagnostics_proxy_seconds": 42.04612858314067,
+        "real_Adam_step_cost_measured": false,
+        "recovery_proxy_seconds": 7.040009652264416,
+        "subtotal_seconds": 9524.676274949219,
+        "training_body_proxy_seconds": 8355.112835434964,
+        "validation_proxy_seconds": 740.621336719254,
+        "with_planning_reserve_seconds": 11905.845343686524,
+        "worker_startup_proxy_seconds": 105.2955881212838
+      },
+      "runtime_status": "PASS_ZERO_UPDATE_RUNTIME_PROFILE",
+      "unclassified_worker_overhead_proxy_seconds": 6.1938581247814,
+      "weighted_train_FB_seconds": 0.5418893039151674,
+      "weighted_train_body_seconds": 1.1141635998713113,
+      "weighted_validation_body_seconds": 0.29181297743075413,
+      "weights_projections_unchanged": true
+    }
+  },
+  "fit_status": "NOT_SUPPORTED even proxy subtotal exceeds7200s; actualAdam steps/learned-state timings unmeasured",
+  "optimizer_updates": 0,
+  "pair_subtotal_seconds": 17655.878856897354,
+  "pair_with25percent_planning_reserve_seconds": 22069.848571121693,
+  "profile_elapsed_seconds": 215.66306328773499,
+  "status": "MEMORY_PROFILE_PASS_TWO_HOUR_TRAINING_BUDGET_NO_GO",
+  "suggested_future_runtime_reservation": "7h pair /4h perarm proposal only; current runner remains capped2h/1h until separately approved revision",
+  "training_approved": false,
+  "two_hour_fits": false,
+  "unknowns": [
+    "realAdam.step cost",
+    "learned-state graph/allocator evolution",
+    "future shared load",
+    "full training epoch completion"
+  ]
+}

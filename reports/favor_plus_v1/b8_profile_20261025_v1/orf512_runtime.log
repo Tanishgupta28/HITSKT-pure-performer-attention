@@ -1,0 +1,2001 @@
+{
+  "status": "PASS_ZERO_UPDATE_RUNTIME_PROFILE",
+  "arm": "orf512",
+  "plan_sha256": "cb3bbc9168b712d187a0b2e998c01816b204e2683f74d2e3a01bc5cf0d866edb",
+  "initialization_seconds": 2.6533149441238493,
+  "warmup": {
+    "body_seconds": 1.8251127670519054,
+    "forward_backward_seconds": 1.2808878410141915,
+    "loss": 0.6822676062583923,
+    "gradient_l2": 2.165005414855949,
+    "targets": 653,
+    "optimizer_updates": 0
+  },
+  "strata": {
+    "training": [
+      {
+        "stratum": 0,
+        "weight": 235,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            1206,
+            3990,
+            5725,
+            1643,
+            4384,
+            558,
+            3508,
+            5365
+          ],
+          "padded_tokens": 720,
+          "supervised_targets": 169,
+          "target_sessions": [
+            2143,
+            7015,
+            10053,
+            2919,
+            7703,
+            984,
+            6199,
+            9416
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.7096973320003599,
+            "forward_backward_seconds": 0.12255762610584497,
+            "loss": 0.7979785799980164,
+            "gradient_l2": 2.8248688680782075,
+            "targets": 169,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.6785930970218033,
+            "forward_backward_seconds": 0.12037339899688959,
+            "loss": 0.7979785799980164,
+            "gradient_l2": 2.8248688680782075,
+            "targets": 169,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.6941452145110816
+      },
+      {
+        "stratum": 1,
+        "weight": 235,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            3688,
+            3064,
+            4283,
+            3000,
+            4837,
+            4256,
+            233,
+            6466
+          ],
+          "padded_tokens": 888,
+          "supervised_targets": 225,
+          "target_sessions": [
+            6508,
+            5421,
+            7533,
+            5310,
+            8499,
+            7485,
+            414,
+            11368
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.6611906418111175,
+            "forward_backward_seconds": 0.13595612882636487,
+            "loss": 0.8551524877548218,
+            "gradient_l2": 4.611752052319424,
+            "targets": 225,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.6626196939032525,
+            "forward_backward_seconds": 0.13419210189022124,
+            "loss": 0.8551524877548218,
+            "gradient_l2": 4.611752052319424,
+            "targets": 225,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.661905167857185
+      },
+      {
+        "stratum": 2,
+        "weight": 235,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            3798,
+            5387,
+            5140,
+            6266,
+            604,
+            883,
+            4965,
+            6373
+          ],
+          "padded_tokens": 1082,
+          "supervised_targets": 271,
+          "target_sessions": [
+            6694,
+            9457,
+            9027,
+            11003,
+            1075,
+            1567,
+            8724,
+            11195
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.5703791878186166,
+            "forward_backward_seconds": 0.17487212899141014,
+            "loss": 0.7650701999664307,
+            "gradient_l2": 1.614483324281111,
+            "targets": 271,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.9816607150714844,
+            "forward_backward_seconds": 0.17069948511198163,
+            "loss": 0.7650701999664307,
+            "gradient_l2": 1.614483324281111,
+            "targets": 271,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.7760199514450505
+      },
+      {
+        "stratum": 3,
+        "weight": 235,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            4854,
+            6080,
+            6741,
+            1437,
+            3448,
+            1125,
+            2854,
+            3777
+          ],
+          "padded_tokens": 1276,
+          "supervised_targets": 327,
+          "target_sessions": [
+            8531,
+            10675,
+            11847,
+            2552,
+            6096,
+            1986,
+            5051,
+            6657
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.5346875551622361,
+            "forward_backward_seconds": 0.1755979300942272,
+            "loss": 0.7928284406661987,
+            "gradient_l2": 1.363786606574755,
+            "targets": 327,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.8140118410810828,
+            "forward_backward_seconds": 0.18538572383113205,
+            "loss": 0.7928284406661987,
+            "gradient_l2": 1.363786606574755,
+            "targets": 327,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.6743496981216595
+      },
+      {
+        "stratum": 4,
+        "weight": 235,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            5392,
+            2250,
+            2190,
+            3815,
+            4937,
+            2503,
+            6372,
+            334
+          ],
+          "padded_tokens": 1440,
+          "supervised_targets": 320,
+          "target_sessions": [
+            9467,
+            3986,
+            3883,
+            6723,
+            8672,
+            4429,
+            11194,
+            596
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.6962841949425638,
+            "forward_backward_seconds": 0.1839810200035572,
+            "loss": 0.8184143900871277,
+            "gradient_l2": 2.6742191183145576,
+            "targets": 320,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.6939726939890534,
+            "forward_backward_seconds": 0.18386851507239044,
+            "loss": 0.8184143900871277,
+            "gradient_l2": 2.6742191183145576,
+            "targets": 320,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.6951284444658086
+      },
+      {
+        "stratum": 5,
+        "weight": 235,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            884,
+            2916,
+            646,
+            2607,
+            1398,
+            2721,
+            2929,
+            6922
+          ],
+          "padded_tokens": 1640,
+          "supervised_targets": 203,
+          "target_sessions": [
+            1568,
+            5161,
+            1143,
+            4616,
+            2485,
+            4818,
+            5185,
+            12167
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.8739609601907432,
+            "forward_backward_seconds": 0.1984194340184331,
+            "loss": 0.7706913352012634,
+            "gradient_l2": 1.7020673484812117,
+            "targets": 203,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.5675775490235537,
+            "forward_backward_seconds": 0.19564133509993553,
+            "loss": 0.7706913352012634,
+            "gradient_l2": 1.7020673484812117,
+            "targets": 203,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.7207692546071485
+      },
+      {
+        "stratum": 6,
+        "weight": 235,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            4265,
+            4752,
+            1796,
+            3279,
+            5558,
+            1227,
+            3898,
+            2930
+          ],
+          "padded_tokens": 1824,
+          "supervised_targets": 291,
+          "target_sessions": [
+            7502,
+            8349,
+            3188,
+            5802,
+            9764,
+            2177,
+            6861,
+            5186
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.8182230549864471,
+            "forward_backward_seconds": 0.22749061789363623,
+            "loss": 0.7847886085510254,
+            "gradient_l2": 1.514850517196285,
+            "targets": 291,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.5979020681697875,
+            "forward_backward_seconds": 0.22269602096639574,
+            "loss": 0.7847886085510254,
+            "gradient_l2": 1.514850517196285,
+            "targets": 291,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.7080625615781173
+      },
+      {
+        "stratum": 7,
+        "weight": 235,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            3898,
+            2994,
+            5622,
+            287,
+            6018,
+            4335,
+            3896,
+            3356
+          ],
+          "padded_tokens": 1995,
+          "supervised_targets": 347,
+          "target_sessions": [
+            6861,
+            5301,
+            9871,
+            517,
+            10567,
+            7617,
+            6859,
+            5931
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.9057174981571734,
+            "forward_backward_seconds": 0.3804854310583323,
+            "loss": 0.7924492955207825,
+            "gradient_l2": 1.27750968161202,
+            "targets": 347,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.7793488819152117,
+            "forward_backward_seconds": 0.23546318896114826,
+            "loss": 0.7924492955207825,
+            "gradient_l2": 1.27750968161202,
+            "targets": 347,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.8425331900361925
+      },
+      {
+        "stratum": 8,
+        "weight": 235,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            775,
+            83,
+            6470,
+            2047,
+            6863,
+            4811,
+            6269,
+            2351
+          ],
+          "padded_tokens": 2176,
+          "supervised_targets": 499,
+          "target_sessions": [
+            1378,
+            144,
+            11375,
+            3629,
+            12059,
+            8446,
+            11009,
+            4168
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.7388366719242185,
+            "forward_backward_seconds": 0.2890821329783648,
+            "loss": 0.7112683653831482,
+            "gradient_l2": 1.0883341264429631,
+            "targets": 499,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.8041971488855779,
+            "forward_backward_seconds": 0.2788689339067787,
+            "loss": 0.7112683653831482,
+            "gradient_l2": 1.0883341264429631,
+            "targets": 499,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.7715169104048982
+      },
+      {
+        "stratum": 9,
+        "weight": 235,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            2663,
+            6119,
+            6401,
+            1169,
+            2058,
+            4843,
+            6158,
+            5462
+          ],
+          "padded_tokens": 2331,
+          "supervised_targets": 524,
+          "target_sessions": [
+            4716,
+            10736,
+            11247,
+            2073,
+            3653,
+            8511,
+            10808,
+            9591
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 1.002528945915401,
+            "forward_backward_seconds": 0.2898587880190462,
+            "loss": 0.7714484930038452,
+            "gradient_l2": 1.0967822142438033,
+            "targets": 524,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.8618699861690402,
+            "forward_backward_seconds": 0.28788690688088536,
+            "loss": 0.7714484930038452,
+            "gradient_l2": 1.0967822142438033,
+            "targets": 524,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.9321994660422206
+      },
+      {
+        "stratum": 10,
+        "weight": 235,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            422,
+            1174,
+            4560,
+            376,
+            2897,
+            1038,
+            989,
+            4823
+          ],
+          "padded_tokens": 2534,
+          "supervised_targets": 354,
+          "target_sessions": [
+            744,
+            2081,
+            8010,
+            667,
+            5125,
+            1835,
+            1751,
+            8469
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.7152275817934424,
+            "forward_backward_seconds": 0.2808257038705051,
+            "loss": 0.7221450805664062,
+            "gradient_l2": 1.6310050706941177,
+            "targets": 354,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.7874201580416411,
+            "forward_backward_seconds": 0.2668734919279814,
+            "loss": 0.7221450805664062,
+            "gradient_l2": 1.6310050706941177,
+            "targets": 354,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.7513238699175417
+      },
+      {
+        "stratum": 11,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            5180,
+            66,
+            2944,
+            549,
+            4413,
+            3793,
+            1613,
+            1698
+          ],
+          "padded_tokens": 2713,
+          "supervised_targets": 603,
+          "target_sessions": [
+            9099,
+            109,
+            5215,
+            967,
+            7754,
+            6684,
+            2860,
+            3016
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.8685213630087674,
+            "forward_backward_seconds": 0.35220638499595225,
+            "loss": 0.6780856847763062,
+            "gradient_l2": 1.6566064526919455,
+            "targets": 603,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.8654172448441386,
+            "forward_backward_seconds": 0.35461897612549365,
+            "loss": 0.6780856847763062,
+            "gradient_l2": 1.6566064526919455,
+            "targets": 603,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.866969303926453
+      },
+      {
+        "stratum": 12,
+        "weight": 234,
+        "shape": {
+          "batch_size": 3,
+          "indices": [
+            3240,
+            3345,
+            552
+          ],
+          "padded_tokens": 2923,
+          "supervised_targets": 290,
+          "target_sessions": [
+            5730,
+            5913,
+            970
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 1.1768985202070326,
+            "forward_backward_seconds": 0.4808647430036217,
+            "loss": 0.7637091279029846,
+            "gradient_l2": 2.172811911766305,
+            "targets": 290,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.969982452923432,
+            "forward_backward_seconds": 0.4846729531418532,
+            "loss": 0.7637091279029846,
+            "gradient_l2": 2.172811911766305,
+            "targets": 290,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 1.0734404865652323
+      },
+      {
+        "stratum": 13,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            2962,
+            791,
+            903,
+            3829,
+            3269,
+            1155,
+            6188,
+            2020
+          ],
+          "padded_tokens": 3117,
+          "supervised_targets": 533,
+          "target_sessions": [
+            5244,
+            1407,
+            1601,
+            6743,
+            5786,
+            2046,
+            10863,
+            3582
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.975730231963098,
+            "forward_backward_seconds": 0.37036823900416493,
+            "loss": 0.7132578492164612,
+            "gradient_l2": 2.681274481217586,
+            "targets": 533,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 1.2122146799229085,
+            "forward_backward_seconds": 0.3753340910188854,
+            "loss": 0.7132578492164612,
+            "gradient_l2": 2.681274481217586,
+            "targets": 533,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 1.0939724559430033
+      },
+      {
+        "stratum": 14,
+        "weight": 234,
+        "shape": {
+          "batch_size": 5,
+          "indices": [
+            1756,
+            2112,
+            5663,
+            32,
+            5726
+          ],
+          "padded_tokens": 3333,
+          "supervised_targets": 440,
+          "target_sessions": [
+            3117,
+            3748,
+            9944,
+            53,
+            10057
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 2.3365441081114113,
+            "forward_backward_seconds": 0.4839241288136691,
+            "loss": 0.6768932938575745,
+            "gradient_l2": 1.0101678468028579,
+            "targets": 440,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 1.073088652919978,
+            "forward_backward_seconds": 0.4815242460463196,
+            "loss": 0.6768932938575745,
+            "gradient_l2": 1.0101678468028579,
+            "targets": 440,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 1.7048163805156946
+      },
+      {
+        "stratum": 15,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            1073,
+            6794,
+            779,
+            5117,
+            1497,
+            1298,
+            3993,
+            6716
+          ],
+          "padded_tokens": 3552,
+          "supervised_targets": 517,
+          "target_sessions": [
+            1899,
+            11937,
+            1385,
+            8988,
+            2654,
+            2303,
+            7021,
+            11803
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.9550396101549268,
+            "forward_backward_seconds": 0.40809696912765503,
+            "loss": 0.7816293239593506,
+            "gradient_l2": 1.0538365864851476,
+            "targets": 517,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 1.0406723318155855,
+            "forward_backward_seconds": 0.4078101459890604,
+            "loss": 0.7816293239593506,
+            "gradient_l2": 1.0538365864851476,
+            "targets": 517,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.9978559709852561
+      },
+      {
+        "stratum": 16,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            3159,
+            2108,
+            1569,
+            5760,
+            975,
+            4717,
+            2736,
+            1130
+          ],
+          "padded_tokens": 3790,
+          "supervised_targets": 653,
+          "target_sessions": [
+            5588,
+            3744,
+            2781,
+            10111,
+            1726,
+            8291,
+            4844,
+            2001
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 1.0102020460180938,
+            "forward_backward_seconds": 0.4391547660343349,
+            "loss": 0.6822676062583923,
+            "gradient_l2": 2.165005414855949,
+            "targets": 653,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.9869739550631493,
+            "forward_backward_seconds": 0.442214734852314,
+            "loss": 0.6822676062583923,
+            "gradient_l2": 2.165005414855949,
+            "targets": 653,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.9985880005406216
+      },
+      {
+        "stratum": 17,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            4618,
+            294,
+            2098,
+            6550,
+            3644,
+            2357,
+            5914,
+            427
+          ],
+          "padded_tokens": 4040,
+          "supervised_targets": 661,
+          "target_sessions": [
+            8121,
+            524,
+            3726,
+            11513,
+            6431,
+            4179,
+            10385,
+            752
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.952292911009863,
+            "forward_backward_seconds": 0.44627191009931266,
+            "loss": 0.762478768825531,
+            "gradient_l2": 0.9164184409762052,
+            "targets": 661,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.8937598878983408,
+            "forward_backward_seconds": 0.4461974080186337,
+            "loss": 0.762478768825531,
+            "gradient_l2": 0.9164184409762052,
+            "targets": 661,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.9230263994541019
+      },
+      {
+        "stratum": 18,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            5675,
+            1420,
+            1067,
+            6801,
+            5121,
+            5655,
+            178,
+            2098
+          ],
+          "padded_tokens": 4291,
+          "supervised_targets": 590,
+          "target_sessions": [
+            9966,
+            2522,
+            1888,
+            11947,
+            8992,
+            9928,
+            311,
+            3726
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 1.1191441488917917,
+            "forward_backward_seconds": 0.597667601890862,
+            "loss": 0.7444314956665039,
+            "gradient_l2": 1.4634343265246221,
+            "targets": 590,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.9990370918530971,
+            "forward_backward_seconds": 0.45836863317526877,
+            "loss": 0.7444314956665039,
+            "gradient_l2": 1.4634343265246221,
+            "targets": 590,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 1.0590906203724444
+      },
+      {
+        "stratum": 19,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            4424,
+            6530,
+            6257,
+            1569,
+            2683,
+            77,
+            4708,
+            6934
+          ],
+          "padded_tokens": 4572,
+          "supervised_targets": 562,
+          "target_sessions": [
+            7774,
+            11476,
+            10987,
+            2781,
+            4753,
+            128,
+            8274,
+            12190
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 1.0070709299761802,
+            "forward_backward_seconds": 0.5106597191188484,
+            "loss": 0.7491000890731812,
+            "gradient_l2": 2.4849530963451087,
+            "targets": 562,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 1.0542771839536726,
+            "forward_backward_seconds": 0.5029378379695117,
+            "loss": 0.7491000890731812,
+            "gradient_l2": 2.4849530963451087,
+            "targets": 562,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 1.0306740569649264
+      },
+      {
+        "stratum": 20,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            6246,
+            498,
+            1418,
+            3828,
+            2089,
+            6250,
+            3560,
+            2701
+          ],
+          "padded_tokens": 4931,
+          "supervised_targets": 548,
+          "target_sessions": [
+            10970,
+            871,
+            2515,
+            6742,
+            3703,
+            10977,
+            6291,
+            4786
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.9000530899502337,
+            "forward_backward_seconds": 0.4721120339818299,
+            "loss": 0.7475448250770569,
+            "gradient_l2": 1.5409257695326224,
+            "targets": 548,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 1.010124650085345,
+            "forward_backward_seconds": 0.4686868409626186,
+            "loss": 0.7475448250770569,
+            "gradient_l2": 1.5409257695326224,
+            "targets": 548,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.9550888700177893
+      },
+      {
+        "stratum": 21,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            2112,
+            4313,
+            5014,
+            5683,
+            1807,
+            1040,
+            4502,
+            6730
+          ],
+          "padded_tokens": 5312,
+          "supervised_targets": 859,
+          "target_sessions": [
+            3748,
+            7580,
+            8805,
+            9982,
+            3204,
+            1840,
+            7910,
+            11828
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.9675260339863598,
+            "forward_backward_seconds": 0.5778413251973689,
+            "loss": 0.7641302347183228,
+            "gradient_l2": 2.152815784079183,
+            "targets": 859,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 1.1422389191575348,
+            "forward_backward_seconds": 0.5786798908375204,
+            "loss": 0.7641302347183228,
+            "gradient_l2": 2.152815784079183,
+            "targets": 859,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 1.0548824765719473
+      },
+      {
+        "stratum": 22,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            2208,
+            4548,
+            863,
+            785,
+            1863,
+            4228,
+            4198,
+            1092
+          ],
+          "padded_tokens": 5690,
+          "supervised_targets": 863,
+          "target_sessions": [
+            3910,
+            7990,
+            1530,
+            1396,
+            3305,
+            7432,
+            7381,
+            1931
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 1.1862643009517342,
+            "forward_backward_seconds": 0.684613156830892,
+            "loss": 0.7432761192321777,
+            "gradient_l2": 1.3963790137467256,
+            "targets": 863,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 1.104823058936745,
+            "forward_backward_seconds": 0.6205081450752914,
+            "loss": 0.7432761192321777,
+            "gradient_l2": 1.3963790137467256,
+            "targets": 863,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 1.1455436799442396
+      },
+      {
+        "stratum": 23,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            3634,
+            796,
+            6764,
+            3741,
+            4477,
+            6020,
+            3305,
+            5380
+          ],
+          "padded_tokens": 6123,
+          "supervised_targets": 618,
+          "target_sessions": [
+            6413,
+            1412,
+            11885,
+            6597,
+            7862,
+            10572,
+            5841,
+            9442
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 1.0643663029186428,
+            "forward_backward_seconds": 0.5864834180101752,
+            "loss": 0.7320991158485413,
+            "gradient_l2": 1.437596813154189,
+            "targets": 618,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 1.2140361049678177,
+            "forward_backward_seconds": 0.581437021959573,
+            "loss": 0.7320991158485413,
+            "gradient_l2": 1.437596813154189,
+            "targets": 618,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 1.1392012039432302
+      },
+      {
+        "stratum": 24,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            4474,
+            1135,
+            4354,
+            4717,
+            4479,
+            3285,
+            5048,
+            5007
+          ],
+          "padded_tokens": 6548,
+          "supervised_targets": 482,
+          "target_sessions": [
+            7859,
+            2011,
+            7649,
+            8291,
+            7864,
+            5808,
+            8859,
+            8792
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 1.3074026890099049,
+            "forward_backward_seconds": 0.6163963510189205,
+            "loss": 0.7324357032775879,
+            "gradient_l2": 1.506944933153638,
+            "targets": 482,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 1.1107703510206193,
+            "forward_backward_seconds": 0.5986814359202981,
+            "loss": 0.7324357032775879,
+            "gradient_l2": 1.506944933153638,
+            "targets": 482,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 1.209086520015262
+      },
+      {
+        "stratum": 25,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            3214,
+            1725,
+            1591,
+            2746,
+            2667,
+            3884,
+            5863,
+            1590
+          ],
+          "padded_tokens": 7096,
+          "supervised_targets": 1108,
+          "target_sessions": [
+            5685,
+            3062,
+            2822,
+            4864,
+            4726,
+            6836,
+            10293,
+            2821
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 1.2373167951591313,
+            "forward_backward_seconds": 0.7902932642027736,
+            "loss": 0.7279608249664307,
+            "gradient_l2": 2.2611193078115,
+            "targets": 1108,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 1.2566215039696544,
+            "forward_backward_seconds": 0.7903493337798864,
+            "loss": 0.7279608249664307,
+            "gradient_l2": 2.2611193078115,
+            "targets": 1108,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 1.2469691495643929
+      },
+      {
+        "stratum": 26,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            366,
+            6212,
+            4958,
+            6230,
+            2845,
+            1730,
+            1478,
+            2123
+          ],
+          "padded_tokens": 7696,
+          "supervised_targets": 950,
+          "target_sessions": [
+            651,
+            10907,
+            8709,
+            10940,
+            5033,
+            3067,
+            2624,
+            3771
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 1.4913170819636434,
+            "forward_backward_seconds": 0.824720815056935,
+            "loss": 0.7405458688735962,
+            "gradient_l2": 2.0735132503653784,
+            "targets": 950,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 1.5334732269402593,
+            "forward_backward_seconds": 0.8155070228967816,
+            "loss": 0.7405458688735962,
+            "gradient_l2": 2.0735132503653784,
+            "targets": 950,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 1.5123951544519514
+      },
+      {
+        "stratum": 27,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            789,
+            4793,
+            1476,
+            368,
+            3257,
+            4201,
+            4608,
+            2699
+          ],
+          "padded_tokens": 8385,
+          "supervised_targets": 928,
+          "target_sessions": [
+            1400,
+            8417,
+            2622,
+            653,
+            5760,
+            7384,
+            8101,
+            4779
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 1.6094221251551062,
+            "forward_backward_seconds": 0.8260943999048322,
+            "loss": 0.7470876574516296,
+            "gradient_l2": 1.564482176287382,
+            "targets": 928,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 1.591501364018768,
+            "forward_backward_seconds": 0.8209374770522118,
+            "loss": 0.7470876574516296,
+            "gradient_l2": 1.564482176287382,
+            "targets": 928,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 1.6004617445869371
+      },
+      {
+        "stratum": 28,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            6996,
+            5022,
+            6138,
+            822,
+            4000,
+            3021,
+            5024,
+            4274
+          ],
+          "padded_tokens": 9432,
+          "supervised_targets": 749,
+          "target_sessions": [
+            12294,
+            8818,
+            10769,
+            1456,
+            7031,
+            5344,
+            8820,
+            7516
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 1.6048423012252897,
+            "forward_backward_seconds": 0.8921910629142076,
+            "loss": 0.7487998604774475,
+            "gradient_l2": 3.0289717691375073,
+            "targets": 749,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 1.4262611388694495,
+            "forward_backward_seconds": 0.8887072801589966,
+            "loss": 0.7487998604774475,
+            "gradient_l2": 3.0289717691375073,
+            "targets": 749,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 1.5155517200473696
+      },
+      {
+        "stratum": 29,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            1397,
+            5606,
+            3740,
+            783,
+            3113,
+            6935,
+            4723,
+            838
+          ],
+          "padded_tokens": 10990,
+          "supervised_targets": 1215,
+          "target_sessions": [
+            2481,
+            9843,
+            6591,
+            1389,
+            5506,
+            12191,
+            8300,
+            1485
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 1.5480271619744599,
+            "forward_backward_seconds": 1.1366596869193017,
+            "loss": 0.6948323845863342,
+            "gradient_l2": 2.0908468189265856,
+            "targets": 1215,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 1.5340525379870087,
+            "forward_backward_seconds": 1.1437821199651808,
+            "loss": 0.6948323845863342,
+            "gradient_l2": 2.0908468189265856,
+            "targets": 1215,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 1.5410398499807343
+      },
+      {
+        "stratum": 30,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            5461,
+            3735,
+            6318,
+            621,
+            5130,
+            1486,
+            2603,
+            2436
+          ],
+          "padded_tokens": 13858,
+          "supervised_targets": 819,
+          "target_sessions": [
+            9585,
+            6586,
+            11094,
+            1101,
+            9006,
+            2637,
+            4607,
+            4314
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 1.8195961499586701,
+            "forward_backward_seconds": 1.3365068559069186,
+            "loss": 0.7972257137298584,
+            "gradient_l2": 2.965891698027046,
+            "targets": 819,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 1.7716330632101744,
+            "forward_backward_seconds": 1.2820537730585784,
+            "loss": 0.7972257137298584,
+            "gradient_l2": 2.965891698027046,
+            "targets": 819,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 1.7956146065844223
+      },
+      {
+        "stratum": 31,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            642,
+            3163,
+            3161,
+            4951,
+            668,
+            3909,
+            615,
+            4495
+          ],
+          "padded_tokens": 25116,
+          "supervised_targets": 931,
+          "target_sessions": [
+            1134,
+            5592,
+            5590,
+            8694,
+            1183,
+            6878,
+            1092,
+            7897
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 3.2439336178358644,
+            "forward_backward_seconds": 2.46682441001758,
+            "loss": 0.7608193159103394,
+            "gradient_l2": 2.2098924763807752,
+            "targets": 931,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 2.7125180470757186,
+            "forward_backward_seconds": 2.12756464490667,
+            "loss": 0.7608193159103394,
+            "gradient_l2": 2.2098924763807752,
+            "targets": 931,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 2.9782258324557915
+      }
+    ],
+    "validation": [
+      {
+        "stratum": 0,
+        "weight": 36,
+        "shape": {
+          "batch_size": 2,
+          "indices": [
+            1086,
+            1087
+          ],
+          "padded_tokens": 1954,
+          "supervised_targets": 25,
+          "target_sessions": [
+            6776,
+            6777
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.2281946379225701,
+            "forward_backward_seconds": 0.04837538301944733,
+            "loss": 0.7412640452384949,
+            "gradient_l2": null,
+            "targets": 25,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.14847286511212587,
+            "forward_backward_seconds": 0.04758590902201831,
+            "loss": 0.7412640452384949,
+            "gradient_l2": null,
+            "targets": 25,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.188333751517348
+      },
+      {
+        "stratum": 1,
+        "weight": 36,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            623,
+            661,
+            760,
+            761,
+            827,
+            828,
+            1103,
+            1373
+          ],
+          "padded_tokens": 3858,
+          "supervised_targets": 276,
+          "target_sessions": [
+            3853,
+            4088,
+            4709,
+            4710,
+            5126,
+            5127,
+            6893,
+            8589
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.17837471701204777,
+            "forward_backward_seconds": 0.0774506269954145,
+            "loss": 0.7600966691970825,
+            "gradient_l2": null,
+            "targets": 276,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.17619478492997587,
+            "forward_backward_seconds": 0.07727357698604465,
+            "loss": 0.7600966691970825,
+            "gradient_l2": null,
+            "targets": 276,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.17728475097101182
+      },
+      {
+        "stratum": 2,
+        "weight": 35,
+        "shape": {
+          "batch_size": 3,
+          "indices": [
+            659,
+            1198,
+            24
+          ],
+          "padded_tokens": 4740,
+          "supervised_targets": 423,
+          "target_sessions": [
+            4076,
+            7481,
+            164
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.25932388799265027,
+            "forward_backward_seconds": 0.15649842796847224,
+            "loss": 0.7788899540901184,
+            "gradient_l2": null,
+            "targets": 423,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.35667271399870515,
+            "forward_backward_seconds": 0.15573411900550127,
+            "loss": 0.7788899540901184,
+            "gradient_l2": null,
+            "targets": 423,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.3079983009956777
+      },
+      {
+        "stratum": 3,
+        "weight": 35,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            1686,
+            1761,
+            1763,
+            1764,
+            1802,
+            66,
+            85,
+            86
+          ],
+          "padded_tokens": 6352,
+          "supervised_targets": 567,
+          "target_sessions": [
+            10568,
+            11035,
+            11052,
+            11053,
+            11296,
+            411,
+            526,
+            527
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.3659589518792927,
+            "forward_backward_seconds": 0.1278478680178523,
+            "loss": 0.7478643655776978,
+            "gradient_l2": null,
+            "targets": 567,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.25454226112924516,
+            "forward_backward_seconds": 0.12422469910234213,
+            "loss": 0.7478643655776978,
+            "gradient_l2": null,
+            "targets": 567,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.31025060650426894
+      },
+      {
+        "stratum": 4,
+        "weight": 35,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            1617,
+            1618,
+            1654,
+            1657,
+            1777,
+            78,
+            79,
+            518
+          ],
+          "padded_tokens": 8063,
+          "supervised_targets": 389,
+          "target_sessions": [
+            10134,
+            10135,
+            10357,
+            10382,
+            11135,
+            482,
+            483,
+            3205
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.2740877300966531,
+            "forward_backward_seconds": 0.15150471590459347,
+            "loss": 0.763055145740509,
+            "gradient_l2": null,
+            "targets": 389,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.27511307410895824,
+            "forward_backward_seconds": 0.15122904884628952,
+            "loss": 0.763055145740509,
+            "gradient_l2": null,
+            "targets": 389,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.2746004021028057
+      },
+      {
+        "stratum": 5,
+        "weight": 35,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            888,
+            898,
+            1247,
+            1248,
+            1736,
+            1870,
+            1871,
+            1872
+          ],
+          "padded_tokens": 10393,
+          "supervised_targets": 470,
+          "target_sessions": [
+            5498,
+            5569,
+            7802,
+            7803,
+            10885,
+            11733,
+            11734,
+            11735
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.3418824248947203,
+            "forward_backward_seconds": 0.1592062129639089,
+            "loss": 0.7639873027801514,
+            "gradient_l2": null,
+            "targets": 470,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.28021479886956513,
+            "forward_backward_seconds": 0.15809007198549807,
+            "loss": 0.7639873027801514,
+            "gradient_l2": null,
+            "targets": 470,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.3110486118821427
+      },
+      {
+        "stratum": 6,
+        "weight": 35,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            1213,
+            1214,
+            1215,
+            1216,
+            1336,
+            1337,
+            1372,
+            1646
+          ],
+          "padded_tokens": 13064,
+          "supervised_targets": 255,
+          "target_sessions": [
+            7585,
+            7586,
+            7587,
+            7588,
+            8365,
+            8366,
+            8583,
+            10312
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.29975378792732954,
+            "forward_backward_seconds": 0.19660566095262766,
+            "loss": 0.7184081077575684,
+            "gradient_l2": null,
+            "targets": 255,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.32169417990371585,
+            "forward_backward_seconds": 0.196324405958876,
+            "loss": 0.7184081077575684,
+            "gradient_l2": null,
+            "targets": 255,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.3107239839155227
+      },
+      {
+        "stratum": 7,
+        "weight": 35,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            736,
+            737,
+            817,
+            495,
+            1785,
+            1249,
+            1553,
+            1554
+          ],
+          "padded_tokens": 21415,
+          "supervised_targets": 828,
+          "target_sessions": [
+            4559,
+            4560,
+            5063,
+            3058,
+            11186,
+            7811,
+            9727,
+            9728
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.46843201690353453,
+            "forward_backward_seconds": 0.3373614130541682,
+            "loss": 0.7646046876907349,
+            "gradient_l2": null,
+            "targets": 828,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.4525523749180138,
+            "forward_backward_seconds": 0.32936782483011484,
+            "loss": 0.7646046876907349,
+            "gradient_l2": null,
+            "targets": 828,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.46049219591077417
+      }
+    ]
+  },
+  "initial_diagnostics_seconds": 4.671792064793408,
+  "io_proxies": [
+    {
+      "path": "/workspace/capstone/experiments/hitskt_favor_plus_v1/assist2017/assist2017_orf128_512_pair_b8_20261025_v2/orf512/runtime_profile/UNTRAINED_IO_PROXY_0.bin",
+      "sha256": "8e15f24bcaff53bd9cbb7610ce2faa90408f0575b8c44feaa1f611a5b7559db5",
+      "bytes": 88410678,
+      "total_seconds": 0.861405705101788,
+      "write_seconds": 0.13627789192833006,
+      "read_verify_seconds": 0.2832365620415658,
+      "optimizer_updates": 0,
+      "notice": "initial model plus moment-sized ZERO buffers/placeholders; NOT actual Adam state or a resumable training checkpoint"
+    },
+    {
+      "path": "/workspace/capstone/experiments/hitskt_favor_plus_v1/assist2017/assist2017_orf128_512_pair_b8_20261025_v2/orf512/runtime_profile/UNTRAINED_IO_PROXY_1.bin",
+      "sha256": "8e15f24bcaff53bd9cbb7610ce2faa90408f0575b8c44feaa1f611a5b7559db5",
+      "bytes": 88410678,
+      "total_seconds": 0.898596707964316,
+      "write_seconds": 0.12936470308341086,
+      "read_verify_seconds": 0.28494430100545287,
+      "optimizer_updates": 0,
+      "notice": "initial model plus moment-sized ZERO buffers/placeholders; NOT actual Adam state or a resumable training checkpoint"
+    }
+  ],
+  "weights_projections_unchanged": true,
+  "optimizer_updates": 0,
+  "resources": {
+    "phase": "runtime_profile_complete",
+    "observation": {
+      "observed_utc": "2026-10-25T07:30:32.452675+00:00",
+      "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+      "device": {
+        "total_bytes": 42278584320,
+        "free_bytes": 35386621952,
+        "used_bytes": 6891962368,
+        "compute_processes": [
+          {
+            "pid": 4082890,
+            "used_gpu_memory_bytes": 6843006976,
+            "gpu_instance": 2,
+            "compute_instance": 0
+          }
+        ]
+      },
+      "utilization": {
+        "status": "unsupported",
+        "nvml_status": 3,
+        "gpu_percent": null,
+        "memory_percent": null
+      },
+      "local": {
+        "observed_utc": "2026-10-25T07:30:32.544990+00:00",
+        "own_pid": 270389,
+        "holders": [],
+        "conflicts": [],
+        "light_processes": [],
+        "inaccessible_fd_pids": [],
+        "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+      },
+      "pid_attribution": "UNRESOLVED; self/peer not inferred"
+    },
+    "host": {
+      "peak_process_rss_bytes": 1857114112,
+      "cgroup_limit_bytes": 96636764160,
+      "cgroup_usage_bytes": 76080807936,
+      "cgroup_headroom_bytes": 20555956224
+    },
+    "decision": {
+      "status": "ADMIT_SHARED_WITH_LIMITED_ATTRIBUTION",
+      "reasons": [],
+      "warnings": [
+        "PID namespace identity remains unresolved",
+        "MIG utilization unsupported: cap/headroom/pacing/runtime fallback; load UNKNOWN"
+      ],
+      "reported_compute_processes": [
+        {
+          "pid": 4082890,
+          "used_gpu_memory_bytes": 6843006976,
+          "gpu_instance": 2,
+          "compute_instance": 0
+        }
+      ],
+      "local_holders": [],
+      "local_visibility_gaps": [],
+      "pid_mapping_proven": false,
+      "exclusive_ownership_claimed": false
+    },
+    "cached_own_allocator": {
+      "allocated_bytes": 153356800,
+      "reserved_bytes": 6465519616,
+      "peak_allocated_bytes": 5551174656,
+      "peak_reserved_bytes": 8577351680
+    },
+    "own_allocator": {
+      "allocated_bytes": 153356800,
+      "reserved_bytes": 6465519616,
+      "peak_allocated_bytes": 5551174656,
+      "peak_reserved_bytes": 8577351680
+    }
+  }
+}

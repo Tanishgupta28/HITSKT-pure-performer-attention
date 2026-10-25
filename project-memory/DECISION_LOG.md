@@ -1576,3 +1576,26 @@ validationortrainingresultsinvented;2hbudgetNOTapproved/timeunknown. Report
 `reports/favor_plus_v1/MATCHED_EPOCH_EXECUTION_AND_MEMORY_PROFILE.md`, state
 `FAVOR_PAIRED_EPOCH_WIRING_STATE.md`. FinishscopedpublicationthenWAIT unless
 actualnewreplyarrives. Preserve8GiB/.20/historicalmodels/Light/DKT/main/dirt.
+
+## 2026-10-25 — Approved B8 profiling PASS; two-hour training budget rejected
+
+The user's explicit <=10min zero-update approval was used once: sequential
+core128/core512/runtime128/runtime512 completed215.663s, allPASS; no Adam steps,
+new trainedcheckpoint, epochvalidationAUC or test inference. Existing8GiB shared
+limits unchanged. Actual peakallocated/reserved1282.335866/4.394531GiB and
+5127.674421/7.988281GiB;512reservedmargin12MiB, realAdamworkspaceunmeasured.
+Complete originaltrain/valtargets/order/full lengths and freshmatchedweights/RNG
+verified,7499 plannedupdates/arm. .20 thresholdretained; untrained128Action
+median.202339(3/6REVIEW),512.132655(0/6), no learnedperformanceclaim.
+
+Prospective stratifiedtimings/I/O proxies give4.9044h pair/6.1305hwith25%reserve,
+excluding actualAdam. NO-GO2h; propose7hpair/4harm onlywithnewactualapproval.
+Separate outercoordinator has fixedglobal/armclocks, boundedworkerleases,
+firstfailureSTOP andunchanged worker/resource/attention/dataengine. False
+source/profile-boundtemplate only; actualapprovalfile absent.18newCPUtestsPASS;
+initialprogressfilenamecollisionfixed/preservedbeforetraining.73protected/source
+hashesunchanged;1107-entrymetadata/16prefixarchivebyteverified, all1191localfiles
+preserved (80otherarrays/4untrainedIOproxybinarieslocal). Nootherjobactions,
+exclusiveownershipclaim, PIDmappingresolution, watcher orpublicationreadiness.
+Report B8_GPU_PROFILE_AND_TRAINING_BUDGET.md; state FAVOR_B8_PROFILE_STATE.md.
+PublishverifiedresearchbranchworkthenWAIT, notautomatictrainingorresizing.

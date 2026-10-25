@@ -1,0 +1,51 @@
+...............F.                                                                                                                                    [100%]
+========================================================================= FAILURES =========================================================================
+________________________________________ test_parent_workflow_keeps_one_global_clock_and_stops_without_retry[False] ________________________________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-75/test_parent_workflow_keeps_one0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fffc4474cd0>, fail_first = False
+
+    @pytest.mark.parametrize('fail_first',[False,True])
+    def test_parent_workflow_keeps_one_global_clock_and_stops_without_retry(tmp_path,monkeypatch,fail_first):
+        path=tmp_path/'plan.json';path.write_text('{}');s=scope(path);file=tmp_path/'scope.json';file.write_text(json.dumps(s));monkeypatch.setenv('CUDA_VISIBLE_DEVICES',p.pair.shared.TRANSFERRED_MIG)
+        monkeypatch.setattr(p.pair,'load_plan',lambda *a:({},{}));monkeypatch.setattr(p.pair,'compare_results',lambda *a:{'UNIT':True});calls=[];leases=[]
+        def fake(command,**kwargs):
+            calls.append(command);lease=json.loads(open(command[command.index('--record')+1]).read());leases.append(lease)
+            if fail_first:raise subprocess.CalledProcessError(1,command)
+        monkeypatch.setattr(p.subprocess,'run',fake)
+        if fail_first:
+            with pytest.raises(subprocess.CalledProcessError):p.run(path,file)
+            assert len(calls)==1 and (tmp_path/'approved_7h_parent_campaign/STOP_NO_RETRY.json').exists()
+        else:
+>           assert p.run(path,file)=={'UNIT':True} and len(calls)==34
+
+tests/test_favor_plus_pair_long_window.py:59: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+ktbench/favor_plus_pair_long_window.py:87: in run
+    stages.append(dict(arm=arm,action=action,epoch=epoch,seconds=time.perf_counter()-stamp));pair.write_json(out/'COMPLETED_STAGES.json',stages)
+ktbench/favor_plus_pipeline.py:46: in write_json
+    with path.open("x" if exclusive else "w") as f:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/tmp/pytest-of-root/pytest-75/test_parent_workflow_keeps_one0/approved_7h_parent_campaign/COMPLETED_STAGES.json'), mode = 'x'
+buffering = -1, encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return self._accessor.open(self, mode, buffering, encoding, errors,
+                                   newline)
+E       FileExistsError: [Errno 17] File exists: '/tmp/pytest-of-root/pytest-75/test_parent_workflow_keeps_one0/approved_7h_parent_campaign/COMPLETED_STAGES.json'
+
+/usr/lib/python3.10/pathlib.py:1119: FileExistsError
+------------------------------------------------------------------- Captured stdout call -------------------------------------------------------------------
+orf128 train-epoch 1 PASS
+------------------------- generated xml file: /workspace/capstone/reports/favor_plus_v1/b8_profile_20261025_v1/cpu_final_tests.xml -------------------------
+================================================================= short test summary info ==================================================================
+FAILED tests/test_favor_plus_pair_long_window.py::test_parent_workflow_keeps_one_global_clock_and_stops_without_retry[False] - FileExistsError: [Errno 17...
+1 failed, 16 passed in 3.52s

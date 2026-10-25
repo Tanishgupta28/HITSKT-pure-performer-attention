@@ -1,0 +1,2062 @@
+{
+  "status": "PASS_ZERO_UPDATE_RUNTIME_PROFILE",
+  "arm": "orf128",
+  "plan_sha256": "cb3bbc9168b712d187a0b2e998c01816b204e2683f74d2e3a01bc5cf0d866edb",
+  "initialization_seconds": 2.0377389260102063,
+  "warmup": {
+    "body_seconds": 1.8780615830328315,
+    "forward_backward_seconds": 1.2056171568110585,
+    "loss": 0.68207186460495,
+    "gradient_l2": 2.1598130232830646,
+    "targets": 653,
+    "optimizer_updates": 0
+  },
+  "strata": {
+    "training": [
+      {
+        "stratum": 0,
+        "weight": 235,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            1206,
+            3990,
+            5725,
+            1643,
+            4384,
+            558,
+            3508,
+            5365
+          ],
+          "padded_tokens": 720,
+          "supervised_targets": 169,
+          "target_sessions": [
+            2143,
+            7015,
+            10053,
+            2919,
+            7703,
+            984,
+            6199,
+            9416
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.9161190129816532,
+            "forward_backward_seconds": 0.11674081394448876,
+            "loss": 0.7980179786682129,
+            "gradient_l2": 2.828445555480591,
+            "targets": 169,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.6866658090148121,
+            "forward_backward_seconds": 0.11886493000201881,
+            "loss": 0.7980179786682129,
+            "gradient_l2": 2.828445555480591,
+            "targets": 169,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.8013924109982327
+      },
+      {
+        "stratum": 1,
+        "weight": 235,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            3688,
+            3064,
+            4283,
+            3000,
+            4837,
+            4256,
+            233,
+            6466
+          ],
+          "padded_tokens": 888,
+          "supervised_targets": 225,
+          "target_sessions": [
+            6508,
+            5421,
+            7533,
+            5310,
+            8499,
+            7485,
+            414,
+            11368
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 1.0780140159185976,
+            "forward_backward_seconds": 0.1250937539152801,
+            "loss": 0.8550748825073242,
+            "gradient_l2": 4.604367713376012,
+            "targets": 225,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.7192856760229915,
+            "forward_backward_seconds": 0.12520815688185394,
+            "loss": 0.8550748825073242,
+            "gradient_l2": 4.604367713376012,
+            "targets": 225,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.8986498459707946
+      },
+      {
+        "stratum": 2,
+        "weight": 235,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            3798,
+            5387,
+            5140,
+            6266,
+            604,
+            883,
+            4965,
+            6373
+          ],
+          "padded_tokens": 1082,
+          "supervised_targets": 271,
+          "target_sessions": [
+            6694,
+            9457,
+            9027,
+            11003,
+            1075,
+            1567,
+            8724,
+            11195
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.7919208691455424,
+            "forward_backward_seconds": 0.17282764497213066,
+            "loss": 0.7645986676216125,
+            "gradient_l2": 1.60958357175684,
+            "targets": 271,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.5820608360227197,
+            "forward_backward_seconds": 0.1611353720072657,
+            "loss": 0.7645986676216125,
+            "gradient_l2": 1.60958357175684,
+            "targets": 271,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.6869908525841311
+      },
+      {
+        "stratum": 3,
+        "weight": 235,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            4854,
+            6080,
+            6741,
+            1437,
+            3448,
+            1125,
+            2854,
+            3777
+          ],
+          "padded_tokens": 1276,
+          "supervised_targets": 327,
+          "target_sessions": [
+            8531,
+            10675,
+            11847,
+            2552,
+            6096,
+            1986,
+            5051,
+            6657
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.8963150079362094,
+            "forward_backward_seconds": 0.15922131203114986,
+            "loss": 0.7930594682693481,
+            "gradient_l2": 1.3630248071082172,
+            "targets": 327,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.534941823920235,
+            "forward_backward_seconds": 0.1572915290016681,
+            "loss": 0.7930594682693481,
+            "gradient_l2": 1.3630248071082172,
+            "targets": 327,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.7156284159282222
+      },
+      {
+        "stratum": 4,
+        "weight": 235,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            5392,
+            2250,
+            2190,
+            3815,
+            4937,
+            2503,
+            6372,
+            334
+          ],
+          "padded_tokens": 1440,
+          "supervised_targets": 320,
+          "target_sessions": [
+            9467,
+            3986,
+            3883,
+            6723,
+            8672,
+            4429,
+            11194,
+            596
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.868944353889674,
+            "forward_backward_seconds": 0.16059552086517215,
+            "loss": 0.8190316557884216,
+            "gradient_l2": 2.680460274453721,
+            "targets": 320,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.6265855031087995,
+            "forward_backward_seconds": 0.16887985612265766,
+            "loss": 0.8190316557884216,
+            "gradient_l2": 2.680460274453721,
+            "targets": 320,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.7477649284992367
+      },
+      {
+        "stratum": 5,
+        "weight": 235,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            884,
+            2916,
+            646,
+            2607,
+            1398,
+            2721,
+            2929,
+            6922
+          ],
+          "padded_tokens": 1640,
+          "supervised_targets": 203,
+          "target_sessions": [
+            1568,
+            5161,
+            1143,
+            4616,
+            2485,
+            4818,
+            5185,
+            12167
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.7617661450058222,
+            "forward_backward_seconds": 0.16261779493652284,
+            "loss": 0.7714028358459473,
+            "gradient_l2": 1.6999910713447466,
+            "targets": 203,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.6993535771034658,
+            "forward_backward_seconds": 0.17683430202305317,
+            "loss": 0.7714028358459473,
+            "gradient_l2": 1.6999910713447466,
+            "targets": 203,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.730559861054644
+      },
+      {
+        "stratum": 6,
+        "weight": 235,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            4265,
+            4752,
+            1796,
+            3279,
+            5558,
+            1227,
+            3898,
+            2930
+          ],
+          "padded_tokens": 1824,
+          "supervised_targets": 291,
+          "target_sessions": [
+            7502,
+            8349,
+            3188,
+            5802,
+            9764,
+            2177,
+            6861,
+            5186
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.7794114919379354,
+            "forward_backward_seconds": 0.1877049640752375,
+            "loss": 0.784906804561615,
+            "gradient_l2": 1.513128172664881,
+            "targets": 291,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.7400400401093066,
+            "forward_backward_seconds": 0.1880654008127749,
+            "loss": 0.784906804561615,
+            "gradient_l2": 1.513128172664881,
+            "targets": 291,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.759725766023621
+      },
+      {
+        "stratum": 7,
+        "weight": 235,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            3898,
+            2994,
+            5622,
+            287,
+            6018,
+            4335,
+            3896,
+            3356
+          ],
+          "padded_tokens": 1995,
+          "supervised_targets": 347,
+          "target_sessions": [
+            6861,
+            5301,
+            9871,
+            517,
+            10567,
+            7617,
+            6859,
+            5931
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.7402206880506128,
+            "forward_backward_seconds": 0.1891900699120015,
+            "loss": 0.7926954627037048,
+            "gradient_l2": 1.2774563262059357,
+            "targets": 347,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.834613606100902,
+            "forward_backward_seconds": 0.19203206105157733,
+            "loss": 0.7926954627037048,
+            "gradient_l2": 1.2774563262059357,
+            "targets": 347,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.7874171470757574
+      },
+      {
+        "stratum": 8,
+        "weight": 235,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            775,
+            83,
+            6470,
+            2047,
+            6863,
+            4811,
+            6269,
+            2351
+          ],
+          "padded_tokens": 2176,
+          "supervised_targets": 499,
+          "target_sessions": [
+            1378,
+            144,
+            11375,
+            3629,
+            12059,
+            8446,
+            11009,
+            4168
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.7103174179792404,
+            "forward_backward_seconds": 0.2470111260190606,
+            "loss": 0.7110244035720825,
+            "gradient_l2": 1.0922210081723682,
+            "targets": 499,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.746450220933184,
+            "forward_backward_seconds": 0.23705378803424537,
+            "loss": 0.7110244035720825,
+            "gradient_l2": 1.0922210081723682,
+            "targets": 499,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.7283838194562122
+      },
+      {
+        "stratum": 9,
+        "weight": 235,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            2663,
+            6119,
+            6401,
+            1169,
+            2058,
+            4843,
+            6158,
+            5462
+          ],
+          "padded_tokens": 2331,
+          "supervised_targets": 524,
+          "target_sessions": [
+            4716,
+            10736,
+            11247,
+            2073,
+            3653,
+            8511,
+            10808,
+            9591
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.5966975470073521,
+            "forward_backward_seconds": 0.24536579404957592,
+            "loss": 0.7717368602752686,
+            "gradient_l2": 1.0971591132740717,
+            "targets": 524,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 1.0392626598477364,
+            "forward_backward_seconds": 0.24566248105838895,
+            "loss": 0.7717368602752686,
+            "gradient_l2": 1.0971591132740717,
+            "targets": 524,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.8179801034275442
+      },
+      {
+        "stratum": 10,
+        "weight": 235,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            422,
+            1174,
+            4560,
+            376,
+            2897,
+            1038,
+            989,
+            4823
+          ],
+          "padded_tokens": 2534,
+          "supervised_targets": 354,
+          "target_sessions": [
+            744,
+            2081,
+            8010,
+            667,
+            5125,
+            1835,
+            1751,
+            8469
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.7910701560322195,
+            "forward_backward_seconds": 0.20932439784519374,
+            "loss": 0.7222474813461304,
+            "gradient_l2": 1.6310176148112845,
+            "targets": 354,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.853513898095116,
+            "forward_backward_seconds": 0.20079561811871827,
+            "loss": 0.7222474813461304,
+            "gradient_l2": 1.6310176148112845,
+            "targets": 354,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.8222920270636678
+      },
+      {
+        "stratum": 11,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            5180,
+            66,
+            2944,
+            549,
+            4413,
+            3793,
+            1613,
+            1698
+          ],
+          "padded_tokens": 2713,
+          "supervised_targets": 603,
+          "target_sessions": [
+            9099,
+            109,
+            5215,
+            967,
+            7754,
+            6684,
+            2860,
+            3016
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.8065685490146279,
+            "forward_backward_seconds": 0.3007401649374515,
+            "loss": 0.6780780553817749,
+            "gradient_l2": 1.6560793661975335,
+            "targets": 603,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.7916432861238718,
+            "forward_backward_seconds": 0.30342896515503526,
+            "loss": 0.6780780553817749,
+            "gradient_l2": 1.6560793661975335,
+            "targets": 603,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.7991059175692499
+      },
+      {
+        "stratum": 12,
+        "weight": 234,
+        "shape": {
+          "batch_size": 3,
+          "indices": [
+            3240,
+            3345,
+            552
+          ],
+          "padded_tokens": 2923,
+          "supervised_targets": 290,
+          "target_sessions": [
+            5730,
+            5913,
+            970
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.9548171381466091,
+            "forward_backward_seconds": 0.4606216310057789,
+            "loss": 0.7640629410743713,
+            "gradient_l2": 2.1792757193074914,
+            "targets": 290,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.9695615640375763,
+            "forward_backward_seconds": 0.431196945020929,
+            "loss": 0.7640629410743713,
+            "gradient_l2": 2.1792757193074914,
+            "targets": 290,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.9621893510920927
+      },
+      {
+        "stratum": 13,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            2962,
+            791,
+            903,
+            3829,
+            3269,
+            1155,
+            6188,
+            2020
+          ],
+          "padded_tokens": 3117,
+          "supervised_targets": 533,
+          "target_sessions": [
+            5244,
+            1407,
+            1601,
+            6743,
+            5786,
+            2046,
+            10863,
+            3582
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.7335092050489038,
+            "forward_backward_seconds": 0.30200184788554907,
+            "loss": 0.7134883403778076,
+            "gradient_l2": 2.6806646999642196,
+            "targets": 533,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.8269727570004761,
+            "forward_backward_seconds": 0.3054118708241731,
+            "loss": 0.7134883403778076,
+            "gradient_l2": 2.6806646999642196,
+            "targets": 533,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.78024098102469
+      },
+      {
+        "stratum": 14,
+        "weight": 234,
+        "shape": {
+          "batch_size": 5,
+          "indices": [
+            1756,
+            2112,
+            5663,
+            32,
+            5726
+          ],
+          "padded_tokens": 3333,
+          "supervised_targets": 440,
+          "target_sessions": [
+            3117,
+            3748,
+            9944,
+            53,
+            10057
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.9747597200330347,
+            "forward_backward_seconds": 0.42129421909339726,
+            "loss": 0.6766177415847778,
+            "gradient_l2": 1.0121538826807617,
+            "targets": 440,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.8379909901414067,
+            "forward_backward_seconds": 0.4190686079673469,
+            "loss": 0.6766177415847778,
+            "gradient_l2": 1.0121538826807617,
+            "targets": 440,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.9063753550872207
+      },
+      {
+        "stratum": 15,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            1073,
+            6794,
+            779,
+            5117,
+            1497,
+            1298,
+            3993,
+            6716
+          ],
+          "padded_tokens": 3552,
+          "supervised_targets": 517,
+          "target_sessions": [
+            1899,
+            11937,
+            1385,
+            8988,
+            2654,
+            2303,
+            7021,
+            11803
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.7705467878840864,
+            "forward_backward_seconds": 0.3266972810961306,
+            "loss": 0.7818631529808044,
+            "gradient_l2": 1.0558522184940564,
+            "targets": 517,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.8058469099923968,
+            "forward_backward_seconds": 0.33271956793032587,
+            "loss": 0.7818631529808044,
+            "gradient_l2": 1.0558522184940564,
+            "targets": 517,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.7881968489382416
+      },
+      {
+        "stratum": 16,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            3159,
+            2108,
+            1569,
+            5760,
+            975,
+            4717,
+            2736,
+            1130
+          ],
+          "padded_tokens": 3790,
+          "supervised_targets": 653,
+          "target_sessions": [
+            5588,
+            3744,
+            2781,
+            10111,
+            1726,
+            8291,
+            4844,
+            2001
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.8089807429350913,
+            "forward_backward_seconds": 0.3611056311056018,
+            "loss": 0.68207186460495,
+            "gradient_l2": 2.1598130232830646,
+            "targets": 653,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.9567920498084277,
+            "forward_backward_seconds": 0.36208214494399726,
+            "loss": 0.68207186460495,
+            "gradient_l2": 2.1598130232830646,
+            "targets": 653,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.8828863963717595
+      },
+      {
+        "stratum": 17,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            4618,
+            294,
+            2098,
+            6550,
+            3644,
+            2357,
+            5914,
+            427
+          ],
+          "padded_tokens": 4040,
+          "supervised_targets": 661,
+          "target_sessions": [
+            8121,
+            524,
+            3726,
+            11513,
+            6431,
+            4179,
+            10385,
+            752
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.8630792279727757,
+            "forward_backward_seconds": 0.3441189881414175,
+            "loss": 0.7626725435256958,
+            "gradient_l2": 0.916221566486437,
+            "targets": 661,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.7532584760338068,
+            "forward_backward_seconds": 0.3405654039233923,
+            "loss": 0.7626725435256958,
+            "gradient_l2": 0.916221566486437,
+            "targets": 661,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.8081688520032912
+      },
+      {
+        "stratum": 18,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            5675,
+            1420,
+            1067,
+            6801,
+            5121,
+            5655,
+            178,
+            2098
+          ],
+          "padded_tokens": 4291,
+          "supervised_targets": 590,
+          "target_sessions": [
+            9966,
+            2522,
+            1888,
+            11947,
+            8992,
+            9928,
+            311,
+            3726
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.9100226880982518,
+            "forward_backward_seconds": 0.3489119780715555,
+            "loss": 0.7443549036979675,
+            "gradient_l2": 1.4620277706468143,
+            "targets": 590,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.7975460740271956,
+            "forward_backward_seconds": 0.33200738904997706,
+            "loss": 0.7443549036979675,
+            "gradient_l2": 1.4620277706468143,
+            "targets": 590,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.8537843810627237
+      },
+      {
+        "stratum": 19,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            4424,
+            6530,
+            6257,
+            1569,
+            2683,
+            77,
+            4708,
+            6934
+          ],
+          "padded_tokens": 4572,
+          "supervised_targets": 562,
+          "target_sessions": [
+            7774,
+            11476,
+            10987,
+            2781,
+            4753,
+            128,
+            8274,
+            12190
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.9691414101980627,
+            "forward_backward_seconds": 0.3864012339618057,
+            "loss": 0.749336302280426,
+            "gradient_l2": 2.487024012815956,
+            "targets": 562,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 1.009235000004992,
+            "forward_backward_seconds": 0.3830630087759346,
+            "loss": 0.749336302280426,
+            "gradient_l2": 2.487024012815956,
+            "targets": 562,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.9891882051015273
+      },
+      {
+        "stratum": 20,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            6246,
+            498,
+            1418,
+            3828,
+            2089,
+            6250,
+            3560,
+            2701
+          ],
+          "padded_tokens": 4931,
+          "supervised_targets": 548,
+          "target_sessions": [
+            10970,
+            871,
+            2515,
+            6742,
+            3703,
+            10977,
+            6291,
+            4786
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.6731327420566231,
+            "forward_backward_seconds": 0.32165823387913406,
+            "loss": 0.7475966811180115,
+            "gradient_l2": 1.5411981608753547,
+            "targets": 548,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.8752978621050715,
+            "forward_backward_seconds": 0.3427065589930862,
+            "loss": 0.7475966811180115,
+            "gradient_l2": 1.5411981608753547,
+            "targets": 548,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.7742153020808473
+      },
+      {
+        "stratum": 21,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            2112,
+            4313,
+            5014,
+            5683,
+            1807,
+            1040,
+            4502,
+            6730
+          ],
+          "padded_tokens": 5312,
+          "supervised_targets": 859,
+          "target_sessions": [
+            3748,
+            7580,
+            8805,
+            9982,
+            3204,
+            1840,
+            7910,
+            11828
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.9064215191174299,
+            "forward_backward_seconds": 0.44203045591712,
+            "loss": 0.7639121413230896,
+            "gradient_l2": 2.148946626700506,
+            "targets": 859,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 1.0107293960172683,
+            "forward_backward_seconds": 0.4447734630666673,
+            "loss": 0.7639121413230896,
+            "gradient_l2": 2.148946626700506,
+            "targets": 859,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.9585754575673491
+      },
+      {
+        "stratum": 22,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            2208,
+            4548,
+            863,
+            785,
+            1863,
+            4228,
+            4198,
+            1092
+          ],
+          "padded_tokens": 5690,
+          "supervised_targets": 863,
+          "target_sessions": [
+            3910,
+            7990,
+            1530,
+            1396,
+            3305,
+            7432,
+            7381,
+            1931
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 1.2285704060923308,
+            "forward_backward_seconds": 0.48172101797536016,
+            "loss": 0.7438077926635742,
+            "gradient_l2": 1.3980751477923454,
+            "targets": 863,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 1.0129863519687206,
+            "forward_backward_seconds": 0.4821977091487497,
+            "loss": 0.7438077926635742,
+            "gradient_l2": 1.3980751477923454,
+            "targets": 863,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 1.1207783790305257
+      },
+      {
+        "stratum": 23,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            3634,
+            796,
+            6764,
+            3741,
+            4477,
+            6020,
+            3305,
+            5380
+          ],
+          "padded_tokens": 6123,
+          "supervised_targets": 618,
+          "target_sessions": [
+            6413,
+            1412,
+            11885,
+            6597,
+            7862,
+            10572,
+            5841,
+            9442
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 1.086429012939334,
+            "forward_backward_seconds": 0.3871392400469631,
+            "loss": 0.7320452332496643,
+            "gradient_l2": 1.438334655189472,
+            "targets": 618,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 1.056275905109942,
+            "forward_backward_seconds": 0.3864336949773133,
+            "loss": 0.7320452332496643,
+            "gradient_l2": 1.438334655189472,
+            "targets": 618,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 1.071352459024638
+      },
+      {
+        "stratum": 24,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            4474,
+            1135,
+            4354,
+            4717,
+            4479,
+            3285,
+            5048,
+            5007
+          ],
+          "padded_tokens": 6548,
+          "supervised_targets": 482,
+          "target_sessions": [
+            7859,
+            2011,
+            7649,
+            8291,
+            7864,
+            5808,
+            8859,
+            8792
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.8737783320248127,
+            "forward_backward_seconds": 0.38238903507590294,
+            "loss": 0.7325001955032349,
+            "gradient_l2": 1.5047032886918983,
+            "targets": 482,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.9848998750094324,
+            "forward_backward_seconds": 0.3890153190586716,
+            "loss": 0.7325001955032349,
+            "gradient_l2": 1.5047032886918983,
+            "targets": 482,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.9293391035171226
+      },
+      {
+        "stratum": 25,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            3214,
+            1725,
+            1591,
+            2746,
+            2667,
+            3884,
+            5863,
+            1590
+          ],
+          "padded_tokens": 7096,
+          "supervised_targets": 1108,
+          "target_sessions": [
+            5685,
+            3062,
+            2822,
+            4864,
+            4726,
+            6836,
+            10293,
+            2821
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 1.2788297950755805,
+            "forward_backward_seconds": 0.6029272808227688,
+            "loss": 0.7283675074577332,
+            "gradient_l2": 2.2605055082708967,
+            "targets": 1108,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 1.1387947602197528,
+            "forward_backward_seconds": 0.6014049858786166,
+            "loss": 0.7283675074577332,
+            "gradient_l2": 2.2605055082708967,
+            "targets": 1108,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 1.2088122776476666
+      },
+      {
+        "stratum": 26,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            366,
+            6212,
+            4958,
+            6230,
+            2845,
+            1730,
+            1478,
+            2123
+          ],
+          "padded_tokens": 7696,
+          "supervised_targets": 950,
+          "target_sessions": [
+            651,
+            10907,
+            8709,
+            10940,
+            5033,
+            3067,
+            2624,
+            3771
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 1.3100815520156175,
+            "forward_backward_seconds": 0.6037558079697192,
+            "loss": 0.7403182983398438,
+            "gradient_l2": 2.069589848991524,
+            "targets": 950,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 1.1372968079522252,
+            "forward_backward_seconds": 0.6007871930487454,
+            "loss": 0.7403182983398438,
+            "gradient_l2": 2.069589848991524,
+            "targets": 950,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 1.2236891799839213
+      },
+      {
+        "stratum": 27,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            789,
+            4793,
+            1476,
+            368,
+            3257,
+            4201,
+            4608,
+            2699
+          ],
+          "padded_tokens": 8385,
+          "supervised_targets": 928,
+          "target_sessions": [
+            1400,
+            8417,
+            2622,
+            653,
+            5760,
+            7384,
+            8101,
+            4779
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 1.0926910149864852,
+            "forward_backward_seconds": 0.5631842268630862,
+            "loss": 0.7468986511230469,
+            "gradient_l2": 1.5623818666989693,
+            "targets": 928,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 1.0402049249969423,
+            "forward_backward_seconds": 0.5775763520505279,
+            "loss": 0.7468986511230469,
+            "gradient_l2": 1.5623818666989693,
+            "targets": 928,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 1.0664479699917138
+      },
+      {
+        "stratum": 28,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            6996,
+            5022,
+            6138,
+            822,
+            4000,
+            3021,
+            5024,
+            4274
+          ],
+          "padded_tokens": 9432,
+          "supervised_targets": 749,
+          "target_sessions": [
+            12294,
+            8818,
+            10769,
+            1456,
+            7031,
+            5344,
+            8820,
+            7516
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 1.076953505864367,
+            "forward_backward_seconds": 0.5922774891369045,
+            "loss": 0.7492249011993408,
+            "gradient_l2": 3.02952786881299,
+            "targets": 749,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 1.0139860059134662,
+            "forward_backward_seconds": 0.5894395220093429,
+            "loss": 0.7492249011993408,
+            "gradient_l2": 3.02952786881299,
+            "targets": 749,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 1.0454697558889166
+      },
+      {
+        "stratum": 29,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            1397,
+            5606,
+            3740,
+            783,
+            3113,
+            6935,
+            4723,
+            838
+          ],
+          "padded_tokens": 10990,
+          "supervised_targets": 1215,
+          "target_sessions": [
+            2481,
+            9843,
+            6591,
+            1389,
+            5506,
+            12191,
+            8300,
+            1485
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 1.3622152099851519,
+            "forward_backward_seconds": 0.8267936280462891,
+            "loss": 0.6955830454826355,
+            "gradient_l2": 2.0954383438881385,
+            "targets": 1215,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 1.3745116048958153,
+            "forward_backward_seconds": 0.823034135857597,
+            "loss": 0.6955830454826355,
+            "gradient_l2": 2.0954383438881385,
+            "targets": 1215,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 1.3683634074404836
+      },
+      {
+        "stratum": 30,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            5461,
+            3735,
+            6318,
+            621,
+            5130,
+            1486,
+            2603,
+            2436
+          ],
+          "padded_tokens": 13858,
+          "supervised_targets": 819,
+          "target_sessions": [
+            9585,
+            6586,
+            11094,
+            1101,
+            9006,
+            2637,
+            4607,
+            4314
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 1.3041397449560463,
+            "forward_backward_seconds": 0.81770508014597,
+            "loss": 0.7976105809211731,
+            "gradient_l2": 2.9643528391467115,
+            "targets": 819,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 1.4377079110126942,
+            "forward_backward_seconds": 0.8182472819462419,
+            "loss": 0.7976105809211731,
+            "gradient_l2": 2.9643528391467115,
+            "targets": 819,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 1.3709238279843703
+      },
+      {
+        "stratum": 31,
+        "weight": 234,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            642,
+            3163,
+            3161,
+            4951,
+            668,
+            3909,
+            615,
+            4495
+          ],
+          "padded_tokens": 25116,
+          "supervised_targets": 931,
+          "target_sessions": [
+            1134,
+            5592,
+            5590,
+            8694,
+            1183,
+            6878,
+            1092,
+            7897
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 1.7401650049723685,
+            "forward_backward_seconds": 1.267324083019048,
+            "loss": 0.7612389922142029,
+            "gradient_l2": 2.207218493821866,
+            "targets": 931,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 1.7327446870040148,
+            "forward_backward_seconds": 1.2796186560299248,
+            "loss": 0.7612389922142029,
+            "gradient_l2": 2.207218493821866,
+            "targets": 931,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 1.7364548459881917
+      }
+    ],
+    "validation": [
+      {
+        "stratum": 0,
+        "weight": 36,
+        "shape": {
+          "batch_size": 2,
+          "indices": [
+            1086,
+            1087
+          ],
+          "padded_tokens": 1954,
+          "supervised_targets": 25,
+          "target_sessions": [
+            6776,
+            6777
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.1913230288773775,
+            "forward_backward_seconds": 0.04381726402789354,
+            "loss": 0.7411892414093018,
+            "gradient_l2": null,
+            "targets": 25,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.25793508999049664,
+            "forward_backward_seconds": 0.043056166963651776,
+            "loss": 0.7411892414093018,
+            "gradient_l2": null,
+            "targets": 25,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.22462905943393707
+      },
+      {
+        "stratum": 1,
+        "weight": 36,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            623,
+            661,
+            760,
+            761,
+            827,
+            828,
+            1103,
+            1373
+          ],
+          "padded_tokens": 3858,
+          "supervised_targets": 276,
+          "target_sessions": [
+            3853,
+            4088,
+            4709,
+            4710,
+            5126,
+            5127,
+            6893,
+            8589
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.2601093219127506,
+            "forward_backward_seconds": 0.06179017201066017,
+            "loss": 0.7599961161613464,
+            "gradient_l2": null,
+            "targets": 276,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.13898839498870075,
+            "forward_backward_seconds": 0.057792922016233206,
+            "loss": 0.7599961161613464,
+            "gradient_l2": null,
+            "targets": 276,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.19954885845072567
+      },
+      {
+        "stratum": 2,
+        "weight": 35,
+        "shape": {
+          "batch_size": 3,
+          "indices": [
+            659,
+            1198,
+            24
+          ],
+          "padded_tokens": 4740,
+          "supervised_targets": 423,
+          "target_sessions": [
+            4076,
+            7481,
+            164
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.21758393198251724,
+            "forward_backward_seconds": 0.13654906512238085,
+            "loss": 0.7787713408470154,
+            "gradient_l2": null,
+            "targets": 423,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.21975127118639648,
+            "forward_backward_seconds": 0.1370455389842391,
+            "loss": 0.7787713408470154,
+            "gradient_l2": null,
+            "targets": 423,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.21866760158445686
+      },
+      {
+        "stratum": 3,
+        "weight": 35,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            1686,
+            1761,
+            1763,
+            1764,
+            1802,
+            66,
+            85,
+            86
+          ],
+          "padded_tokens": 6352,
+          "supervised_targets": 567,
+          "target_sessions": [
+            10568,
+            11035,
+            11052,
+            11053,
+            11296,
+            411,
+            526,
+            527
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.1772319080773741,
+            "forward_backward_seconds": 0.09127321909181774,
+            "loss": 0.7477805018424988,
+            "gradient_l2": null,
+            "targets": 567,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.17838011984713376,
+            "forward_backward_seconds": 0.0911280361469835,
+            "loss": 0.7477805018424988,
+            "gradient_l2": null,
+            "targets": 567,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.17780601396225393
+      },
+      {
+        "stratum": 4,
+        "weight": 35,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            1617,
+            1618,
+            1654,
+            1657,
+            1777,
+            78,
+            79,
+            518
+          ],
+          "padded_tokens": 8063,
+          "supervised_targets": 389,
+          "target_sessions": [
+            10134,
+            10135,
+            10357,
+            10382,
+            11135,
+            482,
+            483,
+            3205
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.3498122759629041,
+            "forward_backward_seconds": 0.11893969704397023,
+            "loss": 0.7629538774490356,
+            "gradient_l2": null,
+            "targets": 389,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.3461189800873399,
+            "forward_backward_seconds": 0.10847080289386213,
+            "loss": 0.7629538774490356,
+            "gradient_l2": null,
+            "targets": 389,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.347965628025122
+      },
+      {
+        "stratum": 5,
+        "weight": 35,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            888,
+            898,
+            1247,
+            1248,
+            1736,
+            1870,
+            1871,
+            1872
+          ],
+          "padded_tokens": 10393,
+          "supervised_targets": 470,
+          "target_sessions": [
+            5498,
+            5569,
+            7802,
+            7803,
+            10885,
+            11733,
+            11734,
+            11735
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.24710430204868317,
+            "forward_backward_seconds": 0.09880952094681561,
+            "loss": 0.76389080286026,
+            "gradient_l2": null,
+            "targets": 470,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.20250258198939264,
+            "forward_backward_seconds": 0.0955934152007103,
+            "loss": 0.76389080286026,
+            "gradient_l2": null,
+            "targets": 470,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.2248034420190379
+      },
+      {
+        "stratum": 6,
+        "weight": 35,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            1213,
+            1214,
+            1215,
+            1216,
+            1336,
+            1337,
+            1372,
+            1646
+          ],
+          "padded_tokens": 13064,
+          "supervised_targets": 255,
+          "target_sessions": [
+            7585,
+            7586,
+            7587,
+            7588,
+            8365,
+            8366,
+            8583,
+            10312
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.22986829793080688,
+            "forward_backward_seconds": 0.12035641097463667,
+            "loss": 0.7181538939476013,
+            "gradient_l2": null,
+            "targets": 255,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.20809849118813872,
+            "forward_backward_seconds": 0.12741022603586316,
+            "loss": 0.7181538939476013,
+            "gradient_l2": null,
+            "targets": 255,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.2189833945594728
+      },
+      {
+        "stratum": 7,
+        "weight": 35,
+        "shape": {
+          "batch_size": 8,
+          "indices": [
+            736,
+            737,
+            817,
+            495,
+            1785,
+            1249,
+            1553,
+            1554
+          ],
+          "padded_tokens": 21415,
+          "supervised_targets": 828,
+          "target_sessions": [
+            4559,
+            4560,
+            5063,
+            3058,
+            11186,
+            7811,
+            9727,
+            9728
+          ]
+        },
+        "samples": [
+          {
+            "body_seconds": 0.451758008915931,
+            "forward_backward_seconds": 0.20120453089475632,
+            "loss": 0.7652730941772461,
+            "gradient_l2": null,
+            "targets": 828,
+            "optimizer_updates": 0
+          },
+          {
+            "body_seconds": 0.4501578251365572,
+            "forward_backward_seconds": 0.20067663211375475,
+            "loss": 0.7652730941772461,
+            "gradient_l2": null,
+            "targets": 828,
+            "optimizer_updates": 0
+          }
+        ],
+        "body_median_seconds": 0.4509579170262441
+      }
+    ]
+  },
+  "initial_diagnostics_seconds": 3.8522210468072444,
+  "io_proxies": [
+    {
+      "path": "/workspace/capstone/experiments/hitskt_favor_plus_v1/assist2017/assist2017_orf128_512_pair_b8_20261025_v2/orf128/runtime_profile/UNTRAINED_IO_PROXY_0.bin",
+      "sha256": "2f49a3878b99617b8bc6856f6725295f0c271c7c63cde7b21a1a59e21dde834d",
+      "bytes": 86837814,
+      "total_seconds": 0.8485564629081637,
+      "write_seconds": 0.13198671699501574,
+      "read_verify_seconds": 0.2743053319863975,
+      "optimizer_updates": 0,
+      "notice": "initial model plus moment-sized ZERO buffers/placeholders; NOT actual Adam state or a resumable training checkpoint"
+    },
+    {
+      "path": "/workspace/capstone/experiments/hitskt_favor_plus_v1/assist2017/assist2017_orf128_512_pair_b8_20261025_v2/orf128/runtime_profile/UNTRAINED_IO_PROXY_1.bin",
+      "sha256": "2f49a3878b99617b8bc6856f6725295f0c271c7c63cde7b21a1a59e21dde834d",
+      "bytes": 86837814,
+      "total_seconds": 0.9518159229774028,
+      "write_seconds": 0.1381381219252944,
+      "read_verify_seconds": 0.38016250799410045,
+      "optimizer_updates": 0,
+      "notice": "initial model plus moment-sized ZERO buffers/placeholders; NOT actual Adam state or a resumable training checkpoint"
+    }
+  ],
+  "weights_projections_unchanged": true,
+  "optimizer_updates": 0,
+  "resources": {
+    "phase": "runtime_profile_complete",
+    "observation": {
+      "observed_utc": "2026-10-25T07:29:02.046627+00:00",
+      "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+      "device": {
+        "total_bytes": 42278584320,
+        "free_bytes": 38853214208,
+        "used_bytes": 3425370112,
+        "compute_processes": [
+          {
+            "pid": 4079683,
+            "used_gpu_memory_bytes": 3376414720,
+            "gpu_instance": 2,
+            "compute_instance": 0
+          }
+        ]
+      },
+      "utilization": {
+        "status": "unsupported",
+        "nvml_status": 3,
+        "gpu_percent": null,
+        "memory_percent": null
+      },
+      "local": {
+        "observed_utc": "2026-10-25T07:29:02.253766+00:00",
+        "own_pid": 270022,
+        "holders": [
+          {
+            "pid": 270388,
+            "identity_complete": true,
+            "verified_read_only": true,
+            "start_time_ticks": 113313959,
+            "uid": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "parent_pid": 270387,
+            "state": "R (running)",
+            "comm": "nvidia-smi",
+            "executable": "/usr/bin/nvidia-smi",
+            "executable_device": 2305,
+            "executable_inode": 71042318,
+            "argv_sha256": "78d413cb0c836e84edc79f6d7edaeafecb39b9c52fecb9b5959f1c3633c88c54",
+            "python_module": null,
+            "cwd_category": "other",
+            "approved_option_names": [],
+            "trusted_binary_sha256": "a7d6645d5d4554ce7f5e7ae68cef9fb32d21721eaa2c271f7a58ef6c21039263",
+            "nvidia_handles": [
+              "/dev/nvidia-uvm",
+              "/dev/nvidia0",
+              "/dev/nvidiactl"
+            ],
+            "classification": "trusted_read_only_monitor"
+          }
+        ],
+        "conflicts": [],
+        "light_processes": [],
+        "inaccessible_fd_pids": [],
+        "visibility": "visible PID namespace only; unknown/inaccessible owners fail closed; no arbitrary argv or environment stored"
+      },
+      "pid_attribution": "UNRESOLVED; self/peer not inferred"
+    },
+    "host": {
+      "peak_process_rss_bytes": 1830465536,
+      "cgroup_limit_bytes": 96636764160,
+      "cgroup_usage_bytes": 75826380800,
+      "cgroup_headroom_bytes": 20810383360
+    },
+    "decision": {
+      "status": "ADMIT_SHARED_WITH_LIMITED_ATTRIBUTION",
+      "reasons": [],
+      "warnings": [
+        "PID namespace identity remains unresolved",
+        "visible GPU holders recorded as shared/unattributed activity",
+        "MIG utilization unsupported: cap/headroom/pacing/runtime fallback; load UNKNOWN"
+      ],
+      "reported_compute_processes": [
+        {
+          "pid": 4079683,
+          "used_gpu_memory_bytes": 3376414720,
+          "gpu_instance": 2,
+          "compute_instance": 0
+        }
+      ],
+      "local_holders": [
+        {
+          "pid": 270388,
+          "identity_complete": true,
+          "verified_read_only": true,
+          "start_time_ticks": 113313959,
+          "uid": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "parent_pid": 270387,
+          "state": "R (running)",
+          "comm": "nvidia-smi",
+          "executable": "/usr/bin/nvidia-smi",
+          "executable_device": 2305,
+          "executable_inode": 71042318,
+          "argv_sha256": "78d413cb0c836e84edc79f6d7edaeafecb39b9c52fecb9b5959f1c3633c88c54",
+          "python_module": null,
+          "cwd_category": "other",
+          "approved_option_names": [],
+          "trusted_binary_sha256": "a7d6645d5d4554ce7f5e7ae68cef9fb32d21721eaa2c271f7a58ef6c21039263",
+          "nvidia_handles": [
+            "/dev/nvidia-uvm",
+            "/dev/nvidia0",
+            "/dev/nvidiactl"
+          ],
+          "classification": "trusted_read_only_monitor"
+        }
+      ],
+      "local_visibility_gaps": [],
+      "pid_mapping_proven": false,
+      "exclusive_ownership_claimed": false
+    },
+    "cached_own_allocator": {
+      "allocated_bytes": 151783936,
+      "reserved_bytes": 2998927360,
+      "peak_allocated_bytes": 1775491072,
+      "peak_reserved_bytes": 2998927360
+    },
+    "own_allocator": {
+      "allocated_bytes": 151783936,
+      "reserved_bytes": 2998927360,
+      "peak_allocated_bytes": 1775491072,
+      "peak_reserved_bytes": 2998927360
+    }
+  }
+}

@@ -1,5 +1,21 @@
 # Durable user directives
 
+## 2026-10-25 — B8 profiling explicitly APPROVED; training still not approved (latest)
+
+User explicitly approves one maximum10-minute ZERO-optimizer GPU profiling
+experiment for preparedmatched128/512, existing sharedGPU safeguards/8GiB cap.
+Verify fullinteraction preservation/fairness, measure memory/runtime and assess
+two-hour8epochpairbudget. Provide exacttrainingcommands ifprofilepasses; do
+NOT launchtraining without separateapproval. No repeatedownership/adminquestions,
+otherjobinterference/testselection or modification oforiginalresults. New profile
+includescoreworstshapes plusprospectivelyfixed timing/I/O/diagnostic proxies,
+allstages under ONE600secondclock, firstfailurestop/noautomaticresizeorretry.
+Newevidence: reports/favor_plus_v1/b8_profile_20261025_v1/.
+Current outcome is COMPLETE; see FAVOR_B8_PROFILE_STATE.md. New seven-hour
+proposal and launch wiring do not authorize training or change resource limits.
+
+Earlier directives (historical):
+
 ## 2026-10-25 — Executable matched epochs and bounded profiling (latest)
 
 User requests completed ORF128/512 execution wiring, comparablefresh8epoch

@@ -1,0 +1,33 @@
+{
+  "action": "favor_plus_pair_full_shape_profile_only_v1",
+  "actual_approval_evidence": "reports/favor_plus_v1/b8_profile_20261025_v1/EXECUTION_SCOPE.md",
+  "approval_is_proposal": false,
+  "arm_started_unix": {},
+  "campaign_started_unix": 1792913217.650443,
+  "expires_utc": "2026-10-25T09:26:57.650443+00:00",
+  "known_explicit_restriction": false,
+  "known_incompatible_reservation": false,
+  "limits": {
+    "admission_free_bytes": 17179869184,
+    "advisory_total_bytes": 10737418240,
+    "allocator_bytes": 8589934592,
+    "host_headroom_bytes": 2147483648,
+    "host_rss_bytes": 4294967296,
+    "max_step_seconds": 30,
+    "pause_seconds": 0.1,
+    "runtime_free_bytes": 6442450944
+  },
+  "max_epochs_per_arm": 8,
+  "max_optimizer_updates": 0,
+  "per_arm_seconds": 600,
+  "prepared_plan_sha256": "cb3bbc9168b712d187a0b2e998c01816b204e2683f74d2e3a01bc5cf0d866edb",
+  "profile_approved": true,
+  "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+  "runtime_design_path": "reports/favor_plus_v1/b8_profile_20261025_v1/RUNTIME_PROFILE_DESIGN.json",
+  "runtime_design_sha256": "c81c603cb171189650ed224002bb7087d185192a4061d2e34c1c982a38d920b6",
+  "scope_evidence_sha256": "b83f91fb86a578a205e52c590c9fca7d552b020201f31d6488cc4df2ea8d8321",
+  "shared_permission_confirmed": true,
+  "starts_utc": "2026-10-25T07:26:57.650443+00:00",
+  "total_seconds": 600,
+  "training_approved": false
+}

@@ -1,0 +1,1147 @@
+{
+  "budget_screen_reserve_fraction": 0.25,
+  "checkpoint_count_per_arm": 312,
+  "diagnostic_events_per_arm": 9,
+  "estimation": "weighted median2 repeat observed body time; includes guards/pacing/state-finiteness transfers, excludes real Adam math.25percent prospective planning reserve is NOT an error tolerance or rigorous bound.",
+  "initial_diagnostic_passes_per_arm": 1,
+  "io_proxy_repeats": 2,
+  "kind": "fixed_B8_zero_update_runtime_profile_v1",
+  "optimizer_updates": 0,
+  "plan_sha256": "cb3bbc9168b712d187a0b2e998c01816b204e2683f74d2e3a01bc5cf0d866edb",
+  "planned_train_batches": 7499,
+  "planned_validation_batches": 282,
+  "profile_max_seconds": 600,
+  "repeats": 2,
+  "source_sha256": {
+    "ktbench/favor_plus_pair_profile_budget.py": "c55b2716cdf53f961aca4cec783da7dfa0a1a8e5b8937573de20dedf8989ccca",
+    "scripts/profile_favor_plus_pair_budget.py": "63299f22f1f3a3c4f675e6b8f671308186d0292167f8288b8406107c8aaf26c4"
+  },
+  "training": [
+    {
+      "index": 4284,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          1206,
+          3990,
+          5725,
+          1643,
+          4384,
+          558,
+          3508,
+          5365
+        ],
+        "padded_tokens": 720,
+        "supervised_targets": 169,
+        "target_sessions": [
+          2143,
+          7015,
+          10053,
+          2919,
+          7703,
+          984,
+          6199,
+          9416
+        ]
+      },
+      "weight": 235
+    },
+    {
+      "index": 71,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          3688,
+          3064,
+          4283,
+          3000,
+          4837,
+          4256,
+          233,
+          6466
+        ],
+        "padded_tokens": 888,
+        "supervised_targets": 225,
+        "target_sessions": [
+          6508,
+          5421,
+          7533,
+          5310,
+          8499,
+          7485,
+          414,
+          11368
+        ]
+      },
+      "weight": 235
+    },
+    {
+      "index": 490,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          3798,
+          5387,
+          5140,
+          6266,
+          604,
+          883,
+          4965,
+          6373
+        ],
+        "padded_tokens": 1082,
+        "supervised_targets": 271,
+        "target_sessions": [
+          6694,
+          9457,
+          9027,
+          11003,
+          1075,
+          1567,
+          8724,
+          11195
+        ]
+      },
+      "weight": 235
+    },
+    {
+      "index": 509,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          4854,
+          6080,
+          6741,
+          1437,
+          3448,
+          1125,
+          2854,
+          3777
+        ],
+        "padded_tokens": 1276,
+        "supervised_targets": 327,
+        "target_sessions": [
+          8531,
+          10675,
+          11847,
+          2552,
+          6096,
+          1986,
+          5051,
+          6657
+        ]
+      },
+      "weight": 235
+    },
+    {
+      "index": 7422,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          5392,
+          2250,
+          2190,
+          3815,
+          4937,
+          2503,
+          6372,
+          334
+        ],
+        "padded_tokens": 1440,
+        "supervised_targets": 320,
+        "target_sessions": [
+          9467,
+          3986,
+          3883,
+          6723,
+          8672,
+          4429,
+          11194,
+          596
+        ]
+      },
+      "weight": 235
+    },
+    {
+      "index": 5773,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          884,
+          2916,
+          646,
+          2607,
+          1398,
+          2721,
+          2929,
+          6922
+        ],
+        "padded_tokens": 1640,
+        "supervised_targets": 203,
+        "target_sessions": [
+          1568,
+          5161,
+          1143,
+          4616,
+          2485,
+          4818,
+          5185,
+          12167
+        ]
+      },
+      "weight": 235
+    },
+    {
+      "index": 437,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          4265,
+          4752,
+          1796,
+          3279,
+          5558,
+          1227,
+          3898,
+          2930
+        ],
+        "padded_tokens": 1824,
+        "supervised_targets": 291,
+        "target_sessions": [
+          7502,
+          8349,
+          3188,
+          5802,
+          9764,
+          2177,
+          6861,
+          5186
+        ]
+      },
+      "weight": 235
+    },
+    {
+      "index": 6584,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          3898,
+          2994,
+          5622,
+          287,
+          6018,
+          4335,
+          3896,
+          3356
+        ],
+        "padded_tokens": 1995,
+        "supervised_targets": 347,
+        "target_sessions": [
+          6861,
+          5301,
+          9871,
+          517,
+          10567,
+          7617,
+          6859,
+          5931
+        ]
+      },
+      "weight": 235
+    },
+    {
+      "index": 5507,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          775,
+          83,
+          6470,
+          2047,
+          6863,
+          4811,
+          6269,
+          2351
+        ],
+        "padded_tokens": 2176,
+        "supervised_targets": 499,
+        "target_sessions": [
+          1378,
+          144,
+          11375,
+          3629,
+          12059,
+          8446,
+          11009,
+          4168
+        ]
+      },
+      "weight": 235
+    },
+    {
+      "index": 862,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          2663,
+          6119,
+          6401,
+          1169,
+          2058,
+          4843,
+          6158,
+          5462
+        ],
+        "padded_tokens": 2331,
+        "supervised_targets": 524,
+        "target_sessions": [
+          4716,
+          10736,
+          11247,
+          2073,
+          3653,
+          8511,
+          10808,
+          9591
+        ]
+      },
+      "weight": 235
+    },
+    {
+      "index": 6521,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          422,
+          1174,
+          4560,
+          376,
+          2897,
+          1038,
+          989,
+          4823
+        ],
+        "padded_tokens": 2534,
+        "supervised_targets": 354,
+        "target_sessions": [
+          744,
+          2081,
+          8010,
+          667,
+          5125,
+          1835,
+          1751,
+          8469
+        ]
+      },
+      "weight": 235
+    },
+    {
+      "index": 4990,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          5180,
+          66,
+          2944,
+          549,
+          4413,
+          3793,
+          1613,
+          1698
+        ],
+        "padded_tokens": 2713,
+        "supervised_targets": 603,
+        "target_sessions": [
+          9099,
+          109,
+          5215,
+          967,
+          7754,
+          6684,
+          2860,
+          3016
+        ]
+      },
+      "weight": 234
+    },
+    {
+      "index": 7329,
+      "shape": {
+        "batch_size": 3,
+        "indices": [
+          3240,
+          3345,
+          552
+        ],
+        "padded_tokens": 2923,
+        "supervised_targets": 290,
+        "target_sessions": [
+          5730,
+          5913,
+          970
+        ]
+      },
+      "weight": 234
+    },
+    {
+      "index": 4983,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          2962,
+          791,
+          903,
+          3829,
+          3269,
+          1155,
+          6188,
+          2020
+        ],
+        "padded_tokens": 3117,
+        "supervised_targets": 533,
+        "target_sessions": [
+          5244,
+          1407,
+          1601,
+          6743,
+          5786,
+          2046,
+          10863,
+          3582
+        ]
+      },
+      "weight": 234
+    },
+    {
+      "index": 3833,
+      "shape": {
+        "batch_size": 5,
+        "indices": [
+          1756,
+          2112,
+          5663,
+          32,
+          5726
+        ],
+        "padded_tokens": 3333,
+        "supervised_targets": 440,
+        "target_sessions": [
+          3117,
+          3748,
+          9944,
+          53,
+          10057
+        ]
+      },
+      "weight": 234
+    },
+    {
+      "index": 258,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          1073,
+          6794,
+          779,
+          5117,
+          1497,
+          1298,
+          3993,
+          6716
+        ],
+        "padded_tokens": 3552,
+        "supervised_targets": 517,
+        "target_sessions": [
+          1899,
+          11937,
+          1385,
+          8988,
+          2654,
+          2303,
+          7021,
+          11803
+        ]
+      },
+      "weight": 234
+    },
+    {
+      "index": 1384,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          3159,
+          2108,
+          1569,
+          5760,
+          975,
+          4717,
+          2736,
+          1130
+        ],
+        "padded_tokens": 3790,
+        "supervised_targets": 653,
+        "target_sessions": [
+          5588,
+          3744,
+          2781,
+          10111,
+          1726,
+          8291,
+          4844,
+          2001
+        ]
+      },
+      "weight": 234
+    },
+    {
+      "index": 216,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          4618,
+          294,
+          2098,
+          6550,
+          3644,
+          2357,
+          5914,
+          427
+        ],
+        "padded_tokens": 4040,
+        "supervised_targets": 661,
+        "target_sessions": [
+          8121,
+          524,
+          3726,
+          11513,
+          6431,
+          4179,
+          10385,
+          752
+        ]
+      },
+      "weight": 234
+    },
+    {
+      "index": 4451,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          5675,
+          1420,
+          1067,
+          6801,
+          5121,
+          5655,
+          178,
+          2098
+        ],
+        "padded_tokens": 4291,
+        "supervised_targets": 590,
+        "target_sessions": [
+          9966,
+          2522,
+          1888,
+          11947,
+          8992,
+          9928,
+          311,
+          3726
+        ]
+      },
+      "weight": 234
+    },
+    {
+      "index": 3057,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          4424,
+          6530,
+          6257,
+          1569,
+          2683,
+          77,
+          4708,
+          6934
+        ],
+        "padded_tokens": 4572,
+        "supervised_targets": 562,
+        "target_sessions": [
+          7774,
+          11476,
+          10987,
+          2781,
+          4753,
+          128,
+          8274,
+          12190
+        ]
+      },
+      "weight": 234
+    },
+    {
+      "index": 5899,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          6246,
+          498,
+          1418,
+          3828,
+          2089,
+          6250,
+          3560,
+          2701
+        ],
+        "padded_tokens": 4931,
+        "supervised_targets": 548,
+        "target_sessions": [
+          10970,
+          871,
+          2515,
+          6742,
+          3703,
+          10977,
+          6291,
+          4786
+        ]
+      },
+      "weight": 234
+    },
+    {
+      "index": 3591,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          2112,
+          4313,
+          5014,
+          5683,
+          1807,
+          1040,
+          4502,
+          6730
+        ],
+        "padded_tokens": 5312,
+        "supervised_targets": 859,
+        "target_sessions": [
+          3748,
+          7580,
+          8805,
+          9982,
+          3204,
+          1840,
+          7910,
+          11828
+        ]
+      },
+      "weight": 234
+    },
+    {
+      "index": 4515,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          2208,
+          4548,
+          863,
+          785,
+          1863,
+          4228,
+          4198,
+          1092
+        ],
+        "padded_tokens": 5690,
+        "supervised_targets": 863,
+        "target_sessions": [
+          3910,
+          7990,
+          1530,
+          1396,
+          3305,
+          7432,
+          7381,
+          1931
+        ]
+      },
+      "weight": 234
+    },
+    {
+      "index": 5342,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          3634,
+          796,
+          6764,
+          3741,
+          4477,
+          6020,
+          3305,
+          5380
+        ],
+        "padded_tokens": 6123,
+        "supervised_targets": 618,
+        "target_sessions": [
+          6413,
+          1412,
+          11885,
+          6597,
+          7862,
+          10572,
+          5841,
+          9442
+        ]
+      },
+      "weight": 234
+    },
+    {
+      "index": 5305,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          4474,
+          1135,
+          4354,
+          4717,
+          4479,
+          3285,
+          5048,
+          5007
+        ],
+        "padded_tokens": 6548,
+        "supervised_targets": 482,
+        "target_sessions": [
+          7859,
+          2011,
+          7649,
+          8291,
+          7864,
+          5808,
+          8859,
+          8792
+        ]
+      },
+      "weight": 234
+    },
+    {
+      "index": 5454,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          3214,
+          1725,
+          1591,
+          2746,
+          2667,
+          3884,
+          5863,
+          1590
+        ],
+        "padded_tokens": 7096,
+        "supervised_targets": 1108,
+        "target_sessions": [
+          5685,
+          3062,
+          2822,
+          4864,
+          4726,
+          6836,
+          10293,
+          2821
+        ]
+      },
+      "weight": 234
+    },
+    {
+      "index": 7498,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          366,
+          6212,
+          4958,
+          6230,
+          2845,
+          1730,
+          1478,
+          2123
+        ],
+        "padded_tokens": 7696,
+        "supervised_targets": 950,
+        "target_sessions": [
+          651,
+          10907,
+          8709,
+          10940,
+          5033,
+          3067,
+          2624,
+          3771
+        ]
+      },
+      "weight": 234
+    },
+    {
+      "index": 299,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          789,
+          4793,
+          1476,
+          368,
+          3257,
+          4201,
+          4608,
+          2699
+        ],
+        "padded_tokens": 8385,
+        "supervised_targets": 928,
+        "target_sessions": [
+          1400,
+          8417,
+          2622,
+          653,
+          5760,
+          7384,
+          8101,
+          4779
+        ]
+      },
+      "weight": 234
+    },
+    {
+      "index": 275,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          6996,
+          5022,
+          6138,
+          822,
+          4000,
+          3021,
+          5024,
+          4274
+        ],
+        "padded_tokens": 9432,
+        "supervised_targets": 749,
+        "target_sessions": [
+          12294,
+          8818,
+          10769,
+          1456,
+          7031,
+          5344,
+          8820,
+          7516
+        ]
+      },
+      "weight": 234
+    },
+    {
+      "index": 1149,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          1397,
+          5606,
+          3740,
+          783,
+          3113,
+          6935,
+          4723,
+          838
+        ],
+        "padded_tokens": 10990,
+        "supervised_targets": 1215,
+        "target_sessions": [
+          2481,
+          9843,
+          6591,
+          1389,
+          5506,
+          12191,
+          8300,
+          1485
+        ]
+      },
+      "weight": 234
+    },
+    {
+      "index": 5661,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          5461,
+          3735,
+          6318,
+          621,
+          5130,
+          1486,
+          2603,
+          2436
+        ],
+        "padded_tokens": 13858,
+        "supervised_targets": 819,
+        "target_sessions": [
+          9585,
+          6586,
+          11094,
+          1101,
+          9006,
+          2637,
+          4607,
+          4314
+        ]
+      },
+      "weight": 234
+    },
+    {
+      "index": 6491,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          642,
+          3163,
+          3161,
+          4951,
+          668,
+          3909,
+          615,
+          4495
+        ],
+        "padded_tokens": 25116,
+        "supervised_targets": 931,
+        "target_sessions": [
+          1134,
+          5592,
+          5590,
+          8694,
+          1183,
+          6878,
+          1092,
+          7897
+        ]
+      },
+      "weight": 234
+    }
+  ],
+  "validation": [
+    {
+      "index": 97,
+      "shape": {
+        "batch_size": 2,
+        "indices": [
+          1086,
+          1087
+        ],
+        "padded_tokens": 1954,
+        "supervised_targets": 25,
+        "target_sessions": [
+          6776,
+          6777
+        ]
+      },
+      "weight": 36
+    },
+    {
+      "index": 41,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          623,
+          661,
+          760,
+          761,
+          827,
+          828,
+          1103,
+          1373
+        ],
+        "padded_tokens": 3858,
+        "supervised_targets": 276,
+        "target_sessions": [
+          3853,
+          4088,
+          4709,
+          4710,
+          5126,
+          5127,
+          6893,
+          8589
+        ]
+      },
+      "weight": 36
+    },
+    {
+      "index": 183,
+      "shape": {
+        "batch_size": 3,
+        "indices": [
+          659,
+          1198,
+          24
+        ],
+        "padded_tokens": 4740,
+        "supervised_targets": 423,
+        "target_sessions": [
+          4076,
+          7481,
+          164
+        ]
+      },
+      "weight": 35
+    },
+    {
+      "index": 112,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          1686,
+          1761,
+          1763,
+          1764,
+          1802,
+          66,
+          85,
+          86
+        ],
+        "padded_tokens": 6352,
+        "supervised_targets": 567,
+        "target_sessions": [
+          10568,
+          11035,
+          11052,
+          11053,
+          11296,
+          411,
+          526,
+          527
+        ]
+      },
+      "weight": 35
+    },
+    {
+      "index": 145,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          1617,
+          1618,
+          1654,
+          1657,
+          1777,
+          78,
+          79,
+          518
+        ],
+        "padded_tokens": 8063,
+        "supervised_targets": 389,
+        "target_sessions": [
+          10134,
+          10135,
+          10357,
+          10382,
+          11135,
+          482,
+          483,
+          3205
+        ]
+      },
+      "weight": 35
+    },
+    {
+      "index": 173,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          888,
+          898,
+          1247,
+          1248,
+          1736,
+          1870,
+          1871,
+          1872
+        ],
+        "padded_tokens": 10393,
+        "supervised_targets": 470,
+        "target_sessions": [
+          5498,
+          5569,
+          7802,
+          7803,
+          10885,
+          11733,
+          11734,
+          11735
+        ]
+      },
+      "weight": 35
+    },
+    {
+      "index": 148,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          1213,
+          1214,
+          1215,
+          1216,
+          1336,
+          1337,
+          1372,
+          1646
+        ],
+        "padded_tokens": 13064,
+        "supervised_targets": 255,
+        "target_sessions": [
+          7585,
+          7586,
+          7587,
+          7588,
+          8365,
+          8366,
+          8583,
+          10312
+        ]
+      },
+      "weight": 35
+    },
+    {
+      "index": 257,
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          736,
+          737,
+          817,
+          495,
+          1785,
+          1249,
+          1553,
+          1554
+        ],
+        "padded_tokens": 21415,
+        "supervised_targets": 828,
+        "target_sessions": [
+          4559,
+          4560,
+          5063,
+          3058,
+          11186,
+          7811,
+          9727,
+          9728
+        ]
+      },
+      "weight": 35
+    }
+  ],
+  "validation_passes_per_arm": 9,
+  "warmups_per_arm": 1
+}

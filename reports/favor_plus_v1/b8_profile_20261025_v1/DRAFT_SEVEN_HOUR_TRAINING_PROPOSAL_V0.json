@@ -1,0 +1,49 @@
+{
+  "action": "favor_plus_B8_matched8epochs_7h_parent_v1",
+  "actual_approval_evidence": "",
+  "approval_is_proposal": true,
+  "arms": [
+    "orf128",
+    "orf512"
+  ],
+  "campaign_started_unix": null,
+  "expires_utc": "SET_ONLY_AFTER_ACTUAL_APPROVAL",
+  "full_shape_profile_sha256": {
+    "orf128": "8554e3ac4c42d27e3a5346ee3117d6dfe339e6badfc39e0f4ff8286665ab5d0b",
+    "orf512": "b1eeb89751dcca194e11b3ea8d35397399820f05640fa40b2d392623845ab8e8"
+  },
+  "known_explicit_restriction": false,
+  "known_incompatible_reservation": false,
+  "limits": {
+    "admission_free_bytes": 17179869184,
+    "advisory_total_bytes": 10737418240,
+    "allocator_bytes": 8589934592,
+    "host_headroom_bytes": 2147483648,
+    "host_rss_bytes": 4294967296,
+    "max_step_seconds": 30,
+    "pause_seconds": 0.1,
+    "runtime_free_bytes": 6442450944
+  },
+  "max_epochs_per_arm": 8,
+  "minimum_start_headroom_seconds": {
+    "train-epoch": {
+      "orf128": 1500,
+      "orf512": 1800
+    },
+    "validate-best": 300,
+    "verify-epoch": 120
+  },
+  "new_parent_runtime_budget_approved": false,
+  "notice": "PROPOSAL. Actual new7hpair/4harm approval required. Worker leases are subordinate to unchanged absolute parent/arm deadlines; no automatic clock reset or furthertraining.",
+  "pair_seconds": 25200,
+  "per_arm_seconds": 14400,
+  "prepared_plan_sha256": "cb3bbc9168b712d187a0b2e998c01816b204e2683f74d2e3a01bc5cf0d866edb",
+  "resource_uuid": "MIG-d2fcfd79-720e-5218-82c9-0a132be68920",
+  "shared_permission_confirmed": true,
+  "source_sha256": {
+    "ktbench/favor_plus_pair_long_window.py": "c7bdf48d9d003d17d76f46a8fddb3988f52f4528c55534baafb4bd7176fa374f",
+    "scripts/run_favor_plus_pair_long_window.py": "e584266ecba624b519eb6ce977059e7b165bf58e9d73e681f85a002a0ebc0e3e"
+  },
+  "starts_utc": "SET_ONLY_AFTER_ACTUAL_APPROVAL",
+  "training_approved": false
+}

@@ -1,5 +1,36 @@
 # Next checkpoint
 
+## Latest: publish completed B8 profiling evidence, then WAIT
+
+Read [FAVOR_B8_PROFILE_STATE.md](FAVOR_B8_PROFILE_STATE.md) and
+`reports/favor_plus_v1/B8_GPU_PROFILE_AND_TRAINING_BUDGET.md`. Approved profile
+ALREADY COMPLETE/PASS215.663s, zero optimizer updates; do not rerun CUDA. New18
+CPU tests PASS. Complete B8 data/weights/order verified;512reserved7.988GiB
+leaves12MiB. Two-hour8epochpair NO-GO; measured4.90h proxy/6.13hwithreserve.
+New7hpair/4harm coordinator+false template PREPARED, not approved. Actualscope
+file doesnotexist. Finish archive/report/memory validation, scoped commit/push
+`capstone-gpu` researchbranch only; preserve README/SAKT dirt/main/oldartifacts.
+Then WAIT for explicit new training+runtime approval. No new optimizer/GPU
+experiments, finaltest, guards/cap/threshold changes or Light/DKT/otherjob work.
+If futureapprovalarrives, bind actualevidence/newabsoluteouterclock to unchanged
+physicalplan/source/coreprofiles; exactcommand/report firstepoch+recoverygate.
+
+Earlier handoff (historical):
+
+## Latest: explicit B8 profile approval — perform one bounded zero-update run
+
+User nowAPPROVES ≤10minprofile, nottraining. Readnewscope/design in
+`reports/favor_plus_v1/b8_profile_20261025_v1/` andimmutableB8plan
+`experiments/hitskt_favor_plus_v1/assist2017/assist2017_orf128_512_pair_b8_20261025_v2/prepared_plan.json`.
+Core128/512worstshapeprofiles thenfixedstratifiedtimingprofiles onlyifcorepass,
+one600sclock/8GiB andexisting sharedguards. No oldfailedrootretry. Checkactual
+terminalmarkers beforeexecution/resume; firstfailureSTOP,noresizeorclockreset.
+Training remainsNOTapproved; aftermeasurements assess2hfeasibility, publish
+exactcommands/resourceestimates/report/memory/researchbranchcommit, thenWAIT.
+No finaltest, otherjob/Light/DKT actions orhistoricalartifactchanges.
+
+Earlier handoff (historical):
+
 ## Latest: finish publication; wait for NEW B8 profile reply
 
 Read [FAVOR_PAIRED_EPOCH_WIRING_STATE.md](FAVOR_PAIRED_EPOCH_WIRING_STATE.md) and

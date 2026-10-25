@@ -1,5 +1,19 @@
 # HiTSKT capstone project memory
 
+## Latest: batch-8 GPU profile passed; longer training budget unapproved
+
+25 October 2026. Read [FAVOR_B8_PROFILE_STATE.md](FAVOR_B8_PROFILE_STATE.md).
+Approved zero-update four-stage profile completed in215.663s; both9/9 full-shape
+arms PASS.128 peakallocated/reserved2.336/4.395GiB,5127.674/7.988GiB: only12MiB
+reserved margin. Complete data/order preserved,7499 updates/arm planned. New18
+CPU tests PASS; prior66 retained. Two-hour pair NO-GO:4.90h proxy /6.13h with
+25% reserve, excluding actualAdam cost. New7hpair/4harm coordinator is prepared
+but approvalFALSE; NO training/newepochmetrics. Original results/otherjobs/
+8GiBguards/.20 preserved. Publish verified scoped work then WAIT for separate
+training/runtime approval; do not rerun profile or start any optimizer update.
+
+Earlier handoff (historical):
+
 ## Latest: paired epoch controller implemented;512 full-shape profile stopped
 
 25 October2026. Read [FAVOR_PAIRED_EPOCH_WIRING_STATE.md](FAVOR_PAIRED_EPOCH_WIRING_STATE.md).

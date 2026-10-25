@@ -1,0 +1,218 @@
+{
+  "cases": [
+    {
+      "shape": {
+        "batch_size": 1,
+        "indices": [
+          880
+        ],
+        "padded_tokens": 363,
+        "supervised_targets": 67,
+        "target_sessions": [
+          1558
+        ]
+      },
+      "split": "train"
+    },
+    {
+      "shape": {
+        "batch_size": 1,
+        "indices": [
+          3429
+        ],
+        "padded_tokens": 165,
+        "supervised_targets": 149,
+        "target_sessions": [
+          6063
+        ]
+      },
+      "split": "train"
+    },
+    {
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          703,
+          4014,
+          413,
+          3301,
+          6436,
+          3477,
+          5313,
+          2325
+        ],
+        "padded_tokens": 3671,
+        "supervised_targets": 447,
+        "target_sessions": [
+          1244,
+          7050,
+          729,
+          5837,
+          11308,
+          6148,
+          9324,
+          4120
+        ]
+      },
+      "split": "train"
+    },
+    {
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          1597,
+          5154,
+          1043,
+          1622,
+          1056,
+          4724,
+          4492,
+          3452
+        ],
+        "padded_tokens": 20410,
+        "supervised_targets": 2080,
+        "target_sessions": [
+          2833,
+          9052,
+          1843,
+          2877,
+          1861,
+          8301,
+          7894,
+          6100
+        ]
+      },
+      "split": "train"
+    },
+    {
+      "shape": {
+        "batch_size": 4,
+        "indices": [
+          1623,
+          529,
+          6218,
+          2449
+        ],
+        "padded_tokens": 21299,
+        "supervised_targets": 806,
+        "target_sessions": [
+          2878,
+          929,
+          10918,
+          4340
+        ]
+      },
+      "split": "train"
+    },
+    {
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          4444,
+          3349,
+          945,
+          2515,
+          3119,
+          3915,
+          6166,
+          1532
+        ],
+        "padded_tokens": 31410,
+        "supervised_targets": 1090,
+        "target_sessions": [
+          7810,
+          5917,
+          1669,
+          4447,
+          5515,
+          6884,
+          10821,
+          2713
+        ]
+      },
+      "split": "train"
+    },
+    {
+      "shape": {
+        "batch_size": 8,
+        "indices": [
+          642,
+          1336,
+          614,
+          6217,
+          4880,
+          6168,
+          1622,
+          2387
+        ],
+        "padded_tokens": 32416,
+        "supervised_targets": 2056,
+        "target_sessions": [
+          1134,
+          2377,
+          1091,
+          10917,
+          8571,
+          10823,
+          2877,
+          4228
+        ]
+      },
+      "split": "train"
+    },
+    {
+      "shape": {
+        "batch_size": 7,
+        "indices": [
+          1317,
+          1636,
+          1424,
+          1052,
+          1909,
+          2849,
+          1924
+        ],
+        "padded_tokens": 32751,
+        "supervised_targets": 1454,
+        "target_sessions": [
+          2339,
+          2902,
+          2526,
+          1857,
+          3390,
+          5037,
+          3417
+        ]
+      },
+      "split": "train"
+    },
+    {
+      "shape": {
+        "batch_size": 7,
+        "indices": [
+          995,
+          996,
+          386,
+          387,
+          457,
+          458,
+          1453
+        ],
+        "padded_tokens": 32601,
+        "supervised_targets": 443,
+        "target_sessions": [
+          6173,
+          6174,
+          2384,
+          2385,
+          2826,
+          2827,
+          9096
+        ]
+      },
+      "split": "validation"
+    }
+  ],
+  "optimizer_updates": 0,
+  "plan_sha256": "cb3bbc9168b712d187a0b2e998c01816b204e2683f74d2e3a01bc5cf0d866edb"
+}

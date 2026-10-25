@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="17" time="3.471" timestamp="2026-10-25T07:47:47.703610" hostname="dgxhnode3"><testcase classname="tests.test_favor_plus_pair_profile_budget" name="test_strata_weight_full_schedule_and_select_real_midpoints_deterministically" time="0.007" /><testcase classname="tests.test_favor_plus_pair_profile_budget" name="test_invalid_design_cannot_produce_empty_or_unweighted_estimate[rows0-3]" time="0.004" /><testcase classname="tests.test_favor_plus_pair_profile_budget" name="test_invalid_design_cannot_produce_empty_or_unweighted_estimate[rows1-0]" time="0.004" /><testcase classname="tests.test_favor_plus_pair_profile_budget" name="test_invalid_design_cannot_produce_empty_or_unweighted_estimate[rows2-True]" time="0.004" /><testcase classname="tests.test_favor_plus_pair_profile_budget" name="test_time_budget_proxy_counts_all_epochs_replays_checkpoints_and_margin" time="0.004" /><testcase classname="tests.test_favor_plus_pair_profile_budget" name="test_no_step_optimizer_adapter_forbids_any_optimizer_update" time="0.008" /><testcase classname="tests.test_favor_plus_pair_profile_budget" name="test_untrained_io_proxy_roundtrip_cannot_be_loaded_as_training_checkpoint" time="1.180" /><testcase classname="tests.test_favor_plus_pair_long_window" name="test_profile_or_unapproved_bigger_budget_never_grants_training[training_approved-False]" time="0.015" /><testcase classname="tests.test_favor_plus_pair_long_window" name="test_profile_or_unapproved_bigger_budget_never_grants_training[approval_is_proposal-True]" time="0.016" /><testcase classname="tests.test_favor_plus_pair_long_window" name="test_profile_or_unapproved_bigger_budget_never_grants_training[new_parent_runtime_budget_approved-False]" time="0.016" /><testcase classname="tests.test_favor_plus_pair_long_window" name="test_profile_or_unapproved_bigger_budget_never_grants_training[pair_seconds-30000]" time="0.016" /><testcase classname="tests.test_favor_plus_pair_long_window" name="test_profile_or_unapproved_bigger_budget_never_grants_training[actual_approval_evidence-]" time="0.016" /><testcase classname="tests.test_favor_plus_pair_long_window" name="test_child_lease_is_bounded_by_unreset_parent_and_arm_deadlines" time="0.020" /><testcase classname="tests.test_favor_plus_pair_long_window" name="test_expired_parent_cannot_be_extended_by_a_fresh_child_clock" time="0.016" /><testcase classname="tests.test_favor_plus_pair_long_window" name="test_unapproved_parent_refused_before_any_worker" time="0.016" /><testcase classname="tests.test_favor_plus_pair_long_window" name="test_parent_workflow_keeps_one_global_clock_and_stops_without_retry[False]" time="0.047"><failure message="FileExistsError: [Errno 17] File exists: '/tmp/pytest-of-root/pytest-75/test_parent_workflow_keeps_one0/approved_7h_parent_campaign/COMPLETED_STAGES.json'">tmp_path = PosixPath('/tmp/pytest-of-root/pytest-75/test_parent_workflow_keeps_one0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7fffc4474cd0&gt;, fail_first = False
+
+    @pytest.mark.parametrize('fail_first',[False,True])
+    def test_parent_workflow_keeps_one_global_clock_and_stops_without_retry(tmp_path,monkeypatch,fail_first):
+        path=tmp_path/'plan.json';path.write_text('{}');s=scope(path);file=tmp_path/'scope.json';file.write_text(json.dumps(s));monkeypatch.setenv('CUDA_VISIBLE_DEVICES',p.pair.shared.TRANSFERRED_MIG)
+        monkeypatch.setattr(p.pair,'load_plan',lambda *a:({},{}));monkeypatch.setattr(p.pair,'compare_results',lambda *a:{'UNIT':True});calls=[];leases=[]
+        def fake(command,**kwargs):
+            calls.append(command);lease=json.loads(open(command[command.index('--record')+1]).read());leases.append(lease)
+            if fail_first:raise subprocess.CalledProcessError(1,command)
+        monkeypatch.setattr(p.subprocess,'run',fake)
+        if fail_first:
+            with pytest.raises(subprocess.CalledProcessError):p.run(path,file)
+            assert len(calls)==1 and (tmp_path/'approved_7h_parent_campaign/STOP_NO_RETRY.json').exists()
+        else:
+&gt;           assert p.run(path,file)=={'UNIT':True} and len(calls)==34
+
+tests/test_favor_plus_pair_long_window.py:59: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+ktbench/favor_plus_pair_long_window.py:87: in run
+    stages.append(dict(arm=arm,action=action,epoch=epoch,seconds=time.perf_counter()-stamp));pair.write_json(out/'COMPLETED_STAGES.json',stages)
+ktbench/favor_plus_pipeline.py:46: in write_json
+    with path.open("x" if exclusive else "w") as f:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/tmp/pytest-of-root/pytest-75/test_parent_workflow_keeps_one0/approved_7h_parent_campaign/COMPLETED_STAGES.json'), mode = 'x'
+buffering = -1, encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+&gt;       return self._accessor.open(self, mode, buffering, encoding, errors,
+                                   newline)
+E       FileExistsError: [Errno 17] File exists: '/tmp/pytest-of-root/pytest-75/test_parent_workflow_keeps_one0/approved_7h_parent_campaign/COMPLETED_STAGES.json'
+
+/usr/lib/python3.10/pathlib.py:1119: FileExistsError</failure></testcase><testcase classname="tests.test_favor_plus_pair_long_window" name="test_parent_workflow_keeps_one_global_clock_and_stops_without_retry[True]" time="0.032" /></testsuite></testsuites>

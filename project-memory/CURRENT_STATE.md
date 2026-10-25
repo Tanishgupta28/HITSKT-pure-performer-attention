@@ -1,5 +1,21 @@
 # Current state
 
+## Latest: batch-8 profile complete; two-hour training budget NO-GO
+
+25 October2026. Read [FAVOR_B8_PROFILE_STATE.md](FAVOR_B8_PROFILE_STATE.md).
+User-approved <=600s/zero-update shared-MIG profile completed215.663s, botharms
+9/9 fullshapes PASS plus fixed32train/8val strata x2. Complete7060train/1977val
+sessions/order/lengths preserved; common7499-update schedules and initialweights
+match. Peakallocated/reservedGiB1282.336/4.395,5127.674/7.988; actualAdam math
+unmeasured/51212MiBreservedmargin.18newCPU tests PASS, prior66notrerun. Current
+2hproposal fails measured4.90hpair proxy /6.13hwith25%reserve; prepared7h/4harm
+approval-gated coordinator not authorized. No real optimizersteps/newepochAUC/
+finaltest orotherjob actions. .20 REVIEW128initialAction3/6retained; learning
+NOT VERIFIED. Preserve all originals and WAIT after scoped publication for new
+actual runtime/training approval; no reprofile/watchers/GPU work now.
+
+Earlier handoff (historical):
+
 ## Latest: paired epoch controller implemented; no new training
 
 25 October2026. Read [FAVOR_PAIRED_EPOCH_WIRING_STATE.md](FAVOR_PAIRED_EPOCH_WIRING_STATE.md).
