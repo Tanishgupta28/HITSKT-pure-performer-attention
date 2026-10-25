@@ -1,5 +1,22 @@
 # Next checkpoint
 
+## Latest: publish performance plan, then wait for bounded execution instruction
+
+Read [FAVOR_PERFORMANCE_PLAN_STATE.md](FAVOR_PERFORMANCE_PLAN_STATE.md) and
+`reports/favor_plus_v1/PERFORMANCE_IMPROVEMENT_EXPERIMENT_PLAN.md`.
+No newGPU/probe/optimizer work. Recipes areDECLARATIVE; old20step runner binds
+fourarms and oldepochcontroller native128. Do not launch them asnewtwo-arm/
+full512 study. Next recommendation freshORF128/512 20updates/arm40total≤15min
+andzero-updatefullshapeprofile≤10min, afterexplicitinstruction/newreviewed
+scope/dispatch/tests. Same8GiBsharedguards/.20REVIEW/source/data/seeds/Adam.
+Full8epochpair/provisional2hreservation isproposal; full512FP64time unknown,
+old45minexecutionceiling retained unlessseparatelyapproved. Gate/retrieval
+designs needimplementation/causalgradient/checkpoint tests beforeGPU. No final
+test/seedsearch/baselinechanges/Lightinterference. Preserveoriginals/unrelated
+dirt/main andnew/oldplans. FinishverifiedpublicationthenWAIT.
+
+Earlier handoff (historical):
+
 ## Latest: finish publication, then wait for matched-training approval
 
 Read [FAVOR_FOUR_ARM_CUDA_STATE.md](FAVOR_FOUR_ARM_CUDA_STATE.md) and

@@ -1,0 +1,142 @@
+[
+  {
+    "epochs_completed": 45,
+    "history_interactions": null,
+    "history_sessions": 15,
+    "metric_provenance": "historical stored full-validation row; fresh validation replay NOT VERIFIED",
+    "model": "hitskt",
+    "parameter_count": 6931457,
+    "seed": 42,
+    "selected_validation": {
+      "accuracy": 0.6850794912559618,
+      "bce": 0.5959635942236229,
+      "epoch": 40,
+      "f1": 0.563847940726388,
+      "precision": 0.592106175865338,
+      "recall": 0.5381640887693342,
+      "roc_auc": 0.719757256068911,
+      "targets": 125800,
+      "threshold": 0.5
+    },
+    "sources": {
+      "experiments/hitskt/assist2017/full/config.json": "99cc9a19504128d303fb4c6d66ef728e3daeaac420aaa3cb33fecca556730d4a",
+      "experiments/hitskt/assist2017/full/final_results.json": "25758283a96663245788e45fbd517372ae1f72e39fab91ff491ca79ea8a2d75b",
+      "experiments/hitskt/assist2017/full/metrics.csv": "47a116760aef2bde7f67d3b871c266b14ec762c9fc81b2c5c67344dad60641c0"
+    }
+  },
+  {
+    "epochs_completed": 17,
+    "history_interactions": 199,
+    "history_sessions": null,
+    "metric_provenance": "historical stored full-validation row; fresh validation replay NOT VERIFIED",
+    "model": "dkt",
+    "parameter_count": 59751,
+    "seed": 42,
+    "selected_validation": {
+      "accuracy": 0.6858028616852146,
+      "bce": 0.5904881990392987,
+      "epoch": 12,
+      "f1": 0.5113611076770923,
+      "precision": 0.6209691947396866,
+      "recall": 0.4346418964357767,
+      "roc_auc": 0.7213696055764979,
+      "targets": 125800,
+      "threshold": 0.5
+    },
+    "sources": {
+      "experiments/dkt/assist2017/full/config.json": "f758ff9b4fd5019610dbf10f2ff10d9e463ee88b7ffc14e77a8cc223caa6116c",
+      "experiments/dkt/assist2017/full/final_results.json": "93af4310fdda08b234417a2c9e2c27f0fc989fe946f3114916cf8cd83150af15",
+      "experiments/dkt/assist2017/full/metrics.csv": "5f7986579911db8364d5d32a977f7142ed33264d402d75745d30bab4fc8ed1c6"
+    }
+  },
+  {
+    "epochs_completed": 23,
+    "history_interactions": 199,
+    "history_sessions": null,
+    "metric_provenance": "historical stored full-validation row; fresh validation replay NOT VERIFIED",
+    "model": "dkvmn",
+    "parameter_count": 56551,
+    "seed": 42,
+    "selected_validation": {
+      "accuracy": 0.6762003179650239,
+      "bce": 0.6045230219891037,
+      "epoch": 18,
+      "f1": 0.4398822947032616,
+      "precision": 0.6362370723945903,
+      "recall": 0.3361424008069939,
+      "roc_auc": 0.6962520470412956,
+      "targets": 125800,
+      "threshold": 0.5
+    },
+    "sources": {
+      "experiments/dkvmn/assist2017/full/config.json": "58392f2f049534466f5a4c536ce2e6a6efc14d46fe9c699d87781d646adfc169",
+      "experiments/dkvmn/assist2017/full/final_results.json": "f6e2bdd5bc0258d57f7bc716a244ef8a32fb5c9b1a22c6c44d63adaacf6d1dd2",
+      "experiments/dkvmn/assist2017/full/metrics.csv": "fea07a060efe690bc8b6f0390b99c742f2722971aea6e264b76f1cb6f01391bd"
+    }
+  },
+  {
+    "epochs_completed": 35,
+    "history_interactions": 99,
+    "history_sessions": null,
+    "metric_provenance": "historical stored full-validation row; fresh validation replay NOT VERIFIED",
+    "model": "sakt",
+    "parameter_count": 528001,
+    "seed": 42,
+    "selected_validation": {
+      "accuracy": 0.7062480127186009,
+      "bce": 0.564253494600915,
+      "epoch": 30,
+      "f1": 0.575378039251735,
+      "precision": 0.6347479971605314,
+      "recall": 0.5261642568930733,
+      "roc_auc": 0.7577061438567358,
+      "targets": 125800,
+      "threshold": 0.5
+    },
+    "sources": {
+      "experiments/sakt/assist2017/full/config.json": "b9e81fc08d0e8a7e2ef4914ed82f2277caa251cadeb5dfc1b5b8d3587a2be026",
+      "experiments/sakt/assist2017/full/final_results.json": "e84430c657210757181dc4556d0198b15d521ccff800cb079faca4578293a73d",
+      "experiments/sakt/assist2017/full/metrics.csv": "96c73af262ca34ff153502cdc4d375e9dcf8d9485aebfa18b8f8e26ed0e44587"
+    }
+  },
+  {
+    "epochs_completed": 19,
+    "history_interactions": 49,
+    "history_sessions": null,
+    "metric_provenance": "historical stored full-validation row; fresh validation replay NOT VERIFIED",
+    "model": "rkt",
+    "parameter_count": 239343,
+    "seed": 42,
+    "selected_validation": {
+      "accuracy": 0.7160572337042925,
+      "bce": 0.5517995007314819,
+      "epoch": 14,
+      "f1": 0.5861621521421786,
+      "precision": 0.6531629227988639,
+      "recall": 0.5316282784129119,
+      "roc_auc": 0.7712554524089533,
+      "targets": 125800,
+      "threshold": 0.5
+    },
+    "sources": {
+      "experiments/rkt/assist2017/full/config.json": "4658d963bae451a27e2f11ce75b4fdb575210f6ced426437bc562000d1434ab0",
+      "experiments/rkt/assist2017/full/final_results.json": "861ec20a8ab5de26bfcadd0e3bb35416d7a8943d0fb77f9b7dbb7630cff02743",
+      "experiments/rkt/assist2017/full/metrics.csv": "fe8d1c677e44b475c2a801c838fb0fdebc8f038feeaf3b9dd631f8daf07d206b"
+    }
+  },
+  {
+    "epochs_completed": 8,
+    "history_sessions": 15,
+    "metric_provenance": "eight-epoch study; full selected-checkpoint validation replay PASS",
+    "model": "FAVOR+128 historical native FP32",
+    "parameter_count": 6931457,
+    "seed": 42,
+    "selected_validation": {
+      "bce": 0.5990377875565535,
+      "epoch": 7,
+      "f1": 0.5088139335822655,
+      "roc_auc": 0.7034669030290922,
+      "targets": 125800
+    }
+  }
+]

@@ -1,0 +1,985 @@
+{
+  "base_plan_sha256": "94ef6169d14aa3fd0d93afee765e349f2d8e019d2f09e2692972b2e75affbbd4",
+  "diagnostics": [
+    {
+      "dataset_index": 3,
+      "history_end_exclusive": 4,
+      "history_lengths": [
+        71,
+        65,
+        68,
+        49
+      ],
+      "history_start": 0,
+      "padded_tokens": 322,
+      "split": "train",
+      "stratum": 0,
+      "student": 1,
+      "target_length": 28,
+      "target_session": 4
+    },
+    {
+      "dataset_index": 39,
+      "history_end_exclusive": 60,
+      "history_lengths": [
+        57,
+        78,
+        133,
+        146,
+        49,
+        93,
+        105,
+        79,
+        128
+      ],
+      "history_start": 51,
+      "padded_tokens": 1360,
+      "split": "train",
+      "stratum": 1,
+      "student": 7,
+      "target_length": 26,
+      "target_session": 60
+    },
+    {
+      "dataset_index": 9,
+      "history_end_exclusive": 15,
+      "history_lengths": [
+        50
+      ],
+      "history_start": 14,
+      "padded_tokens": 141,
+      "split": "train",
+      "stratum": 2,
+      "student": 2,
+      "target_length": 87,
+      "target_session": 15
+    },
+    {
+      "dataset_index": 17,
+      "history_end_exclusive": 26,
+      "history_lengths": [
+        48,
+        25,
+        38,
+        31,
+        69
+      ],
+      "history_start": 21,
+      "padded_tokens": 436,
+      "split": "train",
+      "stratum": 3,
+      "student": 3,
+      "target_length": 79,
+      "target_session": 26
+    },
+    {
+      "dataset_index": 52,
+      "history_end_exclusive": 87,
+      "history_lengths": [
+        123
+      ],
+      "history_start": 86,
+      "padded_tokens": 353,
+      "split": "train",
+      "stratum": 4,
+      "student": 11,
+      "target_length": 226,
+      "target_session": 87
+    },
+    {
+      "dataset_index": 62,
+      "history_end_exclusive": 102,
+      "history_lengths": [
+        61,
+        37,
+        58,
+        62,
+        18,
+        14
+      ],
+      "history_start": 96,
+      "padded_tokens": 674,
+      "split": "train",
+      "stratum": 5,
+      "student": 12,
+      "target_length": 288,
+      "target_session": 102
+    }
+  ],
+  "execution_approved": false,
+  "kind": "prospective_pilot_selection_expansion_no_scientific_change",
+  "notice": "All methods use these same complete singleton examples and fixed sample order. This expands the referenced earlier selection; the new two-arm execution controller remains unimplemented/not authorized.",
+  "optimizer_updates": 0,
+  "source_path": "experiments/hitskt_favor_plus_v1/assist2017/four_arm_cuda_readiness_fp64_20261024_v2/prepared_plan.json",
+  "source_sha256": "0bab9e1cbfa42e83d158c3f2c712c1ed6bfd2d467bb500463becd1d072d296eb",
+  "training": [
+    {
+      "dataset_index": 880,
+      "history_end_exclusive": 1558,
+      "history_lengths": [
+        19,
+        27,
+        33,
+        24,
+        47,
+        10
+      ],
+      "history_start": 1552,
+      "padded_tokens": 363,
+      "split": "train",
+      "student": 178,
+      "target_length": 67,
+      "target_session": 1558
+    },
+    {
+      "dataset_index": 3573,
+      "history_end_exclusive": 6312,
+      "history_lengths": [
+        55,
+        17,
+        51,
+        4
+      ],
+      "history_start": 6308,
+      "padded_tokens": 290,
+      "split": "train",
+      "student": 703,
+      "target_length": 60,
+      "target_session": 6312
+    },
+    {
+      "dataset_index": 2156,
+      "history_end_exclusive": 3823,
+      "history_lengths": [
+        42,
+        61,
+        4,
+        31,
+        47,
+        2,
+        59
+      ],
+      "history_start": 3816,
+      "padded_tokens": 485,
+      "split": "train",
+      "student": 431,
+      "target_length": 42,
+      "target_session": 3823
+    },
+    {
+      "dataset_index": 2863,
+      "history_end_exclusive": 5066,
+      "history_lengths": [
+        26
+      ],
+      "history_start": 5065,
+      "padded_tokens": 91,
+      "split": "train",
+      "student": 567,
+      "target_length": 61,
+      "target_session": 5066
+    },
+    {
+      "dataset_index": 3968,
+      "history_end_exclusive": 6972,
+      "history_lengths": [
+        33,
+        57,
+        30
+      ],
+      "history_start": 6969,
+      "padded_tokens": 241,
+      "split": "train",
+      "student": 776,
+      "target_length": 62,
+      "target_session": 6972
+    },
+    {
+      "dataset_index": 6567,
+      "history_end_exclusive": 11544,
+      "history_lengths": [
+        30,
+        61
+      ],
+      "history_start": 11542,
+      "padded_tokens": 192,
+      "split": "train",
+      "student": 1293,
+      "target_length": 64,
+      "target_session": 11544
+    },
+    {
+      "dataset_index": 4735,
+      "history_end_exclusive": 8317,
+      "history_lengths": [
+        30,
+        48,
+        60,
+        24,
+        6
+      ],
+      "history_start": 8312,
+      "padded_tokens": 318,
+      "split": "train",
+      "student": 922,
+      "target_length": 6,
+      "target_session": 8317
+    },
+    {
+      "dataset_index": 2356,
+      "history_end_exclusive": 4178,
+      "history_lengths": [
+        61
+      ],
+      "history_start": 4177,
+      "padded_tokens": 107,
+      "split": "train",
+      "student": 470,
+      "target_length": 42,
+      "target_session": 4178
+    },
+    {
+      "dataset_index": 5865,
+      "history_end_exclusive": 10300,
+      "history_lengths": [
+        26
+      ],
+      "history_start": 10299,
+      "padded_tokens": 93,
+      "split": "train",
+      "student": 1145,
+      "target_length": 63,
+      "target_session": 10300
+    },
+    {
+      "dataset_index": 4187,
+      "history_end_exclusive": 7360,
+      "history_lengths": [
+        25,
+        58,
+        60,
+        40,
+        5
+      ],
+      "history_start": 7355,
+      "padded_tokens": 374,
+      "split": "train",
+      "student": 817,
+      "target_length": 62,
+      "target_session": 7360
+    },
+    {
+      "dataset_index": 362,
+      "history_end_exclusive": 644,
+      "history_lengths": [
+        23
+      ],
+      "history_start": 643,
+      "padded_tokens": 88,
+      "split": "train",
+      "student": 72,
+      "target_length": 61,
+      "target_session": 644
+    },
+    {
+      "dataset_index": 5267,
+      "history_end_exclusive": 9250,
+      "history_lengths": [
+        22,
+        39
+      ],
+      "history_start": 9248,
+      "padded_tokens": 144,
+      "split": "train",
+      "student": 1027,
+      "target_length": 60,
+      "target_session": 9250
+    },
+    {
+      "dataset_index": 6883,
+      "history_end_exclusive": 12093,
+      "history_lengths": [
+        12,
+        51,
+        2
+      ],
+      "history_start": 12090,
+      "padded_tokens": 229,
+      "split": "train",
+      "student": 1354,
+      "target_length": 68,
+      "target_session": 12093
+    },
+    {
+      "dataset_index": 2183,
+      "history_end_exclusive": 3870,
+      "history_lengths": [
+        23,
+        30,
+        23,
+        65,
+        25,
+        17
+      ],
+      "history_start": 3864,
+      "padded_tokens": 438,
+      "split": "train",
+      "student": 437,
+      "target_length": 34,
+      "target_session": 3870
+    },
+    {
+      "dataset_index": 799,
+      "history_end_exclusive": 1420,
+      "history_lengths": [
+        66,
+        49
+      ],
+      "history_start": 1418,
+      "padded_tokens": 196,
+      "split": "train",
+      "student": 163,
+      "target_length": 58,
+      "target_session": 1420
+    },
+    {
+      "dataset_index": 6809,
+      "history_end_exclusive": 11963,
+      "history_lengths": [
+        57
+      ],
+      "history_start": 11962,
+      "padded_tokens": 121,
+      "split": "train",
+      "student": 1338,
+      "target_length": 60,
+      "target_session": 11963
+    },
+    {
+      "dataset_index": 3288,
+      "history_end_exclusive": 5816,
+      "history_lengths": [
+        43,
+        69,
+        51
+      ],
+      "history_start": 5813,
+      "padded_tokens": 247,
+      "split": "train",
+      "student": 650,
+      "target_length": 32,
+      "target_session": 5816
+    },
+    {
+      "dataset_index": 2028,
+      "history_end_exclusive": 3595,
+      "history_lengths": [
+        49,
+        69,
+        33,
+        55
+      ],
+      "history_start": 3591,
+      "padded_tokens": 343,
+      "split": "train",
+      "student": 409,
+      "target_length": 57,
+      "target_session": 3595
+    },
+    {
+      "dataset_index": 3956,
+      "history_end_exclusive": 6954,
+      "history_lengths": [
+        27,
+        37,
+        65
+      ],
+      "history_start": 6951,
+      "padded_tokens": 267,
+      "split": "train",
+      "student": 774,
+      "target_length": 64,
+      "target_session": 6954
+    },
+    {
+      "dataset_index": 2322,
+      "history_end_exclusive": 4114,
+      "history_lengths": [
+        39,
+        38,
+        57
+      ],
+      "history_start": 4111,
+      "padded_tokens": 246,
+      "split": "train",
+      "student": 462,
+      "target_length": 67,
+      "target_session": 4114
+    }
+  ],
+  "training_order_source_digest": "3e16806a62625389d317ab6f3c714e0ea701ee9384d843ac3500b2efd9a78958",
+  "validation": [
+    {
+      "dataset_index": 6,
+      "history_end_exclusive": 49,
+      "history_lengths": [
+        33,
+        48,
+        35,
+        49
+      ],
+      "history_start": 45,
+      "padded_tokens": 208,
+      "split": "validation",
+      "student": 6,
+      "target_length": 2,
+      "target_session": 49
+    },
+    {
+      "dataset_index": 1,
+      "history_end_exclusive": 11,
+      "history_lengths": [
+        71,
+        65,
+        68,
+        49,
+        28,
+        41,
+        31,
+        41,
+        131,
+        175,
+        176
+      ],
+      "history_start": 0,
+      "padded_tokens": 1992,
+      "split": "validation",
+      "student": 1,
+      "target_length": 32,
+      "target_session": 11
+    },
+    {
+      "dataset_index": 10,
+      "history_end_exclusive": 78,
+      "history_lengths": [
+        27,
+        55,
+        27,
+        81
+      ],
+      "history_start": 74,
+      "padded_tokens": 370,
+      "split": "validation",
+      "student": 9,
+      "target_length": 36,
+      "target_session": 78
+    },
+    {
+      "dataset_index": 2,
+      "history_end_exclusive": 19,
+      "history_lengths": [
+        50,
+        87,
+        78,
+        84,
+        52
+      ],
+      "history_start": 14,
+      "padded_tokens": 516,
+      "split": "validation",
+      "student": 2,
+      "target_length": 69,
+      "target_session": 19
+    },
+    {
+      "dataset_index": 39,
+      "history_end_exclusive": 251,
+      "history_lengths": [
+        77,
+        42,
+        47
+      ],
+      "history_start": 248,
+      "padded_tokens": 380,
+      "split": "validation",
+      "student": 30,
+      "target_length": 141,
+      "target_session": 251
+    },
+    {
+      "dataset_index": 0,
+      "history_end_exclusive": 10,
+      "history_lengths": [
+        71,
+        65,
+        68,
+        49,
+        28,
+        41,
+        31,
+        41,
+        131,
+        175
+      ],
+      "history_start": 0,
+      "padded_tokens": 1948,
+      "split": "validation",
+      "student": 1,
+      "target_length": 176,
+      "target_session": 10
+    },
+    {
+      "dataset_index": 22,
+      "history_end_exclusive": 145,
+      "history_lengths": [
+        25,
+        65,
+        75,
+        75
+      ],
+      "history_start": 141,
+      "padded_tokens": 342,
+      "split": "validation",
+      "student": 17,
+      "target_length": 32,
+      "target_session": 145
+    },
+    {
+      "dataset_index": 5,
+      "history_end_exclusive": 43,
+      "history_lengths": [
+        16,
+        25,
+        7,
+        21,
+        20
+      ],
+      "history_start": 38,
+      "padded_tokens": 165,
+      "split": "validation",
+      "student": 5,
+      "target_length": 28,
+      "target_session": 43
+    },
+    {
+      "dataset_index": 11,
+      "history_end_exclusive": 84,
+      "history_lengths": [
+        34,
+        13,
+        11,
+        15
+      ],
+      "history_start": 80,
+      "padded_tokens": 181,
+      "split": "validation",
+      "student": 10,
+      "target_length": 35,
+      "target_session": 84
+    },
+    {
+      "dataset_index": 3,
+      "history_end_exclusive": 28,
+      "history_lengths": [
+        48,
+        25,
+        38,
+        31,
+        69,
+        79,
+        70
+      ],
+      "history_start": 21,
+      "padded_tokens": 655,
+      "split": "validation",
+      "student": 3,
+      "target_length": 86,
+      "target_session": 28
+    },
+    {
+      "dataset_index": 73,
+      "history_end_exclusive": 451,
+      "history_lengths": [
+        66,
+        77,
+        170,
+        116
+      ],
+      "history_start": 447,
+      "padded_tokens": 899,
+      "split": "validation",
+      "student": 51,
+      "target_length": 209,
+      "target_session": 451
+    },
+    {
+      "dataset_index": 62,
+      "history_end_exclusive": 386,
+      "history_lengths": [
+        120,
+        78,
+        120,
+        147,
+        156,
+        278
+      ],
+      "history_start": 380,
+      "padded_tokens": 1886,
+      "split": "validation",
+      "student": 43,
+      "target_length": 204,
+      "target_session": 386
+    },
+    {
+      "dataset_index": 38,
+      "history_end_exclusive": 246,
+      "history_lengths": [
+        27,
+        57,
+        30,
+        21
+      ],
+      "history_start": 242,
+      "padded_tokens": 266,
+      "split": "validation",
+      "student": 29,
+      "target_length": 28,
+      "target_session": 246
+    },
+    {
+      "dataset_index": 7,
+      "history_end_exclusive": 61,
+      "history_lengths": [
+        57,
+        78,
+        133,
+        146,
+        49,
+        93,
+        105,
+        79,
+        128,
+        26
+      ],
+      "history_start": 51,
+      "padded_tokens": 1494,
+      "split": "validation",
+      "student": 7,
+      "target_length": 12,
+      "target_session": 61
+    },
+    {
+      "dataset_index": 17,
+      "history_end_exclusive": 119,
+      "history_lengths": [
+        48,
+        87,
+        59,
+        40
+      ],
+      "history_start": 115,
+      "padded_tokens": 416,
+      "split": "validation",
+      "student": 14,
+      "target_length": 58,
+      "target_session": 119
+    },
+    {
+      "dataset_index": 4,
+      "history_end_exclusive": 36,
+      "history_lengths": [
+        26,
+        29,
+        35,
+        9,
+        84,
+        106
+      ],
+      "history_start": 30,
+      "padded_tokens": 752,
+      "split": "validation",
+      "student": 4,
+      "target_length": 102,
+      "target_session": 36
+    },
+    {
+      "dataset_index": 74,
+      "history_end_exclusive": 457,
+      "history_lengths": [
+        47,
+        29,
+        26,
+        151
+      ],
+      "history_start": 453,
+      "padded_tokens": 1186,
+      "split": "validation",
+      "student": 52,
+      "target_length": 572,
+      "target_session": 457
+    },
+    {
+      "dataset_index": 69,
+      "history_end_exclusive": 432,
+      "history_lengths": [
+        117,
+        159,
+        202,
+        110,
+        83,
+        180
+      ],
+      "history_start": 426,
+      "padded_tokens": 1363,
+      "split": "validation",
+      "student": 49,
+      "target_length": 137,
+      "target_session": 432
+    },
+    {
+      "dataset_index": 48,
+      "history_end_exclusive": 304,
+      "history_lengths": [
+        18,
+        44,
+        25
+      ],
+      "history_start": 301,
+      "padded_tokens": 155,
+      "split": "validation",
+      "student": 34,
+      "target_length": 15,
+      "target_session": 304
+    },
+    {
+      "dataset_index": 8,
+      "history_end_exclusive": 62,
+      "history_lengths": [
+        57,
+        78,
+        133,
+        146,
+        49,
+        93,
+        105,
+        79,
+        128,
+        26,
+        12
+      ],
+      "history_start": 51,
+      "padded_tokens": 1657,
+      "split": "validation",
+      "student": 7,
+      "target_length": 27,
+      "target_session": 62
+    },
+    {
+      "dataset_index": 21,
+      "history_end_exclusive": 139,
+      "history_lengths": [
+        32,
+        69,
+        45
+      ],
+      "history_start": 136,
+      "padded_tokens": 263,
+      "split": "validation",
+      "student": 16,
+      "target_length": 48,
+      "target_session": 139
+    },
+    {
+      "dataset_index": 9,
+      "history_end_exclusive": 72,
+      "history_lengths": [
+        29,
+        44,
+        44,
+        96,
+        50,
+        29,
+        46
+      ],
+      "history_start": 65,
+      "padded_tokens": 727,
+      "split": "validation",
+      "student": 8,
+      "target_length": 39,
+      "target_session": 72
+    },
+    {
+      "dataset_index": 96,
+      "history_end_exclusive": 593,
+      "history_lengths": [
+        29,
+        95,
+        115,
+        120
+      ],
+      "history_start": 589,
+      "padded_tokens": 654,
+      "split": "validation",
+      "student": 67,
+      "target_length": 164,
+      "target_session": 593
+    },
+    {
+      "dataset_index": 82,
+      "history_end_exclusive": 504,
+      "history_lengths": [
+        36,
+        57,
+        51,
+        75,
+        109
+      ],
+      "history_start": 499,
+      "padded_tokens": 689,
+      "split": "validation",
+      "student": 58,
+      "target_length": 132,
+      "target_session": 504
+    },
+    {
+      "dataset_index": 54,
+      "history_end_exclusive": 339,
+      "history_lengths": [
+        49,
+        68,
+        73
+      ],
+      "history_start": 336,
+      "padded_tokens": 230,
+      "split": "validation",
+      "student": 37,
+      "target_length": 3,
+      "target_session": 339
+    },
+    {
+      "dataset_index": 13,
+      "history_end_exclusive": 93,
+      "history_lengths": [
+        123,
+        226,
+        130,
+        128,
+        263,
+        118,
+        65
+      ],
+      "history_start": 86,
+      "padded_tokens": 1885,
+      "split": "validation",
+      "student": 11,
+      "target_length": 28,
+      "target_session": 93
+    },
+    {
+      "dataset_index": 23,
+      "history_end_exclusive": 150,
+      "history_lengths": [
+        30,
+        40,
+        80
+      ],
+      "history_start": 147,
+      "padded_tokens": 346,
+      "split": "validation",
+      "student": 18,
+      "target_length": 98,
+      "target_session": 150
+    },
+    {
+      "dataset_index": 12,
+      "history_end_exclusive": 92,
+      "history_lengths": [
+        123,
+        226,
+        130,
+        128,
+        263,
+        118
+      ],
+      "history_start": 86,
+      "padded_tokens": 1657,
+      "split": "validation",
+      "student": 11,
+      "target_length": 65,
+      "target_session": 92
+    },
+    {
+      "dataset_index": 158,
+      "history_end_exclusive": 994,
+      "history_lengths": [
+        33,
+        34,
+        18,
+        145
+      ],
+      "history_start": 990,
+      "padded_tokens": 969,
+      "split": "validation",
+      "student": 113,
+      "target_length": 379,
+      "target_session": 994
+    },
+    {
+      "dataset_index": 84,
+      "history_end_exclusive": 513,
+      "history_lengths": [
+        29,
+        31,
+        27,
+        72,
+        43,
+        84,
+        124
+      ],
+      "history_start": 506,
+      "padded_tokens": 1035,
+      "split": "validation",
+      "student": 59,
+      "target_length": 151,
+      "target_session": 513
+    },
+    {
+      "dataset_index": 65,
+      "history_end_exclusive": 402,
+      "history_lengths": [
+        26,
+        48,
+        79
+      ],
+      "history_start": 399,
+      "padded_tokens": 276,
+      "split": "validation",
+      "student": 45,
+      "target_length": 31,
+      "target_session": 402
+    },
+    {
+      "dataset_index": 15,
+      "history_end_exclusive": 111,
+      "history_lengths": [
+        7,
+        22,
+        97,
+        50,
+        42,
+        31
+      ],
+      "history_start": 105,
+      "padded_tokens": 614,
+      "split": "validation",
+      "student": 13,
+      "target_length": 18,
+      "target_session": 111
+    }
+  ],
+  "validation_coverage": {
+    "negative": 2094,
+    "positive": 1063,
+    "targets": 3157
+  }
+}

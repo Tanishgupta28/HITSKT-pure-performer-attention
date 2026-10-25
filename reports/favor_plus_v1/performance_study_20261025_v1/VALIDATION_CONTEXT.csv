@@ -1,0 +1,7 @@
+model,selected_epoch,full_validation_auc,full_validation_f1,full_validation_bce,targets,epochs_completed,provenance
+hitskt,40,0.719757256068911,0.563847940726388,0.5959635942236229,125800,45,historical stored full-validation row; fresh validation replay NOT VERIFIED
+dkt,12,0.7213696055764979,0.5113611076770923,0.5904881990392987,125800,17,historical stored full-validation row; fresh validation replay NOT VERIFIED
+dkvmn,18,0.6962520470412956,0.4398822947032616,0.6045230219891037,125800,23,historical stored full-validation row; fresh validation replay NOT VERIFIED
+sakt,30,0.7577061438567358,0.575378039251735,0.564253494600915,125800,35,historical stored full-validation row; fresh validation replay NOT VERIFIED
+rkt,14,0.7712554524089533,0.5861621521421786,0.5517995007314819,125800,19,historical stored full-validation row; fresh validation replay NOT VERIFIED
+FAVOR+128 historical native FP32,7,0.7034669030290922,0.5088139335822655,0.5990377875565535,125800,8,eight-epoch study; full selected-checkpoint validation replay PASS

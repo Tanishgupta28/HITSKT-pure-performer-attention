@@ -1,5 +1,19 @@
 # HiTSKT capstone project memory
 
+## Latest: performance-improvement plan prepared; no new training
+
+25 October2026. Read [FAVOR_PERFORMANCE_PLAN_STATE.md](FAVOR_PERFORMANCE_PLAN_STATE.md).
+Primary freshORF128/512 matchedFP64 comparison recommended; anti512optional,
+question-conditioned fusion gate/session retrieval DESIGN ONLY. Pre-LN/residuals/
+dropout already exist. Fullvalidation baseline context extracted withoutusing
+test scores, replay stillneeded; budgets/contextdifferencesexplicit. Exactdata/
+eight fullschedules frozen,33CPUtestsPASS(18new/15existing),zeroCUDA/probe/updates.
+Shared8GiBguards unchanged; full512FP64batchpeak/time unknown. Plan/CPUmodule
+declarative, two-arm/full-epochdispatch notwired. Publishverifiedwork thenWAIT
+fornewboundedinstruction; no oldapproval/template reuse.
+
+Earlier handoff (historical):
+
 ## Latest: four-arm CUDA comparison complete; training approval pending
 
 24 October 2026. Read [FAVOR_FOUR_ARM_CUDA_STATE.md](FAVOR_FOUR_ARM_CUDA_STATE.md).

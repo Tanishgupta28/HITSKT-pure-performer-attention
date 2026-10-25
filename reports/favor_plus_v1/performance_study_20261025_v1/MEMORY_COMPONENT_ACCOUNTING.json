@@ -1,0 +1,36 @@
+{
+  "128": {
+    "max_accounted": {
+      "batch": 666,
+      "batch_size": 14,
+      "component_sum_bytes": 1655345168,
+      "epoch": 4,
+      "max_action_length": 374,
+      "max_target_length": 824,
+      "naive_exact_full_target_score_bytes_per_stage": 152090624,
+      "persistent_weights_grad_Adam_projection_bytes": 111427600,
+      "saved_boundary_bytes": 379011072,
+      "saved_log_features_value_bytes": 448040960,
+      "short_session_retrieval_score_bytes": 2768640,
+      "two_ff_activation_bytes": 716865536
+    },
+    "warning": "Analytical retained-component sum, NOT measured GPU peak, complete accounting, memory forecast or proof of fit; FP64 attention/FP32 FF and parameters"
+  },
+  "512": {
+    "max_accounted": {
+      "batch": 666,
+      "batch_size": 14,
+      "component_sum_bytes": 3869249552,
+      "epoch": 4,
+      "max_action_length": 374,
+      "max_target_length": 824,
+      "naive_exact_full_target_score_bytes_per_stage": 152090624,
+      "persistent_weights_grad_Adam_projection_bytes": 113000464,
+      "saved_boundary_bytes": 1516044288,
+      "saved_log_features_value_bytes": 1523339264,
+      "short_session_retrieval_score_bytes": 2768640,
+      "two_ff_activation_bytes": 716865536
+    },
+    "warning": "Analytical retained-component sum, NOT measured GPU peak, complete accounting, memory forecast or proof of fit; FP64 attention/FP32 FF and parameters"
+  }
+}

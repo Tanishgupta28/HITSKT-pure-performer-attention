@@ -1,0 +1,19 @@
+{
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "plan_sha256": "94ef6169d14aa3fd0d93afee765e349f2d8e019d2f09e2692972b2e75affbbd4",
+  "recipes": 5,
+  "validation": {
+    "targets": 125800,
+    "positive": 47584,
+    "negative": 78216,
+    "ordered_event_ids_sha256": "7e0da8b0a737122179ade388f7091449c52314b06ab3ec1826bbd33c147f83bb",
+    "ordered_labels_sha256": "49b7bd9f25b6d21e2203495a5ed0d0c506ce32f19123a73e713dd5950550c935",
+    "adapters": "current RollingSessionDataset and RollingTargetDataset select same validation sessions; not a historical checkpoint replay"
+  },
+  "optimizer_updates": 0,
+  "CUDA_initialized": false,
+  "retained_component_max_GiB": {
+    "128": 1.5416603237390518,
+    "512": 3.603519454598427
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "consulted_utc_date": "2026-10-25",
+  "sources": [
+    {
+      "title": "Rethinking Attention with Performers",
+      "url": "https://arxiv.org/abs/2009.14794",
+      "scope": "softmax-kernel FAVOR+ and finite random-feature approximation; no guarantee of this project AUC"
+    },
+    {
+      "title": "A Self-Attentive model for Knowledge Tracing",
+      "url": "https://arxiv.org/abs/1907.06837",
+      "scope": "question-relevant past knowledge concepts; motivation only, not a HiTSKT gain"
+    },
+    {
+      "title": "Context-Aware Attentive Knowledge Tracing",
+      "url": "https://arxiv.org/abs/2007.12324",
+      "scope": "question/context-sensitive retrieval and monotonic relative-distance attention; motivation not claimed reproduction"
+    },
+    {
+      "title": "On Layer Normalization in the Transformer Architecture",
+      "url": "https://arxiv.org/abs/2002.04745",
+      "scope": "pre-LN gradient behavior; HiTSKT already uses pre-LN"
+    }
+  ],
+  "all_architecture_benefits_for_this_model": "HYPOTHESES_UNTESTED"
+}

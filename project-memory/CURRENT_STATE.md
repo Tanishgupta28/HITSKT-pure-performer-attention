@@ -1,5 +1,18 @@
 # Current state
 
+## Latest: performance-improvement plan prepared; no new training
+
+25 October2026. Read [FAVOR_PERFORMANCE_PLAN_STATE.md](FAVOR_PERFORMANCE_PLAN_STATE.md).
+Newreport/recipepack recommends ORF128vs512 matchedFP64 first; anti512optional,
+gatedfusion/past-sessionretrieval unimplemented hypotheses. ExistingpreLN/
+residuals/dropout retained. Baselinecontext nowFULLvalidation only, no fresh
+baseline replay orsuperiorityclaim. Dataset11/eightschedules checked;
+33CPUtestsPASS(18new/15old), zeroCUDA/probe/optimizer/testevaluation. Prior8
+epochs/approxREVIEW/four-armproposal preserved. Currenttask grants no GPUtraining
+permission; new scopes/wiring/approval/profile needed. PublishthenWAIT.
+
+Earlier handoff (historical):
+
 ## Latest: four-arm CUDA comparison complete; training approval pending
 
 24 October 2026. Read [FAVOR_FOUR_ARM_CUDA_STATE.md](FAVOR_FOUR_ARM_CUDA_STATE.md).

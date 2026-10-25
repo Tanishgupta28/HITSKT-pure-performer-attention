@@ -1530,3 +1530,26 @@ questionpending; false templatecannotexecute. Mainreport
 state`FAVOR_FOUR_ARM_CUDA_STATE.md`; archive2186noncheckpointreceipts entrySHA
 verified,5newinitialcheckpoints localonly. FinishpublicationthenWAIT unlessactual
 newapprovalarrives; no silentretry,budgetincrease,fulltraining orotherjobchange.
+
+## 2026-10-25 — Performance-first architecture plan; no GPU or training
+
+User requests existing-mechanism review, performance hypotheses and controlled
+experiment/resource plan, not approval of pending GPUlearning. Primary pair
+ORF128/512 freshmatchedFP64; optionalanti512 validatedonlyFP64. ExistingpreLN/
+residuals/dropout already present. Propose question-conditioned fusiongate and
+short exactretrieval overprior sessionstates separately; both DESIGN ONLY.
+StoredASSIST FULLvalidation rows extractedatAUC-selectedepochs: DKT.721370,
+DKVMN.696252,SAKT.757706,RKT.771255,ELU.719757; FAVOR.703467 frombest7 replay.
+No validationvsTEST comparison; oldbudgets/context/trainlabels differ, no
+superiorityorhistoricalfreshbaseline replayclaim. Currentadapter125800val IDs/
+labels equal, oldsource37/data11 andfull8schedules verified, originalresults
+preserved. NewpureCPUdeclarativebuilder/5recipes/JSON+CSV/order+selectionpack,
+33testsPASS(18new/15existing),zeroCUDA/probe/newupdates/evaluation. No model
+sourcechange. Oldapprox.20 REVIEW/FP32stressFAIL remain; lowerfrozenerrornot
+learnedAUCproof. Proposed20perprimaryarm40total≤15min plus10minzero-update
+fullprofile,8GiBsharedcapunchanged. Full8pair2hreservation onlyproposal,notETA/
+approval;512FP64fullpeak/time unknown,existing45minexecutioncapnotraised.
+Currentfour-armrunner/native128epochcontrollercannot silentlyexecute newstudy;
+newreviewed scope/wiring/tests andexplicitboundedinstruction needed. Report
+`reports/favor_plus_v1/PERFORMANCE_IMPROVEMENT_EXPERIMENT_PLAN.md`, state
+`FAVOR_PERFORMANCE_PLAN_STATE.md`; publishverifiedresearchbranch thenWAIT.

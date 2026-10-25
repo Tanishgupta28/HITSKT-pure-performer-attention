@@ -1,5 +1,19 @@
 # Durable user directives
 
+## 2026-10-25 — Performance-improvement planning (latest)
+
+User prioritizes measurable HiTSKT performance: inspect existing mechanisms,
+baseline/epoch evidence, primary FAVOR128vs512 controls, validated antithetic
+only, one/two additional architectural hypotheses, reproducible equal-split/
+seed/budget protocols and resource plan. Do not compare validation AUC to
+baseline test AUC or hide approximation errors. Necessary CPU checks authorized;
+this message does not approve the pending optimizer comparison or longGPU work.
+No new CUDA/training in this planning task. Preserve oldcheckpoints/results/
+model/data/Light/unrelatedbaselines; present plan/resources beforefutureexecution.
+Read FAVOR_PERFORMANCE_PLAN_STATE.md and new performance plan report.
+
+Earlier directives (historical):
+
 ## 2026-10-24 — Four-arm CUDA verification; training requires new approval (latest)
 
 User authorizes verifying originalORF128/512 and antithetic128/512 onCUDA with
