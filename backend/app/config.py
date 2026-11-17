@@ -13,4 +13,12 @@ class Settings(BaseSettings):
     cookie_secure: bool = False
     hitskt_checkpoint: str | None = None
     hitskt_manifest: str | None = None
+    lab_checkpoint: str | None = None
     session_days: int = 7
+    demo_enabled: bool = False
+    smtp_host: str | None = None
+    smtp_port: int = 587
+    smtp_user: str | None = None
+    smtp_password: str | None = None
+    smtp_from: str | None = None
+    smtp_starttls: bool = True

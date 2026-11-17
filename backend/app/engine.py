@@ -60,9 +60,9 @@ def recommendations(state):
     return output[:3]
 
 
-def select_question(state, assessment, predictor):
+def select_question(state, assessment, predictor, bank=None):
     answered = {r["question_id"] for r in assessment["responses"]}
-    candidates = [q for q in BANK.values() if q["id"] not in answered]
+    candidates = [q for q in (BANK if bank is None else bank).values() if q["id"] not in answered]
     if assessment.get("concept_id"):
         candidates = [q for q in candidates if q["concept_id"] == assessment["concept_id"]]
     if not candidates:

@@ -1,6 +1,6 @@
 # Platform workstream — Achin
 
-Updated: 2026-10-08 (Asia/Kolkata)
+Updated: 2026-11-17 (Asia/Kolkata)
 
 ## Scope and ownership
 
@@ -18,6 +18,35 @@ processes to deploy the platform. Achin specifically asked whether existing
 code was being altered; the platform preserves all research/training source.
 Platform commit identity is the locally configured Achin-Agarwal identity;
 historic Tanish identity instructions apply to the GPU workstream.
+
+## Approved three-role product implementation — 2026-11-17
+
+Achin approved the 83-board Lumen design and requested implementation, easy
+demo access, public student registration and a dataset. Implemented the
+responsive student workspace, teacher classroom and assessment workflows,
+administrator question bank, taxonomy, interaction export and Model Lab. The
+learning flow uses recorded attempts and BKT. Formal class papers use locked
+question versions, server deadlines and explicit teacher release. Scores and
+answers stay out of the student's dashboard and estimates until release.
+
+The local `-Demo` option seeds separate synthetic accounts and a demo class
+without overwriting existing learner records. `backend/data/lumen-synthetic-v1/`
+contains 864 attempts from 18 learners across 72 sessions, with a student-level
+split and hashed manifest. Live interaction exports are pseudonymous and are
+kept separate from synthetic exports. Live password email requires SMTP.
+
+Next.js 16.4.6 production build, npm production audit, 21 backend tests and four
+Edge browser checks passed. Browser writes used an isolated QA database. The
+normal local database was restored; proxied health, registration, all four demo
+logins and the same-score/different-topic comparison were confirmed. Model Lab
+computed the original synthetic replay at 0.386434 on CPU from the verified
+checkpoint. This does not establish inference on the live question bank. See
+`docs/platform/product.md` and `reports/platform/product_validation.json`.
+
+The latest inspected research base for this work is `f465d84`. The lab reads
+the independent CPU audit directly: the historical CUDA AUCs agree within
+tolerance, while full metric vectors and response availability remain open.
+No training processes, checkpoint assets or research source were changed.
 
 ## Latest design refresh — 2026-10-08
 
@@ -166,9 +195,9 @@ question content, exact model IDs, checkpoint provenance and a real history
 fixture. No user-facing claim of trained HiTSKT inference on original content.
 The adapter's tiny test checkpoint is untrained and tests the interface only.
 
-The first release contains one subject and no content-admin/teacher dashboard.
-The response aggregate caps a subject at 5,000 answers pending an archival
-storage migration.
+Mathematics is the only subject. The response aggregate caps a subject at 5,000
+practice answers pending an archival storage migration. Classroom and content
+administration are available as of the November product implementation.
 
 ## Collaboration
 

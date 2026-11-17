@@ -1,6 +1,25 @@
 # Platform / GPU handoff
 
-Updated: 2026-10-08 (Asia/Kolkata)
+Updated: 2026-11-17 (Asia/Kolkata)
+
+## Product and research boundary — 2026-11-17
+
+The approved Lumen platform now includes student, teacher and administrator
+workspaces and an isolated Model Lab. Launch locally from the repository with
+`scripts/run-platform.ps1 -Mode production -Demo`. See [PLATFORM_STATE.md](PLATFORM_STATE.md)
+and `reports/platform/product_validation.json` for checked behavior. The demo
+CSV is synthetic, generated from original Lumen math content; its IDs cannot
+be used as EdNet embeddings. No new checkpoint training is requested.
+
+Model Lab uses the existing trusted EdNet checkpoint for a synthetic sequence
+replay, or labels the saved verified parity output if that checkpoint or CPU
+runtime is absent. It reads the research agent's independent AUC audit and
+keeps the unresolved full metric and response-availability evidence visible.
+Live practice remains on BKT. The next model integration step remains a
+licensed matched-content package and a verified causal replay fixture with the
+exact question/composite-skill IDs and checkpoint hash. Do not derive learner
+mastery from a HiTSKT correctness probability or reinterpret synthetic results
+as student outcomes.
 
 ## Latest visual update — 2026-10-08
 

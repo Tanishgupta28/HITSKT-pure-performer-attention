@@ -12,6 +12,9 @@ export type User = {
   id: string;
   name: string;
   email: string;
+  role: "student" | "teacher" | "admin";
+  demo: boolean;
+  onboarding_complete: boolean;
   profile: LearnerProfile;
 };
 export type Concept = {
@@ -41,6 +44,7 @@ export type Recommendation = {
 };
 export type Question = {
   id: string;
+  question_type?: "mcq" | "numeric";
   prompt: string;
   choices: string[];
   difficulty: number;
@@ -48,7 +52,8 @@ export type Question = {
 };
 export type Feedback = {
   correct: boolean;
-  answer_index: number;
+  answer_index: number | null;
+  numeric_answer?: string | null;
   explanation: string;
   concept_name: string;
   mastery: number;
@@ -102,6 +107,7 @@ export type Dashboard = {
   };
   diagnostic_complete: boolean;
   active_assessment: Assessment | null;
+  active_diagnostic?: { id: string; title: string } | null;
   progress: {
     id: string;
     mode: string;
@@ -144,10 +150,17 @@ export async function api<T>(
     throw new Error(
       typeof body.detail === "string"
         ? body.detail
-        : "Please check your information and try again.",
+        : Array.isArray(body.detail)
+          ? body.detail.map((e: { msg: string }) => e.msg).join(" · ")
+          : "Please check your information and try again.",
     );
   }
   return response.status === 204 ? (undefined as T) : response.json();
 }
 export class AuthError extends Error {}
 export const percent = (n: number) => `${Math.round(n * 100)}%`;
+export const send = <T>(path: string, data?: unknown) =>
+  api<T>(path, {
+    method: "POST",
+    ...(data === undefined ? {} : { body: JSON.stringify(data) }),
+  });

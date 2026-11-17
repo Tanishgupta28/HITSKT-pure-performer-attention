@@ -3,6 +3,9 @@ WORKDIR /workspace
 COPY backend/requirements.txt /workspace/backend/requirements.txt
 RUN pip install --no-cache-dir -r backend/requirements.txt
 COPY backend/app /workspace/backend/app
+COPY reports/final_results.csv /workspace/reports/final_results.csv
+COPY reports/platform/inference_smoke.json /workspace/reports/platform/inference_smoke.json
+COPY reports/supervisor_verification/supervisor_facts.json /workspace/reports/supervisor_verification/supervisor_facts.json
 # Model imports remain available; optional torch is installed separately when serving a checkpoint.
 COPY ktbench /workspace/ktbench
 WORKDIR /workspace/backend

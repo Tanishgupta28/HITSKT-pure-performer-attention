@@ -40,4 +40,7 @@ def profile_view(user):
 
 
 def public_user(user):
-    return {"id": user["_id"], "name": user["name"], "email": user["email"], "profile": profile_view(user)}
+    return {"id": user["_id"], "name": user["name"], "email": user["email"],
+            "role": user.get("role", "student"), "demo": user.get("demo", False),
+            "onboarding_complete": user.get("onboarding_complete", "profile" in user or "role" not in user),
+            "profile": profile_view(user)}

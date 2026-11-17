@@ -1,5 +1,11 @@
 # Lumen: adaptive learning with HiTSKT
 
+## Current product build
+
+Use [the Lumen product guide](product.md) for the approved three-role site,
+local demo accounts, tests, exam workflow, and synthetic dataset. The original
+single-workspace rollout notes below are retained for context.
+
 The platform lives in `backend/` (FastAPI) and `frontend/` (Next.js). MongoDB
 persists accounts, sessions, responses, assessments, concept estimates and progress.
 Existing benchmark models, preprocessing, runners, hyperparameters and artifacts

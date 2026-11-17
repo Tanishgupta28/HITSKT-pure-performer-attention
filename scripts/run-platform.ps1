@@ -1,4 +1,4 @@
-param([ValidateSet('development','production')][string]$Mode = 'development')
+param([ValidateSet('development','production')][string]$Mode = 'development', [switch]$Demo)
 $ErrorActionPreference = 'Stop'
 $platformRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 $runtimeDirectory = Join-Path $platformRoot '.platform-runtime'
@@ -21,9 +21,22 @@ if ($Mode -eq 'production') {
     }
     $webArguments = @('scripts/start.mjs')
 }
-$apiProcess = Start-Process -FilePath $apiExecutable -ArgumentList @('-m','uvicorn','app.main:app','--host','127.0.0.1','--port','8000') -WorkingDirectory (Join-Path $platformRoot 'backend') -WindowStyle Hidden -RedirectStandardOutput (Join-Path $runtimeDirectory 'backend.log') -RedirectStandardError (Join-Path $runtimeDirectory 'backend-error.log') -PassThru
+$priorDemoSetting = $env:DEMO_ENABLED
+try {
+    $env:DEMO_ENABLED = if ($Demo) { 'true' } else { 'false' }
+    if ($Demo) {
+        & $apiExecutable (Join-Path $platformRoot 'backend/tools/demo_dataset.py') --seed-only
+        if ($LASTEXITCODE -ne 0) { throw 'Could not prepare the local sample accounts.' }
+    }
+    $apiProcess = Start-Process -FilePath $apiExecutable -ArgumentList @('-m','uvicorn','app.main:app','--host','127.0.0.1','--port','8000') -WorkingDirectory (Join-Path $platformRoot 'backend') -WindowStyle Hidden -RedirectStandardOutput (Join-Path $runtimeDirectory 'backend.log') -RedirectStandardError (Join-Path $runtimeDirectory 'backend-error.log') -PassThru
+} finally {
+    $env:DEMO_ENABLED = $priorDemoSetting
+}
 $webProcess = Start-Process -FilePath $nodeExecutable -ArgumentList $webArguments -WorkingDirectory (Join-Path $platformRoot 'frontend') -WindowStyle Hidden -RedirectStandardOutput (Join-Path $runtimeDirectory 'frontend.log') -RedirectStandardError (Join-Path $runtimeDirectory 'frontend-error.log') -PassThru
-@($apiProcess, $webProcess) | ForEach-Object {
-    @{id=$_.Id; started_at=$_.StartTime.ToUniversalTime().ToString('o'); executable=$_.Path}
-} | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $runtimeDirectory 'processes.json')
+# Process.Path can briefly be null after Start-Process; record the executables
+# supplied to the launcher so the stop helper can still verify ownership.
+@(
+    @{id=$apiProcess.Id; started_at=$apiProcess.StartTime.ToUniversalTime().ToString('o'); executable=$apiExecutable}
+    @{id=$webProcess.Id; started_at=$webProcess.StartTime.ToUniversalTime().ToString('o'); executable=$nodeExecutable}
+) | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $runtimeDirectory 'processes.json')
 Write-Output 'Lumen is starting at http://localhost:3000. Logs: .platform-runtime. Stop with scripts/stop-platform.ps1.'

@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { MotionProvider } from "@/components/motion";
-import "./globals.css";
-import "./redesign.css";
+import "./product.css";
 
 const bodyFont = localFont({
   src: "./fonts/DMSans-Variable.ttf",
@@ -28,9 +26,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${bodyFont.variable} ${headingFont.variable}`}>
-      <body>
-        <MotionProvider>{children}</MotionProvider>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

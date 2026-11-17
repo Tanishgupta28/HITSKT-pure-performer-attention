@@ -1,0 +1,36 @@
+{
+  "version": "lumen-synthetic-v1",
+  "seed": 42,
+  "source": "synthetic",
+  "reference_timestamp": "2026-11-17T00:00:00+00:00",
+  "learners_with_attempts": 18,
+  "sessions": 72,
+  "attempts": 864,
+  "attempts_by_split": {
+    "train": 576,
+    "validation": 144,
+    "test": 144
+  },
+  "split_unit": "student",
+  "fields": [
+    "student_id",
+    "session_id",
+    "question_id",
+    "question_version",
+    "skill_id",
+    "topic_id",
+    "response",
+    "correct",
+    "response_time_ms",
+    "attempt_timestamp",
+    "hints_used",
+    "mode",
+    "source",
+    "split"
+  ],
+  "sha256": {
+    "interactions.csv": "590ba58f42e75b19c637cdc65ba7938a698478f68d98c39f86fdc478f830f114",
+    "questions.csv": "8ed1e6f99d610b755567c973c71e53f8f71ce49dc26fa8bc60b2e8f305a85b43"
+  },
+  "usage": "Demo and pipeline validation only; no learner data, learning outcome claim, benchmark mapping, or model evidence."
+}

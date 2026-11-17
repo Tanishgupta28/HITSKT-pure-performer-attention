@@ -1,5 +1,6 @@
 import hashlib
 import secrets
+from urllib.parse import urlparse
 from contextlib import asynccontextmanager
 from datetime import datetime, timedelta, timezone
 from typing import Literal
@@ -19,6 +20,9 @@ from app.config import Settings
 from app.engine import concept_rows, initial_concept, recommendations, select_question, update_knowledge
 from app.inference import Predictor
 from app.profile import LearnerProfile, profile_view, public_user
+from app.workspace import mount_workspace
+from app.content import available_questions, safe_question
+from app.papers import grade
 
 passwords = PasswordHash.recommended()
 DUMMY_HASH = passwords.hash("dummy-password-for-constant-work")
@@ -39,6 +43,7 @@ class Credentials(BaseModel):
 
 
 class Registration(Credentials):
+    model_config = {"extra": "forbid"}
     name: str = Field(min_length=2, max_length=80, pattern=r".*\S.*")
 
 
@@ -50,12 +55,15 @@ class StartAssessment(BaseModel):
 
 class Answer(BaseModel):
     question_id: str = Field(max_length=100)
-    choice_index: int = Field(ge=0, le=3)
+    choice_index: int | str
     request_id: UUID
 
 
 def create_app(settings=None):
     settings = settings or Settings()
+    if settings.demo_enabled and (urlparse(settings.frontend_origin).hostname not in {"localhost", "127.0.0.1", "::1"}
+                                  or urlparse(settings.mongodb_uri).hostname not in {"localhost", "127.0.0.1", "::1"}):
+        raise ValueError("Demo sign-in is restricted to a loopback frontend and local MongoDB.")
 
     @asynccontextmanager
     async def lifespan(app):
@@ -65,14 +73,17 @@ def create_app(settings=None):
         await db.users.create_index("email", unique=True)
         await db.sessions.create_index("expires_at", expireAfterSeconds=0)
         await db.rate_limits.create_index("expires_at", expireAfterSeconds=0)
+        await db.classes.create_index("join_code", unique=True)
+        await db.classes.create_index([("teacher_id", 1), ("demo", 1)])
+        await db.papers.create_index([("class_id", 1), ("status", 1)])
         app.state.db = db
         app.state.predictor = await run_in_threadpool(Predictor, settings)
         yield
         await client.close()
 
-    app = FastAPI(title="HiTSKT Learning API", version="1.0.0", lifespan=lifespan)
+    app = FastAPI(title="Lumen Learning API", version="2.0.0", lifespan=lifespan)
     app.add_middleware(CORSMiddleware, allow_origins=[settings.frontend_origin], allow_credentials=True,
-                       allow_methods=["GET", "POST"], allow_headers=["Content-Type"])
+                       allow_methods=["GET", "POST", "DELETE"], allow_headers=["Content-Type"])
 
     @app.middleware("http")
     async def origin_guard(request, call_next):
@@ -93,6 +104,13 @@ def create_app(settings=None):
         user = await app.state.db.users.find_one({"_id": session["user_id"]})
         if not user:
             raise HTTPException(401, "Account is unavailable")
+        if user.get("inactive") or (user.get("demo") and not settings.demo_enabled):
+            raise HTTPException(403, "This account is inactive. Contact your administrator.")
+        return user
+
+    async def student(user=Depends(auth)):
+        if user.get("role", "student") != "student":
+            raise HTTPException(403, "This workspace is for students")
         return user
 
     async def limit_auth(request):
@@ -126,6 +144,7 @@ def create_app(settings=None):
                 await app.state.db.learning.insert_one(state)
             except DuplicateKeyError:
                 state = await app.state.db.learning.find_one({"_id": key})
+        await app.state.reconcile_papers(state)
         return state
 
     async def save(state):
@@ -141,16 +160,20 @@ def create_app(settings=None):
                 "concept_id": assessment.get("concept_id"), "answered": len(assessment["responses"]),
                 "total": assessment["total"], "started_at": assessment["started_at"],
                 "correct": sum(r["correct"] for r in assessment["responses"]),
-                "question": public_question(BANK[pending["question_id"]]) if pending else None,
+                "question": safe_question(pending.get("question") or BANK[pending["question_id"]]) if pending else None,
                 "prediction": pending["prediction"] if pending else None,
                 "selection_reason": pending["selection_reason"] if pending else None,
                 "summary": assessment.get("summary"), "latest_feedback": assessment.get("latest_feedback")}
 
     async def next_question(state, assessment):
         state["inference_at"] = now().isoformat()
-        pending = await run_in_threadpool(select_question, state, assessment, app.state.predictor)
+        bank = await available_questions(app.state.db, state.get("demo", False))
+        bank = {id: q for id, q in bank.items() if q.get("practice_allowed", True)}
+        pending = await run_in_threadpool(select_question, state, assessment, app.state.predictor, bank)
         if pending:
             pending["served_at"] = now().isoformat()
+            pending["question"] = bank[pending["question_id"]]
+            pending["hint_count"] = 0
         return pending
 
     @app.get("/api/health")
@@ -161,7 +184,9 @@ def create_app(settings=None):
     @app.post("/api/auth/register", status_code=201)
     async def register(data: Registration, request: Request, response: Response):
         await limit_auth(request)
-        user = {"_id": str(uuid4()), "name": data.name.strip(), "email": str(data.email).lower(),
+        if str(data.email).lower().endswith("@demo.lumen.example.com"):
+            raise HTTPException(422, "This email domain is reserved for sample accounts")
+        user = {"_id": str(uuid4()), "name": data.name.strip(), "email": str(data.email).lower(), "role": "student",
                 "password_hash": await run_in_threadpool(passwords.hash, data.password), "created_at": now()}
         try:
             await app.state.db.users.insert_one(user)
@@ -176,6 +201,8 @@ def create_app(settings=None):
         valid = await run_in_threadpool(passwords.verify, data.password, user["password_hash"] if user else DUMMY_HASH)
         if not user or not valid:
             raise HTTPException(401, "Email or password is incorrect")
+        if user.get("inactive") or (user.get("demo") and not settings.demo_enabled):
+            raise HTTPException(403, "This account is inactive. Contact your administrator.")
         return await issue_session(user, response)
 
     @app.get("/api/auth/me")
@@ -183,10 +210,11 @@ def create_app(settings=None):
         return public_user(user)
 
     @app.post("/api/profile")
-    async def update_profile(data: LearnerProfile, user=Depends(auth)):
+    async def update_profile(data: LearnerProfile, user=Depends(student)):
         updated = await app.state.db.users.find_one_and_update(
             {"_id": user["_id"]},
-            {"$set": {"profile": data.model_dump(), "profile_source": "user", "profile_updated_at": now()}},
+            {"$set": {"profile": data.model_dump(), "profile_source": "user", "profile_updated_at": now(),
+                       "onboarding_complete": data.grade_level != "Not set"}},
             return_document=ReturnDocument.AFTER)
         return public_user(updated)
 
@@ -202,10 +230,12 @@ def create_app(settings=None):
         return [SUBJECT]
 
     @app.get("/api/learning/{subject_id}")
-    async def dashboard(subject_id: str, user=Depends(auth)):
+    async def dashboard(subject_id: str, user=Depends(student)):
         state = await learning(user, subject_id)
         completed = [a for a in state["assessments"] if a["status"] == "completed"]
+        bank = await available_questions(app.state.db, user.get("demo", False))
         active = next((a for a in state["assessments"] if a["status"] == "active"), None)
+        fixed_active = next(({"id": a["id"], "title": a["title"]} for a in state.get("fixed", {}).values() if a["mode"] == "diagnostic" and not a["submitted_at"]), None)
         history = state["history"]
         profile = profile_view(user)
         recent_count = sum(datetime.fromisoformat(r["answered_at"]) >= now() - timedelta(days=7) for r in history)
@@ -219,19 +249,20 @@ def create_app(settings=None):
                 "study_plan": plan,
                 "weekly_goal": {"answered": recent_count, "target": profile["weekly_question_target"],
                                 "remaining": max(0, profile["weekly_question_target"] - recent_count)},
-                "content": {"question_count": len(BANK), "difficulty_levels": 3,
-                            "concept_question_counts": {c["id"]: sum(q["concept_id"] == c["id"] for q in BANK.values()) for c in CONCEPTS}},
+                "content": {"question_count": len(bank), "difficulty_levels": 3,
+                            "concept_question_counts": {c["id"]: sum(q["concept_id"] == c["id"] for q in bank.values()) for c in CONCEPTS}},
                 "stats": {"answers": len(history), "accuracy": sum(r["correct"] for r in history) / len(history) if history else None,
                           "completed_assessments": len(completed), "study_days": len({r["answered_at"][:10] for r in history})},
                 "active_assessment": assessment_view(active) if active else None,
-                "diagnostic_complete": any(a["mode"] == "diagnostic" for a in completed),
+                "active_diagnostic": fixed_active,
+                "diagnostic_complete": any(a["mode"] == "diagnostic" for a in completed) or any(a["mode"] == "diagnostic" and a.get("submitted_at") for a in state.get("fixed", {}).values()),
                 "progress": [{"id": a["id"], "mode": a["mode"], "completed_at": a["completed_at"],
                               "accuracy": a["summary"]["accuracy"], "mastery": a["summary"]["average_mastery"]} for a in completed[-20:]],
                 "recent_answers": [{k: r[k] for k in ("question_id", "concept_id", "correct", "answered_at", "difficulty", "prediction")} for r in history[-8:]][::-1],
                 "model": app.state.predictor.status()}
 
     @app.post("/api/assessments", status_code=201)
-    async def start(data: StartAssessment, user=Depends(auth)):
+    async def start(data: StartAssessment, user=Depends(student)):
         state = await learning(user, data.subject_id)
         if data.concept_id and data.concept_id not in state["concepts"]:
             raise HTTPException(422, "Unknown concept")
@@ -246,13 +277,16 @@ def create_app(settings=None):
         assessment = {"id": str(uuid4()), "mode": data.mode, "concept_id": data.concept_id,
                       "status": "active", "total": total,
                       "responses": [], "started_at": now().isoformat()}
+        state["demo"] = user.get("demo", False)
         assessment["pending"] = await next_question(state, assessment)
+        if not assessment["pending"]:
+            raise HTTPException(409, "No eligible practice questions are available")
         state["assessments"].append(assessment)
         await save(state)
         return assessment_view(assessment)
 
     @app.get("/api/assessments/{assessment_id}")
-    async def get_assessment(assessment_id: UUID, user=Depends(auth)):
+    async def get_assessment(assessment_id: UUID, user=Depends(student)):
         state = await learning(user)
         assessment = next((a for a in state["assessments"] if a["id"] == str(assessment_id)), None)
         if assessment is None:
@@ -260,7 +294,7 @@ def create_app(settings=None):
         return assessment_view(assessment)
 
     @app.post("/api/assessments/{assessment_id}/answers")
-    async def answer(assessment_id: UUID, data: Answer, user=Depends(auth)):
+    async def answer(assessment_id: UUID, data: Answer, user=Depends(student)):
         state = await learning(user)
         assessment = next((a for a in state["assessments"] if a["id"] == str(assessment_id)), None)
         if assessment is None:
@@ -275,36 +309,75 @@ def create_app(settings=None):
         pending = assessment["pending"]
         if not pending or pending["question_id"] != data.question_id:
             raise HTTPException(409, "This is not the current question. Reload the assessment.")
-        question = BANK[data.question_id]
-        correct = data.choice_index == question["answer_index"]
+        question = pending.get("question") or BANK[data.question_id]
+        numeric = question.get('question_type') == 'numeric'
+        if numeric:
+            from fractions import Fraction
+            try:
+                if not isinstance(data.choice_index, str) or len(data.choice_index) > 100:
+                    raise ValueError()
+                Fraction(data.choice_index)
+            except (ValueError, ZeroDivisionError):
+                raise HTTPException(422, 'Enter a number or fraction.')
+        elif type(data.choice_index) is not int or not 0 <= data.choice_index < len(question['choices']):
+            raise HTTPException(422, 'Select one answer.')
+        correct = grade(question, data.choice_index)
         timestamp = now().isoformat()
         concept_id = question["concept_id"]
         updated = update_knowledge(state["concepts"][concept_id], correct, question["difficulty"], timestamp)
-        feedback = {"correct": correct, "answer_index": question["answer_index"], "explanation": question["explanation"],
+        feedback = {"correct": correct, "answer_index": None if numeric else question["answer_index"],
+                    "numeric_answer": question.get('numeric_answer') if numeric else None, "explanation": question["explanation"],
                     "concept_name": next(c["name"] for c in CONCEPTS if c["id"] == concept_id), "mastery": updated["mastery"]}
         record = {"question_id": question["id"], "assessment_id": assessment["id"], "concept_id": concept_id,
                   "difficulty": question["difficulty"], "content_version": question["content_version"],
+                  "skill_id": question.get("skill_id", concept_id), "hints_used": pending.get("hint_count", 0),
+                  "source": "synthetic" if user.get("demo") else "live", "mode": assessment["mode"],
                   "correct": correct, "choice_index": data.choice_index, "answered_at": timestamp,
                   "response_time_ms": max(0, int((datetime.fromisoformat(timestamp) - datetime.fromisoformat(pending["served_at"])).total_seconds() * 1000)),
                   "request_id": str(data.request_id), "prediction": pending["prediction"], "feedback": feedback}
+        record["question_snapshot"] = safe_question(question)
         state["concepts"][concept_id] = updated
         state["history"].append(record)
         assessment["responses"].append(record)
         assessment["latest_feedback"] = feedback
-        if len(assessment["responses"]) >= assessment["total"]:
+        state["demo"] = user.get("demo", False)
+        assessment["pending"] = await next_question(state, assessment) if len(assessment["responses"]) < assessment["total"] else None
+        if not assessment["pending"]:
             assessment["status"] = "completed"
-            assessment["pending"] = None
             assessment["completed_at"] = timestamp
             assessment["summary"] = {"accuracy": sum(r["correct"] for r in assessment["responses"]) / len(assessment["responses"]),
                                      "average_mastery": sum(c["mastery"] for c in state["concepts"].values()) / len(CONCEPTS),
                                      "concepts": concept_rows(state), "recommendations": recommendations(state)}
-        else:
-            assessment["pending"] = await next_question(state, assessment)
         # One MongoDB atomic compare-and-swap persists response, mastery and next
         # question together; no partial updates or replica-set transaction needed.
         await save(state)
         return {"assessment": assessment_view(assessment), "feedback": feedback, "replayed": False}
 
+    @app.post("/api/assessments/{assessment_id}/hint")
+    async def hint(assessment_id: UUID, user=Depends(student)):
+        state = await learning(user)
+        a = next((a for a in state["assessments"] if a["id"] == str(assessment_id)), None)
+        if not a or not a.get("pending") or a["mode"] == "diagnostic":
+            raise HTTPException(409, "Hints are not available for this question")
+        p = a["pending"]
+        q = p.get("question") or BANK.get(p["question_id"], {})
+        if not p.get("hint_count"):
+            p["hint_count"] = 1
+            await save(state)
+        guidance = {"fractions": "Find a common denominator before combining the numerators.", "percentages": "Write the percentage as a fraction out of 100, then apply it to the original amount.", "equations": "Apply the same operation to both sides to isolate the unknown.", "geometry": "Identify whether you need area or perimeter, then choose the matching formula."}
+        return {"hint": q.get("hint") or guidance.get(q.get("concept_id"), "Identify the quantities in the question first."), "hints_used": 1}
+
+    @app.get("/api/assessments/{assessment_id}/review")
+    async def review(assessment_id: UUID, user=Depends(student)):
+        state = await learning(user)
+        a = next((a for a in state["assessments"] if a["id"] == str(assessment_id)), None)
+        if not a or a['status'] != 'completed':
+            raise HTTPException(404, 'A completed assessment is required to review answers.')
+        return [{'question': r.get('question_snapshot') or safe_question(BANK.get(r['question_id'], {})),
+                 'choice': r.get('choice_index'), 'correct': r['correct'], 'feedback': r.get('feedback'),
+                 'hints_used': r.get('hints_used', 0), 'response_time_ms': r.get('response_time_ms')} for r in a['responses']]
+
+    mount_workspace(app, settings, auth, student, learning, save, limit_auth, passwords)
     return app
 
 

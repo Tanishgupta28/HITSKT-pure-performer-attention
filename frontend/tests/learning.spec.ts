@@ -1,151 +1,91 @@
 import { test, expect } from "@playwright/test";
 
-test("register, diagnose, resume, review progress, then practice on mobile", async ({
+test("register, resume a fixed diagnostic, review evidence and practise on mobile", async ({
   page,
 }) => {
   const errors: string[] = [];
-  page.on("pageerror", (error) => errors.push(error.message));
+  page.on("pageerror", (e) => errors.push(e.message));
   await page.goto("/");
   await expect(
-    page.getByRole("heading", { name: "Start something good." }),
+    page.getByRole("heading", { name: /Know what to/ }),
   ).toBeVisible();
-  await page.getByLabel("Your name").fill("Preview Learner");
+  await page.screenshot({
+    path: "../.platform-runtime/lumen-landing.png",
+    fullPage: true,
+  });
+  await page.getByRole("link", { name: "Create student account" }).click();
+  await page.getByLabel("Name", { exact: true }).fill("QA Learner");
   await page
     .getByLabel("Email address")
     .fill(`browser-${Date.now()}@example.com`);
+  await page.getByLabel("Password", { exact: true }).fill("test-learner-1234");
   await page
-    .getByLabel("Password", { exact: true })
-    .fill("learning-browser-test-42");
-  await page.getByRole("button", { name: "Create my learning space" }).click();
+    .getByRole("button", { name: "Create account", exact: true })
+    .click();
   await expect(
-    page.getByRole("heading", { name: "Hello, Preview" }),
+    page.getByRole("heading", { name: "Set up your learning" }),
   ).toBeVisible();
+  await page.getByLabel("Grade / class").selectOption("Grade 8");
+  await page.getByRole("button", { name: "Continue", exact: true }).click();
   await expect(
-    page.getByRole("heading", { name: "Your concept map" }),
+    page.getByRole("heading", { name: "Good to see you, QA" }),
   ).toBeVisible();
-  await page.getByRole("button", { name: "My profile", exact: true }).click();
-  await page.getByLabel("Grade or learning stage").selectOption("Grade 9");
-  await page.getByLabel("Curriculum").selectOption("ICSE");
   await page
-    .getByLabel("My learning goal")
-    .fill("Get confident with geometry and everyday maths.");
-  await page.getByLabel("7-day question target").fill("18");
-  await page.getByLabel("Adaptive session length").selectOption("6");
-  await page.getByLabel("Tue", { exact: true }).check();
-  await page.getByLabel("Area & perimeter", { exact: true }).check();
-  await page.getByRole("button", { name: "Save my preferences" }).click();
-  await expect(page.getByRole("status")).toHaveText("Preferences saved");
-  await page.reload();
-  await page.getByRole("button", { name: "My profile", exact: true }).click();
-  await expect(page.getByLabel("Grade or learning stage")).toHaveValue(
-    "Grade 9",
-  );
-  await expect(page.getByLabel("7-day question target")).toHaveValue("18");
-  await expect(
-    page.getByLabel("Area & perimeter", { exact: true }),
-  ).toBeChecked();
-  await page.screenshot({
-    path: "../.platform-runtime/profile-desktop.png",
-    fullPage: true,
-  });
-  await page.setViewportSize({ width: 390, height: 844 });
-  await page.screenshot({
-    path: "../.platform-runtime/profile-mobile.png",
-    fullPage: true,
-  });
-  expect(
-    await page.evaluate(
-      () => document.documentElement.scrollWidth <= innerWidth,
-    ),
-  ).toBe(true);
-  await page.setViewportSize({ width: 1440, height: 1080 });
-  await page.getByRole("button", { name: "Overview", exact: true }).click();
-  await expect(page.getByText("384 QUESTIONS · 4 CONCEPTS")).toBeVisible();
-  await expect(
-    page.getByRole("progressbar", { name: "Question target progress" }),
-  ).toHaveAttribute("aria-valuemax", "18");
-  await page.screenshot({
-    path: "../.platform-runtime/dashboard-desktop.png",
-    fullPage: true,
-  });
-  await page.getByRole("button", { name: "Find my starting point" }).click();
+    .getByRole("button", { name: "Start diagnostic", exact: true })
+    .click();
+  await page.getByRole("button", { name: "Begin diagnostic" }).click();
   await expect(
     page.getByRole("group", { name: "Answer choices" }),
   ).toBeVisible();
-  await page.locator(".choice").first().click();
-  await page.getByRole("button", { name: "Check my answer" }).click();
-  await expect(page.getByRole("status")).toBeVisible();
+  await page.getByRole("button", { name: "Skip question" }).click();
+  await expect(
+    page.getByRole("button", { name: "Question 1, skipped" }),
+  ).toBeVisible();
+  await page.getByRole("radio").first().check();
+  await page.getByRole("button", { name: "Save & next" }).click();
+  await expect(
+    page.getByRole("button", { name: "Question 2, answered" }),
+  ).toBeVisible();
   await page.getByRole("button", { name: "Save & leave" }).click();
+  await page.getByRole("button", { name: "Leave assessment" }).click();
+  await page.getByRole("button", { name: "Resume diagnostic" }).click();
   await expect(
-    page.getByRole("button", { name: "Continue assessment" }),
+    page.getByRole("button", { name: "Question 2, answered" }),
   ).toBeVisible();
-  await page.reload();
-  await page.getByRole("button", { name: "Continue assessment" }).click();
-  await expect(page.getByText("2 of 12", { exact: true })).toBeVisible();
-  for (let i = 1; i < 12; i++) {
-    await page
-      .locator(".choice")
-      .nth(i % 4)
-      .click();
-    await page.getByRole("button", { name: "Check my answer" }).click();
-    await expect(page.getByRole("status")).toBeVisible();
-    await page
-      .getByRole("button", {
-        name: i === 11 ? "See my discoveries" : "Next question",
-      })
-      .click();
-  }
-  await expect(
-    page.getByRole("heading", { name: "That’s progress." }),
-  ).toBeVisible();
-  await page.getByRole("button", { name: "Back to my learning space" }).click();
-  await expect(page.getByText("1 ASSESSMENTS COMPLETED")).toBeVisible();
-  const dashboard = await (
-    await page.request.get("/api/learning/mathematics")
-  ).json();
-  expect(dashboard.weekly_goal).toEqual({
-    answered: 12,
-    target: 18,
-    remaining: 6,
-  });
-  await page.getByRole("button", { name: "My progress", exact: true }).click();
-  await expect(
-    page.getByRole("heading", { name: "Recent learning moments" }),
-  ).toBeVisible();
-  await expect(
-    page.getByRole("img", {
-      name: "Estimated understanding after each completed assessment",
-    }),
-  ).toBeVisible();
-  await page.screenshot({
-    path: "../.platform-runtime/progress-desktop.png",
-    fullPage: true,
-  });
-  await page.setViewportSize({ width: 390, height: 844 });
-  await page.getByRole("button", { name: "Open navigation" }).click();
+  await page.getByRole("button", { name: "Review & submit" }).click();
   await page
-    .getByRole("button", { name: "My learning path", exact: true })
+    .getByRole("button", { name: "Submit assessment", exact: true })
     .click();
   await expect(
-    page.getByRole("heading", { name: "A path that grows with you" }),
+    page.getByRole("heading", { name: "Mathematics diagnostic · report" }),
   ).toBeVisible();
+  await expect(page.getByText("Skipped", { exact: true })).toBeVisible();
   await page.screenshot({
-    path: "../.platform-runtime/path-mobile.png",
+    path: "../.platform-runtime/lumen-diagnostic-report.png",
     fullPage: true,
   });
-  const dimensions = await page.evaluate(() => ({
-    scroll: document.documentElement.scrollWidth,
-    width: innerWidth,
-  }));
-  expect(dimensions.scroll).toBeLessThanOrEqual(dimensions.width);
-  await page.getByRole("button", { name: "Review & practice" }).first().click();
-  await expect(page.getByRole("dialog")).toBeVisible();
-  await expect(page.getByText("Work through an example")).toBeVisible();
-  await page.getByRole("button", { name: "Practice this concept" }).click();
-  await expect(page.getByText("1 of 6", { exact: true })).toBeVisible();
+  await page.getByRole("link", { name: "Open revision plan" }).click();
+  await expect(
+    page.getByRole("heading", { name: "Your revision plan" }),
+  ).toBeVisible();
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.getByRole("button", { name: "Start next activity" }).click();
+  await expect(
+    page.getByRole("group", { name: "Answer choices" }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "Show a hint" }).click();
+  await expect(page.getByText("Hint shown · 1 used")).toBeVisible();
+  await page.getByRole("radio").first().check();
+  await page.getByRole("button", { name: "Check answer" }).click();
+  await expect(page.getByText("Answer saved", { exact: true })).toBeVisible();
   await page.screenshot({
-    path: "../.platform-runtime/assessment-mobile.png",
+    path: "../.platform-runtime/lumen-mobile-practice.png",
     fullPage: true,
   });
+  await expect
+    .poll(() =>
+      page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+    )
+    .toBe(true);
   expect(errors).toEqual([]);
 });
