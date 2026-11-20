@@ -73,7 +73,7 @@ type Review = {
   question: Question;
   choice: Choice;
   correct: boolean;
-  feedback: Feedback;
+  feedback: Feedback | null;
   hints_used: number;
 };
 function answerText(q: Question, v: Choice | undefined) {
@@ -801,14 +801,21 @@ export function PracticePlayer({ id }: { id: string }) {
                         Your answer: {answerText(x.question, x.choice)}.{" "}
                         {x.hints_used ? "Hint used." : "No hints."}
                       </p>
-                      <p>
-                        Correct answer:{" "}
-                        {answerText(
-                          x.question,
-                          x.feedback.numeric_answer ?? x.feedback.answer_index,
-                        )}
-                      </p>
-                      <p>{x.feedback.explanation}</p>
+                      {x.feedback ? (
+                        <>
+                          <p>
+                            Correct answer:{" "}
+                            {answerText(
+                              x.question,
+                              x.feedback.numeric_answer ??
+                                x.feedback.answer_index,
+                            )}
+                          </p>
+                          <p>{x.feedback.explanation}</p>
+                        </>
+                      ) : (
+                        <p>This attempt has no stored explanation.</p>
+                      )}
                     </details>
                   ))}
                 </div>

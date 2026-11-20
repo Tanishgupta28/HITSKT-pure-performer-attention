@@ -13,8 +13,9 @@ There are no real learners, names, emails, credentials or benchmark ID mappings.
   explanation and content version. Keep answer keys out of an assessment client.
 - `manifest.json`: deterministic seed, split unit, counts, schema and SHA-256s.
 
-Generate: `python backend/tools/demo_dataset.py`. `--output` can select a
-different output directory. Stable IDs and timestamp order are for engineering
+This snapshot is frozen. To reproduce v1, run `python backend/tools/demo_dataset.py`
+from commit `d69259e`. The current checkout generates v2 instead. Stable IDs
+and timestamp order are for engineering
 checks. The simulation is not a deployment evaluation or evidence of learning
 gains, model superiority, calibrated mastery or benchmark reproducibility.
 

@@ -273,10 +273,17 @@ def mount_papers(app, student, teacher, learning, save, get_class):
         by_assignment={a['assignment_id']:a for a in state.get('fixed',{}).values() if a['assignment_id']}
         rows=await db.papers.find({**scope(user),'status':{'$in':['assigned','closed','released']},
             '$or':[{'class_id':{'$in':[c['_id'] for c in cls]}},{'_id':{'$in':list(by_assignment)}}]}).sort('assigned_at',-1).to_list(250)
-        return [{k:p.get(k) for k in ('_id','title','class_name','status','duration_minutes','opens_at','closes_at')} |
-                {'question_count':len(p['questions']),'review_allowed':p['review_allowed'], 'skips_allowed':p['skips_allowed'],
-                 'extra_minutes':p.get('extra_minutes',{}).get(user['_id'],0),
-                 'attempt_id':by_assignment[p['_id']]['id'] if p['_id'] in by_assignment else None} for p in rows]
+        results = []
+        for paper in rows:
+            attempt = by_assignment.get(paper['_id'])
+            if attempt:
+                await expire_if_needed(state, attempt, paper)
+            results.append({k:paper.get(k) for k in ('_id','title','class_name','status','duration_minutes','opens_at','closes_at')} |
+                           {'question_count':len(paper['questions']), 'review_allowed':paper['review_allowed'],
+                            'skips_allowed':paper['skips_allowed'], 'extra_minutes':paper.get('extra_minutes',{}).get(user['_id'],0),
+                            'attempt_id':attempt['id'] if attempt else None,
+                            'attempt_status':('submitted' if attempt['submitted_at'] else 'in_progress') if attempt else None})
+        return results
 
     @app.post('/api/student/fixed/diagnostic',status_code=201)
     async def diagnostic(user=Depends(student)):
@@ -372,7 +379,15 @@ def mount_papers(app, student, teacher, learning, save, get_class):
     @app.get('/api/student/history')
     async def history(user=Depends(student)):
         state=await learning(user)
-        items=[{'id':a['id'],'mode':a['mode'],'status':a['status'],'title':'Adaptive mock' if a['mode']=='adaptive' else 'Practice' if a['mode']=='practice' else 'Diagnostic',
+        topic_names = {c['id']: c['name'] for c in CONCEPTS}
+        def session_title(assessment):
+            if assessment['mode'] == 'diagnostic':
+                return 'Diagnostic'
+            focus = topic_names.get(assessment.get('concept_id'))
+            return f'{focus} practice' if focus else 'Mixed practice'
+
+        items=[{'id':a['id'],'mode':a['mode'],'status':a['status'],
+                'title':session_title(a),
                 'answered':len(a['responses']),'score':sum(r['correct'] for r in a['responses']),'total':a['total'],
                 'date':a.get('completed_at',a['started_at']),'elapsed_seconds':max(0,int((parse(a.get('completed_at',a['started_at']))-parse(a['started_at'])).total_seconds())),
                 'concept_id':a.get('concept_id'),'fixed':False} for a in state['assessments']]

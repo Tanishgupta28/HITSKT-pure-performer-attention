@@ -49,8 +49,12 @@ email claim for localhost without an SMTP provider.
 2. **Returning student:** open Today. Resume an active session first or follow
    a recommended topic. Practice is adaptive and immediately graded; an
    adaptive mock is not used as a formal grade. Both have their own history.
-3. **Teacher:** open 8B Mathematics → Analytics → compare Asha and Rohan's
-   common diagnostic (8/12 each). Select a class and inspect a learner’s
+3. **Teacher:** open 8B Mathematics → Analytics → Compare topic evidence. Asha
+   scored 6/12 with 0/3 in fractions and 3/3 in equations. Rohan scored 9/12
+   with 3/3 in fractions and 1/3 in equations. Check each learner’s recommendation
+   in Learn, then open one of their reviewed practice sets under Progress →
+   Session history. Asha starts with Fractions on a clean fixture and can move
+   to Percentages after additional practice. Select a class and inspect a learner’s
    observations during the enrollment period. Create a class, share the join
    code, or enroll a registered student. Build a paper with published item
    versions, set duration and feedback rules, optionally grant extra time,
@@ -76,8 +80,9 @@ practice and diagnostics exclude them.
 
 ### Data and evidence
 
-`backend/data/lumen-synthetic-v1/` holds the reproducible seed-42 demonstration
-dataset (864 attempts), a question file and a hashed manifest. New demo activity
+`backend/data/lumen-synthetic-v2/` holds the reproducible seed-42 demonstration
+dataset (561 attempts, 54 sessions and 108 question versions), a question file
+and a hashed manifest. The original v1 CSVs remain available. New demo activity
 is labeled synthetic. The administrator export produces a distinct CSV from
 MongoDB with new pseudonyms per export, validates question/skill identifiers,
 correctness, timing and timezone, omits direct identifiers, and records an

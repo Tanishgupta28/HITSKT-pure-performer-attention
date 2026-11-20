@@ -2,6 +2,16 @@
 
 Updated: 2026-11-20 (Asia/Kolkata)
 
+## Demo fixture v2 handoff — 2026-11-20
+
+The localhost showcase now illustrates distinct learners and genuinely varied
+session histories. The v2 synthetic dataset is for the product demo and pipeline
+tests. The old v1 CSVs remain frozen, while the sample accounts and report IDs
+remain usable. Updated demo steps are in `docs/platform/product.md` and the
+verification receipt is `reports/platform/demo_variety_validation.json`.
+The demo data still uses application question IDs. The benchmark checkpoint,
+training work and live BKT / separate HiTSKT boundary are unchanged.
+
 ## Platform usability handoff — 2026-11-20
 
 Achin requested the removal of repeated features and a clearer practice player.

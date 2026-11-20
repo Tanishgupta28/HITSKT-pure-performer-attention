@@ -64,6 +64,7 @@ type Paper = {
   opens_at: string | null;
   closes_at: string | null;
   attempt_id: string | null;
+  attempt_status: "submitted" | "in_progress" | null;
   review_allowed: boolean;
   skips_allowed: boolean;
 };
@@ -85,6 +86,24 @@ const modeName = (m: string) =>
   m === "adaptive" ? "Mixed practice" : m === "exam" ? "Fixed paper" : label(m);
 const path = (row: HistoryRow) =>
   `/${row.fixed ? "paper" : "assessment"}/${row.id}`;
+
+function assignmentStatus(paper: Paper) {
+  if (paper.attempt_status === "submitted") {
+    return paper.status === "released"
+      ? "Results released"
+      : "Awaiting release";
+  }
+  if (
+    paper.status !== "assigned" ||
+    (paper.closes_at && Date.parse(paper.closes_at) <= Date.now())
+  ) {
+    return paper.attempt_id ? "Closed" : "Closed · no attempt";
+  }
+  if (paper.opens_at && Date.parse(paper.opens_at) > Date.now()) {
+    return `Opens ${when(paper.opens_at)}`;
+  }
+  return paper.attempt_status === "in_progress" ? "In progress" : "Available";
+}
 
 function Profile({
   user,
@@ -597,36 +616,27 @@ export function StudentWorkspace({
                 x.title,
                 x.class_name,
                 `${x.duration_minutes + x.extra_minutes} min`,
-                x.status === "released"
-                  ? "Results released"
-                  : x.closes_at && Date.parse(x.closes_at) < Date.now()
-                    ? "Closed"
-                    : x.opens_at && Date.parse(x.opens_at) > Date.now()
-                      ? `Opens ${when(x.opens_at)}`
-                      : label(x.status),
+                assignmentStatus(x),
                 x.attempt_id ? (
                   <Button
                     key="t"
                     href={`/paper/${x.attempt_id}`}
                     variant="secondary"
                   >
-                    Open attempt
+                    {x.attempt_status === "in_progress"
+                      ? "Resume paper"
+                      : "Open attempt"}
                   </Button>
-                ) : (
+                ) : assignmentStatus(x) === "Available" ? (
                   <Button
                     key="t"
                     onClick={() => setIntro(x)}
                     variant="secondary"
-                    disabled={
-                      x.status !== "assigned" ||
-                      Boolean(
-                        x.closes_at && Date.parse(x.closes_at) < Date.now(),
-                      ) ||
-                      Boolean(x.opens_at && Date.parse(x.opens_at) > Date.now())
-                    }
                   >
                     View instructions
                   </Button>
+                ) : (
+                  "—"
                 ),
               ])}
             />

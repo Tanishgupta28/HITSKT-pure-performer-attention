@@ -74,14 +74,14 @@ export function Landing() {
             <p>Review common denominators, then try six questions.</p>
             <EvidenceBars
               items={[
-                { name: "Fractions", count: 1, total: 3 },
+                { name: "Fractions", count: 0, total: 3 },
                 { name: "Percentages", count: 1, total: 3 },
                 { name: "Equations", count: 3, total: 3 },
-                { name: "Geometry", count: 3, total: 3 },
+                { name: "Geometry", count: 2, total: 3 },
               ]}
             />
             <footer>
-              Diagnostic evidence <strong>8 / 12 marks</strong>
+              Diagnostic evidence <strong>6 / 12 marks</strong>
             </footer>
           </Panel>
         </div>

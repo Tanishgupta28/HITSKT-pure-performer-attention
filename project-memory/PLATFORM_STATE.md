@@ -19,6 +19,25 @@ code was being altered; the platform preserves all research/training source.
 Platform commit identity is the locally configured Achin-Agarwal identity;
 historic Tanish identity instructions apply to the GPU workstream.
 
+## Distinct demo learner and class histories — 2026-11-20
+
+Achin requested an inconsistency audit and greater variety across the sample
+learners. The new v2 fixture uses a common 12-question baseline with grades
+of 6/12 for Asha and 9/12 for Rohan. Their released unit checks are 8/12 and
+10/12, and practice differs by topic, length and mode. The demo class includes
+24 learners, six without a diagnostic, and an open paper with three submissions
+awaiting release. The frozen `backend/data/lumen-synthetic-v2/` fixture has 561
+submitted answers, 54 sessions, 18 responding learners and 108 question versions.
+Every split contains all four modes. The historical v1 CSVs remain available.
+
+Local seeding recognizes old fixture IDs, keeps credentials and user-generated
+answers and recomputes estimates using the changed sample evidence. Seeded
+paper dates follow assignment, submission, closing and release. The student
+list displays actual attempt state, and practice review renders older records
+with missing feedback. The class distribution uses correctly labeled, neutral
+frequency bars. The research checkpoint and original maths bank are unchanged.
+Evidence is in `reports/platform/demo_variety_validation.json`.
+
 ## Usability consolidation — 2026-11-20
 
 Achin requested a usefulness audit, fewer repeated features and an easier

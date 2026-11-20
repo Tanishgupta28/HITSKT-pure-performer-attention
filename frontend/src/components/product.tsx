@@ -279,8 +279,10 @@ export function Table({
 }
 export function EvidenceBars({
   items,
+  highlightLow = true,
 }: {
   items: { name: string; count: number; total: number }[];
+  highlightLow?: boolean;
 }) {
   return (
     <div className="p-bars">
@@ -293,7 +295,11 @@ export function EvidenceBars({
             aria-label={`${x.count} of ${x.total}`}
           >
             <i
-              className={x.total && x.count / x.total < 0.5 ? "attention" : ""}
+              className={
+                highlightLow && x.total && x.count / x.total < 0.5
+                  ? "attention"
+                  : ""
+              }
               style={{
                 width: `${x.total ? Math.min(x.count / x.total, 1) * 100 : 0}%`,
               }}

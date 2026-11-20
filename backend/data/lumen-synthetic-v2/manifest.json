@@ -1,0 +1,54 @@
+{
+  "version": "lumen-synthetic-v2",
+  "seed": 42,
+  "source": "synthetic",
+  "reference_timestamp": "2026-11-20T00:00:00+00:00",
+  "learners_with_attempts": 18,
+  "sessions": 54,
+  "attempts": 561,
+  "question_versions": 108,
+  "learners_by_split": {
+    "train": 12,
+    "validation": 3,
+    "test": 3
+  },
+  "attempts_by_split": {
+    "train": 364,
+    "validation": 89,
+    "test": 108
+  },
+  "sessions_by_mode": {
+    "diagnostic": 18,
+    "exam": 15,
+    "practice": 14,
+    "adaptive": 7
+  },
+  "attempts_by_mode": {
+    "diagnostic": 216,
+    "exam": 177,
+    "practice": 84,
+    "adaptive": 84
+  },
+  "split_unit": "student",
+  "fields": [
+    "student_id",
+    "session_id",
+    "question_id",
+    "question_version",
+    "skill_id",
+    "topic_id",
+    "response",
+    "correct",
+    "response_time_ms",
+    "attempt_timestamp",
+    "hints_used",
+    "mode",
+    "source",
+    "split"
+  ],
+  "sha256": {
+    "interactions.csv": "ae0e14c5c88f18b588955f1183407c399cc539f2a01d2455978d55a8c797a7c2",
+    "questions.csv": "72f77f368b44deaac200d70a872ee32c46122ac4fca9ea02b0136f0029712230"
+  },
+  "usage": "Synthetic demonstration and pipeline validation only. No real learner records or benchmark mappings."
+}

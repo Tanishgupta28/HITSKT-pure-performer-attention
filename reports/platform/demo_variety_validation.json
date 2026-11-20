@@ -1,0 +1,32 @@
+{
+  "verified_on": "2026-11-20",
+  "base_commit": "d69259e",
+  "build": "Next.js standalone production build and TypeScript passed",
+  "backend": {"full_suite_passed": 23, "final_fixture_recheck_passed": 2, "database": "isolated MongoDB"},
+  "dataset": {
+    "version": "lumen-synthetic-v2",
+    "attempts": 561,
+    "sessions": 54,
+    "responding_learners": 18,
+    "sample_class_members": 24,
+    "question_versions": 108,
+    "class_diagnostic_score_buckets": [1, 3, 10, 3, 1],
+    "integrity": "Byte-identical regeneration, valid question and skill joins, chronological timestamps, correctness checks and learner-level splits with all modes"
+  },
+  "isolated_edge": {
+    "first_full_suite_passed": 8,
+    "final_full_suite_passed": 8,
+    "new_end_to_end_check": "Both learner recommendations and completed practice reviews; scores, class distributions, held submissions and administrator export reconciled. 561 rows, zero invalid."
+  },
+  "visual_review": "Inspected teacher comparison and score distribution. Corrected the singleton score label and removed low-accuracy colors from frequency bars.",
+  "local_release": {
+    "url": "http://localhost:3000",
+    "health": "ok",
+    "demo_logins_verified": 4,
+    "refreshed_demo_histories": 24,
+    "fingerprints_preserved": "2 previously completed Asha practice sets, their 12 recorded answers, demo password hashes, other user and learning records",
+    "asha": {"diagnostic": "6/12", "unit_check": "8/12", "next_focus": "Percentages after preserved practice"},
+    "rohan": {"diagnostic": "9/12", "unit_check": "10/12", "next_focus": "Linear equations"}
+  },
+  "model_scope": "No training, model, checkpoint or original question bank changes. Fixture v1 CSVs and hashes are unchanged."
+}

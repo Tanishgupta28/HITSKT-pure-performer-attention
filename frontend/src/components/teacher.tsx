@@ -1322,8 +1322,9 @@ export function TeacherWorkspace({
                     >
                       {last.diagnostic_count ? (
                         <EvidenceBars
+                          highlightLow={false}
                           items={last.distribution.map((x) => ({
-                            name: `${x.low}–${x.high} marks`,
+                            name: `${x.low === x.high ? x.high : `${x.low}–${x.high}`} marks`,
                             count: x.count,
                             total: last.diagnostic_count,
                           }))}
