@@ -1,5 +1,10 @@
 # Lumen product implementation
 
+The 2026-11-20 [usability review](usability.md) supersedes the navigation below:
+Practice and Revision are now Learn, History is inside Progress, and the account
+footer opens Profile & classes. Mixed practice is in Learn; formal papers stay
+in Assessments. Existing links continue to work.
+
 The November product build implements the approved visual review artifact, with
 the student, teacher and administrator workspaces in the existing FastAPI,
 Next.js and MongoDB app. Begin at `http://localhost:3000/`. The local production

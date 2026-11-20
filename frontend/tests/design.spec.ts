@@ -42,7 +42,7 @@ test("the reference layout works across desktop, tablet, and mobile without exte
       .toBe(true);
   }
   await page.getByRole("button", { name: "More", exact: true }).click();
-  await page.getByRole("button", { name: "Profile", exact: true }).click();
+  await page.getByRole("button", { name: "Open profile", exact: true }).click();
   await expect(
     page.getByRole("heading", { name: "Learning profile" }),
   ).toBeVisible();

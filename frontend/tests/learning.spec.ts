@@ -64,12 +64,14 @@ test("register, resume a fixed diagnostic, review evidence and practise on mobil
     path: "../.platform-runtime/lumen-diagnostic-report.png",
     fullPage: true,
   });
-  await page.getByRole("link", { name: "Open revision plan" }).click();
+  await page.getByRole("link", { name: "Open learning plan" }).click();
   await expect(
-    page.getByRole("heading", { name: "Your revision plan" }),
+    page.getByRole("heading", { name: "Your learning plan" }),
   ).toBeVisible();
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.getByRole("button", { name: "Start next activity" }).click();
+  await page
+    .getByRole("button", { name: "Start recommended practice" })
+    .click();
   await expect(
     page.getByRole("group", { name: "Answer choices" }),
   ).toBeVisible();

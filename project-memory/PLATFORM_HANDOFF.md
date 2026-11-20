@@ -1,6 +1,18 @@
 # Platform / GPU handoff
 
-Updated: 2026-11-17 (Asia/Kolkata)
+Updated: 2026-11-20 (Asia/Kolkata)
+
+## Platform usability handoff — 2026-11-20
+
+Achin requested the removal of repeated features and a clearer practice player.
+The frontend now consolidates student learning/revision and progress/history,
+with four primary destinations and fewer repeated teacher summaries. The
+practice player has local drafts/working, explicit feedback, offline recovery
+and same-request retry. Fixed assessment navigation/leave/review saves the
+current changed selection first. Existing records and backend contracts remain
+intact. See [PLATFORM_STATE.md](PLATFORM_STATE.md), `docs/platform/usability.md`
+and `reports/platform/usability_validation.json` for scope and validation.
+The research replay remains separate; no scientific code or datasets changed.
 
 ## Product and research boundary — 2026-11-17
 

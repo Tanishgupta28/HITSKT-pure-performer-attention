@@ -1,7 +1,21 @@
 "use client";
-import { useEffect, useState } from "react";
-import { ArrowRight, Check, Clock3 } from "lucide-react";
-import { Assessment, Feedback, Question, percent, send } from "@/lib/api";
+import { useEffect, useRef, useState } from "react";
+import {
+  ArrowRight,
+  Check,
+  Clock3,
+  Lightbulb,
+  PencilLine,
+  X,
+} from "lucide-react";
+import {
+  Assessment,
+  Feedback,
+  Question,
+  RequestError,
+  percent,
+  send,
+} from "@/lib/api";
 import {
   ActionStatus,
   Badge,
@@ -113,15 +127,19 @@ function Options({
               disabled={locked}
               onChange={() => onChoice(i)}
             />
-            <span>
-              {String.fromCharCode(65 + i)} · {x}
+            <span className="p-option-letter" aria-hidden>
+              {String.fromCharCode(65 + i)}
             </span>
+            <span className="p-option-text">{x}</span>
             {feedback?.answer_index === i ? (
               <small>
-                <Check size={15} /> Correct
+                <Check size={15} />{" "}
+                {choice === i ? "Your answer · correct" : "Correct answer"}
               </small>
             ) : feedback && choice === i ? (
-              <small>Your answer</small>
+              <small>
+                <X size={15} /> Your answer
+              </small>
             ) : null}
           </label>
         ))}
@@ -174,7 +192,7 @@ function Report({ data, reload }: { data: Fixed; reload: () => void }) {
         </Notice>
       ) : (
         <>
-          <div className="p-stats">
+          <div className="p-stats p-practice-stats">
             <Stat
               title="Test score"
               value={`${r.score} / ${r.total}`}
@@ -184,11 +202,6 @@ function Report({ data, reload }: { data: Fixed; reload: () => void }) {
               title="Question accuracy"
               value={r.accuracy == null ? "—" : percent(r.accuracy)}
               caption={`${r.score} correct of ${r.answered} answered`}
-            />
-            <Stat
-              title="Estimated mastery"
-              value="See topic evidence"
-              caption="BKT estimates are shown separately in Progress"
             />
           </div>
           <Panel
@@ -212,9 +225,6 @@ function Report({ data, reload }: { data: Fixed; reload: () => void }) {
                       <strong>{x.name}</strong>
                       <small>{x.reason}</small>
                     </span>
-                    <Button href="/?view=revision" variant="secondary">
-                      Open plan
-                    </Button>
                   </div>
                 ))}
               </div>
@@ -259,11 +269,11 @@ function Report({ data, reload }: { data: Fixed; reload: () => void }) {
         </>
       )}
       <div className="p-actions">
-        <Button href={r ? "/?view=revision" : "/?view=assessments"}>
-          {r ? "Open revision plan" : "Back to assessments"}
+        <Button href={r ? "/?view=practice" : "/?view=assessments"}>
+          {r ? "Open learning plan" : "Back to assessments"}
         </Button>
-        <Button href="/?view=history" variant="secondary">
-          Learning history
+        <Button href="/?view=progress&section=history" variant="secondary">
+          Session history
         </Button>
       </div>
     </>
@@ -330,7 +340,16 @@ export function FixedPlayer({ id }: { id: string }) {
     });
   }
   async function submit() {
-    const v = await a.run(() => send<Fixed>(`/student/fixed/${id}/submit`));
+    const v = await a.run(async () => {
+      if (
+        data?.status === "active" &&
+        choice != null &&
+        choice !== "" &&
+        choice !== data.saved_choice
+      )
+        sync(await item("answer", data.index, choice));
+      return send<Fixed>(`/student/fixed/${id}/submit`);
+    });
     if (v) {
       sync(v);
       setModal(null);
@@ -339,6 +358,27 @@ export function FixedPlayer({ id }: { id: string }) {
   const q = data?.question,
     shown = data?.positions.filter((x) => x === "answered").length ?? 0,
     skipped = data?.positions.filter((x) => x === "skipped").length ?? 0;
+  async function saveCurrent() {
+    if (!data) return;
+    if (choice != null && choice !== "" && choice !== data.saved_choice) {
+      const saved = await item("answer", data.index, choice);
+      sync(saved);
+      return saved;
+    }
+    return data;
+  }
+  async function openQuestion(index: number) {
+    await a.run(async () => {
+      const saved = await saveCurrent();
+      if (saved?.status === "active") sync(await item("open", index));
+    });
+  }
+  async function prepareSubmission() {
+    await a.run(async () => {
+      await saveCurrent();
+      setModal("submit");
+    });
+  }
   return (
     <>
       <Top
@@ -468,9 +508,7 @@ export function FixedPlayer({ id }: { id: string }) {
                             i > data.index &&
                             data.saved_choice == null)
                         }
-                        onClick={() =>
-                          a.run(async () => sync(await item("open", i)))
-                        }
+                        onClick={() => openQuestion(i)}
                       >
                         {i + 1}
                         {status === "answered"
@@ -487,7 +525,7 @@ export function FixedPlayer({ id }: { id: string }) {
                   <Button
                     variant="secondary"
                     disabled={expired || a.busy}
-                    onClick={() => setModal("submit")}
+                    onClick={prepareSubmission}
                   >
                     Review & submit
                   </Button>
@@ -501,15 +539,22 @@ export function FixedPlayer({ id }: { id: string }) {
             title="Save and leave?"
             action="Leave assessment"
             onClose={() => setModal(null)}
-            onConfirm={() => location.assign("/?view=assessments")}
+            busy={a.busy}
+            onConfirm={() =>
+              a.run(async () => {
+                await saveCurrent();
+                location.assign("/?view=assessments");
+              })
+            }
           >
             <p>
-              {shown} answers are confirmed. Any current unsaved choice won’t be
-              included.{" "}
+              {shown} answers are already confirmed. Your current selection will
+              also be saved before you leave.{" "}
               {data?.deadline_at
                 ? "Your timer keeps running."
                 : "You can resume later."}
             </p>
+            <ActionStatus a={a} />
           </Confirm>
         )}
         {modal === "submit" && data && (
@@ -536,47 +581,140 @@ export function FixedPlayer({ id }: { id: string }) {
 export function PracticePlayer({ id }: { id: string }) {
   const loaded = useLoad<Assessment>(`/assessments/${id}`),
     a = useAction();
-  const [data, setData] = useState<Assessment | null>(null),
-    [q, setQuestion] = useState<Question | null>(null),
-    [choice, setChoice] = useState<Choice>(null),
-    [feedback, setFeedback] = useState<Feedback | null>(null),
-    [hint, setHint] = useState(""),
-    [requestId, setRequestId] = useState(""),
-    [leave, setLeave] = useState(false),
-    [showReview, setShowReview] = useState(false);
+  const [data, setData] = useState<Assessment | null>(null);
+  const [q, setQuestion] = useState<Question | null>(null);
+  const [choice, setChoice] = useState<Choice>(null);
+  const [feedback, setFeedback] = useState<Feedback | null>(null);
+  const [hint, setHint] = useState("");
+  const [requestId, setRequestId] = useState("");
+  const [pending, setPending] = useState(false);
+  const [working, setWorking] = useState("");
+  const [leave, setLeave] = useState(false);
+  const [showReview, setShowReview] = useState(false);
+  const [online, setOnline] = useState(true);
+  const heading = useRef<HTMLHeadingElement>(null);
+  const responseHeading = useRef<HTMLHeadingElement>(null);
+  const workingDetails = useRef<HTMLDetailsElement>(null);
   const review = useLoad<Review[]>(
     showReview ? `/assessments/${id}/review` : null,
   );
+  const draftKey = (question: Question) =>
+    `lumen:practice:${id}:${question.id}`;
+  function readDraft(question: Question) {
+    try {
+      const value = JSON.parse(
+        sessionStorage.getItem(draftKey(question)) || "null",
+      );
+      if (
+        !value ||
+        typeof value.requestId !== "string" ||
+        !/^[0-9a-f-]{36}$/i.test(value.requestId)
+      )
+        return null;
+      const valid =
+        question.question_type === "numeric"
+          ? typeof value.choice === "string"
+          : Number.isInteger(value.choice) &&
+            value.choice >= 0 &&
+            value.choice < question.choices.length;
+      return {
+        choice: valid ? (value.choice as Choice) : null,
+        working:
+          typeof value.working === "string" ? value.working.slice(0, 4000) : "",
+        requestId: value.requestId,
+        pending: Boolean(value.pending),
+      };
+    } catch {
+      return null;
+    }
+  }
+  function writeDraft(
+    nextChoice: Choice,
+    nextWorking: string,
+    waiting = pending,
+  ) {
+    if (!q) return;
+    try {
+      sessionStorage.setItem(
+        draftKey(q),
+        JSON.stringify({
+          choice: nextChoice,
+          working: nextWorking,
+          requestId,
+          pending: waiting,
+        }),
+      );
+    } catch {
+      /* Optional draft storage may be unavailable. */
+    }
+  }
+  function installQuestion(nextQuestion: Question | null) {
+    setQuestion(nextQuestion);
+    const draft = nextQuestion ? readDraft(nextQuestion) : null;
+    setChoice(draft?.choice ?? null);
+    setWorking(draft?.working ?? "");
+    setPending(draft?.pending ?? false);
+    setRequestId(draft?.requestId ?? crypto.randomUUID());
+    setHint("");
+    setFeedback(null);
+  }
   useEffect(() => {
     if (loaded.data) {
       setData(loaded.data);
-      setQuestion(loaded.data.question);
-      setChoice(null);
-      setFeedback(null);
-      setHint("");
-      setRequestId(crypto.randomUUID());
+      installQuestion(loaded.data.question);
     }
   }, [loaded.data]);
+  useEffect(() => {
+    const update = () => setOnline(navigator.onLine);
+    update();
+    addEventListener("online", update);
+    addEventListener("offline", update);
+    return () => {
+      removeEventListener("online", update);
+      removeEventListener("offline", update);
+    };
+  }, []);
+  useEffect(() => {
+    if (feedback) {
+      if (workingDetails.current) workingDetails.current.open = false;
+      responseHeading.current?.focus();
+    } else if (q) heading.current?.focus();
+  }, [q?.id, feedback]);
   const complete = data?.status === "completed" && !feedback;
   async function submit() {
-    if (choice == null || choice === "" || !q || !requestId) return;
-    const v = await a.run(() =>
-      send<{ assessment: Assessment; feedback: Feedback }>(
-        `/assessments/${id}/answers`,
-        { question_id: q.id, choice_index: choice, request_id: requestId },
-      ),
-    );
+    if (choice == null || choice === "" || !q || !requestId || !online) return;
+    setPending(true);
+    writeDraft(choice, working, true);
+    const v = await a.run(async () => {
+      try {
+        return await send<{ assessment: Assessment; feedback: Feedback }>(
+          `/assessments/${id}/answers`,
+          { question_id: q.id, choice_index: choice, request_id: requestId },
+        );
+      } catch (e) {
+        if (
+          !(e instanceof RequestError) ||
+          (e.status >= 400 && e.status < 500)
+        ) {
+          setPending(false);
+          writeDraft(choice, working, false);
+        }
+        throw e;
+      }
+    });
     if (v) {
+      try {
+        sessionStorage.removeItem(draftKey(q));
+      } catch {
+        /* Optional browser storage. */
+      }
+      setPending(false);
       setData(v.assessment);
       setFeedback(v.feedback);
     }
   }
   function next() {
-    setQuestion(data?.question ?? null);
-    setFeedback(null);
-    setChoice(null);
-    setHint("");
-    setRequestId(crypto.randomUUID());
+    installQuestion(data?.question ?? null);
   }
   async function showHint() {
     const v = await a.run(() =>
@@ -587,53 +725,59 @@ export function PracticePlayer({ id }: { id: string }) {
   return (
     <>
       <Top
-        back="/?view=history"
+        back="/?view=practice"
         onLeave={data && !complete ? () => setLeave(true) : undefined}
       />
-      <main className="p-player-body practice">
+      <main className="p-player-body practice p-practice-redesign">
+        {!online && (
+          <Notice title="You’re offline" tone="warn">
+            Keep your working here. Reconnect before checking an answer; only
+            confirmed answers count.
+          </Notice>
+        )}
         <ActionStatus a={a} />
         {!data ? (
           <Boundary value={loaded}>
             <Notice title="Practice session unavailable">
-              Return to the workspace to start a session.
+              Return to Learn to start or resume a session.
             </Notice>
           </Boundary>
         ) : complete ? (
           <>
             <Heading
               title="Practice complete"
-              subtitle={`${topicName(data.concept_id)} · ${data.mode === "adaptive" ? "Adaptive mock" : "Focused practice"}`}
+              subtitle={`${data.mode === "adaptive" ? "Mixed topics" : topicName(data.concept_id)} · Your responses are saved.`}
             />
-            <div className="p-stats">
+            <div className="p-stats p-practice-stats">
               <Stat
-                title="Attempted"
-                value={`${data.answered} / ${data.total}`}
-                caption="Saved responses"
-              />
-              <Stat
-                title="Correct"
-                value={data.correct}
-                caption="Practice result, not an exam grade"
-              />
-              <Stat
-                title="Answer accuracy"
-                value={
-                  data.answered ? percent(data.correct / data.answered) : "—"
+                title="Your answers"
+                value={`${data.correct} / ${data.answered} correct`}
+                caption={
+                  data.answered
+                    ? `${percent(data.correct / data.answered)} accuracy in this practice set, not an exam grade`
+                    : "No answers recorded"
                 }
-                caption="Correct of answered questions"
+              />
+              <Stat
+                title="Questions completed"
+                value={`${data.answered} / ${data.total}`}
+                caption="Confirmed on the server"
               />
             </div>
             {data.answered < data.total && (
-              <Notice title="No more eligible items in this set">
-                Choose another topic or try mixed practice.
+              <Notice title="You’ve reached the end of the available questions">
+                Try a different topic from your learning plan.
               </Notice>
             )}
             <Panel
-              title="Check your understanding again later"
-              subtitle="Try a fresh set without hints after a short break."
+              title="What next?"
+              subtitle={
+                data.summary?.recommendations[0]?.reason ??
+                "Revisit the explanation, then try another set when you’re ready."
+              }
             >
               <div className="p-actions">
-                <Button href="/?view=revision">Open revision plan</Button>
+                <Button href="/?view=practice">Back to learning plan</Button>
                 <Button
                   variant="secondary"
                   onClick={() => setShowReview(!showReview)}
@@ -657,7 +801,14 @@ export function PracticePlayer({ id }: { id: string }) {
                         Your answer: {answerText(x.question, x.choice)}.{" "}
                         {x.hints_used ? "Hint used." : "No hints."}
                       </p>
-                      {x.feedback && <p>{x.feedback.explanation}</p>}
+                      <p>
+                        Correct answer:{" "}
+                        {answerText(
+                          x.question,
+                          x.feedback.numeric_answer ?? x.feedback.answer_index,
+                        )}
+                      </p>
+                      <p>{x.feedback.explanation}</p>
                     </details>
                   ))}
                 </div>
@@ -666,98 +817,211 @@ export function PracticePlayer({ id }: { id: string }) {
           </>
         ) : q ? (
           <>
-            <div className="p-player-progress">
-              <div className="p-inline">
-                <Badge tone="neutral">
+            <div className="p-practice-heading">
+              <div>
+                <div className="p-eyebrow">
                   {data.mode === "adaptive"
-                    ? "Adaptive mock"
-                    : "Adaptive practice"}
-                </Badge>
-                <strong>
-                  {feedback ? data.answered : data.answered + 1} of {data.total}
-                </strong>
+                    ? "MIXED PRACTICE"
+                    : "FOCUSED PRACTICE"}
+                </div>
+                <p>
+                  {topicName(q.concept_id)} <span aria-hidden>·</span>{" "}
+                  {data.total} questions
+                </p>
               </div>
-              <span className="p-faint">
-                Bayesian knowledge tracing guides live practice.
+              <span className="p-practice-counter">
+                Question {feedback ? data.answered : data.answered + 1}{" "}
+                <span>of {data.total}</span>
               </span>
-              <div
-                className="p-bar-track"
-                role="progressbar"
-                aria-label="Practice progress"
-                aria-valuenow={data.answered}
-                aria-valuemax={data.total}
-              >
-                <i
-                  style={{ width: `${(100 * data.answered) / data.total}%` }}
-                />
-              </div>
             </div>
-            <Panel className="p-question">
-              <div className="p-eyebrow">
-                {topicName(q.concept_id)} /{" "}
-                {["", "FOUNDATION", "BUILDING", "STRETCH"][q.difficulty]}
-              </div>
-              <h1>{q.prompt}</h1>
-              <Options
-                q={q}
-                choice={choice}
-                onChoice={setChoice}
-                locked={a.busy || !!feedback}
-                feedback={feedback}
-              />
-              {hint && !feedback && (
-                <Notice title="Hint shown · 1 used" tone="ok">
-                  {hint}
-                </Notice>
-              )}
-              {feedback && (
-                <Notice
-                  title={
-                    feedback.correct ? "Correct" : "Let’s work through that"
+            <div
+              className="p-practice-track"
+              role="progressbar"
+              aria-label="Practice progress"
+              aria-valuemin={0}
+              aria-valuenow={data.answered}
+              aria-valuemax={data.total}
+            >
+              {Array.from({ length: data.total }, (_, i) => (
+                <span
+                  key={i}
+                  className={
+                    i < data.answered
+                      ? "done"
+                      : i === data.answered
+                        ? "current"
+                        : ""
                   }
-                  tone={feedback.correct ? "ok" : "warn"}
-                >
-                  {feedback.numeric_answer && (
-                    <p>Correct answer: {feedback.numeric_answer}</p>
-                  )}
-                  {feedback.explanation}
-                </Notice>
-              )}
-              <footer className="p-q-footer">
-                {feedback ? (
-                  <span className="p-status-line">
-                    <Check size={17} /> Answer saved
+                />
+              ))}
+            </div>
+            <Panel className="p-question p-practice-question">
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  if (feedback) next();
+                  else submit();
+                }}
+              >
+                <div className="p-inline p-question-meta">
+                  <Badge tone="neutral">
+                    {["", "Foundation", "Building", "Stretch"][q.difficulty]}
+                  </Badge>
+                  <span>Take your time. Focus on the method.</span>
+                </div>
+                <h1 ref={heading} tabIndex={-1}>
+                  {q.prompt}
+                </h1>
+                <Options
+                  q={q}
+                  choice={choice}
+                  onChoice={(v) => {
+                    setChoice(v);
+                    writeDraft(v, working);
+                  }}
+                  locked={a.busy || pending || Boolean(feedback)}
+                  feedback={feedback}
+                />
+                {pending && !a.busy && !feedback && (
+                  <p className="p-muted" role="status">
+                    We couldn’t confirm this answer. Retry the same selection to
+                    check whether it was saved.
+                  </p>
+                )}
+                {!feedback && (
+                  <div className="p-practice-tools">
+                    <Button
+                      variant="link"
+                      disabled={a.busy || pending || Boolean(hint) || !online}
+                      onClick={showHint}
+                    >
+                      <Lightbulb size={18} />
+                      {hint ? "Hint shown" : "Show a hint"}
+                    </Button>
+                    {!pending && choice != null && choice !== "" && (
+                      <Button
+                        variant="link"
+                        disabled={a.busy}
+                        onClick={() => {
+                          setChoice(null);
+                          writeDraft(null, working);
+                        }}
+                      >
+                        Clear answer
+                      </Button>
+                    )}
+                  </div>
+                )}
+                {hint && !feedback && (
+                  <Notice title="Hint shown · 1 used" tone="ok">
+                    {hint}
+                  </Notice>
+                )}
+                <details className="p-working-space" ref={workingDetails}>
+                  <summary>
+                    <PencilLine size={17} />
+                    Working space <span>Optional · kept in this tab</span>
+                  </summary>
+                  <label htmlFor="practice-working">Your calculations</label>
+                  <textarea
+                    id="practice-working"
+                    maxLength={4000}
+                    rows={5}
+                    value={working}
+                    onChange={(e) => {
+                      setWorking(e.target.value);
+                      if (!feedback) writeDraft(choice, e.target.value);
+                    }}
+                    placeholder="Write the steps you want to try…"
+                  />
+                  <p>This space is not graded or sent to the learning model.</p>
+                </details>
+                {feedback && (
+                  <section
+                    className={`p-answer-feedback ${feedback.correct ? "correct" : "incorrect"}`}
+                    aria-labelledby="practice-feedback"
+                  >
+                    <div className="p-feedback-title">
+                      {feedback.correct ? (
+                        <Check size={23} />
+                      ) : (
+                        <Lightbulb size={23} />
+                      )}
+                      <h2
+                        id="practice-feedback"
+                        ref={responseHeading}
+                        tabIndex={-1}
+                      >
+                        {feedback.correct
+                          ? "That’s correct"
+                          : "Let’s work through it"}
+                      </h2>
+                    </div>
+                    {!feedback.correct && (
+                      <p className="p-answer-comparison">
+                        <span>
+                          Your answer: <strong>{answerText(q, choice)}</strong>
+                        </span>
+                        <span>
+                          Correct answer:{" "}
+                          <strong>
+                            {answerText(
+                              q,
+                              feedback.numeric_answer ?? feedback.answer_index,
+                            )}
+                          </strong>
+                        </span>
+                      </p>
+                    )}
+                    <p>{feedback.explanation}</p>
+                  </section>
+                )}
+                <footer className="p-q-footer p-practice-footer">
+                  <span className="p-status-line" role="status">
+                    {feedback ? (
+                      <>
+                        <Check size={17} />
+                        Answer saved
+                      </>
+                    ) : a.busy ? (
+                      "Checking with the server…"
+                    ) : (
+                      "Choose an answer, then check it."
+                    )}
                   </span>
-                ) : (
                   <Button
-                    variant="secondary"
-                    disabled={a.busy || !!hint}
-                    onClick={showHint}
+                    type="submit"
+                    disabled={
+                      a.busy ||
+                      (!feedback &&
+                        (!online || choice == null || choice === ""))
+                    }
                   >
-                    {hint ? "Hint shown" : "Show a hint"}
+                    {feedback
+                      ? data.status === "completed"
+                        ? "See practice report"
+                        : "Next question"
+                      : a.busy
+                        ? "Checking…"
+                        : pending
+                          ? "Retry answer"
+                          : "Check answer"}
                   </Button>
-                )}
-                {feedback ? (
-                  <Button onClick={next}>
-                    {data.status === "completed"
-                      ? "See practice report"
-                      : "Next question"}
-                    <ArrowRight size={17} />
-                  </Button>
-                ) : (
-                  <Button
-                    onClick={submit}
-                    disabled={a.busy || choice == null || choice === ""}
-                  >
-                    {a.busy ? "Saving answer…" : "Check answer"}
-                  </Button>
-                )}
-              </footer>
+                </footer>
+              </form>
             </Panel>
+            <details className="p-practice-method">
+              <summary>How is this practice personalized?</summary>
+              <p>
+                Bayesian Knowledge Tracing (BKT) updates a topic estimate after
+                each checked answer. Your answers and difficulty guide the next
+                question. It is a learning estimate, not a grade.
+              </p>
+            </details>
           </>
         ) : (
           <Notice title="No question available">
-            Return to the workspace and choose another topic.
+            Return to Learn and choose another topic.
           </Notice>
         )}
         {leave && (
@@ -765,10 +1029,13 @@ export function PracticePlayer({ id }: { id: string }) {
             title="Leave this practice session?"
             action="Leave practice"
             onClose={() => setLeave(false)}
-            onConfirm={() => location.assign("/?view=today")}
+            onConfirm={() => location.assign("/?view=practice")}
           >
-            Previously checked answers are saved. You can resume from your last
-            confirmed answer.
+            <p>
+              Checked answers are saved on the server. Your unchecked selection
+              and working stay in this browser tab when storage is available;
+              they do not count as submitted answers.
+            </p>
           </Confirm>
         )}
       </main>

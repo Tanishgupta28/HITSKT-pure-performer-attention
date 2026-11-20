@@ -1,6 +1,6 @@
 # Platform workstream — Achin
 
-Updated: 2026-11-17 (Asia/Kolkata)
+Updated: 2026-11-20 (Asia/Kolkata)
 
 ## Scope and ownership
 
@@ -18,6 +18,31 @@ processes to deploy the platform. Achin specifically asked whether existing
 code was being altered; the platform preserves all research/training source.
 Platform commit identity is the locally configured Achin-Agarwal identity;
 historic Tanish identity instructions apply to the GPU workstream.
+
+## Usability consolidation — 2026-11-20
+
+Achin requested a usefulness audit, fewer repeated features and an easier
+question-solving experience. Student navigation is now Today, Learn,
+Assessments and Progress. Learn consolidates practice, revision and lessons;
+Progress owns both the learning report and session history. Profile/classes
+are accessed through the account footer. Legacy revision/history links remain
+valid. Mixed practice is clearly separate from formal class papers. Teacher
+Overview owns actions/activity; Analytics owns detailed topic comparisons.
+Administrator content/data/research features remain distinct and available.
+
+The practice player adds explicit response states, focused feedback, optional
+ungraded working space, tab-local drafts, offline messaging and safe retry of
+an uncertain submission. The original selection/request ID stay locked until
+confirmation. The fixed player saves selected answers before navigation,
+leaving or submission review. Grading, roles, timing and release remain server
+enforced. No backend, dataset or research source change is part of this pass.
+
+Review decisions and verification are in `docs/platform/usability.md` and
+`reports/platform/usability_validation.json`. The local research replay's cold
+load exceeded the old 30-second proxy timeout; the frontend now allows a bounded
+120 seconds and explains preparation. The unchanged checkpoint's warm direct
+CPU replay still returned 0.38643354177474976. The model/content handoff remains
+unchanged. No training or GPU interruption was requested.
 
 ## Approved three-role product implementation — 2026-11-17
 

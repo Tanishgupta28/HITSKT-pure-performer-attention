@@ -15,12 +15,18 @@ test("teacher assigns a fixed paper, student submits, teacher releases results",
 }) => {
   await signIn(page, "teacher");
   await expect(
-    page.getByRole("heading", { name: "Topics to revisit" }),
+    page.getByRole("heading", { name: "Your next teaching step" }),
   ).toBeVisible();
   await page.screenshot({
     path: "../.platform-runtime/lumen-teacher-desktop.png",
     fullPage: true,
   });
+  await page
+    .getByRole("button", { name: "Review class analytics", exact: true })
+    .click();
+  await expect(
+    page.getByRole("heading", { name: "Topics to revisit" }),
+  ).toBeVisible();
   await page
     .getByRole("navigation", { name: "Workspace" })
     .getByRole("button", { name: "Assessments" })
@@ -154,7 +160,7 @@ test("admin publishes mapped content, exports data, and replays the two model pa
   await page.getByLabel("Model", { exact: true }).selectOption("hitskt");
   await page.getByRole("button", { name: "Run prediction" }).click();
   await expect(page.getByText("38.64%", { exact: true })).toBeVisible({
-    timeout: 60_000,
+    timeout: 120_000,
   });
   await page.screenshot({
     path: "../.platform-runtime/lumen-model-lab.png",

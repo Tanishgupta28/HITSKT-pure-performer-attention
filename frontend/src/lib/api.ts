@@ -139,25 +139,35 @@ export async function api<T>(
       cache: "no-store",
     });
   } catch {
-    throw new Error(
+    throw new RequestError(
       "Cannot reach the learning service. Check your connection and try again.",
+      0,
     );
   }
   if (!response.ok) {
     const body = await response.json().catch(() => ({}));
     if (response.status === 401)
       throw new AuthError(body.detail || "Please sign in");
-    throw new Error(
+    throw new RequestError(
       typeof body.detail === "string"
         ? body.detail
         : Array.isArray(body.detail)
           ? body.detail.map((e: { msg: string }) => e.msg).join(" · ")
           : "Please check your information and try again.",
+      response.status,
     );
   }
   return response.status === 204 ? (undefined as T) : response.json();
 }
 export class AuthError extends Error {}
+export class RequestError extends Error {
+  constructor(
+    message: string,
+    public status: number,
+  ) {
+    super(message);
+  }
+}
 export const percent = (n: number) => `${Math.round(n * 100)}%`;
 export const send = <T>(path: string, data?: unknown) =>
   api<T>(path, {

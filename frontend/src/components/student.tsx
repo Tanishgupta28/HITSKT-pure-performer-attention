@@ -82,7 +82,7 @@ const boards = ["Not set", "CBSE", "ICSE", "State board", "Other"];
 const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 const basic = ["fractions", "percentages", "equations", "geometry"];
 const modeName = (m: string) =>
-  m === "adaptive" ? "Adaptive mock" : m === "exam" ? "Fixed paper" : label(m);
+  m === "adaptive" ? "Mixed practice" : m === "exam" ? "Fixed paper" : label(m);
 const path = (row: HistoryRow) =>
   `/${row.fixed ? "paper" : "assessment"}/${row.id}`;
 
@@ -170,20 +170,10 @@ function Profile({
                 ))}
               </select>
             </Field>
-            {!compact && (
-              <Field label="Learning goal">
-                <input
-                  minLength={5}
-                  maxLength={240}
-                  value={profile.learning_goal}
-                  onChange={(e) => change("learning_goal", e.target.value)}
-                  required
-                />
-              </Field>
-            )}
           </div>
           {!compact && (
-            <>
+            <details className="p-extra-learning">
+              <summary>Learning preferences · optional</summary>
               <div className="p-fields">
                 <Field label="Weekly question target">
                   <input
@@ -197,7 +187,7 @@ function Profile({
                     required
                   />
                 </Field>
-                <Field label="Adaptive mock length">
+                <Field label="Mixed practice length">
                   <select
                     value={profile.adaptive_session_questions}
                     onChange={(e) =>
@@ -259,7 +249,7 @@ function Profile({
                   ))}
                 </div>
               </fieldset>
-            </>
+            </details>
           )}
           <div className="p-actions">
             <Button disabled={action.busy} type="submit">
@@ -360,9 +350,29 @@ export function StudentWorkspace({
   const [welcome, setWelcome] = useState(false),
     [intro, setIntro] = useState<"diagnostic" | Paper | null>(null),
     [modeFilter, setModeFilter] = useState("all"),
-    [selected, setSelected] = useState(""),
+    [progressView, setProgressView] = useState("report"),
     [lesson, setLesson] = useState<string | null>(null);
   const action = useAction();
+  useEffect(() => {
+    const read = () =>
+      setProgressView(
+        new URLSearchParams(location.search).get("view") === "history" ||
+          new URLSearchParams(location.search).get("section") === "history"
+          ? "history"
+          : "report",
+      );
+    read();
+    addEventListener("popstate", read);
+    return () => removeEventListener("popstate", read);
+  }, [tab]);
+  function showProgress(section: string) {
+    setProgressView(section);
+    window.history.replaceState(
+      {},
+      "",
+      `/?view=progress${section === "history" ? "&section=history" : ""}`,
+    );
+  }
   const d = dashboard.data;
   const h = history.data ?? [];
   useEffect(() => {
@@ -401,20 +411,6 @@ export function StudentWorkspace({
     );
     if (result) route.push(`/paper/${result.id}`);
   }
-  const compare = useLoad<{
-    result: {
-      topics: {
-        concept_id: string;
-        correct: number;
-        answered: number;
-        shown: number;
-      }[];
-    };
-  }>(
-    tab === "progress" && lastDiag?.fixed
-      ? `/student/fixed/${lastDiag.id}`
-      : null,
-  );
   if (!user.onboarding_complete)
     return (
       <Profile
@@ -529,7 +525,7 @@ export function StudentWorkspace({
           duration(x.elapsed_seconds),
           when(x.date),
         ])}
-        caption="Scores from adaptive mocks are not comparable as formal exam marks."
+        caption="Practice results describe that set; compare formal scores on similar papers."
       />
     ) : (
       <Empty
@@ -539,41 +535,36 @@ export function StudentWorkspace({
         Finish a diagnostic or practice set to build your learning history.
       </Empty>
     );
-  if (tab === "history")
-    return (
-      <>
-        <Heading
-          title="Learning history"
-          subtitle="Review submitted tests and previous practice."
-        />
-        <div className="p-toolbar">
-          <Field label="Session type">
-            <select
-              value={modeFilter}
-              onChange={(e) => setModeFilter(e.target.value)}
-            >
-              <option value="all">All sessions</option>
-              {["diagnostic", "exam", "adaptive", "practice"].map((x) => (
-                <option key={x} value={x}>
-                  {modeName(x)}
-                </option>
-              ))}
-            </select>
-          </Field>
-        </div>
-        <Boundary value={history}>
-          {historyTable(
-            h.filter((x) => modeFilter === "all" || x.mode === modeFilter),
-          )}
-        </Boundary>
-      </>
-    );
+  const activityHistory = (
+    <>
+      <div className="p-toolbar">
+        <Field label="Session type">
+          <select
+            value={modeFilter}
+            onChange={(e) => setModeFilter(e.target.value)}
+          >
+            <option value="all">All sessions</option>
+            {["diagnostic", "exam", "adaptive", "practice"].map((x) => (
+              <option key={x} value={x}>
+                {modeName(x)}
+              </option>
+            ))}
+          </select>
+        </Field>
+      </div>
+      <Boundary value={history}>
+        {historyTable(
+          h.filter((x) => modeFilter === "all" || x.mode === modeFilter),
+        )}
+      </Boundary>
+    </>
+  );
   if (tab === "assessments")
     return (
       <>
         <Heading
           title="Assessments"
-          subtitle="Take a starting diagnostic, complete fixed papers, or try an adaptive mock."
+          subtitle="Find your starting point or complete a paper assigned by your teacher."
         />
         <ActionStatus a={action} />
         <div className="p-grid">
@@ -588,14 +579,6 @@ export function StudentWorkspace({
                   ? "Take a fresh diagnostic"
                   : "View instructions"}
               <ArrowRight size={17} />
-            </Button>
-          </Panel>
-          <Panel
-            title="Adaptive mock"
-            subtitle="A low-stakes mix of questions chosen from your learning history."
-          >
-            <Button onClick={() => start("adaptive")} disabled={action.busy}>
-              Start mock
             </Button>
           </Panel>
         </div>
@@ -662,164 +645,145 @@ export function StudentWorkspace({
         </Boundary>
       </>
     );
-  if (tab === "practice")
+  if (tab === "practice" || tab === "revision")
     return (
       <>
         <Heading
-          title="Adaptive practice"
-          subtitle="Choose a focus, answer a question, and get immediate feedback."
-        />
-        <ActionStatus a={action} />
-        <Boundary value={dashboard}>
-          {onset && (
-            <Notice title="You have a practice session in progress">
-              <Button href={`/assessment/${onset.id}`} variant="secondary">
-                Resume session
-              </Button>
-            </Notice>
-          )}
-          <Panel
-            title="Choose a topic"
-            subtitle="Six questions at a pace determined by your answers."
-          >
-            <form
-              className="p-fields"
-              onSubmit={(e) => {
-                e.preventDefault();
-                start("practice", selected || prefer?.concept_id);
-              }}
-            >
-              <Field label="Focus topic">
-                <select
-                  value={selected}
-                  onChange={(e) => setSelected(e.target.value)}
-                >
-                  <option value="">
-                    Recommended: {topicName(prefer?.concept_id)}
-                  </option>
-                  {d?.concepts.map((x) => (
-                    <option key={x.id} value={x.id}>
-                      {x.name}
-                    </option>
-                  ))}
-                </select>
-              </Field>
-              <div className="p-actions">
-                <Button type="submit" disabled={action.busy}>
-                  Start practice <ArrowRight size={17} />
-                </Button>
-              </div>
-            </form>
-          </Panel>
-        </Boundary>
-      </>
-    );
-  if (tab === "revision")
-    return (
-      <>
-        <Heading
-          title="Your revision plan"
-          subtitle="Small, focused sessions based on your recent answers."
-          action={
-            <Button onClick={() => navigate("profile")} variant="secondary">
-              Edit weekly target
-            </Button>
-          }
+          title="Your learning plan"
+          subtitle="Review a concept, practise it, and check what changes."
         />
         <ActionStatus a={action} />
         <Boundary value={dashboard}>
           {d && (
             <>
-              <div className="p-hero-action">
-                <div>
-                  <div className="p-eyebrow">PAST SEVEN DAYS</div>
-                  <h2>
-                    {d.weekly_goal.answered} / {d.weekly_goal.target} questions
-                  </h2>
-                  <p>
-                    {d.weekly_goal.remaining
-                      ? `${d.weekly_goal.remaining} more answers to reach your target.`
-                      : "Weekly target complete. Keep practising if you’d like."}
-                  </p>
-                </div>
-                <div className="p-actions">
+              {onset ? (
+                <section className="p-hero-action">
+                  <div>
+                    <div className="p-eyebrow">SESSION IN PROGRESS</div>
+                    <h2>Continue your practice</h2>
+                    <p>
+                      {onset.answered} of {onset.total} answers saved. Finish
+                      this set before starting another.
+                    </p>
+                  </div>
+                  <Button href={`/assessment/${onset.id}`} variant="light">
+                    Resume practice
+                  </Button>
+                </section>
+              ) : !d.diagnostic_complete && !lastDiag ? (
+                <section className="p-hero-action">
+                  <div>
+                    <div className="p-eyebrow">START WITH EVIDENCE</div>
+                    <h2>Find your starting point</h2>
+                    <p>
+                      A short diagnostic helps us recommend a useful topic. You
+                      can also explore below.
+                    </p>
+                  </div>
+                  <Button variant="light" onClick={diagnostic}>
+                    {activeDiag ? "Resume diagnostic" : "Start diagnostic"}
+                  </Button>
+                </section>
+              ) : (
+                <section className="p-hero-action">
+                  <div>
+                    <div className="p-eyebrow">
+                      RECOMMENDED NEXT · SIX QUESTIONS
+                    </div>
+                    <h2>{prefer?.name ?? "Mathematics"}</h2>
+                    <p>{prefer?.reason}</p>
+                  </div>
                   <Button
                     variant="light"
                     onClick={() => start("practice", prefer?.concept_id)}
                     disabled={action.busy}
                   >
-                    Start next activity
+                    Start recommended practice
                   </Button>
-                </div>
-              </div>
-              {!d.stats.answers && (
-                <Notice title="Your plan is a starting suggestion">
-                  Take the diagnostic for recommendations based on your answers.{" "}
-                  <Button onClick={diagnostic} variant="secondary">
-                    Start diagnostic
-                  </Button>
-                </Notice>
+                </section>
               )}
-              <Table
-                headers={["Priority", "Topic", "Reason", "Action"]}
-                rows={d.recommendations.map((x, i) => [
-                  i === 0 ? (
-                    <Badge key="p">Ready today</Badge>
-                  ) : (
-                    <Badge key="p" tone="neutral">
-                      Next activity
-                    </Badge>
-                  ),
-                  x.name,
-                  x.reason,
-                  <Button
-                    key="button"
-                    variant="secondary"
-                    onClick={() => setLesson(x.concept_id)}
-                  >
-                    Review lesson
-                  </Button>,
-                ])}
-              />
-              <Panel
-                title="Your study days"
-                subtitle="These are suggestions. Start a session when you’re ready."
-              >
-                <div className="p-list">
-                  {d.study_plan.map((x) => (
-                    <div key={x.day}>
-                      <span>
-                        <strong>
-                          {x.day} · {x.concept_name}
-                        </strong>
-                        <small>{x.questions} questions</small>
-                      </span>
+              <div className="p-learning-grid" aria-label="Topics to learn">
+                {d.concepts.map((c) => (
+                  <Panel key={c.id} title={c.name} subtitle={c.description}>
+                    <p className="p-muted">
+                      {c.attempts
+                        ? `${c.correct} correct out of ${c.attempts} answers`
+                        : "Not practised yet"}
+                    </p>
+                    <div className="p-actions">
                       <Button
                         variant="secondary"
-                        onClick={() => start("practice", x.concept_id)}
-                        disabled={action.busy}
+                        onClick={() => setLesson(c.id)}
                       >
-                        Practise
+                        Review lesson
+                      </Button>
+                      <Button
+                        onClick={() => start("practice", c.id)}
+                        disabled={action.busy || Boolean(onset)}
+                      >
+                        Practise {c.name.toLowerCase()}
                       </Button>
                     </div>
-                  ))}
+                  </Panel>
+                ))}
+              </div>
+              <details className="p-extra-learning">
+                <summary>Mix topics & plan your week</summary>
+                <div className="p-grid">
+                  <Panel
+                    title="Mixed practice"
+                    subtitle={`${user.profile.adaptive_session_questions} adaptive questions across topics. This is practice, not a graded exam.`}
+                  >
+                    <Button
+                      onClick={() => start("adaptive")}
+                      disabled={action.busy || Boolean(onset)}
+                    >
+                      Start mixed practice
+                    </Button>
+                  </Panel>
+                  <Panel
+                    title="Weekly target"
+                    subtitle={`${d.weekly_goal.answered} / ${d.weekly_goal.target} answers in the past seven days`}
+                  >
+                    <p>
+                      {d.weekly_goal.remaining
+                        ? `${d.weekly_goal.remaining} more to reach your goal.`
+                        : "Your target is complete."}
+                    </p>
+                    <Button variant="link" onClick={() => navigate("profile")}>
+                      Change learning preferences
+                    </Button>
+                  </Panel>
                 </div>
-              </Panel>
+                {d.study_plan.length > 0 && (
+                  <p className="p-muted">
+                    Suggested study days:{" "}
+                    {d.study_plan
+                      .map((x) => `${x.day} · ${x.concept_name}`)
+                      .join("; ")}
+                    . Start whenever you’re ready.
+                  </p>
+                )}
+              </details>
             </>
           )}
         </Boundary>
         {lesson &&
           d &&
           (() => {
-            const c = d.concepts.find((x) => x.id === lesson);
+            const c = d.concepts.find((c) => c.id === lesson);
             if (!c) return null;
             return (
               <Confirm
                 title={c.name}
-                action="Practise this topic"
+                action={onset ? "Resume practice" : "Practise this topic"}
                 onClose={() => setLesson(null)}
-                onConfirm={() => start("practice", c.id)}
                 busy={action.busy}
+                onConfirm={() =>
+                  onset
+                    ? route.push(`/assessment/${onset.id}`)
+                    : start("practice", c.id)
+                }
               >
                 <p>{c.lesson}</p>
                 {c.steps && (
@@ -845,114 +809,96 @@ export function StudentWorkspace({
     return (
       <>
         <Heading
-          title="Mathematics learning report"
-          subtitle="Marks, answer accuracy and estimated understanding tell different stories."
+          title="Your progress"
+          subtitle="See your topic evidence or review a previous session."
         />
-        <Boundary value={dashboard}>
-          {d && !d.stats.answers ? (
-            <Empty
-              title="No learning evidence yet"
-              action={<Button onClick={diagnostic}>Take the diagnostic</Button>}
-            >
-              Your report will be based on the answers you actually submit.
-            </Empty>
-          ) : (
-            d && (
-              <>
-                <div className="p-stats">
-                  <Stat
-                    title="Latest diagnostic score"
-                    value={
-                      lastDiag?.score == null
-                        ? "—"
-                        : `${lastDiag.score} / ${lastDiag.total}`
-                    }
-                    caption="Marks on one fixed blueprint"
-                  />
-                  <Stat
-                    title="Answer accuracy"
-                    value={
-                      d.stats.accuracy == null ? "—" : percent(d.stats.accuracy)
-                    }
-                    caption={`${d.stats.answers} submitted responses`}
-                  />
-                  <Stat
-                    title="Estimated mastery"
-                    value={
-                      d.concepts.filter((c) => c.attempts >= 5).length
-                        ? "Building evidence"
-                        : "Early evidence"
-                    }
-                    caption="BKT learning estimate · not a grade"
-                  />
-                </div>
-                <Table
-                  headers={[
-                    "Topic",
-                    "Correct / answered",
-                    "Estimated understanding",
-                    "Evidence",
-                  ]}
-                  rows={d.concepts.map((c) => [
-                    c.name,
-                    `${c.correct} / ${c.attempts}`,
-                    c.attempts >= 5
-                      ? percent(c.mastery)
-                      : "Not enough evidence",
-                    c.attempts
-                      ? `${c.evidence_count} observed responses`
-                      : "Unexplored",
-                  ])}
-                  caption="Estimates guide practice; they are not exam scores."
-                />
-                {compare.data?.result && (
-                  <Panel
-                    title="Latest diagnostic · by topic"
-                    subtitle="Counts on one common blueprint; unanswered items receive zero marks."
-                  >
-                    <EvidenceBars
-                      items={compare.data.result.topics.map((x) => ({
-                        name: topicName(x.concept_id),
-                        count: x.correct,
-                        total: x.shown,
-                      }))}
+        <div className="p-view-switch" role="group" aria-label="Progress view">
+          <button
+            aria-pressed={progressView === "report"}
+            onClick={() => showProgress("report")}
+          >
+            Learning report
+          </button>
+          <button
+            aria-pressed={progressView === "history"}
+            onClick={() => showProgress("history")}
+          >
+            Session history
+          </button>
+        </div>
+        {progressView === "history" ? (
+          activityHistory
+        ) : (
+          <Boundary value={dashboard}>
+            {d && !d.stats.answers ? (
+              <Empty
+                title="No learning evidence yet"
+                action={
+                  <Button onClick={diagnostic}>Take the diagnostic</Button>
+                }
+              >
+                Your report will be based on the answers you actually submit.
+              </Empty>
+            ) : (
+              d && (
+                <>
+                  <div className="p-stats">
+                    <Stat
+                      title="Latest diagnostic score"
+                      value={
+                        lastDiag?.score == null
+                          ? "—"
+                          : `${lastDiag.score} / ${lastDiag.total}`
+                      }
+                      caption="Marks on one fixed blueprint"
                     />
-                  </Panel>
-                )}
-                <Panel
-                  title="Compare earlier checks"
-                  subtitle="Compare scores only on similar blueprints and question difficulty."
-                >
-                  {historyTable(
-                    recent
-                      .filter(
-                        (x) => x.mode === "diagnostic" || x.mode === "exam",
-                      )
-                      .slice(0, 5),
-                  )}
-                </Panel>
-                <Panel title="Recommended next step">
-                  <div className="p-list">
-                    {d.recommendations.map((x) => (
-                      <div key={x.concept_id}>
-                        <span>
-                          <strong>{x.name}</strong>
-                          <small>{x.reason}</small>
-                        </span>
-                        <Button
-                          variant="secondary"
-                          onClick={() => navigate("revision")}
-                        >
-                          Open plan
-                        </Button>
-                      </div>
-                    ))}
+                    <Stat
+                      title="Answer accuracy"
+                      value={
+                        d.stats.accuracy == null
+                          ? "—"
+                          : percent(d.stats.accuracy)
+                      }
+                      caption={`${d.stats.answers} submitted responses`}
+                    />
+                    <Stat
+                      title="Estimated mastery"
+                      value={
+                        d.concepts.filter((c) => c.attempts >= 5).length
+                          ? "Building evidence"
+                          : "Early evidence"
+                      }
+                      caption="BKT learning estimate · not a grade"
+                    />
                   </div>
-                </Panel>
-              </>
-            )
-          )}
-        </Boundary>
+                  <Table
+                    headers={[
+                      "Topic",
+                      "Correct / answered",
+                      "Estimated understanding",
+                      "Evidence",
+                    ]}
+                    rows={d.concepts.map((c) => [
+                      c.name,
+                      `${c.correct} / ${c.attempts}`,
+                      c.attempts >= 5
+                        ? percent(c.mastery)
+                        : "Not enough evidence",
+                      c.attempts
+                        ? `${c.evidence_count} observed responses`
+                        : "Unexplored",
+                    ])}
+                    caption="Estimates guide practice; they are not exam scores."
+                  />
+                  <p className="p-muted">
+                    Need the question-level detail? Open Session history and
+                    choose an attempt.
+                  </p>
+                </>
+              )
+            )}
+          </Boundary>
+        )}
       </>
     );
   return (
@@ -1021,80 +967,49 @@ export function StudentWorkspace({
                 Start with the diagnostic when you’re ready.
               </Notice>
             )}
-            <div className="p-grid wide-left">
+            <div className="p-grid">
               <Panel
-                title="Topic evidence"
-                subtitle="Correct answers out of the attempts you have submitted."
+                title="Your week"
+                subtitle="Confirmed answers in the past seven days"
               >
-                {d.stats.answers ? (
-                  <EvidenceBars
-                    items={d.concepts.map((c) => ({
-                      name: c.name,
-                      count: c.correct,
-                      total: c.attempts,
-                    }))}
-                  />
+                <div className="p-week-count">
+                  {d.weekly_goal.answered}
+                  <span> / {d.weekly_goal.target}</span>
+                </div>
+                <p className="p-muted">
+                  {d.weekly_goal.remaining
+                    ? `${d.weekly_goal.remaining} answers to reach your target.`
+                    : "Target complete. Keep a pace that works for you."}
+                </p>
+              </Panel>
+              <Panel
+                title="Latest result"
+                subtitle="Open the full attempt to review the evidence."
+              >
+                {recent[0] ? (
+                  <div className="p-list">
+                    <Link href={path(recent[0])}>
+                      <span>
+                        <strong>{recent[0].title}</strong>
+                        <small>{when(recent[0].date)}</small>
+                      </span>
+                      <Badge>
+                        {recent[0].score == null
+                          ? "Awaiting release"
+                          : `${recent[0].score} / ${recent[0].total}`}
+                      </Badge>
+                    </Link>
+                  </div>
                 ) : (
                   <p className="p-muted">
-                    No topic evidence yet. Answer the diagnostic questions to
-                    see where to start.
+                    Your first completed session will appear here.
                   </p>
                 )}
                 <Button variant="link" onClick={() => navigate("progress")}>
-                  View progress <ArrowRight size={17} />
-                </Button>
-              </Panel>
-              <Panel
-                title="Recent activity"
-                subtitle={
-                  recent.length
-                    ? "Your latest sessions and assessment results."
-                    : "Your work will appear here after your first session."
-                }
-              >
-                <div className="p-list">
-                  {recent.slice(0, 3).map((x) => (
-                    <Link href={path(x)} key={x.id}>
-                      <span>
-                        <strong>{x.title}</strong>
-                        <small>{when(x.date)}</small>
-                      </span>
-                      {x.score == null ? (
-                        <Badge tone="neutral">Awaiting release</Badge>
-                      ) : (
-                        <Badge>
-                          {x.score} / {x.total}
-                        </Badge>
-                      )}
-                    </Link>
-                  ))}
-                </div>
-                <Button variant="link" onClick={() => navigate("history")}>
-                  All history <ArrowRight size={17} />
+                  View progress
                 </Button>
               </Panel>
             </div>
-            <Panel
-              title="Upcoming revision"
-              subtitle="Work on these topics in order, or choose one that suits you."
-            >
-              <div className="p-list">
-                {d.recommendations.slice(0, 2).map((x) => (
-                  <div key={x.concept_id}>
-                    <span>
-                      <strong>{x.name}</strong>
-                      <small>{x.reason}</small>
-                    </span>
-                    <Button
-                      variant="secondary"
-                      onClick={() => navigate("revision")}
-                    >
-                      See plan
-                    </Button>
-                  </div>
-                ))}
-              </div>
-            </Panel>
           </>
         )}
       </Boundary>

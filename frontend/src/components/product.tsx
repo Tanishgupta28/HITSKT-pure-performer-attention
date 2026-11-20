@@ -444,12 +444,9 @@ export function ActionStatus({ a }: { a: ReturnType<typeof useAction> }) {
 const NS = {
   student: [
     ["today", "Today", LayoutDashboard],
-    ["practice", "Practice", BookOpen],
+    ["practice", "Learn", BookOpen],
     ["assessments", "Assessments", ClipboardList],
-    ["revision", "Revision", CalendarDays],
     ["progress", "Progress", ChartNoAxesCombined],
-    ["history", "History", History],
-    ["profile", "Profile", UserRound],
   ],
   teacher: [
     ["overview", "Overview", LayoutDashboard],
@@ -470,7 +467,19 @@ export function useTab(role: User["role"]) {
   useEffect(() => {
     function read() {
       const candidate = new URLSearchParams(location.search).get("view");
-      setTab(NS[role].some(([k]) => k === candidate) ? candidate! : first);
+      const resolved =
+        role === "student" && candidate === "revision"
+          ? "practice"
+          : role === "student" && candidate === "history"
+            ? "progress"
+            : candidate;
+      setTab(
+        resolved === "profile" && role === "student"
+          ? "profile"
+          : NS[role].some(([k]) => k === resolved)
+            ? resolved!
+            : first,
+      );
     }
     read();
     addEventListener("popstate", read);
@@ -497,7 +506,10 @@ export function Shell({
   const [open, setOpen] = useState(false);
   const a = useAction();
   const nav = NS[user.role];
-  const current = nav.find(([id]) => id === tab)?.[1] ?? nav[0][1];
+  const current =
+    tab === "profile"
+      ? "Profile"
+      : (nav.find(([id]) => id === tab)?.[1] ?? nav[0][1]);
   async function logout() {
     await a.run(async () => {
       await send("/auth/logout");
@@ -548,7 +560,14 @@ export function Shell({
         </nav>
         <footer className="p-side-foot">
           <button
-            onClick={() => user.role === "student" && navigate("profile")}
+            aria-label={user.role === "student" ? "Open profile" : undefined}
+            onClick={() => {
+              if (user.role === "student") {
+                navigate("profile");
+                setOpen(false);
+              }
+            }}
+            disabled={user.role !== "student"}
             className="p-user"
           >
             <span className="p-avatar">
@@ -560,7 +579,11 @@ export function Shell({
             </span>
             <span>
               {user.name}
-              <small>{label(user.role)}</small>
+              <small>
+                {user.role === "student"
+                  ? "Profile & classes"
+                  : label(user.role)}
+              </small>
             </span>
           </button>
           <button className="p-icon-btn" aria-label="Sign out" onClick={logout}>
@@ -594,8 +617,8 @@ export function Shell({
         <nav className="p-mobile-nav" aria-label="Quick navigation">
           {[
             ["today", "Today", LayoutDashboard],
-            ["practice", "Practice", BookOpen],
-            ["revision", "Revision", CalendarDays],
+            ["practice", "Learn", BookOpen],
+            ["progress", "Progress", ChartNoAxesCombined],
           ].map(([id, title, Icon]) => {
             const I = Icon as typeof BookOpen;
             return (

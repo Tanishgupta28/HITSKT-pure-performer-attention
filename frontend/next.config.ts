@@ -2,6 +2,9 @@ import type { NextConfig } from "next";
 const config: NextConfig = {
   output: "standalone",
   poweredByHeader: false,
+  // Local research replay can include a cold CPU checkpoint/runtime load.
+  // Keep a bounded request lifetime instead of the default 30-second proxy cut-off.
+  experimental: { proxyTimeout: 120_000 },
   async rewrites() {
     return [
       {

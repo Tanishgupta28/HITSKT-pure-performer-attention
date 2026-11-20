@@ -912,6 +912,7 @@ function ModelLab() {
         {(["overview", "replay", "evaluation"] as const).map((t) => (
           <Button
             key={t}
+            disabled={a.busy}
             variant={tab === t ? "primary" : "secondary"}
             onClick={() => {
               setTab(t);
@@ -926,6 +927,12 @@ function ModelLab() {
         ))}
       </div>
       <ActionStatus a={a} />
+      {a.busy && model === "hitskt" && !prediction && (
+        <Notice title="Preparing the research replay" tone="ok">
+          The first checkpoint load can take up to two minutes. Keep this view
+          open while it finishes.
+        </Notice>
+      )}
       <Boundary value={lab}>
         {tab === "overview" && lab.data && (
           <>
@@ -977,7 +984,11 @@ function ModelLab() {
           <>
             <div className="p-toolbar">
               <Field label="Model">
-                <select value={model} onChange={(e) => select(e.target.value)}>
+                <select
+                  value={model}
+                  disabled={a.busy}
+                  onChange={(e) => select(e.target.value)}
+                >
                   <option value="bkt">Bayesian knowledge tracing</option>
                   <option value="hitskt">Performer HiTSKT</option>
                 </select>
@@ -985,6 +996,7 @@ function ModelLab() {
               <Field label="Learner or fixture">
                 <select
                   value={ref}
+                  disabled={a.busy}
                   onChange={(e) => {
                     setRef(e.target.value);
                     setPrediction(null);

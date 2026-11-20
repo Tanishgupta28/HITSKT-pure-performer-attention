@@ -1257,35 +1257,64 @@ export function TeacherWorkspace({
           <Boundary value={roster}>
             {last && (
               <>
-                <div className="p-stats">
-                  <Stat title="Assigned classes" value={classes.data.length} />
-                  <Stat
-                    title="Active students"
-                    value={last.class.student_count}
-                    caption={last.class.name}
-                  />
-                  <Stat
-                    title="Diagnostic coverage"
-                    value={`${last.diagnostic_count} / ${last.class.student_count}`}
-                    caption="Completed by active learners"
-                  />
-                </div>
+                {!analytics && (
+                  <div className="p-stats">
+                    <Stat
+                      title="Assigned classes"
+                      value={classes.data.length}
+                    />
+                    <Stat
+                      title="Active students"
+                      value={last.class.student_count}
+                      caption={last.class.name}
+                    />
+                    <Stat
+                      title="Diagnostic coverage"
+                      value={`${last.diagnostic_count} / ${last.class.student_count}`}
+                      caption="Completed by active learners"
+                    />
+                  </div>
+                )}
                 <div className="p-grid wide-left">
-                  <Panel
-                    title="Topics to revisit"
-                    subtitle="Correct answers across the latest available diagnostic for each learner."
-                  >
-                    {chart(last.topics)}
-                    <Button
-                      variant="link"
-                      onClick={() =>
-                        analytics ? viewClass() : navigate("analytics")
-                      }
+                  {analytics ? (
+                    <Panel
+                      title="Topics to revisit"
+                      subtitle="Correct answers across the latest available diagnostic for each learner."
                     >
-                      {analytics ? "Open roster" : "Open class analytics"}{" "}
-                      <ArrowRight size={17} />
-                    </Button>
-                  </Panel>
+                      {chart(last.topics)}
+                      <Button
+                        variant="link"
+                        onClick={() =>
+                          analytics ? viewClass() : navigate("analytics")
+                        }
+                      >
+                        {analytics ? "Open roster" : "Open class analytics"}{" "}
+                        <ArrowRight size={17} />
+                      </Button>
+                    </Panel>
+                  ) : (
+                    <Panel
+                      title="Your next teaching step"
+                      subtitle="Review the evidence, then choose the right support for your class."
+                    >
+                      <p>
+                        {last.diagnostic_count} learners have a diagnostic to
+                        review. Use Analytics for topic gaps and learner
+                        comparisons.
+                      </p>
+                      <div className="p-actions">
+                        <Button onClick={() => navigate("analytics")}>
+                          Review class analytics
+                        </Button>
+                        <Button
+                          variant="secondary"
+                          onClick={() => navigate("assessments")}
+                        >
+                          Manage assessments
+                        </Button>
+                      </div>
+                    </Panel>
+                  )}
                   {analytics ? (
                     <Panel
                       title="Score distribution"
@@ -1337,35 +1366,51 @@ export function TeacherWorkspace({
                       {!last.students.length && (
                         <p className="p-muted">Add students to see activity.</p>
                       )}
+                      {last.students.length > 0 &&
+                        !last.students.some(
+                          (x) =>
+                            x.membership === "active" &&
+                            x.diagnostic?.topics.some(
+                              (t) => t.answered && t.correct / t.answered < 0.5,
+                            ),
+                        ) && (
+                          <p className="p-muted">
+                            No topic has fallen below half correct in the
+                            available diagnostics. Keep reviewing as more
+                            evidence arrives.
+                          </p>
+                        )}
                     </Panel>
                   )}
                 </div>
                 {analytics && (
                   <CompareLearners students={last.students} demo={demo} />
                 )}
-                <Panel title="Recent activity">
-                  <div className="p-list">
-                    {last.students
-                      .filter(
-                        (s) => s.membership === "active" && s.last_activity,
-                      )
-                      .sort((a, b) =>
-                        String(b.last_activity).localeCompare(
-                          String(a.last_activity),
-                        ),
-                      )
-                      .slice(0, 5)
-                      .map((s) => (
-                        <div key={s.id}>
-                          <strong>{s.name}</strong>
-                          <small>{when(s.last_activity)}</small>
-                        </div>
-                      ))}
-                  </div>
-                  <Button variant="secondary" onClick={viewClass}>
-                    Open class
-                  </Button>
-                </Panel>
+                {!analytics && (
+                  <Panel title="Recent activity">
+                    <div className="p-list">
+                      {last.students
+                        .filter(
+                          (s) => s.membership === "active" && s.last_activity,
+                        )
+                        .sort((a, b) =>
+                          String(b.last_activity).localeCompare(
+                            String(a.last_activity),
+                          ),
+                        )
+                        .slice(0, 5)
+                        .map((s) => (
+                          <div key={s.id}>
+                            <strong>{s.name}</strong>
+                            <small>{when(s.last_activity)}</small>
+                          </div>
+                        ))}
+                    </div>
+                    <Button variant="secondary" onClick={viewClass}>
+                      Open class
+                    </Button>
+                  </Panel>
+                )}
               </>
             )}
           </Boundary>

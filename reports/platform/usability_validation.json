@@ -1,0 +1,39 @@
+{
+  "date": "2026-11-20",
+  "timezone": "Asia/Kolkata",
+  "base_commit": "7318387",
+  "scope": "Frontend feature consolidation, question-solving usability, safe answer retry, and bounded research replay proxy timeout",
+  "review": "docs/platform/usability.md",
+  "backend_tests": {"passed": 21, "seconds": 95.97, "database": "unique test databases", "warning": "Existing Starlette/httpx TestClient deprecation"},
+  "full_browser_suite": {
+    "passed": 7,
+    "minutes": 4.5,
+    "browser": "Installed Microsoft Edge via Playwright",
+    "runtime": "Next.js standalone production build; isolated QA MongoDB database",
+    "coverage": [
+      "Desktop/tablet/mobile student navigation and local fonts",
+      "Registration, onboarding, diagnostic skip/save/resume/report and mobile practice feedback",
+      "Four student destinations and working legacy revision/history links",
+      "Practice draft and working restoration after reload, offline/online controls, deliberately lost server confirmation, same-ID locked-selection retry, single saved attempt, six-question completion and review",
+      "Fixed selected-answer save before leaving and question navigation",
+      "Teacher analytics navigation, paper creation/assignment, student submission, withheld score, teacher close/release and student report",
+      "Administrator numeric question publishing, pseudonymous data export, BKT replay, cold HiTSKT replay and research audit view"
+    ]
+  },
+  "final_layout_checks": {"passed": 4, "command": "PLAYWRIGHT_CHANNEL=msedge npx playwright test design.spec.ts usability.spec.ts", "includes": "Feedback-bottom <= action-footer-top assertion on mobile; screenshot review after final CSS correction"},
+  "production_build": {"framework": "Next.js 16.4.6", "status": "passed", "typescript": "passed", "proxy_timeout_ms": 120000},
+  "normal_local_runtime": {"health": "ok", "registration_route_status": 200, "verified_logins": ["student", "rohan", "teacher", "admin"], "qa_database_override": false},
+  "resolved_findings": [
+    "Repeated student practice/revision, report/history and account navigation",
+    "Adaptive mock placement confused practice with formal exams",
+    "Selected fixed-paper answer could be lost on leave or navigation",
+    "Practice choices and answer states were too small or visually ambiguous",
+    "Uncertain answer retry could be associated with a changed visible selection",
+    "Cold HiTSKT loading exceeded the default 30-second web proxy timeout; direct warm replay returned the verified output",
+    "Mobile sticky action footer could overlap feedback; replaced with normal flow and a geometry assertion"
+  ],
+  "visual_review": {"local_ignored_evidence": ".platform-runtime/refined-*.png", "reviewed": ["Today desktop", "Learn desktop", "Practice desktop", "Practice mobile" ]},
+  "research": {"code_changed": false, "checkpoint_changed": false, "warm_direct_replay_probability": 0.38643354177474976},
+  "data": {"backend_and_datasets_changed": false, "qa_data_separate": true},
+  "limits": ["Expert review and functional checks, not a measured usability study", "Unchecked practice drafts are limited to the current browser tab when session storage is available", "Live mathematics remains on BKT; HiTSKT uses a separate research fixture"]
+}
