@@ -1,6 +1,7 @@
-"""Versioned authoring. Existing papers and served questions hold immutable copies."""
+"""Versioned question authoring with immutable served question copies."""
 import re
 from datetime import datetime, timezone
+from fractions import Fraction
 from typing import Literal
 
 from fastapi import Depends, HTTPException, Query
@@ -85,7 +86,6 @@ def validated_question(draft, rows, version):
             raise HTTPException(422, 'Provide four different answer choices and select the answer key.')
         draft['choices'] = choices
     else:
-        from fractions import Fraction
         try:
             Fraction(draft['numeric_answer'])
         except (ValueError, ZeroDivisionError):
@@ -98,7 +98,16 @@ def safe_question(q):
     return {k: q.get(k) for k in ('id','prompt','choices','concept_id','topic_id','skill_id','difficulty','question_type','version')}
 
 
-def mount_content(app, admin, teacher, auth):
+def grade(q, response):
+    if q.get('question_type') == 'numeric':
+        try:
+            return Fraction(response) == Fraction(q['numeric_answer'])
+        except (TypeError, ValueError, ZeroDivisionError):
+            return False
+    return type(response) is int and response == q['answer_index']
+
+
+def mount_content(app, admin, auth):
     @app.get('/api/content/taxonomy')
     async def list_taxonomy(user=Depends(auth)):
         return await taxonomy(app.state.db, realm(user))
@@ -134,11 +143,6 @@ def mount_content(app, admin, teacher, auth):
         if not result.matched_count:
             raise HTTPException(404, 'Built-in topics and skills are stable references. Only added labels can be renamed.')
         return {'id':id,'name':body.name}
-
-    @app.get('/api/teacher/question-options')
-    async def eligible_questions(user=Depends(teacher)):
-        bank = await available_questions(app.state.db, realm(user))
-        return [safe_question(q) for q in bank.values()]
 
     @app.get('/api/admin/questions')
     async def list_questions(search: str=Query('', max_length=100), topic: str='', status: str='',

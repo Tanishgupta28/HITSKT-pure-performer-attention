@@ -1,8 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test("register, resume a fixed diagnostic, review evidence and practise on mobile", async ({
-  page,
-}) => {
+test("register and start mixed practice on mobile", async ({ page }) => {
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
   await page.goto("/");
@@ -25,52 +23,16 @@ test("register, resume a fixed diagnostic, review evidence and practise on mobil
   await expect(
     page.getByRole("heading", { name: "Set up your learning" }),
   ).toBeVisible();
-  await page.getByLabel("Grade / class").selectOption("Grade 8");
+  await page.getByLabel("Grade level").selectOption("Grade 8");
   await page.getByRole("button", { name: "Continue", exact: true }).click();
   await expect(
     page.getByRole("heading", { name: "Good to see you, QA" }),
   ).toBeVisible();
-  await page
-    .getByRole("button", { name: "Start diagnostic", exact: true })
-    .click();
-  await page.getByRole("button", { name: "Begin diagnostic" }).click();
-  await expect(
-    page.getByRole("group", { name: "Answer choices" }),
-  ).toBeVisible();
-  await page.getByRole("button", { name: "Skip question" }).click();
-  await expect(
-    page.getByRole("button", { name: "Question 1, skipped" }),
-  ).toBeVisible();
-  await page.getByRole("radio").first().check();
-  await page.getByRole("button", { name: "Save & next" }).click();
-  await expect(
-    page.getByRole("button", { name: "Question 2, answered" }),
-  ).toBeVisible();
-  await page.getByRole("button", { name: "Save & leave" }).click();
-  await page.getByRole("button", { name: "Leave assessment" }).click();
-  await page.getByRole("button", { name: "Resume diagnostic" }).click();
-  await expect(
-    page.getByRole("button", { name: "Question 2, answered" }),
-  ).toBeVisible();
-  await page.getByRole("button", { name: "Review & submit" }).click();
-  await page
-    .getByRole("button", { name: "Submit assessment", exact: true })
-    .click();
-  await expect(
-    page.getByRole("heading", { name: "Mathematics diagnostic · report" }),
-  ).toBeVisible();
-  await expect(page.getByText("Skipped", { exact: true })).toBeVisible();
-  await page.screenshot({
-    path: "../.platform-runtime/lumen-diagnostic-report.png",
-    fullPage: true,
-  });
-  await page.getByRole("link", { name: "Open learning plan" }).click();
-  await expect(
-    page.getByRole("heading", { name: "Your learning plan" }),
-  ).toBeVisible();
   await page.setViewportSize({ width: 390, height: 844 });
+  await page.getByRole("button", { name: "Learn", exact: true }).click();
+  await page.getByText("Mix topics & plan your week", { exact: true }).click();
   await page
-    .getByRole("button", { name: "Start recommended practice" })
+    .getByRole("button", { name: "Start mixed practice", exact: true })
     .click();
   await expect(
     page.getByRole("group", { name: "Answer choices" }),

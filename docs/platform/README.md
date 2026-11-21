@@ -2,14 +2,11 @@
 
 ## Current product build
 
-Use [the Lumen product guide](product.md) for the approved three-role site,
-local demo accounts, tests, exam workflow, and synthetic dataset. The original
-single-workspace rollout notes below are retained for context.
-
-The platform lives in `backend/` (FastAPI) and `frontend/` (Next.js). MongoDB
-persists accounts, sessions, responses, assessments, concept estimates and progress.
-Existing benchmark models, preprocessing, runners, hyperparameters and artifacts
-are unchanged. Platform dependencies are isolated from the research environment.
+Use [the Lumen product guide](product.md) for the Student and Administrator
+workspaces, sign-in, review journeys and synthetic data. The platform lives
+in the FastAPI backend and the Next.js frontend. MongoDB persists accounts,
+sessions, responses, concept estimates and progress. The research models,
+training and experiment artifacts have a separate workflow.
 
 ## Run on Windows
 
@@ -54,39 +51,22 @@ same ports. Docker is an optional portable path, not required for local developm
 ## The working cycle
 
 1. Register or sign in with an HttpOnly opaque session cookie. Passwords use Argon2.
-2. Select Mathematics and take a 12-question diagnostic covering four concepts.
-3. Submit each answer. The server validates the assigned question and grades it.
-4. Persist the answer, concept update and next assigned question in one MongoDB
-   atomic compare-and-swap. Replayed request IDs never count twice.
-5. Select the next difficulty from the current estimate, predicted success,
-   diagnostic coverage, weak concepts and previous exposure.
-6. Review feedback, concept estimates, evidence counts and prerequisite-aware
-   recommendations. Open a short lesson and start six-question focused practice.
-7. Take another adaptive assessment. Completed assessment snapshots form the
-   progress chart. An active assessment can be resumed after a browser/server restart.
+2. Choose a mathematics topic to focus on or start a mixed practice set.
+3. Submit each answer. The server validates and grades the assigned question.
+4. Save the answer, concept update and next question in one MongoDB
+   compare-and-swap. Replayed request IDs never count twice.
+5. Select the next question using estimated success, weak topics, difficulty,
+   and previous exposure.
+6. Review the worked explanation, then explore topic estimates, response
+   counts and prerequisite-aware recommendations in Learn and Progress.
 
-There are 384 original, deterministic multiple-choice items across fractions,
-percentages, linear equations and geometry. Every concept has three difficulty
-levels with 32 variants, including discounts, savings, price equations, square
-perimeters and triangle areas. The original 192 items retain their exact IDs,
-answers and content version; the added items use `math-original-v2`.
-Personalized practice selects content
-from this bank; it does not use an LLM to invent unvalidated questions. The first
-release offers one selectable subject; arbitrary new subjects/content authoring
-and teacher/admin dashboards are future work, not completed features.
-
-The **My profile** page saves grade/learning stage, curriculum, learning goal,
-7-day question target, adaptive session length, study days and focus concepts.
-These preferences persist in MongoDB. New adaptive assessments use the selected
-6/12/18-question length; diagnostics remain 12 and focused practice remains 6.
-An active assessment keeps its original length. Grade and curriculum are
-descriptive preferences, not a claim of full board-syllabus coverage.
-
-The overview's study plan uses chosen focus concepts, or current assessment
-recommendations when no focus is selected. Its target counts actual responses
-in the rolling past seven days. Days are flexible suggestions; no notifications
-or scheduled jobs are created. Lessons include steps, worked examples, practical
-applications and common mistakes.
+The original bank contains 384 multiple-choice items covering fractions,
+percentages, linear equations and geometry. Administrators can publish
+reviewed questions. Focused practice uses six questions, and mixed practice
+uses the selected 6, 12 or 18. Profile preferences include learning goal,
+weekly question target, practice length, study days and focus concepts. Grade
+and curriculum describe the learner's preferences. The weekly goal counts
+submitted answers in the rolling past seven days.
 
 For an explicitly selected local account with no saved profile,
 `backend/tools/seed_sample_profile.py --user-id <uuid>` previews example
@@ -118,7 +98,6 @@ See [model integration](model-integration.md) for the exact serving contract.
 | Adaptive math practice | Repeated answers, concepts and difficulty suit sequential KT | Pilot with reviewed content and measure actual learning gains |
 | TOEIC revision | EdNet-KT1 checkpoint already models that question/skill domain | Licensed original question text and exact trained ID mappings |
 | Prerequisite remediation | Concept estimates can guide what to revisit before harder material | Expert-reviewed prerequisite graph and thresholds |
-| Teacher gap analysis | Aggregate response evidence can identify concepts to revisit | Consent, roles, cohort controls and teacher dashboard |
 | Longitudinal revision planning | Session history can support repeated checks over time | Validate forgetting/scheduling policy and notification preferences |
 
 Evidence: `reports/final_results.csv` at the inspected base commit `08838ec`
@@ -137,22 +116,21 @@ platform does not alter that experiment or claim it is finished.
 - `POST /api/profile` updates only the authenticated learner's validated preferences.
   Auth responses include the current profile; existing accounts receive defaults
   until they save preferences. Unknown fields and invalid concept IDs are rejected.
-- `POST /api/assessments`, `GET /api/assessments/{id}`,
-  `POST /api/assessments/{id}/answers`.
+- `POST /api/practice`, `GET /api/practice/{id}`,
+  `POST /api/practice/{id}/answers`.
 - `GET /api/health` reports MongoDB and model-provider readiness.
 
 Collections: `users` (unique normalized email), `sessions` (hashed token, TTL),
 `rate_limits` (TTL) and `learning` (one atomic student/subject aggregate).
 Only the current question is sent to the browser. Its answer and explanation
 remain server-side until that question is answered. Authorization filters all
-assessment reads/writes through the student's own learning document.
+practice reads/writes through the student's own learning document.
 
 The aggregate approach runs on standalone MongoDB without a transaction replica
 set. This first release caps a subject at 5,000 recorded answers; migrate to
 archived response collections and transactional aggregates before larger usage.
-It has no email verification/reset, instructor roles, account deletion workflow,
-or internet-scale abuse prevention yet. Deploying publicly requires those product
-decisions, a protected MongoDB deployment, HTTPS and production operational review.
+Password recovery requires configured SMTP. For a public deployment, use a
+protected MongoDB instance, HTTPS and a production operational review.
 
 ## Verification
 

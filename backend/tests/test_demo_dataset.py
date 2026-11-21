@@ -2,15 +2,13 @@ import csv
 import hashlib
 import json
 from collections import Counter
-from datetime import datetime, timedelta, timezone
+from datetime import datetime
 from pathlib import Path
-from uuid import uuid4
 
 from pymongo import MongoClient
 
 from app.catalog import BANK
-from app.papers import result_for
-from tools.demo_dataset import BASE, VERSION, attempt_id, dataset, seed_database, uid
+from tools.demo_dataset import BASE, VERSION, dataset, seed_database, uid
 
 
 def test_v2_dataset_is_reproducible_and_has_distinct_sessions(tmp_path):
@@ -49,46 +47,32 @@ def test_v2_dataset_is_reproducible_and_has_distinct_sessions(tmp_path):
     assert all(r['hints_used'] == '0' for r in rows if r['mode'] in {'diagnostic', 'exam'})
 
 
-def test_demo_seed_refresh_preserves_user_attempt_and_held_scores(settings):
+def test_demo_seed_only_adds_missing_practice_histories(settings):
     config = settings.model_copy(update={'demo_enabled': True})
     with MongoClient(config.mongodb_uri, tz_aware=True) as client:
         db = client[config.mongodb_database]
-        anchor = datetime.now(timezone.utc) - timedelta(days=1)
-        anchor = anchor.replace(microsecond=0)
-        teacher = uid('teacher')
-        student = uid('student-0')
-        db.users.insert_one({'_id': teacher, 'email': 'teacher@demo.lumen.example.com',
-                             'demo': True, 'created_at': anchor, 'password_hash': 'unchanged'})
-        old = attempt_id(0, 0)
-        written = str(uuid4())
-        response = {'request_id': str(uuid4()), 'assessment_id': written, 'question_id':'fractions-1-1',
-                    'source': 'synthetic', 'concept_id': 'fractions', 'correct': True, 'difficulty': 1,
-                    'answered_at': (anchor + timedelta(hours=1)).isoformat()}
-        user_attempt = {'id': written, 'mode': 'practice', 'started_at': response['answered_at'],
-                        'status': 'completed', 'responses': [response]}
-        db.learning.insert_one({'_id': f'{student}:mathematics', 'user_id': student, 'demo': True,
-                                'version': 6, 'history': [{**response, 'assessment_id': old,
-                                'request_id': uid(f'{old}-0')}, response], 'fixed': {old: {'id': old}},
-                                'assessments': [user_attempt]})
+        teacher_id = uid('teacher')
+        student_id = uid('student-0')
+        db.users.insert_one({'_id': teacher_id, 'email': 'teacher@demo.lumen.example.com',
+                             'role': 'teacher', 'demo': True, 'password_hash': 'unchanged'})
+        previous = {'_id': f'{student_id}:mathematics', 'user_id': student_id, 'demo': True,
+                    'version': 6, 'fixed': {'old-diagnostic': {'id': 'old-diagnostic'}},
+                    'assessments': [{'id': 'old-practice', 'mode': 'practice'}]}
+        db.learning.insert_one(previous)
         db.learning.insert_one({'_id': 'real:mathematics', 'demo': False, 'version': 2, 'history': []})
+
         seed_database(config)
-        after = db.learning.find_one({'_id': f'{student}:mathematics'})
+
         rohan = db.learning.find_one({'_id': f'{uid("student-1")}:mathematics'})
-        assert after['version'] == 7 and after['demo_fixture_version'] == VERSION
-        assert after['assessments'][-1] == user_attempt and after['history'][-1] == response
-        assert len(after['history']) == 31 and len(rohan['history']) == 42
-        assert sum(c['attempts'] for c in after['concepts'].values()) == len(after['history'])
-        assert [result_for(s['fixed'][attempt_id(i, 0)])['score'] for i, s in enumerate([after, rohan])] == [6, 9]
-        assert after['assessments'][0]['responses'][0]['feedback']['explanation']
+        assert rohan['demo_fixture_version'] == VERSION
+        assert rohan['history']
         assert {'practice', 'adaptive'} == {a['mode'] for a in rohan['assessments']}
-        assert db.users.find_one({'_id': teacher})['password_hash'] == 'unchanged'
+        assert all(r['feedback']['explanation'] for r in rohan['history'])
+        assert db.learning.find_one({'_id': previous['_id']}) == previous
         assert db.learning.find_one({'_id': 'real:mathematics'})['version'] == 2
-        paper = db.papers.find_one({'_id': uid('exam-paper')})
-        exam = datetime.fromisoformat(after['fixed'][attempt_id(0, 1)]['submitted_at'])
-        assert paper['created_at'] <= paper['assigned_at'] < exam < paper['closed_at'] < paper['released_at']
-        nia = db.learning.find_one({'_id': f'{uid("student-2")}:mathematics'})
-        held = nia['fixed'][attempt_id(2, 4)]
-        assert held['submitted_at'] and not held['incorporated']
-        assert all(r['assessment_id'] != held['id'] for r in nia['history'])
+        assert db.users.count_documents({'role': 'teacher'}) == 1
+        assert db.users.find_one({'_id': teacher_id})['password_hash'] == 'unchanged'
+        assert 'papers' not in db.list_collection_names() and 'classes' not in db.list_collection_names()
+
         seed_database(config)
-        assert db.learning.find_one({'_id': after['_id']}) == after
+        assert db.learning.find_one({'_id': rohan['_id']}) == rohan

@@ -12,7 +12,7 @@ export type User = {
   id: string;
   name: string;
   email: string;
-  role: "student" | "teacher" | "admin";
+  role: "student" | "admin";
   demo: boolean;
   onboarding_complete: boolean;
   profile: LearnerProfile;
@@ -102,12 +102,10 @@ export type Dashboard = {
   stats: {
     answers: number;
     accuracy: number | null;
-    completed_assessments: number;
+    completed_practice: number;
     study_days: number;
   };
-  diagnostic_complete: boolean;
   active_assessment: Assessment | null;
-  active_diagnostic?: { id: string; title: string } | null;
   progress: {
     id: string;
     mode: string;

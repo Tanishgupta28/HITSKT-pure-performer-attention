@@ -15,14 +15,13 @@ from pymongo.errors import DuplicateKeyError
 from pwdlib import PasswordHash
 from starlette.concurrency import run_in_threadpool
 
-from app.catalog import BANK, CONCEPTS, SUBJECT, public_question
+from app.catalog import BANK, CONCEPTS, SUBJECT
 from app.config import Settings
-from app.engine import concept_rows, initial_concept, recommendations, select_question, update_knowledge
+from app.engine import PRACTICE_MODES, concept_rows, initial_concept, recommendations, select_question, update_knowledge
 from app.inference import Predictor
 from app.profile import LearnerProfile, profile_view, public_user
 from app.workspace import mount_workspace
-from app.content import available_questions, safe_question
-from app.papers import grade
+from app.content import available_questions, grade, safe_question
 
 passwords = PasswordHash.recommended()
 DUMMY_HASH = passwords.hash("dummy-password-for-constant-work")
@@ -47,9 +46,9 @@ class Registration(Credentials):
     name: str = Field(min_length=2, max_length=80, pattern=r".*\S.*")
 
 
-class StartAssessment(BaseModel):
+class StartPractice(BaseModel):
     subject_id: Literal["mathematics"] = "mathematics"
-    mode: Literal["diagnostic", "adaptive", "practice"] = "adaptive"
+    mode: Literal["adaptive", "practice"] = "adaptive"
     concept_id: str | None = None
 
 
@@ -73,9 +72,6 @@ def create_app(settings=None):
         await db.users.create_index("email", unique=True)
         await db.sessions.create_index("expires_at", expireAfterSeconds=0)
         await db.rate_limits.create_index("expires_at", expireAfterSeconds=0)
-        await db.classes.create_index("join_code", unique=True)
-        await db.classes.create_index([("teacher_id", 1), ("demo", 1)])
-        await db.papers.create_index([("class_id", 1), ("status", 1)])
         app.state.db = db
         app.state.predictor = await run_in_threadpool(Predictor, settings)
         yield
@@ -102,7 +98,7 @@ def create_app(settings=None):
         if not session or session["expires_at"] <= now():
             raise HTTPException(401, "Please sign in to continue")
         user = await app.state.db.users.find_one({"_id": session["user_id"]})
-        if not user:
+        if not user or user.get("role", "student") not in {"student", "admin"}:
             raise HTTPException(401, "Account is unavailable")
         if user.get("inactive") or (user.get("demo") and not settings.demo_enabled):
             raise HTTPException(403, "This account is inactive. Contact your administrator.")
@@ -144,7 +140,6 @@ def create_app(settings=None):
                 await app.state.db.learning.insert_one(state)
             except DuplicateKeyError:
                 state = await app.state.db.learning.find_one({"_id": key})
-        await app.state.reconcile_papers(state)
         return state
 
     async def save(state):
@@ -154,7 +149,7 @@ def create_app(settings=None):
         if not result.modified_count:
             raise HTTPException(409, "Learning state changed in another tab. Reload and try again.")
 
-    def assessment_view(assessment):
+    def practice_view(assessment):
         pending = assessment.get("pending")
         return {"id": assessment["id"], "mode": assessment["mode"], "status": assessment["status"],
                 "concept_id": assessment.get("concept_id"), "answered": len(assessment["responses"]),
@@ -203,6 +198,8 @@ def create_app(settings=None):
             raise HTTPException(401, "Email or password is incorrect")
         if user.get("inactive") or (user.get("demo") and not settings.demo_enabled):
             raise HTTPException(403, "This account is inactive. Contact your administrator.")
+        if user.get("role", "student") not in {"student", "admin"}:
+            raise HTTPException(403, "This account no longer has a Lumen workspace.")
         return await issue_session(user, response)
 
     @app.get("/api/auth/me")
@@ -232,10 +229,9 @@ def create_app(settings=None):
     @app.get("/api/learning/{subject_id}")
     async def dashboard(subject_id: str, user=Depends(student)):
         state = await learning(user, subject_id)
-        completed = [a for a in state["assessments"] if a["status"] == "completed"]
+        completed = [a for a in state["assessments"] if a["status"] == "completed" and a["mode"] in PRACTICE_MODES]
         bank = await available_questions(app.state.db, user.get("demo", False))
-        active = next((a for a in state["assessments"] if a["status"] == "active"), None)
-        fixed_active = next(({"id": a["id"], "title": a["title"]} for a in state.get("fixed", {}).values() if a["mode"] == "diagnostic" and not a["submitted_at"]), None)
+        active = next((a for a in state["assessments"] if a["status"] == "active" and a["mode"] in PRACTICE_MODES), None)
         history = state["history"]
         profile = profile_view(user)
         recent_count = sum(datetime.fromisoformat(r["answered_at"]) >= now() - timedelta(days=7) for r in history)
@@ -244,7 +240,7 @@ def create_app(settings=None):
         plan = [{"day": day, "concept_id": plan_concepts[i % len(plan_concepts)],
                  "concept_name": next(c["name"] for c in CONCEPTS if c["id"] == plan_concepts[i % len(plan_concepts)]),
                  "questions": 6} for i, day in enumerate(profile["study_days"])]
-        return {"subject": SUBJECT, "concepts": concept_rows(state), "recommendations": recommendations(state),
+        return {"subject": SUBJECT, "concepts": concept_rows(state), "recommendations": suggested,
                 "profile": profile,
                 "study_plan": plan,
                 "weekly_goal": {"answered": recent_count, "target": profile["weekly_question_target"],
@@ -252,26 +248,22 @@ def create_app(settings=None):
                 "content": {"question_count": len(bank), "difficulty_levels": 3,
                             "concept_question_counts": {c["id"]: sum(q["concept_id"] == c["id"] for q in bank.values()) for c in CONCEPTS}},
                 "stats": {"answers": len(history), "accuracy": sum(r["correct"] for r in history) / len(history) if history else None,
-                          "completed_assessments": len(completed), "study_days": len({r["answered_at"][:10] for r in history})},
-                "active_assessment": assessment_view(active) if active else None,
-                "active_diagnostic": fixed_active,
-                "diagnostic_complete": any(a["mode"] == "diagnostic" for a in completed) or any(a["mode"] == "diagnostic" and a.get("submitted_at") for a in state.get("fixed", {}).values()),
+                          "completed_practice": len(completed), "study_days": len({r["answered_at"][:10] for r in history})},
+                "active_assessment": practice_view(active) if active else None,
                 "progress": [{"id": a["id"], "mode": a["mode"], "completed_at": a["completed_at"],
                               "accuracy": a["summary"]["accuracy"], "mastery": a["summary"]["average_mastery"]} for a in completed[-20:]],
                 "recent_answers": [{k: r[k] for k in ("question_id", "concept_id", "correct", "answered_at", "difficulty", "prediction")} for r in history[-8:]][::-1],
                 "model": app.state.predictor.status()}
 
-    @app.post("/api/assessments", status_code=201)
-    async def start(data: StartAssessment, user=Depends(student)):
+    @app.post("/api/practice", status_code=201)
+    async def start(data: StartPractice, user=Depends(student)):
         state = await learning(user, data.subject_id)
         if data.concept_id and data.concept_id not in state["concepts"]:
             raise HTTPException(422, "Unknown concept")
-        if data.mode == "diagnostic" and data.concept_id:
-            raise HTTPException(422, "Diagnostics must cover every concept")
-        active = next((a for a in state["assessments"] if a["status"] == "active"), None)
+        active = next((a for a in state["assessments"] if a["status"] == "active" and a["mode"] in PRACTICE_MODES), None)
         if active:
-            return assessment_view(active)
-        total = 6 if data.mode == "practice" else 12 if data.mode == "diagnostic" else profile_view(user)["adaptive_session_questions"]
+            return practice_view(active)
+        total = 6 if data.mode == "practice" else profile_view(user)["adaptive_session_questions"]
         if len(state["history"]) + total > 5000:
             raise HTTPException(409, "Learning archive capacity reached. Contact the administrator to archive this history.")
         assessment = {"id": str(uuid4()), "mode": data.mode, "concept_id": data.concept_id,
@@ -283,29 +275,29 @@ def create_app(settings=None):
             raise HTTPException(409, "No eligible practice questions are available")
         state["assessments"].append(assessment)
         await save(state)
-        return assessment_view(assessment)
+        return practice_view(assessment)
 
-    @app.get("/api/assessments/{assessment_id}")
+    @app.get("/api/practice/{assessment_id}")
     async def get_assessment(assessment_id: UUID, user=Depends(student)):
         state = await learning(user)
-        assessment = next((a for a in state["assessments"] if a["id"] == str(assessment_id)), None)
+        assessment = next((a for a in state["assessments"] if a["id"] == str(assessment_id) and a["mode"] in PRACTICE_MODES), None)
         if assessment is None:
-            raise HTTPException(404, "Assessment not found")
-        return assessment_view(assessment)
+            raise HTTPException(404, "Practice session not found")
+        return practice_view(assessment)
 
-    @app.post("/api/assessments/{assessment_id}/answers")
+    @app.post("/api/practice/{assessment_id}/answers")
     async def answer(assessment_id: UUID, data: Answer, user=Depends(student)):
         state = await learning(user)
-        assessment = next((a for a in state["assessments"] if a["id"] == str(assessment_id)), None)
+        assessment = next((a for a in state["assessments"] if a["id"] == str(assessment_id) and a["mode"] in PRACTICE_MODES), None)
         if assessment is None:
-            raise HTTPException(404, "Assessment not found")
+            raise HTTPException(404, "Practice session not found")
         duplicate = next((r for a in state["assessments"] for r in a["responses"] if r["request_id"] == str(data.request_id)), None)
         if duplicate:
             if duplicate["question_id"] != data.question_id or duplicate["choice_index"] != data.choice_index or duplicate["assessment_id"] != str(assessment_id):
                 raise HTTPException(409, "Request ID was already used for another answer")
-            return {"assessment": assessment_view(assessment), "feedback": duplicate["feedback"], "replayed": True}
+            return {"assessment": practice_view(assessment), "feedback": duplicate["feedback"], "replayed": True}
         if assessment["status"] != "active":
-            raise HTTPException(409, "Assessment is already completed")
+            raise HTTPException(409, "Practice session is already completed")
         pending = assessment["pending"]
         if not pending or pending["question_id"] != data.question_id:
             raise HTTPException(409, "This is not the current question. Reload the assessment.")
@@ -351,13 +343,13 @@ def create_app(settings=None):
         # One MongoDB atomic compare-and-swap persists response, mastery and next
         # question together; no partial updates or replica-set transaction needed.
         await save(state)
-        return {"assessment": assessment_view(assessment), "feedback": feedback, "replayed": False}
+        return {"assessment": practice_view(assessment), "feedback": feedback, "replayed": False}
 
-    @app.post("/api/assessments/{assessment_id}/hint")
+    @app.post("/api/practice/{assessment_id}/hint")
     async def hint(assessment_id: UUID, user=Depends(student)):
         state = await learning(user)
-        a = next((a for a in state["assessments"] if a["id"] == str(assessment_id)), None)
-        if not a or not a.get("pending") or a["mode"] == "diagnostic":
+        a = next((a for a in state["assessments"] if a["id"] == str(assessment_id) and a["mode"] in PRACTICE_MODES), None)
+        if not a or not a.get("pending"):
             raise HTTPException(409, "Hints are not available for this question")
         p = a["pending"]
         q = p.get("question") or BANK.get(p["question_id"], {})
@@ -367,17 +359,17 @@ def create_app(settings=None):
         guidance = {"fractions": "Find a common denominator before combining the numerators.", "percentages": "Write the percentage as a fraction out of 100, then apply it to the original amount.", "equations": "Apply the same operation to both sides to isolate the unknown.", "geometry": "Identify whether you need area or perimeter, then choose the matching formula."}
         return {"hint": q.get("hint") or guidance.get(q.get("concept_id"), "Identify the quantities in the question first."), "hints_used": 1}
 
-    @app.get("/api/assessments/{assessment_id}/review")
+    @app.get("/api/practice/{assessment_id}/review")
     async def review(assessment_id: UUID, user=Depends(student)):
         state = await learning(user)
-        a = next((a for a in state["assessments"] if a["id"] == str(assessment_id)), None)
+        a = next((a for a in state["assessments"] if a["id"] == str(assessment_id) and a["mode"] in PRACTICE_MODES), None)
         if not a or a['status'] != 'completed':
-            raise HTTPException(404, 'A completed assessment is required to review answers.')
+            raise HTTPException(404, 'A completed practice session is required to review answers.')
         return [{'question': r.get('question_snapshot') or safe_question(BANK.get(r['question_id'], {})),
                  'choice': r.get('choice_index'), 'correct': r['correct'], 'feedback': r.get('feedback'),
                  'hints_used': r.get('hints_used', 0), 'response_time_ms': r.get('response_time_ms')} for r in a['responses']]
 
-    mount_workspace(app, settings, auth, student, learning, save, limit_auth, passwords)
+    mount_workspace(app, settings, auth, student, learning, limit_auth, passwords)
     return app
 
 

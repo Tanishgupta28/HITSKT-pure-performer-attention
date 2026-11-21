@@ -1,17 +1,15 @@
-from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
 from uuid import uuid4
 
 from fastapi.testclient import TestClient
-from pymongo import MongoClient
 
 from app.catalog import BANK
 from app.engine import initial_concept, update_knowledge
 from app.main import create_app
 
 
-def start(client, mode="diagnostic", concept_id=None):
-    response = client.post("/api/assessments", json={"mode": mode, "concept_id": concept_id})
+def start(client, mode="adaptive", concept_id=None):
+    response = client.post("/api/practice", json={"mode": mode, "concept_id": concept_id})
     assert response.status_code == 201, response.text
     return response.json()
 
@@ -20,35 +18,32 @@ def submit(client, assessment, correct=True, request_id=None):
     q = assessment["question"]
     index = BANK[q["id"]]["answer_index"]
     body = {"question_id": q["id"], "choice_index": index if correct else (index+1)%4, "request_id": request_id or str(uuid4())}
-    result = client.post(f"/api/assessments/{assessment['id']}/answers", json=body)
+    result = client.post(f"/api/practice/{assessment['id']}/answers", json=body)
     assert result.status_code == 200, result.text
     return result.json(), body
 
 
-def test_full_diagnostic_recommendation_practice_cycle(student):
-    assessment = start(student)
-    seen = []
-    for i in range(12):
-        q = assessment["question"]
-        assert "answer_index" not in q and "explanation" not in q
-        seen.append(q["concept_id"])
-        result, _ = submit(student, assessment, correct=q["concept_id"] != "fractions")
-        assessment = result["assessment"]
-    assert assessment["status"] == "completed"
-    assert assessment["question"] is None
-    assert Counter(seen) == {"fractions": 3, "percentages": 3, "equations": 3, "geometry": 3}
-    dashboard = student.get("/api/learning/mathematics").json()
-    assert dashboard["stats"]["answers"] == 12
-    assert dashboard["diagnostic_complete"] is True
-    assert dashboard["recommendations"][0]["concept_id"] == "fractions"
-    assert len(dashboard["progress"]) == 1
+def test_focused_practice_updates_recommendation_and_progress(student):
     practice = start(student, "practice", "fractions")
     for _ in range(6):
-        assert practice["question"]["concept_id"] == "fractions"
+        q = practice["question"]
+        assert q["concept_id"] == "fractions"
+        assert "answer_index" not in q and "explanation" not in q
+        result, _ = submit(student, practice, correct=False)
+        practice = result["assessment"]
+    assert practice["status"] == "completed"
+    assert practice["question"] is None
+    dashboard = student.get("/api/learning/mathematics").json()
+    assert dashboard["stats"]["answers"] == 6
+    assert dashboard["stats"]["completed_practice"] == 1
+    assert dashboard["recommendations"][0]["concept_id"] == "fractions"
+    practice = start(student, "practice", "fractions")
+    for _ in range(6):
         result, _ = submit(student, practice)
         practice = result["assessment"]
     final = student.get("/api/learning/mathematics").json()
-    assert final["stats"]["answers"] == 18
+    assert final["stats"]["answers"] == 12
+    assert final["stats"]["completed_practice"] == 2
     assert len(final["progress"]) == 2
     assert final["progress"][1]["mastery"] > final["progress"][0]["mastery"]
 
@@ -56,21 +51,21 @@ def test_full_diagnostic_recommendation_practice_cycle(student):
 def test_answer_retry_is_idempotent_and_tampering_rejected(student):
     assessment = start(student)
     result, body = submit(student, assessment)
-    retry = student.post(f"/api/assessments/{assessment['id']}/answers", json=body)
+    retry = student.post(f"/api/practice/{assessment['id']}/answers", json=body)
     assert retry.status_code == 200
     assert retry.json()["replayed"] is True
     assert student.get("/api/learning/mathematics").json()["stats"]["answers"] == 1
     body["choice_index"] = (body["choice_index"]+1)%4
-    assert student.post(f"/api/assessments/{assessment['id']}/answers", json=body).status_code == 409
+    assert student.post(f"/api/practice/{assessment['id']}/answers", json=body).status_code == 409
     body["request_id"] = str(uuid4())
-    assert student.post(f"/api/assessments/{assessment['id']}/answers", json=body).status_code == 409
+    assert student.post(f"/api/practice/{assessment['id']}/answers", json=body).status_code == 409
 
 
 def test_concurrent_submissions_never_double_count(student):
     assessment = start(student)
     body = {"question_id": assessment["question"]["id"], "choice_index": 0, "request_id": str(uuid4())}
     def send(_):
-        return student.post(f"/api/assessments/{assessment['id']}/answers", json=body).status_code
+        return student.post(f"/api/practice/{assessment['id']}/answers", json=body).status_code
     with ThreadPoolExecutor(max_workers=2) as pool:
         codes = list(pool.map(send, [0,1]))
     assert 200 in codes and all(code in (200,409) for code in codes)
@@ -94,7 +89,7 @@ def test_database_persistence_across_application_restart(student, settings):
     cookies=dict(student.cookies)
     with TestClient(create_app(settings)) as second:
         second.cookies.update(cookies)
-        resumed=second.get(f"/api/assessments/{assessment['id']}").json()
+        resumed=second.get(f"/api/practice/{assessment['id']}").json()
         assert resumed["answered"] == 1
         assert resumed["question"]["id"] == result["assessment"]["question"]["id"]
         assert second.get("/api/learning/mathematics").json()["stats"]["answers"] == 1
@@ -106,7 +101,7 @@ def test_auth_ownership_logout_and_origin(student):
     student.cookies.clear()
     assert student.get("/api/learning/mathematics").status_code == 401
     student.post("/api/auth/register",json={"name":"Other Student","email":"other@example.com","password":"another-good-password"})
-    assert student.get(f"/api/assessments/{assessment['id']}").status_code == 404
+    assert student.get(f"/api/practice/{assessment['id']}").status_code == 404
     assert student.post("/api/auth/logout",headers={"Origin":"https://untrusted.example"}).status_code == 403
     assert student.post("/api/auth/logout").status_code == 204
     assert student.get("/api/auth/me").status_code == 401

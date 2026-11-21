@@ -20,7 +20,7 @@ sys.path.insert(0, str(ROOT / 'backend'))
 from app.catalog import BANK, CONCEPTS
 from app.config import Settings
 from app.content import key, original, safe_question
-from app.engine import concept_rows, initial_concept, recommendations, update_knowledge
+from app.engine import PRACTICE_MODES, concept_rows, initial_concept, recommendations, update_knowledge
 
 SEED = 42
 VERSION = 'lumen-synthetic-v2'
@@ -36,7 +36,6 @@ NAMES = ['Asha Shah', 'Rohan Mehta', 'Nia Patel', 'Omar Jain', 'Dev Malik', 'Ira
          'Aditi Pai', 'Tanvi Shah', 'Esha Rao', 'Veer Jain', 'Rehan Sen', 'Maya Patel',
          'Diya Jain', 'Sia Roy', 'Arun Pai', 'Ishan Rao', 'Neel Das', 'Jiya Sen']
 CONCEPT_IDS = [c['id'] for c in CONCEPTS]
-RULES = {'review_allowed': True, 'skips_allowed': True, 'show_explanations': True}
 DIAGNOSTIC_PROFILES = {
     # Fractions, percentages, equations, geometry. The first two drive the demo.
     0: [0, 1, 3, 2], 1: [3, 3, 1, 2], 2: [3, 3, 3, 3],
@@ -197,122 +196,47 @@ def dataset(out):
     return manifest
 
 
-def paper_seed(anchor, name, title, status, items):
-    assigned = None if status == 'draft' else anchor - timedelta(days=9 if status == 'released' else 3)
-    close = anchor - timedelta(days=6) if status == 'released' else None
-    return {'_id': uid(name), 'teacher_id': uid('teacher'), 'class_id': uid('class-8b'),
-            'class_name': '8B Mathematics', 'demo': True, 'status': status, 'title': title,
-            'revision': 0, 'question_ids': [q['id'] for q in items],
-            'questions': [] if status == 'draft' else items, 'duration_minutes': 20, **RULES,
-            'extra_minutes': {}, 'created_at': assigned or anchor, 'assigned_at': assigned,
-            'opens_at': assigned, 'closes_at': close or (anchor + timedelta(days=30) if assigned else None),
-            'closed_at': close, 'released_at': close + timedelta(hours=1) if close else None}
-
-
-def seed_papers(db, anchor):
-    seeds = [paper_seed(anchor, 'exam-paper', 'Grade 8 unit check', 'released', question_set(1)),
-             paper_seed(anchor, 'exam-new', 'Next unit check', 'assigned', question_set(2)),
-             paper_seed(anchor, 'exam-draft', 'Percentage and fractions review', 'draft', question_set(0)[:6])]
-    for seed in seeds:
-        id_ = seed['_id']
-        db.papers.update_one({'_id': id_}, {'$setOnInsert': {**seed, 'demo_fixture_version': VERSION}}, upsert=True)
-        original_seed = {'_id': id_, 'demo': True, 'status': seed['status'], 'revision': 0,
-                         'question_ids': seed['question_ids'], 'created_at': anchor,
-                         'assigned_at': anchor, 'demo_fixture_version': {'$exists': False}}
-        # Correct the old generated timeline, retaining shared question IDs and existing attempts.
-        patch = {k: seed[k] for k in ('title', 'created_at', 'assigned_at', 'closed_at', 'released_at')}
-        if seed['status'] == 'released':
-            patch.update(opens_at=seed['opens_at'], closes_at=seed['closes_at'])
-        elif seed['status'] == 'assigned':
-            # The open paper already exists and may have active timers. Keep its availability.
-            patch.update(created_at=anchor, assigned_at=anchor)
-        db.papers.update_one(original_seed, {'$set': {**patch, 'demo_fixture_version': VERSION}})
-    return {seed['_id']: db.papers.find_one({'_id': seed['_id'], 'demo': True}) for seed in seeds}
-
-
-def legacy_session_ids(index):
-    slots = range(2 if index < 2 else 4 if index < 18 else 0)
-    return {attempt_id(index, slot) for slot in slots}
-
-
-def learning_seed(index, student_id, sessions, papers, previous, now):
-    """Replace only recognized v1 fixtures; replay evidence around preserved attempts."""
-    legacy = legacy_session_ids(index)
-    legacy_rows = {uid(f'{session_id}-{i}') for session_id in legacy for i in range(12)}
-    previous = previous or {}
-    data = {'_id': f'{student_id}:mathematics', 'user_id': student_id, 'demo': True,
-            'subject_id': 'mathematics', 'version': 0, **previous}
-    fixed = {k: session for k, session in previous.get('fixed', {}).items() if k not in legacy}
-    practice = [session for session in previous.get('assessments', []) if session['id'] not in legacy]
-    retained = [row for row in previous.get('history', []) if row.get('request_id') not in legacy_rows]
-    existing_papers = {session.get('assignment_id') for session in fixed.values()}
+def learning_seed(index, student_id, sessions):
+    """Build practice data for a new demo profile from the archived fixture."""
     concepts = {concept: initial_concept() for concept in CONCEPT_IDS}
-    history = []
-    state = {**data, 'fixed': fixed, 'assessments': practice, 'history': history, 'concepts': concepts,
-             'demo_fixture_version': VERSION}
-
-    def observe(record):
-        concept = record['concept_id']
-        concepts[concept] = update_knowledge(concepts[concept], record['correct'], record['difficulty'], record['answered_at'])
-        history.append(record)
-
+    state = {'_id': f'{student_id}:mathematics', 'user_id': student_id, 'demo': True,
+             'subject_id': 'mathematics', 'version': 0, 'history': [], 'assessments': [],
+             'concepts': concepts, 'demo_fixture_version': VERSION}
+    names = {concept['id']: concept['name'] for concept in CONCEPTS}
     for session in sessions:
+        if session.mode not in PRACTICE_MODES:
+            continue
         sid = attempt_id(index, session.slot)
-        started = session.start.isoformat()
-        finished = session.items[-1].stamp.isoformat()
-        assignment = uid(session.assignment) if session.assignment else None
-        paper = papers.get(assignment)
-        if assignment and (not paper or assignment in existing_papers):
-            continue
-        if session.held and (paper['status'] != 'assigned' or session.items[-1].stamp > now
-                             or (paper.get('closes_at') and session.items[-1].stamp > paper['closes_at'])):
-            continue
-        if session.mode in {'diagnostic', 'exam'}:
-            title = paper['title'] if paper else 'Mathematics diagnostic'
-            answers = {str(i): {'value': item.response, 'saved_at': item.stamp.isoformat(),
-                       'response_time_ms': item.elapsed_ms} if item.response is not None else {'skipped': True}
-                       for i, item in enumerate(session.items)}
-            opened = {str(i): (item.stamp - timedelta(milliseconds=item.elapsed_ms)).isoformat()
-                      for i, item in enumerate(session.items)}
-            fixed[sid] = {'id': sid, 'mode': session.mode, 'title': title, 'assignment_id': assignment,
-                          'questions': [item.question for item in session.items], 'started_at': started,
-                          'submitted_at': finished, 'submission_reason': 'submitted',
-                          'deadline_at': (session.start + timedelta(minutes=paper['duration_minutes'])).isoformat() if paper else None,
-                          'index': len(session.items) - 1, 'answers': answers, 'opened': opened,
-                          'incorporated': not session.held, 'rules': RULES}
-        if session.held:
-            continue
         responses = []
         for i, item in enumerate(session.items):
             if item.response is None:
                 continue
-            q = item.question
-            record = {'question_id': q['id'], 'assessment_id': sid, 'concept_id': q['concept_id'],
-                      'skill_id': q['skill_id'], 'content_version': q['content_version'], 'difficulty': q['difficulty'],
-                      'correct': item.correct, 'choice_index': item.response, 'answered_at': item.stamp.isoformat(),
-                      'response_time_ms': item.elapsed_ms, 'hints_used': item.hints, 'source': 'synthetic',
-                      'mode': session.mode, 'request_id': uid(f'{sid}-{i}'),
-                      'prediction': {'provider': 'not_scored', 'probability': None}}
-            observe(record)
-            if session.mode in {'practice', 'adaptive'}:
-                concept = q['concept_id']
-                record['question_snapshot'] = safe_question(q)
-                record['feedback'] = {'correct': item.correct, 'answer_index': q['answer_index'],
-                                      'explanation': q['explanation'], 'mastery': concepts[concept]['mastery'],
-                                      'concept_name': next(c['name'] for c in CONCEPTS if c['id'] == concept)}
+            question = item.question
+            concept = question['concept_id']
+            stamp = item.stamp.isoformat()
+            concepts[concept] = update_knowledge(concepts[concept], item.correct, question['difficulty'], stamp)
+            record = {'question_id': question['id'], 'assessment_id': sid, 'concept_id': concept,
+                      'skill_id': question['skill_id'], 'content_version': question['content_version'],
+                      'difficulty': question['difficulty'], 'correct': item.correct, 'choice_index': item.response,
+                      'answered_at': stamp, 'response_time_ms': item.elapsed_ms, 'hints_used': item.hints,
+                      'source': 'synthetic', 'mode': session.mode, 'request_id': uid(f'{sid}-{i}'),
+                      'prediction': {'provider': 'not_scored', 'probability': None},
+                      'question_snapshot': safe_question(question),
+                      'feedback': {'correct': item.correct, 'answer_index': question['answer_index'],
+                                   'explanation': question['explanation'], 'mastery': concepts[concept]['mastery'],
+                                   'concept_name': names[concept]}}
+            state['history'].append(record)
             responses.append(record)
-        summary = {'concepts': concept_rows(state), 'recommendations': recommendations(state)}
-        if sid in fixed:
-            fixed[sid]['summary'] = summary
-        else:
-            practice.append({'id': sid, 'mode': session.mode, 'concept_id': session.focus, 'status': 'completed',
-                             'started_at': started, 'completed_at': finished, 'responses': responses,
-                             'pending': None, 'total': len(session.items),
-                             'summary': {**summary, 'accuracy': sum(r['correct'] for r in responses) / len(responses),
-                                         'average_mastery': sum(c['mastery'] for c in concepts.values()) / len(CONCEPTS)}})
-    for record in retained:
-        observe(record)
-    practice.sort(key=lambda a: a['started_at'])
+        if not responses:
+            continue
+        state['assessments'].append({
+            'id': sid, 'mode': session.mode, 'concept_id': session.focus, 'status': 'completed',
+            'started_at': session.start.isoformat(), 'completed_at': session.items[-1].stamp.isoformat(),
+            'responses': responses, 'pending': None, 'total': len(session.items),
+            'summary': {'concepts': concept_rows(state), 'recommendations': recommendations(state),
+                        'accuracy': sum(r['correct'] for r in responses) / len(responses),
+                        'average_mastery': sum(c['mastery'] for c in concepts.values()) / len(CONCEPTS)},
+        })
     return state
 
 
@@ -327,12 +251,11 @@ def seed_database(settings):
     now = now.replace(microsecond=now.microsecond // 1000 * 1000)
     secret = PasswordHash.recommended().hash(PASSWORD)
     other = PasswordHash.recommended().hash(secrets.token_urlsafe(28))
-    migrated = inserted = 0
+    inserted = 0
     with MongoClient(settings.mongodb_uri, serverSelectionTimeoutMS=5000, tz_aware=True) as connection:
         db = connection[settings.mongodb_database]
         db.command('ping')
         db.users.create_index('email', unique=True)
-        teacher = uid('teacher')
 
         def account(id_, name, handle, role, allowed):
             address = f'{handle}@{DOMAIN}'
@@ -344,38 +267,19 @@ def seed_database(settings):
                 'profile': {'grade_level': 'Grade 8', 'curriculum': 'CBSE', 'weekly_question_target': 18},
                 'profile_source': 'sample'}}, upsert=True)
 
-        account(teacher, 'Mira Rao', 'teacher', 'teacher', True)
-        account(uid('admin'), 'Lumen Content', 'admin', 'admin', True)
-        anchor = db.users.find_one({'_id': teacher}, {'created_at': 1})['created_at']
-        papers = seed_papers(db, anchor)
-        assigned = papers[uid('exam-new')]
-        members = {}
-        for index, name, sessions in histories(anchor, assigned.get('assigned_at') if assigned else None):
-            id_ = uid(f'student-{index}')
-            members[id_] = {'status': 'active', 'joined_at': anchor - timedelta(days=14)}
+        admin_id = uid('admin')
+        account(admin_id, 'Lumen Content', 'admin', 'admin', True)
+        anchor = db.users.find_one({'_id': admin_id}, {'created_at': 1})['created_at']
+        for index, name, sessions in histories(anchor):
+            student_id = uid(f'student-{index}')
             handle = 'student' if index == 0 else 'rohan' if index == 1 else f'learner{index + 1}'
-            account(id_, name, handle, 'student', index < 2)
-            record_id = f'{id_}:mathematics'
-            previous = db.learning.find_one({'_id': record_id})
-            if previous and (not previous.get('demo') or previous.get('demo_fixture_version')):
+            account(student_id, name, handle, 'student', index < 2)
+            record_id = f'{student_id}:mathematics'
+            if db.learning.find_one({'_id': record_id}, {'_id': 1}):
                 continue
-            fixture = learning_seed(index, id_, sessions, papers, previous, now)
-            if previous:
-                fixture['version'] = previous['version'] + 1
-                result = db.learning.replace_one({'_id': record_id, 'demo': True, 'version': previous['version'],
-                                                  'demo_fixture_version': {'$exists': False}}, fixture)
-                migrated += result.modified_count
-            else:
-                result = db.learning.update_one({'_id': record_id}, {'$setOnInsert': fixture}, upsert=True)
-                inserted += int(result.upserted_id is not None)
-
-        for name, title, code, roster in (('class-8b', '8B Mathematics', 'LUMEN08B', members),
-                                          ('class-8a', '8A Mathematics', 'LUMEN08A', {})):
-            db.classes.update_one({'_id': uid(name)}, {'$setOnInsert': {'name': title, 'teacher_id': teacher,
-                'demo': True, 'join_code': code, 'members': roster, 'grade_level': 'Grade 8', 'curriculum': 'CBSE',
-                'created_at': anchor - timedelta(days=14), 'subject_id': 'mathematics'}}, upsert=True)
-            db.classes.update_one({'_id': uid(name), 'teacher_id': teacher, 'demo': True, 'created_at': anchor},
-                                  {'$set': {'created_at': anchor - timedelta(days=14)}})
+            fixture = learning_seed(index, student_id, sessions)
+            result = db.learning.update_one({'_id': record_id}, {'$setOnInsert': fixture}, upsert=True)
+            inserted += int(result.upserted_id is not None)
 
         for id_, prompt, choices, correct, explanation in (
             ('FRA-018', 'What is 1/2 + 1/3?', ['2/3', '2/5', '5/6', '1/6'], 2,
@@ -390,7 +294,7 @@ def seed_database(settings):
                  'content_version': f'{id_}:v1', 'origin': 'authored'}
             db.questions.update_one({'_id': key(True, id_)}, {'$setOnInsert': {'demo': True, 'id': id_,
                                     'status': 'published', 'version': 1, 'revision': 0, 'live': q}}, upsert=True)
-    print(f'Local demo ready: {inserted} new and {migrated} refreshed sample histories. Existing accounts and submitted user attempts preserved.')
+    print(f'Local demo ready: {inserted} new practice histories. Existing records preserved.')
 
 
 if __name__ == '__main__':

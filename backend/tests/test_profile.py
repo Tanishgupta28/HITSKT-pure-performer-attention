@@ -26,12 +26,12 @@ def test_profile_persists_and_controls_new_sessions_without_changing_history(stu
         assert [s["concept_id"] for s in dashboard["study_plan"]] == ["geometry", "fractions"]
         assert [s["day"] for s in dashboard["study_plan"]] == ["Tue", "Sat"]
         assert dashboard["stats"]["answers"] == 0 and dashboard["progress"] == []
-        assessment = restarted.post("/api/assessments", json={"mode": "adaptive"}).json()
+        assessment = restarted.post("/api/practice", json={"mode": "adaptive"}).json()
         assert assessment["total"] == 6
         # Updating preferences cannot reset an active assessment or change its length.
         profile["adaptive_session_questions"] = 18
         restarted.post("/api/profile", json=profile).raise_for_status()
-        assert restarted.get(f"/api/assessments/{assessment['id']}").json()["total"] == 6
+        assert restarted.get(f"/api/practice/{assessment['id']}").json()["total"] == 6
 
 
 def test_profile_validation_and_ownership(student):

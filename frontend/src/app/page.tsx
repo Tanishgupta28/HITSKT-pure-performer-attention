@@ -4,7 +4,6 @@ import { api, AuthError, type User } from "@/lib/api";
 import { Button, Loading, Notice, Shell, useTab } from "@/components/product";
 import { Landing } from "@/components/entry";
 import { StudentWorkspace } from "@/components/student";
-import { TeacherWorkspace } from "@/components/teacher";
 import { AdminWorkspace } from "@/components/admin";
 
 function Workspace({
@@ -23,13 +22,6 @@ function Workspace({
           tab={tab}
           navigate={navigate}
           onSaved={onSaved}
-        />
-      ) : user.role === "teacher" ? (
-        <TeacherWorkspace
-          demo={user.demo}
-          name={user.name}
-          tab={tab}
-          navigate={navigate}
         />
       ) : (
         <AdminWorkspace tab={tab} />

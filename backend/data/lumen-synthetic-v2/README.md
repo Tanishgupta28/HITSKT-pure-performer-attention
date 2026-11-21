@@ -6,10 +6,10 @@ learners. Six have no diagnostic yet. There are 12, 3 and 3 learners in the
 train, validation and test splits. Each split includes all four session modes.
 Learners occur in only one split.
 
-The cohort includes a common diagnostic, a released paper with skipped items,
+This historical fixture includes a common diagnostic, a released paper with skipped items,
 short focused practice, longer mixed practice, and submitted work on an open
 paper. The interaction CSV includes submitted answers. A skipped question has
-no response row. The live demo models it explicitly in the paper navigator.
+no response row.
 
 | Sample learner | Diagnostic | Released unit check | Practice history |
 | --- | ---: | ---: | --- |
@@ -24,8 +24,8 @@ no response row. The live demo models it explicitly in the paper navigator.
 - `manifest.json` contains counts, the split unit and SHA-256 file hashes.
 
 Run `python backend/tools/demo_dataset.py` for byte-reproducible output. Use
-`--output` to generate into another directory. The local demo anchors fixture
-dates to the sample class and retains additional attempts made during use.
+`--output` to generate into another directory. Fresh local demo databases load only the practice sessions. Existing demo
+histories are retained when the demo is started again.
 Names, emails and credentials do not appear in the CSVs. The data supports a
 product demonstration and pipeline checks. Learning gain, calibration and
 benchmark conclusions require separate evidence.

@@ -1,8 +1,9 @@
-import { PracticePlayer } from "@/components/players";
-export default async function Page({
+import { redirect } from "next/navigation";
+
+export default async function LegacyPracticeLink({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
-  return <PracticePlayer id={(await params).id} />;
+  redirect("/practice/" + encodeURIComponent((await params).id));
 }

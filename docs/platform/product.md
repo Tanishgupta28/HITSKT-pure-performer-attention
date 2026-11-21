@@ -1,115 +1,80 @@
-# Lumen product implementation
+# Lumen product guide
 
-The 2026-11-20 [usability review](usability.md) supersedes the navigation below:
-Practice and Revision are now Learn, History is inside Progress, and the account
-footer opens Profile & classes. Mixed practice is in Learn; formal papers stay
-in Assessments. Existing links continue to work.
-
-The November product build implements the approved visual review artifact, with
-the student, teacher and administrator workspaces in the existing FastAPI,
-Next.js and MongoDB app. Begin at `http://localhost:3000/`. The local production
-build serves the same routes used by the browser verification.
+Lumen is a mathematics practice app with Student and Administrator workspaces.
+Students practise, get feedback, and see how their topic evidence changes.
+Administrators maintain questions and inspect learning data. The Teacher
+workspace, diagnostics and class assessments were retired on 2026-11-21.
 
 ## Launch and sign in
 
-On Windows, with MongoDB running and the dependencies installed from the
-existing setup guide, build `frontend` with `npm.cmd run build`, then run from
-the repository root:
+Install the dependencies in the [Windows setup guide](README.md), then build
+the frontend with npm.cmd run build. From the repository root, run:
 
-```powershell
-./scripts/run-platform.ps1 -Mode production -Demo
-```
+    ./scripts/run-platform.ps1 -Mode production -Demo
 
-The `-Demo` flag provisions sample accounts only on a loopback frontend and
-MongoDB. It preserves existing users, passwords and attempts on re-run. Four
-public test accounts are `student@demo.lumen.example.com`,
-`rohan@demo.lumen.example.com`, `teacher@demo.lumen.example.com` and
-`admin@demo.lumen.example.com`. Each uses `Lumen12345`. In the sign-in screen,
-the local sample buttons fill the credentials. Omit `-Demo` to disable them.
+Open http://localhost:3000. In demo mode the sign-in screen offers three sample
+accounts:
 
-New students register at `/signup` with a name, email and password of at least
-10 characters and choose their grade. The subject is Mathematics; curriculum
-and class membership are optional. Old learner accounts remain students.
-Public registration cannot create an educator or administrator. A school
-operator can provision those accounts with the interactive `backend/tools/manage_accounts.py`
-command and a password entered locally, never placed in a command-line argument.
+| Account | Email |
+| --- | --- |
+| Asha | student@demo.lumen.example.com |
+| Rohan | rohan@demo.lumen.example.com |
+| Administrator | admin@demo.lumen.example.com |
 
-The recover/reset screens, one-use expiring tokens, and session invalidation
-are implemented. Email delivery requires `SMTP_HOST`, `SMTP_FROM` and the
-provider’s optional authentication values in local backend `.env`. Until those
-are configured, the form directs the user to the administrator. There is no
-email claim for localhost without an SMTP provider.
+All three use Lumen12345. Demo mode checks for a loopback frontend and MongoDB.
+Omit the Demo flag to disable demo access. New students can register with a
+name, email and password of at least 10 characters. Grade level is required
+during setup. Curriculum and learning preferences are optional. The interactive
+backend/tools/manage_accounts.py utility provisions administrators.
 
-## Review the journeys
+Password recovery uses expiring one-use tokens. Set SMTP_HOST, SMTP_FROM and
+any provider credentials in the local backend environment for email delivery.
 
-1. **New student:** sign up → set up learning → start a 12-question diagnostic →
-   save, skip or resume → submit → see marks, answer accuracy, topic evidence,
-   and a recommendation → open revision → answer a practice question → see a
-   hint and explanation if appropriate → continue or review past sessions.
-2. **Returning student:** open Today. Resume an active session first or follow
-   a recommended topic. Practice is adaptive and immediately graded; an
-   adaptive mock is not used as a formal grade. Both have their own history.
-3. **Teacher:** open 8B Mathematics → Analytics → Compare topic evidence. Asha
-   scored 6/12 with 0/3 in fractions and 3/3 in equations. Rohan scored 9/12
-   with 3/3 in fractions and 1/3 in equations. Check each learner’s recommendation
-   in Learn, then open one of their reviewed practice sets under Progress →
-   Session history. Asha starts with Fractions on a clean fixture and can move
-   to Percentages after additional practice. Select a class and inspect a learner’s
-   observations during the enrollment period. Create a class, share the join
-   code, or enroll a registered student. Build a paper with published item
-   versions, set duration and feedback rules, optionally grant extra time,
-   assign to class, review submissions, close and release results.
-4. **Administrator:** search or preview the question bank; save a draft,
-   map a skill, publish a version, archive it or delete an unused draft.
-   Add topics/skills, open interaction details, and export valid CSV with the
-   schema. Model Lab can replay a synthetic BKT history or the checked HiTSKT
-   interface fixture and compare them with the separate benchmark evidence.
+## Student workspace
 
-### Fixed papers and versioning
+- **Today** shows the most useful next step, progress at a glance and the
+  latest completed practice. New students can start practising immediately.
+- **Learn** shows the recommended topic and its reason, topic lessons with
+  worked examples, and six-question focused sets. Expand **Mix topics &
+  plan your week** to start mixed practice or view the weekly question target.
+  Mixed sets cover multiple topics and use the selected 6, 12 or 18 questions.
+- **Progress** separates answer accuracy, estimated topic knowledge, completed
+  practice sets and session history. A completed set shows correct answers
+  over questions in the set. Overall accuracy uses all recorded, incorporated
+  responses. BKT topic estimates use prior answers and should be read alongside
+  the number of observations.
 
-Diagnostics cover three questions from each of the four maths foundations.
-Class exams lock selected questions and scoring rules at assignment. A student
-gets one attempt, saved responses, optional skips/backtracking and an
-authoritative deadline. Expired attempts submit confirmed answers on the next
-check. Before release, scores and answers do not enter the student's dashboard
-or BKT history; the teacher can review results and the administrator can inspect
-de-identified submitted interaction rows. One versioned learner document protects
-saves and prevents duplicate submissions. Question edits never change historical
-snapshots. Teachers can use published items marked as exam-only by an admin;
-practice and diagnostics exclude them.
+In practice the student can keep a working draft, ask for hints, submit an
+answer and read a worked explanation before going on. Confirmed answers are
+saved on the server. The player can resume after refresh or leaving and lets
+students retry an uncertain save without counting it twice. Each completed
+set can be reviewed from Session history.
 
-### Data and evidence
+Existing practice bookmarks under /assessment/ redirect to /practice/.
+Historical records remain in storage, along with evidence already counted in
+overall progress. The student session list and completed-set count cover
+practice only.
 
-`backend/data/lumen-synthetic-v2/` holds the reproducible seed-42 demonstration
-dataset (561 attempts, 54 sessions and 108 question versions), a question file
-and a hashed manifest. The original v1 CSVs remain available. New demo activity
-is labeled synthetic. The administrator export produces a distinct CSV from
-MongoDB with new pseudonyms per export, validates question/skill identifiers,
-correctness, timing and timezone, omits direct identifiers, and records an
-export audit entry. Real and synthetic realms cannot be joined or exported as
-one dataset through the app. Production data access, retention and any research
-use require agreement from the school and appropriate consent.
+## Administrator workspace
 
-BKT remains the live platform estimator. HiTSKT Model Lab is independent of
-the live question bank. If the EdNet checkpoint and optional CPU dependencies
-exist, Lab verifies its exact hash and computes on the synthetic mapped fixture;
-otherwise it labels the saved parity output. BKT can run on the built-in fixture
-or the displayed prior responses from a selected pseudonymous demo learner.
-The held-out target is not returned until a prediction receipt is presented.
-No verified real-student HiTSKT replay is packaged. The historical benchmark
-table and independent CPU audit are distinct: AUC agrees within the recorded
-tolerance, but full metric vectors and response availability remain unresolved.
-No comparison in the app proves improved classroom learning.
+- **Question bank** creates, validates, publishes, versions and archives
+  multiple-choice and numeric items. Published items need a skill and an
+  explanation. Previously served questions keep their original snapshots.
+- **Topics & skills** maintains the mathematics hierarchy and maps new topics
+  to a supported foundation for live knowledge estimates.
+- **Interactions** shows pseudonymous learning records and exports a CSV.
+  The live export can include retained historical interaction records.
+- **Model Lab** replays a sequence, predicts the next answer, and reveals the
+  held-out outcome only after prediction. Its evaluation view separates public
+  benchmarks, synthetic replay and Lumen evidence.
 
-## Scope and validation
+Today, Lumen mathematics practice uses Bayesian Knowledge Tracing. HiTSKT
+runs only on separately mapped research sequences in Model Lab, where a
+verified checkpoint can compute the prediction or the app can show the clearly
+labelled saved result. The model comparison contains no Lumen classroom
+evaluation. See [model integration](model-integration.md) for the input
+mapping and checkpoint requirements.
 
-Mathematics is the current subject. Built-in foundations are stable BKT keys;
-new display topics and skills can be mapped to those keys. Browser recovery
-shows confirmed saves and retries; it does not claim offline drafts reached the
-server. Staff provisioning and SMTP remain operator-managed. No third-party
-email was sent by the tests, which simulate the recovery transport.
-
-Backend tests use uniquely named MongoDB databases. Browser workspace tests run
-against a production server started with `-Demo` and an isolated QA database;
-do not run them against personal or panel data. See `reports/platform/product_validation.json`
-for the verified build, backend tests and browser journeys.
+The [v2 synthetic fixture](../../backend/data/lumen-synthetic-v2/README.md)
+is a reproducible archive. Fresh demo databases seed its practice subset.
+Browser verification uses an isolated database with demo accounts.

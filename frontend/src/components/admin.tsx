@@ -406,7 +406,7 @@ function Editor({
                 checked={d.practice_allowed}
                 onChange={(e) => change("practice_allowed", e.target.checked)}
               />
-              Allow this question in adaptive practice and diagnostics
+              Include this question in practice
             </label>
             {!skill && (
               <Notice title="Publish requires skill mapping">

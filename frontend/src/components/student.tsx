@@ -3,13 +3,7 @@
 import { useEffect, useState, type FormEvent } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import {
-  ArrowRight,
-  BookOpen,
-  ClipboardList,
-  Clock3,
-  Target,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import {
   Assessment,
   Dashboard,
@@ -25,10 +19,8 @@ import {
   Button,
   Confirm,
   Empty,
-  EvidenceBars,
   Field,
   Heading,
-  Notice,
   Panel,
   Stat,
   Table,
@@ -50,25 +42,8 @@ export type HistoryRow = {
   total: number;
   date: string;
   elapsed_seconds: number | null;
-  fixed: boolean;
   concept_id?: string;
 };
-type Paper = {
-  _id: string;
-  title: string;
-  class_name: string;
-  status: string;
-  duration_minutes: number;
-  extra_minutes: number;
-  question_count: number;
-  opens_at: string | null;
-  closes_at: string | null;
-  attempt_id: string | null;
-  attempt_status: "submitted" | "in_progress" | null;
-  review_allowed: boolean;
-  skips_allowed: boolean;
-};
-type Membership = { _id: string; name: string; grade_level: string };
 const grades = [
   "Grade 6",
   "Grade 7",
@@ -82,28 +57,9 @@ const grades = [
 const boards = ["Not set", "CBSE", "ICSE", "State board", "Other"];
 const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 const basic = ["fractions", "percentages", "equations", "geometry"];
-const modeName = (m: string) =>
-  m === "adaptive" ? "Mixed practice" : m === "exam" ? "Fixed paper" : label(m);
-const path = (row: HistoryRow) =>
-  `/${row.fixed ? "paper" : "assessment"}/${row.id}`;
-
-function assignmentStatus(paper: Paper) {
-  if (paper.attempt_status === "submitted") {
-    return paper.status === "released"
-      ? "Results released"
-      : "Awaiting release";
-  }
-  if (
-    paper.status !== "assigned" ||
-    (paper.closes_at && Date.parse(paper.closes_at) <= Date.now())
-  ) {
-    return paper.attempt_id ? "Closed" : "Closed · no attempt";
-  }
-  if (paper.opens_at && Date.parse(paper.opens_at) > Date.now()) {
-    return `Opens ${when(paper.opens_at)}`;
-  }
-  return paper.attempt_status === "in_progress" ? "In progress" : "Available";
-}
+const modeName = (mode: string) =>
+  mode === "adaptive" ? "Mixed practice" : "Focused practice";
+const path = (row: HistoryRow) => "/practice/" + row.id;
 
 function Profile({
   user,
@@ -117,10 +73,7 @@ function Profile({
   compact?: boolean;
 }) {
   const action = useAction();
-  const classes = useLoad<Membership[]>("/student/classes");
-  const [confirm, setConfirm] = useState<Membership | null>(null);
   const [profile, setProfile] = useState<LearnerProfile>(user.profile);
-  const [code, setCode] = useState("");
   const [saved, setSaved] = useState(false);
   const change = <K extends keyof LearnerProfile>(k: K, v: LearnerProfile[K]) =>
     setProfile((p) => ({ ...p, [k]: v }));
@@ -137,17 +90,6 @@ function Profile({
       if (compact && onWelcome) onWelcome();
     }
   }
-  async function join(e: FormEvent) {
-    e.preventDefault();
-    const data = await action.run(
-      () => send("/student/classes/join", { code: code.trim() }),
-      "Joined your class",
-    );
-    if (data) {
-      setCode("");
-      classes.reload();
-    }
-  }
   return (
     <>
       <Heading
@@ -155,14 +97,14 @@ function Profile({
         subtitle={
           compact
             ? "Choose your level and subject to get started. You can change these later."
-            : "Preferences guide your revision plan. Your assessment history stays separate."
+            : "Choose how you want to practise and review."
         }
       />
       <ActionStatus a={action} />
       <Panel className="p-account-profile">
         <form className="p-stack" onSubmit={submit}>
           <div className="p-fields">
-            <Field label="Grade / class">
+            <Field label="Grade level">
               <select
                 required
                 value={
@@ -281,70 +223,6 @@ function Profile({
           </div>
         </form>
       </Panel>
-      {!compact && (
-        <Panel
-          className="p-account-profile"
-          title="Your classes"
-          subtitle="Join with a code from your teacher. You can also learn independently."
-        >
-          <Boundary value={classes}>
-            {!classes.data?.length ? (
-              <p className="p-muted">No assigned classes yet.</p>
-            ) : (
-              <div className="p-list">
-                {classes.data.map((c) => (
-                  <div key={c._id}>
-                    <span>
-                      <strong>{c.name}</strong>
-                      <small>{c.grade_level}</small>
-                    </span>
-                    <Button variant="secondary" onClick={() => setConfirm(c)}>
-                      Leave class
-                    </Button>
-                  </div>
-                ))}
-              </div>
-            )}
-          </Boundary>
-          <form className="p-inline" onSubmit={join}>
-            <Field label="Class code">
-              <input
-                minLength={8}
-                maxLength={8}
-                value={code}
-                onChange={(e) => setCode(e.target.value.toUpperCase())}
-                placeholder="8-character code"
-                required
-              />
-            </Field>
-            <Button type="submit" disabled={action.busy || code.length !== 8}>
-              Join class
-            </Button>
-          </form>
-        </Panel>
-      )}
-      {confirm && (
-        <Confirm
-          title={`Leave ${confirm.name}?`}
-          action="Leave class"
-          danger
-          onClose={() => setConfirm(null)}
-          busy={action.busy}
-          onConfirm={async () => {
-            const result = await action.run(
-              () => send(`/student/classes/${confirm._id}/leave`),
-              "Class left",
-            );
-            if (result) {
-              setConfirm(null);
-              classes.reload();
-            }
-          }}
-        >
-          You’ll keep submitted work. Active class assignments may become
-          unavailable.
-        </Confirm>
-      )}
     </>
   );
 }
@@ -363,12 +241,7 @@ export function StudentWorkspace({
   const route = useRouter();
   const dashboard = useLoad<Dashboard>("/learning/mathematics");
   const history = useLoad<HistoryRow[]>("/student/history");
-  const papers = useLoad<Paper[]>(
-    tab === "assessments" ? "/student/papers" : null,
-  );
-  const [welcome, setWelcome] = useState(false),
-    [intro, setIntro] = useState<"diagnostic" | Paper | null>(null),
-    [modeFilter, setModeFilter] = useState("all"),
+  const [modeFilter, setModeFilter] = useState("all"),
     [progressView, setProgressView] = useState("report"),
     [lesson, setLesson] = useState<string | null>(null);
   const action = useAction();
@@ -395,40 +268,20 @@ export function StudentWorkspace({
   const d = dashboard.data;
   const h = history.data ?? [];
   useEffect(() => {
-    setIntro(null);
     setLesson(null);
   }, [tab]);
   const prefer = d?.recommendations[0];
-  const recent = h.filter(
-    (x) => x.status === "completed" || x.status === "submitted",
-  );
-  const lastDiag = recent.find((x) => x.mode === "diagnostic");
+  const recent = h.filter((row) => row.status === "completed");
   const onset = d?.active_assessment;
-  const activeDiag = d?.active_diagnostic;
-  function diagnostic() {
-    if (activeDiag) route.push(`/paper/${activeDiag.id}`);
-    else setIntro("diagnostic");
-  }
   async function start(mode: "adaptive" | "practice", concept?: string) {
     const value = await action.run(() =>
-      send<Assessment>("/assessments", {
+      send<Assessment>("/practice", {
         subject_id: "mathematics",
         mode,
         concept_id: concept || null,
       }),
     );
-    if (value) route.push(`/assessment/${value.id}`);
-  }
-  async function startPaper() {
-    if (!intro) return;
-    const result = await action.run(() =>
-      send<{ id: string }>(
-        intro === "diagnostic"
-          ? "/student/fixed/diagnostic"
-          : `/student/papers/${intro._id}/start`,
-      ),
-    );
-    if (result) route.push(`/paper/${result.id}`);
+    if (value) route.push(`/practice/${value.id}`);
   }
   if (!user.onboarding_complete)
     return (
@@ -437,7 +290,6 @@ export function StudentWorkspace({
         onSaved={onSaved}
         compact
         onWelcome={() => {
-          setWelcome(true);
           dashboard.reload();
           navigate("today");
         }}
@@ -453,79 +305,6 @@ export function StudentWorkspace({
         }}
       />
     );
-  if (intro) {
-    const isDiag = intro === "diagnostic";
-    return (
-      <>
-        <Heading
-          title={isDiag ? "Mathematics diagnostic" : intro.title}
-          subtitle={
-            isDiag
-              ? "Establish a starting point for your revision plan."
-              : `Assigned to ${intro.class_name}`
-          }
-        />
-        <ActionStatus a={action} />
-        <div className="p-grid wide-left">
-          <Panel
-            className="p-intro"
-            title="Before you start"
-            subtitle={
-              isDiag
-                ? "12 questions · About 12 minutes · Untimed"
-                : `${intro.question_count} questions · ${intro.duration_minutes + intro.extra_minutes} minutes · One attempt`
-            }
-          >
-            <ol>
-              <li>Choose or enter one answer per question.</li>
-              <li>
-                {isDiag || intro.skips_allowed
-                  ? "You may skip questions and save and leave."
-                  : "Save an answer before moving to the next question."}
-              </li>
-              <li>
-                {isDiag || intro.review_allowed
-                  ? "You can review saved answers before submitting."
-                  : "This paper does not allow going back."}
-              </li>
-              <li>
-                {isDiag
-                  ? "Explanations appear after submission."
-                  : "Hints are disabled and your teacher controls result release."}
-              </li>
-            </ol>
-            {!isDiag && (
-              <Notice title="The timer keeps running if you leave">
-                {intro.closes_at
-                  ? `Closes ${when(intro.closes_at)}.`
-                  : "The timer begins when you start."}
-              </Notice>
-            )}
-            <div className="p-actions">
-              <Button onClick={startPaper} disabled={action.busy}>
-                {isDiag ? "Begin diagnostic" : "Begin timed assessment"}
-                <ArrowRight size={17} />
-              </Button>
-              <Button variant="secondary" onClick={() => setIntro(null)}>
-                Back
-              </Button>
-            </div>
-          </Panel>
-          {isDiag && (
-            <Panel title="Topic coverage" subtitle="Three questions per topic">
-              <EvidenceBars
-                items={basic.map((x) => ({
-                  name: topicName(x),
-                  count: 3,
-                  total: 3,
-                }))}
-              />
-            </Panel>
-          )}
-        </div>
-      </>
-    );
-  }
   const historyTable = (list: HistoryRow[]) =>
     list.length ? (
       <Table
@@ -536,22 +315,22 @@ export function StudentWorkspace({
           </Link>,
           topicName(x.concept_id),
           label(x.status),
-          x.score == null
-            ? x.status === "submitted"
-              ? "Awaiting release"
-              : `${x.answered} saved`
-            : `${x.score} / ${x.total}`,
+          x.status === "completed"
+            ? x.score + " / " + x.total
+            : x.answered + " saved",
           duration(x.elapsed_seconds),
           when(x.date),
         ])}
-        caption="Practice results describe that set; compare formal scores on similar papers."
+        caption="Each result reflects the questions in that practice set."
       />
     ) : (
       <Empty
         title="No sessions to show"
-        action={<Button onClick={diagnostic}>Start diagnostic</Button>}
+        action={
+          <Button onClick={() => navigate("practice")}>Explore practice</Button>
+        }
       >
-        Finish a diagnostic or practice set to build your learning history.
+        Start a practice set to build your learning history.
       </Empty>
     );
   const activityHistory = (
@@ -563,7 +342,7 @@ export function StudentWorkspace({
             onChange={(e) => setModeFilter(e.target.value)}
           >
             <option value="all">All sessions</option>
-            {["diagnostic", "exam", "adaptive", "practice"].map((x) => (
+            {["adaptive", "practice"].map((x) => (
               <option key={x} value={x}>
                 {modeName(x)}
               </option>
@@ -578,83 +357,6 @@ export function StudentWorkspace({
       </Boundary>
     </>
   );
-  if (tab === "assessments")
-    return (
-      <>
-        <Heading
-          title="Assessments"
-          subtitle="Find your starting point or complete a paper assigned by your teacher."
-        />
-        <ActionStatus a={action} />
-        <div className="p-grid">
-          <Panel
-            title="Mathematics diagnostic"
-            subtitle="Fixed coverage across four topics. Feedback after submission."
-          >
-            <Button onClick={diagnostic}>
-              {activeDiag
-                ? "Resume diagnostic"
-                : lastDiag
-                  ? "Take a fresh diagnostic"
-                  : "View instructions"}
-              <ArrowRight size={17} />
-            </Button>
-          </Panel>
-        </div>
-        <h2>Class assignments</h2>
-        <Boundary value={papers}>
-          {papers.data?.length ? (
-            <Table
-              headers={[
-                "Assessment",
-                "Class",
-                "Duration",
-                "Availability",
-                "Next action",
-              ]}
-              rows={papers.data.map((x) => [
-                x.title,
-                x.class_name,
-                `${x.duration_minutes + x.extra_minutes} min`,
-                assignmentStatus(x),
-                x.attempt_id ? (
-                  <Button
-                    key="t"
-                    href={`/paper/${x.attempt_id}`}
-                    variant="secondary"
-                  >
-                    {x.attempt_status === "in_progress"
-                      ? "Resume paper"
-                      : "Open attempt"}
-                  </Button>
-                ) : assignmentStatus(x) === "Available" ? (
-                  <Button
-                    key="t"
-                    onClick={() => setIntro(x)}
-                    variant="secondary"
-                  >
-                    View instructions
-                  </Button>
-                ) : (
-                  "—"
-                ),
-              ])}
-            />
-          ) : (
-            <Empty
-              title="No assigned papers"
-              action={
-                <Button variant="secondary" onClick={() => navigate("profile")}>
-                  Join a class
-                </Button>
-              }
-            >
-              Practice independently, or use a code from your teacher.
-            </Empty>
-          )}
-        </Boundary>
-      </>
-    );
   if (tab === "practice" || tab === "revision")
     return (
       <>
@@ -676,22 +378,8 @@ export function StudentWorkspace({
                       this set before starting another.
                     </p>
                   </div>
-                  <Button href={`/assessment/${onset.id}`} variant="light">
+                  <Button href={`/practice/${onset.id}`} variant="light">
                     Resume practice
-                  </Button>
-                </section>
-              ) : !d.diagnostic_complete && !lastDiag ? (
-                <section className="p-hero-action">
-                  <div>
-                    <div className="p-eyebrow">START WITH EVIDENCE</div>
-                    <h2>Find your starting point</h2>
-                    <p>
-                      A short diagnostic helps us recommend a useful topic. You
-                      can also explore below.
-                    </p>
-                  </div>
-                  <Button variant="light" onClick={diagnostic}>
-                    {activeDiag ? "Resume diagnostic" : "Start diagnostic"}
                   </Button>
                 </section>
               ) : (
@@ -742,7 +430,7 @@ export function StudentWorkspace({
                 <div className="p-grid">
                   <Panel
                     title="Mixed practice"
-                    subtitle={`${user.profile.adaptive_session_questions} adaptive questions across topics. This is practice, not a graded exam.`}
+                    subtitle={`${user.profile.adaptive_session_questions} adaptive questions across topics. Questions span several maths topics.`}
                   >
                     <Button
                       onClick={() => start("adaptive")}
@@ -791,7 +479,7 @@ export function StudentWorkspace({
                 busy={action.busy}
                 onConfirm={() =>
                   onset
-                    ? route.push(`/assessment/${onset.id}`)
+                    ? route.push(`/practice/${onset.id}`)
                     : start("practice", c.id)
                 }
               >
@@ -844,7 +532,9 @@ export function StudentWorkspace({
               <Empty
                 title="No learning evidence yet"
                 action={
-                  <Button onClick={diagnostic}>Take the diagnostic</Button>
+                  <Button onClick={() => navigate("practice")}>
+                    Explore practice
+                  </Button>
                 }
               >
                 Your report will be based on the answers you actually submit.
@@ -854,13 +544,8 @@ export function StudentWorkspace({
                 <>
                   <div className="p-stats">
                     <Stat
-                      title="Latest diagnostic score"
-                      value={
-                        lastDiag?.score == null
-                          ? "—"
-                          : `${lastDiag.score} / ${lastDiag.total}`
-                      }
-                      caption="Marks on one fixed blueprint"
+                      title="Completed practice sets"
+                      value={d.stats.completed_practice}
                     />
                     <Stat
                       title="Answer accuracy"
@@ -878,7 +563,7 @@ export function StudentWorkspace({
                           ? "Building evidence"
                           : "Early evidence"
                       }
-                      caption="BKT learning estimate · not a grade"
+                      caption="Bayesian knowledge tracing · based on recorded answers"
                     />
                   </div>
                   <Table
@@ -898,7 +583,7 @@ export function StudentWorkspace({
                         ? `${c.evidence_count} observed responses`
                         : "Unexplored",
                     ])}
-                    caption="Estimates guide practice; they are not exam scores."
+                    caption="The estimate helps choose what to practise next."
                   />
                   <p className="p-muted">
                     Need the question-level detail? Open Session history and
@@ -924,29 +609,18 @@ export function StudentWorkspace({
             <section className="p-hero-action">
               <div>
                 <div className="p-eyebrow">
-                  {onset || activeDiag
-                    ? "CONTINUE LEARNING"
-                    : !lastDiag && !d.diagnostic_complete
-                      ? "YOUR FIRST STEP"
-                      : "RECOMMENDED NEXT"}
+                  {onset ? "CONTINUE LEARNING" : "RECOMMENDED NEXT"}
                 </div>
                 <h2>
-                  {activeDiag
-                    ? "Resume your diagnostic"
-                    : onset
-                      ? "Pick up where you left off"
-                      : !lastDiag && !d.diagnostic_complete
-                        ? "Find your starting point"
-                        : `Practise ${prefer?.name.toLowerCase() ?? "mathematics"}`}
+                  {onset
+                    ? "Pick up where you left off"
+                    : "Practise " +
+                      (prefer?.name.toLowerCase() ?? "mathematics")}
                 </h2>
                 <p>
-                  {activeDiag
-                    ? "Your saved answers are ready."
-                    : onset
-                      ? `${onset.answered} of ${onset.total} answers saved.`
-                      : !lastDiag && !d.diagnostic_complete
-                        ? "A short diagnostic will help you see what to work on first."
-                        : prefer?.reason}
+                  {onset
+                    ? onset.answered + " of " + onset.total + " answers saved."
+                    : prefer?.reason}
                 </p>
               </div>
               <div className="p-actions">
@@ -954,29 +628,16 @@ export function StudentWorkspace({
                   variant="light"
                   disabled={action.busy}
                   onClick={() =>
-                    activeDiag
-                      ? diagnostic()
-                      : onset
-                        ? route.push(`/assessment/${onset.id}`)
-                        : !lastDiag && !d.diagnostic_complete
-                          ? diagnostic()
-                          : start("practice", prefer?.concept_id)
+                    onset
+                      ? route.push("/practice/" + onset.id)
+                      : start("practice", prefer?.concept_id)
                   }
                 >
-                  {activeDiag || onset
-                    ? "Resume"
-                    : !lastDiag && !d.diagnostic_complete
-                      ? "Start diagnostic"
-                      : "Start practice"}
+                  {onset ? "Resume practice" : "Start practice"}
                   <ArrowRight size={17} />
                 </Button>
               </div>
             </section>
-            {welcome && (
-              <Notice title="Your learning space is ready" tone="ok">
-                Start with the diagnostic when you’re ready.
-              </Notice>
-            )}
             <div className="p-grid">
               <Panel
                 title="Your week"
@@ -1004,9 +665,7 @@ export function StudentWorkspace({
                         <small>{when(recent[0].date)}</small>
                       </span>
                       <Badge>
-                        {recent[0].score == null
-                          ? "Awaiting release"
-                          : `${recent[0].score} / ${recent[0].total}`}
+                        {recent[0].score} / {recent[0].total}
                       </Badge>
                     </Link>
                   </div>

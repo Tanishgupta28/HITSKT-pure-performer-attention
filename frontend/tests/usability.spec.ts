@@ -10,7 +10,7 @@ async function newLearner(page: Page) {
   await page
     .getByRole("button", { name: "Create account", exact: true })
     .click();
-  await page.getByLabel("Grade / class").selectOption("Grade 8");
+  await page.getByLabel("Grade level").selectOption("Grade 8");
   await page.getByRole("button", { name: "Continue", exact: true }).click();
   await expect(
     page.getByRole("heading", { name: "Good to see you, Usability" }),
@@ -30,13 +30,13 @@ async function practice(page: Page) {
   ).toBeVisible();
 }
 
-test("four student destinations and old links reach one learning plan and one progress view", async ({
+test("three student destinations and old links reach one learning plan and one progress view", async ({
   page,
 }) => {
   await newLearner(page);
   await expect(
     page.getByRole("navigation", { name: "Workspace" }).getByRole("button"),
-  ).toHaveText(["Today", "Learn", "Assessments", "Progress"]);
+  ).toHaveText(["Today", "Learn", "Progress"]);
   await page.goto("/?view=revision");
   await expect(
     page.getByRole("heading", { name: "Your learning plan" }),
@@ -77,8 +77,11 @@ test("four student destinations and old links reach one learning plan and one pr
   await expect(
     page.getByText("No learning evidence yet", { exact: true }),
   ).toBeVisible();
-  await page.getByRole("button", { name: "Assessments", exact: true }).click();
-  await expect(page.getByRole("button", { name: "Start mock" })).toHaveCount(0);
+  await page.goto("/?view=assessments");
+  await expect(
+    page.getByRole("heading", { name: "Your learning plan" }),
+  ).toBeVisible();
+  expect((await page.request.get("/paper/retired")).status()).toBe(404);
 });
 
 test("practice preserves draft and working through refresh and offline, retries an uncertain save once, and finishes", async ({
@@ -114,7 +117,7 @@ test("practice preserves draft and working through refresh and offline, retries 
   ).toBeEnabled();
   let dropped = false;
   const requests: string[] = [];
-  await page.route("**/api/assessments/*/answers", async (route) => {
+  await page.route("**/api/practice/*/answers", async (route) => {
     requests.push(route.request().postDataJSON().request_id);
     if (!dropped) {
       dropped = true;
@@ -133,7 +136,7 @@ test("practice preserves draft and working through refresh and offline, retries 
   expect(requests).toHaveLength(2);
   expect(requests[0]).toBe(requests[1]);
   const id = page.url().split("/").pop();
-  const state = await (await page.request.get(`/api/assessments/${id}`)).json();
+  const state = await (await page.request.get(`/api/practice/${id}`)).json();
   expect(state.answered).toBe(1);
   expect(
     await page.evaluate(() => {
@@ -182,34 +185,15 @@ test("practice preserves draft and working through refresh and offline, retries 
     .toBe(true);
 });
 
-test("save and leave confirms the currently selected diagnostic answer", async ({
+test("saved practice links continue to open the same session", async ({
   page,
 }) => {
-  await newLearner(page);
-  await page
-    .getByRole("button", { name: "Start diagnostic", exact: true })
-    .click();
-  await page
-    .getByRole("button", { name: "Begin diagnostic", exact: true })
-    .click();
-  await page.getByRole("radio").first().check();
-  await page.getByRole("button", { name: "Save & leave", exact: true }).click();
-  await page
-    .getByRole("button", { name: "Leave assessment", exact: true })
-    .click();
-  await page
-    .getByRole("button", { name: "Resume diagnostic", exact: true })
-    .click();
-  await expect(page.getByRole("radio").first()).toBeChecked();
+  await practice(page);
+  const location = new URL(page.url());
+  const id = location.pathname.split("/").pop();
+  await page.goto("/assessment/" + id);
+  await expect(page).toHaveURL(location.href);
   await expect(
-    page.getByRole("button", { name: "Question 1, answered", exact: true }),
+    page.getByRole("group", { name: "Answer choices" }),
   ).toBeVisible();
-  await page.getByRole("radio").nth(1).check();
-  await page
-    .getByRole("button", { name: "Question 2, unanswered", exact: true })
-    .click();
-  await page
-    .getByRole("button", { name: "Question 1, answered", exact: true })
-    .click();
-  await expect(page.getByRole("radio").nth(1)).toBeChecked();
 });

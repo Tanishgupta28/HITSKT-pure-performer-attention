@@ -27,7 +27,6 @@ import {
   CalendarDays,
   ChartNoAxesCombined,
   History,
-  Users,
   Database,
   Layers3,
   FlaskConical,
@@ -451,14 +450,7 @@ const NS = {
   student: [
     ["today", "Today", LayoutDashboard],
     ["practice", "Learn", BookOpen],
-    ["assessments", "Assessments", ClipboardList],
     ["progress", "Progress", ChartNoAxesCombined],
-  ],
-  teacher: [
-    ["overview", "Overview", LayoutDashboard],
-    ["classes", "Classes", Users],
-    ["assessments", "Assessments", ClipboardList],
-    ["analytics", "Analytics", ChartNoAxesCombined],
   ],
   admin: [
     ["questions", "Question bank", ClipboardList],
@@ -474,7 +466,8 @@ export function useTab(role: User["role"]) {
     function read() {
       const candidate = new URLSearchParams(location.search).get("view");
       const resolved =
-        role === "student" && candidate === "revision"
+        role === "student" &&
+        (candidate === "revision" || candidate === "assessments")
           ? "practice"
           : role === "student" && candidate === "history"
             ? "progress"
@@ -586,9 +579,7 @@ export function Shell({
             <span>
               {user.name}
               <small>
-                {user.role === "student"
-                  ? "Profile & classes"
-                  : label(user.role)}
+                {user.role === "student" ? "Profile" : label(user.role)}
               </small>
             </span>
           </button>

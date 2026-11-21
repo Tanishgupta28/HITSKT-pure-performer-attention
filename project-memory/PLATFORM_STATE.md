@@ -1,6 +1,6 @@
 # Platform workstream — Achin
 
-Updated: 2026-11-20 (Asia/Kolkata)
+Updated: 2026-11-21 (Asia/Kolkata)
 
 ## Scope and ownership
 
@@ -18,6 +18,25 @@ processes to deploy the platform. Achin specifically asked whether existing
 code was being altered; the platform preserves all research/training source.
 Platform commit identity is the locally configured Achin-Agarwal identity;
 historic Tanish identity instructions apply to the GPU workstream.
+
+## Practice-only product scope - 2026-11-21
+
+Achin removed the Teacher workspace and Assessments after identifying overlap
+with mixed practice. The two supported roles are Student and Administrator.
+Student navigation is Today, Learn and Progress. Focused and mixed practice,
+recommendations, answer review and profile preferences remain available.
+Administrators retain content, taxonomy, interactions export and Model Lab.
+
+Teacher sign-in and existing teacher sessions are blocked. Class, paper and
+diagnostic routes are removed. New practice uses /api/practice and /practice.
+Previously saved practice links redirect. The student history and completed
+set counts show only practice. MongoDB records and knowledge evidence already
+incorporated into learner profiles are preserved. Fresh demos seed only the
+practice subset of the immutable v2 fixture. See docs/platform/product.md.
+
+The production build, 22 backend tests and 7 Edge browser tests passed. Browser
+coverage used an isolated demo database and included mobile registration, mixed
+and focused practice, retry/resume, history, admin export and Model Lab.
 
 ## Distinct demo learner and class histories — 2026-11-20
 

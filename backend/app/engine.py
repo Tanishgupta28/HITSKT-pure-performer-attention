@@ -1,6 +1,8 @@
 """Interpretable cold-start KT, distinct from HiTSKT answer predictions."""
 from app.catalog import BANK, CONCEPTS
 
+PRACTICE_MODES = {"adaptive", "practice"}
+
 
 def initial_concept():
     return {"mastery": 0.25, "attempts": 0, "correct": 0, "last_practiced": None}
@@ -67,11 +69,6 @@ def select_question(state, assessment, predictor, bank=None):
         candidates = [q for q in candidates if q["concept_id"] == assessment["concept_id"]]
     if not candidates:
         return None
-    counts = {c["id"]: sum(r["concept_id"] == c["id"] for r in assessment["responses"]) for c in CONCEPTS}
-    # A diagnostic first covers every concept, and continues balancing coverage.
-    if assessment["mode"] == "diagnostic":
-        minimum = min(counts.values())
-        candidates = [q for q in candidates if counts[q["concept_id"]] == minimum]
     predictions = predictor.predict_many(state, candidates)
     seen = {r["question_id"] for r in state["history"]}
     def score(q):
@@ -80,8 +77,8 @@ def select_question(state, assessment, predictor, bank=None):
         desired = 1 if concept["mastery"] < 0.4 else 2 if concept["mastery"] < 0.7 else 3
         # Prefer a suitable difficulty, ~70% success, weak concepts, fresh items.
         return (0.36 * abs(q["difficulty"] - desired) + abs(predicted - 0.70)
-                + (0 if assessment["mode"] == "diagnostic" else 0.25 * concept["mastery"])
+                + 0.25 * concept["mastery"]
                 + (0.20 if q["id"] in seen else 0), q["id"])
     chosen = min(candidates, key=score)
     return {"question_id": chosen["id"], "prediction": predictions[chosen["id"]],
-            "selection_reason": "Balanced diagnostic coverage" if assessment["mode"] == "diagnostic" else "Selected from your current concept estimate and previous answers"}
+            "selection_reason": "Selected from your current concept estimate and previous answers"}

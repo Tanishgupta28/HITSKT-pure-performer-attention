@@ -1,6 +1,15 @@
 # Platform / GPU handoff
 
-Updated: 2026-11-20 (Asia/Kolkata)
+Updated: 2026-11-21 (Asia/Kolkata)
+
+## Practice-only platform handoff - 2026-11-21
+
+Achin retired Teacher and Assessments. Student and Administrator remain
+available. BKT still drives live mathematics practice. HiTSKT remains in the
+separate Model Lab. Existing learner evidence and both published synthetic
+datasets are retained. Fresh demo databases load practice only. The GPU
+workstream, training data, experiment artifacts and model code are unaffected.
+Use docs/platform/product.md for the current demo and product navigation.
 
 ## Demo fixture v2 handoff — 2026-11-20
 

@@ -32,7 +32,6 @@ export function Landing() {
         <Brand />
         <nav aria-label="How Lumen works">
           <a href="#learning">How it works</a>
-          <a href="#teaching">For teachers</a>
           <a href="#evidence">What we measure</a>
         </nav>
         <div className="p-actions">
@@ -52,8 +51,8 @@ export function Landing() {
               practise next.
             </h1>
             <p>
-              Take a short diagnostic, see which skills need attention, and get
-              a revision plan you can put to work today.
+              Practise maths at your own pace. See what needs attention and get
+              a recommendation based on your answers.
             </p>
             <div className="p-actions">
               <Button href="/signup">
@@ -81,7 +80,7 @@ export function Landing() {
               ]}
             />
             <footer>
-              Diagnostic evidence <strong>6 / 12 marks</strong>
+              Practice accuracy <strong>6 / 12 correct</strong>
             </footer>
           </Panel>
         </div>
@@ -94,7 +93,7 @@ export function Landing() {
             [
               ClipboardList,
               "Find your starting point",
-              "Try a short test across four maths topics.",
+              "Choose a topic or try mixed practice.",
             ],
             [
               BookOpen,
@@ -120,21 +119,12 @@ export function Landing() {
           })}
         </section>
         <section className="p-public-info">
-          <article id="teaching">
-            <div className="p-eyebrow">FOR TEACHERS</div>
-            <h2>One common paper. Individual follow-up.</h2>
-            <p>
-              Assign a fixed assessment, see topic evidence across your class,
-              then help each learner focus on what they missed.
-            </p>
-          </article>
           <article id="evidence">
             <div className="p-eyebrow">WHAT WE MEASURE</div>
-            <h2>Scores, accuracy and estimates are different.</h2>
+            <h2>See how your understanding changes.</h2>
             <p>
-              Marks come from a test. Accuracy counts correct answers. Bayesian
-              knowledge tracing estimates understanding from earlier evidence to
-              guide practice.
+              Accuracy counts correct answers. Bayesian knowledge tracing
+              estimates understanding from earlier evidence to guide practice.
             </p>
           </article>
         </section>
@@ -361,15 +351,13 @@ export function AuthScreen({ mode }: { mode: Mode }) {
                 <strong>Lumen12345</strong>
               </p>
               <div className="p-actions">
-                {["student", "rohan", "teacher", "admin"].map((x) => (
+                {["student", "rohan", "admin"].map((x) => (
                   <Button key={x} variant="secondary" onClick={() => sample(x)}>
                     {x === "student"
                       ? "Asha"
                       : x === "rohan"
                         ? "Rohan"
-                        : x === "admin"
-                          ? "Admin"
-                          : "Teacher"}
+                        : "Admin"}
                   </Button>
                 ))}
               </div>
