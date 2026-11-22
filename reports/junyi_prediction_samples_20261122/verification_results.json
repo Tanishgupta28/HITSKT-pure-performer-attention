@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "rows": 15,
+  "distinct_test_sessions": 15,
+  "distinct_target_positions": 15,
+  "real_vocabulary_and_target_alignment_checks": 15,
+  "checkpoint_strictly_loaded_and_weights_equal": true,
+  "model_forward_device": "cpu",
+  "optimizer_updates": 0,
+  "training_calls": 0,
+  "full_test_inference_runs": 0,
+  "threshold": 0.5,
+  "probabilities_finite_and_in_unit_interval": true,
+  "shifted_correctness_prefix_checks": 15,
+  "current_response_exclusion_checks": 15,
+  "future_response_exclusion_checks": 15,
+  "evaluation_fields_invariance_checks": 15,
+  "model_causal_prefix_checks": 14,
+  "fresh_process_csv_replay": {
+    "status": "PASS_EXACT",
+    "rows": 15,
+    "maximum_logit_delta": 0.0,
+    "maximum_probability_delta": 0.0
+  },
+  "csv_sha256": "c3d9cf5b0b50652d6727e01ceca760e143ef844775a086f96371b514c59a9852",
+  "input_json_sha256": "6c89324714e5f47a36aa709011bb048475cb3f52c06f72720ee7cbddc8ba39a7"
+}

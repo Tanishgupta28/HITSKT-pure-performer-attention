@@ -1,0 +1,94 @@
+{
+  "checkpoint_id": "hitskt-junyi-full-epoch-032",
+  "checkpoint_path": "experiments/hitskt/junyi/full/best_model.pt",
+  "checkpoint_format_version": 1,
+  "checkpoint_sha256": "2308c5bf0c850da1e55daf802a0853a30fac45eeed071c7162c68fc17bfa3bdd",
+  "architecture": "pure causal ELU+1 Performer linear attention",
+  "model_config": {
+    "num_questions": 25630,
+    "num_skills": 1521,
+    "width": 128,
+    "heads": 2,
+    "feedforward_width": 1024,
+    "action_layers": 1,
+    "session_layers": 1,
+    "correct_layers": 1,
+    "decoder_layers": 1,
+    "dropout": 0.1
+  },
+  "best_epoch": 32,
+  "validation_selection_metric": "validation_roc_auc",
+  "best_validation_auc": 0.8008507199510555,
+  "historical_full_test_auc_for_identification_only": 0.7978262055191263,
+  "historical_test_targets": 2456402,
+  "historical_test_sessions": 109506,
+  "history_sessions": 15,
+  "session_store_metadata": {
+    "action_chunking": false,
+    "action_truncation": false,
+    "format_version": 2,
+    "interactions": 14660217,
+    "maximum_session_length": 3924,
+    "num_questions": 25630,
+    "num_skills": 1521,
+    "processed_timestamp_unit": "milliseconds",
+    "sessions": 600154,
+    "split_sessions": {
+      "test": 109506,
+      "train": 381142,
+      "validation": 109506
+    },
+    "students": 29865,
+    "timestamp_hours_divisor": 3600000
+  },
+  "raw_source_expected_sha256": "8a18000806279ae4feae90a94a5af75b7688f2e4ba666c9a0662c75e1a404b6a",
+  "local_raw_source_verified_sha256": "8a18000806279ae4feae90a94a5af75b7688f2e4ba666c9a0662c75e1a404b6a",
+  "experiment_sha256": {
+    "_SUCCESS": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1",
+    "best_model.pt": "2308c5bf0c850da1e55daf802a0853a30fac45eeed071c7162c68fc17bfa3bdd",
+    "config.json": "f44dc08302831724efa8f94a0506fe2e95dce40ce52222b8fbea89628f3d55f5",
+    "dataset_stats.json": "85da73a724f4b33dec59426b4047cae111543f29ee8bbcbbe64a9866e2bd3924",
+    "final_results.json": "680f2d624e00591606a29379f3b9dbbdfe3d358a6d26173290e7f330e91e8faa",
+    "metrics.csv": "4580c0db64c647f8a9a96195e39df4a3e6e54e833fd78c625baeeb4390b873d3",
+    "training.jsonl": "dfc5294afcb73ff67d795dd8ced0d9feeaf26e7516c10b39cdc23374c5415e7b"
+  },
+  "session_store_sha256": {
+    "_SUCCESS": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1",
+    "correct.npy": "2366e130fc8d684de129bcddc9ad98115234e89d3eb7d3d94aca0337a5906b96",
+    "metadata.json": "581ee6f42d96681d3421991dd96ba628834175f53f57cc47e2f712b45023d4cd",
+    "question.npy": "2791c059775f4226a631b630d7d81303986fa731549e0c7a055a3156b94d0c33",
+    "session_number.npy": "0e9c15f7d973207e62cbfcd935e2c573c299c08531b774d1632aa7baa879137f",
+    "session_offsets.npy": "4958d26f376fa364eb9bfa864bb9867586dcbb460f46a2615898cecdbadbdb14",
+    "session_split.npy": "4d5ffc176e7a91b7333688d5e522348a2cd25848c944d54c9b03730fcece8e47",
+    "session_student.npy": "87eb4f34652c0cbf7d11719d233ffa8de1c19bc223adb274ec204d0be2a27248",
+    "skill.npy": "8f429f5fc3ff504df149dbd66d6211562b6957f6fd82d68df394e99150708fd6",
+    "student_offsets.npy": "2473f98238fbe2c70f013f41adac68b24c7ad991079099f478f86d5553210427",
+    "timestamp_ms.npy": "45830cf3109f2c129e7dea8fe39911fc93ad98f15b38818d7fcaecbf51e1b5fc"
+  },
+  "mapping_sha256": {
+    "data/processed/junyi/full/mappings/composite_skills.csv": "84198bf427ee419822f01e66710b71a72a89ad54c250472551b4289583a7e7e3",
+    "data/processed/junyi/full/mappings/original_tags.csv": "46b71e65a110e80f9d7e0f8ae2268b658a5e9cfd8510c6d49c7e6a6a94bc1c01",
+    "data/processed/junyi/full/mappings/question_skills.csv": "bd3c7fa68dbb79ae8cc4c5a821c31a926da26afbc1e7316c95e5b64541f3ded7",
+    "data/processed/junyi/full/mappings/questions.csv": "52ca552aa472afbbb6438ab1318fca50c7dbe4acb1a6be99427d5e3cf6f6684a"
+  },
+  "benchmark_csv_sha256": "6f72aa0d7242f04b80862ac5affeda1b8d29d143fc0ebb9ea99804938c216e31",
+  "provenance_references": [
+    "reports/independent_correctness_audit/junyi_evaluation_manifest.json",
+    "reports/independent_correctness_audit/junyi_data_manifest.json",
+    "docs/data/junyi_provenance.md"
+  ],
+  "inference_source_sha256": {
+    "ktbench/models/hitskt.py": "627e3715eb1bd386139a7ba69eb603e6ac49dafe111f46e53ea731c03f55c515",
+    "ktbench/models/performer.py": "1b517922893f8573d294fbb036b0f7af6bb9e8d4a1a7808d50db52682d323004",
+    "ktbench/batching.py": "baffe36d07b869498fbd8eaee12da9317b1b451a0061b52845a47b21d51c2ea5",
+    "ktbench/data/session_store.py": "6c695bc23da5c4b8116d29b5a099c16bb5669a99eb5cdfb9c378ace81d39f218"
+  },
+  "runtime": {
+    "device": "cpu",
+    "threads": 1,
+    "dtype": "float32",
+    "python": "3.10.12",
+    "torch": "2.4.0a0+f70bd71a48.nv24.06",
+    "numpy": "1.24.4"
+  }
+}
