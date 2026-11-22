@@ -18,6 +18,26 @@ Start with the [Codex integration prompt](../../junyi_adaptive_integration_promp
 | Custom question bank with answer keys | `reports/datasets/junyi/junyi_hitskt_question_bank.csv` in the current research workspace, or the bank supplied alongside the prompt | The inspected bank has 3,978 questions across 1,326 original tags. SHA-256 `579c11905685790bb3e3da086493dceee1c36b0f552e9a9cfcfca3682991f7a0`. Verify the provided version at integration time. |
 | Gemini credential | Server environment setting `GEMINI_API_KEY` | The owner will provide this later. Test the deterministic workflow first and exercise live Gemini after the key is configured. |
 
-The Git LFS pointer at `dataset/Junyi.csv` identifies the full Junyi CSV, but GitHub's public LFS endpoint returned a missing object during verification. Use the verified copy on authorized research storage. A new checkout needs access to the original processed store and student crosswalk for checkpoint-backed inference.
+The Git LFS pointer at `dataset/Junyi.csv` identifies the full Junyi CSV, but GitHub's public LFS endpoint returned a missing object during verification. Use the verified copy on authorized research storage. The reduced bundle below is sufficient for a runtime-only checkout.
 
 Keep raw and processed learner data, the answer-bearing bank, exported per-learner predictions, and credentials outside Git. Share them only through approved access-controlled storage. Commit code, documentation, and aggregate evidence.
+
+## Minimal runtime handoff
+
+The [encrypted v1 release asset](https://github.com/Tanishgupta28/HITSKT-pure-performer-attention/releases/tag/junyi-adaptive-runtime-v1) contains the exact answer-bearing question bank and Student 1's nine pre-test sessions extracted directly from the original store. Obtain the passphrase file from the project owner through an approved private channel.
+
+1. Save the encrypted asset outside version control. Verify its SHA-256 against the [runtime manifest](junyi-runtime-v1-manifest.json).
+2. Set `JUNYI_RUNTIME_PASSPHRASE_FILE` to the private passphrase file. Decrypt from the repository root under the ignored `data/processed/` path.
+
+   ```bash
+   umask 077
+   set -o pipefail
+   install -d -m 700 data/processed/junyi/adaptive_runtime_v1
+   gpg --batch --pinentry-mode loopback --no-symkey-cache --passphrase-file "$JUNYI_RUNTIME_PASSPHRASE_FILE" --decrypt junyi-adaptive-runtime-v1.tar.gz.gpg |
+     tar -xz -C data/processed/junyi/adaptive_runtime_v1
+   ```
+
+3. Check extracted file hashes against `bundle_manifest.json`. Use `student1_pre_test_history.json` for the original collator. It contains 179 events across nine allowed sessions, including model question and skill IDs, real correctness, timestamps and cutoff. Configure the extracted bank CSV as the server's bank input.
+4. Use the original checkpoint and tracked mappings and question rankings. Pool representatives across composites for a tag, then rank by training exposure descending and model question ID ascending. This reproduces the full training store's top five for all 1,326 tags.
+
+Decryption and history arrays were checked against the original store. Keep the passphrase outside Git and configure the separate Gemini API key later as planned.
