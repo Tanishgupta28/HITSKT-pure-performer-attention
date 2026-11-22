@@ -28,3 +28,7 @@ The production frontend build and Microsoft Edge smoke check passed for the real
 - Subsequently, all 20 learner-submitted answers were saved once and graded against their frozen options. All answers mapped to valid app proxies. The post-paper snapshot used the 20 new app responses and scored all 1,326 tags. Private ignored exports contain 20 genuine result rows and a replayable history of 179 original plus 20 app records.
 - The next paper used the post-paper evidence, respected the 8/6/4/2 allocation, and contained 20 distinct unseen questions. It required eight study topics. Verified curated links replaced unavailable search results on the same paper. The authenticated question endpoint continued to deny reads while the eight study requirements were pending. No study completion or follow-up answers were generated during validation.
 - The backend suite passed 29 tests after the curated-resource regression check was added. The evidence above concerns the actual pilot; fixture checks remain separate.
+
+## Follow-up completion and Phase 2 replay
+
+All eight study requirements were marked complete by the learner, and the follow-up paper recorded 20 genuine answers. The model snapshot used all 40 app answers from both papers plus the 179 approved original interactions. It returned estimates for 1,326 skills. A direct run of the original checkpoint on 12 representative inputs matched the stored estimates within `2.99e-8`. The authenticated results endpoint confirmed the second paper and its analysis are complete.
