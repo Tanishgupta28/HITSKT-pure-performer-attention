@@ -16,3 +16,7 @@
 ## Follow-up to the original fixture verification
 
 The original encrypted history handoff could not be decrypted on this device. The later offline recovery used the accepted raw Junyi source and matched all 11 published SessionStore member digests and the original student crosswalk digest. The real 9-session / 179-interaction baseline now passes the runtime loader with the approved chronological cutoff. Fixture outcomes were stored only in disposable test databases. No learner histories, answer keys, provider credentials or model artifacts belong in Git.
+
+The original checkpoint ran all 6,307 distinct representatives and produced 1,326 finite tag estimates from the real approved history. The optimized serving path used shared encoder outputs and matched direct full-model calls to within `1.2e-7` in both BOS and an observed prefix check. The full optimized comparison run took 25.47 s on this CPU. All 28 backend tests passed after the serving change.
+
+The authenticated pilot resumed and froze one real 20-question paper. The eight attempted-Weak slots were reallocated to unattempted skills under the normal selector policy, resulting in 14 unattempted, 4 review and 2 broad questions. Gemini contributed 11 verified bank IDs and deterministic selection supplied the other nine. The paper opened without a study gate because no attempted skill had a Weak estimate. The website served four options while keeping the grading key private. The paper has zero submitted answers, so live grading and the next real adaptive cycle remain dependent on learner input.

@@ -96,6 +96,7 @@ def test_history_verifies_student_scope_counts_and_cutoff(tmp_path):
 def test_cutoff_context_and_original_model_placeholder_is_causal():
     torch = pytest.importorskip("torch")
     from app.research import hitskt_types
+    from ktbench.batching import Session, SessionExample, collate_hitskt
 
     model, config = hitskt_types()
     torch.manual_seed(3)
@@ -110,6 +111,12 @@ def test_cutoff_context_and_original_model_placeholder_is_causal():
     bos = adapter.predict(earlier, (), probes)
     assert list(bos) == probes and all(0 < value < 1 for value in bos.values())
     assert any(abs(bos[item]-value) > 1e-6 for item, value in zero.items())
+    original_history = [Session([1, 2], [1, 1], [1, 0])]
+    examples = [SessionExample(original_history, Session([3, item.question_id], [2, item.skill_id], [1, 0]), 2) for item in probes]
+    original_batch = collate_hitskt(examples, num_questions=5, num_skills=3)
+    with torch.inference_mode():
+        direct = torch.sigmoid(adapter.model(original_batch)[:, 1]).tolist()
+    assert list(zero.values()) == pytest.approx(direct, abs=1e-6)
 
     runtime = fixture_runtime()
     base = runtime.estimator.baseline

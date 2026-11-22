@@ -182,21 +182,30 @@ class OriginalHiTSKT:
         def example(item):
             return SessionExample(history, session((*prefix, Event(item, placeholder, 0))), split=2)
 
+        def collate(items):
+            return collate_hitskt([example(item) for item in items], num_questions=self.model.config.num_questions,
+                                   num_skills=self.model.config.num_skills)
+
         cost = padded_token_cost([example_shape(example(candidates[0]))])
         if cost > TOKEN_BUDGET:
             raise ModelUnavailable("The full retained context exceeds the serving token budget")
         size = max(1, min(64, TOKEN_BUDGET // cost))
         output = {}
         with torch.inference_mode():
+            # Each candidate shares the same complete sessions and shifted correctness prefix.
+            # These original modules are independent of the candidate question and skill.
+            common = collate(candidates[:1])
+            history_state = self.model.session_encoder(self.model.action_encoder(common), common)
+            memory = self.model.correct_padding_encoder(history_state, common)
             for start in range(0, len(candidates), size):
                 chunk = candidates[start:start + size]
-                batch = collate_hitskt([example(item) for item in chunk], num_questions=self.model.config.num_questions,
-                                       num_skills=self.model.config.num_skills)
+                batch = collate(chunk)
                 if (batch.target_question[:, position].tolist() != [item.question_id for item in chunk]
                         or batch.target_skill[:, position].tolist() != [item.skill_id for item in chunk]
                         or not batch.target_metric_mask[:, position].all()):
                     raise ModelUnavailable("Model candidate position does not match the requested IDs")
-                probabilities = torch.sigmoid(self.model(batch)[:, position]).tolist()
+                decoded = self.model.decoder(memory.expand(len(chunk), -1, -1), batch)
+                probabilities = torch.sigmoid(self.model.prediction(decoded)[:, position, 0]).tolist()
                 if any(not math.isfinite(value) for value in probabilities):
                     raise ModelUnavailable("The checkpoint produced a non-finite prediction")
                 output.update(zip(chunk, probabilities, strict=True))
