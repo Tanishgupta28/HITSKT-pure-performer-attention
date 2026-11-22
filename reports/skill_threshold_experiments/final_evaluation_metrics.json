@@ -1,0 +1,668 @@
+{
+  "classes": [
+    "Weak",
+    "Intermediate",
+    "Strong"
+  ],
+  "test_students": 13039,
+  "threshold_selection": {
+    "T1": 0.61,
+    "T2": 0.86,
+    "T1_percent": 61,
+    "T2_percent": 86,
+    "rules": [
+      "score < T1",
+      "T1 <= score < T2",
+      "score >= T2"
+    ],
+    "labels": [
+      "Weak",
+      "Intermediate",
+      "Strong"
+    ],
+    "skill_id_namespace": "Junyi processed composite skill_id",
+    "reference_boundaries_in_actual_accuracy": [
+      0.6,
+      0.85
+    ],
+    "student_split_seed": 42,
+    "objective": "validation macro-F1",
+    "tie_breaking": "Maximize validation macro-F1. Within 1e-12, maximize Weak recall, then balanced accuracy, then select the lexicographically lower threshold pair.",
+    "minimum_future_responses": 5,
+    "validation_students": 13038,
+    "validation_macro_f1": 0.5757039229440387,
+    "validation_weak_recall": 0.5829351792633837,
+    "checkpoint_sha256": "2308c5bf0c850da1e55daf802a0853a30fac45eeed071c7162c68fc17bfa3bdd",
+    "skill_scores_sha256": "0322bfc227a12202bbcfaaef83e62a975abb61cbf36912b37c09814150ae99d5"
+  },
+  "validation_optimized": {
+    "macro_f1": 0.5757039229440387,
+    "balanced_accuracy": 0.5700968694341056,
+    "accuracy": 0.5699418228829993,
+    "weak_precision": 0.6312637496944512,
+    "weak_recall": 0.5829351792633837,
+    "intermediate_f1": 0.5509636237161913,
+    "strong_precision": 0.5925493688768773,
+    "strong_recall": 0.5491234061930783,
+    "precision_by_class": [
+      0.6312637496944512,
+      0.5261512611609324,
+      0.5925493688768773
+    ],
+    "recall_by_class": [
+      0.5829351792633837,
+      0.5782320228458548,
+      0.5491234061930783
+    ],
+    "f1_by_class": [
+      0.6061376572065641,
+      0.5509636237161913,
+      0.5700104879093608
+    ],
+    "actual_class_counts": [
+      26581,
+      46573,
+      35136
+    ],
+    "predicted_class_counts": [
+      24546,
+      51183,
+      32561
+    ],
+    "confusion_matrix": [
+      [
+        15495,
+        10058,
+        1028
+      ],
+      [
+        7404,
+        26930,
+        12239
+      ],
+      [
+        1647,
+        14195,
+        19294
+      ]
+    ],
+    "student_skill_pairs": 108290
+  },
+  "validation_baseline": {
+    "macro_f1": 0.575233517121242,
+    "balanced_accuracy": 0.5695165222414075,
+    "accuracy": 0.5689999076553698,
+    "weak_precision": 0.6424257998201208,
+    "weak_recall": 0.5643128550468379,
+    "intermediate_f1": 0.5431515895217396,
+    "strong_precision": 0.5799224959692246,
+    "strong_recall": 0.5835040983606558,
+    "precision_by_class": [
+      0.6424257998201208,
+      0.5266395095587643,
+      0.5799224959692246
+    ],
+    "recall_by_class": [
+      0.5643128550468379,
+      0.5607326133167285,
+      0.5835040983606558
+    ],
+    "f1_by_class": [
+      0.6008411776487081,
+      0.5431515895217396,
+      0.5817077841932784
+    ],
+    "actual_class_counts": [
+      26581,
+      46573,
+      35136
+    ],
+    "predicted_class_counts": [
+      23349,
+      49588,
+      35353
+    ],
+    "confusion_matrix": [
+      [
+        15000,
+        10338,
+        1243
+      ],
+      [
+        6850,
+        26115,
+        13608
+      ],
+      [
+        1499,
+        13135,
+        20502
+      ]
+    ],
+    "student_skill_pairs": 108290
+  },
+  "test_optimized": {
+    "macro_f1": 0.5714639421512984,
+    "balanced_accuracy": 0.5658891028045568,
+    "accuracy": 0.5657621015513494,
+    "weak_precision": 0.6240341936544468,
+    "weak_recall": 0.5763741269359247,
+    "intermediate_f1": 0.5452695617869044,
+    "strong_precision": 0.5932711319822046,
+    "strong_recall": 0.5482342193165273,
+    "precision_by_class": [
+      0.6240341936544468,
+      0.5200506960809553,
+      0.5932711319822046
+    ],
+    "recall_by_class": [
+      0.5763741269359247,
+      0.5730589621612185,
+      0.5482342193165273
+    ],
+    "f1_by_class": [
+      0.5992580314152656,
+      0.5452695617869044,
+      0.5698642332517249
+    ],
+    "actual_class_counts": [
+      26344,
+      45826,
+      35027
+    ],
+    "predicted_class_counts": [
+      24332,
+      50497,
+      32368
+    ],
+    "confusion_matrix": [
+      [
+        15184,
+        10064,
+        1096
+      ],
+      [
+        7496,
+        26261,
+        12069
+      ],
+      [
+        1652,
+        14172,
+        19203
+      ]
+    ],
+    "student_skill_pairs": 107197
+  },
+  "test_baseline": {
+    "macro_f1": 0.5709261512495689,
+    "balanced_accuracy": 0.5650881800187394,
+    "accuracy": 0.5648199110049722,
+    "weak_precision": 0.63586391966759,
+    "weak_recall": 0.5576601882781658,
+    "intermediate_f1": 0.537509748951329,
+    "strong_precision": 0.5809858149955761,
+    "strong_recall": 0.5811516829874097,
+    "precision_by_class": [
+      0.63586391966759,
+      0.5198140900195695,
+      0.5809858149955761
+    ],
+    "recall_by_class": [
+      0.5576601882781658,
+      0.5564526687906428,
+      0.5811516829874097
+    ],
+    "f1_by_class": [
+      0.5941999676427763,
+      0.537509748951329,
+      0.5810687371546015
+    ],
+    "actual_class_counts": [
+      26344,
+      45826,
+      35027
+    ],
+    "predicted_class_counts": [
+      23104,
+      49056,
+      35037
+    ],
+    "confusion_matrix": [
+      [
+        14691,
+        10382,
+        1271
+      ],
+      [
+        6916,
+        25500,
+        13410
+      ],
+      [
+        1497,
+        13174,
+        20356
+      ]
+    ],
+    "student_skill_pairs": 107197
+  },
+  "test_sensitivity": {
+    "5": {
+      "optimized": {
+        "macro_f1": 0.5714639421512984,
+        "balanced_accuracy": 0.5658891028045568,
+        "accuracy": 0.5657621015513494,
+        "weak_precision": 0.6240341936544468,
+        "weak_recall": 0.5763741269359247,
+        "intermediate_f1": 0.5452695617869044,
+        "strong_precision": 0.5932711319822046,
+        "strong_recall": 0.5482342193165273,
+        "precision_by_class": [
+          0.6240341936544468,
+          0.5200506960809553,
+          0.5932711319822046
+        ],
+        "recall_by_class": [
+          0.5763741269359247,
+          0.5730589621612185,
+          0.5482342193165273
+        ],
+        "f1_by_class": [
+          0.5992580314152656,
+          0.5452695617869044,
+          0.5698642332517249
+        ],
+        "actual_class_counts": [
+          26344,
+          45826,
+          35027
+        ],
+        "predicted_class_counts": [
+          24332,
+          50497,
+          32368
+        ],
+        "confusion_matrix": [
+          [
+            15184,
+            10064,
+            1096
+          ],
+          [
+            7496,
+            26261,
+            12069
+          ],
+          [
+            1652,
+            14172,
+            19203
+          ]
+        ],
+        "student_skill_pairs": 107197
+      },
+      "baseline": {
+        "macro_f1": 0.5709261512495689,
+        "balanced_accuracy": 0.5650881800187394,
+        "accuracy": 0.5648199110049722,
+        "weak_precision": 0.63586391966759,
+        "weak_recall": 0.5576601882781658,
+        "intermediate_f1": 0.537509748951329,
+        "strong_precision": 0.5809858149955761,
+        "strong_recall": 0.5811516829874097,
+        "precision_by_class": [
+          0.63586391966759,
+          0.5198140900195695,
+          0.5809858149955761
+        ],
+        "recall_by_class": [
+          0.5576601882781658,
+          0.5564526687906428,
+          0.5811516829874097
+        ],
+        "f1_by_class": [
+          0.5941999676427763,
+          0.537509748951329,
+          0.5810687371546015
+        ],
+        "actual_class_counts": [
+          26344,
+          45826,
+          35027
+        ],
+        "predicted_class_counts": [
+          23104,
+          49056,
+          35037
+        ],
+        "confusion_matrix": [
+          [
+            14691,
+            10382,
+            1271
+          ],
+          [
+            6916,
+            25500,
+            13410
+          ],
+          [
+            1497,
+            13174,
+            20356
+          ]
+        ],
+        "student_skill_pairs": 107197
+      }
+    },
+    "10": {
+      "optimized": {
+        "macro_f1": 0.6021740619020601,
+        "balanced_accuracy": 0.6106758622788081,
+        "accuracy": 0.6128129421172418,
+        "weak_precision": 0.7961352657004831,
+        "weak_recall": 0.6215882594980112,
+        "intermediate_f1": 0.5590693222398115,
+        "strong_precision": 0.5036991368680641,
+        "strong_recall": 0.6040665434380776,
+        "precision_by_class": [
+          0.7961352657004831,
+          0.5186121166586982,
+          0.5036991368680641
+        ],
+        "recall_by_class": [
+          0.6215882594980112,
+          0.6063727839003354,
+          0.6040665434380776
+        ],
+        "f1_by_class": [
+          0.6981168406053837,
+          0.5590693222398115,
+          0.549336022860985
+        ],
+        "actual_class_counts": [
+          14582,
+          12522,
+          5410
+        ],
+        "predicted_class_counts": [
+          11385,
+          14641,
+          6488
+        ],
+        "confusion_matrix": [
+          [
+            9064,
+            5049,
+            469
+          ],
+          [
+            2178,
+            7593,
+            2751
+          ],
+          [
+            143,
+            1999,
+            3268
+          ]
+        ],
+        "student_skill_pairs": 32514
+      },
+      "baseline": {
+        "macro_f1": 0.5981630404782882,
+        "balanced_accuracy": 0.6128275951789296,
+        "accuracy": 0.6058620901765394,
+        "weak_precision": 0.8064634257987733,
+        "weak_recall": 0.6041009463722398,
+        "intermediate_f1": 0.5496997998665777,
+        "strong_precision": 0.48716870004206986,
+        "strong_recall": 0.6421441774491682,
+        "precision_by_class": [
+          0.8064634257987733,
+          0.512863070539419,
+          0.48716870004206986
+        ],
+        "recall_by_class": [
+          0.6041009463722398,
+          0.592237661715381,
+          0.6421441774491682
+        ],
+        "f1_by_class": [
+          0.6907665163693394,
+          0.5496997998665777,
+          0.5540228051989474
+        ],
+        "actual_class_counts": [
+          14582,
+          12522,
+          5410
+        ],
+        "predicted_class_counts": [
+          10923,
+          14460,
+          7131
+        ],
+        "confusion_matrix": [
+          [
+            8809,
+            5233,
+            540
+          ],
+          [
+            1989,
+            7416,
+            3117
+          ],
+          [
+            125,
+            1811,
+            3474
+          ]
+        ],
+        "student_skill_pairs": 32514
+      }
+    },
+    "20": {
+      "optimized": {
+        "macro_f1": 0.5926643662358622,
+        "balanced_accuracy": 0.6394214033250009,
+        "accuracy": 0.6686913307564881,
+        "weak_precision": 0.9061773067976221,
+        "weak_recall": 0.6913823703411556,
+        "intermediate_f1": 0.470258922323303,
+        "strong_precision": 0.45897079276773295,
+        "strong_recall": 0.6088560885608856,
+        "precision_by_class": [
+          0.9061773067976221,
+          0.3795180722891566,
+          0.45897079276773295
+        ],
+        "recall_by_class": [
+          0.6913823703411556,
+          0.6180257510729614,
+          0.6088560885608856
+        ],
+        "f1_by_class": [
+          0.7843400447427293,
+          0.470258922323303,
+          0.5233941316415543
+        ],
+        "actual_class_counts": [
+          5071,
+          1631,
+          542
+        ],
+        "predicted_class_counts": [
+          3869,
+          2656,
+          719
+        ],
+        "confusion_matrix": [
+          [
+            3506,
+            1459,
+            106
+          ],
+          [
+            340,
+            1008,
+            283
+          ],
+          [
+            23,
+            189,
+            330
+          ]
+        ],
+        "student_skill_pairs": 7244
+      },
+      "baseline": {
+        "macro_f1": 0.5861342598672126,
+        "balanced_accuracy": 0.6427913150927602,
+        "accuracy": 0.6576477084483711,
+        "weak_precision": 0.9108568387440128,
+        "weak_recall": 0.6750147899822521,
+        "intermediate_f1": 0.4582658959537572,
+        "strong_precision": 0.44191919191919193,
+        "strong_recall": 0.6457564575645757,
+        "precision_by_class": [
+          0.9108568387440128,
+          0.36785449146250926,
+          0.44191919191919193
+        ],
+        "recall_by_class": [
+          0.6750147899822521,
+          0.6076026977314531,
+          0.6457564575645757
+        ],
+        "f1_by_class": [
+          0.7753992524634726,
+          0.4582658959537572,
+          0.5247376311844077
+        ],
+        "actual_class_counts": [
+          5071,
+          1631,
+          542
+        ],
+        "predicted_class_counts": [
+          3758,
+          2694,
+          792
+        ],
+        "confusion_matrix": [
+          [
+            3423,
+            1531,
+            117
+          ],
+          [
+            315,
+            991,
+            325
+          ],
+          [
+            20,
+            172,
+            350
+          ]
+        ],
+        "student_skill_pairs": 7244
+      }
+    }
+  },
+  "baseline_thresholds": [
+    0.6,
+    0.85
+  ],
+  "uncertainty": {
+    "thresholds_resampled_on_validation": {
+      "replicates": 500,
+      "unit": "student",
+      "quantiles": [
+        0.025,
+        0.5,
+        0.975
+      ],
+      "t1": [
+        0.6,
+        0.61,
+        0.62
+      ],
+      "t2": [
+        0.85,
+        0.86,
+        0.86
+      ],
+      "reoptimized_macro_f1": [
+        0.5714897141005899,
+        0.5756290008828864,
+        0.5804823984313912
+      ],
+      "fraction_same_threshold_pair": 0.596
+    },
+    "fixed_thresholds_resampled_on_test": {
+      "replicates": 500,
+      "unit": "student",
+      "quantiles": [
+        0.025,
+        0.5,
+        0.975
+      ],
+      "optimized": {
+        "macro_f1": [
+          0.5673241961832655,
+          0.5715412334449528,
+          0.5755502773891025
+        ],
+        "balanced_accuracy": [
+          0.561644349047798,
+          0.5659481973905776,
+          0.570035908532514
+        ],
+        "accuracy": [
+          0.5622038778998741,
+          0.5657561167618781,
+          0.5694568977074539
+        ],
+        "weak_recall": [
+          0.5649974063965303,
+          0.5768394682334064,
+          0.5883917198491666
+        ]
+      },
+      "baseline": {
+        "macro_f1": [
+          0.5670169422645595,
+          0.5709715163389311,
+          0.5750213793930326
+        ],
+        "balanced_accuracy": [
+          0.5609656211818357,
+          0.5650925694390982,
+          0.5691533230351914
+        ],
+        "accuracy": [
+          0.5613100517382726,
+          0.5648946513373638,
+          0.56845393520229
+        ],
+        "weak_recall": [
+          0.5464697538793851,
+          0.557994054922756,
+          0.5699441997781901
+        ]
+      },
+      "paired_macro_f1_difference": [
+        -0.0004969950924847366,
+        0.0005011001881995991,
+        0.0017461479851801685
+      ]
+    }
+  },
+  "confusion_matrix_orientation": "actual rows, prediction columns, ordered Weak, Intermediate, Strong",
+  "candidate_pairs": 4851,
+  "nondegenerate_validation_pairs": 4465
+}

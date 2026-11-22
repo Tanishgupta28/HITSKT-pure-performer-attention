@@ -1,0 +1,30 @@
+{
+  "T1": 0.61,
+  "T2": 0.86,
+  "T1_percent": 61,
+  "T2_percent": 86,
+  "rules": [
+    "score < T1",
+    "T1 <= score < T2",
+    "score >= T2"
+  ],
+  "labels": [
+    "Weak",
+    "Intermediate",
+    "Strong"
+  ],
+  "skill_id_namespace": "Junyi processed composite skill_id",
+  "reference_boundaries_in_actual_accuracy": [
+    0.6,
+    0.85
+  ],
+  "student_split_seed": 42,
+  "objective": "validation macro-F1",
+  "tie_breaking": "Maximize validation macro-F1. Within 1e-12, maximize Weak recall, then balanced accuracy, then select the lexicographically lower threshold pair.",
+  "minimum_future_responses": 5,
+  "validation_students": 13038,
+  "validation_macro_f1": 0.5757039229440387,
+  "validation_weak_recall": 0.5829351792633837,
+  "checkpoint_sha256": "2308c5bf0c850da1e55daf802a0853a30fac45eeed071c7162c68fc17bfa3bdd",
+  "skill_scores_sha256": "0322bfc227a12202bbcfaaef83e62a975abb61cbf36912b37c09814150ae99d5"
+}

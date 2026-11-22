@@ -1,0 +1,408 @@
+{
+  "validation": {
+    "students": 13038,
+    "pairs": 108290,
+    "distinct_composite_skills": 1462,
+    "future_responses": 1021265,
+    "mae": 0.14525910040295636,
+    "pearson": 0.6420898300145098,
+    "spearman": 0.602943779184494,
+    "brier_pair_mean": 0.03483713065469194,
+    "brier_response_weighted": 0.19522802153938468,
+    "brier_train_global_response_weighted": 0.22725512057910793,
+    "mae_train_global_baseline": 0.2011615471202094,
+    "mean_prediction": 0.7340279075024702,
+    "mean_future_accuracy": 0.7352664988022507,
+    "signed_prediction_bias": -0.0012385912997806535,
+    "pair_weighted_calibration_ece": 0.022562771102477598,
+    "reliability_bins": [
+      {
+        "lower_inclusive": 0.0,
+        "upper": 0.1,
+        "pairs": 48,
+        "mean_predicted": 0.08155888327552627,
+        "mean_observed": 0.16391835822830245
+      },
+      {
+        "lower_inclusive": 0.1,
+        "upper": 0.2,
+        "pairs": 763,
+        "mean_predicted": 0.16299137880662745,
+        "mean_observed": 0.23982197547257328
+      },
+      {
+        "lower_inclusive": 0.2,
+        "upper": 0.3,
+        "pairs": 2318,
+        "mean_predicted": 0.2564308480482022,
+        "mean_observed": 0.3357060500162145
+      },
+      {
+        "lower_inclusive": 0.3,
+        "upper": 0.4,
+        "pairs": 4047,
+        "mean_predicted": 0.35461073740614146,
+        "mean_observed": 0.4151248185713539
+      },
+      {
+        "lower_inclusive": 0.4,
+        "upper": 0.5,
+        "pairs": 6306,
+        "mean_predicted": 0.45364731463974567,
+        "mean_observed": 0.4986593522475915
+      },
+      {
+        "lower_inclusive": 0.5,
+        "upper": 0.6,
+        "pairs": 9867,
+        "mean_predicted": 0.5537710833511832,
+        "mean_observed": 0.5826653795741412
+      },
+      {
+        "lower_inclusive": 0.6,
+        "upper": 0.7,
+        "pairs": 15057,
+        "mean_predicted": 0.6533962323572043,
+        "mean_observed": 0.668574782705345
+      },
+      {
+        "lower_inclusive": 0.7,
+        "upper": 0.8,
+        "pairs": 21571,
+        "mean_predicted": 0.7523152611618608,
+        "mean_observed": 0.7517439759266034
+      },
+      {
+        "lower_inclusive": 0.8,
+        "upper": 0.9,
+        "pairs": 27311,
+        "mean_predicted": 0.8516685884902263,
+        "mean_observed": 0.8327426404611112
+      },
+      {
+        "lower_inclusive": 0.9,
+        "upper": 1.0,
+        "pairs": 21002,
+        "mean_predicted": 0.9370073735849712,
+        "mean_observed": 0.9072298307326654
+      }
+    ],
+    "score_quantiles_0_10_25_50_75_90_100": [
+      0.043635297939181326,
+      0.46308848619461057,
+      0.6287359595298767,
+      0.775281447172165,
+      0.8793048739433289,
+      0.9338612985610961,
+      0.996832299232483
+    ],
+    "median_followup_days": 41.989583333333336,
+    "mean_representative_questions": 4.976359774679103,
+    "median_within_skill_probability_sd": 0.08372168379810149
+  },
+  "test": {
+    "5": {
+      "students": 13039,
+      "pairs": 107197,
+      "distinct_composite_skills": 1460,
+      "future_responses": 1022557,
+      "mae": 0.14560385479769675,
+      "pearson": 0.6369883902734639,
+      "spearman": 0.6002331697904274,
+      "brier_pair_mean": 0.035114696845092774,
+      "brier_response_weighted": 0.19439272059861717,
+      "brier_train_global_response_weighted": 0.2257244184528028,
+      "mae_train_global_baseline": 0.20107343321659432,
+      "mean_prediction": 0.7343810082813089,
+      "mean_future_accuracy": 0.7355429295342462,
+      "signed_prediction_bias": -0.0011619212529374028,
+      "pair_weighted_calibration_ece": 0.022767146007869898,
+      "reliability_bins": [
+        {
+          "lower_inclusive": 0.0,
+          "upper": 0.1,
+          "pairs": 36,
+          "mean_predicted": 0.08180220954085667,
+          "mean_observed": 0.14072916841785166
+        },
+        {
+          "lower_inclusive": 0.1,
+          "upper": 0.2,
+          "pairs": 694,
+          "mean_predicted": 0.16397054971152814,
+          "mean_observed": 0.25144493314016464
+        },
+        {
+          "lower_inclusive": 0.2,
+          "upper": 0.3,
+          "pairs": 2169,
+          "mean_predicted": 0.25555087475941124,
+          "mean_observed": 0.3382171484632446
+        },
+        {
+          "lower_inclusive": 0.3,
+          "upper": 0.4,
+          "pairs": 4018,
+          "mean_predicted": 0.3542648223150717,
+          "mean_observed": 0.4151597893484185
+        },
+        {
+          "lower_inclusive": 0.4,
+          "upper": 0.5,
+          "pairs": 6432,
+          "mean_predicted": 0.4535667296817081,
+          "mean_observed": 0.4990467434894584
+        },
+        {
+          "lower_inclusive": 0.5,
+          "upper": 0.6,
+          "pairs": 9755,
+          "mean_predicted": 0.5536951873327995,
+          "mean_observed": 0.585296195616829
+        },
+        {
+          "lower_inclusive": 0.6,
+          "upper": 0.7,
+          "pairs": 14981,
+          "mean_predicted": 0.6530112463322773,
+          "mean_observed": 0.6660250043680276
+        },
+        {
+          "lower_inclusive": 0.7,
+          "upper": 0.8,
+          "pairs": 21293,
+          "mean_predicted": 0.7529066726624846,
+          "mean_observed": 0.7514148961899605
+        },
+        {
+          "lower_inclusive": 0.8,
+          "upper": 0.9,
+          "pairs": 27004,
+          "mean_predicted": 0.8517730463612732,
+          "mean_observed": 0.8332732473094556
+        },
+        {
+          "lower_inclusive": 0.9,
+          "upper": 1.0,
+          "pairs": 20815,
+          "mean_predicted": 0.9365675828144562,
+          "mean_observed": 0.9064607046495504
+        }
+      ],
+      "score_quantiles_0_10_25_50_75_90_100": [
+        0.04291268717497587,
+        0.46386593669652937,
+        0.6284221172332763,
+        0.7759786486625672,
+        0.8796358466148376,
+        0.9333343887329102,
+        0.9952757596969605
+      ],
+      "median_followup_days": 39.177083333333336,
+      "mean_representative_questions": 4.976538522533279,
+      "median_within_skill_probability_sd": 0.08351231724243939
+    },
+    "10": {
+      "students": 8157,
+      "pairs": 32514,
+      "distinct_composite_skills": 1379,
+      "future_responses": 559623,
+      "mae": 0.1417018369957062,
+      "pearson": 0.7031471964504443,
+      "spearman": 0.7034004956961649,
+      "brier_pair_mean": 0.03322657280288161,
+      "brier_response_weighted": 0.22198341344117953,
+      "brier_train_global_response_weighted": 0.26473061838948875,
+      "mae_train_global_baseline": 0.20534654120736004,
+      "mean_prediction": 0.6702920217523556,
+      "mean_future_accuracy": 0.6063687882869517,
+      "signed_prediction_bias": 0.06392323346540386,
+      "pair_weighted_calibration_ece": 0.06899401728315763,
+      "reliability_bins": [
+        {
+          "lower_inclusive": 0.0,
+          "upper": 0.1,
+          "pairs": 19,
+          "mean_predicted": 0.084091850527023,
+          "mean_observed": 0.15511591810500208
+        },
+        {
+          "lower_inclusive": 0.1,
+          "upper": 0.2,
+          "pairs": 442,
+          "mean_predicted": 0.16331117770713255,
+          "mean_observed": 0.21349836122797813
+        },
+        {
+          "lower_inclusive": 0.2,
+          "upper": 0.3,
+          "pairs": 1278,
+          "mean_predicted": 0.25525879095919163,
+          "mean_observed": 0.297922208386827
+        },
+        {
+          "lower_inclusive": 0.3,
+          "upper": 0.4,
+          "pairs": 2123,
+          "mean_predicted": 0.3535378767677853,
+          "mean_observed": 0.35560085022633864
+        },
+        {
+          "lower_inclusive": 0.4,
+          "upper": 0.5,
+          "pairs": 3063,
+          "mean_predicted": 0.45228908982844257,
+          "mean_observed": 0.4273532288078623
+        },
+        {
+          "lower_inclusive": 0.5,
+          "upper": 0.6,
+          "pairs": 3998,
+          "mean_predicted": 0.5521655081893535,
+          "mean_observed": 0.4993783854596208
+        },
+        {
+          "lower_inclusive": 0.6,
+          "upper": 0.7,
+          "pairs": 5224,
+          "mean_predicted": 0.6520434485682803,
+          "mean_observed": 0.5750489869635796
+        },
+        {
+          "lower_inclusive": 0.7,
+          "upper": 0.8,
+          "pairs": 6179,
+          "mean_predicted": 0.7516864959456624,
+          "mean_observed": 0.6603834807298871
+        },
+        {
+          "lower_inclusive": 0.8,
+          "upper": 0.9,
+          "pairs": 6277,
+          "mean_predicted": 0.8507031682450041,
+          "mean_observed": 0.7566985000207507
+        },
+        {
+          "lower_inclusive": 0.9,
+          "upper": 1.0,
+          "pairs": 3911,
+          "mean_predicted": 0.9357154327786448,
+          "mean_observed": 0.8546705374692648
+        }
+      ],
+      "score_quantiles_0_10_25_50_75_90_100": [
+        0.04291268717497587,
+        0.37432160675525666,
+        0.5319803550839425,
+        0.7024031907320023,
+        0.8334278553724289,
+        0.9109533739089967,
+        0.9945990681648255
+      ],
+      "median_followup_days": 41.989583333333336,
+      "mean_representative_questions": 4.990650181460294,
+      "median_within_skill_probability_sd": 0.09658232951628382
+    },
+    "20": {
+      "students": 3202,
+      "pairs": 7244,
+      "distinct_composite_skills": 1127,
+      "future_responses": 232599,
+      "mae": 0.14697468015139817,
+      "pearson": 0.6963182706988486,
+      "spearman": 0.6906328773067009,
+      "brier_pair_mean": 0.03457678172978299,
+      "brier_response_weighted": 0.23498261577901727,
+      "brier_train_global_response_weighted": 0.30072947805939676,
+      "mae_train_global_baseline": 0.2576444307101138,
+      "mean_prediction": 0.5807643594981984,
+      "mean_future_accuracy": 0.4941251964837533,
+      "signed_prediction_bias": 0.08663916301444505,
+      "pair_weighted_calibration_ece": 0.09257817301742235,
+      "reliability_bins": [
+        {
+          "lower_inclusive": 0.0,
+          "upper": 0.1,
+          "pairs": 10,
+          "mean_predicted": 0.0855579225718975,
+          "mean_observed": 0.12849355442281404
+        },
+        {
+          "lower_inclusive": 0.1,
+          "upper": 0.2,
+          "pairs": 200,
+          "mean_predicted": 0.16377998212693878,
+          "mean_observed": 0.21060674987209801
+        },
+        {
+          "lower_inclusive": 0.2,
+          "upper": 0.3,
+          "pairs": 543,
+          "mean_predicted": 0.2552135138116672,
+          "mean_observed": 0.2767906489189281
+        },
+        {
+          "lower_inclusive": 0.3,
+          "upper": 0.4,
+          "pairs": 856,
+          "mean_predicted": 0.35356022957799454,
+          "mean_observed": 0.3456005587481602
+        },
+        {
+          "lower_inclusive": 0.4,
+          "upper": 0.5,
+          "pairs": 999,
+          "mean_predicted": 0.45290118617204217,
+          "mean_observed": 0.39817259440722746
+        },
+        {
+          "lower_inclusive": 0.5,
+          "upper": 0.6,
+          "pairs": 1150,
+          "mean_predicted": 0.550298386676156,
+          "mean_observed": 0.4536824877151234
+        },
+        {
+          "lower_inclusive": 0.6,
+          "upper": 0.7,
+          "pairs": 1226,
+          "mean_predicted": 0.6509178854573706,
+          "mean_observed": 0.5265151688262075
+        },
+        {
+          "lower_inclusive": 0.7,
+          "upper": 0.8,
+          "pairs": 1060,
+          "mean_predicted": 0.7493101712358449,
+          "mean_observed": 0.5986477674599897
+        },
+        {
+          "lower_inclusive": 0.8,
+          "upper": 0.9,
+          "pairs": 781,
+          "mean_predicted": 0.8477933499187777,
+          "mean_observed": 0.6975576081650178
+        },
+        {
+          "lower_inclusive": 0.9,
+          "upper": 1.0,
+          "pairs": 419,
+          "mean_predicted": 0.9367656444023789,
+          "mean_observed": 0.8246521050301849
+        }
+      ],
+      "score_quantiles_0_10_25_50_75_90_100": [
+        0.05921711921691895,
+        0.2969319835305214,
+        0.42669231668114666,
+        0.5885644018650056,
+        0.7426994353532791,
+        0.8593481349945068,
+        0.9945990681648255
+      ],
+      "median_followup_days": 41.989583333333336,
+      "mean_representative_questions": 4.996686913307565,
+      "median_within_skill_probability_sd": 0.10912488716273079
+    }
+  }
+}
