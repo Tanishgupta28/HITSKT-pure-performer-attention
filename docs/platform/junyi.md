@@ -29,6 +29,8 @@ The recovery tool hashes the accepted raw file, replays the published ordering, 
 
 MongoDB keeps a separate `junyi_papers` collection for the prototype. Each frozen paper contains its bank version, score snapshot, allocation and deficit record, ordered items and option IDs, and only the required study tags for that paper. Option IDs are opaque. The answer key survives a server restart or bank update inside the saved server-side paper. Question and answer APIs enforce the lock. A unique active-owner index prevents parallel papers and the paper version protects grading and progression from simultaneous writes. Leased background jobs let the browser reload while scores and recommendations are being prepared. Resume/retry can reclaim work after an interrupted lease expires.
 
+Newly queued papers persist their stage, allocation targets, and repeat policy before preparation begins. A cached score snapshot is reused only when its exact application-answer fingerprint matches the current history, in addition to the checkpoint, mapping, thresholds, and session-window checks.
+
 The original Junyi history is a private read-only input. A real submission appends one audited, timestamped application answer to its paper, including the actual grade and reversible reference to a representative Junyi question if a valid mapping exists. Original history stays separate from the app history and legacy practice/export. A paper boundary does not create a model session. The adapter uses the original 10-hour inactivity rule, up to 15 complete earlier sessions, and the truly observed prefix for the current session. The completed paper triggers a new score snapshot for the next paper.
 
 ## What the estimates mean

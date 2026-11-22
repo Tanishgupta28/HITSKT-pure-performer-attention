@@ -1,15 +1,17 @@
+import asyncio
 from concurrent.futures import ThreadPoolExecutor
 import json
 from uuid import uuid4
 
 import pytest
 from fastapi.testclient import TestClient
-from pymongo import MongoClient
+from pymongo import AsyncMongoClient, MongoClient
 
 from app.junyi_bank import BankQuestion, JunyiBank, JunyiMappings, ModelItem, digest, load_bank
 from app.junyi_model import Baseline, Event, GAP, ModelUnavailable, OriginalHiTSKT, SkillEstimator, read_baseline, score_class, session_context
 from app.junyi_paper import DEFAULT_QUOTAS, BankShortage, candidates_for, prompt_candidates, select_paper, study_requirements
 from app.junyi_resources import Gemini, StudyRecommender, _PageText
+from app.junyi_routes import JunyiService, setup_junyi
 from app.junyi_runtime import JunyiRuntime
 from app.main import create_app
 
@@ -203,6 +205,29 @@ def test_curated_study_lesson_verifies_the_mapped_subject():
     assert unrelated.lookup(281, topic, "elementary", "en")[0] == []
 
 
+def test_queued_paper_keeps_allocation_settings_after_restart(settings):
+    async def scenario():
+        async with AsyncMongoClient(settings.mongodb_uri) as client:
+            db = client[settings.mongodb_database]
+            await setup_junyi(db)
+            original = JunyiService(db, fixture_runtime(), stage=None, allow_reuse=False)
+            queued = await original.start("phase-three-fixture")
+
+            runtime = fixture_runtime()
+            runtime.quotas = {"weak": 2, "unattempted": 10, "review": 6, "broad": 2}
+            restarted = JunyiService(db, runtime, stage="senior", allow_reuse=True)
+            resumed = await restarted.start(queued["owner"])
+            assert resumed["_id"] == queued["_id"]
+            await restarted.prepare(resumed["_id"], resumed["owner"])
+            paper = await restarted.get(resumed["_id"], resumed["owner"])
+            assert paper["status"] == "locked" and len(paper["items"]) == 20
+            assert paper["stage"] is None and paper["allow_reuse"] is False
+            assert paper["quotas"] == DEFAULT_QUOTAS
+            assert paper["allocation"]["counts"] == DEFAULT_QUOTAS
+
+    asyncio.run(scenario())
+
+
 def test_authenticated_assessment_lock_resume_grading_proxy_and_next(settings):
     runtime = fixture_runtime()
     with TestClient(create_app(settings, junyi_runtime=runtime)) as learner, TestClient(create_app(settings, junyi_runtime=runtime)) as admin:
@@ -271,8 +296,11 @@ def test_authenticated_assessment_lock_resume_grading_proxy_and_next(settings):
         graded = database.junyi_papers.find_one({"_id": id})
         assert len(graded["responses"]) == 20 and graded["responses"][0]["proxy"]["label"] == "PROXY"
         assert graded["result_snapshot"]["app_responses"] == 20
+        expected_history = graded["result_snapshot"]["app_history_version"]
+        database.junyi_papers.update_one({"_id": id}, {"$set": {"result_snapshot.app_history_version": "stale-history-with-the-same-size"}})
         next_paper = learner.post("/api/assessments").json()
         refreshed = database.junyi_papers.find_one({"_id": next_paper["id"]})
         assert refreshed["snapshot"]["app_responses"] == 20 and refreshed["_id"] != id
+        assert refreshed["snapshot"]["app_history_version"] == expected_history
         assert not {q["id"] for q in refreshed["items"]} & {q["id"] for q in stored["items"]}
         assert any(row["score"] != row["original_score"] for row in refreshed["snapshot"]["skills"])

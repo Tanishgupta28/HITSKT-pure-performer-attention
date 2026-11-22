@@ -32,3 +32,10 @@ The production frontend build and Microsoft Edge smoke check passed for the real
 ## Follow-up completion and Phase 2 replay
 
 All eight study requirements were marked complete by the learner, and the follow-up paper recorded 20 genuine answers. The model snapshot used all 40 app answers from both papers plus the 179 approved original interactions. It returned estimates for 1,326 skills. A direct run of the original checkpoint on 12 representative inputs matched the stored estimates within `2.99e-8`. The authenticated results endpoint confirmed the second paper and its analysis are complete.
+
+## Phase 3 assessment backend closeout
+
+- Reconciled all 40 genuine grades across the first two papers against the versioned question bank and the saved option order. Confirmed the required study completions preceded grading and that an exact live answer retry preserved the original data. A changed retry, an unauthenticated read and a read of an already completed question were rejected.
+- Added regression coverage for queued quota and repeat settings surviving a restart and for detection of a stale snapshot with a matching answer count. All 30 backend tests passed.
+- Both completed results survived a backend restart. Simultaneous live starts returned the same third paper. Its verified answer history contained exactly the 40 completed learner submissions. The paper held 20 questions with no repeats from the two earlier papers. A shortage of two unused review questions was recorded and those slots went to targeted skills under the existing selector rules.
+- The third paper has ten verified study topics. Three additional curated lessons were verified through the live resource verifier. The frozen items remained unchanged during retries. The browser showed the resource checklist, and the authenticated question endpoint returned HTTP 423 while study was pending. There were zero submissions on the third paper during verification. The private local second-paper result file has 20 rows, and its separate history export has 219 original and genuine application records.

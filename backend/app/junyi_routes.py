@@ -1,6 +1,7 @@
 """Account-scoped Junyi assessment, response history, and study workflows."""
 
 import asyncio
+import json
 import logging
 import secrets
 from datetime import datetime, timezone
@@ -13,6 +14,7 @@ from pymongo import DESCENDING, ReturnDocument
 from pymongo.errors import DuplicateKeyError
 from starlette.concurrency import run_in_threadpool
 
+from app.junyi_bank import digest
 from app.junyi_model import GAP, ModelUnavailable
 from app.junyi_paper import BankShortage, candidates_for, freeze_items, prompt_candidates, select_paper, study_requirements
 
@@ -130,18 +132,23 @@ class JunyiService:
         if not self.runtime.ready:
             raise HTTPException(503, " ".join(self.runtime.issues) or "The Junyi assessment is being configured.")
         count = sum(self.stage is None or item.stage == self.stage for item in self.runtime.bank.items.values())
-        total = sum(self.runtime.quotas.values())
+        quotas = self.runtime.quotas.copy()
+        total = sum(quotas.values())
         if count < total:
             raise HTTPException(409, str(BankShortage(count, total, "Choose a stage with sufficient coverage.")))
         latest = await self.papers.find_one({"owner": owner}, {"sequence": 1}, sort=[("sequence", DESCENDING)])
         sequence = latest["sequence"] + 1 if latest else 1
         paper = {"_id": str(uuid4()), "owner": owner, "sequence": sequence, "active": True, "status": "preparing",
                  "stage": self.stage, "total": total, "created_at": _now(), "version": 0,
+                 "quotas": quotas, "allow_reuse": self.allow_reuse,
                  "generation_lease_until": 0, "seed": secrets.token_hex(24), "items": [], "requirements": [], "responses": []}
         try:
             await self.papers.insert_one(paper)
         except DuplicateKeyError:
-            return await self.papers.find_one({"owner": owner, "sequence": sequence}) or await self.papers.find_one({"owner": owner, "active": True})
+            existing = await self.papers.find_one({"owner": owner, "sequence": sequence}) or await self.papers.find_one({"owner": owner, "active": True})
+            if existing:
+                return existing
+            raise HTTPException(409, "The assessment changed in another tab. Reload and try again.") from None
         return paper
 
     async def prepare(self, id, owner):
@@ -160,7 +167,9 @@ class JunyiService:
                                                  {"result_snapshot": 1}, sort=[("sequence", DESCENDING)])
             snapshot = previous.get("result_snapshot") if previous else None
             as_of = _now()
+            app_history_version = digest(json.dumps(answers, sort_keys=True).encode())
             if (not snapshot or snapshot["app_responses"] != len(answers)
+                    or snapshot.get("app_history_version") != app_history_version
                     or snapshot["mapping_version"] != self.runtime.mappings.version
                     or snapshot["checkpoint"] != self.runtime.estimator.checkpoint_id
                     or snapshot["history_version"] != self.runtime.estimator.baseline.version
@@ -169,10 +178,11 @@ class JunyiService:
                 snapshot = await run_in_threadpool(self.runtime.estimator.snapshot, answers, as_of)
             if not any(row["score"] is not None for row in snapshot["skills"]):
                 raise ModelUnavailable("A valid HiTSKT skill estimate is unavailable for this history.")
-            draft = candidates_for(self.runtime.bank, snapshot, paper["stage"], {r["bank_question_id"] for r in answers}, self.allow_reuse)
+            quotas = paper.get("quotas", self.runtime.quotas)
+            allow_reuse = paper.get("allow_reuse", self.allow_reuse)
+            draft = candidates_for(self.runtime.bank, snapshot, paper["stage"], {r["bank_question_id"] for r in answers}, allow_reuse)
             if len(draft) < paper["total"]:
                 raise BankShortage(len(draft), paper["total"], "Available unseen questions are exhausted under this paper's rules.")
-            quotas = self.runtime.quotas
             proposed = prompt_candidates(draft, quotas, paper["seed"])
             suggestions = await run_in_threadpool(self.runtime.gemini.choose, proposed, quotas)
             chosen, allocation = select_paper(draft, quotas, paper["seed"], suggestions, proposed)
@@ -183,7 +193,7 @@ class JunyiService:
                 requirement.update(topic=self.runtime.bank.topics[tag], stage=self.runtime.bank.stages[tag])
             result = await self.papers.update_one(match, {"$set": {
                 "status": "locked" if requirements else "open", "snapshot": snapshot, "bank_version": self.runtime.bank.version,
-                "items": items, "requirements": requirements, "allocation": allocation, "quotas": quotas,
+                "items": items, "requirements": requirements, "allocation": allocation, "quotas": quotas, "allow_reuse": allow_reuse,
             }, "$inc": {"version": 1}})
             if result.modified_count and requirements:
                 await asyncio.gather(*(self.lookup(id, owner, requirement["tag"]) for requirement in requirements))
