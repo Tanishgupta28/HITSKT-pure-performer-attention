@@ -28,6 +28,8 @@ Inspect these sources and the files they directly depend on:
 
 The full raw Junyi CSV and full SessionStore are for provenance and re-extraction. For runtime-only inference, use the verified reduced runtime bundle extracted from the original SessionStore. It contains the nine approved pre-test sessions and the custom bank. Download the encrypted junyi-adaptive-runtime-v1 release asset from the same GitHub repository and use the authorized passphrase file. Follow docs/platform/junyi-integration-inputs.md on the handoff branch. Verify the archive and member hashes and checkpoint and store provenance before loading it. The archived full-test predictions use teacher forcing and are not an input to this workflow.
 
+The GitHub repository is public. The runtime bundle is encrypted because it contains learner history and the question bank's answer key. In the existing research workspace, the passphrase file is ~/.config/capstone/junyi-adaptive-runtime-v1.passphrase. Pass the file path directly to GPG as JUNYI_RUNTIME_PASSPHRASE_FILE using the setup guide. In another environment, obtain the passphrase file privately from the project owner. Keep its contents out of chat, prompts, logs and Git. This passphrase is separate from the Gemini API key.
+
 2. Import the two data sources
 
 Junyi source. Use the unchanged original SessionStore, timestamp units, chronological session/split metadata, and saved ID mappings for model inputs. Use the verified full-Junyi version corresponding to the checkpoint.

@@ -24,7 +24,7 @@ Keep raw and processed learner data, the answer-bearing bank, exported per-learn
 
 ## Minimal runtime handoff
 
-The [encrypted v1 release asset](https://github.com/Tanishgupta28/HITSKT-pure-performer-attention/releases/tag/junyi-adaptive-runtime-v1) contains the exact answer-bearing question bank and Student 1's nine pre-test sessions extracted directly from the original store. Obtain the passphrase file from the project owner through an approved private channel.
+The [encrypted v1 release asset](https://github.com/Tanishgupta28/HITSKT-pure-performer-attention/releases/tag/junyi-adaptive-runtime-v1) contains the exact answer-bearing question bank and Student 1's nine pre-test sessions extracted directly from the original store. The public repository serves the encrypted file, which protects the learner history and bank answer key. In the research workspace, use `~/.config/capstone/junyi-adaptive-runtime-v1.passphrase`. In another environment, obtain the passphrase file from the project owner through an approved private channel.
 
 1. Save the encrypted asset outside version control. Verify its SHA-256 against the [runtime manifest](junyi-runtime-v1-manifest.json).
 2. Set `JUNYI_RUNTIME_PASSPHRASE_FILE` to the private passphrase file. Decrypt from the repository root under the ignored `data/processed/` path.
