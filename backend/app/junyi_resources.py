@@ -94,6 +94,16 @@ _CURATED = (
     (r"\b(?:equal ratio|ratio|ratios)\b", "numbers/ratio.html"),
     (r"\bpythagor\w+\b", "pythagoras.html"),
 )
+_CURATED_SKILL_LESSONS = (
+    (r"\barc length of a sector\b", "https://www.mathsisfun.com/geometry/circle-sector-segment.html", "arc length sector"),
+    (r"\bliters? and milliliters?\b", "https://www.mathsisfun.com/measure/metric-volume.html", "metric volume liter milliliter"),
+    (r"\bfour operations? of fractions\b", "https://lumamath.org/fractions/operations-with-fractions", "fraction addition subtraction multiplication division"),
+    (r"\bsolve equations? by transforming symbols\b", "https://www.mathsisfun.com/algebra/add-subtract-balance.html", "balance addition subtraction equation"),
+    (r"\bexponents? and scientific notation\b", "https://www.mathsisfun.com/numbers/scientific-notation.html", "scientific notation"),
+    (r"\brelationship between (?:a )?point and (?:a )?circle\b", "https://www.igcseaddmath.com.my/topics/coordinate-geometry-of-the-circle/point-inside-or-outside-a-circle/", "point inside outside circle"),
+    (r"\balgebraic proof\b", "https://keplerrevise.co.uk/courses/gcse-mathematics-ocr/algebraic-expressions/algebraic-proof", "algebraic proof"),
+    (r"\bdistance between two points on a horizontal or (?:vertical|plumb) line\b", "https://www.mathsisfun.com/algebra/distance-2-points.html", "distance between points horizontal vertical"),
+)
 
 
 class _PageText(HTMLParser):
@@ -202,16 +212,22 @@ class StudyRecommender:
     def lookup(self, tag, topic, stage, language):
         if not topic.strip():
             return [], "The bank is missing a verified topic name for this skill."
-        suggested = [(url, "gemini_search") for url in self.gemini.sources(tag, topic, stage, language)]
-        fallback = [(f"https://www.mathsisfun.com/{path}", "curated") for pattern, path in _CURATED if language == "en" and re.search(pattern, topic, re.I)]
+        suggested = [(url, "gemini_search", topic) for url in self.gemini.sources(tag, topic, stage, language)]
+        fallback = []
+        if language == "en":
+            # The curated match and the page's terminology can differ, for example liters and metric volume.
+            fallback.extend((url, "curated", lesson_topic) for pattern, url, lesson_topic in _CURATED_SKILL_LESSONS
+                            if re.search(pattern, topic, re.I))
+            fallback.extend((f"https://www.mathsisfun.com/{path}", "curated", topic) for pattern, path in _CURATED
+                            if re.search(pattern, topic, re.I))
         results, seen = [], set()
-        for url, source in dict.fromkeys((*suggested, *fallback)):
+        for url, source, verification_topic in dict.fromkeys((*suggested, *fallback)):
             try:
                 fetched = self.reader(url)
                 if not fetched:
                     continue
                 final, page = fetched
-                if final in seen or not _relevant(page, topic):
+                if final in seen or not _relevant(page, verification_topic):
                     continue
                 seen.add(final)
                 results.append({"url": final, "title": " ".join(" ".join(page.title).split())[:160], "source": source,

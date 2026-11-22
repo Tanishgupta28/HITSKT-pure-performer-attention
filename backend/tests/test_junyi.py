@@ -180,6 +180,29 @@ def test_grounding_verification_deduplication_and_cap(monkeypatch):
         junyi_resources._public_target("https://example.test/redirect")
 
 
+def test_curated_study_lesson_verifies_the_mapped_subject():
+    topic = "Comprehensive exercises on liters and milliliters"
+    requested = []
+    expected = "https://www.mathsisfun.com/measure/metric-volume.html"
+
+    def reader_with_title(title):
+        def read(url):
+            requested.append(url)
+            page = _PageText()
+            page.feed(f"<title>{title}</title><p>{title}</p>")
+            return url, page
+
+        return read
+
+    valid = StudyRecommender(Gemini(), reader_with_title("Metric Volume"))
+    links, issue = valid.lookup(281, topic, "elementary", "en")
+    assert issue is None and requested == [expected]
+    assert [(link["url"], link["source"]) for link in links] == [(expected, "curated")]
+
+    unrelated = StudyRecommender(Gemini(), reader_with_title("Introduction to Algebra"))
+    assert unrelated.lookup(281, topic, "elementary", "en")[0] == []
+
+
 def test_authenticated_assessment_lock_resume_grading_proxy_and_next(settings):
     runtime = fixture_runtime()
     with TestClient(create_app(settings, junyi_runtime=runtime)) as learner, TestClient(create_app(settings, junyi_runtime=runtime)) as admin:
