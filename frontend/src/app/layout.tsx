@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./product.css";
+import "./junyi.css";
 
 const bodyFont = localFont({
   src: "./fonts/DMSans-Variable.ttf",
@@ -25,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${bodyFont.variable} ${headingFont.variable}`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${bodyFont.variable} ${headingFont.variable}`}>
       <body>{children}</body>
     </html>
   );

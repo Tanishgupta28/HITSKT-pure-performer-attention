@@ -1,4 +1,6 @@
 "use client";
+
+import { JunyiOperator } from "@/components/junyi";
 import { useEffect, useState, type FormEvent } from "react";
 import { Download, FlaskConical, Plus } from "lucide-react";
 import { api, send, percent } from "@/lib/api";
@@ -1229,6 +1231,7 @@ export function AdminWorkspace({ tab }: { tab: string }) {
           </Button>
         }
       />
+      <JunyiOperator />
       <div className="p-toolbar">
         <Field label="Search questions">
           <input

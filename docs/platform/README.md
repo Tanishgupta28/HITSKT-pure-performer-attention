@@ -8,6 +8,8 @@ in the FastAPI backend and the Next.js frontend. MongoDB persists accounts,
 sessions, responses, concept estimates and progress. The research models,
 training and experiment artifacts have a separate workflow.
 
+The assigned Junyi learner uses the [Junyi assessment setup and architecture](junyi.md).
+
 ## Run on Windows
 
 Prerequisites: Python 3.13+, Node 20.9+ and MongoDB running at localhost:27017.
@@ -49,6 +51,8 @@ web/API ports to loopback. Stop the locally running services first if using the
 same ports. Docker is an optional portable path, not required for local development.
 
 ## The working cycle
+
+This section describes the standard Lumen practice workspace. The Junyi pilot has its own 20-question assessment and study cycle.
 
 1. Register or sign in with an HttpOnly opaque session cookie. Passwords use Argon2.
 2. Choose a mathematics topic to focus on or start a mixed practice set.

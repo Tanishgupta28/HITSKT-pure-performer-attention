@@ -1,0 +1,37 @@
+.junyi-hero { margin-bottom: 1.25rem; }
+.junyi-hero h2 { margin-top: .9rem; }
+.junyi-section, .junyi-skill-panel, .junyi-operations { margin-block: 1.25rem; }
+.junyi-latest, .junyi-question-meta, .junyi-question-footer, .junyi-study-link { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.junyi-table-scroll { max-width: 100%; overflow-x: auto; }
+.junyi-metric { display: grid; gap: .25rem; max-width: 21rem; }
+.junyi-metric .p-badge { justify-self: start; }
+.junyi-player { min-height: 100svh; }
+.junyi-player-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem clamp(1rem, 5vw, 4rem); border-bottom: 1px solid #dce6dd; background: #fff; }
+.junyi-player-body { width: min(100% - 2rem, 69rem); margin: clamp(1.25rem, 5vw, 3rem) auto; }
+.junyi-player-body > * + * { margin-top: 1.25rem; }
+.junyi-study-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); }
+.junyi-source { display: inline-flex; gap: .4rem; align-items: center; min-height: 2.75rem; overflow-wrap: anywhere; }
+.junyi-source svg { flex: none; }
+.junyi-study-link { padding-block: .75rem; border-bottom: 1px solid #e3ebe2; }
+.junyi-study-card > p, .junyi-study-card > .p-badge { margin-block: .55rem; }
+.junyi-operator-paper { margin-block: .75rem; }
+.junyi-question { max-width: 46rem; margin-inline: auto; padding: clamp(1.1rem, 4vw, 2.75rem); }
+.junyi-question h1 { font-family: var(--font-heading), sans-serif; font-size: clamp(1.45rem, 3.5vw, 2.15rem); line-height: 1.35; margin-block: 1.4rem; outline: none; }
+.junyi-question h1:focus-visible { outline: 2px solid #4c7956; outline-offset: 4px; border-radius: .15rem; }
+.junyi-question progress { width: 100%; height: .5rem; margin-block: 1rem 0; accent-color: #2a623d; }
+.junyi-choice-list { display: grid; gap: .75rem; }
+.junyi-choice { display: flex; min-height: 3.75rem; align-items: center; gap: .85rem; padding: .7rem .9rem; border-radius: .7rem; border: 1px solid #d4e0d3; background: #fff; cursor: pointer; transition: border-color 140ms, background-color 140ms; }
+.junyi-choice:hover, .junyi-choice.is-selected { border-color: #4c7956; background: #eff6ee; }
+.junyi-choice:focus-within { outline: 2px solid #2a623d; outline-offset: 2px; }
+.junyi-choice input { flex: none; accent-color: #2a623d; width: 1.05rem; height: 1.05rem; margin: 0; }
+.junyi-choice-letter { flex: none; width: 1.7rem; text-align: center; font-weight: 700; color: #31583a; }
+.junyi-question-footer { margin-top: 1.4rem; }
+.junyi-question form > .p-notice { margin-top: 1rem; }
+.junyi-result > strong { display: block; margin-block: .55rem; font-family: var(--font-heading), sans-serif; font-size: clamp(2.2rem, 6vw, 3.4rem); }
+@media (max-width: 540px) {
+  .junyi-question-footer, .junyi-study-link { flex-wrap: wrap; }
+  .junyi-choice { min-height: 3.5rem; }
+  .junyi-question-meta { font-size: .86rem; gap: .65rem; }
+  .junyi-player-header .p-btn { min-height: 2.75rem; }
+}
+@media (prefers-reduced-motion: reduce) { .junyi-choice { transition: none; } }

@@ -232,11 +232,13 @@ export function StudentWorkspace({
   tab,
   navigate,
   onSaved,
+  focusedOnly = false,
 }: {
   user: User;
   tab: string;
   navigate: (s: string) => void;
   onSaved: (u: User) => void;
+  focusedOnly?: boolean;
 }) {
   const route = useRouter();
   const dashboard = useLoad<Dashboard>("/learning/mathematics");
@@ -426,9 +428,9 @@ export function StudentWorkspace({
                 ))}
               </div>
               <details className="p-extra-learning">
-                <summary>Mix topics & plan your week</summary>
+                <summary>{focusedOnly ? "Plan your week" : "Mix topics & plan your week"}</summary>
                 <div className="p-grid">
-                  <Panel
+                  {!focusedOnly && <Panel
                     title="Mixed practice"
                     subtitle={`${user.profile.adaptive_session_questions} adaptive questions across topics. Questions span several maths topics.`}
                   >
@@ -438,7 +440,7 @@ export function StudentWorkspace({
                     >
                       Start mixed practice
                     </Button>
-                  </Panel>
+                  </Panel>}
                   <Panel
                     title="Weekly target"
                     subtitle={`${d.weekly_goal.answered} / ${d.weekly_goal.target} answers in the past seven days`}
