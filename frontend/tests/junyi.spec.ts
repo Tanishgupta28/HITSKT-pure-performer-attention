@@ -10,6 +10,19 @@ async function signIn(page: Page, email: string) {
   await page.getByRole("button", { name: "Sign in", exact: true }).click();
 }
 
+test("sign-in has a safe fallback before hydration", async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  try {
+    const page = await context.newPage();
+    await page.goto(`${base}/login`);
+    const button = page.getByRole("button", { name: "Sign in", exact: true });
+    await expect(button).toBeDisabled();
+    await expect(page.locator("form")).toHaveAttribute("method", "post");
+  } finally {
+    await context.close();
+  }
+});
+
 test("assigned learner can unlock, resume, submit and review a Junyi paper", async ({ page, browser }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await signIn(page, "junyi-browser@example.com");

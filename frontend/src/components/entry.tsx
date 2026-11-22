@@ -164,35 +164,39 @@ export function AuthScreen({ mode }: { mode: Mode }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [show, setShow] = useState(false);
+  const [hydrated, setHydrated] = useState(false);
   useEffect(() => {
+    setHydrated(true);
     if (mode === "reset")
       setToken(new URLSearchParams(location.search).get("token") ?? "");
   }, [mode]);
   async function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
-    if (mode === "reset" && form.get("confirm") !== password) {
+    const submittedEmail = form.get("email");
+    const submittedPassword = form.get("password");
+    if (mode === "reset" && form.get("confirm") !== submittedPassword) {
       a.setError("Passwords must match.");
       return;
     }
     if (mode === "reset") {
       const x = await a.run(() =>
-        send<{ message: string }>("/auth/reset", { token, password }),
+        send<{ message: string }>("/auth/reset", { token, password: submittedPassword }),
       );
       if (x) r.replace("/login?reset=1");
       return;
     }
     if (mode === "recover") {
       await a.run(
-        () => send("/auth/recovery", { email }),
+        () => send("/auth/recovery", { email: submittedEmail }),
         "If the account exists, a reset link will be sent.",
       );
       return;
     }
     const value = await a.run(() =>
       send<User>(`/auth/${mode === "signup" ? "register" : "login"}`, {
-        email,
-        password,
+        email: submittedEmail,
+        password: submittedPassword,
         ...(mode === "signup" ? { name: form.get("name") } : {}),
       }),
     );
@@ -233,12 +237,13 @@ export function AuthScreen({ mode }: { mode: Mode }) {
               Contact your school or local administrator for help signing in.
             </Notice>
           )}
-          <form onSubmit={submit} className="p-stack">
+          <form method="post" onSubmit={submit} className="p-stack">
             <ActionStatus a={a} />
             {mode === "signup" && (
               <Field label="Name">
                 <input
                   name="name"
+                  disabled={!hydrated}
                   autoComplete="name"
                   minLength={2}
                   maxLength={80}
@@ -252,6 +257,7 @@ export function AuthScreen({ mode }: { mode: Mode }) {
                 <input
                   type="email"
                   name="email"
+                  disabled={!hydrated}
                   autoComplete="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -273,6 +279,7 @@ export function AuthScreen({ mode }: { mode: Mode }) {
                     }
                     type={show ? "text" : "password"}
                     name="password"
+                    disabled={!hydrated}
                     autoComplete={
                       mode === "login" ? "current-password" : "new-password"
                     }
@@ -300,6 +307,7 @@ export function AuthScreen({ mode }: { mode: Mode }) {
                 <input
                   type="password"
                   name="confirm"
+                  disabled={!hydrated}
                   autoComplete="new-password"
                   minLength={10}
                   required
@@ -314,7 +322,7 @@ export function AuthScreen({ mode }: { mode: Mode }) {
             <Button
               type="submit"
               disabled={
-                a.busy ||
+                !hydrated || a.busy ||
                 (mode === "reset" && !token) ||
                 (mode === "recover" && cfg.data?.email_recovery === false)
               }
