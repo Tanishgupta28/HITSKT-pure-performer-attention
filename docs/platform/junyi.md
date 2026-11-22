@@ -15,6 +15,16 @@ Use the regular [Windows platform setup](README.md#run-on-windows) and install `
 4. Add the account bindings and optional `JUNYI_STAGE` to the ignored backend environment and restart FastAPI. The stage defaults to all verified stages. Elementary and Junior can each supply 20 questions; Senior cannot. For optional Gemini selection and search, configure `GEMINI_MODEL` and `GEMINI_API_KEY` on the backend. A model with live selection verification during development was `gemini-3.1-flash-lite`. Search access is a separate availability check. Every compatible paper can be built by the deterministic selector.
 5. Sign in as the assigned learner, open Today and start the assessment. Use the study checklist, complete one verified resource for each required skill, then complete the paper and view its result. The operator can resolve a failed study lookup under Question bank → Junyi assessment operations. Overrides need a recorded reason. Restrict the answer-bearing bank and private history to the backend and authorized collaborators.
 
+## Recover the approved history from the verified raw dataset
+
+If the passphrase is unavailable, use an authorized copy of the original `Junyi.csv`. Fetch the pinned representative ranking from step 3 first. With NumPy and pandas in the backend environment, run this offline from the repository root:
+
+```powershell
+./backend/.venv/Scripts/python.exe backend/tools/rebuild_junyi_student1.py <path-to-Junyi.csv>
+```
+
+The recovery tool hashes the accepted raw file, replays the published ordering, question/composite mapping, session boundaries and split, and compares all 11 reconstructed SessionStore member digests and the complete student crosswalk with the independent audit manifests. It saves only the verified 9-session / 179-interaction prefix in the ignored runtime directory. The other learners' records and Student 1's held-out events never enter the website. Set `JUNYI_HISTORY_SHA256` to the hash printed by the recovery tool. Use the separately verified question bank and continue with step 4.
+
 ## What the application stores
 
 MongoDB keeps a separate `junyi_papers` collection for the prototype. Each frozen paper contains its bank version, score snapshot, allocation and deficit record, ordered items and option IDs, and only the required study tags for that paper. Option IDs are opaque. The answer key survives a server restart or bank update inside the saved server-side paper. Question and answer APIs enforce the lock. A unique active-owner index prevents parallel papers and the paper version protects grading and progression from simultaneous writes. Leased background jobs let the browser reload while scores and recommendations are being prepared. Resume/retry can reclaim work after an interrupted lease expires.

@@ -13,6 +13,6 @@
 - The MongoDB fixture covered a single active paper across parallel creation requests, required study only for weak skills on that frozen paper, locked question reads and answer writes, an audited operator override, real grading of fixture selections, exact retry behavior, exclusive progression, persisted proxy outcomes and the next paper using the updated snapshot.
 - The Microsoft Edge browser fixture completed all 20 displayed questions after study and operator unlock, reloaded and resumed the same paper and draft, reached results and opened the next assessment. The student question player was also visually examined at 390 pixels wide.
 
-## Pending Student 1 run
+## Follow-up to the original fixture verification
 
-The private history could not be decrypted on this device because the authorized passphrase file was absent. The original 9-session / 179-interaction production baseline, actual first paper, private learner probabilities, live grounded resources, and actual submission outcomes have no live verification here. Fixture outcomes were stored only in disposable test databases. No learner histories, answer keys, provider credentials or model artifacts belong in Git.
+The original encrypted history handoff could not be decrypted on this device. The later offline recovery used the accepted raw Junyi source and matched all 11 published SessionStore member digests and the original student crosswalk digest. The real 9-session / 179-interaction baseline now passes the runtime loader with the approved chronological cutoff. Fixture outcomes were stored only in disposable test databases. No learner histories, answer keys, provider credentials or model artifacts belong in Git.

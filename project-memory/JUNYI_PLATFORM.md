@@ -8,7 +8,7 @@ Verified the provided Drive CSV against manifest SHA-256 `579c11905685790bb3e3da
 
 ## Runtime dependency
 
-The expected private passphrase file is absent on this machine. The authorized reduced Student 1 history remains pending. The encrypted archive is verified and stored in `.platform-runtime/junyi/junyi-adaptive-runtime-v1.tar.gz.gpg`. The full checkpoint was verified against SHA-256 `2308c5bf0c850da1e55daf802a0853a30fac45eeed071c7162c68fc17bfa3bdd` and stored in `.platform-runtime/junyi/best_model.pt`. Both paths are ignored. Fixture checks are independent of the missing history.
+The original handoff's private passphrase file was unavailable on this machine. The encrypted archive is verified and stored in `.platform-runtime/junyi/junyi-adaptive-runtime-v1.tar.gz.gpg`. The full checkpoint was verified against SHA-256 `2308c5bf0c850da1e55daf802a0853a30fac45eeed071c7162c68fc17bfa3bdd` and stored in `.platform-runtime/junyi/best_model.pt`. Both paths are ignored. The verified raw-source recovery below supersedes the passphrase dependency for this workstation.
 
 ## Phases 2–7 — delivered and verified to fixture scope
 
@@ -17,4 +17,8 @@ The expected private passphrase file is absent on this machine. The authorized r
 4. Gemini selection and grounded resource jobs have independent prompts and verification. Structured selection passed a live metadata-only check with 3.1 Flash-Lite and 3 Flash Preview. Live grounded requests returned HTTP 429. The curated fractions link verified live and provider failures passed controlled tests. The operator override is explicit and audited.
 5. Genuine app responses are isolated from historical Junyi data. Fixtures covered a timestamp-based session boundary, legal prefix replay, reversible proxy mapping, actual results and the next paper with the new snapshot.
 6. Next.js connects Today, Learn, Progress, the player, and the authorized admin controls. Standard focused practice remains available. Mobile UI was visually examined and a full Edge browser fixture went from sign-in through the next paper.
-7. The verification record is `reports/adaptive_junyi_student1/TEST_RESULTS.md` and local setup is `docs/platform/junyi.md`. Next checkpoint is to provision the authorized history/passphrase and account bindings, verify the real input contract, then run the live Student 1 assessment and retest search grounding with available quota. Do not substitute fixture results for that run.
+7. The verification record is `reports/adaptive_junyi_student1/TEST_RESULTS.md` and local setup is `docs/platform/junyi.md`. That fixture milestone left real history and account bindings pending. See the follow-up below for the recovery distinction.
+
+## Follow-up — independently verified raw-source recovery
+
+Achin authorized an alternative because the research host and passphrase are unavailable. The local `Junyi.csv` matched the accepted source SHA-256 `8a18000806279ae4feae90a94a5af75b7688f2e4ba666c9a0662c75e1a404b6a`. The offline tool `backend/tools/rebuild_junyi_student1.py` reconstructed and matched all 11 member hashes in `reports/independent_correctness_audit/junyi_evaluation_manifest.json` and the complete processed student crosswalk hash in `junyi_data_manifest.json`. It verified source ID 1 → processed ID 1 and wrote only the 9 approved sessions / 179 interactions before the first test event, under ignored `data/processed/junyi/adaptive_runtime_v1/`. Phase 1 now has the verified real input. The same original checkpoint and framework are used for the follow-up run. The isolated loopback pilot runs on `http://localhost:3108`, with private account configuration under `.platform-runtime/junyi/`.
