@@ -77,3 +77,17 @@ All 37 backend tests passed. After restarting the local backend, Edge showed bot
 Phase 6 used read-only checks for completed papers and exact checkpoint replay. Creating the next paper and retrying three study lookups used the normal authenticated student endpoints. The verification did not complete any lessons or record any answers on Test 4.
 
 All 37 backend tests, all three isolated Edge tests, frontend type checking and the production build passed. The isolated browser suite covered sign-in, mobile submission through results, and an out-of-order checklist response. The restored local production site passed a separate authenticated Edge run against the real account, including the numbered results, the 60-answer report and the eight available lessons on a 390-pixel viewport. No question options were visible while the study lock was active.
+
+## Phase 7 end-to-end verification and handoff
+
+| Check | Result |
+| --- | --- |
+| Genuine results and lock | Read all three completed results through the authenticated API and verified the exact 60-response fingerprint in both the report and the saved next-paper snapshot. Test 4's eight study links were independently fetched and matched to their topics. Its question endpoint continued to return HTTP 423. All four paper documents matched their earlier audit exactly. |
+| Original HiTSKT | The original checkpoint reproduced every field of the saved 1,326-skill snapshot at the Test 3 cutoff. The read-only CPU replay took 67.74 seconds. The original baseline, checkpoint, source, serving adapter and preprocessing matched their earlier hashes or Git contents. |
+| Selection and fallback | All 18 saved Gemini suggestions matched offered candidates in the assigned slots. A rules-only replay of the same 60-answer history produced 20 legal, distinct unseen items in memory with the same 8/6/4/2 allocation. Controlled provider failures are covered by the backend suite. |
+| Separate end-to-end fixtures | All 38 backend tests passed. A new progression fixture exercised 60 synthetic grades and a rules-only fourth paper. All three isolated Edge tests passed. The browser submitted an answer, lost the response after server grading, retried the identical request and confirmed that still only one answer was saved. |
+| Live browser | Authenticated Edge smoke verified the 60-answer report, original-versus-app comparison, distinct optional recommendations and the locked eight-item checklist on a 390-pixel viewport. Test 4 still had zero answers. |
+| Production build | Next.js type checking and a clean production build passed. The production build ran in an isolated directory while the learner's site remained online. |
+| Private review | The export repeated byte-for-byte. Its manifest verified nine files, including an inventory of 3,978 questions, 239 history events, 1,326 skill estimates and 6,626 ranked tag/probe rows. The redacted Test 4 summary contains no question IDs, options or grading key. |
+
+See the [architecture](ARCHITECTURE.md), the [dataset and private artifact inventory](DATASET_AND_SKILL_MAPPING.md), and the [inference and proxy limitations](INFERENCE_AND_PROXY_LIMITATIONS.md). The actual next cycle with Test 4 submissions remains dependent on the learner's own study and answers.

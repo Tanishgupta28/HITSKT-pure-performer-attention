@@ -403,6 +403,50 @@ def test_private_history_rows_keep_real_grades_and_exact_session_boundaries():
     assert third[-1]
 
 
+def test_rules_only_progression_after_sixty_fixture_answers(settings, monkeypatch):
+    async def scenario():
+        runtime = fixture_runtime()
+        owner = "fixture-only"
+        first_timestamp = 20 * GAP
+        monkeypatch.setattr(junyi_routes, "_now", lambda: first_timestamp)
+        async with AsyncMongoClient(settings.mongodb_uri) as client:
+            db = client[settings.mongodb_database]
+            await setup_junyi(db)
+            service = JunyiService(db, runtime, stage=None, allow_reuse=False)
+            seen = set()
+            for sequence in range(1, 4):
+                queued = await service.start(owner)
+                await service.prepare(queued["_id"], owner)
+                paper = await service.get(queued["_id"], owner)
+                assert paper["snapshot"]["app_responses"] == (sequence - 1) * 20
+                assert all(item["provider"] == "rules" for item in paper["items"])
+                ids = {item["id"] for item in paper["items"]}
+                assert len(ids) == 20 and not ids.intersection(seen)
+                seen.update(ids)
+                for requirement in paper["requirements"]:
+                    links = requirement["resources"]
+                    decision = {"url": links[0]["url"]} if links else {"override": "Fixture unavailable", "actor": "fixture-operator"}
+                    await service.study_done(paper["_id"], owner, requirement["tag"], **decision)
+                for item in paper["items"]:
+                    await service.record(paper["_id"], owner, AnswerInput(
+                        question_id=item["id"], choice_id=item["answer_id"], request_id=uuid4(),
+                    ))
+                await service.analyze(paper["_id"], owner)
+                completed = await service.get(paper["_id"], owner)
+                assert completed["analysis_status"] == "ready" and completed["result_snapshot"]["app_responses"] == sequence * 20
+
+            next_paper = await service.start(owner)
+            await service.prepare(next_paper["_id"], owner)
+            frozen = await service.get(next_paper["_id"], owner)
+            assert frozen["sequence"] == 4 and frozen["status"] == "locked" and frozen["responses"] == []
+            assert frozen["snapshot"]["app_history_version"] == completed["result_snapshot"]["app_history_version"]
+            assert len({item["id"] for item in frozen["items"]}) == 20 and not seen.intersection(item["id"] for item in frozen["items"])
+            assert len(runtime.estimator.predictor.calls[-1][1]) == frozen["snapshot"]["app_responses"] == 60
+            assert (await service.start(owner))["_id"] == next_paper["_id"]
+
+    asyncio.run(scenario())
+
+
 def test_authenticated_assessment_lock_resume_grading_proxy_and_next(settings):
     runtime = fixture_runtime()
     with TestClient(create_app(settings, junyi_runtime=runtime)) as learner, TestClient(create_app(settings, junyi_runtime=runtime)) as admin:

@@ -75,7 +75,25 @@ test("assigned learner can unlock, resume, submit and review a Junyi paper", asy
   await expect(prompt).toHaveText(first!);
   await expect(page.getByRole("radio").first()).toBeChecked();
   if (process.env.LUMEN_JUNYI_SCREENSHOT) await page.screenshot({ path: process.env.LUMEN_JUNYI_SCREENSHOT });
-  for (let question = 1; question <= 20; question++) {
+
+  const answerRoute = "**/api/assessments/*/answers";
+  const written = page.waitForRequest((request) => request.url().endsWith("/answers") && request.method() === "POST");
+  // Let the server save question one, then simulate a connection drop before the browser hears back.
+  await page.route(answerRoute, async (route) => {
+    const committed = await route.fetch();
+    expect(committed.ok()).toBeTruthy();
+    expect((await committed.json()).paper.answered).toBe(1);
+    await route.abort("failed");
+  }, { times: 1 });
+  await page.getByRole("button", { name: "Submit answer", exact: true }).click();
+  await expect(page.getByRole("button", { name: "Retry answer", exact: true })).toBeEnabled();
+  const replay = page.waitForResponse((response) => response.url().endsWith("/answers") && response.request().method() === "POST");
+  await page.getByRole("button", { name: "Retry answer", exact: true }).click();
+  const retried = await replay;
+  expect(retried.request().postData()).toBe((await written).postData());
+  expect((await retried.json()).replayed).toBe(true);
+
+  for (let question = 2; question <= 20; question++) {
     await expect(page.getByText(`Question ${question} of 20`)).toBeVisible();
     await page.getByRole("radio").first().check();
     await page.getByRole("button", { name: "Submit answer" }).click();

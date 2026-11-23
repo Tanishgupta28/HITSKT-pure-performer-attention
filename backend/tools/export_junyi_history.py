@@ -85,6 +85,24 @@ def _history_rows(baseline, mappings, answers):
                answer["request_id"], answer["paper_sequence"], proxy.get("mapping_version"), issue)
 
 
+def _write_csv(path, columns, rows):
+    with path.open("w", encoding="utf-8", newline="") as stream:
+        writer = csv.writer(stream)
+        writer.writerow(columns)
+        writer.writerows(rows)
+
+
+def _publish_export(staged, output):
+    try:
+        staged.rename(output)
+    except OSError:
+        if not output.exists():
+            raise
+        if not all((output / path.name).is_file() and (output / path.name).read_bytes() == path.read_bytes()
+                   for path in staged.iterdir()):
+            raise FileExistsError("The existing export differs. Preserve it before exporting this range again.") from None
+
+
 def export_completed(settings, sequence, directory):
     if not settings.junyi_student_account_id or not settings.junyi_history_sha256:
         raise ValueError("Set the pilot account and approved history hash in the backend environment.")
@@ -108,18 +126,8 @@ def export_completed(settings, sequence, directory):
         staged = Path(staging) / output.name
         staged.mkdir()
         for name, columns, rows in exports:
-            with (staged / name).open("w", encoding="utf-8", newline="") as stream:
-                writer = csv.writer(stream)
-                writer.writerow(columns)
-                writer.writerows(rows)
-        try:
-            staged.rename(output)
-        except OSError:
-            if not output.exists():
-                raise
-            if not all((output / path.name).is_file() and (output / path.name).read_bytes() == path.read_bytes()
-                       for path in staged.iterdir()):
-                raise FileExistsError("The existing export differs. Preserve it before exporting this range again.") from None
+            _write_csv(staged / name, columns, rows)
+        _publish_export(staged, output)
     return output, len(answers)
 
 

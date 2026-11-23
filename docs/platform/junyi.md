@@ -47,6 +47,14 @@ From the repository root, run the following with the backend environment configu
 
 The tool reads MongoDB and creates two private, ignored CSV files under `reports/adaptive_junyi_student1/private_exports/through-paper-02/`. `assessment_results.csv` contains only graded submissions through that paper. `updated_student_history.csv` contains the approved historical sessions and the saved app answers, with original, proxy, or unmapped labels. The paper number and request ID connect a submission to its history row. Unmapped rows preserve the actual outcome and the reason. The export verifies each grade against the frozen assessment, excludes unfinished papers and refuses to overwrite a differing snapshot.
 
+To package the complete local review after Test 3 and preparation of Test 4, run:
+
+```powershell
+./backend/.venv/Scripts/python.exe backend/tools/export_junyi_review.py --through 3
+```
+
+The review verifies the checkpoint and data fingerprints, then exports the saved grade history, original-only events and representative-level estimates. The private package records a redacted following-paper summary and verified links while keeping its questions and grading key in MongoDB. [Architecture](../../reports/adaptive_junyi_student1/ARCHITECTURE.md) · [Data and artifact inventory](../../reports/adaptive_junyi_student1/DATASET_AND_SKILL_MAPPING.md) · [Inference limitations](../../reports/adaptive_junyi_student1/INFERENCE_AND_PROXY_LIMITATIONS.md)
+
 ## How Gemini and study resources work
 
 FastAPI builds an eligible candidate list from the verified bank and the saved skill snapshot. The Gemini request contains short references, skill tags, stages, topics, and slot limits. The schema bounds the number of references per group. The backend maps eligible replies back to bank IDs, rejects duplicates and invalid references, and fills any gaps using its existing allocation policy. The question text, grading key, learner account, answer sequence and individual score estimates stay in Lumen.
