@@ -175,11 +175,13 @@ function StudyCard({ requirement, paperId, saved }: { requirement: JunyiRequirem
     }
   }
   return <Panel title={requirement.topic} className="junyi-study-card">
-    <Badge tone={requirement.status === "pending" ? "amber" : "sage"}>{requirement.status === "satisfied" ? "Complete" : requirement.status === "overridden" ? "Cleared by operator" : "Required"}</Badge>
+    <Badge tone={requirement.required ? "amber" : requirement.status === "pending" ? "neutral" : "sage"}>
+      {requirement.status === "satisfied" ? "Complete" : requirement.status === "overridden" ? "Cleared by operator" : requirement.required ? "Required" : "Optional for now"}
+    </Badge>
     <ActionStatus a={action} />
     {requirement.resources.map((link) => <div className="junyi-study-link" key={link.url}>
       <ResourceLink link={link} />
-      {requirement.status === "pending" && <Button variant="secondary" disabled={action.busy} onClick={() => update("complete", { url: link.url })}>Mark complete</Button>}
+      {requirement.required && <Button variant="secondary" disabled={action.busy} onClick={() => update("complete", { url: link.url })}>Mark complete</Button>}
     </div>)}
     {requirement.status === "pending" && <>
       {requirement.lookup === "loading" || requirement.lookup === "waiting" ? <p className="p-muted" role="status">Checking study resources…</p> : null}
@@ -194,6 +196,7 @@ type Draft = { choice: string; requestId: string; submitted: boolean };
 function QuestionCard({ paper, saved, reload }: { paper: JunyiPaper; saved: (paper: JunyiPaper) => void; reload: () => Promise<void> }) {
   const question = paper.question!;
   const storageKey = `lumen:junyi:${paper.id}:${question.id}`;
+  const optionIds = question.options.map((option) => option.id).join(",");
   const [draft, setDraft] = useState<Draft | null>(null);
   const [conflict, setConflict] = useState(false);
   const action = useAction();
@@ -202,9 +205,9 @@ function QuestionCard({ paper, saved, reload }: { paper: JunyiPaper; saved: (pap
     heading.current?.focus();
     try {
       const stored: Draft = JSON.parse(sessionStorage.getItem(storageKey) ?? "null");
-      if (stored && question.options.some((option) => option.id === stored.choice) && /^[0-9a-f-]{36}$/i.test(stored.requestId)) setDraft(stored);
+      if (stored && optionIds.split(",").includes(stored.choice) && /^[0-9a-f-]{36}$/i.test(stored.requestId)) setDraft(stored);
     } catch { /* Saving an answer remains possible when browser storage is unavailable. */ }
-  }, [storageKey, question.options]);
+  }, [storageKey, optionIds]);
 
   function saveDraft(value: Draft) {
     setDraft(value);
@@ -223,6 +226,10 @@ function QuestionCard({ paper, saved, reload }: { paper: JunyiPaper; saved: (pap
         });
       } catch (error) {
         if (error instanceof RequestError && error.status === 409) setConflict(true);
+        if (error instanceof RequestError && error.status === 423) {
+          saveDraft({ ...payload, submitted: false });
+          await reload();
+        }
         throw error;
       }
     });
@@ -277,8 +284,9 @@ export function JunyiPlayer({ id }: { id: string }) {
     void refresh(controller.signal);
     return () => controller.abort();
   }, [refresh]);
-  const checking = paper?.status === "preparing" || paper?.analysis_status === "pending" ||
-    paper?.requirements.some((item) => item.status === "pending" && (item.lookup === "waiting" || item.lookup === "loading"));
+  const inProgress = paper?.status === "open" || paper?.status === "locked";
+  const optionalStudy = inProgress ? paper.requirements.filter((row) => row.status === "pending" && !row.required) : [];
+  const checking = paper?.status === "preparing" || paper?.analysis_status === "pending" || optionalStudy.length > 0;
   useEffect(() => {
     if (!checking || signedOut) return;
     const controller = new AbortController();
@@ -302,7 +310,7 @@ export function JunyiPlayer({ id }: { id: string }) {
     const updated = await action.run(() => send<JunyiPaper>(`${path}/analysis`));
     if (updated) acceptPaper(updated.analysis_status === "ready" ? updated : { ...updated, analysis_status: "pending", analysis_retry: false });
   }
-  const pendingStudy = paper?.requirements.filter((row) => row.status === "pending") ?? [];
+  const pendingStudy = paper?.requirements.filter((row) => row.required) ?? [];
   const completedStudy = paper?.requirements.filter((row) => row.status !== "pending") ?? [];
   return <div className="junyi-player">
     <header className="junyi-player-header"><Brand /><Button variant="secondary" href={paper?.status === "completed" ? "/?view=progress" : "/?view=today"}>{paper?.status === "completed" ? "Learning report" : "Save & leave"}</Button></header>
@@ -329,6 +337,11 @@ export function JunyiPlayer({ id }: { id: string }) {
         </details>}
       </>}
       {paper?.status === "open" && paper.question && <QuestionCard key={paper.question.id} paper={paper} saved={acceptPaper} reload={() => refresh()} />}
+      {optionalStudy.length > 0 && <details className="p-panel junyi-completed-study">
+        <summary>Optional study without verified links ({optionalStudy.length})</summary>
+        <p className="p-muted p-panel-sub">You can skip these topics. A topic becomes required if a verified link is found before you finish the assessment.</p>
+        <div className="p-learning-grid junyi-study-grid">{optionalStudy.map((row) => <StudyCard key={row.tag} requirement={row} paperId={id} saved={acceptPaper} />)}</div>
+      </details>}
       {paper?.status === "completed" && paper.results && <>
         <Heading title="Assessment complete" subtitle={`Test ${paper.sequence} result saved.`} />
         <Panel className="junyi-result">

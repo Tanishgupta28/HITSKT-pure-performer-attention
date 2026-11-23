@@ -22,6 +22,9 @@ from app.junyi_resources import STUDY_RESOURCE_TTL
 
 logger = logging.getLogger(__name__)
 LEASE_MS = 30_000
+STUDY_LOOKUP_LEASE_MS = 120_000
+STUDY_RECHECK_MS = 120_000
+IN_PROGRESS = ("open", "locked")
 
 
 def _now():
@@ -59,8 +62,27 @@ def _public_skills(snapshot):
     return [{key: value for key, value in row.items() if key != "probes"} for row in snapshot["skills"]] if snapshot else []
 
 
+def _study_required(requirement):
+    return (requirement["status"] == "pending" and requirement["lookup"] == "verified"
+            and bool(requirement["resources"]))
+
+
+def _paper_status(paper):
+    if paper["status"] in IN_PROGRESS:
+        return "locked" if any(map(_study_required, paper.get("requirements", ()))) else "open"
+    return paper["status"]
+
+
+def _study_lookup_due(requirement, now):
+    return requirement["status"] == "pending" and (
+        requirement["lookup"] == "waiting"
+        or (requirement["lookup"] == "loading" and requirement.get("lease_until", 0) <= now)
+        or (requirement["lookup"] == "unavailable" and requirement.get("retry_after", 0) <= now))
+
+
 def _requirement_view(requirement):
     view = {key: requirement[key] for key in ("tag", "topic", "status", "lookup", "resources", "message") if key in requirement}
+    view["required"] = _study_required(requirement)
     view["can_retry"] = requirement["status"] == "pending" and (
         requirement["lookup"] in {"waiting", "unavailable"}
         or (requirement["lookup"] == "loading" and requirement.get("lease_until", 0) <= _now()))
@@ -73,18 +95,19 @@ def _question(paper):
 
 
 def _view(paper, *, operator=False):
-    done = paper["status"] == "completed"
+    status = _paper_status(paper)
+    done = status == "completed"
     result_snapshot = paper.get("result_snapshot") if done else None
     return {"id": paper["_id"], "sequence": paper["sequence"], "revision": paper["version"],
-            "status": paper["status"], "stage": paper["stage"], "total": paper["total"],
+            "status": status, "stage": paper["stage"], "total": paper["total"],
             "answered": len(paper["responses"]), "requirements": list(map(_requirement_view, paper["requirements"])),
             "message": paper.get("message"), "created_at": paper["created_at"],
-            "question": _question(paper) if paper["status"] == "open" and not operator else None,
+            "question": _question(paper) if status == "open" and not operator else None,
             "results": paper.get("results") if done else None, "analysis_status": paper.get("analysis_status") if done else None,
             "analysis_retry": done and paper.get("analysis_status") in {"pending", "unavailable"} and paper.get("analysis_lease_until", 0) <= _now(),
             "answers_used": result_snapshot["app_responses"] if result_snapshot and not operator else None,
             "skills": _public_skills(result_snapshot) if not operator else [],
-            "can_retry": paper["status"] == "preparing" and paper.get("generation_lease_until", 0) <= _now()}
+            "can_retry": status == "preparing" and paper.get("generation_lease_until", 0) <= _now()}
 
 
 def _history_order(answer):
@@ -208,7 +231,7 @@ class JunyiService:
                 tag = requirement["tag"]
                 requirement.update(topic=self.runtime.bank.topics[tag], stage=self.runtime.bank.stages[tag])
             result = await self.papers.update_one(match, {"$set": {
-                "status": "locked" if requirements else "open", "snapshot": snapshot, "bank_version": self.runtime.bank.version,
+                "status": "open", "snapshot": snapshot, "bank_version": self.runtime.bank.version,
                 "items": items, "requirements": requirements, "allocation": allocation, "quotas": quotas, "allow_reuse": allow_reuse,
             }, "$inc": {"version": 1}})
             if result.modified_count and requirements:
@@ -234,14 +257,16 @@ class JunyiService:
     async def lookup(self, id, owner, tag, retry=False):
         ticket = str(uuid4())
         async with self.resource_slots:
-            eligible = [{"lookup": "waiting"}]
-            if retry:
-                eligible.extend(({"lookup": "unavailable"}, {"lookup": "loading", "lease_until": {"$lte": _now()}}))
-            identity = {"_id": id, "owner": owner, "status": "locked"}
+            now = _now()
+            unavailable = {"lookup": "unavailable"}
+            if not retry:
+                unavailable["$or"] = [{"retry_after": {"$exists": False}}, {"retry_after": {"$lte": now}}]
+            eligible = [{"lookup": "waiting"}, {"lookup": "loading", "lease_until": {"$lte": now}}, unavailable]
+            identity = {"_id": id, "owner": owner, "status": {"$in": IN_PROGRESS}}
             paper = await self.papers.find_one_and_update(
                 {**identity, "requirements": {"$elemMatch": {"tag": tag, "status": "pending", "$or": eligible}}},
                 {"$set": {"requirements.$.lookup": "loading", "requirements.$.ticket": ticket,
-                          "requirements.$.lease_until": _now() + 120_000}, "$inc": {"version": 1}},
+                          "requirements.$.lease_until": now + STUDY_LOOKUP_LEASE_MS}, "$inc": {"version": 1}},
                 return_document=ReturnDocument.AFTER)
             if not paper:
                 return
@@ -253,28 +278,56 @@ class JunyiService:
                 logger.error("Junyi study lookup failed")
                 links, message = [], "The resource search couldn’t finish. Please retry."
 
+            changes = {"lookup": "verified" if links else "unavailable", "resources": links,
+                       "message": message, "ticket": None, "lease_until": 0,
+                       "retry_after": 0 if links else _now() + STUDY_RECHECK_MS}
+            updated_requirements = {"$map": {
+                "input": "$requirements", "as": "row",
+                "in": {"$cond": [
+                    {"$eq": ["$$row.tag", tag]},
+                    {"$mergeObjects": ["$$row", {"$literal": changes}]},
+                    "$$row",
+                ]},
+            }}
+            required = {"$filter": {
+                "input": "$requirements", "as": "row",
+                "cond": {"$and": [
+                    {"$eq": ["$$row.status", "pending"]},
+                    {"$eq": ["$$row.lookup", "verified"]},
+                    {"$ne": ["$$row.resources", []]},
+                ]},
+            }}
+            # Save the link and gate together without replacing concurrent answers or study updates.
             await self.papers.update_one(
                 {**identity, "requirements": {"$elemMatch": {"tag": tag, "status": "pending", "ticket": ticket}}},
-                {"$set": {"requirements.$.lookup": "verified" if links else "unavailable", "requirements.$.resources": links,
-                          "requirements.$.message": message, "requirements.$.lease_until": 0}, "$inc": {"version": 1}})
+                [
+                    {"$set": {"requirements": updated_requirements}},
+                    {"$set": {
+                        "status": {"$cond": [{"$gt": [{"$size": required}, 0]}, "locked", "open"]},
+                        "version": {"$add": ["$version", 1]},
+                    }},
+                ],
+            )
+
+    async def recheck_study(self, id, owner, tags):
+        await asyncio.gather(*(self.lookup(id, owner, tag) for tag in tags))
 
     async def study_done(self, id, owner, tag, url=None, override=None, actor=None):
         def complete(paper):
             record = self.requirement(paper, tag)
             if record["status"] != "pending":
                 return False
-            if paper["status"] != "locked":
+            if paper["status"] not in IN_PROGRESS:
                 raise HTTPException(409, "The assessment no longer accepts study updates")
             if override is not None:
                 if record["lookup"] != "unavailable":
-                    raise HTTPException(409, "Overrides apply after a required resource search is unavailable")
+                    raise HTTPException(409, "Overrides apply after a resource search is unavailable")
                 record.update(status="overridden", audit={"actor": actor, "at": _now(), "reason": override})
             else:
-                if url not in {link["url"] for link in record["resources"]}:
+                if not _study_required(record) or url not in {link["url"] for link in record["resources"]}:
                     raise HTTPException(422, "Choose a verified resource for this skill")
                 record.update(status="satisfied", completion={"url": url, "at": _now()})
-            if all(item["status"] != "pending" for item in paper["requirements"]):
-                paper["status"] = "open"
+            paper["status"] = _paper_status(paper)
             return True
 
         return await self.change(id, owner, complete)
@@ -289,6 +342,7 @@ class JunyiService:
                     if old["bank_question_id"] != data.question_id or old["choice_id"] != data.choice_id:
                         raise HTTPException(409, "This submission ID already belongs to a different answer")
                     return False
+            paper["status"] = _paper_status(paper)
             if paper["status"] != "open":
                 raise HTTPException(423 if paper["status"] == "locked" else 409, "The assessment is not open for answers")
             index = len(paper["responses"])
@@ -342,15 +396,15 @@ class JunyiService:
         await self.papers.update_one(match, {"$set": {**changes, "analysis_lease_until": 0}, "$inc": {"version": 1}})
 
     async def dashboard(self, owner):
-        active = await self.papers.find_one({"owner": owner, "active": True}, {"sequence": 1, "status": 1, "snapshot": 1, "requirements.tag": 1})
+        active = await self.papers.find_one({"owner": owner, "active": True}, {"sequence": 1, "status": 1, "snapshot": 1, "requirements": 1})
         complete = await self.papers.find({"owner": owner, "status": "completed"}, {"results": 1, "completed_at": 1, "stage": 1, "sequence": 1})\
             .sort("sequence", DESCENDING).limit(12).to_list(12)
         latest = await self.papers.find_one({"owner": owner, "status": "completed", "result_snapshot": {"$exists": True}},
                                            {"result_snapshot": 1}, sort=[("sequence", DESCENDING)])
         snapshot = (active or {}).get("snapshot") or (latest or {}).get("result_snapshot")
         return {"assigned": True, "ready": self.runtime.ready, "issues": self.runtime.issues, "stage": self.stage,
-                "active": {"id": active["_id"], "status": active["status"], "sequence": active["sequence"],
-                           "required_tags": [row["tag"] for row in active["requirements"]]} if active else None,
+                "active": {"id": active["_id"], "status": _paper_status(active), "sequence": active["sequence"],
+                           "required_tags": [row["tag"] for row in active["requirements"] if _study_required(row)]} if active else None,
                 "history": [{"id": paper["_id"], "sequence": paper["sequence"], "completed_at": paper["completed_at"],
                              "stage": paper["stage"], **paper["results"]} for paper in complete],
                 "answers_used": snapshot["app_responses"] if snapshot else None,
@@ -385,14 +439,22 @@ def mount_junyi(app, settings, student, auth):
         return _view(paper)
 
     @app.get("/api/assessments/{id}")
-    async def read(id: UUID, account=Depends(owner)):
-        return _view(await service().get(str(id), account))
+    async def read(id: UUID, tasks: BackgroundTasks, account=Depends(owner)):
+        instance = service()
+        paper = await instance.get(str(id), account)
+        if paper["status"] in IN_PROGRESS:
+            now = _now()
+            tags = [row["tag"] for row in paper["requirements"] if _study_lookup_due(row, now)]
+            if tags:
+                tasks.add_task(instance.recheck_study, str(id), account, tags)
+        return _view(paper)
 
     @app.get("/api/assessments/{id}/question")
     async def question(id: UUID, account=Depends(owner)):
         paper = await service().get(str(id), account)
-        if paper["status"] != "open":
-            raise HTTPException(423 if paper["status"] == "locked" else 409, "The assessment is not open")
+        status = _paper_status(paper)
+        if status != "open":
+            raise HTTPException(423 if status == "locked" else 409, "The assessment is not open")
         return _question(paper)
 
     @app.post("/api/assessments/{id}/answers")

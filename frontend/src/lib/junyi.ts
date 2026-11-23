@@ -22,6 +22,7 @@ export type JunyiRequirement = StudyLookup & {
   status: "pending" | "satisfied" | "overridden";
   lookup: "waiting" | "loading" | "verified" | "unavailable";
   can_retry: boolean;
+  required: boolean;
 };
 
 type PaperStatus = "preparing" | "locked" | "open" | "completed" | "shortage" | "unavailable";

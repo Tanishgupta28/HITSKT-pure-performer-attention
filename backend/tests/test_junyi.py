@@ -437,9 +437,8 @@ def test_rules_only_progression_after_sixty_fixture_answers(settings, monkeypatc
                 assert len(ids) == 20 and not ids.intersection(seen)
                 seen.update(ids)
                 for requirement in paper["requirements"]:
-                    links = requirement["resources"]
-                    decision = {"url": links[0]["url"]} if links else {"override": "Fixture unavailable", "actor": "fixture-operator"}
-                    await service.study_done(paper["_id"], owner, requirement["tag"], **decision)
+                    if requirement["resources"]:
+                        await service.study_done(paper["_id"], owner, requirement["tag"], url=requirement["resources"][0]["url"])
                 for item in paper["items"]:
                     await service.record(paper["_id"], owner, AnswerInput(
                         question_id=item["id"], choice_id=item["answer_id"], request_id=uuid4(),
@@ -487,7 +486,8 @@ def test_authenticated_assessment_lock_resume_grading_proxy_and_next(settings):
         assert learner.post(f"{url}/answers", json={"question_id": "fiction", "choice_id": "fiction", "request_id": str(uuid4())}).status_code == 423
         action_tags = [row["tag"] for row in locked["requirements"]]
         dashboard = learner.get("/api/junyi/dashboard").json()
-        assert dashboard["active"] == {"id": id, "status": "locked", "sequence": 1, "required_tags": action_tags}
+        assert dashboard["active"] == {"id": id, "status": "locked", "sequence": 1,
+                                       "required_tags": [row["tag"] for row in locked["requirements"] if row["required"]]}
         assert locked["sequence"] == 1 and locked["answers_used"] is None
         assert sorted(runtime.recommender.calls) == sorted(action_tags)
         assert learner.get(url).json() == locked
@@ -499,15 +499,18 @@ def test_authenticated_assessment_lock_resume_grading_proxy_and_next(settings):
         assert learner.post(f"/api/admin/junyi/{id}/study/{action_tags[0]}/override", json={"reason": "Fixture override"}).status_code == 403
         assert {requirement["lookup"] for requirement in locked["requirements"]} == {"verified", "unavailable"}
         assert all(row["can_retry"] == (row["lookup"] == "unavailable") for row in locked["requirements"])
+        unavailable = [row for row in locked["requirements"] if row["lookup"] == "unavailable"]
         for requirement in locked["requirements"]:
-            tag = requirement["tag"]
-            if requirement["resources"]:
-                response = learner.post(f"{url}/study/{tag}/complete", json={"url": requirement["resources"][0]["url"]})
-            else:
-                response = admin.post(f"/api/admin/junyi/{id}/study/{tag}/override", json={"reason": "Fixture resource missing"})
-            assert response.status_code == 200, response.text
-        assert learner.get(url).json()["status"] == "open"
-        assert learner.get(url).json()["revision"] > locked["revision"]
+            assert requirement["required"] == bool(requirement["resources"])
+            if requirement["required"]:
+                response = learner.post(f"{url}/study/{requirement['tag']}/complete", json={"url": requirement["resources"][0]["url"]})
+                assert response.status_code == 200, response.text
+        unlocked = learner.get(url).json()
+        assert unlocked["status"] == "open" and unlocked["revision"] > locked["revision"]
+        assert [row for row in unlocked["requirements"] if row["status"] == "pending"] == unavailable
+        assert learner.get(f"{url}/question").status_code == 200
+        override = admin.post(f"/api/admin/junyi/{id}/study/{unavailable[0]['tag']}/override", json={"reason": "Fixture resource missing"})
+        assert override.status_code == 200
         assert any(
             row.get("audit", {}).get("actor") == operator for row in database.junyi_papers.find_one({"_id": id})["requirements"])
 
@@ -548,3 +551,53 @@ def test_authenticated_assessment_lock_resume_grading_proxy_and_next(settings):
         assert refreshed["snapshot"]["app_history_version"] == expected_history
         assert not {q["id"] for q in refreshed["items"]} & {q["id"] for q in stored["items"]}
         assert any(row["score"] != row["original_score"] for row in refreshed["snapshot"]["skills"])
+
+
+@pytest.mark.parametrize("trigger", ["retry", "recheck"])
+def test_optional_study_becomes_required_when_link_is_found(settings, monkeypatch, trigger):
+    runtime = fixture_runtime()
+    clock = [junyi_routes._now()]
+    monkeypatch.setattr(junyi_routes, "_now", lambda: clock[0])
+    found = set()
+    calls = []
+    link = {"url": "https://example.test/verified-lesson", "title": "Fixture lesson", "source": "fixture"}
+
+    def lookup(tag, topic, stage, language):
+        calls.append(tag)
+        return ([link], None) if tag in found else ([], "No verified resource.")
+
+    monkeypatch.setattr(runtime.recommender, "lookup", lookup)
+    with TestClient(create_app(settings, junyi_runtime=runtime)) as learner:
+        account = learner.post("/api/auth/register", json={"name": "Study Fixture", "email": "changes@example.com", "password": "thoughtful-practice-42"})
+        assert account.status_code == 201
+        settings.junyi_student_account_id = account.json()["id"]
+        paper_id = learner.post("/api/assessments").json()["id"]
+        path = f"/api/assessments/{paper_id}"
+        with MongoClient(settings.mongodb_uri) as mongo:
+            # A previously generated paper may still store the old lock state.
+            mongo[settings.mongodb_database].junyi_papers.update_one({"_id": paper_id}, {"$set": {"status": "locked"}})
+        unlocked = learner.get(path).json()
+        assert unlocked["status"] == "open" and unlocked["requirements"]
+        assert all(row["status"] == "pending" and not row["required"] for row in unlocked["requirements"])
+        assert learner.get("/api/junyi/dashboard").json()["active"]["status"] == "open"
+        tag = unlocked["requirements"][0]["tag"]
+        question = unlocked["question"]
+        submission = {"question_id": question["id"], "choice_id": question["options"][0]["id"], "request_id": str(uuid4())}
+        next_question = learner.post(f"{path}/answers", json=submission).json()["paper"]["question"]
+
+        found.add(tag)
+        assert learner.get(path).json()["status"] == "open" and calls.count(tag) == 1
+        if trigger == "retry":
+            assert learner.post(f"{path}/study/{tag}/retry").status_code == 202
+        else:
+            clock[0] += junyi_routes.STUDY_RECHECK_MS
+            learner.get(path)
+        locked = learner.get(path).json()
+        assert locked["status"] == "locked" and locked["answered"] == 1 and locked["question"] is None
+        assert [row["tag"] for row in locked["requirements"] if row["required"]] == [tag]
+        assert learner.get(f"{path}/question").status_code == 423
+        blocked = {"question_id": next_question["id"], "choice_id": next_question["options"][0]["id"], "request_id": str(uuid4())}
+        assert learner.post(f"{path}/answers", json=blocked).status_code == 423
+        assert learner.post(f"{path}/answers", json=submission).json()["replayed"]
+        resumed = learner.post(f"{path}/study/{tag}/complete", json={"url": link["url"]}).json()
+        assert resumed["status"] == "open" and resumed["answered"] == 1 and resumed["question"] == next_question

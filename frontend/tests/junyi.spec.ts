@@ -24,7 +24,7 @@ test("sign-in has a safe fallback before hydration", async ({ browser }) => {
   }
 });
 
-test("assigned learner can unlock, resume, submit and review a Junyi paper", async ({ page, browser }) => {
+test("assigned learner can skip missing links, unlock, resume and review a paper", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await signIn(page, "junyi-browser@example.com");
   await expect(page.getByRole("heading", { name: "Junyi Adaptive Assessment" })).toBeVisible();
@@ -43,28 +43,14 @@ test("assigned learner can unlock, resume, submit and review a Junyi paper", asy
     await available.first().click();
     await expect(available).toHaveCount(remaining - 1);
   }
+  await expect(page.getByText("Question 1 of 20")).toBeVisible();
+  await page.getByText(/Optional study without verified links/).click();
   const missing = page.locator(".junyi-study-card").filter({ hasText: "This fixture has no verified resource." }).first();
   await expect(missing).toBeVisible();
+  await expect(missing.getByText("Optional for now", { exact: true })).toBeVisible();
   await missing.getByRole("button", { name: "Retry resource search" }).click();
   await expect(missing.getByRole("button", { name: "Retry resource search" })).toBeVisible();
-  await expect(page.getByRole("radiogroup")).toHaveCount(0);
-
-  const admin = await browser.newPage();
-  try {
-    await signIn(admin, "junyi-operator@example.com");
-    await expect(admin.getByRole("heading", { name: "Junyi assessment operations" })).toBeVisible();
-    const overrides = admin.getByRole("button", { name: "Clear requirement" });
-    await expect(overrides.first()).toBeVisible();
-    while (await overrides.count()) {
-      const previous = await overrides.count();
-      await overrides.first().click();
-      await admin.getByLabel("Reason for clearing the requirement").fill("Fixture resource unavailable");
-      await admin.getByRole("button", { name: "Confirm override" }).click();
-      await expect(overrides).toHaveCount(previous - 1);
-    }
-  } finally {
-    await admin.close();
-  }
+  await expect(page.getByRole("radiogroup")).toBeVisible();
 
   await page.reload();
   await expect(page.getByText("Question 1 of 20")).toBeVisible();
@@ -112,7 +98,7 @@ test("a delayed study response cannot roll back the current checklist", async ({
   const id = "88657e02-d02f-46bf-adef-a157fce332fd";
   const path = `/api/assessments/${id}`;
   const requirements: JunyiRequirement[] = [1, 2, 3].map((tag) => ({
-    tag, topic: `Fixture skill ${tag}`, status: "pending", lookup: "verified", can_retry: false, message: null,
+    tag, topic: `Fixture skill ${tag}`, status: "pending", lookup: "verified", can_retry: false, required: true, message: null,
     resources: [{url: `https://example.test/lesson/${tag}`, title: `Fixture lesson ${tag}`, source: "fixture"}],
   }));
   const paper: JunyiPaper = {
@@ -120,7 +106,7 @@ test("a delayed study response cannot roll back the current checklist", async ({
     requirements, question: null, results: null, analysis_status: null, analysis_retry: false, answers_used: null, skills: [], can_retry: false,
   };
   const snapshot = (revision: number, completed: number): JunyiPaper => ({
-    ...paper, revision, requirements: requirements.map((item) => item.tag <= completed ? {...item, status: "satisfied"} : item),
+    ...paper, revision, requirements: requirements.map((item) => item.tag <= completed ? {...item, status: "satisfied", required: false} : item),
   });
   let releaseOlder = () => {};
   const older = new Promise<void>((resolve) => { releaseOlder = resolve; });
@@ -143,4 +129,38 @@ test("a delayed study response cannot roll back the current checklist", async ({
   await expect(page.getByText("1 skill left to unlock", {exact: true})).toBeVisible();
   await expect(page.getByText("Study already checked off (2)", {exact: true})).toBeVisible();
   await expect(markComplete(3)).toBeVisible();
+});
+
+test("a newly verified lesson pauses a paper and preserves the answer draft", async ({ page }) => {
+  const id = "bcaedd7c-000c-4c24-8c51-b40d159c8ee1";
+  const path = `/api/assessments/${id}`;
+  const waiting: JunyiRequirement = {
+    tag: 1, topic: "Equivalent fractions", status: "pending", lookup: "unavailable", required: false,
+    resources: [], message: "No verified resource", can_retry: true,
+  };
+  const verified: JunyiRequirement = {
+    ...waiting, lookup: "verified", required: true, message: null, can_retry: false,
+    resources: [{url: "https://example.test/lesson", title: "Equivalent fractions lesson", source: "fixture"}],
+  };
+  const paper: JunyiPaper = {
+    id, sequence: 2, revision: 1, status: "open", stage: "junior", total: 20, answered: 1, message: null,
+    requirements: [waiting], question: {id: "q2", topic: "Fractions", prompt: "Which fraction equals 1/2?",
+      options: [{id: "a", text: "2/4"}, {id: "b", text: "3/4"}]},
+    results: null, analysis_status: null, analysis_retry: false, answers_used: null, skills: [], can_retry: false,
+  };
+  let current = paper;
+  await page.route(`**${path}`, (route) => route.fulfill({ json: current }));
+  await page.route(`**${path}/study/1/complete`, (route) => {
+    current = {...paper, revision: 3, requirements: [{...verified, status: "satisfied", required: false}]};
+    return route.fulfill({ json: current });
+  });
+  await page.goto(`${base}/assessment/junyi/${id}`);
+  await expect(page.getByText("Question 2 of 20")).toBeVisible();
+  await page.getByRole("radio").first().check();
+  current = {...paper, revision: 2, status: "locked", question: null, requirements: [verified]};
+  await expect(page.getByText("1 skill left to unlock", {exact: true})).toBeVisible();
+  await expect(page.getByRole("radiogroup")).toHaveCount(0);
+  await page.getByRole("button", {name: "Mark complete"}).click();
+  await expect(page.getByText("Question 2 of 20")).toBeVisible();
+  await expect(page.getByRole("radio").first()).toBeChecked();
 });
