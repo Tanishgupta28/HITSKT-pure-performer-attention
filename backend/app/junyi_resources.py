@@ -167,6 +167,21 @@ _CURATED_SKILL_LESSONS = (
      "https://www.mathsisfun.com/geometry/triangle-inequality-theorem.html", "triangle inequality side length"),
     (r"\bjudg(?:e?ment|ing) of similar triangles\b",
      "https://www.mathsisfun.com/geometry/triangles-similar-finding.html", "similar triangles criteria"),
+    (r"\b(?:multiplication of fractions?|multiplying fractions?)\b",
+     "https://www.mathsisfun.com/fractions_multiplication.html", "multiplication fractions"),
+    (r"\bcontinuous multiplication\b",
+     "https://thirdgrade.com/week/13", "properties multiplication three factors"),
+    (r"\bfractions?(?: on (?:a |the )?| )number line\b",
+     "https://www.mathsisfun.com/numbers/fraction-number-line.html", "fraction number line"),
+    (r"\bmultiplying a monomial by a polynomial\b",
+     "https://openstax.org/books/prealgebra-2e/pages/10-3-multiply-polynomials", "multiply polynomial monomial distributive"),
+    (r"\bsquare method factorization of sums and differences\b",
+     "https://openstax.org/books/elementary-algebra-2e/pages/7-4-factor-special-products", "factor special products perfect square"),
+    # In this Junyi bank, the translated label "Countdown" refers to reciprocals.
+    (r"^(?:countdown|reciprocals?)$", "https://www.mathsisfun.com/algebra/reciprocal.html", "reciprocal number"),
+    (r"\bchordal angle cutting\b", "https://www.cimt.org.uk/sif/geometry/g2/interactive/s3.html", "circle tangent chord angle"),
+    (r"\bfunction graph with restrictions\b",
+     "https://openstax.org/books/precalculus-2e/pages/1-2-domain-and-range", "domain range graph endpoint"),
 )
 
 

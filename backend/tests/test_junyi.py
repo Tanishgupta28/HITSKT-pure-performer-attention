@@ -295,6 +295,19 @@ def test_curated_study_lesson_verifies_the_mapped_subject():
     assert unrelated.lookup(281, topic, "elementary", "en")[0] == []
 
 
+def test_curated_countdown_label_uses_the_reciprocal_concept():
+    def read(url):
+        assert url == "https://www.mathsisfun.com/algebra/reciprocal.html"
+        page = _PageText()
+        page.feed("<title>Reciprocal in Algebra</title><p>Take the reciprocal of a nonzero number.</p>")
+        return url, page
+
+    recommender = StudyRecommender(Gemini(), read)
+    resources, issue = recommender.lookup(858, "Countdown", "junior", "en")
+    assert issue is None and resources[0]["title"] == "Reciprocal in Algebra"
+    assert recommender.lookup(858, "Countdown timer", "junior", "en")[0] == []
+
+
 def test_queued_paper_keeps_allocation_settings_after_restart(settings):
     async def scenario():
         async with AsyncMongoClient(settings.mongodb_uri) as client:
