@@ -87,6 +87,17 @@ def _history_order(answer):
     return answer["timestamp_ms"], answer["paper_sequence"], answer["position"]
 
 
+def _answer_proxy(mappings, tag):
+    if mappings is not None:
+        for item in mappings.representatives.get(tag, ()):
+            source_id = mappings.source_ids.get(item.question_id)
+            if (source_id and mappings.pairs.get(item.question_id) == item
+                    and tag in mappings.composite_tags.get(item.skill_id, ())):
+                return {"label": "PROXY", "question_id": item.question_id, "skill_id": item.skill_id,
+                        "source_question_id": source_id, "mapping_version": mappings.version}
+    return None
+
+
 class JunyiService:
     def __init__(self, db, runtime, stage, allow_reuse):
         self.papers = db.junyi_papers
@@ -282,11 +293,7 @@ class JunyiService:
                 raise HTTPException(409, "This is not the current question. Reload your progress.")
             if data.choice_id not in {option["id"] for option in item["options"]}:
                 raise HTTPException(422, "Choose one of the four displayed options")
-            mapped = self.runtime.mappings.representatives.get(item["tag"], ()) if self.runtime.mappings else ()
-            representative = mapped[0] if mapped else None
-            proxy = {"label": "PROXY", "question_id": representative.question_id, "skill_id": representative.skill_id,
-                     "source_question_id": self.runtime.mappings.source_ids[representative.question_id],
-                     "mapping_version": self.runtime.mappings.version} if representative else None
+            proxy = _answer_proxy(self.runtime.mappings, item["tag"])
             stamp = _now()
             if paper["responses"] and stamp < paper["responses"][-1]["timestamp_ms"]:
                 raise HTTPException(503, "The assessment clock is unavailable. Retry this answer.")
@@ -319,7 +326,7 @@ class JunyiService:
         heartbeat = asyncio.create_task(self._keep_lease(match, "analysis_lease_until"))
         try:
             answers = await self._history(owner, paper["sequence"])
-            snapshot = await run_in_threadpool(self.runtime.estimator.snapshot, answers, _now())
+            snapshot = await run_in_threadpool(self.runtime.estimator.snapshot, answers, paper["completed_at"])
             changes = {"result_snapshot": snapshot,
                        "analysis_status": "ready" if any(row["score"] is not None for row in snapshot["skills"]) else "unavailable"}
         except Exception:

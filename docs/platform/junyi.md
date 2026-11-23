@@ -33,6 +33,18 @@ Newly queued papers persist their stage, allocation targets, and repeat policy b
 
 The original Junyi history is a private read-only input. A real submission appends one audited, timestamped application answer to its paper, including the actual grade and reversible reference to a representative Junyi question if a valid mapping exists. Original history stays separate from the app history and legacy practice/export. A paper boundary does not create a model session. The adapter uses the original 10-hour inactivity rule, up to 15 complete earlier sessions, and the truly observed prefix for the current session. The completed paper triggers a new score snapshot for the next paper.
 
+The assessment result uses the recorded completion time as its analysis cutoff. A delayed analysis or retry replays that same point in time. Preparing the next paper uses the current session window. If a valid representative cannot be resolved, the real answer and grade remain saved with a mapping reason. If that missing event breaks the required model context, the skill estimates show as unavailable.
+
+### Export completed results and replay history
+
+From the repository root, run the following with the backend environment configured for the authorized learner and their verified baseline. Use the number of the last completed paper you want to include.
+
+```powershell
+./backend/.venv/Scripts/python.exe backend/tools/export_junyi_history.py --through 2
+```
+
+The tool reads MongoDB and creates two private, ignored CSV files under `reports/adaptive_junyi_student1/private_exports/through-paper-02/`. `assessment_results.csv` contains only graded submissions through that paper. `updated_student_history.csv` contains the approved historical sessions and the saved app answers, with original, proxy, or unmapped labels. The paper number and request ID connect a submission to its history row. Unmapped rows preserve the actual outcome and the reason. The export verifies each grade against the frozen assessment, excludes unfinished papers and refuses to overwrite a differing snapshot.
+
 ## How Gemini and study resources work
 
 FastAPI builds an eligible candidate list from the verified bank and the saved skill snapshot. The Gemini request contains short references, skill tags, stages, topics, and slot limits. The schema bounds the number of references per group. The backend maps eligible replies back to bank IDs, rejects duplicates and invalid references, and fills any gaps using its existing allocation policy. The question text, grading key, learner account, answer sequence and individual score estimates stay in Lumen.

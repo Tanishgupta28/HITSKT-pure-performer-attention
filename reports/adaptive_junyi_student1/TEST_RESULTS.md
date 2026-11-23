@@ -52,3 +52,15 @@ All eight study requirements were marked complete by the learner, and the follow
 | Lock and data preservation | After restarting the isolated backend, both completed paper documents, the third paper's frozen items and its study records matched their original fingerprints. Ten required items remained pending, the student question endpoint returned HTTP 423, and the third paper still contained zero answers. |
 
 All 34 backend tests passed. The real-history tests reused the saved snapshot read-only, without saving a replay paper or learner activity. The source model, serving adapter, preprocessing and verified checkpoint were unchanged. Google Search grounding links are excluded from the persistent checklist. The approved English catalogue supplied all ten current topics and requires additional verified coverage for other topics. [Gemini API grounding terms](https://aistudio.google.com/docs/terms#grounding-with-google-search)
+
+## Phase 5 genuine response history and repeatable exports
+
+| Check | Evidence |
+| --- | --- |
+| Real responses and grade integrity | Reconciled all 40 unique saved responses and both completed results with the frozen question options and the verified bank. The response fingerprints matched the saved analysis and its use in the third paper. |
+| Original checkpoint replay | All 40 responses mapped to legal Junyi question and composite skill IDs. At the second paper's completion all 40 were in the observed session prefix after the nine original sessions. The unchanged checkpoint reproduced all 1,326 saved original-only and all 1,326 saved proxy-inclusive estimates exactly. The local CPU replay took 56.12 s. |
+| Delayed analysis and missing mappings | Fixture tests confirmed that a retry at the exact 10-hour boundary produces the original paper snapshot and that a subsequent paper uses the new session window. An unrelated or missing representative preserved the saved grade and produced the explicit unavailable analysis state when the context could not be scored. |
+| Local exports | The verified export included 40 assessment rows and 219 history rows. All 40 joins by paper number and request ID matched grade, timestamp, bank item and tag. A repeat was byte-identical, and an export through the incomplete third paper was rejected. Both outputs are ignored under `reports/adaptive_junyi_student1/private_exports/through-paper-02/`. |
+| Preservation | Both completed paper documents, the existing third paper and its study records matched their originals. Ten study items remained pending, question access returned HTTP 423, and there were zero new submissions. The research source, preprocessing, model adapter, baseline and pinned checkpoint remained unchanged. |
+
+All 37 backend tests passed. After restarting the local backend, Edge showed both completed results, the original-versus-app estimates and the third paper's unchanged checklist. Tests that simulate additional submissions used isolated fixture data. A real run with 60 answers and the subsequent paper is pending learner completion of the third test.

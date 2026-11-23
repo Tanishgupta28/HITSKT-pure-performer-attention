@@ -8,14 +8,15 @@ import pytest
 from fastapi.testclient import TestClient
 from pymongo import AsyncMongoClient, MongoClient
 
-from app import junyi_resources
+from app import junyi_resources, junyi_routes
 from app.junyi_bank import BankQuestion, JunyiBank, JunyiMappings, ModelItem, digest, load_bank
 from app.junyi_model import Baseline, Event, GAP, ModelUnavailable, OriginalHiTSKT, SkillEstimator, read_baseline, score_class, session_context
 from app.junyi_paper import DEFAULT_QUOTAS, BankShortage, candidates_for, prompt_candidates, select_paper, study_requirements
 from app.junyi_resources import Gemini, StudyRecommender, _PageText
-from app.junyi_routes import JunyiService, setup_junyi
+from app.junyi_routes import AnswerInput, JunyiService, setup_junyi
 from app.junyi_runtime import JunyiRuntime
 from app.main import create_app
+from tools.export_junyi_history import _completed_answers, _history_rows
 
 
 class FixturePredictor:
@@ -317,6 +318,91 @@ def test_queued_paper_keeps_allocation_settings_after_restart(settings):
     asyncio.run(scenario())
 
 
+def test_analysis_retry_keeps_completion_window_and_next_paper_uses_new_window(settings, monkeypatch):
+    async def scenario():
+        runtime = fixture_runtime()
+        completed_at = 20 * GAP
+        response = {"timestamp_ms": completed_at, "paper_sequence": 1, "position": 0, "tag": 1, "correct": True,
+                    "bank_question_id": "fixture-1-0", "proxy": junyi_routes._answer_proxy(runtime.mappings, 1)}
+        monkeypatch.setattr(junyi_routes, "_now", lambda: completed_at)
+        async with AsyncMongoClient(settings.mongodb_uri) as client:
+            db = client[settings.mongodb_database]
+            await setup_junyi(db)
+            service = JunyiService(db, runtime, stage=None, allow_reuse=False)
+            await service.papers.insert_one({"_id": "fixture-completed", "owner": "fixture-owner", "sequence": 1,
+                                             "status": "completed", "active": False, "responses": [response], "version": 0,
+                                             "completed_at": completed_at, "analysis_status": "pending", "analysis_lease_until": 0})
+            await service.analyze("fixture-completed", "fixture-owner")
+            original = await service.get("fixture-completed", "fixture-owner")
+            assert original["analysis_status"] == "ready" and original["result_snapshot"]["as_of"] == completed_at
+            assert original["result_snapshot"]["app_responses"] == 1 and len(runtime.estimator.predictor.calls[-1][1]) == 1
+
+            # Reclaim an interrupted job exactly when the original live session would have expired.
+            await service.papers.update_one({"_id": "fixture-completed"}, {"$set": {"analysis_status": "pending", "analysis_lease_until": completed_at + 1}})
+            monkeypatch.setattr(junyi_routes, "_now", lambda: completed_at + GAP)
+            await service.analyze("fixture-completed", "fixture-owner")
+            recovered = await service.get("fixture-completed", "fixture-owner")
+            assert recovered["analysis_status"] == "ready" and recovered["result_snapshot"] == original["result_snapshot"]
+            assert recovered["responses"] == [response] and len(runtime.estimator.predictor.calls[-1][1]) == 1
+
+            next_paper = await service.start("fixture-owner")
+            await service.prepare(next_paper["_id"], "fixture-owner")
+            prepared = await service.get(next_paper["_id"], "fixture-owner")
+            assert prepared["snapshot"]["as_of"] == completed_at + GAP and not runtime.estimator.predictor.calls[-1][1]
+            assert prepared["snapshot"]["app_history_version"] == original["result_snapshot"]["app_history_version"]
+            assert all(item["id"] != response["bank_question_id"] for item in prepared["items"])
+
+    asyncio.run(scenario())
+
+
+def test_invalid_proxy_mapping_preserves_actual_grade_and_records_reason(settings):
+    async def scenario():
+        runtime = fixture_runtime()
+        mappings = runtime.mappings
+        source_id = mappings.source_ids.pop(1)
+        mappings.composite_tags[2] = (1, 2)
+        mappings.representatives[1] = (ModelItem(1, 1), ModelItem(2, 2))
+        assert junyi_routes._answer_proxy(mappings, 1)["question_id"] == 2
+        mappings.source_ids[1] = source_id
+        mappings.composite_tags[2] = (2,)
+        mappings.representatives[1] = (ModelItem(2, 2), ModelItem(3, 3))
+        async with AsyncMongoClient(settings.mongodb_uri) as client:
+            service = JunyiService(client[settings.mongodb_database], runtime, stage=None, allow_reuse=False)
+            await service.papers.insert_one({"_id": "unmapped-fixture", "owner": "fixture-owner", "sequence": 1,
+                                             "status": "open", "active": True, "version": 0, "total": 1, "responses": [],
+                                             "bank_version": "fixture-bank", "items": [{"id": "fixture-1-0", "tag": 1,
+                                                                                       "options": [{"id": "b"}, {"id": "a"}], "answer_id": "a"}]})
+            data = AnswerInput(question_id="fixture-1-0", choice_id="b", request_id=uuid4())
+            completed, replayed = await service.record("unmapped-fixture", "fixture-owner", data)
+            assert not replayed and completed["results"] == {"correct": 0, "total": 1, "accuracy": 0}
+            answer = completed["responses"][0]
+            assert answer["proxy"] is None and answer["mapping_issue"] and answer["correct"] is False
+            await service.analyze("unmapped-fixture", "fixture-owner")
+            result = await service.get("unmapped-fixture", "fixture-owner")
+            assert result["analysis_status"] == "unavailable" and result["responses"] == [answer]
+            assert result["result_snapshot"]["app_responses"] == 1
+
+    asyncio.run(scenario())
+
+
+def test_private_history_rows_keep_real_grades_and_exact_session_boundaries():
+    runtime = fixture_runtime()
+    baseline, mappings = runtime.estimator.baseline, runtime.mappings
+    tags = [1, 2, 3]
+    times = [20 * GAP, 20 * GAP, 21 * GAP]
+    answers = [{"timestamp_ms": stamp, "paper_sequence": index + 1, "position": 0, "tag": tag, "correct": index == 0,
+                "bank_question_id": f"fixture-{tag}-0", "request_id": str(index),
+                "proxy": junyi_routes._answer_proxy(mappings, tag) if index < 2 else None}
+               for index, (tag, stamp) in enumerate(zip(tags, times))]
+    history = list(_history_rows(baseline, mappings, answers))
+    assert len(history) == sum(map(len, baseline.sessions)) + 3
+    first, second, third = history[-3:]
+    assert (first[0], first[1], first[6], first[9]) == ("LUMEN_PROXY", 10, 1, "0")
+    assert (second[0], second[1], second[6], second[9]) == ("LUMEN_PROXY", 10, 0, "1")
+    assert (third[0], third[1], third[3], third[6], third[9]) == ("LUMEN_UNMAPPED", 11, None, 0, "2")
+    assert third[-1]
+
+
 def test_authenticated_assessment_lock_resume_grading_proxy_and_next(settings):
     runtime = fixture_runtime()
     with TestClient(create_app(settings, junyi_runtime=runtime)) as learner, TestClient(create_app(settings, junyi_runtime=runtime)) as admin:
@@ -384,6 +470,10 @@ def test_authenticated_assessment_lock_resume_grading_proxy_and_next(settings):
         assert learner.get(url).json()["results"] == {"correct": 10, "total": 20, "accuracy": .5}
         graded = database.junyi_papers.find_one({"_id": id})
         assert len(graded["responses"]) == 20 and graded["responses"][0]["proxy"]["label"] == "PROXY"
+        assert _completed_answers([graded]) == graded["responses"]
+        incorrect = {**graded, "responses": [{**graded["responses"][0], "correct": False}, *graded["responses"][1:]]}
+        with pytest.raises(ValueError, match="frozen question or grade"):
+            _completed_answers([incorrect])
         assert graded["result_snapshot"]["app_responses"] == 20
         expected_history = graded["result_snapshot"]["app_history_version"]
         database.junyi_papers.update_one({"_id": id}, {"$set": {"result_snapshot.app_history_version": "stale-history-with-the-same-size"}})
