@@ -3,10 +3,12 @@ from concurrent.futures import ThreadPoolExecutor
 import json
 from uuid import uuid4
 
+import httpx
 import pytest
 from fastapi.testclient import TestClient
 from pymongo import AsyncMongoClient, MongoClient
 
+from app import junyi_resources
 from app.junyi_bank import BankQuestion, JunyiBank, JunyiMappings, ModelItem, digest, load_bank
 from app.junyi_model import Baseline, Event, GAP, ModelUnavailable, OriginalHiTSKT, SkillEstimator, read_baseline, score_class, session_context
 from app.junyi_paper import DEFAULT_QUOTAS, BankShortage, candidates_for, prompt_candidates, select_paper, study_requirements
@@ -157,29 +159,116 @@ def test_allocation_boundaries_stage_and_unknown_or_duplicate_proposals():
     assert [requirement["tag"] for requirement in study_requirements(broad_weak, snapshot)] == [1]
 
 
-def test_grounding_verification_deduplication_and_cap(monkeypatch):
-    from app import junyi_resources
+def _gemini_with_reply(reply):
+    return Gemini("fixture-key", "gemini-3.1-flash-lite", lambda **kwargs: httpx.Client(transport=httpx.MockTransport(reply), **kwargs))
 
-    gemini = Gemini("example-key", "example-model")
-    replies = [{"content": {"parts": [{"text": "A made-up URL https://example.test/not-grounded"}]}},
-               {"groundingMetadata": {"webSearchQueries": ["fraction addition"], "groundingSupports": [{"groundingChunkIndices": list(range(8))}],
-                                      "groundingChunks": [{"web": {"uri": f"https://example.test/{i}"}} for i in range(8)]}}]
-    monkeypatch.setattr(gemini, "_call", lambda *args, **kwargs: replies.pop(0))
-    assert gemini.sources(1, "Addition of fractions", "junior", "en") == []
+
+def _gemini_response(output, finish="STOP"):
+    return httpx.Response(200, json={"candidates": [{"finishReason": finish, "content": {"parts": [{"text": json.dumps(output)}]}}]})
+
+
+def test_gemini_compact_prompt_and_exact_group_allowlists():
+    menu = [{"bank_question_id": f"verified-bank-{index}", "tag": index, "stage": "junior", "topic": "Fractions", "bucket": bucket}
+            for index, bucket in ((1, "weak"), (2, "weak"), (3, "review"), (1, "broad"), (3, "broad"), (4, "broad"), (5, "unattempted"))]
+
+    def reply(request):
+        body = json.loads(request.content)
+        data = json.loads(body["contents"][0]["parts"][0]["text"])
+        assert "verified-bank" not in request.content.decode()
+        assert data["groups"] == {"weak": {"limit": 1, "refs": ["q1", "q2"]}, "broad": {"limit": 1, "refs": ["q1", "q3", "q4"]}}
+        assert data["items"] == [[f"q{i}", i, "junior", "Fractions"] for i in range(1, 5)]
+        assert body["generationConfig"]["responseSchema"]["required"] == ["weak", "broad"]
+        return _gemini_response({"weak": ["q3", "q999", "q1", "q1", "q2"], "review": ["q3"], "broad": ["q1", {"ref": "q2"}, "q3", "q4"]})
+
+    chosen = _gemini_with_reply(reply).choose(menu, {"weak": 1, "unattempted": 0, "review": 0, "broad": 1})
+    assert [(row["bank_question_id"], row["bucket"]) for row in chosen] == [("verified-bank-1", "weak"), ("verified-bank-3", "broad")]
+
+
+def test_gemini_rejects_truncated_output_and_falls_back_to_paper_rules():
+    runtime = fixture_runtime()
+    snapshot = runtime.estimator.snapshot([], 15 * GAP)
+    candidates = candidates_for(runtime.bank, snapshot, None, set(), False)
+    menu = prompt_candidates(candidates, runtime.quotas, "seed")
+    gemini = _gemini_with_reply(lambda _request: _gemini_response({"weak": ["q1"]}, finish="MAX_TOKENS"))
+    assert not gemini.choose(menu, runtime.quotas)
+    chosen, allocation = select_paper(candidates, runtime.quotas, "seed", gemini.choose(menu, runtime.quotas), menu)
+    assert len(chosen) == 20 and all(item["provider"] == "rules" for item in chosen)
+    assert allocation["counts"] == DEFAULT_QUOTAS
+
+
+def test_curated_verification_deduplication_cap_and_expiry(monkeypatch):
+    clock = [100]
+    monkeypatch.setattr(junyi_resources, "monotonic", lambda: clock[0])
+    monkeypatch.setattr(junyi_resources, "_CURATED_SKILL_LESSONS", tuple(
+        ("fractions", f"https://education.test/{index}", "addition fractions") for index in range(9)
+    ))
+    reads = []
 
     def reader(url):
         index = int(url.split("/")[-1])
+        reads.append(index)
         if index == 0:
             return None
         page = _PageText()
-        page.feed("<title>Unrelated history</title>" if index == 1 else "<title>Addition of fractions</title>Worked examples")
-        return f"https://education.test/{2 if index in (2, 3) else index}", page
+        page.feed({1: "<title>Unrelated history</title>", 2: "<title>Addition of fractions | Sign in</title>"}.get(
+            index, "<title>Addition of fractions</title><p>Worked examples</p>"
+        ))
+        return f"https://education.test/{3 if index in (3, 4) else index}", page
 
-    links, _ = StudyRecommender(gemini, reader).lookup(1, "Addition of fractions", "junior", "en")
-    assert [link["url"].rsplit("/", 1)[-1] for link in links] == ["2", "4", "5", "6"]
+    study = StudyRecommender(Gemini(), reader)
+    links, issue = study.lookup(1, "Addition of fractions", "junior", "en")
+    assert issue is None
+    assert [link["url"].rsplit("/", 1)[-1] for link in links] == ["3", "5", "6", "7"]
+    links[0]["title"] = "Client edit"
+    assert study.lookup(1, "Addition of fractions", "junior", "en")[0][0]["title"] == "Addition of fractions"
+    assert reads == list(range(8))
+    clock[0] += junyi_resources.STUDY_RESOURCE_TTL.total_seconds()
+    study.lookup(1, "Addition of fractions", "junior", "en")
+    assert reads == list(range(8)) * 2
+
+
+def test_study_ranking_rate_limit_does_not_block_verified_fallback_or_selection(monkeypatch):
+    clock = [100]
+    requests = []
+    monkeypatch.setattr(junyi_resources, "monotonic", lambda: clock[0])
+
+    def reply(request):
+        body = json.loads(request.content)
+        data = json.loads(body["contents"][0]["parts"][0]["text"])
+        requests.append(data)
+        assert "tools" not in body and "https://" not in json.dumps(data)
+        if "groups" in data:
+            return _gemini_response({"weak": ["q1"]})
+        if clock[0] == 100:
+            return httpx.Response(429, headers={"Retry-After": "20"})
+        return _gemini_response({"order": ["r2", "invented", "r2"]})
+
+    def reader(url):
+        page = _PageText()
+        page.feed("<title>Metric volume</title><p>Liters, milliliters and volume</p>")
+        return url, page
+
+    gemini = _gemini_with_reply(reply)
+    study = StudyRecommender(gemini, reader)
+    links, issue = study.lookup(1, "Liters and milliliters", "elementary", "en")
+    assert issue is None and len(links) == 2 and links[0]["url"].startswith("https://www.mathsisfun.com")
+    fallback, fallback_issue = study.lookup(2, "Exercises on liters and milliliters", "elementary", "en")
+    assert fallback_issue is None and [link["url"] for link in fallback] == [link["url"] for link in links]
+    assert len(requests) == 1
+    menu = [{"bank_question_id": "bank-123", "tag": 1, "stage": "elementary", "topic": "Volume", "bucket": "weak"}]
+    assert gemini.choose(menu, {"weak": 1})[0]["bank_question_id"] == "bank-123"
+    clock[0] += 20
+    ranked, error = study.lookup(3, "More exercises on liters and milliliters", "elementary", "en")
+    assert error is None and [link["url"] for link in ranked] == [link["url"] for link in reversed(links)]
+    assert len(requests) == 3
+
+
+def test_public_study_verifier_rejects_nonpublic_destinations(monkeypatch):
     monkeypatch.setattr(junyi_resources.socket, "getaddrinfo", lambda *args, **kwargs: [(0, 0, 0, "", ("127.0.0.1", 443))])
     with pytest.raises(ValueError, match="Non-public"):
         junyi_resources._public_target("https://example.test/redirect")
+    with pytest.raises(ValueError, match="Public HTTPS"):
+        junyi_resources._public_target("http://example.test/lesson")
 
 
 def test_curated_study_lesson_verifies_the_mapped_subject():
@@ -187,19 +276,19 @@ def test_curated_study_lesson_verifies_the_mapped_subject():
     requested = []
     expected = "https://www.mathsisfun.com/measure/metric-volume.html"
 
-    def reader_with_title(title):
+    def reader_with_title(title, body=""):
         def read(url):
             requested.append(url)
             page = _PageText()
-            page.feed(f"<title>{title}</title><p>{title}</p>")
+            page.feed(f"<title>{title}</title><p>{body}</p>")
             return url, page
 
         return read
 
-    valid = StudyRecommender(Gemini(), reader_with_title("Metric Volume"))
+    valid = StudyRecommender(Gemini(), reader_with_title("Metric Volume", "Compare a liter to a milliliter."))
     links, issue = valid.lookup(281, topic, "elementary", "en")
-    assert issue is None and requested == [expected]
-    assert [(link["url"], link["source"]) for link in links] == [(expected, "curated")]
+    assert issue is None and requested == [expected, "https://www.nist.gov/pml/owm/si-units-volume"]
+    assert links[0]["url"] == expected and all(link["source"] == "curated" for link in links)
 
     unrelated = StudyRecommender(Gemini(), reader_with_title("Introduction to Algebra"))
     assert unrelated.lookup(281, topic, "elementary", "en")[0] == []

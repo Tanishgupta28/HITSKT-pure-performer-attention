@@ -65,8 +65,10 @@ def prompt_candidates(candidates, quotas, seed):
     tie = {item.id: _tie(seed, item.id) for item in candidates}
     result = []
     for bucket, pool in _groups(candidates).items():
+        if not quotas[bucket]:
+            continue
         tags = Counter()
-        pool = sorted((item for item in pool if not item.seen), key=lambda item: _priority(item, bucket, tie, tags, Counter()))
+        pool = sorted((item for item in pool if not item.seen), key=lambda item: (item.score if bucket == "weak" else 0, tie[item.id], item.id))
         for item in pool:
             if tags[item.tag]:
                 continue
@@ -93,7 +95,10 @@ def select_paper(candidates, quotas, seed, proposals=(), offered=()):
         id, bucket, reason = (row.get(key) for key in ("bank_question_id", "bucket", "reason"))
         if not isinstance(id, str) or not isinstance(bucket, str) or (id, bucket) not in allowed or id in proposed_ids:
             continue
-        if id in items and (bucket == "broad" or items[id].primary == bucket) and isinstance(reason, str) and reason.strip():
+        if bucket not in preferred or len(preferred[bucket]) >= quotas[bucket]:
+            continue
+        if (id in items and not items[id].seen and (bucket == "broad" or items[id].primary == bucket)
+                and isinstance(reason, str) and reason.strip()):
             preferred[bucket][id] = reason.strip()[:180]
             proposed_ids.add(id)
 

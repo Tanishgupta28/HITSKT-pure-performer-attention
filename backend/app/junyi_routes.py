@@ -17,6 +17,7 @@ from starlette.concurrency import run_in_threadpool
 from app.junyi_bank import digest
 from app.junyi_model import GAP, ModelUnavailable
 from app.junyi_paper import BankShortage, candidates_for, freeze_items, prompt_candidates, select_paper, study_requirements
+from app.junyi_resources import STUDY_RESOURCE_TTL
 
 
 logger = logging.getLogger(__name__)
@@ -414,7 +415,10 @@ def mount_junyi(app, settings, student, auth):
         if not skill:
             raise HTTPException(404, "This skill is unavailable for optional study")
         saved = await instance.optional.find_one({"owner": account, "tag": tag})
-        if saved and saved["resources"]:
+        fresh_after = (datetime.now(timezone.utc) - STUDY_RESOURCE_TTL).isoformat()
+        if saved and saved["resources"] and all(
+            link.get("source") == "curated" and link.get("verified_at", "") > fresh_after for link in saved["resources"]
+        ):
             return {"resources": saved["resources"], "message": saved["message"]}
         async with instance.resource_slots:
             links, message = await run_in_threadpool(instance.runtime.recommender.lookup, tag, skill["topic"], skill["stage"], "en")
