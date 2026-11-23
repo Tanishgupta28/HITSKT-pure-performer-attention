@@ -63,6 +63,8 @@ Study lookup matches the bank topic against a catalogue of approved English math
 
 Optional lookups in Learn recheck links once their recorded verification is six hours old. On the assessment checklist, only pending skills with a verified link block the paper. A skill without a verified link is optional, and the player automatically rechecks unavailable links every two minutes while the assessment page is active. The learner can also retry the lookup immediately. When an eligible link is verified, that skill becomes required for the same unfinished paper and pauses further submissions until it is completed. Saved answers and completed papers are preserved. An authorized operator can still record an audited exemption. The catalogue covers specific topics. Add and independently verify a suitable publisher page to extend it.
 
+Finishing the required study enables the Start test or Resume test button on the checklist. The learner opens the questions with that button. Refreshing the same tab after the test has started restores the current question and draft.
+
 ## What the estimates mean
 
 The backend uses the original HiTSKT collator and forward pass on known model IDs. Each original tag uses up to five distinct training-ranked representative questions from its verified composite skills. The tag estimate averages those probabilities. Initial forecasts use independent BOS probes. Later forecasts can use app correctness via a labelled proxy, where the representative supplies model IDs and the actual answer supplies correctness. The model cannot directly see the custom question text. A missing proxy within a required context surfaces as an unavailable estimate while the real graded answer stays recorded.

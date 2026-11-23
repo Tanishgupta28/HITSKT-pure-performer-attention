@@ -36,6 +36,8 @@ test("assigned learner can skip missing links, unlock, resume and review a paper
   await page.reload();
   await expect(page.getByRole("heading", { name: "Study before your assessment" })).toBeVisible();
   expect(page.url()).toBe(paperUrl);
+  const startTest = page.getByRole("button", { name: "Start test", exact: true });
+  await expect(startTest).toBeDisabled();
   await expect(page.getByRole("button", { name: "Mark complete" }).first()).toBeVisible();
   await expect(page.getByText("Checking study resources…", {exact: true})).toHaveCount(0);
   const available = page.getByRole("button", { name: "Mark complete" });
@@ -43,15 +45,23 @@ test("assigned learner can skip missing links, unlock, resume and review a paper
     await available.first().click();
     await expect(available).toHaveCount(remaining - 1);
   }
-  await expect(page.getByText("Question 1 of 20")).toBeVisible();
+  await expect(startTest).toBeEnabled();
+  await expect(page.getByRole("radiogroup")).toHaveCount(0);
+  await page.getByRole("button", { name: /^Completed \(/ }).click();
+  await expect(page.getByText("Complete", { exact: true }).first()).toBeVisible();
   await page.getByText(/Optional study without verified links/).click();
   const missing = page.locator(".junyi-study-card").filter({ hasText: "This fixture has no verified resource." }).first();
   await expect(missing).toBeVisible();
   await expect(missing.getByText("Optional for now", { exact: true })).toBeVisible();
   await missing.getByRole("button", { name: "Retry resource search" }).click();
   await expect(missing.getByRole("button", { name: "Retry resource search" })).toBeVisible();
-  await expect(page.getByRole("radiogroup")).toBeVisible();
-
+  await expect(startTest).toBeEnabled();
+  await expect(page.getByRole("radiogroup")).toHaveCount(0);
+  await page.reload();
+  await expect(startTest).toBeEnabled();
+  await expect(page.getByRole("radiogroup")).toHaveCount(0);
+  await startTest.click();
+  await expect(page.getByText("Question 1 of 20")).toBeVisible();
   await page.reload();
   await expect(page.getByText("Question 1 of 20")).toBeVisible();
   const prompt = page.getByRole("heading", { level: 1 });
@@ -95,10 +105,12 @@ test("assigned learner can skip missing links, unlock, resume and review a paper
 });
 
 test("a delayed study response cannot roll back the current checklist", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
   const id = "88657e02-d02f-46bf-adef-a157fce332fd";
   const path = `/api/assessments/${id}`;
   const requirements: JunyiRequirement[] = [1, 2, 3].map((tag) => ({
-    tag, topic: `Fixture skill ${tag}`, status: "pending", lookup: "verified", can_retry: false, required: true, message: null,
+    tag, topic: tag === 2 ? "Fixture skill 2 with a longer heading that wraps to a second line" : `Fixture skill ${tag}`,
+    status: "pending", lookup: "verified", can_retry: false, required: true, message: null,
     resources: [{url: `https://example.test/lesson/${tag}`, title: `Fixture lesson ${tag}`, source: "fixture"}],
   }));
   const paper: JunyiPaper = {
@@ -119,6 +131,13 @@ test("a delayed study response cannot roll back the current checklist", async ({
   await page.goto(`${base}/assessment/junyi/${id}`);
   const markComplete = (skill: number) => page.locator(".junyi-study-card").filter({hasText: `Fixture skill ${skill}`})
     .getByRole("button", {name: "Mark complete"});
+  await expect(markComplete(3)).toBeVisible();
+  const [firstButton, secondButton] = await Promise.all([markComplete(1).boundingBox(), markComplete(2).boundingBox()]);
+  expect(firstButton!.x).toBeLessThan(secondButton!.x);
+  expect(firstButton!.y).toBeCloseTo(secondButton!.y);
+  const [firstLink, secondLink] = await Promise.all([1, 2].map((skill) =>
+    page.getByRole("link", {name: new RegExp(`Fixture lesson ${skill}`)}).boundingBox()));
+  expect(firstLink!.y).toBeCloseTo(secondLink!.y);
   await markComplete(1).click();
   await markComplete(2).click();
   await expect(page.getByText("1 skill left to unlock", {exact: true})).toBeVisible();
@@ -127,7 +146,7 @@ test("a delayed study response cannot roll back the current checklist", async ({
   await lateResponse;
   await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
   await expect(page.getByText("1 skill left to unlock", {exact: true})).toBeVisible();
-  await expect(page.getByText("Study already checked off (2)", {exact: true})).toBeVisible();
+  await expect(page.getByRole("button", {name: "Completed (2)", exact: true})).toBeVisible();
   await expect(markComplete(3)).toBeVisible();
 });
 
@@ -155,12 +174,20 @@ test("a newly verified lesson pauses a paper and preserves the answer draft", as
     return route.fulfill({ json: current });
   });
   await page.goto(`${base}/assessment/junyi/${id}`);
+  const resume = page.getByRole("button", { name: "Resume test", exact: true });
+  await expect(resume).toBeEnabled();
+  await expect(page.getByRole("radiogroup")).toHaveCount(0);
+  await resume.click();
   await expect(page.getByText("Question 2 of 20")).toBeVisible();
   await page.getByRole("radio").first().check();
   current = {...paper, revision: 2, status: "locked", question: null, requirements: [verified]};
   await expect(page.getByText("1 skill left to unlock", {exact: true})).toBeVisible();
+  await expect(resume).toBeDisabled();
   await expect(page.getByRole("radiogroup")).toHaveCount(0);
   await page.getByRole("button", {name: "Mark complete"}).click();
+  await expect(resume).toBeEnabled();
+  await expect(page.getByRole("radiogroup")).toHaveCount(0);
+  await resume.click();
   await expect(page.getByText("Question 2 of 20")).toBeVisible();
   await expect(page.getByRole("radio").first()).toBeChecked();
 });
