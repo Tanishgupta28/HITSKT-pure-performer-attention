@@ -64,3 +64,16 @@ All 34 backend tests passed. The real-history tests reused the saved snapshot re
 | Preservation | Both completed paper documents, the existing third paper and its study records matched their originals. Ten study items remained pending, question access returned HTTP 423, and there were zero new submissions. The research source, preprocessing, model adapter, baseline and pinned checkpoint remained unchanged. |
 
 All 37 backend tests passed. After restarting the local backend, Edge showed both completed results, the original-versus-app estimates and the third paper's unchanged checklist. Tests that simulate additional submissions used isolated fixture data. A real run with 60 answers and the subsequent paper is pending learner completion of the third test.
+
+## Phase 6 live third result and new paper
+
+| Check | Evidence |
+| --- | --- |
+| Real result and history | Verified three completed papers, 60 genuine grades and ten required study completions on the third paper. The third paper's report matches the exact 60-answer fingerprint. The authorized local export has 60 results plus a combined history of 179 original and 60 app events. |
+| Unchanged full checkpoint replay | Exact agreement for the 1,326 original-only and 1,326 proxy-inclusive estimates in the saved snapshot. The protected baseline, checkpoint, model and preprocessing were preserved. |
+| Test 4 selection and study | One saved paper with 20 unique, unseen questions. Allocation was 8 weak, 6 unattempted, 4 review and 2 broad. There were 18 valid Gemini selections and 2 rules selections. Verified eight lesson links after retrying three follow-up study lookups. Resume returned the same paper. It remained locked with zero answers. |
+| Frontend changes | Added test numbers, saved evidence counts and a practised-skills filter. Required and optional study use the saved paper's skill tags. Older responses cannot overwrite a newer checklist and verified study pages no longer show a retry action. |
+
+Phase 6 used read-only checks for completed papers and exact checkpoint replay. Creating the next paper and retrying three study lookups used the normal authenticated student endpoints. The verification did not complete any lessons or record any answers on Test 4.
+
+All 37 backend tests, all three isolated Edge tests, frontend type checking and the production build passed. The isolated browser suite covered sign-in, mobile submission through results, and an out-of-order checklist response. The restored local production site passed a separate authenticated Edge run against the real account, including the numbered results, the 60-answer report and the eight available lessons on a 390-pixel viewport. No question options were visible while the study lock was active.

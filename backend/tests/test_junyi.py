@@ -429,6 +429,9 @@ def test_authenticated_assessment_lock_resume_grading_proxy_and_next(settings):
         assert learner.get(f"{url}/question").status_code == 423
         assert learner.post(f"{url}/answers", json={"question_id": "fiction", "choice_id": "fiction", "request_id": str(uuid4())}).status_code == 423
         action_tags = [row["tag"] for row in locked["requirements"]]
+        dashboard = learner.get("/api/junyi/dashboard").json()
+        assert dashboard["active"] == {"id": id, "status": "locked", "sequence": 1, "required_tags": action_tags}
+        assert locked["sequence"] == 1 and locked["answers_used"] is None
         assert sorted(runtime.recommender.calls) == sorted(action_tags)
         assert learner.get(url).json() == locked
         assert sorted(runtime.recommender.calls) == sorted(action_tags)
@@ -438,6 +441,7 @@ def test_authenticated_assessment_lock_resume_grading_proxy_and_next(settings):
 
         assert learner.post(f"/api/admin/junyi/{id}/study/{action_tags[0]}/override", json={"reason": "Fixture override"}).status_code == 403
         assert {requirement["lookup"] for requirement in locked["requirements"]} == {"verified", "unavailable"}
+        assert all(row["can_retry"] == (row["lookup"] == "unavailable") for row in locked["requirements"])
         for requirement in locked["requirements"]:
             tag = requirement["tag"]
             if requirement["resources"]:
@@ -446,6 +450,7 @@ def test_authenticated_assessment_lock_resume_grading_proxy_and_next(settings):
                 response = admin.post(f"/api/admin/junyi/{id}/study/{tag}/override", json={"reason": "Fixture resource missing"})
             assert response.status_code == 200, response.text
         assert learner.get(url).json()["status"] == "open"
+        assert learner.get(url).json()["revision"] > locked["revision"]
         assert any(
             row.get("audit", {}).get("actor") == operator for row in database.junyi_papers.find_one({"_id": id})["requirements"])
 
@@ -468,6 +473,9 @@ def test_authenticated_assessment_lock_resume_grading_proxy_and_next(settings):
                 result = learner.post(f"{url}/answers", json=body)
                 assert result.status_code == 200, result.text
         assert learner.get(url).json()["results"] == {"correct": 10, "total": 20, "accuracy": .5}
+        assert learner.get(url).json()["answers_used"] == 20
+        completed_history = learner.get("/api/junyi/dashboard").json()
+        assert completed_history["answers_used"] == 20 and completed_history["history"][0]["sequence"] == 1
         graded = database.junyi_papers.find_one({"_id": id})
         assert len(graded["responses"]) == 20 and graded["responses"][0]["proxy"]["label"] == "PROXY"
         assert _completed_answers([graded]) == graded["responses"]

@@ -1,4 +1,5 @@
 import { expect, test, type Page } from "@playwright/test";
+import type { JunyiPaper, JunyiRequirement } from "../src/lib/junyi";
 
 const base = process.env.LUMEN_JUNYI_TEST_URL;
 test.skip(!base, "Start the isolated Junyi browser fixture before running this test.");
@@ -36,8 +37,12 @@ test("assigned learner can unlock, resume, submit and review a Junyi paper", asy
   await expect(page.getByRole("heading", { name: "Study before your assessment" })).toBeVisible();
   expect(page.url()).toBe(paperUrl);
   await expect(page.getByRole("button", { name: "Mark complete" }).first()).toBeVisible();
+  await expect(page.getByText("Checking study resources…", {exact: true})).toHaveCount(0);
   const available = page.getByRole("button", { name: "Mark complete" });
-  while (await available.count()) await available.first().click();
+  for (let remaining = await available.count(); remaining > 0; remaining--) {
+    await available.first().click();
+    await expect(available).toHaveCount(remaining - 1);
+  }
   const missing = page.locator(".junyi-study-card").filter({ hasText: "This fixture has no verified resource." }).first();
   await expect(missing).toBeVisible();
   await missing.getByRole("button", { name: "Retry resource search" }).click();
@@ -78,6 +83,46 @@ test("assigned learner can unlock, resume, submit and review a Junyi paper", asy
   await expect(page.getByRole("heading", { name: "Assessment complete" })).toBeVisible();
   await expect(page.getByText("Actual paper score")).toBeVisible();
   await expect(page.getByRole("heading", { name: "Skill estimates after this paper" })).toBeVisible();
+  await expect(page.getByTestId("junyi-evidence-count")).toContainText("20 saved Lumen assessment answers");
+  await page.getByLabel("Skill status").selectOption("lumen");
+  await expect(page.getByText(/^Lumen \d+\/\d+$/).first()).toBeVisible();
   await page.getByRole("button", { name: "Start next assessment" }).click();
   await expect(page).not.toHaveURL(paperUrl);
+});
+
+test("a delayed study response cannot roll back the current checklist", async ({ page }) => {
+  const id = "88657e02-d02f-46bf-adef-a157fce332fd";
+  const path = `/api/assessments/${id}`;
+  const requirements: JunyiRequirement[] = [1, 2, 3].map((tag) => ({
+    tag, topic: `Fixture skill ${tag}`, status: "pending", lookup: "verified", can_retry: false, message: null,
+    resources: [{url: `https://example.test/lesson/${tag}`, title: `Fixture lesson ${tag}`, source: "fixture"}],
+  }));
+  const paper: JunyiPaper = {
+    id, sequence: 2, revision: 1, status: "locked", stage: "junior", total: 20, answered: 0, message: null,
+    requirements, question: null, results: null, analysis_status: null, analysis_retry: false, answers_used: null, skills: [], can_retry: false,
+  };
+  const snapshot = (revision: number, completed: number): JunyiPaper => ({
+    ...paper, revision, requirements: requirements.map((item) => item.tag <= completed ? {...item, status: "satisfied"} : item),
+  });
+  let releaseOlder = () => {};
+  const older = new Promise<void>((resolve) => { releaseOlder = resolve; });
+  await page.route(`**${path}`, (route) => route.fulfill({ json: paper }));
+  await page.route(`**${path}/study/1/complete`, async (route) => {
+    await older;
+    await route.fulfill({ json: snapshot(2, 1) });
+  });
+  await page.route(`**${path}/study/2/complete`, (route) => route.fulfill({ json: snapshot(3, 2) }));
+  await page.goto(`${base}/assessment/junyi/${id}`);
+  const markComplete = (skill: number) => page.locator(".junyi-study-card").filter({hasText: `Fixture skill ${skill}`})
+    .getByRole("button", {name: "Mark complete"});
+  await markComplete(1).click();
+  await markComplete(2).click();
+  await expect(page.getByText("1 skill left to unlock", {exact: true})).toBeVisible();
+  const lateResponse = page.waitForResponse((response) => response.url().endsWith("/study/1/complete"));
+  releaseOlder();
+  await lateResponse;
+  await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
+  await expect(page.getByText("1 skill left to unlock", {exact: true})).toBeVisible();
+  await expect(page.getByText("Study already checked off (2)", {exact: true})).toBeVisible();
+  await expect(markComplete(3)).toBeVisible();
 });

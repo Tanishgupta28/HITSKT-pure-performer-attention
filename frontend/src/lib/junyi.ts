@@ -29,6 +29,8 @@ type Result = { correct: number; total: number; accuracy: number };
 
 export type JunyiPaper = {
   id: string;
+  sequence: number;
+  revision: number;
   status: PaperStatus;
   stage: string | null;
   total: number;
@@ -39,6 +41,7 @@ export type JunyiPaper = {
   results: Result | null;
   analysis_status: "pending" | "ready" | "unavailable" | null;
   analysis_retry: boolean;
+  answers_used: number | null;
   skills: JunyiSkill[];
   can_retry: boolean;
 };
@@ -48,8 +51,9 @@ export type JunyiAssigned = {
   ready: boolean;
   issues: string[];
   stage: string | null;
-  active: Pick<JunyiPaper, "id" | "status"> | null;
-  history: (Result & { id: string; completed_at: number; stage: string | null })[];
+  active: (Pick<JunyiPaper, "id" | "status" | "sequence"> & { required_tags: number[] }) | null;
+  history: (Result & { id: string; sequence: number; completed_at: number; stage: string | null })[];
+  answers_used: number | null;
   skills: JunyiSkill[];
 };
 

@@ -160,6 +160,13 @@ _CURATED_SKILL_LESSONS = (
      "https://math.libretexts.org/Courses/Las_Positas_College/Foundational_Mathematics/02%3A_Integers/2.09%3A_Square_Roots",
      "square root fractions decimals"),
     (r"\b(?:solution of quadratic equations?|solving quadratic equations?)\b", "https://www.mathsisfun.com/algebra/quadratic-equation.html", "quadratic equation"),
+    (r"\bparallel line section ratio\b",
+     "https://k12.libretexts.org/Bookshelves/Mathematics/Geometry/07%3A_Similarity/7.10%3A_Proportional_Triangles",
+     "proportional triangles parallel segments"),
+    (r"\b(?:relationship between triangle side lengths|triangle inequality)\b",
+     "https://www.mathsisfun.com/geometry/triangle-inequality-theorem.html", "triangle inequality side length"),
+    (r"\bjudg(?:e?ment|ing) of similar triangles\b",
+     "https://www.mathsisfun.com/geometry/triangles-similar-finding.html", "similar triangles criteria"),
 )
 
 
@@ -288,8 +295,9 @@ class StudyRecommender:
             # The curated match and the page's terminology can differ, for example liters and metric volume.
             candidates.extend((url, lesson_topic) for pattern, url, lesson_topic in _CURATED_SKILL_LESSONS
                               if re.search(pattern, topic, re.I))
-            candidates.extend((f"https://www.mathsisfun.com/{path}", topic) for pattern, path in _CURATED
-                              if re.search(pattern, topic, re.I))
+            if not candidates:
+                candidates.extend((f"https://www.mathsisfun.com/{path}", topic) for pattern, path in _CURATED
+                                  if re.search(pattern, topic, re.I))
         results, seen = [], set()
         for url, verification_topic in dict.fromkeys(candidates):
             try:

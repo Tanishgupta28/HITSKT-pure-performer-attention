@@ -10,6 +10,8 @@
 .junyi-player-body { width: min(100% - 2rem, 69rem); margin: clamp(1.25rem, 5vw, 3rem) auto; }
 .junyi-player-body > * + * { margin-top: 1.25rem; }
 .junyi-study-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); }
+.junyi-completed-study > summary { cursor: pointer; font-weight: 650; padding-block: .45rem; }
+.junyi-completed-study[open] > summary { margin-bottom: 1rem; }
 .junyi-source { display: inline-flex; gap: .4rem; align-items: center; min-height: 2.75rem; overflow-wrap: anywhere; }
 .junyi-source svg { flex: none; }
 .junyi-study-link { padding-block: .75rem; border-bottom: 1px solid #e3ebe2; }
@@ -29,6 +31,7 @@
 .junyi-question form > .p-notice { margin-top: 1rem; }
 .junyi-result > strong { display: block; margin-block: .55rem; font-family: var(--font-heading), sans-serif; font-size: clamp(2.2rem, 6vw, 3.4rem); }
 @media (max-width: 540px) {
+  .junyi-latest { flex-wrap: wrap; }
   .junyi-question-footer, .junyi-study-link { flex-wrap: wrap; }
   .junyi-choice { min-height: 3.5rem; }
   .junyi-question-meta { font-size: .86rem; gap: .65rem; }

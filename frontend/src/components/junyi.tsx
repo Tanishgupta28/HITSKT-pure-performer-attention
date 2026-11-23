@@ -25,23 +25,24 @@ function SkillStatus({ skill }: { skill: JunyiSkill }) {
   return <Badge tone="neutral">Intermediate</Badge>;
 }
 
-function SkillTable({ skills, comparison = false }: { skills: JunyiSkill[]; comparison?: boolean }) {
+function SkillTable({ skills, answersUsed, comparison = false }: { skills: JunyiSkill[]; answersUsed: number | null; comparison?: boolean }) {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("all");
   const [page, setPage] = useState(0);
   const filtered = skills.filter((skill) => skill.topic.toLowerCase().includes(query.trim().toLowerCase()) &&
     (category === "all" || category === "unattempted" && skill.unattempted || category === "unavailable" && skill.score == null ||
-     category === "weak" && skill.category === "weak" && !skill.unattempted));
+     category === "lumen" && skill.app_attempts > 0 || category === "weak" && skill.category === "weak" && !skill.unattempted));
   const visible = filtered.slice(page * 12, page * 12 + 12);
   return (
     <Panel title={comparison ? "Skill estimates after this paper" : "Skill report"} className="junyi-skill-panel">
-      <p className="p-muted">Observed accuracy comes from recorded answers. HiTSKT estimates use representative Junyi questions. The thresholds are used for this prototype.</p>
+      {answersUsed != null && <p className="p-muted" data-testid="junyi-evidence-count">{answersUsed} saved Lumen assessment {answersUsed === 1 ? "answer" : "answers"} included in this report.</p>}
+      <p className="p-muted">Observed accuracy is correct answers divided by recorded attempts for a skill. HiTSKT estimates the chance of a correct answer on representative Junyi questions.</p>
       {comparison && <p className="p-muted">“With Lumen answers” uses the actual outcome of each eligible answer and the ID of a representative Junyi question for its skill.</p>}
       <div className="p-toolbar">
         <Field label="Find a skill"><input value={query} onChange={(e) => { setQuery(e.target.value); setPage(0); }} /></Field>
         <Field label="Skill status">
           <select value={category} onChange={(e) => { setCategory(e.target.value); setPage(0); }}>
-            <option value="all">All skills</option><option value="weak">Weak</option>
+            <option value="all">All skills</option><option value="lumen">Practised in Lumen</option><option value="weak">Weak</option>
             <option value="unattempted">Unattempted</option><option value="unavailable">Unavailable</option>
           </select>
         </Field>
@@ -93,17 +94,20 @@ function OptionalStudy({ skill }: { skill: JunyiSkill }) {
 
 export function JunyiLearn({ dashboard }: { dashboard: JunyiAssigned }) {
   const [query, setQuery] = useState("");
-  const needsStudy = dashboard.skills.filter((row) => row.category === "weak" && !row.unattempted && row.topic.toLowerCase().includes(query.trim().toLowerCase()));
+  const lockedPaper = dashboard.active?.status === "locked" ? dashboard.active : null;
+  const required = new Set(lockedPaper?.required_tags);
+  const optional = dashboard.skills.filter((row) => row.category === "weak" && !row.unattempted && !required.has(row.tag));
+  const needsStudy = optional.filter((row) => row.topic.toLowerCase().includes(query.trim().toLowerCase()));
   return <section className="junyi-section">
     <Heading title="Study recommendations" subtitle="Open a resource for a skill you want to strengthen." />
-    {dashboard.active?.status === "locked" && <Notice title="Your paper has required study">
-      <Button href={paperUrl(dashboard.active.id)} variant="secondary">Open study checklist</Button>
+    {lockedPaper && <Notice title={`Required study for Test ${lockedPaper.sequence}`}>
+      <Button href={paperUrl(lockedPaper.id)} variant="secondary">Open study checklist</Button>
     </Notice>}
-    {dashboard.skills.some((row) => row.category === "weak" && !row.unattempted) && <div className="p-toolbar">
+    {optional.length > 0 && <div className="p-toolbar">
       <Field label="Find a recommended skill"><input value={query} onChange={(e) => setQuery(e.target.value)} /></Field>
     </div>}
     {needsStudy.length ? <div className="p-learning-grid">{needsStudy.slice(0, 9).map((skill) => <OptionalStudy key={skill.tag} skill={skill} />)}</div> :
-      <p className="p-muted">{query ? "No recommendations match this search." : "Skill recommendations appear after your assessment profile is ready."}</p>}
+      <p className="p-muted">{query ? "No recommendations match this search." : dashboard.skills.length ? "No optional skills to study right now." : "Study recommendations appear after your assessment profile is ready."}</p>}
     {needsStudy.length > 9 && <p className="p-muted">Showing 9 of {needsStudy.length} skills. Search to find another topic.</p>}
   </section>;
 }
@@ -119,30 +123,41 @@ export function JunyiWorkspace({ dashboard, name, tab }: { dashboard: JunyiAssig
     <Heading title="Learning report" subtitle="Review your paper results and the evidence behind your skill estimates." />
     {dashboard.history.length ? <Panel title="Completed assessments"><div className="junyi-table-scroll">
       <Table headers={["Assessment", "School stage", "Score", "Date"]} rows={dashboard.history.map((row) => [
-        <Button key="paper" variant="link" href={paperUrl(row.id)}>View results <ArrowRight size={15} aria-hidden /></Button>,
+        <Button key="paper" variant="link" href={paperUrl(row.id)}>Test {row.sequence} results <ArrowRight size={15} aria-hidden /></Button>,
         stageName(row.stage), `${row.correct} / ${row.total} (${percent(row.accuracy)})`, when(new Date(row.completed_at).toISOString()),
       ])} />
     </div></Panel> : <Empty title="No completed assessments">Your first completed paper will appear here.</Empty>}
-    {dashboard.skills.length > 0 && <SkillTable skills={dashboard.skills} />}
+    {dashboard.skills.length > 0 && <SkillTable skills={dashboard.skills} answersUsed={dashboard.answers_used} />}
   </>;
   const active = dashboard.active;
-  const nextLabel = active?.status === "locked" ? "Study required skills" : active ? "Resume assessment" : dashboard.history.length ? "Start next assessment" : "Start adaptive assessment";
+  let nextLabel = dashboard.history.length ? "Start next assessment" : "Start adaptive assessment";
+  let nextDescription = "Get a paper matched to your current skill profile.";
+  if (active?.status === "locked") {
+    nextLabel = `Study for Test ${active.sequence}`;
+    nextDescription = "Complete the study checklist to open your saved paper.";
+  } else if (active?.status === "preparing") {
+    nextLabel = `View Test ${active.sequence} preparation`;
+    nextDescription = "Lumen is preparing your next paper from your saved answers.";
+  } else if (active) {
+    nextLabel = `Resume Test ${active.sequence}`;
+    nextDescription = "Your latest assessment is ready to resume.";
+  }
   return <>
     <Heading title={`Welcome, ${name.split(" ")[0]}`} subtitle="Junyi mathematics" />
     <section className="p-hero-action junyi-hero">
       <div>
         <Badge>{stageName(dashboard.stage)} · 20 questions</Badge>
         <h2>Junyi Adaptive Assessment</h2>
-        <p>{active?.status === "locked" ? "Complete the study checklist to open your saved paper." : active ? "Your latest assessment is ready to resume." : "Get a paper matched to your current skill profile."}</p>
+        <p>{nextDescription}</p>
       </div>
       {active ? <Button variant="light" href={paperUrl(active.id)}>{nextLabel} <ArrowRight size={17} aria-hidden /></Button> :
         <Button variant="light" onClick={start} disabled={!dashboard.ready || action.busy}>{action.busy ? "Starting…" : nextLabel} <ArrowRight size={17} aria-hidden /></Button>}
     </section>
     <ActionStatus a={action} />
     {!dashboard.ready && <Notice title="Assessment setup is incomplete">{dashboard.issues.join(" ")}</Notice>}
-    {dashboard.history[0] && <Panel title="Latest result" className="junyi-latest">
+    {dashboard.history[0] && <Panel title={`Latest result · Test ${dashboard.history[0].sequence}`} className="junyi-latest">
       <strong>{dashboard.history[0].correct} / {dashboard.history[0].total} correct</strong>
-      <Button variant="secondary" href={paperUrl(dashboard.history[0].id)}>View results</Button>
+      <Button variant="secondary" href={paperUrl(dashboard.history[0].id)}>Test {dashboard.history[0].sequence} results</Button>
     </Panel>}
   </>;
 }
@@ -153,11 +168,10 @@ function StudyCard({ requirement, paperId, saved }: { requirement: JunyiRequirem
   async function update(endpoint: string, data?: unknown) {
     const next = await action.run(() => send<JunyiPaper>(`${path}/${endpoint}`, data));
     if (next) {
-      if (endpoint === "retry") {
-        next.requirements = next.requirements.map((row) => row.tag === requirement.tag && row.status === "pending"
-          ? { ...row, lookup: "loading", can_retry: false, message: null } : row);
-      }
-      saved(next);
+      saved(endpoint === "retry" ? {
+        ...next, requirements: next.requirements.map((row) => row.tag === requirement.tag && row.can_retry
+          ? { ...row, lookup: "loading", can_retry: false, message: null } : row),
+      } : next);
     }
   }
   return <Panel title={requirement.topic} className="junyi-study-card">
@@ -246,14 +260,18 @@ export function JunyiPlayer({ id }: { id: string }) {
   const [signedOut, setSignedOut] = useState(false);
   const action = useAction();
   const path = `/assessments/${encodeURIComponent(id)}`;
+  const acceptPaper = useCallback((next: JunyiPaper) => {
+    if (next.id !== id) return;
+    setPaper((current) => current?.id === next.id && current.revision > next.revision ? current : next);
+  }, [id]);
   const refresh = useCallback(async (signal?: AbortSignal) => {
     try {
       const data = await api<JunyiPaper>(path, { signal });
-      if (!signal?.aborted) { setPaper(data); setError(""); }
+      if (!signal?.aborted) { acceptPaper(data); setError(""); setSignedOut(false); }
     } catch (failure) {
       if (!signal?.aborted) { setError((failure as Error).message); setSignedOut(failure instanceof AuthError); }
     }
-  }, [path]);
+  }, [acceptPaper, path]);
   useEffect(() => {
     const controller = new AbortController();
     void refresh(controller.signal);
@@ -264,8 +282,15 @@ export function JunyiPlayer({ id }: { id: string }) {
   useEffect(() => {
     if (!checking || signedOut) return;
     const controller = new AbortController();
-    const timer = window.setInterval(() => void refresh(controller.signal), 2500);
-    return () => { window.clearInterval(timer); controller.abort(); };
+    let timer: number;
+    const schedule = () => {
+      timer = window.setTimeout(async () => {
+        await refresh(controller.signal);
+        if (!controller.signal.aborted) schedule();
+      }, 2500);
+    };
+    schedule();
+    return () => { window.clearTimeout(timer); controller.abort(); };
   }, [checking, refresh, signedOut]);
 
   async function start() {
@@ -275,10 +300,12 @@ export function JunyiPlayer({ id }: { id: string }) {
   }
   async function retryAnalysis() {
     const updated = await action.run(() => send<JunyiPaper>(`${path}/analysis`));
-    if (updated) setPaper(updated.analysis_status === "ready" ? updated : { ...updated, analysis_status: "pending", analysis_retry: false });
+    if (updated) acceptPaper(updated.analysis_status === "ready" ? updated : { ...updated, analysis_status: "pending", analysis_retry: false });
   }
+  const pendingStudy = paper?.requirements.filter((row) => row.status === "pending") ?? [];
+  const completedStudy = paper?.requirements.filter((row) => row.status !== "pending") ?? [];
   return <div className="junyi-player">
-    <header className="junyi-player-header"><Brand /><Button variant="secondary" href="/?view=today">Save & leave</Button></header>
+    <header className="junyi-player-header"><Brand /><Button variant="secondary" href={paper?.status === "completed" ? "/?view=progress" : "/?view=today"}>{paper?.status === "completed" ? "Learning report" : "Save & leave"}</Button></header>
     <main className="junyi-player-body">
       <ActionStatus a={action} />
       {error && <Notice title={signedOut ? "Sign in to resume" : "Couldn’t refresh this assessment"} tone="error">{error}{" "}
@@ -294,12 +321,16 @@ export function JunyiPlayer({ id }: { id: string }) {
         action={<Button href="/?view=today">Back to Today</Button>}>{paper.message}</Empty>}
       {paper?.status === "locked" && <>
         <Heading title="Study before your assessment" subtitle="Mark one verified resource complete for each required skill to unlock your saved paper." />
-        <Notice title={`${paper.requirements.filter((row) => row.status === "pending").length} skills left to unlock`}><LockKeyhole size={16} aria-hidden /> Your questions are ready when the checklist is complete.</Notice>
-        <div className="p-learning-grid junyi-study-grid">{paper.requirements.map((row) => <StudyCard key={row.tag} requirement={row} paperId={id} saved={setPaper} />)}</div>
+        <Notice title={`${pendingStudy.length} ${pendingStudy.length === 1 ? "skill" : "skills"} left to unlock`}><LockKeyhole size={16} aria-hidden /> Test {paper.sequence} opens after all required study is complete.</Notice>
+        <div className="p-learning-grid junyi-study-grid">{pendingStudy.map((row) => <StudyCard key={row.tag} requirement={row} paperId={id} saved={acceptPaper} />)}</div>
+        {completedStudy.length > 0 && <details className="p-panel junyi-completed-study">
+          <summary>Study already checked off ({completedStudy.length})</summary>
+          <div className="p-learning-grid junyi-study-grid">{completedStudy.map((row) => <StudyCard key={row.tag} requirement={row} paperId={id} saved={acceptPaper} />)}</div>
+        </details>}
       </>}
-      {paper?.status === "open" && paper.question && <QuestionCard key={paper.question.id} paper={paper} saved={setPaper} reload={() => refresh()} />}
+      {paper?.status === "open" && paper.question && <QuestionCard key={paper.question.id} paper={paper} saved={acceptPaper} reload={() => refresh()} />}
       {paper?.status === "completed" && paper.results && <>
-        <Heading title="Assessment complete" subtitle="Your result is saved." />
+        <Heading title="Assessment complete" subtitle={`Test ${paper.sequence} result saved.`} />
         <Panel className="junyi-result">
           <Badge><Check size={16} aria-hidden /> Actual paper score</Badge>
           <strong>{paper.results.correct} / {paper.results.total}</strong>
@@ -309,7 +340,7 @@ export function JunyiPlayer({ id }: { id: string }) {
         {paper.analysis_status === "pending" && <Loading text="Updating your skill estimates…" />}
         {paper.analysis_status === "unavailable" && <Notice title="Updated skill estimates are unavailable">Your assessment result is saved.</Notice>}
         {paper.analysis_retry && paper.analysis_status !== "ready" && <Button variant="secondary" disabled={action.busy} onClick={retryAnalysis}>Retry skill analysis</Button>}
-        {paper.skills.length > 0 && <SkillTable skills={paper.skills} comparison />}
+        {paper.skills.length > 0 && <SkillTable skills={paper.skills} answersUsed={paper.answers_used} comparison />}
       </>}
     </main>
   </div>;

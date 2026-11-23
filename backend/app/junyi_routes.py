@@ -62,7 +62,8 @@ def _public_skills(snapshot):
 def _requirement_view(requirement):
     view = {key: requirement[key] for key in ("tag", "topic", "status", "lookup", "resources", "message") if key in requirement}
     view["can_retry"] = requirement["status"] == "pending" and (
-        requirement["lookup"] in {"waiting", "unavailable"} or requirement.get("lease_until", 0) <= _now())
+        requirement["lookup"] in {"waiting", "unavailable"}
+        or (requirement["lookup"] == "loading" and requirement.get("lease_until", 0) <= _now()))
     return view
 
 
@@ -73,13 +74,16 @@ def _question(paper):
 
 def _view(paper, *, operator=False):
     done = paper["status"] == "completed"
-    return {"id": paper["_id"], "status": paper["status"], "stage": paper["stage"], "total": paper["total"],
+    result_snapshot = paper.get("result_snapshot") if done else None
+    return {"id": paper["_id"], "sequence": paper["sequence"], "revision": paper["version"],
+            "status": paper["status"], "stage": paper["stage"], "total": paper["total"],
             "answered": len(paper["responses"]), "requirements": list(map(_requirement_view, paper["requirements"])),
             "message": paper.get("message"), "created_at": paper["created_at"],
             "question": _question(paper) if paper["status"] == "open" and not operator else None,
             "results": paper.get("results") if done else None, "analysis_status": paper.get("analysis_status") if done else None,
-            "analysis_retry": done and paper.get("analysis_lease_until", 0) <= _now(),
-            "skills": _public_skills(paper.get("result_snapshot")) if done and not operator else [],
+            "analysis_retry": done and paper.get("analysis_status") in {"pending", "unavailable"} and paper.get("analysis_lease_until", 0) <= _now(),
+            "answers_used": result_snapshot["app_responses"] if result_snapshot and not operator else None,
+            "skills": _public_skills(result_snapshot) if not operator else [],
             "can_retry": paper["status"] == "preparing" and paper.get("generation_lease_until", 0) <= _now()}
 
 
@@ -338,15 +342,18 @@ class JunyiService:
         await self.papers.update_one(match, {"$set": {**changes, "analysis_lease_until": 0}, "$inc": {"version": 1}})
 
     async def dashboard(self, owner):
-        active = await self.papers.find_one({"owner": owner, "active": True}, {"_id": 1, "status": 1, "snapshot": 1})
-        complete = await self.papers.find({"owner": owner, "status": "completed"}, {"results": 1, "completed_at": 1, "stage": 1})\
+        active = await self.papers.find_one({"owner": owner, "active": True}, {"sequence": 1, "status": 1, "snapshot": 1, "requirements.tag": 1})
+        complete = await self.papers.find({"owner": owner, "status": "completed"}, {"results": 1, "completed_at": 1, "stage": 1, "sequence": 1})\
             .sort("sequence", DESCENDING).limit(12).to_list(12)
         latest = await self.papers.find_one({"owner": owner, "status": "completed", "result_snapshot": {"$exists": True}},
                                            {"result_snapshot": 1}, sort=[("sequence", DESCENDING)])
         snapshot = (active or {}).get("snapshot") or (latest or {}).get("result_snapshot")
         return {"assigned": True, "ready": self.runtime.ready, "issues": self.runtime.issues, "stage": self.stage,
-                "active": {"id": active["_id"], "status": active["status"]} if active else None,
-                "history": [{"id": paper["_id"], "completed_at": paper["completed_at"], "stage": paper["stage"], **paper["results"]} for paper in complete],
+                "active": {"id": active["_id"], "status": active["status"], "sequence": active["sequence"],
+                           "required_tags": [row["tag"] for row in active["requirements"]]} if active else None,
+                "history": [{"id": paper["_id"], "sequence": paper["sequence"], "completed_at": paper["completed_at"],
+                             "stage": paper["stage"], **paper["results"]} for paper in complete],
+                "answers_used": snapshot["app_responses"] if snapshot else None,
                 "skills": _public_skills(snapshot)}
 
 
