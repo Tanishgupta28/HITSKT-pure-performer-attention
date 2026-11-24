@@ -1,0 +1,125 @@
+"""Render historical trainable parameter counts from the completed benchmark."""
+
+import argparse
+import csv
+import io
+import json
+from pathlib import Path
+
+import matplotlib
+
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+from matplotlib.ticker import FuncFormatter, MaxNLocator
+
+
+HERE = Path(__file__).resolve().parent
+ROOT = HERE.parent
+DATASETS = {"assist2017": "ASSIST2017", "junyi": "Junyi", "ednet_kt1": "EdNet-KT1"}
+MODELS = ("DKT", "DKVMN", "SAKT", "RKT", "HiTSKT")
+BAR_BLUE = "#5186B6"
+HITSKT_BLUE = "#164775"
+
+
+def validated_counts():
+    counts = {dataset: {} for dataset in DATASETS}
+    index = ROOT / "reports" / "final_results.csv"
+    with index.open(encoding="utf-8-sig", newline="") as stream:
+        reader = csv.DictReader(stream)
+        fields = reader.fieldnames or []
+        required = {"model", "dataset", "experiment_directory", "trainable_parameters"}
+        if not required.issubset(fields) or len(fields) != len(set(fields)):
+            raise ValueError(f"{index}: missing or duplicate column names")
+        for row in reader:
+            model, dataset = row["model"], row["dataset"]
+            if dataset not in DATASETS or model not in MODELS:
+                continue
+            folder = Path("experiments", model.lower(), dataset, "full")
+            if row["experiment_directory"] != folder.as_posix() or model in counts[dataset]:
+                raise ValueError(f"{index}: unexpected path or duplicate run for {model}/{dataset}")
+            raw = row["trainable_parameters"]
+            if not raw or not raw.isascii() or not raw.isdecimal() or int(raw) < 1:
+                raise ValueError(f"{index}:{reader.line_num}: invalid parameter count {raw!r}")
+            count = int(raw)
+            for filename in ("config.json", "final_results.json"):
+                path = ROOT / folder / filename
+                run = json.loads(path.read_text(encoding="utf-8"))
+                if (run.get("model"), run.get("dataset")) != (model, dataset):
+                    raise ValueError(f"{path}: run identity differs from index")
+                checked = run.get("trainable_parameters")
+                if type(checked) is not int or checked != count:
+                    raise ValueError(f"{path}: trainable_parameters {checked!r} differs from {raw}")
+                if filename == "final_results.json" and run.get("status") != "complete":
+                    raise ValueError(f"{path}: indexed run is incomplete")
+            counts[dataset][model] = count
+    for dataset, values in counts.items():
+        expected = set(MODELS)
+        if dataset == "ednet_kt1":
+            expected.remove("DKT")
+        if set(values) != expected:
+            raise ValueError(f"{index}: unexpected model coverage for {dataset}: {sorted(values)}")
+    return counts
+
+
+def count_label(count):
+    if count >= 1_000_000:
+        return f"{count / 1_000_000:.2f}M ({count:,})"
+    if count >= 1_000:
+        return f"{count / 1_000:.2f}K ({count:,})"
+    return f"{count:,}"
+
+
+def make_figure(dataset, counts, axis_max):
+    ordered = sorted(counts, key=counts.get, reverse=True)
+    values = [counts[model] for model in ordered]
+    fig, ax = plt.subplots(figsize=(9.2, 4.6), dpi=320, facecolor="white")
+    fig.subplots_adjust(left=0.15, right=0.975, bottom=0.19, top=0.85)
+    ax.set_title(f"Model Parameter Comparison — {DATASETS[dataset]}", loc="left",
+                 fontsize=17, weight="semibold", color="#1F3042", pad=16)
+    colors = [HITSKT_BLUE if model == "HiTSKT" else BAR_BLUE for model in ordered]
+    bars = ax.barh(ordered, values, height=0.52, color=colors)
+    ax.invert_yaxis()
+    ax.bar_label(bars, labels=[count_label(n) for n in values], padding=5,
+                 fontsize=10, color="#213348")
+    ax.set_xlim(0, axis_max)
+    ax.xaxis.set_major_locator(MaxNLocator(nbins=6, steps=[1, 2, 5, 10], integer=True))
+    ax.xaxis.set_major_formatter(FuncFormatter(lambda x, _: "0" if x == 0 else f"{x / 1e6:g}M"))
+    ax.set_xlabel("Number of Trainable Parameters", fontsize=11, labelpad=8)
+    ax.set_ylabel("Model Name", fontsize=11, labelpad=10)
+    ax.set_axisbelow(True)
+    ax.grid(axis="x", color="#DFE5EA", linewidth=0.7)
+    ax.spines[["right", "top"]].set_visible(False)
+    ax.spines[["left", "bottom"]].set_color("#A6B1BB")
+    ax.tick_params(axis="y", length=0, pad=7, labelsize=11)
+    ax.tick_params(axis="x", color="#A6B1BB", labelsize=10)
+    return fig
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output-dir", type=Path, default=HERE)
+    output = parser.parse_args().output_dir
+    counts = validated_counts()
+    # Use one linear scale for all datasets and reserve space for exact labels.
+    axis_max = max(max(values.values()) for values in counts.values()) * 1.32
+    images = {}
+    with plt.style.context("default"):
+        for dataset, values in counts.items():
+            fig = make_figure(dataset, values, axis_max)
+            buffer = io.BytesIO()
+            fig.savefig(buffer, format="png", dpi=320, facecolor="white")
+            plt.close(fig)
+            images[output / f"{dataset}_parameter_comparison.png"] = buffer.getvalue()
+    output.mkdir(parents=True, exist_ok=True)
+    for path, content in images.items():
+        if path.exists() and path.read_bytes() != content:
+            raise FileExistsError(f"{path} differs. Use --output-dir with a fresh directory.")
+    for path, content in images.items():
+        if not path.exists():
+            with path.open("xb") as stream:
+                stream.write(content)
+    print(f"Validated {sum(map(len, counts.values()))} counts. Three PNGs available in {output}.")
+
+
+if __name__ == "__main__":
+    main()
