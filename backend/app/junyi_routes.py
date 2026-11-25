@@ -16,8 +16,9 @@ from starlette.concurrency import run_in_threadpool
 
 from app.junyi_bank import digest
 from app.junyi_model import GAP, ModelUnavailable
-from app.junyi_paper import BankShortage, candidates_for, freeze_items, prompt_candidates, select_paper, study_requirements
+from app.junyi_paper import BankShortage, candidates_for, freeze_items, prompt_candidates, select_paper
 from app.junyi_resources import STUDY_RESOURCE_TTL
+from app.junyi_study_policy import FOREST_POLICY, rule_checklist
 
 
 logger = logging.getLogger(__name__)
@@ -226,13 +227,19 @@ class JunyiService:
             suggestions = await run_in_threadpool(self.runtime.gemini.choose, proposed, quotas)
             chosen, allocation = select_paper(draft, quotas, paper["seed"], suggestions, proposed)
             items = freeze_items(self.runtime.bank, chosen, paper["seed"])
-            requirements = study_requirements(items, snapshot)
+            if self.runtime.study_policy is None:
+                requirements, checklist_audit = rule_checklist(items, snapshot, self.runtime.study_policy_issue)
+            else:
+                requirements, checklist_audit = await run_in_threadpool(
+                    self.runtime.study_policy.requirements, self.runtime, answers, as_of, items, snapshot,
+                )
             for requirement in requirements:
                 tag = requirement["tag"]
                 requirement.update(topic=self.runtime.bank.topics[tag], stage=self.runtime.bank.stages[tag])
             result = await self.papers.update_one(match, {"$set": {
                 "status": "open", "snapshot": snapshot, "bank_version": self.runtime.bank.version,
-                "items": items, "requirements": requirements, "allocation": allocation, "quotas": quotas, "allow_reuse": allow_reuse,
+                "items": items, "requirements": requirements, "checklist_audit": checklist_audit,
+                "allocation": allocation, "quotas": quotas, "allow_reuse": allow_reuse,
             }, "$inc": {"version": 1}})
             if result.modified_count and requirements:
                 await asyncio.gather(*(self.lookup(id, owner, requirement["tag"]) for requirement in requirements))
@@ -508,6 +515,8 @@ def mount_junyi(app, settings, student, auth):
         papers = await instance.papers.find({"active": True, "owner": settings.junyi_student_account_id}).sort("sequence", DESCENDING).limit(5).to_list(5)
         return {"ready": instance.runtime.ready, "issues": instance.runtime.issues,
                 "bank_questions": len(instance.runtime.bank.items) if instance.runtime.bank else 0,
+                "study_policy": {"name": FOREST_POLICY if instance.runtime.study_policy else "original_rule",
+                                 "issue": instance.runtime.study_policy_issue},
                 "active": [_view(paper, operator=True) for paper in papers]}
 
     @app.post("/api/admin/junyi/{id}/study/{tag}/override")

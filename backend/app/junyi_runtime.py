@@ -1,5 +1,6 @@
 """Server configuration and availability for the single-learner Junyi prototype."""
 
+import logging
 from dataclasses import dataclass, field
 
 from app.config import ROOT
@@ -7,6 +8,10 @@ from app.junyi_bank import STAGES, JunyiBank, JunyiMappings, load_bank, load_map
 from app.junyi_model import OriginalHiTSKT, SkillEstimator, read_baseline
 from app.junyi_paper import BUCKETS
 from app.junyi_resources import Gemini, StudyRecommender
+from app.junyi_study_policy import FOREST_POLICY, PaperRecommender
+
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass
@@ -18,6 +23,8 @@ class JunyiRuntime:
     recommender: StudyRecommender
     quotas: dict[str, int]
     issues: list[str] = field(default_factory=list)
+    study_policy: PaperRecommender | None = None
+    study_policy_issue: str | None = None
 
     @property
     def ready(self):
@@ -56,4 +63,13 @@ class JunyiRuntime:
             runtime.issues.append("Install the model-serving dependencies to enable Junyi inference.")
         except (OSError, ValueError, KeyError, TypeError, RuntimeError):
             runtime.issues.append("The supplied Junyi checkpoint or approved history did not pass verification.")
+        if runtime.ready and settings.junyi_study_forest_file:
+            try:
+                runtime.study_policy = PaperRecommender.load(
+                    settings.junyi_study_forest_file, settings.junyi_ranking_file, runtime.mappings,
+                )
+                logger.info("Loaded Junyi study policy %s", FOREST_POLICY)
+            except (ImportError, OSError, ValueError, KeyError, TypeError, RuntimeError, EOFError) as exc:
+                runtime.study_policy_issue = "study_forest_load_failed"
+                logger.warning("Junyi study forest unavailable (%s). Using the original checklist.", type(exc).__name__)
         return runtime

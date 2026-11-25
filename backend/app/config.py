@@ -23,6 +23,7 @@ class Settings(BaseSettings):
     junyi_history_file: Path = JUNYI_ASSETS / "student1_pre_test_history.json"
     junyi_history_sha256: str | None = None
     junyi_checkpoint: Path = ROOT / "experiments" / "hitskt" / "junyi" / "full" / "best_model.pt"
+    junyi_study_forest_file: Path | None = None
     junyi_stage: str | None = None
     junyi_allow_reuse: bool = False
     junyi_weak_threshold: float = 0.61

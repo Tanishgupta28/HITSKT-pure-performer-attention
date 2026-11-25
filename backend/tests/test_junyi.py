@@ -15,6 +15,7 @@ from app.junyi_paper import DEFAULT_QUOTAS, BankShortage, candidates_for, prompt
 from app.junyi_resources import Gemini, StudyRecommender, _PageText
 from app.junyi_routes import AnswerInput, JunyiService, setup_junyi
 from app.junyi_runtime import JunyiRuntime
+from app.junyi_study_policy import FOREST_POLICY, FEATURES, PaperRecommender
 from app.main import create_app
 from tools.export_junyi_history import _completed_answers, _history_rows
 
@@ -52,6 +53,76 @@ def fixture_runtime():
     estimator = SkillEstimator(Baseline(tuple(map(tuple, groups)), 12 * GAP, "fixture-history"), bank, mapping, FixturePredictor())
     estimator.checkpoint_id = "fixture-checkpoint"
     return JunyiRuntime(bank, mapping, estimator, Gemini(), FixtureResources(), DEFAULT_QUOTAS.copy())
+
+
+def test_forest_checklist_uses_attempted_paper_tags_and_falls_back_for_open_session():
+    pytest.importorskip("pandas")
+    runtime = fixture_runtime()
+    feature_rows = []
+
+    class Forest:
+        def predict(self, frame):
+            assert tuple(frame.columns) == FEATURES
+            feature_rows.extend(frame.itertuples(index=False, name=None))
+            return [0.33, 0.80, 0.40, 0.20]
+
+    probes = {tag: (runtime.mappings.pairs[tag],) for tag in range(1, 7)}
+    policy = PaperRecommender(Forest(), probes, runtime.mappings)
+    items = [{"tag": tag} for tag in range(1, 6)]
+    snapshot = {"skills": [{"tag": tag, "unattempted": tag == 5, "category": "weak" if tag == 1 else "intermediate"}
+                           for tag in range(1, 7)]}
+    requirements, audit = policy.requirements(runtime, [], 12 * GAP, items, snapshot)
+    assert audit["policy"] == FOREST_POLICY
+    assert [row["tag"] for row in requirements] == [2, 3, 1]
+    assert [row["tag"] for row in audit["topics"]] == [1, 2, 3, 4]
+    assert feature_rows[0] == pytest.approx((0.52, 1, 0, 8 * GAP / 86_400_000))
+
+    answer = {"paper_sequence": 1, "position": 0, "timestamp_ms": 13 * GAP, "tag": 1, "correct": True,
+              "proxy": {"question_id": 1, "skill_id": 1, "mapping_version": runtime.mappings.version}}
+    requirements, audit = policy.requirements(runtime, [answer], 13 * GAP, items, snapshot)
+    assert requirements == study_requirements(items, snapshot)
+    assert audit["policy"] == "original_rule_fallback"
+    assert "complete-session" in audit["reason"]
+    assert len(feature_rows) == 4
+
+
+def test_prepared_paper_persists_policy_audit_and_keeps_existing_checklist(settings):
+    runtime = fixture_runtime()
+
+    class Policy:
+        def __init__(self):
+            self.calls = 0
+
+        def requirements(self, runtime, answers, as_of, items, snapshot):
+            self.calls += 1
+            assert len(items) == 20 and all(item["options"] and item["answer_id"] for item in items)
+            assert answers == [] and snapshot["app_responses"] == 0
+            tag = items[0]["tag"]
+            return [{"tag": tag, "status": "pending", "lookup": "waiting", "resources": []}], {
+                "policy": FOREST_POLICY, "topics": [{"tag": tag, "selected": True}],
+            }
+
+    policy = runtime.study_policy = Policy()
+    owner = "fixture-owner"
+
+    async def check():
+        async with AsyncMongoClient(settings.mongodb_uri) as mongo:
+            db = mongo[settings.mongodb_database]
+            await setup_junyi(db)
+            service = JunyiService(db, runtime, stage=None, allow_reuse=False)
+            queued = await service.start(owner)
+            await service.prepare(queued["_id"], owner)
+            paper = await service.get(queued["_id"], owner)
+            requirement, = paper["requirements"]
+            assert paper["checklist_audit"] == {"policy": FOREST_POLICY, "topics": [{"tag": requirement["tag"], "selected": True}]}
+            assert paper["status"] == ("locked" if requirement["tag"] % 2 else "open")
+            assert requirement["lookup"] == ("verified" if requirement["tag"] % 2 else "unavailable")
+            assert (await service.start(owner))["_id"] == queued["_id"]
+            await service.prepare(queued["_id"], owner)
+            assert await service.get(queued["_id"], owner) == paper
+            assert policy.calls == 1
+
+    asyncio.run(check())
 
 
 def test_bank_versions_ids_and_invalid_options(tmp_path):

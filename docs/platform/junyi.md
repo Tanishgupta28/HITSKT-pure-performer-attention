@@ -65,6 +65,14 @@ Optional lookups in Learn recheck links once their recorded verification is six 
 
 Finishing the required study enables the Start test or Resume test button on the checklist. The learner opens the questions with that button. Refreshing the same tab after the test has started restores the current question and draft.
 
+### Optional study-topic forest
+
+Use Python 3.12 with the backend and model-serving dependencies and install `backend/requirements-study-forest.txt`. From the supplied `Junyi_recommender_implementation.zip`, store `models/weakness_forest.joblib` in a local backend-only directory and set `JUNYI_STUDY_FOREST_FILE` to that file. The backend checks its SHA-256 before loading it and reuses the verified representative ranking and configured HiTSKT checkpoint. The trained GMM and scaler are used for research reproduction.
+
+After a new paper’s question list is frozen, the policy scores previously attempted tags on that paper. It maps each tag to a representative composite skill, combines its HiTSKT forecast with prior attempt count, accuracy, and recency, and picks up to three tags scoring at least 0.33. The original checklist rules apply when the model cannot load or score, the learner has an active session prefix, or the retained history has fewer than four complete sessions or 20 interactions. New papers store `checklist_audit` with the chosen policy and its selection or fallback evidence. The operator API reports which policy is loaded. A saved paper resumes from its own stored checklist.
+
+The existing verified-link gate operates on the selected tags. The 0.61 and 0.86 score bands continue to define the skill report and question pools.
+
 ## What the estimates mean
 
 The backend uses the original HiTSKT collator and forward pass on known model IDs. Each original tag uses up to five distinct training-ranked representative questions from its verified composite skills. The tag estimate averages those probabilities. Initial forecasts use independent BOS probes. Later forecasts can use app correctness via a labelled proxy, where the representative supplies model IDs and the actual answer supplies correctness. The model cannot directly see the custom question text. A missing proxy within a required context surfaces as an unavailable estimate while the real graded answer stays recorded.
