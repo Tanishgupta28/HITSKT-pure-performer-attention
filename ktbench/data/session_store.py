@@ -267,6 +267,8 @@ class DatasetShapeSequence(Sequence[ExampleShape]):
     def sort_lengths(self) -> np.ndarray:
         """Vector of max action lengths used for fast stable bucketing."""
 
+        if type(self.dataset) is not RollingSessionDataset:
+            return np.asarray([self.dataset.shape(i).sort_length for i in range(len(self.dataset))])
         result = np.empty(len(self.dataset), dtype=np.int32)
         offsets = self.dataset.store.session_offsets
         numbers = self.dataset.store.session_number

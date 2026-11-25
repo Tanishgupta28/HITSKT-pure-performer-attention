@@ -12,6 +12,7 @@ import pandas as pd
 import torch
 from torch.utils.data import Dataset
 
+from ktbench.data.assist2009 import OrderedTargets
 from ktbench.data.session_store import SessionStore
 from ktbench.rkt.phi import CrossFittedPhiRepository, HISTORY_LENGTH, _student_training_bounds
 
@@ -111,19 +112,61 @@ class RKTBatch:
     history_correct: torch.Tensor
     history_position: torch.Tensor
     history_mask: torch.Tensor
-    delta_hours: torch.Tensor
+    delta_hours: torch.Tensor | None
     phi: torch.Tensor
     target_question: torch.Tensor
     target_labels: torch.Tensor
     target_event_id: torch.Tensor
     split: torch.Tensor
 
-    def to(self, device: str | torch.device) -> "RKTBatch":
+    def to(self, device: str | torch.device, *, non_blocking=False) -> "RKTBatch":
         return RKTBatch(
             **{
-                name: value.to(device) if isinstance(value, torch.Tensor) else value
+                name: value.to(device, non_blocking=non_blocking) if isinstance(value, torch.Tensor) else value
                 for name, value in vars(self).items()
             }
+        )
+
+
+    def pin_memory(self) -> "RKTBatch":
+        return RKTBatch(**{k: v.pin_memory() if isinstance(v, torch.Tensor) else v
+                           for k, v in vars(self).items()})
+
+
+class OrderedRKTTargets(OrderedTargets):
+    """Vectorized timestamp-free batches with the original same-student Phi lookup."""
+
+    def __init__(self, store, split, phi_repository):
+        super().__init__(store, split, HISTORY_LENGTH)
+        self.phi_repository = phi_repository
+
+    def __getitem__(self, indices) -> RKTBatch:
+        indices = np.asarray(indices, dtype=np.int64)
+        events = self.events[indices]
+        lengths = self.history_lengths(indices)
+        positions = np.broadcast_to(np.arange(1, HISTORY_LENGTH + 1), (len(events), HISTORY_LENGTH))
+        distances = HISTORY_LENGTH - positions + 1
+        mask = distances <= lengths[:, None]
+        history = np.maximum(events[:, None] - distances, 0)
+        questions = np.where(mask, self.store.question[history], 0)
+        correctness = np.where(mask, self.store.correct[history], 0)
+        students = self.store.student[events]
+        targets = self.store.question[events]
+        splits = np.full(len(events), self.split, dtype=np.uint8)
+        relations = self.phi_repository.lookup_grouped(
+            students, splits, targets, (row[valid] for row, valid in zip(questions, mask, strict=True))
+        )
+        phi = np.zeros_like(questions, dtype=np.float32)
+        phi[mask] = np.concatenate(relations)
+        return RKTBatch(
+            student_id=torch.as_tensor(students, dtype=torch.long),
+            history_question=torch.as_tensor(questions, dtype=torch.long),
+            history_correct=torch.as_tensor(correctness, dtype=torch.long),
+            history_position=torch.from_numpy(positions.copy()),
+            history_mask=torch.from_numpy(mask), delta_hours=None,
+            phi=torch.from_numpy(phi), target_question=torch.as_tensor(targets, dtype=torch.long),
+            target_labels=torch.as_tensor(self.store.correct[events], dtype=torch.long),
+            target_event_id=torch.from_numpy(events), split=torch.from_numpy(splits),
         )
 
 

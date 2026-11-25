@@ -10,6 +10,7 @@ from pathlib import Path
 import numpy as np
 
 from ktbench.config import PROJECT_SEED, seed_everything
+from ktbench.data.assist2009 import Assist2009Store
 from ktbench.data.session_store import SessionStore
 from ktbench.rkt.data import build_memory_strength_initialization
 from ktbench.rkt.phi import assign_student_folds, build_cross_fitted_phi_cache
@@ -48,12 +49,18 @@ def _smoke_students(store: SessionStore, per_fold: int) -> np.ndarray:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("dataset", choices=sorted(RAW_TIMESTAMP_PROVENANCE))
+    parser.add_argument("dataset", choices=sorted((*RAW_TIMESTAMP_PROVENANCE, "assist2009")))
     parser.add_argument("store_root", type=Path)
     parser.add_argument("output_root", type=Path)
     parser.add_argument("--smoke-students-per-fold", type=int)
     args = parser.parse_args()
     seed_everything()
+    if args.dataset == "assist2009":
+        if args.smoke_students_per_fold is not None or args.output_root.exists():
+            parser.error("ASSIST2009 Phi-only preparation requires a fresh full-cache destination")
+        store = Assist2009Store(args.store_root)
+        print(json.dumps(build_cross_fitted_phi_cache(store, args.output_root), indent=2))
+        return
     store = SessionStore(args.store_root)
     selected = None
     if args.smoke_students_per_fold is not None:

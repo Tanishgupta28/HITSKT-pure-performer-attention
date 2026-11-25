@@ -89,6 +89,21 @@ class DKT(nn.Module):
         all_skill_logits = self.output(summaries)
         return all_skill_logits.gather(1, batch.target_skill[:, None]).squeeze(1)
 
+    def forward_dense(self, batch: RollingTargetBatch) -> torch.Tensor:
+        """Evaluate the same LSTM using right padding and the last valid output."""
+        vocabulary = self.config.num_skills + 1
+        width = batch.history_skill.shape[1]
+        lengths = batch.history_mask.sum(dim=1)
+        position = torch.arange(width, device=lengths.device)
+        source = (position + width - lengths[:, None]).clamp(max=width - 1)
+        interaction = batch.history_skill + batch.history_correct * vocabulary
+        right_padded = interaction.gather(1, source).masked_fill(position >= lengths[:, None], 0)
+        states, _ = self.rnn(self.interaction_embedding(right_padded))
+        last_valid = states[torch.arange(len(lengths), device=lengths.device),
+                            (lengths - 1).clamp(min=0)]
+        summary = last_valid.masked_fill(lengths[:, None] == 0, 0)
+        return self.output(summary).gather(1, batch.target_skill[:, None]).squeeze(1)
+
     def checkpoint(self) -> dict[str, Any]:
         return _checkpoint(self.model_name, self.config, self.state_dict())
 

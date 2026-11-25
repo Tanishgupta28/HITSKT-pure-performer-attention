@@ -1,0 +1,53 @@
+{
+  "all_dataset_targets": {
+    "test": 67756,
+    "train": 211348,
+    "validation": 67756
+  },
+  "all_train_unique_directed_pairs": 6172185,
+  "cache_students": 4217,
+  "chunk_values": 5000000,
+  "construction_seconds": 31.610249240882695,
+  "dataset_provenance": {
+    "metadata_sha256": "be072b3de4bad5c3e4e649a562a2ab39c34f87f4468a3ac6a720f86e58b9d6ea",
+    "protocol": "assist2009_ordered_interactions_60_20_20_v1",
+    "source_sha256": "f22e3fb7872c1784ce93b0f9ebabbe0cbcac4f896fd8b4a11667b9715d77dbdc",
+    "target_order_id_sha256": {
+      "test": "7379181884ff0c6ed79eb4dc7375508d1f7a2fdad6a50fa32952b51f6052a371",
+      "train": "ba1e0e2618c040dc962be78dc17a2be3e7966ec434d0cd7e9f2023d433e04b14",
+      "validation": "36e751492d5b0537a2ce48a74b74923116a7efbec4ee6d806728b15047fffc6a"
+    }
+  },
+  "fold_assignment": "seeded NumPy permutation of sorted student IDs, then round-robin index modulo 5",
+  "fold_count": 5,
+  "fold_unique_directed_pairs": {
+    "0": 1398758,
+    "1": 1454320,
+    "2": 1403361,
+    "3": 1239287,
+    "4": 1533584
+  },
+  "folds_balanced_within_one": true,
+  "format_version": 1,
+  "history_length": 49,
+  "label": "RKT paper-faithful performance-only Phi-relation variant with 5-fold student-level cross-fitting.",
+  "peak_process_rss_bytes": 2077155328,
+  "phi_pair_contributions": 7460621,
+  "phi_source": "training-partition histories only",
+  "scratch_bytes_before_cleanup": 115795020,
+  "scratch_parts": 5,
+  "seed": 42,
+  "students_per_fold": {
+    "0": 844,
+    "1": 844,
+    "2": 843,
+    "3": 843,
+    "4": 843
+  },
+  "text_relation": null,
+  "threshold": null,
+  "training_rule": "target student's entire fold excluded",
+  "training_targets_cross_fitted": 211348,
+  "undefined_relation": 0.0,
+  "validation_test_rule": "all training folds; no validation/test interactions"
+}

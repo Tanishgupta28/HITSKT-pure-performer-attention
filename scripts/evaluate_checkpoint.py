@@ -16,6 +16,7 @@ from ktbench.config import PROJECT_SEED, seed_everything
 from ktbench.data.rolling_targets import RollingTargetDataset
 from ktbench.data.session_store import RollingSessionDataset, SessionStore
 from ktbench.models import HiTSKT, PaperFaithfulRKT, load_baseline_checkpoint
+from ktbench.models.rkt import RKT_PHI_ONLY
 
 
 def evaluate_checkpoint(
@@ -39,6 +40,14 @@ def evaluate_checkpoint(
                            ("questions", "num_questions"), ("skills", "num_skills")):
         if int(stats[stat]) != int(store.metadata[metadata]):
             raise ValueError(f"session store mismatch for {stat}")
+    ordered = config["dataset"] == "assist2009"
+    if ordered:
+        if not torch.cuda.is_available():
+            raise ValueError("ASSIST2009 verification requires CUDA")
+        if "cudnn_allow_tf32" in config:
+            torch.backends.cudnn.allow_tf32 = config["cudnn_allow_tf32"]
+        if config.get("dataset_provenance") != store.provenance:
+            raise ValueError("ASSIST2009 replay dataset differs from training")
     seed_everything()
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     checkpoint_path = experiment_root / "best_model.pt"
@@ -60,11 +69,22 @@ def evaluate_checkpoint(
         for key in ("token_budget", "maximum_batch_size", "bucket_size"):
             if config[key] != HITSKT_COMMON_CONFIG[key]:
                 raise ValueError(f"active HiTSKT batching differs from stored {key}")
-        dataset = RollingSessionDataset(store, "test", history_sessions=config["history_sessions"])
+        dataset_class = RollingSessionDataset
+        if ordered:
+            from ktbench.data.assist2009_sessions import AssignmentTargets
+
+            if (config["session_offsets_sha256"] != store.session_offsets_sha256
+                    or config["session_protocol"] != store.metadata["session_protocol"]):
+                raise ValueError("HiTSKT assignment boundary provenance differs from training")
+            dataset_class = AssignmentTargets
         model = HiTSKT.from_checkpoint(checkpoint_path, map_location=device).to(device).eval()
-        metrics = _run_epoch(model, dataset, **common)
-    elif model_name == "RKT":
-        from ktbench.rkt.data import RKTTargetDataset
+        dataset = dataset_class(store, "test", history_sessions=config["history_sessions"])
+        metrics = _run_epoch(model, dataset, verify_target_coverage=ordered, **common)
+        if ordered:
+            validation_set = dataset_class(store, "validation", history_sessions=config["history_sessions"])
+            validation = _run_epoch(model, validation_set, verify_target_coverage=True, **common)
+    elif model_name in ("RKT", RKT_PHI_ONLY):
+        from ktbench.rkt.data import OrderedRKTTargets, RKTTargetDataset
         from ktbench.rkt.phi import CrossFittedPhiRepository
         from ktbench.rkt.settings import RKT_BATCH_SIZE
         from scripts.train_rkt import _run_epoch
@@ -76,26 +96,52 @@ def evaluate_checkpoint(
         repository = CrossFittedPhiRepository(prepared_root, int(store.metadata["num_questions"]))
         if repository.metadata != config["phi"]:
             raise ValueError("RKT Phi cache metadata differs from training config")
-        dataset = RKTTargetDataset(store, "test")
         model = PaperFaithfulRKT.from_checkpoint(checkpoint_path, map_location=device).to(device).eval()
-        model.set_relation_parameters_trainable(False)
-        metrics = _run_epoch(model, dataset, repository, **common)
+        if model.config.relation_only != (model_name == RKT_PHI_ONLY) or ordered != model.config.relation_only:
+            raise ValueError("RKT checkpoint relation mode differs from this experiment")
+        if ordered:
+            dataset = OrderedRKTTargets(store, "test", repository)
+            metrics = _run_epoch(model, dataset, repository, verify_target_coverage=True, **common)
+            validation_set = OrderedRKTTargets(store, "validation", repository)
+            validation = _run_epoch(model, validation_set, repository, verify_target_coverage=True, **common)
+            model.set_relation_parameters_trainable(True)
+        else:
+            dataset = RKTTargetDataset(store, "test")
+            metrics = _run_epoch(model, dataset, repository, **common)
     elif model_name in ("DKT", "DKVMN", "SAKT"):
         from scripts.train_baseline import _run_epoch
 
-        dataset = RollingTargetDataset(store, "test", history_length=config["history_length"])
+        dataset = (store.targets("test", config["history_length"]) if ordered
+                   else RollingTargetDataset(store, "test", history_length=config["history_length"]))
         model = load_baseline_checkpoint(checkpoint_path, map_location=device).to(device).eval()
-        metrics = _run_epoch(model, dataset, batch_size=config["batch_size"],
-                             gradient_clip=None, **common)
+        settings = dict(batch_size=config["batch_size"], gradient_clip=None,
+                        transport=config["transport"] if ordered else "reference",
+                        dkt_dense=config.get("dkt_dense_lstm", False),
+                        verify_target_coverage=ordered, **common)
+        metrics = _run_epoch(model, dataset, **settings)
+        if ordered:
+            validation = _run_epoch(model, store.targets("validation", config["history_length"]),
+                                    **settings)
     else:
         raise ValueError(f"unsupported benchmark model: {model_name}")
     if metrics["targets"] != stats["target_counts"]["test"]:
         raise ValueError("independent test target count differs from stored data stats")
+    if ordered:
+        if validation["roc_auc"] != result["best_validation_auc"]:
+            raise ValueError("independent replay validation ROC-AUC differs from best record")
+        total = sum(p.numel() for p in model.parameters())
+        trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
+        for key, count in (("total_parameters", total), ("trainable_parameters", trainable)):
+            if config[key] != count or result[key] != count:
+                raise ValueError(f"independent {key} count differs from run artifacts")
     differences = {key: {"stored": value, "replayed": metrics.get(key)}
                    for key, value in result["test"].items() if metrics.get(key) != value}
     if differences:
         raise ValueError(f"independent replay mismatch: {differences}")
     return {
+        **({"dataset_provenance": store.provenance, "total_parameters": total,
+            "trainable_parameters": trainable, "validation": validation,
+            "validation_and_test_target_ids_verified": True} if ordered else {}),
         "verified": True,
         "verification": "fresh model loaded from best checkpoint; exact equality of all test metrics",
         "model": model_name,
@@ -116,9 +162,23 @@ def main() -> None:
     parser.add_argument("store_root", type=Path)
     parser.add_argument("--prepared-root", type=Path, help="required for RKT training-only Phi cache")
     parser.add_argument("--workers", type=int, default=0)
+    parser.add_argument("--assignment-root", type=Path)
     parser.add_argument("--output", type=Path, help="persist successful verification as JSON")
     args = parser.parse_args()
-    result = evaluate_checkpoint(args.experiment_root, SessionStore(args.store_root),
+    config = json.loads((args.experiment_root / "config.json").read_text())
+    if config["dataset"] == "assist2009":
+        from ktbench.data.assist2009 import Assist2009Store
+
+        store = Assist2009Store(args.store_root)
+        if config["model"] == "HiTSKT":
+            from ktbench.data.assist2009_sessions import AssignmentRunStore
+
+            if args.assignment_root is None:
+                parser.error("ASSIST2009 HiTSKT replay requires --assignment-root")
+            store = AssignmentRunStore.open(store, args.assignment_root)
+    else:
+        store = SessionStore(args.store_root)
+    result = evaluate_checkpoint(args.experiment_root, store,
                                  prepared_root=args.prepared_root, workers=args.workers)
     serialized = json.dumps(result, indent=2, sort_keys=True) + "\n"
     if args.output is not None:

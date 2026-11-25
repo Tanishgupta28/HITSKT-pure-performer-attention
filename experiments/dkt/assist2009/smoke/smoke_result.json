@@ -1,0 +1,32 @@
+{
+  "status": "smoke_complete",
+  "model": "DKT",
+  "dataset": "assist2009",
+  "seed": 42,
+  "epoch": 1,
+  "train_loss": 0.7155612111091614,
+  "validation": {
+    "targets": 128,
+    "loss": 0.6926908418536186,
+    "roc_auc": 0.5772854596384008,
+    "accuracy": 0.546875,
+    "precision": 0.6727272727272727,
+    "recall": 0.4805194805194805,
+    "f1": 0.5606060606060606,
+    "mse": 0.24975698270703078,
+    "threshold": 0.5
+  },
+  "cuda_kernels": 202,
+  "summed_cuda_kernel_duration_us": 69080.29399999997,
+  "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+  "provenance": {
+    "protocol": "assist2009_ordered_interactions_60_20_20_v1",
+    "source_sha256": "f22e3fb7872c1784ce93b0f9ebabbe0cbcac4f896fd8b4a11667b9715d77dbdc",
+    "metadata_sha256": "be072b3de4bad5c3e4e649a562a2ab39c34f87f4468a3ac6a720f86e58b9d6ea",
+    "target_order_id_sha256": {
+      "train": "ba1e0e2618c040dc962be78dc17a2be3e7966ec434d0cd7e9f2023d433e04b14",
+      "validation": "36e751492d5b0537a2ce48a74b74923116a7efbec4ee6d806728b15047fffc6a",
+      "test": "7379181884ff0c6ed79eb4dc7375508d1f7a2fdad6a50fa32952b51f6052a371"
+    }
+  }
+}

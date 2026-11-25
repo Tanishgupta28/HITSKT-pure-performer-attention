@@ -1,0 +1,26 @@
+{
+  "main_revision": "ab08b68e827b995f0ae65ad3d60c230009d2c88d",
+  "pytorch": "2.14.0a0+b2c75dd062.nv26.09",
+  "cuda": "13.4",
+  "cudnn": 92600,
+  "nvidia_driver": "535.161.08",
+  "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+  "memory_bytes": 42278584320,
+  "compute_capability": [
+    9,
+    0
+  ],
+  "multiprocessors": 60,
+  "cuda_available": true,
+  "seed": 42,
+  "nvml_device_utilization_unavailable": "Not Supported",
+  "packages": {
+    "numpy": "2.1.0",
+    "numba": "0.64.0",
+    "pandas": "3.0.6",
+    "pyarrow": "25.0.1",
+    "scikit-learn": "1.9.1",
+    "matplotlib": "3.11.2",
+    "pytest": "9.2.0"
+  }
+}

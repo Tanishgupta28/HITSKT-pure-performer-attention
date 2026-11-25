@@ -17,7 +17,10 @@ from matplotlib.ticker import MaxNLocator
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
-DATASETS = {"assist2017": "ASSIST2017", "junyi": "Junyi", "ednet_kt1": "EdNet-KT1"}
+DATASETS = {"assist2017": "ASSIST2017", "junyi": "Junyi", "ednet_kt1": "EdNet-KT1",
+            "assist2009": "ASSIST2009"}
+PHI_ONLY = "RKT (Phi-only)"
+HISTORICAL = tuple(d for d in DATASETS if d != "assist2009")
 # Color, marker, line style. Markers identify individual measured epochs.
 STYLES = {
     "DKT": ("#0072B2", "o", "-"),
@@ -49,7 +52,8 @@ def read_csv(path, required):
 
 def load_run(summary):
     dataset, model = summary["dataset"], summary["model"]
-    relative = Path("experiments", model.lower(), dataset, "full")
+    family = "rkt" if model == PHI_ONLY and dataset == "assist2009" else model.lower()
+    relative = Path("experiments", family, dataset, "full")
     if summary["experiment_directory"] != relative.as_posix():
         raise ValueError(f"{model} / {dataset}: unexpected experiment_directory")
     folder = ROOT / relative
@@ -90,20 +94,24 @@ def load_run(summary):
     return points
 
 
-def load_benchmark():
-    path = ROOT / "reports" / "final_results.csv"
+def load_benchmark(*, assist2009=False):
+    path = ROOT / "reports" / ("assist2009_final_results.csv" if assist2009 else "final_results.csv")
+    datasets = ("assist2009",) if assist2009 else HISTORICAL
     rows = read_csv(path, {"dataset", "model", "experiment_directory", "epochs_completed",
                            "best_epoch", "best_validation_auc", "seed"})
-    expected = {(d, m) for d in DATASETS for m in STYLES} - {("ednet_kt1", "DKT")}
+    models = tuple(PHI_ONLY if assist2009 and model == "RKT" else model for model in STYLES)
+    expected = {(d, m) for d in datasets for m in models} - {("ednet_kt1", "DKT")}
     runs = {}
     for row in rows:
         key = row["dataset"], row["model"]
-        if key[0] not in DATASETS or key[1] not in STYLES:
+        if key[0] not in datasets or key[1] not in models:
             continue
         if key not in expected or key in runs:
             raise ValueError(f"{path}: unexpected or duplicate historical experiment {key}")
         runs[key] = load_run(row)
-    if missing := expected.difference(runs):
+    if assist2009 and not runs:
+        raise ValueError(f"{path}: no verified ASSIST2009 results to plot")
+    if not assist2009 and (missing := expected.difference(runs)):
         raise ValueError(f"{path}: missing experiments {sorted(missing)}")
     return runs
 
@@ -116,6 +124,8 @@ def make_figure(dataset, metric, runs):
              weight="semibold", color="#202831", va="center")
     last_epoch = 0
     for model, (color, marker, style) in STYLES.items():
+        if dataset == "assist2009" and model == "RKT":
+            model = PHI_ONLY
         points = runs.get((dataset, model))
         if points is None:
             continue
@@ -124,6 +134,9 @@ def make_figure(dataset, metric, runs):
                 label=model, color=color, marker=marker, linestyle=style,
                 markersize=3.7, linewidth=2 if model == "HiTSKT" else 1.45,
                 markeredgewidth=0.7, markerfacecolor="white")
+    if dataset == "assist2009" and len(ax.lines) < len(STYLES):
+        fig.text(0.97, 0.935, f"{len(ax.lines)} of {len(STYLES)} models",
+                 fontsize=9, color="#536273", va="center", ha="right")
     ax.legend(loc="lower left", bbox_to_anchor=(0, 1.018), ncols=len(ax.lines),
               frameon=False, borderaxespad=0, handlelength=2.4, columnspacing=1.55)
     ax.set_xlabel("Epoch", labelpad=6)
@@ -144,13 +157,18 @@ def make_figure(dataset, metric, runs):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output-dir", type=Path, default=HERE)
+    parser.add_argument("--assist2009", action="store_true")
+    parser.add_argument("--replace-assist2009", action="store_true",
+                        help="refresh the ASSIST2009 PNGs after new runs are independently verified")
     args = parser.parse_args()
-    runs = load_benchmark()
+    if args.replace_assist2009 and not args.assist2009:
+        parser.error("--replace-assist2009 requires --assist2009")
+    runs = load_benchmark(assist2009=args.assist2009)
     images = {}
     with plt.style.context("default"), plt.rc_context({"font.family": "DejaVu Sans",
                                                        "axes.labelsize": 11,
                                                        "path.simplify": False}):
-        for dataset in DATASETS:
+        for dataset in dict.fromkeys(key[0] for key in runs):
             for metric, (_, suffix) in METRICS.items():
                 fig = make_figure(dataset, metric, runs)
                 buffer = io.BytesIO()
@@ -159,10 +177,14 @@ def main():
                 images[args.output_dir / f"{dataset}_{suffix}.png"] = buffer.getvalue()
     args.output_dir.mkdir(parents=True, exist_ok=True)
     for path, content in images.items():
-        if path.exists() and path.read_bytes() != content:
+        if path.exists() and path.read_bytes() != content and not args.replace_assist2009:
             raise FileExistsError(f"{path} differs. Use --output-dir with an empty directory.")
     for path, content in images.items():
-        if not path.exists():
+        if args.replace_assist2009:
+            temporary = path.with_suffix(".png.tmp")
+            temporary.write_bytes(content)
+            temporary.replace(path)
+        elif not path.exists():
             with path.open("xb") as stream:
                 stream.write(content)
     print(f"Validated {len(runs)} runs and {sum(map(len, runs.values()))} validation epochs. "

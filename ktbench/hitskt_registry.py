@@ -29,6 +29,8 @@ HITSKT_TRAINING_CONFIGS: dict[str, dict[str, Any]] = {
     },
 }
 
+HITSKT_TRAINING_CONFIGS["assist2009"] = HITSKT_TRAINING_CONFIGS["assist2017"].copy()
+
 HITSKT_COMMON_CONFIG: dict[str, Any] = {
     "model": "HiTSKT",
     "optimizer": "Adam",

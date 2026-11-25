@@ -16,12 +16,13 @@ import torch
 from torch.utils.data import DataLoader
 
 from ktbench.config import PROJECT_SEED, seed_everything
+from ktbench.data.assist2009 import Assist2009Store
 from ktbench.data.rolling_targets import RollingLengthBatchSampler
 from ktbench.data.session_store import SessionStore
 from ktbench.metrics import binary_metrics
 from ktbench.models import PaperFaithfulRKT, RKTConfig
-from ktbench.models.rkt import RKT_LABEL
-from ktbench.rkt.data import RKTTargetDataset, collate_rkt
+from ktbench.models.rkt import RKT_LABEL, RKT_PHI_LABEL, RKT_PHI_ONLY
+from ktbench.rkt.data import OrderedRKTTargets, RKTTargetDataset, collate_rkt
 from ktbench.rkt.phi import CrossFittedPhiRepository
 from ktbench.rkt.settings import (
     RKT_BATCH_SIZE,
@@ -51,6 +52,7 @@ def _run_epoch(
     epoch: int,
     optimizer: torch.optim.Optimizer | None,
     workers: int,
+    verify_target_coverage: bool = False,
 ) -> dict[str, float | int]:
     training = optimizer is not None
     model.train(training)
@@ -63,19 +65,26 @@ def _run_epoch(
         seed=PROJECT_SEED,
     )
     sampler.set_epoch(epoch if training else 0)
-    loader = DataLoader(
-        dataset,
-        batch_sampler=sampler,
-        collate_fn=partial(collate_rkt, phi_repository=repository),
-        num_workers=workers,
-        persistent_workers=workers > 0,
-    )
+    ordered = isinstance(dataset, OrderedRKTTargets)
+    if ordered:
+        loader = DataLoader(dataset, sampler=sampler, batch_size=None, num_workers=workers,
+                            persistent_workers=workers > 0, pin_memory=True)
+    else:
+        loader = DataLoader(
+            dataset,
+            batch_sampler=sampler,
+            collate_fn=partial(collate_rkt, phi_repository=repository),
+            num_workers=workers,
+            persistent_workers=workers > 0,
+        )
     probabilities = np.empty(len(dataset), dtype=np.float32)
     labels = np.empty(len(dataset), dtype=np.uint8)
     loss_sum = 0.0
     cursor = 0
-    for batch in loader:
-        batch = batch.to(device)
+    target_ids = np.empty(len(dataset), dtype=np.int64) if verify_target_coverage else None
+    started = time.perf_counter()
+    for step, batch in enumerate(loader, 1):
+        batch = batch.to(device, non_blocking=ordered)
         if training:
             optimizer.zero_grad(set_to_none=True)
             logits = model(batch)
@@ -95,7 +104,18 @@ def _run_epoch(
         loss_sum += float(loss.detach().cpu()) * count
         probabilities[cursor : cursor + count] = torch.sigmoid(logits).detach().cpu().numpy()
         labels[cursor : cursor + count] = batch.target_labels.detach().cpu().numpy()
+        if target_ids is not None:
+            target_ids[cursor : cursor + count] = batch.target_event_id.cpu().numpy()
         cursor += count
+        if ordered and (step == 1 or step % 500 == 0):
+            print(json.dumps({"epoch": epoch, "split": dataset.split, "targets": cursor,
+                              "expected_targets": len(dataset), "elapsed_seconds": time.perf_counter() - started,
+                              "peak_cuda_allocated_bytes": torch.cuda.max_memory_allocated(device)}), flush=True)
+    if target_ids is not None and (
+        not np.array_equal(np.sort(target_ids), dataset.events)
+        or not np.array_equal(labels, dataset.store.correct[target_ids])
+    ):
+        raise ValueError("RKT prediction IDs or labels differ from the shared benchmark")
     if cursor != len(dataset):
         raise RuntimeError("RKT target accounting changed during an epoch")
     return binary_metrics(
@@ -120,6 +140,11 @@ def train_rkt(
         raise ValueError(f"completed experiment already exists: {output_root}")
     if not (prepared_root / "_SUCCESS").exists():
         raise ValueError("full RKT Phi/initialization artifacts are incomplete")
+    ordered = dataset_name == "assist2009"
+    if ordered and (not isinstance(store, Assist2009Store) or not torch.cuda.is_available()):
+        raise ValueError("ASSIST2009 RKT requires the ordered interaction store and CUDA")
+    if ordered and not resume and output_root.exists():
+        raise FileExistsError(output_root)
     output_root.mkdir(parents=True, exist_ok=True)
     epoch_ceiling = RKT_EPOCH_CEILING
     if epoch_ceiling_override is not None:
@@ -131,16 +156,20 @@ def train_rkt(
     )
     if int(repository.metadata["cache_students"]) != int(store.metadata["students"]):
         raise ValueError("RKT production training requires a full-student Phi cache")
+    if ordered and repository.metadata.get("dataset_provenance") != store.provenance:
+        raise ValueError("Phi cache does not match the shared ASSIST2009 split")
     datasets = {
-        split: RKTTargetDataset(store, split)
+        split: (OrderedRKTTargets(store, split, repository) if ordered
+                else RKTTargetDataset(store, split))
         for split in ("train", "validation", "test")
     }
     if int(repository.metadata["training_targets_cross_fitted"]) != len(datasets["train"]):
         raise ValueError("cross-fitted Phi target count does not match full training targets")
-    initial_s = np.load(prepared_root / "initial_s_hours.npy")
+    initial_s = None if ordered else np.load(prepared_root / "initial_s_hours.npy")
     config = RKTConfig(
         num_questions=int(store.metadata["num_questions"]),
-        num_students=len(initial_s) - 1,
+        num_students=int(store.metadata["students"]) if ordered else len(initial_s) - 1,
+        relation_only=ordered,
     )
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     gpu_name = torch.cuda.get_device_name(device) if device.type == "cuda" else "CPU"
@@ -149,9 +178,11 @@ def train_rkt(
         model.parameters(), lr=RKT_LEARNING_RATE, weight_decay=RKT_WEIGHT_DECAY
     )
     total_parameters = sum(parameter.numel() for parameter in model.parameters())
+    model_name = RKT_PHI_ONLY if ordered else "RKT"
+    label = RKT_PHI_LABEL if ordered else RKT_LABEL
     configuration = {
-        "label": RKT_LABEL,
-        "model": "RKT",
+        "label": label,
+        "model": model_name,
         "dataset": dataset_name,
         "seed": PROJECT_SEED,
         "width": 64,
@@ -183,6 +214,8 @@ def train_rkt(
         "gpu": gpu_name,
         "workers": workers,
     }
+    if ordered:
+        configuration.update(dataset_provenance=store.provenance, relation_mode="phi_only")
     if epoch_ceiling_override is not None:
         configuration["test_epoch_ceiling_override"] = epoch_ceiling
     config_path = output_root / "config.json"
@@ -205,6 +238,9 @@ def train_rkt(
         for key in ("model", "dataset", "seed", "batch_size", "history_length"):
             if stored_configuration.get(key) != configuration.get(key):
                 raise ValueError(f"resume configuration mismatch for {key}")
+        if ordered and any(stored_configuration.get(key) != configuration[key]
+                           for key in ("dataset_provenance", "phi", "relation_mode")):
+            raise ValueError("RKT resume protocol or Phi cache differs")
         checkpoint = torch.load(last_path, map_location=device, weights_only=True)
         if checkpoint.get("seed") != PROJECT_SEED:
             raise ValueError("resume checkpoint seed mismatch")
@@ -254,7 +290,7 @@ def train_rkt(
                 "interactions": int(store.metadata["interactions"]),
                 "questions": int(store.metadata["num_questions"]),
                 "skills": int(store.metadata["num_skills"]),
-                "sessions": int(store.metadata["sessions"]),
+                "sessions": None if ordered else int(store.metadata["sessions"]),
                 "target_counts": targets,
                 "target_ratios": {
                     split: count / sum(targets.values())
@@ -353,6 +389,11 @@ def train_rkt(
                 ) + "\n"
             )
             log.flush()
+            if ordered:
+                print(json.dumps({"epoch": epoch, "train_loss": train_metrics["loss"],
+                                  "validation_loss": validation_metrics["loss"],
+                                  "validation_auc": validation_metrics["roc_auc"],
+                                  "best_epoch": decision.best_epoch}), flush=True)
             if decision.should_stop:
                 break
         if not best_path.exists() or control.best_epoch is None:
@@ -376,7 +417,7 @@ def train_rkt(
             ) + "\n"
         )
     result = {
-        "status": "complete", "label": RKT_LABEL, "model": "RKT",
+        "status": "complete", "label": label, "model": model_name,
         "dataset": dataset_name, "seed": PROJECT_SEED,
         "patience": COMMON_EARLY_STOPPING.patience,
         "min_delta": COMMON_EARLY_STOPPING.min_delta,
@@ -401,15 +442,17 @@ def train_rkt(
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("dataset", choices=("assist2017", "junyi", "ednet_kt1"))
+    parser.add_argument("dataset", choices=("assist2017", "junyi", "ednet_kt1", "assist2009"))
     parser.add_argument("store_root", type=Path)
     parser.add_argument("prepared_root", type=Path)
     parser.add_argument("output_root", type=Path)
     parser.add_argument("--workers", type=int, default=0)
     parser.add_argument("--resume", action="store_true")
     args = parser.parse_args()
+    store = (Assist2009Store(args.store_root) if args.dataset == "assist2009"
+             else SessionStore(args.store_root))
     result = train_rkt(
-        args.dataset, SessionStore(args.store_root), args.prepared_root,
+        args.dataset, store, args.prepared_root,
         args.output_root, workers=args.workers, resume=args.resume,
     )
     print(json.dumps(result, indent=2, sort_keys=True))

@@ -1,0 +1,61 @@
+{
+  "verified": true,
+  "models_with_independent_checkpoints": [
+    "DKT",
+    "DKVMN",
+    "SAKT",
+    "RKT (Phi-only)",
+    "HiTSKT"
+  ],
+  "historical_results_and_graphs_unchanged": true,
+  "prior_assist2009_baselines_unchanged": true,
+  "performer_and_hitskt_architecture_unchanged": true,
+  "combined_csv_matches_historical_plus_new": true,
+  "graphs": {
+    "assist2009_loss_vs_epoch.png": {
+      "plotted_epochs": {
+        "DKT": 11,
+        "DKVMN": 13,
+        "SAKT": 27,
+        "RKT (Phi-only)": 11,
+        "HiTSKT": 29
+      },
+      "nominal_dpi": 320,
+      "pixels": [
+        2560,
+        1536
+      ],
+      "sha256": "dd0b20c7299e26beffc23ccb0d02c94962880628b8086edc1bc5cfb7888354a6"
+    },
+    "assist2009_validation_auc_vs_epoch.png": {
+      "plotted_epochs": {
+        "DKT": 11,
+        "DKVMN": 13,
+        "SAKT": 27,
+        "RKT (Phi-only)": 11,
+        "HiTSKT": 29
+      },
+      "nominal_dpi": 320,
+      "pixels": [
+        2560,
+        1536
+      ],
+      "sha256": "9c47d4b39b3864f7d827e9b133ba07d3a9a2d998874cb102f8dd613486b614d0"
+    },
+    "assist2009_parameter_comparison.png": {
+      "checkpoint_replay_counts": {
+        "DKT": 72087,
+        "DKVMN": 68551,
+        "SAKT": 2885801,
+        "RKT (Phi-only)": 1743874,
+        "HiTSKT": 19003393
+      },
+      "nominal_dpi": 320,
+      "pixels": [
+        2944,
+        1472
+      ],
+      "sha256": "d92474708911d34034e9e2c6203b6a572bc1e017b7f7efd47d02f8472a348ef9"
+    }
+  }
+}

@@ -15,15 +15,20 @@ from matplotlib.ticker import FuncFormatter, MaxNLocator
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
-DATASETS = {"assist2017": "ASSIST2017", "junyi": "Junyi", "ednet_kt1": "EdNet-KT1"}
+DATASETS = {"assist2017": "ASSIST2017", "junyi": "Junyi", "ednet_kt1": "EdNet-KT1",
+            "assist2009": "ASSIST2009"}
+PHI_ONLY = "RKT (Phi-only)"
+HISTORICAL = tuple(d for d in DATASETS if d != "assist2009")
 MODELS = ("DKT", "DKVMN", "SAKT", "RKT", "HiTSKT")
 BAR_BLUE = "#5186B6"
 HITSKT_BLUE = "#164775"
 
 
-def validated_counts():
-    counts = {dataset: {} for dataset in DATASETS}
-    index = ROOT / "reports" / "final_results.csv"
+def validated_counts(*, assist2009=False):
+    datasets = ("assist2009",) if assist2009 else HISTORICAL
+    models = tuple(PHI_ONLY if assist2009 and model == "RKT" else model for model in MODELS)
+    counts = {dataset: {} for dataset in datasets}
+    index = ROOT / "reports" / ("assist2009_final_results.csv" if assist2009 else "final_results.csv")
     with index.open(encoding="utf-8-sig", newline="") as stream:
         reader = csv.DictReader(stream)
         fields = reader.fieldnames or []
@@ -32,9 +37,10 @@ def validated_counts():
             raise ValueError(f"{index}: missing or duplicate column names")
         for row in reader:
             model, dataset = row["model"], row["dataset"]
-            if dataset not in DATASETS or model not in MODELS:
+            if dataset not in counts or model not in models:
                 continue
-            folder = Path("experiments", model.lower(), dataset, "full")
+            family = "rkt" if model == PHI_ONLY else model.lower()
+            folder = Path("experiments", family, dataset, "full")
             if row["experiment_directory"] != folder.as_posix() or model in counts[dataset]:
                 raise ValueError(f"{index}: unexpected path or duplicate run for {model}/{dataset}")
             raw = row["trainable_parameters"]
@@ -53,6 +59,10 @@ def validated_counts():
                     raise ValueError(f"{path}: indexed run is incomplete")
             counts[dataset][model] = count
     for dataset, values in counts.items():
+        if assist2009:
+            if not values:
+                raise ValueError(f"{index}: no verified ASSIST2009 results to plot")
+            continue
         expected = set(MODELS)
         if dataset == "ednet_kt1":
             expected.remove("DKT")
@@ -73,7 +83,8 @@ def make_figure(dataset, counts, axis_max):
     ordered = sorted(counts, key=counts.get, reverse=True)
     values = [counts[model] for model in ordered]
     fig, ax = plt.subplots(figsize=(9.2, 4.6), dpi=320, facecolor="white")
-    fig.subplots_adjust(left=0.15, right=0.975, bottom=0.19, top=0.85)
+    left_margin = 0.185 if dataset == "assist2009" else 0.15
+    fig.subplots_adjust(left=left_margin, right=0.975, bottom=0.19, top=0.85)
     ax.set_title(f"Model Parameter Comparison — {DATASETS[dataset]}", loc="left",
                  fontsize=17, weight="semibold", color="#1F3042", pad=16)
     colors = [HITSKT_BLUE if model == "HiTSKT" else BAR_BLUE for model in ordered]
@@ -98,8 +109,14 @@ def make_figure(dataset, counts, axis_max):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output-dir", type=Path, default=HERE)
-    output = parser.parse_args().output_dir
-    counts = validated_counts()
+    parser.add_argument("--assist2009", action="store_true")
+    parser.add_argument("--replace-assist2009", action="store_true",
+                        help="refresh the ASSIST2009 PNGs after new runs are independently verified")
+    args = parser.parse_args()
+    if args.replace_assist2009 and not args.assist2009:
+        parser.error("--replace-assist2009 requires --assist2009")
+    output = args.output_dir
+    counts = validated_counts(assist2009=args.assist2009)
     # Use one linear scale for all datasets and reserve space for exact labels.
     axis_max = max(max(values.values()) for values in counts.values()) * 1.32
     images = {}
@@ -112,13 +129,17 @@ def main():
             images[output / f"{dataset}_parameter_comparison.png"] = buffer.getvalue()
     output.mkdir(parents=True, exist_ok=True)
     for path, content in images.items():
-        if path.exists() and path.read_bytes() != content:
+        if path.exists() and path.read_bytes() != content and not args.replace_assist2009:
             raise FileExistsError(f"{path} differs. Use --output-dir with a fresh directory.")
     for path, content in images.items():
-        if not path.exists():
+        if args.replace_assist2009:
+            temporary = path.with_suffix(".png.tmp")
+            temporary.write_bytes(content)
+            temporary.replace(path)
+        elif not path.exists():
             with path.open("xb") as stream:
                 stream.write(content)
-    print(f"Validated {sum(map(len, counts.values()))} counts. Three PNGs available in {output}.")
+    print(f"Validated {sum(map(len, counts.values()))} counts. {len(images)} PNGs available in {output}.")
 
 
 if __name__ == "__main__":

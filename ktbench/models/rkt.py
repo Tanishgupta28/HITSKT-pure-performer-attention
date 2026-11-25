@@ -15,6 +15,8 @@ from ktbench.rkt.data import RKTBatch
 from ktbench.rkt.phi import HISTORY_LENGTH
 
 
+RKT_PHI_ONLY = "RKT (Phi-only)"
+RKT_PHI_LABEL = "RKT performance-only cross-fitted Phi ablation without temporal decay."
 RKT_LABEL = "RKT paper-faithful performance-only Phi-relation variant with 5-fold student-level cross-fitting."
 
 
@@ -27,6 +29,7 @@ class RKTConfig:
     history_length: int = HISTORY_LENGTH
     dropout: float = 0.1
     epsilon: float = 1e-6
+    relation_only: bool = False
 
     def __post_init__(self) -> None:
         if self.width != 64 or self.heads != 1 or self.dropout != 0.1:
@@ -52,12 +55,9 @@ def _masked_softmax(values: torch.Tensor, mask: torch.Tensor) -> torch.Tensor:
 class PaperFaithfulRKT(nn.Module):
     """RKT attention with raw Phi and learned positive student decay scale."""
 
-    def __init__(self, config: RKTConfig, initial_s_hours: np.ndarray | torch.Tensor) -> None:
+    def __init__(self, config: RKTConfig, initial_s_hours: np.ndarray | torch.Tensor | None = None) -> None:
         super().__init__()
         self.config = config
-        initial = torch.as_tensor(initial_s_hours, dtype=torch.float32)
-        if len(initial) != config.num_students + 1 or torch.any(initial <= config.epsilon):
-            raise ValueError("initial S_u must contain one positive value per student index")
         self.question_embedding = nn.Embedding(config.num_questions + 1, config.width, padding_idx=0)
         # Paper P has the same 2d width as the correctness-gated interaction.
         self.position_embedding = nn.Embedding(config.history_length + 1, 2 * config.width, padding_idx=0)
@@ -74,16 +74,24 @@ class PaperFaithfulRKT(nn.Module):
         self.feedforward_norm = nn.LayerNorm(config.width)
         self.dropout = nn.Dropout(config.dropout)
         self.output = nn.Linear(config.width, 1)
-        self.rho = nn.Embedding(config.num_students + 1, 1)
-        rho_initial = _softplus_inverse((initial - config.epsilon).clamp_min(config.epsilon))
-        with torch.no_grad():
-            self.rho.weight.copy_(rho_initial[:, None])
+        if config.relation_only:
+            if initial_s_hours is not None:
+                raise ValueError("Phi-only RKT accepts no temporal initialization")
+            self.rho = None
+        else:
+            if initial_s_hours is None:
+                raise ValueError("temporal RKT requires initial memory strengths")
+            initial = torch.as_tensor(initial_s_hours, dtype=torch.float32)
+            if len(initial) != config.num_students + 1 or torch.any(initial <= config.epsilon):
+                raise ValueError("initial S_u must contain one positive value per student index")
+            self.rho = nn.Embedding(config.num_students + 1, 1)
         # sigmoid(0) = 0.5 exactly.
         self.eta = nn.Parameter(torch.zeros(()))
         self._initialize_paper_parameters()
-        # Restore data-derived S_u after normal initialization of model tensors.
-        with torch.no_grad():
-            self.rho.weight.copy_(rho_initial[:, None])
+        if self.rho is not None:
+            rho_initial = _softplus_inverse((initial - config.epsilon).clamp_min(config.epsilon))
+            with torch.no_grad():
+                self.rho.weight.copy_(rho_initial[:, None])
 
     def _initialize_paper_parameters(self) -> None:
         for module in self.modules():
@@ -103,7 +111,8 @@ class PaperFaithfulRKT(nn.Module):
     def set_relation_parameters_trainable(self, trainable: bool) -> None:
         """Learn S_u/lambda in training and explicitly freeze for val/test."""
 
-        self.rho.weight.requires_grad_(trainable)
+        if self.rho is not None:
+            self.rho.weight.requires_grad_(trainable)
         self.eta.requires_grad_(trainable)
 
     def forward(
@@ -122,9 +131,12 @@ class PaperFaithfulRKT(nn.Module):
         scores = torch.einsum("bd,bld->bl", query, key) / self.config.width**0.5
         alpha = _masked_softmax(scores, batch.history_mask)
 
-        strength = self.memory_strength(batch.student_id).unsqueeze(-1)
-        temporal = torch.exp(-batch.delta_hours / strength)
-        relation = _masked_softmax(batch.phi + temporal, batch.history_mask)
+        relation_logits = batch.phi
+        if not self.config.relation_only:
+            strength = self.memory_strength(batch.student_id).unsqueeze(-1)
+            temporal = torch.exp(-batch.delta_hours / strength)
+            relation_logits = relation_logits + temporal
+        relation = _masked_softmax(relation_logits, batch.history_mask)
         fusion = self.fusion_lambda()
         beta = fusion * alpha + (1.0 - fusion) * relation
         attended = torch.einsum("bl,bld->bd", beta, value)
@@ -133,21 +145,19 @@ class PaperFaithfulRKT(nn.Module):
         hidden = self.feedforward_norm(hidden + self.dropout(self.feedforward(hidden)))
         logits = self.output(hidden).squeeze(-1)
         if return_attention:
-            return logits, {
-                "alpha": alpha,
-                "temporal": temporal * batch.history_mask,
-                "relation": relation,
-                "beta": beta,
-                "memory_strength_hours": strength.squeeze(-1),
-                "lambda": fusion,
-            }
+            details = {"alpha": alpha, "relation": relation, "beta": beta, "lambda": fusion}
+            if not self.config.relation_only:
+                details.update(temporal=temporal * batch.history_mask,
+                               memory_strength_hours=strength.squeeze(-1))
+            return logits, details
         return logits
 
     def checkpoint(self) -> dict[str, Any]:
         return {
             "format_version": 1,
-            "label": RKT_LABEL,
-            "config": asdict(self.config),
+            "label": RKT_PHI_LABEL if self.config.relation_only else RKT_LABEL,
+            "config": {key: value for key, value in asdict(self.config).items()
+                       if key != "relation_only" or value},
             "state_dict": self.state_dict(),
         }
 
@@ -156,11 +166,13 @@ class PaperFaithfulRKT(nn.Module):
         cls, path: str | Path, *, map_location: str | torch.device = "cpu"
     ) -> "PaperFaithfulRKT":
         payload = torch.load(path, map_location=map_location, weights_only=True)
-        if payload.get("format_version") != 1 or payload.get("label") != RKT_LABEL:
+        if payload.get("format_version") != 1 or payload.get("label") not in (RKT_LABEL, RKT_PHI_LABEL):
             raise ValueError("unsupported RKT checkpoint")
         config = RKTConfig(**payload["config"])
         # State loading overwrites this constructor placeholder, including rho.
-        placeholder = np.ones(config.num_students + 1, dtype=np.float32)
+        if config.relation_only != (payload["label"] == RKT_PHI_LABEL):
+            raise ValueError("RKT checkpoint relation mode disagrees with label")
+        placeholder = None if config.relation_only else np.ones(config.num_students + 1, dtype=np.float32)
         model = cls(config, placeholder)
         model.load_state_dict(payload["state_dict"], strict=True)
         return model

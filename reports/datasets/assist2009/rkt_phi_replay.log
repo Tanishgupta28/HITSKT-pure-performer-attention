@@ -1,0 +1,52 @@
+{"epoch": 6, "split": 2, "targets": 128, "expected_targets": 67756, "elapsed_seconds": 0.39819373935461044, "peak_cuda_allocated_bytes": 48824320}
+{"epoch": 6, "split": 2, "targets": 64000, "expected_targets": 67756, "elapsed_seconds": 1.4821431245654821, "peak_cuda_allocated_bytes": 52036608}
+{"epoch": 6, "split": 1, "targets": 128, "expected_targets": 67756, "elapsed_seconds": 0.14090639725327492, "peak_cuda_allocated_bytes": 52036608}
+{"epoch": 6, "split": 1, "targets": 64000, "expected_targets": 67756, "elapsed_seconds": 1.2045663492754102, "peak_cuda_allocated_bytes": 52036608}
+{
+  "best_epoch": 6,
+  "checkpoint_sha256": "c3db2605cd2b13e5f88787f48cca55838e19dc2e508b523a911e362ae96360f7",
+  "dataset": "assist2009",
+  "dataset_provenance": {
+    "metadata_sha256": "be072b3de4bad5c3e4e649a562a2ab39c34f87f4468a3ac6a720f86e58b9d6ea",
+    "protocol": "assist2009_ordered_interactions_60_20_20_v1",
+    "source_sha256": "f22e3fb7872c1784ce93b0f9ebabbe0cbcac4f896fd8b4a11667b9715d77dbdc",
+    "target_order_id_sha256": {
+      "test": "7379181884ff0c6ed79eb4dc7375508d1f7a2fdad6a50fa32952b51f6052a371",
+      "train": "ba1e0e2618c040dc962be78dc17a2be3e7966ec434d0cd7e9f2023d433e04b14",
+      "validation": "36e751492d5b0537a2ce48a74b74923116a7efbec4ee6d806728b15047fffc6a"
+    }
+  },
+  "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+  "model": "RKT (Phi-only)",
+  "runtime_seconds": 10.605941236950457,
+  "seed": 42,
+  "session_store_metadata_sha256": "be072b3de4bad5c3e4e649a562a2ab39c34f87f4468a3ac6a720f86e58b9d6ea",
+  "test": {
+    "accuracy": 0.6916730621642364,
+    "f1": 0.7543940088644353,
+    "loss": 0.60586187612054,
+    "mse": 0.20539601222106954,
+    "precision": 0.7626880928043359,
+    "recall": 0.7462783773725344,
+    "roc_auc": 0.7294890318382983,
+    "targets": 67756,
+    "threshold": 0.5
+  },
+  "total_parameters": 1743874,
+  "trainable_parameters": 1743874,
+  "validation": {
+    "accuracy": 0.7033473050357164,
+    "f1": 0.771279016841147,
+    "loss": 0.586330771342424,
+    "mse": 0.1981229002581239,
+    "precision": 0.769650035200872,
+    "recall": 0.7729149086596574,
+    "roc_auc": 0.7400241124349749,
+    "targets": 67756,
+    "threshold": 0.5
+  },
+  "validation_and_test_target_ids_verified": true,
+  "verification": "fresh model loaded from best checkpoint; exact equality of all test metrics",
+  "verified": true
+}
+

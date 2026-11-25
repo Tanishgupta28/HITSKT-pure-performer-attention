@@ -100,10 +100,14 @@ def _run_epoch(
     gradient_clip: float | None,
     transport: str = "reference",
     progress_path: Path | None = None,
+    dkt_dense: bool = False,
+    gpu_sample_path: Path | None = None,
+    verify_target_coverage: bool = False,
 ) -> dict[str, float | int]:
     training = optimizer is not None
     started = time.perf_counter()
     model.train(training)
+    forward = model.forward_dense if dkt_dense else model
     loader, _ = _loader(
         dataset,
         batch_size=batch_size,
@@ -114,6 +118,7 @@ def _run_epoch(
     )
     probabilities = np.empty(len(dataset), dtype=np.float32)
     labels = np.empty(len(dataset), dtype=np.uint8)
+    target_ids = np.empty(len(dataset), dtype=np.int64) if verify_target_coverage else None
     cursor = 0
     loss_sum = 0.0
     records = []
@@ -153,6 +158,8 @@ def _run_epoch(
         count = len(targets)
         probabilities[cursor:cursor + count] = probs
         labels[cursor:cursor + count] = targets
+        if target_ids is not None:
+            target_ids[cursor:cursor + count] = torch.cat([r[3] for r in records]).cpu().numpy()
         cursor += count
         records.clear()
 
@@ -163,10 +170,18 @@ def _run_epoch(
             else:
                 yield item.to(device)
 
+    trace = None
     for batch in batches():
+        if gpu_sample_path is not None and batches_processed == 64:
+            from torch.profiler import ProfilerActivity, profile
+
+            torch.cuda.synchronize(device)
+            trace = profile(activities=[ProfilerActivity.CPU, ProfilerActivity.CUDA])
+            trace.start()
+            sample_start = time.perf_counter()
         if training:
             optimizer.zero_grad(set_to_none=True)
-            logits = model(batch)
+            logits = forward(batch)
             loss = torch.nn.functional.binary_cross_entropy_with_logits(
                 logits, batch.target_labels.float(), reduction="mean"
             )
@@ -176,27 +191,60 @@ def _run_epoch(
             optimizer.step()
         else:
             with torch.no_grad():
-                logits = model(batch)
+                logits = forward(batch)
                 loss = torch.nn.functional.binary_cross_entropy_with_logits(
                     logits, batch.target_labels.float(), reduction="mean"
                 )
         count = len(batch.target_labels)
         if transport == "packed64":
-            records.append((loss.detach(), torch.sigmoid(logits).detach(), batch.target_labels))
+            records.append((loss.detach(), torch.sigmoid(logits).detach(),
+                            batch.target_labels, batch.target_event_id))
             if len(records) == 64:
                 flush()
         else:
             loss_sum += float(loss.detach().cpu()) * count
             probabilities[cursor : cursor + count] = torch.sigmoid(logits).detach().cpu().numpy()
             labels[cursor : cursor + count] = batch.target_labels.detach().cpu().numpy()
+            if target_ids is not None:
+                target_ids[cursor:cursor + count] = batch.target_event_id.cpu().numpy()
             cursor += count
         batches_processed += 1
         targets_processed += count
+        if trace is not None and batches_processed == 72:
+            torch.cuda.synchronize(device)
+            sample_seconds = time.perf_counter() - sample_start
+            trace.stop()
+            intervals = sorted(
+                (event.time_range.start, event.time_range.end) for event in trace.events()
+                if event.device_type == torch.autograd.DeviceType.CUDA
+                and not event.name.startswith(("Memcpy", "Memset", "[CUDA memcpy", "[CUDA memset"))
+            )
+            active_us, previous = 0.0, 0.0
+            for start, end in intervals:
+                active_us += max(0.0, end - max(start, previous))
+                previous = max(previous, end)
+            if not intervals:
+                raise RuntimeError("CUDA profiler observed no training kernels")
+            evidence = {
+                "event": "training_cuda_activity_sample", "epoch": epoch,
+                "minibatches": 8, "cuda_kernels": len(intervals),
+                "kernel_active_seconds": active_us / 1e6, "sample_seconds": sample_seconds,
+                "process_kernel_active_percent": 100 * active_us / (1e6 * sample_seconds),
+                "measurement": "CUPTI kernel intervals over a profiled wall-time window",
+            }
+            _write_json(gpu_sample_path, evidence)
+            print(json.dumps(evidence), flush=True)
+            trace = None
         if batches_processed == 1 or batches_processed % 4096 == 0:
             progress("running")
     flush()
     if cursor != len(dataset):
         raise RuntimeError(f"evaluated {cursor} targets but expected {len(dataset)}")
+    if target_ids is not None:
+        if not np.array_equal(np.sort(target_ids), dataset.events):
+            raise ValueError("actual evaluation targets differ from the ordered split manifest")
+        if not np.array_equal(labels, dataset.store.correct[target_ids]):
+            raise ValueError("actual evaluation labels differ from the ordered split manifest")
     progress("computing_metrics")
     metrics = binary_metrics(
         torch.from_numpy(probabilities),
@@ -275,14 +323,19 @@ def train_baseline(
             raise ValueError("epoch ceiling override is restricted to automated tests")
         epoch_ceiling = epoch_ceiling_override
     history_length = int(profile["history_length"])
+    ordered = dataset_name == "assist2009"
+    if ordered and (transport != "packed64" or not torch.cuda.is_available()):
+        raise ValueError("ASSIST2009 requires packed64 batch transport and CUDA")
     datasets = {
-        split: RollingTargetDataset(store, split, history_length=history_length)
+        split: (store.targets(split, history_length) if ordered
+                else RollingTargetDataset(store, split, history_length=history_length))
         for split in ("train", "validation", "test")
     }
     if any(len(dataset) == 0 for dataset in datasets.values()):
         raise ValueError("an experiment split contains no targets")
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     gpu_name = torch.cuda.get_device_name(device) if device.type == "cuda" else "CPU"
+    dkt_dense = ordered and model_name == "dkt"
     model = make_baseline_model(
         model_name,
         num_questions=int(store.metadata["num_questions"]),
@@ -316,6 +369,15 @@ def train_baseline(
         "best_validation_auc": None,
         "epochs_completed": 0,
     }
+    if dkt_dense:
+        torch.backends.cudnn.allow_tf32 = False
+    if ordered:
+        fresh_configuration["dkt_dense_lstm"] = dkt_dense
+        fresh_configuration["cudnn_allow_tf32"] = torch.backends.cudnn.allow_tf32
+        fresh_configuration["dataset_provenance"] = store.provenance
+        fresh_configuration["torch_version"] = str(torch.__version__)
+        fresh_configuration["cuda_runtime"] = torch.version.cuda
+        fresh_configuration["gpu_memory_bytes"] = torch.cuda.get_device_properties(device).total_memory
     if epoch_ceiling_override is not None:
         fresh_configuration["test_epoch_ceiling_override"] = epoch_ceiling
     if early_stopping.patience == 10:
@@ -327,7 +389,7 @@ def train_baseline(
         "interactions": int(store.metadata["interactions"]),
         "questions": int(store.metadata["num_questions"]),
         "skills": int(store.metadata["num_skills"]),
-        "sessions": int(store.metadata["sessions"]),
+        "sessions": None if ordered else int(store.metadata["sessions"]),
         "target_counts": target_counts,
         "target_ratios": {
             split: count / sum(target_counts.values()) for split, count in target_counts.items()
@@ -366,6 +428,9 @@ def train_baseline(
         for key in ("model", "dataset", "seed", "batch_size", "history_length"):
             if configuration.get(key) != fresh_configuration.get(key):
                 raise ValueError(f"resume configuration mismatch for {key}")
+        if ordered and (configuration.get("dataset_provenance") != store.provenance
+                        or configuration.get("dkt_dense_lstm") != dkt_dense):
+            raise ValueError("ASSIST2009 dataset provenance differs from the saved experiment")
         checkpoint = torch.load(last_path, map_location=device, weights_only=True)
         if checkpoint.get("seed") != PROJECT_SEED:
             raise ValueError("resume checkpoint seed mismatch")
@@ -461,6 +526,8 @@ def train_baseline(
         for epoch in range(start_epoch, epoch_ceiling + 1):
             if control.should_stop:
                 break
+            if ordered:
+                torch.cuda.reset_peak_memory_stats(device)
             train_metrics = _run_epoch(
                 model,
                 datasets["train"],
@@ -472,6 +539,9 @@ def train_baseline(
                 gradient_clip=profile["gradient_clip"],
                 transport=transport,
                 progress_path=output_root / "progress.json",
+                dkt_dense=dkt_dense,
+                gpu_sample_path=(output_root / "gpu_activity.json" if ordered and epoch == 1
+                                 and len(datasets["train"]) >= 72 * profile["batch_size"] else None),
             )
             validation_metrics = _run_epoch(
                 model,
@@ -484,6 +554,7 @@ def train_baseline(
                 gradient_clip=None,
                 transport=transport,
                 progress_path=output_root / "progress.json",
+                dkt_dense=dkt_dense,
             )
             for split, values in (("train", train_metrics), ("validation", validation_metrics)):
                 writer.writerow({"epoch": epoch, "split": split, **values})
@@ -500,6 +571,14 @@ def train_baseline(
             if decision.improved:
                 torch.save(payload, best_path)
             epochs_completed = epoch
+            if ordered:
+                print(json.dumps({
+                    "event": "epoch_metrics", "model": profile["model"], "epoch": epoch,
+                    "train_loss": train_metrics["loss"], "validation_loss": validation_metrics["loss"],
+                    "validation_auc": validation_metrics["roc_auc"],
+                    "peak_cuda_allocated_bytes": torch.cuda.max_memory_allocated(device),
+                    "peak_cuda_reserved_bytes": torch.cuda.max_memory_reserved(device),
+                }), flush=True)
             log.write(
                 json.dumps(
                     {
@@ -546,6 +625,7 @@ def train_baseline(
             gradient_clip=None,
             transport=transport,
             progress_path=output_root / "progress.json",
+            dkt_dense=dkt_dense,
         )
         writer.writerow({"epoch": control.best_epoch, "split": "test", **test_metrics})
         metrics_file.flush()
@@ -604,7 +684,7 @@ def train_baseline(
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("model", choices=sorted(BASELINE_TRAINING_CONFIGS))
-    parser.add_argument("dataset", choices=("assist2017", "junyi", "ednet_kt1"))
+    parser.add_argument("dataset", choices=("assist2017", "junyi", "ednet_kt1", "assist2009"))
     parser.add_argument("store_root", type=Path)
     parser.add_argument("output_root", type=Path)
     parser.add_argument("--workers", type=int, default=0)
@@ -613,10 +693,18 @@ def main() -> None:
     parser.add_argument("--early-stopping-patience", type=int, choices=(5, 10), default=None,
                         help="explicit DKT/full EdNet exception; saved patience is retained on resume")
     args = parser.parse_args()
+    if args.dataset == "assist2009":
+        from ktbench.data.assist2009 import Assist2009Store
+
+        store = Assist2009Store(args.store_root)
+        if not args.resume and args.output_root.exists():
+            raise FileExistsError(args.output_root)
+    else:
+        store = SessionStore(args.store_root)
     result = train_baseline(
         args.model,
         args.dataset,
-        SessionStore(args.store_root),
+        store,
         args.output_root,
         workers=args.workers,
         resume=args.resume,

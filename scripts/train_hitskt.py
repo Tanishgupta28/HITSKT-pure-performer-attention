@@ -14,6 +14,8 @@ from typing import Any
 import numpy as np
 import torch
 
+from ktbench.data.assist2009 import Assist2009Store
+from ktbench.data.assist2009_sessions import AssignmentRunStore, AssignmentTargets
 from ktbench.config import PROJECT_SEED, seed_everything
 from ktbench.data.session_store import (
     RollingSessionDataset,
@@ -36,6 +38,8 @@ def _write_json(path: Path, value: object) -> None:
 
 
 def _target_count(dataset: RollingSessionDataset) -> int:
+    if isinstance(dataset, AssignmentTargets):
+        return dataset.target_count
     offsets = dataset.store.session_offsets
     return int(np.sum(offsets[dataset.targets + 1] - offsets[dataset.targets]))
 
@@ -48,6 +52,7 @@ def _run_epoch(
     epoch: int,
     optimizer: torch.optim.Optimizer | None,
     workers: int,
+    verify_target_coverage: bool = False,
 ) -> dict[str, float | int]:
     training = optimizer is not None
     model.train(training)
@@ -67,7 +72,10 @@ def _run_epoch(
     labels = np.empty(expected_targets, dtype=np.uint8)
     cursor = 0
     loss_sum = 0.0
-    for batch in loader:
+    target_ids = np.empty(expected_targets, dtype=np.int64) if verify_target_coverage else None
+    ordered = isinstance(dataset, AssignmentTargets)
+    started = time.perf_counter()
+    for step, batch in enumerate(loader, 1):
         batch = batch.to(device)
         if training:
             optimizer.zero_grad(set_to_none=True)
@@ -85,7 +93,18 @@ def _run_epoch(
         loss_sum += float(loss.detach().cpu()) * count
         probabilities[cursor : cursor + count] = torch.sigmoid(valid_logits).detach().cpu().numpy()
         labels[cursor : cursor + count] = valid_labels.detach().cpu().numpy()
+        if target_ids is not None:
+            target_ids[cursor : cursor + count] = batch.target_event_ids.masked_select(batch.target_metric_mask).cpu().numpy()
         cursor += count
+        if ordered and (step == 1 or step % 250 == 0):
+            print(json.dumps({"epoch": epoch, "split": dataset.split, "targets": cursor,
+                              "expected_targets": expected_targets, "elapsed_seconds": time.perf_counter() - started,
+                              "peak_cuda_allocated_bytes": torch.cuda.max_memory_allocated(device)}), flush=True)
+    if target_ids is not None and (
+        not np.array_equal(np.sort(target_ids), dataset.events)
+        or not np.array_equal(labels, dataset.store.correct[target_ids])
+    ):
+        raise ValueError("HiTSKT prediction IDs or labels differ from the shared benchmark")
     if cursor != expected_targets:
         raise RuntimeError("HiTSKT target accounting changed during an epoch")
     return binary_metrics(
@@ -116,8 +135,14 @@ def train_hitskt(
         if epoch_ceiling_override <= 0 or "PYTEST_CURRENT_TEST" not in os.environ:
             raise ValueError("epoch ceiling override is restricted to automated tests")
         epoch_ceiling = epoch_ceiling_override
+    ordered = dataset_name == "assist2009"
+    if ordered and (not isinstance(store, AssignmentRunStore) or not torch.cuda.is_available()):
+        raise ValueError("ASSIST2009 HiTSKT requires the assignment-run store and CUDA")
+    if ordered and not resume and (output_root / "config.json").exists():
+        raise FileExistsError(output_root)
+    dataset_class = AssignmentTargets if ordered else RollingSessionDataset
     datasets = {
-        split: RollingSessionDataset(
+        split: dataset_class(
             store, split, history_sessions=int(profile["history_sessions"])
         )
         for split in ("train", "validation", "test")
@@ -170,6 +195,10 @@ def train_hitskt(
         "best_validation_auc": None,
         "epochs_completed": 0,
     }
+    if ordered:
+        fresh_configuration.update(dataset_provenance=store.provenance,
+                                   session_protocol=store.metadata["session_protocol"],
+                                   session_offsets_sha256=store.session_offsets_sha256)
     if epoch_ceiling_override is not None:
         fresh_configuration["test_epoch_ceiling_override"] = epoch_ceiling
     dataset_stats = {
@@ -213,6 +242,9 @@ def train_hitskt(
         ):
             if configuration.get(key) != fresh_configuration.get(key):
                 raise ValueError(f"resume configuration mismatch for {key}")
+        if ordered and any(configuration.get(key) != fresh_configuration[key] for key in
+                           ("dataset_provenance", "session_protocol", "session_offsets_sha256")):
+            raise ValueError("HiTSKT resume assignment provenance mismatch")
         checkpoint = torch.load(last_path, map_location=device, weights_only=True)
         if checkpoint.get("seed") != PROJECT_SEED:
             raise ValueError("resume checkpoint seed mismatch")
@@ -337,6 +369,11 @@ def train_hitskt(
                 ) + "\n"
             )
             log.flush()
+            if ordered:
+                print(json.dumps({"epoch": epoch, "train_loss": train_metrics["loss"],
+                                  "validation_loss": validation_metrics["loss"],
+                                  "validation_auc": validation_metrics["roc_auc"],
+                                  "best_epoch": decision.best_epoch}), flush=True)
             if decision.should_stop:
                 break
         if not best_path.exists() or control.best_epoch is None:
@@ -388,9 +425,16 @@ def main() -> None:
     parser.add_argument("output_root", type=Path)
     parser.add_argument("--workers", type=int, default=0)
     parser.add_argument("--resume", action="store_true")
+    parser.add_argument("--assignment-root", type=Path)
     args = parser.parse_args()
+    if args.dataset == "assist2009":
+        if args.assignment_root is None:
+            parser.error("ASSIST2009 requires --assignment-root")
+        store = AssignmentRunStore.open(Assist2009Store(args.store_root), args.assignment_root)
+    else:
+        store = SessionStore(args.store_root)
     result = train_hitskt(
-        args.dataset, SessionStore(args.store_root), args.output_root,
+        args.dataset, store, args.output_root,
         workers=args.workers, resume=args.resume,
     )
     print(json.dumps(result, indent=2, sort_keys=True))

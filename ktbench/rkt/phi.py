@@ -15,6 +15,7 @@ import pandas as pd
 from numba import njit
 
 from ktbench.config import PROJECT_SEED
+from ktbench.data.assist2009 import Assist2009Store
 from ktbench.data.session_store import SessionStore
 
 
@@ -145,6 +146,9 @@ def _merge_fold_counts(
 
 
 def _student_training_bounds(store: SessionStore, student_index: int) -> tuple[int, int]:
+    if isinstance(store, Assist2009Store):
+        start, stop = store.student_offsets[student_index:student_index + 2]
+        return int(start), int(start + np.searchsorted(store.split[start:stop], 1))
     session_start = int(store.student_offsets[student_index])
     session_stop = int(store.student_offsets[student_index + 1])
     sessions = np.arange(session_start, session_stop)
@@ -171,7 +175,9 @@ def build_cross_fitted_phi_cache(
     scratch = output_root / "scratch"
     if scratch.exists():
         shutil.rmtree(scratch)
-    student_ids = store.session_student[store.student_offsets[:-1]].astype(np.int32)
+    ordered = isinstance(store, Assist2009Store)
+    student_ids = (store.student[store.student_offsets[:-1]] if ordered
+                   else store.session_student[store.student_offsets[:-1]]).astype(np.int32)
     fold_mapping = assign_student_folds(student_ids, seed=seed)
     fold_mapping.to_csv(output_root / "student_folds.csv", index=False)
     fold_by_student = np.full(int(student_ids.max()) + 1, 255, dtype=np.uint8)
@@ -216,9 +222,12 @@ def build_cross_fitted_phi_cache(
 
     fold_counts = fold_mapping.groupby("fold").size().reindex(range(FOLD_COUNT), fill_value=0)
     split_targets = {}
-    session_lengths = np.diff(store.session_offsets)
     for name, split in (("train", 0), ("validation", 1), ("test", 2)):
-        split_targets[name] = int(session_lengths[store.session_split == split].sum())
+        if ordered:
+            split_targets[name] = int(np.count_nonzero(store.split == split))
+        else:
+            session_lengths = np.diff(store.session_offsets)
+            split_targets[name] = int(session_lengths[store.session_split == split].sum())
     metadata: dict[str, object] = {
         "format_version": 1,
         "label": "RKT paper-faithful performance-only Phi-relation variant with 5-fold student-level cross-fitting.",
@@ -248,6 +257,8 @@ def build_cross_fitted_phi_cache(
         "threshold": None,
         "text_relation": None,
     }
+    if ordered:
+        metadata["dataset_provenance"] = store.provenance
     (output_root / "metadata.json").write_text(json.dumps(metadata, indent=2, sort_keys=True) + "\n")
     (output_root / "_SUCCESS").write_text("complete\n")
     return metadata

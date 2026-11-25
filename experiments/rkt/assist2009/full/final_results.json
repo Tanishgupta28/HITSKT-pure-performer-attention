@@ -1,0 +1,31 @@
+{
+  "best_checkpoint_reloaded": true,
+  "best_epoch": 6,
+  "best_validation_auc": 0.7400241124349749,
+  "dataset": "assist2009",
+  "epoch_ceiling": 300,
+  "epochs_completed": 11,
+  "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+  "label": "RKT performance-only cross-fitted Phi ablation without temporal decay.",
+  "min_delta": 0.0,
+  "model": "RKT (Phi-only)",
+  "patience": 5,
+  "resume_count": 0,
+  "runtime_before_resume_estimated_from_artifact_mtimes": false,
+  "runtime_seconds": 107.31823906023055,
+  "seed": 42,
+  "status": "complete",
+  "test": {
+    "accuracy": 0.6916730621642364,
+    "f1": 0.7543940088644353,
+    "loss": 0.60586187612054,
+    "mse": 0.20539601222106954,
+    "precision": 0.7626880928043359,
+    "recall": 0.7462783773725344,
+    "roc_auc": 0.7294890318382983,
+    "targets": 67756,
+    "threshold": 0.5
+  },
+  "total_parameters": 1743874,
+  "trainable_parameters": 1743874
+}

@@ -25,18 +25,23 @@ def vectorized_batch(dataset: RollingTargetDataset, indices: Sequence[int]) -> R
     first_sessions = sessions - store.session_number[sessions].astype(np.int64) + 1
     first_events = store.session_offsets[first_sessions]
     lengths = np.minimum(events - first_events, dataset.history_length)
+    return materialize_batch(store, events, store.session_student[sessions],
+                             lengths, dataset.split, order=store.timestamp_ms)
+
+
+def materialize_batch(store, events, students, lengths, split, *, order):
     width = max(1, int(lengths.max()))
     distances = np.arange(width, 0, -1, dtype=np.int64)[None, :]
     mask = distances <= lengths[:, None]
     history = np.maximum(events[:, None] - distances, 0)
-    if np.any(mask & (store.timestamp_ms[history] > store.timestamp_ms[events, None])):
+    if np.any(mask & (order[history] > order[events, None])):
         raise ValueError("future interaction found in rolling history")
 
     def tensor(values: np.ndarray, dtype: np.dtype = np.int64) -> torch.Tensor:
         return torch.from_numpy(np.array(values, dtype=dtype, copy=True))
 
     return RollingTargetBatch(
-        student_id=tensor(store.session_student[sessions]),
+        student_id=tensor(students),
         history_question=tensor(np.where(mask, store.question[history], 0)),
         history_skill=tensor(np.where(mask, store.skill[history], 0)),
         history_correct=tensor(np.where(mask, store.correct[history], 0)),
@@ -45,7 +50,7 @@ def vectorized_batch(dataset: RollingTargetDataset, indices: Sequence[int]) -> R
         target_skill=tensor(store.skill[events]),
         target_labels=tensor(store.correct[events]),
         target_event_id=tensor(events),
-        split=tensor(np.full(len(indices), dataset.split), np.uint8),
+        split=tensor(np.full(len(events), split), np.uint8),
     )
 
 
@@ -118,7 +123,10 @@ class PackedRollingDataset(Dataset):
         self.dataset = dataset
 
     def __getitem__(self, block):
-        return pack_batches([vectorized_batch(self.dataset, indices) for indices in block])
+        batch = getattr(self.dataset, "vectorized_batch", None)
+        if batch is None:
+            return pack_batches([vectorized_batch(self.dataset, indices) for indices in block])
+        return pack_batches([batch(indices) for indices in block])
 
 
 class PackedBatchSampler:

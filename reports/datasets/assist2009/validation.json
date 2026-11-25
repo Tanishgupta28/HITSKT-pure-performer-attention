@@ -1,0 +1,103 @@
+{
+  "assignment_runs_revisiting_same_student_and_assignment": 9590,
+  "observed_assignment_runs": 75829,
+  "provenance": {
+    "metadata_sha256": "be072b3de4bad5c3e4e649a562a2ab39c34f87f4468a3ac6a720f86e58b9d6ea",
+    "protocol": "assist2009_ordered_interactions_60_20_20_v1",
+    "source_sha256": "f22e3fb7872c1784ce93b0f9ebabbe0cbcac4f896fd8b4a11667b9715d77dbdc",
+    "target_order_id_sha256": {
+      "test": "7379181884ff0c6ed79eb4dc7375508d1f7a2fdad6a50fa32952b51f6052a371",
+      "train": "ba1e0e2618c040dc962be78dc17a2be3e7966ec434d0cd7e9f2023d433e04b14",
+      "validation": "36e751492d5b0537a2ce48a74b74923116a7efbec4ee6d806728b15047fffc6a"
+    }
+  },
+  "published_release_checks": {
+    "combined_columns": [
+      "order_id",
+      "assignment_id",
+      "user_id",
+      "assistment_id",
+      "problem_id",
+      "original",
+      "correct",
+      "attempt_count",
+      "ms_first_response_time",
+      "tutor_mode",
+      "answer_type",
+      "sequence_id",
+      "student_class_id",
+      "position",
+      "problem_set_type",
+      "base_sequence_id",
+      "list_skill_ids",
+      "list_skills",
+      "teacher_id",
+      "school_id"
+    ],
+    "combined_zip_sha256": "9927c98bf4f25ec09a9c09d6709adb549da23f0394aac25657efdac0c44f3191",
+    "corrected_columns": [
+      "Unnamed: 0",
+      "order_id",
+      "assignment_id",
+      "user_id",
+      "assistment_id",
+      "problem_id",
+      "original",
+      "correct",
+      "attempt_count",
+      "ms_first_response",
+      "tutor_mode",
+      "answer_type",
+      "sequence_id",
+      "student_class_id",
+      "position",
+      "type",
+      "base_sequence_id",
+      "skill_id",
+      "skill_name",
+      "teacher_id",
+      "school_id",
+      "hint_count",
+      "hint_total",
+      "overlap_time",
+      "template_id",
+      "answer_id",
+      "answer_text",
+      "first_action",
+      "bottom_hint",
+      "opportunity",
+      "opportunity_original"
+    ],
+    "corrected_sha256": "162ef8d2d28bcbfea6591a282994062bd8d5eaa00636544292a0d268dca6e5da",
+    "corrected_unique_interactions": 346860,
+    "shared_order_id_field_mismatches": {
+      "correct": 0,
+      "problem_id": 0,
+      "user_id": 0
+    },
+    "source_alignment_by_order_id": {
+      "both": 346860,
+      "left_only": 0,
+      "right_only": 0
+    }
+  },
+  "split_statistics": {
+    "test": {
+      "questions_absent_from_training": 1614,
+      "skills_absent_from_training": 1,
+      "targets_with_question_absent_from_training": 2905
+    },
+    "train": {
+      "questions_absent_from_training": 0,
+      "skills_absent_from_training": 0,
+      "targets_with_question_absent_from_training": 0
+    },
+    "validation": {
+      "questions_absent_from_training": 1498,
+      "skills_absent_from_training": 1,
+      "targets_with_question_absent_from_training": 2383
+    }
+  },
+  "verified": true,
+  "verified_unique_targets": 346860
+}

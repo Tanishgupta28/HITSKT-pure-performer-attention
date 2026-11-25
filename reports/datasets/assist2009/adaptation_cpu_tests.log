@@ -1,0 +1,11 @@
+..s......................................................................................................................... [ 84%]
+.......................                                                                                                      [100%]
+========================================================= warnings summary =========================================================
+tests/test_transport_resume.py: 24 warnings
+  /usr/lib/python3.12/multiprocessing/popen_fork.py:66: DeprecationWarning: This process (pid=496709) is multi-threaded, use of fork() may lead to deadlocks in the child.
+    self.pid = os.fork()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+===================================================== short test summary info ======================================================
+SKIPPED [1] tests/test_assist2009.py:54: ASSIST2009 full-run path requires CUDA
+146 passed, 1 skipped, 24 warnings in 34.84s

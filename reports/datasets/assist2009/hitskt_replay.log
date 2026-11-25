@@ -1,0 +1,55 @@
+{"epoch": 24, "split": 2, "targets": 69, "expected_targets": 67756, "elapsed_seconds": 0.4322186419740319, "peak_cuda_allocated_bytes": 401209344}
+[W1125 16:16:47.702441481 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1195376640 bytes (free: 846528512, total: 42278584320).
+[W1125 16:16:48.430183622 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1717567488 bytes (free: 1467285504, total: 42278584320).
+[W1125 16:16:49.201212581 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1956642816 bytes (free: 1490354176, total: 42278584320).
+{"epoch": 24, "split": 2, "targets": 64944, "expected_targets": 67756, "elapsed_seconds": 5.337527777068317, "peak_cuda_allocated_bytes": 6133332480}
+{"epoch": 24, "split": 1, "targets": 71, "expected_targets": 67756, "elapsed_seconds": 0.10146685689687729, "peak_cuda_allocated_bytes": 6275505152}
+{"epoch": 24, "split": 1, "targets": 63815, "expected_targets": 67756, "elapsed_seconds": 4.7918116841465235, "peak_cuda_allocated_bytes": 6275505152}
+{
+  "best_epoch": 24,
+  "checkpoint_sha256": "cba74515f6bf5fcdad7b18b73541c498815785920bef01544e5f144186663177",
+  "dataset": "assist2009",
+  "dataset_provenance": {
+    "metadata_sha256": "be072b3de4bad5c3e4e649a562a2ab39c34f87f4468a3ac6a720f86e58b9d6ea",
+    "protocol": "assist2009_ordered_interactions_60_20_20_v1",
+    "source_sha256": "f22e3fb7872c1784ce93b0f9ebabbe0cbcac4f896fd8b4a11667b9715d77dbdc",
+    "target_order_id_sha256": {
+      "test": "7379181884ff0c6ed79eb4dc7375508d1f7a2fdad6a50fa32952b51f6052a371",
+      "train": "ba1e0e2618c040dc962be78dc17a2be3e7966ec434d0cd7e9f2023d433e04b14",
+      "validation": "36e751492d5b0537a2ce48a74b74923116a7efbec4ee6d806728b15047fffc6a"
+    }
+  },
+  "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+  "model": "HiTSKT",
+  "runtime_seconds": 16.955649552866817,
+  "seed": 42,
+  "session_store_metadata_sha256": "be072b3de4bad5c3e4e649a562a2ab39c34f87f4468a3ac6a720f86e58b9d6ea",
+  "test": {
+    "accuracy": 0.7186374638408407,
+    "f1": 0.7781295097993576,
+    "loss": 0.560811182064306,
+    "mse": 0.188051330006721,
+    "precision": 0.7786732507220722,
+    "recall": 0.7775865277260886,
+    "roc_auc": 0.7710708956712136,
+    "targets": 67756,
+    "threshold": 0.5
+  },
+  "total_parameters": 19003393,
+  "trainable_parameters": 19003393,
+  "validation": {
+    "accuracy": 0.729957494539229,
+    "f1": 0.7943625880845612,
+    "loss": 0.5474041581914366,
+    "mse": 0.18259016871567785,
+    "precision": 0.7830711278528695,
+    "recall": 0.8059844459142017,
+    "roc_auc": 0.7742484543316478,
+    "targets": 67756,
+    "threshold": 0.5
+  },
+  "validation_and_test_target_ids_verified": true,
+  "verification": "fresh model loaded from best checkpoint; exact equality of all test metrics",
+  "verified": true
+}
+
