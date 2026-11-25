@@ -1,0 +1,56 @@
+{
+  "model_replay": {
+    "direct_forward_checks": 102,
+    "max_absolute_error": 1.7881393432617188e-07,
+    "checkpoint_sha256_before_and_after": "2308c5bf0c850da1e55daf802a0853a30fac45eeed071c7162c68fc17bfa3bdd",
+    "source_sha256": "8a18000806279ae4feae90a94a5af75b7688f2e4ba666c9a0662c75e1a404b6a",
+    "test_export_sha256": "35c773ce8eb976f38756958b5523cc3cf54836eaffeb03a0de0f49437bb6ed4c",
+    "replayed_score_table_sha256": "d7a6168f320468479138d33d0087942064c4dc7d8c6cb72ba48d8be483ef3fab"
+  },
+  "heldout_learners": 13039,
+  "learners_with_observed_weak": 7702,
+  "learners_with_no_observed_weak": 5337,
+  "distinct_composite_skills": 1460,
+  "heldout_pairs": 107197,
+  "observed_weak_pairs": 26344,
+  "heldout_followup_answers": 1022557,
+  "published_mean_prediction": 0.7343810082813089,
+  "replayed_mean_prediction": 0.7343810102879208,
+  "published_mae": 0.14560385479769675,
+  "replayed_mae": 0.14560385454865654,
+  "published_confusion_matrix": [
+    [
+      15184,
+      10064,
+      1096
+    ],
+    [
+      7496,
+      26261,
+      12069
+    ],
+    [
+      1652,
+      14172,
+      19203
+    ]
+  ],
+  "replayed_confusion_matrix": [
+    [
+      15184,
+      10064,
+      1096
+    ],
+    [
+      7496,
+      26261,
+      12069
+    ],
+    [
+      1652,
+      14172,
+      19203
+    ]
+  ],
+  "confusion_matrix_exact_match": true
+}

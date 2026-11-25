@@ -1,0 +1,45 @@
+Junyi weak-topic recommendations | Ranking evaluation at K = 3
+
+Research question
+Given only the information available before the first original test session, did a learner's three highest-priority recommendations include a skill on which they subsequently answered fewer than 60% of questions correctly? How close was the order to an ideal list that put those skills first?
+
+Population and units
+The accepted Junyi event source contains 14,660,217 answer records for 29,865 learners. A skill here is a processed composite skill (the complete tag set associated with a question). The model vocabulary contains 1,521 composite skills. A student–skill pair is one learner on one composite skill; the same skill can contribute a separate observation for many learners. Within a learner a given skill is ranked once.
+
+Use the chronological split of complete sessions from the original study. At each learner's cutoff, require at least four completed history sessions and 20 history interactions. Each evaluable pair requires at least five subsequent answers on that skill through the end of the original test window. This yields 26,077 learners and 215,487 pairs. Sort eligible processed learner IDs by SHA-256 of the UTF-8 string "42:<student_id>" and take the first 13,038 for threshold selection and the remaining 13,039 for held-out evaluation. The held-out set has 107,197 pairs, 1,460 distinct composite skills and 1,022,557 follow-up answers. Only these held-out learners enter this ranking study.
+
+Forecasts
+Use the original epoch-32 Junyi checkpoint. Rebuild sessions from the accepted CSV using a 10-hour gap, preserving source row order at tied timestamps. Read model question/composite IDs from the verified published maps. Retain up to 15 complete sessions before the cutoff. For each evaluable composite skill, score up to five distinct training-ranked representative questions independently at position zero with BOS against the same frozen history. Average those probabilities to get the skill score. The verified original test export supplies cohort metadata and the recorded outcomes. Its rolling question probabilities are not inputs to the skill ranking.
+
+The CPU replay runs with evaluation mode and inference_mode. It reuses the history state across probes. For the checkpoint's single action layer it evaluates the final EOS attention directly, using the equivalence between q times the sum of k-v outer products and the sum of (q dot k) times v. This saves computation on intermediate positions. Sampled probabilities are also checked against the unmodified full forward pass. The scripts verify SHA-256 for the raw CSV, test export, mappings (canonical Git newlines), and checkpoint. The checkpoint hash is checked again at the end. The CPU result is independently regenerated; the project's original H100 score CSV was unavailable. Numerical comparisons and full confusion matrices appear in verification.json.
+
+Ranking and labels
+1. For each learner, restrict the metric universe to the skills with the required five follow-up answers. This is a retrospective evaluability rule. Outcomes define relevance, and the model inputs at scoring time remain strictly historical.
+2. Mark each skill relevant if later correct answers / later attempts < 0.60. Exactly 60% is Intermediate. Strong starts at 85% observed accuracy.
+3. Primary policy: keep only skills with a predicted score strictly below 0.61. Sort them by ascending score, break exact ties by ascending composite skill ID, and return at most three. A prediction of exactly 0.61 enters Intermediate; 0.86 starts Strong. The upper cutoff does not affect the Weak list.
+4. Secondary diagnostic: use the same scores, labels, candidate skills, tie rule and students, admitting all eligible skills before taking the first three. This measures the effect of allowing the list to fill beyond the Weak cutoff. It is separate from the primary result.
+
+Metrics
+Both means are student-weighted, conditional on at least one relevant skill in the evaluable universe. This gives 7,702 learners; the other 5,337 have no relevant skill and zero ideal gain. Do not drop a learner who had an observed weak skill but received zero Weak recommendations. That learner receives zero for both metrics. Learners with fewer than three evaluable skills stay in the calculation; unfilled ranks receive zero gain.
+
+Hit Rate@3 = number of learners who received at least one relevant skill within the first three recommendations divided by 7,702.
+
+DCG@3 = sum of binary relevance at rank r / log2(r + 1), for r = 1 through 3. The ideal list puts all observed Weak skills first, up to three. It considers all evaluable skills, including any missed by the threshold filter. Divide each learner's DCG by their ideal DCG, then average across learners to obtain NDCG@3. A learner whose only relevant skill appears third scores 1 for hit and 0.5 for NDCG.
+
+Percentile 95% intervals use 2,000 student-level bootstrap resamples with seed 42, conditional on this cohort and the fixed cutoffs. Students are resampled as units. The intervals do not measure uncertainty in threshold selection.
+
+Scope
+The results describe offline prioritization among evaluable Junyi composite skills. The pilot website operates on original skill tags and includes additional paper-selection, prior-attempt, and lesson-availability rules. These figures do not measure lesson quality, checklist completion, or the effect of studying on learning. Hit Rate@3 uses learners in its denominator; the earlier 57.6% Weak recall uses observed Weak student–skill pairs.
+
+Reproduction
+The original project checkout is commit 6094077e0863f5e54dc0839d9e29802c2ffac285. The results package uses Python 3.12.6, NumPy 2.2.6, pandas 2.2.3, PyTorch 2.6.0 CPU and scikit-learn 1.6.0. The checkout's backend research loader also uses pydantic-settings. Use Python -B to avoid writing bytecode in the checkout.
+
+From the local chat workspace, run these two PowerShell commands. The private score table is written under work. The report package contains aggregate results and code only.
+
+python -B outputs/Junyi_original_ranking/replay_scores.py --repo work/repo --raw "C:/Users/skg21/Documents/projects/HiSakt/HiTSKT/dataset/Junyi.csv" --export "C:/Users/skg21/Downloads/junyi_hitskt_full_test_predictions.csv" --archive "C:/Users/skg21/Downloads/skill_threshold_experiments.zip" --scores work/ranking_replay/heldout_scores.csv
+
+python -B outputs/Junyi_original_ranking/evaluate_ranking.py --scores work/ranking_replay/heldout_scores.csv --archive "C:/Users/skg21/Downloads/skill_threshold_experiments.zip"
+
+Original experiment reports
+https://github.com/Tanishgupta28/HITSKT-pure-performer-attention/blob/9ff17e674c37c3a9ad59201133f6fac9acc99381/reports/skill_threshold_experiments/EXPERIMENT_1_RESULTS.md
+https://github.com/Tanishgupta28/HITSKT-pure-performer-attention/blob/9ff17e674c37c3a9ad59201133f6fac9acc99381/reports/skill_threshold_experiments/EXPERIMENT_2_RESULTS.md

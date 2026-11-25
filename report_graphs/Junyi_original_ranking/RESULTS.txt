@@ -1,0 +1,16 @@
+Held-out Junyi weak-topic ranking with the frozen 0.61/0.86 thresholds
+
+Hit Rate@3: 0.630096 (63.01%). Student-bootstrap 95% interval: 61.93% to 64.10%.
+NDCG@3:     0.509293. Student-bootstrap 95% interval: 0.4997 to 0.5192.
+
+Of 13,039 held-out learners, 7,702 had at least one composite skill with later accuracy below 60% on at least five answers. For each of those learners, we sorted skills predicted below 0.61 from lowest score to highest and evaluated up to three. The first three contained at least one observed weak skill for 4,853 learners. Among the remaining 2,849 learners, 2,150 had an empty recommendation list and 699 received suggestions with no observed weak skill in the first three. All 2,849 count as misses. The 5,337 learners with no observed weak skill are outside this conditional evaluation.
+
+NDCG rewards earlier positions and accounts for the number of observed weak skills that could ideally have appeared in the first three. The mean normalized ranking gain was 0.5093 on a 0-to-1 scale.
+
+In a secondary comparison, taking up to three lowest-scoring skills without the 0.61 filter gave Hit Rate@3 of 91.42% and NDCG@3 of 0.7569. This rule can fill open slots with higher-scoring skills. It measures a different recommendation policy and the results alone do not establish the value of assigning the additional study.
+
+Reproduction checks: 107,197 held-out student–skill pairs spanning 1,460 distinct composite skills, 26,344 observed weak pairs and 1,022,557 follow-up answers. The regenerated scores reproduced every cell of the original held-out three-class confusion matrix. Mean predicted score and mean absolute error differed from the archive by less than 0.000000003. The epoch-32 checkpoint hash was identical before and after inference.
+
+These are additional retrospective ranking metrics on the original research cohort. The scope is skill prioritization among evaluable composite skills. It does not include the live app's paper selection, study links or subsequent learning outcomes.
+
+See METHOD.txt for both metric definitions, cohort construction and commands. ranking_results.csv contains full-precision estimates and verification.json records the original and replayed checks.
