@@ -1,0 +1,58 @@
+{
+  "features": [
+    "score",
+    "past_attempts",
+    "past_accuracy",
+    "days_since"
+  ],
+  "sklearn": "1.6.0",
+  "original_development_replay": {
+    "direct_forward_checks": 103,
+    "max_absolute_error": 1.7881393432617188e-07,
+    "checkpoint_sha256_before_and_after": "2308c5bf0c850da1e55daf802a0853a30fac45eeed071c7162c68fc17bfa3bdd",
+    "source_sha256": "8a18000806279ae4feae90a94a5af75b7688f2e4ba666c9a0662c75e1a404b6a",
+    "test_export_sha256": "35c773ce8eb976f38756958b5523cc3cf54836eaffeb03a0de0f49437bb6ed4c",
+    "replayed_score_table_sha256": "ebfd2a6e71cd103bb851fd6f9bdb749fa8731d6eb4f72343f030e86052a0eb7f"
+  },
+  "original_heldout_replay": {
+    "direct_forward_checks": 102,
+    "max_absolute_error": 1.7881393432617188e-07,
+    "checkpoint_sha256_before_and_after": "2308c5bf0c850da1e55daf802a0853a30fac45eeed071c7162c68fc17bfa3bdd",
+    "source_sha256": "8a18000806279ae4feae90a94a5af75b7688f2e4ba666c9a0662c75e1a404b6a",
+    "test_export_sha256": "35c773ce8eb976f38756958b5523cc3cf54836eaffeb03a0de0f49437bb6ed4c",
+    "replayed_score_table_sha256": "d7a6168f320468479138d33d0087942064c4dc7d8c6cb72ba48d8be483ef3fab"
+  },
+  "selected_risk_threshold": 0.33,
+  "validation_weak_f1": 0.6113065111092048,
+  "gmm_centers": [
+    0.4168282454324657,
+    0.7625014505037271,
+    0.9996524894647845
+  ],
+  "splits": {
+    "fit": {
+      "learners": 10430,
+      "pairs": 86559,
+      "distinct_skills": 1457,
+      "observed_weak": 21372,
+      "later_answers": 820159,
+      "unseen_in_history": 73177
+    },
+    "validation": {
+      "learners": 2608,
+      "pairs": 21731,
+      "distinct_skills": 1403,
+      "observed_weak": 5209,
+      "later_answers": 201106,
+      "unseen_in_history": 18754
+    },
+    "test": {
+      "learners": 13039,
+      "pairs": 107197,
+      "distinct_skills": 1460,
+      "observed_weak": 26344,
+      "later_answers": 1022557,
+      "unseen_in_history": 90385
+    }
+  }
+}
