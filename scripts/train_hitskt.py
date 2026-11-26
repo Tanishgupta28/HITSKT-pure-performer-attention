@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import csv
 import json
 import os
@@ -14,6 +15,7 @@ from typing import Any
 import numpy as np
 import torch
 
+from ktbench.data.algebra2005 import AlgebraSessionTargets
 from ktbench.data.assist2009 import Assist2009Store
 from ktbench.data.assist2009_sessions import AssignmentRunStore, AssignmentTargets
 from ktbench.config import PROJECT_SEED, seed_everything
@@ -38,7 +40,7 @@ def _write_json(path: Path, value: object) -> None:
 
 
 def _target_count(dataset: RollingSessionDataset) -> int:
-    if isinstance(dataset, AssignmentTargets):
+    if isinstance(dataset, (AssignmentTargets, AlgebraSessionTargets)):
         return dataset.target_count
     offsets = dataset.store.session_offsets
     return int(np.sum(offsets[dataset.targets + 1] - offsets[dataset.targets]))
@@ -73,7 +75,7 @@ def _run_epoch(
     cursor = 0
     loss_sum = 0.0
     target_ids = np.empty(expected_targets, dtype=np.int64) if verify_target_coverage else None
-    ordered = isinstance(dataset, AssignmentTargets)
+    ordered = isinstance(dataset, (AssignmentTargets, AlgebraSessionTargets))
     started = time.perf_counter()
     for step, batch in enumerate(loader, 1):
         batch = batch.to(device)
@@ -136,11 +138,14 @@ def train_hitskt(
             raise ValueError("epoch ceiling override is restricted to automated tests")
         epoch_ceiling = epoch_ceiling_override
     ordered = dataset_name == "assist2009"
+    algebra = dataset_name == "algebra2005"
+    if algebra and (not torch.cuda.is_available() or not store.strict_timestamp_history):
+        raise ValueError("Algebra2005 full training requires CUDA and the verified strict-time session store")
     if ordered and (not isinstance(store, AssignmentRunStore) or not torch.cuda.is_available()):
         raise ValueError("ASSIST2009 HiTSKT requires the assignment-run store and CUDA")
-    if ordered and not resume and (output_root / "config.json").exists():
+    if (ordered or algebra) and not resume and (output_root / "config.json").exists():
         raise FileExistsError(output_root)
-    dataset_class = AssignmentTargets if ordered else RollingSessionDataset
+    dataset_class = (AssignmentTargets if ordered else AlgebraSessionTargets if algebra else RollingSessionDataset)
     datasets = {
         split: dataset_class(
             store, split, history_sessions=int(profile["history_sessions"])
@@ -199,6 +204,11 @@ def train_hitskt(
         fresh_configuration.update(dataset_provenance=store.provenance,
                                    session_protocol=store.metadata["session_protocol"],
                                    session_offsets_sha256=store.session_offsets_sha256)
+    if algebra:
+        fresh_configuration.update(session_store_metadata_sha256=hashlib.sha256(
+            (store.root / "metadata.json").read_bytes()).hexdigest(),
+            torch_version=str(torch.__version__), cuda_runtime=torch.version.cuda,
+            gpu_memory_bytes=torch.cuda.get_device_properties(device).total_memory)
     if epoch_ceiling_override is not None:
         fresh_configuration["test_epoch_ceiling_override"] = epoch_ceiling
     dataset_stats = {
@@ -242,6 +252,8 @@ def train_hitskt(
         ):
             if configuration.get(key) != fresh_configuration.get(key):
                 raise ValueError(f"resume configuration mismatch for {key}")
+        if algebra and configuration.get("session_store_metadata_sha256") != fresh_configuration["session_store_metadata_sha256"]:
+            raise ValueError("Algebra2005 resume session store differs")
         if ordered and any(configuration.get(key) != fresh_configuration[key] for key in
                            ("dataset_provenance", "session_protocol", "session_offsets_sha256")):
             raise ValueError("HiTSKT resume assignment provenance mismatch")
@@ -315,6 +327,8 @@ def train_hitskt(
         for epoch in range(start_epoch, epoch_ceiling + 1):
             if control.should_stop:
                 break
+            if algebra:
+                torch.cuda.reset_peak_memory_stats(device)
             train_metrics = _run_epoch(
                 model, datasets["train"], device=device, epoch=epoch,
                 optimizer=optimizer, workers=workers,
@@ -323,6 +337,13 @@ def train_hitskt(
                 model, datasets["validation"], device=device, epoch=epoch,
                 optimizer=None, workers=workers,
             )
+            if algebra:
+                print(json.dumps({
+                    "event": "epoch_metrics", "epoch": epoch, "train": train_metrics,
+                    "validation": validation_metrics,
+                    "peak_cuda_allocated_bytes": torch.cuda.max_memory_allocated(device),
+                    "peak_cuda_reserved_bytes": torch.cuda.max_memory_reserved(device),
+                }), flush=True)
             for split, values in (("train", train_metrics), ("validation", validation_metrics)):
                 writer.writerow({"epoch": epoch, "split": split, **values})
             metrics_file.flush()

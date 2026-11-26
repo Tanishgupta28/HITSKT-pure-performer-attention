@@ -175,6 +175,12 @@ def build_session_store(processed_root: str | Path, output_root: str | Path) -> 
     return metadata
 
 
+def history_stop(store, events):
+    """Select the exclusive chronological history bound when the store defines one."""
+    bounds = getattr(store, "history_stop", None)
+    return events if bounds is None else bounds(events)
+
+
 class SessionStore:
     def __init__(self, root: str | Path) -> None:
         self.root = Path(root)
@@ -193,6 +199,25 @@ class SessionStore:
         self.session_number = np.load(self.root / "session_number.npy", mmap_mode="r")
         self.session_split = np.load(self.root / "session_split.npy", mmap_mode="r")
         self.student_offsets = np.load(self.root / "student_offsets.npy", mmap_mode="r")
+
+        self.strict_timestamp_history = self.metadata.get("strict_timestamp_history", False)
+        self._history_stops = None
+        if self.strict_timestamp_history:
+            starts = np.ones(len(self.timestamp_ms), dtype=bool)
+            starts[1:] = self.timestamp_ms[1:] != self.timestamp_ms[:-1]
+            starts[self.session_offsets[self.student_offsets[:-1]]] = True
+            self._history_stops = np.maximum.accumulate(
+                np.where(starts, np.arange(len(starts), dtype=np.int64), 0)
+            )
+
+    def history_stop(self, events):
+        """Exclusive history end for a target event or vector of target events."""
+        return events if self._history_stops is None else self._history_stops[events]
+
+    def events_in_split(self, split: int) -> np.ndarray:
+        sessions = np.flatnonzero(self.session_split == split)
+        return np.concatenate([np.arange(self.session_offsets[s], self.session_offsets[s + 1])
+                               for s in sessions]) if len(sessions) else np.empty(0, dtype=np.int64)
 
     def session(self, index: int) -> Session:
         start, stop = (int(value) for value in self.session_offsets[index : index + 2])

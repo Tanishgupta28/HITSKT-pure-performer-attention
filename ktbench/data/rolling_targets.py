@@ -11,7 +11,7 @@ import torch
 from torch.utils.data import Dataset, Sampler
 
 from ktbench.config import PROJECT_SEED
-from ktbench.data.session_store import SessionStore
+from ktbench.data.session_store import SessionStore, history_stop
 
 
 @dataclass(frozen=True)
@@ -83,7 +83,7 @@ class RollingTargetDataset(Dataset[RollingTarget]):
         sessions, events = self._events_for_indices(np.asarray(indices, dtype=np.int64))
         first_sessions = sessions - self.store.session_number[sessions].astype(np.int64) + 1
         first_events = self.store.session_offsets[first_sessions]
-        return np.minimum(events - first_events, self.history_length).astype(np.int32)
+        return np.minimum(history_stop(self.store, events) - first_events, self.history_length).astype(np.int32)
 
     def __getitem__(self, index: int) -> RollingTarget:
         if index < 0:
@@ -96,13 +96,14 @@ class RollingTargetDataset(Dataset[RollingTarget]):
         student = int(self.store.session_student[session])
         first_session = session - int(self.store.session_number[session]) + 1
         first_event = int(self.store.session_offsets[first_session])
-        history_start = max(first_event, event - self.history_length)
+        history_end = int(history_stop(self.store, event))
+        history_start = max(first_event, history_end - self.history_length)
         return RollingTarget(
             student_id=student,
-            history_question=self.store.question[history_start:event],
-            history_skill=self.store.skill[history_start:event],
-            history_correct=self.store.correct[history_start:event],
-            history_timestamp_ms=self.store.timestamp_ms[history_start:event],
+            history_question=self.store.question[history_start:history_end],
+            history_skill=self.store.skill[history_start:history_end],
+            history_correct=self.store.correct[history_start:history_end],
+            history_timestamp_ms=self.store.timestamp_ms[history_start:history_end],
             target_question=int(self.store.question[event]),
             target_skill=int(self.store.skill[event]),
             target_correct=int(self.store.correct[event]),

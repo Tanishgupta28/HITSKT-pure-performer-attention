@@ -1,0 +1,64 @@
+{
+  "dataset": "algebra2005",
+  "memory_strength": {
+    "conversion": "delta_hours = (target_timestamp_ms - history_timestamp_ms) / 3,600,000",
+    "global_training_only_fallback_hours": 0.003611111111111111,
+    "source": "positive consecutive gaps in the student training prefix",
+    "students": 460,
+    "students_using_fallback": 0,
+    "timestamp_input_unit": "milliseconds",
+    "validation_or_test_used": false
+  },
+  "model_conversion": "delta_hours = (target_timestamp_ms - history_timestamp_ms) / 3,600,000",
+  "phi": {
+    "all_dataset_targets": {
+      "test": 140972,
+      "train": 507053,
+      "validation": 149361
+    },
+    "all_train_unique_directed_pairs": 11079505,
+    "cache_students": 460,
+    "chunk_values": 5000000,
+    "construction_seconds": 48.98653356730938,
+    "fold_assignment": "seeded NumPy permutation of sorted student IDs, then round-robin index modulo 5",
+    "fold_count": 5,
+    "fold_unique_directed_pairs": {
+      "0": 3164647,
+      "1": 3281315,
+      "2": 2625810,
+      "3": 2735790,
+      "4": 2558516
+    },
+    "folds_balanced_within_one": true,
+    "format_version": 1,
+    "history_length": 49,
+    "label": "RKT paper-faithful performance-only Phi-relation variant with 5-fold student-level cross-fitting.",
+    "peak_process_rss_bytes": 3386191872,
+    "phi_pair_contributions": 23411161,
+    "phi_source": "training-partition histories only",
+    "scratch_bytes_before_cleanup": 264247556,
+    "scratch_parts": 7,
+    "seed": 42,
+    "students_per_fold": {
+      "0": 92,
+      "1": 92,
+      "2": 92,
+      "3": 92,
+      "4": 92
+    },
+    "text_relation": null,
+    "threshold": null,
+    "training_rule": "target student's entire fold excluded",
+    "training_targets_cross_fitted": 507053,
+    "undefined_relation": 0.0,
+    "validation_test_rule": "all training folds; no validation/test interactions"
+  },
+  "raw_timestamp": {
+    "evidence": "First Transaction Time, full coverage in the labeled train and master union",
+    "native_unit": "source wall clock, second precision",
+    "preprocessing_conversion": "integer milliseconds on a common offset-free time axis"
+  },
+  "seed": 42,
+  "selected_smoke_students": null,
+  "session_store_metadata_sha256": "e6c8a57599e0c6639ab35cbd982be5037b61c5926ca9f48869a26889fa104491"
+}

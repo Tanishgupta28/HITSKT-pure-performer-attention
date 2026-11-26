@@ -11,6 +11,7 @@ import numpy as np
 import torch
 from torch.utils.data import Dataset
 
+from ktbench.data.session_store import history_stop
 from ktbench.data.rolling_targets import RollingTargetBatch, RollingTargetDataset
 
 
@@ -24,16 +25,18 @@ def vectorized_batch(dataset: RollingTargetDataset, indices: Sequence[int]) -> R
     sessions, events = dataset._events_for_indices(indices)
     first_sessions = sessions - store.session_number[sessions].astype(np.int64) + 1
     first_events = store.session_offsets[first_sessions]
-    lengths = np.minimum(events - first_events, dataset.history_length)
+    history_ends = history_stop(store, events)
+    lengths = np.minimum(history_ends - first_events, dataset.history_length)
     return materialize_batch(store, events, store.session_student[sessions],
-                             lengths, dataset.split, order=store.timestamp_ms)
+                             lengths, dataset.split, order=store.timestamp_ms, history_ends=history_ends)
 
 
-def materialize_batch(store, events, students, lengths, split, *, order):
+def materialize_batch(store, events, students, lengths, split, *, order, history_ends=None):
     width = max(1, int(lengths.max()))
     distances = np.arange(width, 0, -1, dtype=np.int64)[None, :]
     mask = distances <= lengths[:, None]
-    history = np.maximum(events[:, None] - distances, 0)
+    ends = events if history_ends is None else history_ends
+    history = np.maximum(ends[:, None] - distances, 0)
     if np.any(mask & (order[history] > order[events, None])):
         raise ValueError("future interaction found in rolling history")
 

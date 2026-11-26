@@ -46,6 +46,7 @@ def _student_pair_outcomes(
     correctness: np.ndarray,
     vocabulary_size: int,
     history_length: int,
+    history_ends: np.ndarray | None = None,
 ) -> np.ndarray:
     """Encode one contribution per latest distinct prior question and target."""
 
@@ -60,13 +61,14 @@ def _student_pair_outcomes(
     cursor = 0
     base = vocabulary_size + 1
     for target in range(length):
-        start = max(0, target - history_length)
+        end = target if history_ends is None else history_ends[target]
+        start = max(0, end - history_length)
         target_question = int(questions[target])
         target_correct = int(correctness[target])
-        for prior in range(start, target):
+        for prior in range(start, end):
             # A prior occurrence is used only if the same question does not
             # occur again between it and this target.
-            if next_same[prior] != -1 and next_same[prior] < target:
+            if next_same[prior] != -1 and next_same[prior] < end:
                 continue
             prior_question = int(questions[prior])
             prior_correct = int(correctness[prior])
@@ -200,6 +202,8 @@ def build_cross_fitted_phi_cache(
             np.asarray(store.correct[start:stop], dtype=np.uint8),
             vocabulary_size,
             HISTORY_LENGTH,
+            (store.history_stop(np.arange(start, stop)) - start
+             if getattr(store, "strict_timestamp_history", False) else None),
         )
         accumulators[int(fold_by_student[student_value])].add(codes)
         included_students += 1

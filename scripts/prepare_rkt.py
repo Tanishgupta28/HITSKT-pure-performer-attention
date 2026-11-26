@@ -10,6 +10,7 @@ from pathlib import Path
 import numpy as np
 
 from ktbench.config import PROJECT_SEED, seed_everything
+from ktbench.data.flat import sha256_file
 from ktbench.data.assist2009 import Assist2009Store
 from ktbench.data.session_store import SessionStore
 from ktbench.rkt.data import build_memory_strength_initialization
@@ -17,6 +18,11 @@ from ktbench.rkt.phi import assign_student_folds, build_cross_fitted_phi_cache
 
 
 RAW_TIMESTAMP_PROVENANCE = {
+    "algebra2005": {
+        "native_unit": "source wall clock, second precision",
+        "evidence": "First Transaction Time, full coverage in the labeled train and master union",
+        "preprocessing_conversion": "integer milliseconds on a common offset-free time axis",
+    },
     "assist2017": {
         "native_unit": "Unix seconds",
         "evidence": "raw startTime 1096470301 maps to processed 1096470301000",
@@ -62,6 +68,8 @@ def main() -> None:
         print(json.dumps(build_cross_fitted_phi_cache(store, args.output_root), indent=2))
         return
     store = SessionStore(args.store_root)
+    if args.dataset == "algebra2005" and not store.strict_timestamp_history:
+        raise ValueError("Algebra2005 requires the verified strict-time session store")
     selected = None
     if args.smoke_students_per_fold is not None:
         if args.smoke_students_per_fold <= 0:
@@ -85,6 +93,8 @@ def main() -> None:
         "memory_strength": memory,
         "selected_smoke_students": None if selected is None else len(selected),
     }
+    if args.dataset == "algebra2005":
+        provenance["session_store_metadata_sha256"] = sha256_file(store.root / "metadata.json")
     (args.output_root / "provenance.json").write_text(
         json.dumps(provenance, indent=2, sort_keys=True) + "\n"
     )

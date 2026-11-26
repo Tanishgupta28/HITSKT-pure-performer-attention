@@ -1,0 +1,31 @@
+{
+  "best_checkpoint_reloaded": true,
+  "best_epoch": 27,
+  "best_validation_auc": 0.8106925175983273,
+  "dataset": "algebra2005",
+  "epoch_ceiling": 300,
+  "epochs_completed": 32,
+  "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+  "min_delta": 0.0,
+  "model": "SAKT",
+  "patience": 5,
+  "resume_count": 0,
+  "runtime_before_resume_estimated_from_artifact_mtimes": false,
+  "runtime_seconds": 7064.658213109709,
+  "seed": 42,
+  "status": "complete",
+  "test": {
+    "accuracy": 0.7912706069290355,
+    "f1": 0.8704241105831686,
+    "loss": 0.4558691551109842,
+    "mse": 0.14592489118678298,
+    "precision": 0.8317567453838515,
+    "recall": 0.9128619590818824,
+    "roc_auc": 0.7800571240513606,
+    "targets": 140972,
+    "threshold": 0.5
+  },
+  "total_parameters": 21537601,
+  "trainable_parameters": 21537601,
+  "transport": "packed64"
+}

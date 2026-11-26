@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import hashlib
 import time
 from pathlib import Path
 from typing import Any
@@ -103,6 +104,7 @@ def _run_epoch(
     dkt_dense: bool = False,
     gpu_sample_path: Path | None = None,
     verify_target_coverage: bool = False,
+    check_finite_train_state: bool = False,
 ) -> dict[str, float | int]:
     training = optimizer is not None
     started = time.perf_counter()
@@ -236,12 +238,22 @@ def _run_epoch(
             print(json.dumps(evidence), flush=True)
             trace = None
         if batches_processed == 1 or batches_processed % 4096 == 0:
+            if training and check_finite_train_state:
+                _verify_finite_resume_state({"state_dict": model.state_dict(),
+                                             "optimizer_state_dict": optimizer.state_dict()})
             progress("running")
     flush()
     if cursor != len(dataset):
         raise RuntimeError(f"evaluated {cursor} targets but expected {len(dataset)}")
     if target_ids is not None:
-        if not np.array_equal(np.sort(target_ids), dataset.events):
+        observed = np.sort(target_ids)
+        if isinstance(dataset, RollingTargetDataset):
+            for start in range(0, len(dataset), 1_000_000):
+                stop = min(start + 1_000_000, len(dataset))
+                _, expected = dataset._events_for_indices(np.arange(start, stop, dtype=np.int64))
+                if not np.array_equal(observed[start:stop], expected):
+                    raise ValueError("actual evaluation targets differ from the session split")
+        elif not np.array_equal(observed, dataset.events):
             raise ValueError("actual evaluation targets differ from the ordered split manifest")
         if not np.array_equal(labels, dataset.store.correct[target_ids]):
             raise ValueError("actual evaluation labels differ from the ordered split manifest")
@@ -270,7 +282,7 @@ def _checkpoint_payload(
             "validation_roc_auc": validation_auc,
             "optimizer_state_dict": optimizer.state_dict(),
             "seed": PROJECT_SEED,
-            "early_stopping": COMMON_EARLY_STOPPING.as_dict(),
+            "early_stopping": control.config.as_dict(),
             "early_stopping_state": {
                 "best_epoch": control.best_epoch,
                 "best_validation_auc": control.best_validation_auc,
@@ -280,6 +292,16 @@ def _checkpoint_payload(
         }
     )
     return payload
+
+
+def _verify_finite_resume_state(checkpoint: dict[str, Any]) -> None:
+    states = [("model", checkpoint["state_dict"])]
+    states += [(f"Adam parameter {index}", values)
+               for index, values in checkpoint["optimizer_state_dict"]["state"].items()]
+    for group, values in states:
+        for name, value in values.items():
+            if torch.is_tensor(value) and not torch.isfinite(value).all().item():
+                raise ValueError(f"Nonfinite checkpoint state in {group}: {name}")
 
 
 def train_baseline(
@@ -293,6 +315,7 @@ def train_baseline(
     resume: bool = False,
     transport: str = "reference",
     early_stopping_patience_override: int | None = None,
+    ednet_dkt_dense: bool = False,
 ) -> dict[str, Any]:
     """Run the protocol, including the explicit DKT/EdNet patience exception."""
 
@@ -315,6 +338,17 @@ def train_baseline(
     seed_everything()
     if (output_root / "_SUCCESS").exists():
         raise ValueError(f"completed experiment already exists: {output_root}")
+    if ednet_dkt_dense:
+        if (model_name, dataset_name, transport, patience) != ("dkt", "ednet_kt1", "packed64", 10):
+            raise ValueError("EdNet DKT dense mode requires packed64 and the authorized patience of 10")
+        if not torch.cuda.is_available():
+            raise RuntimeError("EdNet DKT dense mode requires CUDA")
+        if (output_root / "_TEST_EVALUATED").exists():
+            raise ValueError("final test is already recorded; run independent checkpoint verification")
+        if not resume and output_root.exists():
+            raise FileExistsError(output_root)
+    if dataset_name == "algebra2005" and not resume and (output_root / "config.json").exists():
+        raise FileExistsError(output_root)
     output_root.mkdir(parents=True, exist_ok=True)
     profile = dict(BASELINE_TRAINING_CONFIGS[model_name])
     epoch_ceiling = int(profile["epoch_ceiling"])
@@ -324,8 +358,11 @@ def train_baseline(
         epoch_ceiling = epoch_ceiling_override
     history_length = int(profile["history_length"])
     ordered = dataset_name == "assist2009"
-    if ordered and (transport != "packed64" or not torch.cuda.is_available()):
-        raise ValueError("ASSIST2009 requires packed64 batch transport and CUDA")
+    algebra = dataset_name == "algebra2005"
+    if algebra and (not torch.cuda.is_available() or not store.strict_timestamp_history):
+        raise ValueError("Algebra2005 full training requires CUDA and the verified strict-time session store")
+    if (ordered or algebra) and (transport != "packed64" or not torch.cuda.is_available()):
+        raise ValueError("This dataset requires packed64 batch transport and CUDA")
     datasets = {
         split: (store.targets(split, history_length) if ordered
                 else RollingTargetDataset(store, split, history_length=history_length))
@@ -335,7 +372,7 @@ def train_baseline(
         raise ValueError("an experiment split contains no targets")
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     gpu_name = torch.cuda.get_device_name(device) if device.type == "cuda" else "CPU"
-    dkt_dense = ordered and model_name == "dkt"
+    dkt_dense = ednet_dkt_dense or ((ordered or algebra) and model_name == "dkt")
     model = make_baseline_model(
         model_name,
         num_questions=int(store.metadata["num_questions"]),
@@ -378,6 +415,22 @@ def train_baseline(
         fresh_configuration["torch_version"] = str(torch.__version__)
         fresh_configuration["cuda_runtime"] = torch.version.cuda
         fresh_configuration["gpu_memory_bytes"] = torch.cuda.get_device_properties(device).total_memory
+    if ednet_dkt_dense:
+        fresh_configuration.update(
+            dkt_dense_lstm=True,
+            cudnn_allow_tf32=False,
+            independent_replay_required=True,
+            session_store_metadata_sha256=hashlib.sha256((store.root / "metadata.json").read_bytes()).hexdigest(),
+            torch_version=str(torch.__version__),
+            cuda_runtime=torch.version.cuda,
+            gpu_memory_bytes=torch.cuda.get_device_properties(device).total_memory,
+        )
+    if algebra:
+        fresh_configuration.update(dkt_dense_lstm=dkt_dense,
+            cudnn_allow_tf32=torch.backends.cudnn.allow_tf32, session_store_metadata_sha256=hashlib.sha256(
+            (store.root / "metadata.json").read_bytes()).hexdigest(),
+            torch_version=str(torch.__version__), cuda_runtime=torch.version.cuda,
+            gpu_memory_bytes=torch.cuda.get_device_properties(device).total_memory)
     if epoch_ceiling_override is not None:
         fresh_configuration["test_epoch_ceiling_override"] = epoch_ceiling
     if early_stopping.patience == 10:
@@ -428,10 +481,21 @@ def train_baseline(
         for key in ("model", "dataset", "seed", "batch_size", "history_length"):
             if configuration.get(key) != fresh_configuration.get(key):
                 raise ValueError(f"resume configuration mismatch for {key}")
+        if algebra and (configuration.get("session_store_metadata_sha256") !=
+                        fresh_configuration["session_store_metadata_sha256"]):
+            raise ValueError("Algebra2005 resume session store differs")
         if ordered and (configuration.get("dataset_provenance") != store.provenance
                         or configuration.get("dkt_dense_lstm") != dkt_dense):
             raise ValueError("ASSIST2009 dataset provenance differs from the saved experiment")
+        if bool(configuration.get("independent_replay_required")) != ednet_dkt_dense:
+            raise ValueError("resume execution mode differs from checkpoint run")
+        if ednet_dkt_dense and any(configuration.get(k) != fresh_configuration[k] for k in (
+                "session_store_metadata_sha256", "dkt_dense_lstm", "cudnn_allow_tf32", "torch_version",
+                "cuda_runtime", "gpu")):
+            raise ValueError("EdNet DKT replay provenance differs from saved run")
         checkpoint = torch.load(last_path, map_location=device, weights_only=True)
+        if model_name == "dkt" and dataset_name == "ednet_kt1":
+            _verify_finite_resume_state(checkpoint)
         if checkpoint.get("seed") != PROJECT_SEED:
             raise ValueError("resume checkpoint seed mismatch")
         model.load_state_dict(checkpoint["state_dict"], strict=True)
@@ -526,7 +590,7 @@ def train_baseline(
         for epoch in range(start_epoch, epoch_ceiling + 1):
             if control.should_stop:
                 break
-            if ordered:
+            if ordered or algebra or ednet_dkt_dense:
                 torch.cuda.reset_peak_memory_stats(device)
             train_metrics = _run_epoch(
                 model,
@@ -540,7 +604,8 @@ def train_baseline(
                 transport=transport,
                 progress_path=output_root / "progress.json",
                 dkt_dense=dkt_dense,
-                gpu_sample_path=(output_root / "gpu_activity.json" if ordered and epoch == 1
+                check_finite_train_state=ednet_dkt_dense or algebra,
+                gpu_sample_path=(output_root / "gpu_activity.json" if (ordered or algebra or ednet_dkt_dense) and epoch == 1
                                  and len(datasets["train"]) >= 72 * profile["batch_size"] else None),
             )
             validation_metrics = _run_epoch(
@@ -556,6 +621,9 @@ def train_baseline(
                 progress_path=output_root / "progress.json",
                 dkt_dense=dkt_dense,
             )
+            if ednet_dkt_dense:
+                _verify_finite_resume_state({"state_dict": model.state_dict(),
+                                             "optimizer_state_dict": optimizer.state_dict()})
             for split, values in (("train", train_metrics), ("validation", validation_metrics)):
                 writer.writerow({"epoch": epoch, "split": split, **values})
             metrics_file.flush()
@@ -571,7 +639,7 @@ def train_baseline(
             if decision.improved:
                 torch.save(payload, best_path)
             epochs_completed = epoch
-            if ordered:
+            if ordered or algebra or ednet_dkt_dense:
                 print(json.dumps({
                     "event": "epoch_metrics", "model": profile["model"], "epoch": epoch,
                     "train_loss": train_metrics["loss"], "validation_loss": validation_metrics["loss"],
@@ -645,7 +713,7 @@ def train_baseline(
 
     runtime_seconds = prior_runtime_seconds + time.perf_counter() - started
     result = {
-        "status": "complete",
+        "status": "awaiting_independent_replay" if ednet_dkt_dense else "complete",
         "dataset": dataset_name,
         "model": profile["model"],
         "seed": PROJECT_SEED,
@@ -677,18 +745,23 @@ def train_baseline(
         }
     )
     _write_json(output_root / "config.json", configuration)
-    (output_root / "_SUCCESS").write_text("complete\n")
+    if ednet_dkt_dense:
+        (output_root / "_TEST_EVALUATED").write_text("awaiting independent replay\n")
+    else:
+        (output_root / "_SUCCESS").write_text("complete\n")
     return result
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("model", choices=sorted(BASELINE_TRAINING_CONFIGS))
-    parser.add_argument("dataset", choices=("assist2017", "junyi", "ednet_kt1", "assist2009"))
+    parser.add_argument("dataset", choices=("assist2017", "junyi", "ednet_kt1", "assist2009", "algebra2005"))
     parser.add_argument("store_root", type=Path)
     parser.add_argument("output_root", type=Path)
     parser.add_argument("--workers", type=int, default=0)
     parser.add_argument("--resume", action="store_true")
+    parser.add_argument("--ednet-dkt-dense", action="store_true",
+                        help="full EdNet GPU DKT with dense LSTM and independent replay gate")
     parser.add_argument("--transport", choices=("reference", "packed64"), default="reference")
     parser.add_argument("--early-stopping-patience", type=int, choices=(5, 10), default=None,
                         help="explicit DKT/full EdNet exception; saved patience is retained on resume")
@@ -710,6 +783,7 @@ def main() -> None:
         resume=args.resume,
         transport=args.transport,
         early_stopping_patience_override=args.early_stopping_patience,
+        ednet_dkt_dense=args.ednet_dkt_dense,
     )
     print(json.dumps(result, indent=2, sort_keys=True))
 

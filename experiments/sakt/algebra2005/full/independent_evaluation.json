@@ -1,0 +1,37 @@
+{
+  "best_epoch": 27,
+  "checkpoint_sha256": "34f79bfcb6fc798f60c7c78ed2a97b46945e2ee7725b97c22e4bb6deb20efc30",
+  "dataset": "algebra2005",
+  "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+  "model": "SAKT",
+  "runtime_seconds": 31.705045498907566,
+  "seed": 42,
+  "session_store_metadata_sha256": "e6c8a57599e0c6639ab35cbd982be5037b61c5926ca9f48869a26889fa104491",
+  "test": {
+    "accuracy": 0.7912706069290355,
+    "f1": 0.8704241105831686,
+    "loss": 0.4558691551109842,
+    "mse": 0.14592489118678298,
+    "precision": 0.8317567453838515,
+    "recall": 0.9128619590818824,
+    "roc_auc": 0.7800571240513606,
+    "targets": 140972,
+    "threshold": 0.5
+  },
+  "total_parameters": 21537601,
+  "trainable_parameters": 21537601,
+  "validation": {
+    "accuracy": 0.814469640669251,
+    "f1": 0.8861283814047906,
+    "loss": 0.42678595438292605,
+    "mse": 0.13378975295164286,
+    "precision": 0.8372430715711169,
+    "recall": 0.9410763537338966,
+    "roc_auc": 0.8106925175983273,
+    "targets": 149361,
+    "threshold": 0.5
+  },
+  "validation_and_test_target_ids_verified": true,
+  "verification": "fresh model loaded from best checkpoint; exact equality of all test metrics",
+  "verified": true
+}

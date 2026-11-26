@@ -45,6 +45,8 @@ class SessionExample:
     split: int
     metric_start: int | None = None
     event_start: int | None = None
+    metric_positions: Sequence[bool] | None = None
+    event_ids: Sequence[int] | None = None
 
     def __post_init__(self) -> None:
         if not self.history and self.metric_start is None:
@@ -256,7 +258,7 @@ def collate_hitskt(
     target_attention_mask = torch.zeros_like(target_question, dtype=torch.bool)
     target_metric_mask = torch.zeros_like(target_question, dtype=torch.bool)
     event_ids = (torch.full_like(target_question, -1)
-                 if any(example.event_start is not None for example in examples) else None)
+                 if any(e.event_start is not None or e.event_ids is not None for e in examples) else None)
     for row, example in enumerate(examples):
         target = example.target
         length = len(target)
@@ -272,7 +274,12 @@ def collate_hitskt(
         target_skill[row, length] = skill_eos
         target_attention_mask[row, : length + 1] = True
         target_metric_mask[row, (example.metric_start or 0):length] = True
+        if example.metric_positions is not None:
+            target_metric_mask[row, :length] &= torch.as_tensor(example.metric_positions)
         if event_ids is not None:
+            if example.event_ids is not None:
+                event_ids[row, :length] = torch.as_tensor(example.event_ids)
+                continue
             if example.event_start is None:
                 raise ValueError("missing event ID in indexed HiTSKT batch")
             event_ids[row, :length] = torch.arange(example.event_start, example.event_start + length)

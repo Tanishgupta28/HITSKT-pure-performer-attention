@@ -13,7 +13,7 @@ import torch
 from torch.utils.data import Dataset
 
 from ktbench.data.assist2009 import OrderedTargets
-from ktbench.data.session_store import SessionStore
+from ktbench.data.session_store import SessionStore, history_stop
 from ktbench.rkt.phi import CrossFittedPhiRepository, HISTORY_LENGTH, _student_training_bounds
 
 
@@ -78,7 +78,7 @@ class RKTTargetDataset(Dataset[RKTExample]):
         sessions, events = self._events_for_indices(np.asarray(indices, dtype=np.int64))
         first_sessions = sessions - self.store.session_number[sessions].astype(np.int64) + 1
         first_events = self.store.session_offsets[first_sessions]
-        return np.minimum(events - first_events, HISTORY_LENGTH).astype(np.int32)
+        return np.minimum(history_stop(self.store, events) - first_events, HISTORY_LENGTH).astype(np.int32)
 
     def __getitem__(self, index: int) -> RKTExample:
         if index < 0:
@@ -91,12 +91,13 @@ class RKTTargetDataset(Dataset[RKTExample]):
         student = int(self.store.session_student[session])
         student_first_session = session - int(self.store.session_number[session]) + 1
         student_first_event = int(self.store.session_offsets[student_first_session])
-        history_start = max(student_first_event, event - HISTORY_LENGTH)
+        history_end = int(history_stop(self.store, event))
+        history_start = max(student_first_event, history_end - HISTORY_LENGTH)
         return RKTExample(
             student_id=student,
-            history_question=self.store.question[history_start:event],
-            history_correct=self.store.correct[history_start:event],
-            history_timestamp_ms=self.store.timestamp_ms[history_start:event],
+            history_question=self.store.question[history_start:history_end],
+            history_correct=self.store.correct[history_start:history_end],
+            history_timestamp_ms=self.store.timestamp_ms[history_start:history_end],
             target_question=int(self.store.question[event]),
             target_correct=int(self.store.correct[event]),
             target_timestamp_ms=int(self.store.timestamp_ms[event]),
@@ -263,7 +264,8 @@ def build_memory_strength_initialization(
     report: dict[str, object] = {
         "timestamp_input_unit": "milliseconds",
         "conversion": "delta_hours = (target_timestamp_ms - history_timestamp_ms) / 3,600,000",
-        "source": "positive consecutive gaps within training sessions only",
+        "source": ("positive consecutive gaps in the student training prefix"
+                   if getattr(store, "strict_timestamp_history", False) else "positive consecutive gaps within training sessions only"),
         "global_training_only_fallback_hours": fallback,
         "students": len(student_ids),
         "students_using_fallback": int(used_fallback.sum()),

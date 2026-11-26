@@ -1,0 +1,315 @@
+{
+  "archive_sha256": "a38d1fb55b139a38dfb019391417824855aef9104f51291d93fba614dacc9c84",
+  "atomic_skills": 112,
+  "dataset": "algebra2005",
+  "events_excluded_by_session_eligibility": 16275,
+  "files": {
+    "master": {
+      "archive_timestamp": [
+        2010,
+        3,
+        31,
+        14,
+        24,
+        46
+      ],
+      "bytes": 1095650,
+      "columns": [
+        "Row",
+        "Anon Student Id",
+        "Problem Hierarchy",
+        "Problem Name",
+        "Problem View",
+        "Step Name",
+        "Step Start Time",
+        "First Transaction Time",
+        "Correct Transaction Time",
+        "Step End Time",
+        "Step Duration (sec)",
+        "Correct Step Duration (sec)",
+        "Error Step Duration (sec)",
+        "Correct First Attempt",
+        "Incorrects",
+        "Hints",
+        "Corrects",
+        "KC(Default)",
+        "Opportunity(Default)"
+      ],
+      "delimiter": "tab",
+      "encoding": "ASCII",
+      "line_endings": "\n",
+      "member": "algebra_2005_2006_master.txt",
+      "missing": {
+        "Anon Student Id": 0,
+        "Correct First Attempt": 0,
+        "Correct Step Duration (sec)": 849,
+        "Correct Transaction Time": 135,
+        "Corrects": 0,
+        "Error Step Duration (sec)": 3126,
+        "First Transaction Time": 0,
+        "Hints": 0,
+        "Incorrects": 0,
+        "KC(Default)": 1013,
+        "Opportunity(Default)": 1013,
+        "Problem Hierarchy": 0,
+        "Problem Name": 0,
+        "Problem View": 0,
+        "Row": 0,
+        "Step Duration (sec)": 8,
+        "Step End Time": 0,
+        "Step Name": 0,
+        "Step Start Time": 8
+      },
+      "records": 3967,
+      "sha256": "11e7ef2f0b1e42ccf4d36acd7e057b8e915f1cc002df135f2cee25114e50e0d0"
+    },
+    "submission": {
+      "archive_timestamp": [
+        2010,
+        3,
+        31,
+        14,
+        25,
+        22
+      ],
+      "bytes": 31799,
+      "columns": [
+        "Row",
+        "Correct First Attempt"
+      ],
+      "delimiter": "tab",
+      "encoding": "ASCII",
+      "line_endings": "\n",
+      "member": "algebra_2005_2006.txt",
+      "missing": {
+        "Correct First Attempt": 3967,
+        "Row": 0
+      },
+      "records": 3967,
+      "sha256": "17f4cd79e445bb13b692bfd9c0f9cc138299b103e07b2afa7170fd22cb8d9b98"
+    },
+    "test": {
+      "archive_timestamp": [
+        2010,
+        3,
+        31,
+        14,
+        24,
+        50
+      ],
+      "bytes": 736791,
+      "columns": [
+        "Row",
+        "Anon Student Id",
+        "Problem Hierarchy",
+        "Problem Name",
+        "Problem View",
+        "Step Name",
+        "Step Start Time",
+        "First Transaction Time",
+        "Correct Transaction Time",
+        "Step End Time",
+        "Step Duration (sec)",
+        "Correct Step Duration (sec)",
+        "Error Step Duration (sec)",
+        "Correct First Attempt",
+        "Incorrects",
+        "Hints",
+        "Corrects",
+        "KC(Default)",
+        "Opportunity(Default)"
+      ],
+      "delimiter": "tab",
+      "encoding": "ASCII",
+      "line_endings": "\n",
+      "member": "algebra_2005_2006_test.txt",
+      "missing": {
+        "Anon Student Id": 0,
+        "Correct First Attempt": 3967,
+        "Correct Step Duration (sec)": 3967,
+        "Correct Transaction Time": 3967,
+        "Corrects": 3967,
+        "Error Step Duration (sec)": 3967,
+        "First Transaction Time": 3967,
+        "Hints": 3967,
+        "Incorrects": 3967,
+        "KC(Default)": 1013,
+        "Opportunity(Default)": 1013,
+        "Problem Hierarchy": 0,
+        "Problem Name": 0,
+        "Problem View": 0,
+        "Row": 0,
+        "Step Duration (sec)": 3967,
+        "Step End Time": 3967,
+        "Step Name": 0,
+        "Step Start Time": 3967
+      },
+      "records": 3967,
+      "sha256": "a7016cef2e4bfc0a9a1cd7ca3dc0c94e6ce1f9212a675732695b751c8415e407"
+    },
+    "train": {
+      "archive_timestamp": [
+        2010,
+        3,
+        31,
+        14,
+        25,
+        12
+      ],
+      "bytes": 226670310,
+      "columns": [
+        "Row",
+        "Anon Student Id",
+        "Problem Hierarchy",
+        "Problem Name",
+        "Problem View",
+        "Step Name",
+        "Step Start Time",
+        "First Transaction Time",
+        "Correct Transaction Time",
+        "Step End Time",
+        "Step Duration (sec)",
+        "Correct Step Duration (sec)",
+        "Error Step Duration (sec)",
+        "Correct First Attempt",
+        "Incorrects",
+        "Hints",
+        "Corrects",
+        "KC(Default)",
+        "Opportunity(Default)"
+      ],
+      "delimiter": "tab",
+      "encoding": "ASCII",
+      "line_endings": "\n",
+      "member": "algebra_2005_2006_train.txt",
+      "missing": {
+        "Anon Student Id": 0,
+        "Correct First Attempt": 0,
+        "Correct Step Duration (sec)": 189565,
+        "Correct Transaction Time": 25851,
+        "Corrects": 0,
+        "Error Step Duration (sec)": 621048,
+        "First Transaction Time": 0,
+        "Hints": 0,
+        "Incorrects": 0,
+        "KC(Default)": 202669,
+        "Opportunity(Default)": 202669,
+        "Problem Hierarchy": 0,
+        "Problem Name": 0,
+        "Problem View": 0,
+        "Row": 0,
+        "Step Duration (sec)": 919,
+        "Step End Time": 0,
+        "Step Name": 0,
+        "Step Start Time": 919
+      },
+      "records": 809694,
+      "sha256": "19528668530108555e344e5bfcc68c762f63a458a32038599d189667e4f10407"
+    },
+    "upload": {
+      "bytes": 31799,
+      "columns": [
+        "Row",
+        "Correct First Attempt"
+      ],
+      "delimiter": "tab",
+      "encoding": "ASCII",
+      "line_endings": "\n",
+      "missing": {
+        "Correct First Attempt": 3967,
+        "Row": 0
+      },
+      "records": 3967,
+      "sha256": "17f4cd79e445bb13b692bfd9c0f9cc138299b103e07b2afa7170fd22cb8d9b98"
+    }
+  },
+  "maximum_session_length": 667,
+  "minimum_sessions": 5,
+  "multi_skill_interactions": 188567,
+  "processed_timestamp_unit": "milliseconds",
+  "protocol": "algebra2005_first_transaction_10h_sessions_v1",
+  "questions": 213069,
+  "raw": {
+    "correct": 623765,
+    "hierarchy_problem_steps": 216355,
+    "interactions": 813661,
+    "invalid_or_missing_first_transaction": 0,
+    "invalid_or_missing_label": 0,
+    "missing_identity": 0,
+    "problem_names": 1084,
+    "problem_step_pairs": 211397,
+    "problem_step_pairs_in_multiple_hierarchies": 4594,
+    "repeated_student_hierarchy_problem_steps": 54547,
+    "students": 575,
+    "union_of_invalid_required_fields": 0
+  },
+  "retained_interactions": 797386,
+  "retained_repeated_question_events": 52666,
+  "retained_sessions": 12771,
+  "retained_students": 460,
+  "same_clock_additional_events": 2201,
+  "session_gap_ms": 36000000,
+  "skills": 287,
+  "source_sessions": 13033,
+  "source_url": "https://kdd.org/cupfiles/algebra_2005_2006.zip",
+  "source_version": "KDD Cup 2010 Algebra I 2005\u20132006 development archive",
+  "split_correct": {
+    "test": 108265,
+    "train": 388011,
+    "validation": 114572
+  },
+  "split_interactions": {
+    "test": 140972,
+    "train": 507053,
+    "validation": 149361
+  },
+  "split_sessions": {
+    "test": 2384,
+    "train": 8003,
+    "validation": 2384
+  },
+  "students_excluded_by_session_eligibility": 115,
+  "timestamp_field": "First Transaction Time",
+  "timestamps": {
+    "fields": {
+      "Correct Transaction Time": {
+        "invalid": 0,
+        "maximum": "2006-06-07 11:12:53",
+        "minimum": "2005-08-30 09:50:10",
+        "missing": 25986,
+        "source_row_reversals": 0
+      },
+      "First Transaction Time": {
+        "invalid": 0,
+        "maximum": "2006-06-07 11:12:53",
+        "minimum": "2005-08-30 09:50:08",
+        "missing": 0,
+        "source_row_reversals": 31145
+      },
+      "Step End Time": {
+        "invalid": 0,
+        "maximum": "2006-06-07 11:12:53",
+        "minimum": "2005-08-30 09:50:10",
+        "missing": 0,
+        "source_row_reversals": 37710
+      },
+      "Step Start Time": {
+        "invalid": 0,
+        "maximum": "2006-06-07 11:12:38",
+        "minimum": "2005-08-30 09:43:32",
+        "missing": 927,
+        "source_row_reversals": 30997
+      }
+    },
+    "format": "YYYY-MM-DD HH:MM:SS.f; offset unspecified in the source",
+    "ordering_violations": {
+      "Correct Transaction Time > Step End Time": 128,
+      "First Transaction Time > Correct Transaction Time": 219,
+      "First Transaction Time > Step End Time": 0,
+      "Step Start Time > Correct Transaction Time": 180,
+      "Step Start Time > First Transaction Time": 13,
+      "Step Start Time > Step End Time": 0
+    }
+  },
+  "untagged_interactions": 198145
+}

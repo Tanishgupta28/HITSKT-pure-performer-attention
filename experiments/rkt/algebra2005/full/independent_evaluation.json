@@ -1,0 +1,37 @@
+{
+  "best_epoch": 5,
+  "checkpoint_sha256": "4d8458b3d6f4516b987e940d746a44b5f0710d2e1f9f8f3068a817987681d522",
+  "dataset": "algebra2005",
+  "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+  "model": "RKT",
+  "runtime_seconds": 19.129464579746127,
+  "seed": 42,
+  "session_store_metadata_sha256": "e6c8a57599e0c6639ab35cbd982be5037b61c5926ca9f48869a26889fa104491",
+  "test": {
+    "accuracy": 0.8043299378600006,
+    "f1": 0.8817152658662093,
+    "loss": 0.49468246669831256,
+    "mse": 0.1483672337505311,
+    "precision": 0.8228919037899708,
+    "recall": 0.9495958989516464,
+    "roc_auc": 0.7582636954960157,
+    "targets": 140972,
+    "threshold": 0.5
+  },
+  "total_parameters": 13672719,
+  "trainable_parameters": 13672719,
+  "validation": {
+    "accuracy": 0.8104525277682929,
+    "f1": 0.8847201579901053,
+    "loss": 0.4764504463180703,
+    "mse": 0.14261043957657224,
+    "precision": 0.8292077885400685,
+    "recall": 0.9481985127256223,
+    "roc_auc": 0.7761414298469809,
+    "targets": 149361,
+    "threshold": 0.5
+  },
+  "validation_and_test_target_ids_verified": true,
+  "verification": "fresh model loaded from best checkpoint; exact equality of all test metrics",
+  "verified": true
+}
