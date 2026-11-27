@@ -1,0 +1,840 @@
+{
+  "datasets": {
+    "assist2012": {
+      "benchmark_row_matched": true,
+      "checkpoint": "experiments/hitskt/assist2012/full/best_model.pt",
+      "checkpoint_config": {
+        "action_layers": 1,
+        "correct_layers": 1,
+        "decoder_layers": 1,
+        "dropout": 0.1,
+        "feedforward_width": 2048,
+        "heads": 4,
+        "num_questions": 153547,
+        "num_skills": 265,
+        "session_layers": 1,
+        "width": 256
+      },
+      "checkpoint_epoch": 23,
+      "checkpoint_sha256": "7b400654fe6b6d704b9892ed12dc7d8c39ec96d15a37c9fbe7f195cac691023e",
+      "dataset_provenance": {
+        "files_sha256": {
+          "_SUCCESS": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1",
+          "correct.npy": "1d24e0abdb44df6e8fa5389a2f4859db9d1e47c8911eebd5a598bb7e8d69aacc",
+          "metadata.json": "b81ec6333b5ed731dcb0e6d78cc1a7c516490f465905d083fddaf02d95a41a7a",
+          "question.npy": "2db86072d58c696b220b4e2e47e8ecac9b387f5b4f21f59d03c7310f67ff2086",
+          "session_number.npy": "72e29676749808c67d2f479744314cc77caa6e035bbef1210f021b1d9c0449e2",
+          "session_offsets.npy": "e7caed19566b75e8ef05120e7e82766fb9e508d3fc0ff3fb1f4f5a0c90107258",
+          "session_split.npy": "8b2dde4daaf3b04806187bb142007275d20fd0d3e4a40e0a980914195276348a",
+          "session_student.npy": "0d0f7a05169c8c60bb401b5d4c16dc286e61b894fef6ff1583f6357ec4f58d4e",
+          "skill.npy": "2915e9e659573ed0a77b297789a99bceed5944eccca525b11ff4218f6f01403d",
+          "student_offsets.npy": "89c42f814e25f534a8ffe44aad435fe831ff0692775f775d1dea3d7ac8cd6214",
+          "timestamp_ms.npy": "062e36de1cb86b91c4ace5e81f3afde14a51a29cfda3537971147d604762e5c6"
+        },
+        "historically_matched_files": [
+          "metadata.json"
+        ],
+        "session_store": {
+          "action_chunking": false,
+          "action_truncation": false,
+          "events_sha256": "be21c5c2afe42f2fc78aea586689637cfb7d6e23ee7963e26bbb7bb4276e4110",
+          "format_version": 2,
+          "interactions": 5173463,
+          "maximum_session_length": 1032,
+          "num_questions": 153547,
+          "num_skills": 265,
+          "processed_timestamp_unit": "milliseconds",
+          "protocol": "assist2012_first_action_10h_sessions_v1",
+          "sessions": 352017,
+          "source_archive_sha256": "7bb18f932f97e63c2eb34bb869c44cd4f46f4adec4d7fe02298578dbba572445",
+          "split_sessions": {
+            "test": 63780,
+            "train": 224457,
+            "validation": 63780
+          },
+          "strict_timestamp_history": true,
+          "students": 19092,
+          "timestamp_hours_divisor": 3600000
+        },
+        "source": "https://sites.google.com/site/assistmentsdata/datasets/2012-13-school-data-with-affect",
+        "source_sha256": "7bb18f932f97e63c2eb34bb869c44cd4f46f4adec4d7fe02298578dbba572445",
+        "test_targets": 901241
+      },
+      "dataset_stats": {
+        "dataset": "assist2012",
+        "interactions": 5173463,
+        "questions": 153547,
+        "sessions": 352017,
+        "skills": 265,
+        "students": 19092,
+        "target_counts": {
+          "test": 901241,
+          "train": 3353476,
+          "validation": 918746
+        },
+        "target_ratios": {
+          "test": 0.1742045898462983,
+          "train": 0.6482072066621526,
+          "validation": 0.17758820349154908
+        },
+        "target_sessions": {
+          "test": 63780,
+          "train": 224457,
+          "validation": 63780
+        }
+      },
+      "deterministic_selection_repeated": true,
+      "epochs_completed": 28,
+      "experiment_config": {
+        "action_chunking": false,
+        "action_layers": 1,
+        "action_truncation": false,
+        "attention": "pure causal ELU+1 Performer linear attention",
+        "best_epoch": 23,
+        "best_validation_auc": 0.756207060746916,
+        "bucket_size": 512,
+        "context_sessions_including_target": 16,
+        "correct_layers": 1,
+        "cuda_runtime": "13.4",
+        "dataset": "assist2012",
+        "decoder_layers": 1,
+        "device": "cuda",
+        "dropout": 0.1,
+        "early_stopping_metric": "validation_roc_auc",
+        "early_stopping_min_delta": 0.0,
+        "early_stopping_patience": 5,
+        "early_stopping_strict_improvement": true,
+        "epoch_ceiling": 100,
+        "epochs_completed": 28,
+        "feedforward_width": 2048,
+        "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+        "gpu_memory_bytes": 42278584320,
+        "heads": 4,
+        "history_sessions": 15,
+        "learning_rate": 5e-05,
+        "maximum_batch_size": 64,
+        "model": "HiTSKT",
+        "optimizer": "Adam",
+        "reload_best_checkpoint_before_test": true,
+        "runtime_seconds_accumulated": 8411.003612210974,
+        "seed": 42,
+        "session_layers": 1,
+        "session_store_metadata_sha256": "b81ec6333b5ed731dcb0e6d78cc1a7c516490f465905d083fddaf02d95a41a7a",
+        "token_budget": 32768,
+        "torch_version": "2.14.0a0+b2c75dd062.nv26.09",
+        "total_parameters": 84014081,
+        "trainable_parameters": 84014081,
+        "weight_decay": 0.0,
+        "width": 256,
+        "workers": 2
+      },
+      "historical_evidence": "experiments/hitskt/assist2012/full/independent_evaluation.json",
+      "model_eval_and_dropout_disabled": true,
+      "numerical_matrix_and_plot_checks": true,
+      "plotting_convention": "Post first graded action. Equal timestamps update together at the final group row.",
+      "status": "generated",
+      "students": [
+        {
+          "columns": 50,
+          "direct_and_causality_summary": {
+            "action_max_abs_error": 1.9073486328125e-06,
+            "alternate_future_max_abs_error": 1.7881393432617188e-07,
+            "direct_max_abs_error": 1.7881393432617188e-07,
+            "positions_checked": 12,
+            "probes_compared": 36
+          },
+          "probability_bounds": [
+            0.11727876365184783,
+            0.7507443070411682
+          ],
+          "selection_tier": "preferred",
+          "skills": [
+            1,
+            173,
+            169,
+            68,
+            129
+          ],
+          "student": "student_01"
+        },
+        {
+          "columns": 50,
+          "direct_and_causality_summary": {
+            "action_max_abs_error": 4.76837158203125e-06,
+            "alternate_future_max_abs_error": 1.1920928955078125e-07,
+            "direct_max_abs_error": 2.086162567138672e-07,
+            "positions_checked": 7,
+            "probes_compared": 21
+          },
+          "probability_bounds": [
+            0.3610525459051132,
+            0.931078064441681
+          ],
+          "selection_tier": "preferred",
+          "skills": [
+            1,
+            19,
+            150,
+            38,
+            158
+          ],
+          "student": "student_02"
+        },
+        {
+          "columns": 50,
+          "direct_and_causality_summary": {
+            "action_max_abs_error": 2.86102294921875e-06,
+            "alternate_future_max_abs_error": 1.7881393432617188e-07,
+            "direct_max_abs_error": 1.1920928955078125e-07,
+            "positions_checked": 5,
+            "probes_compared": 15
+          },
+          "probability_bounds": [
+            0.17820436060428618,
+            0.8754520177841186
+          ],
+          "selection_tier": "preferred",
+          "skills": [
+            1,
+            14,
+            64,
+            66,
+            2
+          ],
+          "student": "student_03"
+        },
+        {
+          "columns": 50,
+          "direct_and_causality_summary": {
+            "action_max_abs_error": 1.9073486328125e-06,
+            "alternate_future_max_abs_error": 1.7881393432617188e-07,
+            "direct_max_abs_error": 1.4901161193847656e-07,
+            "positions_checked": 6,
+            "probes_compared": 18
+          },
+          "probability_bounds": [
+            0.3943298876285553,
+            0.9169317245483398
+          ],
+          "selection_tier": "preferred",
+          "skills": [
+            1,
+            66,
+            62,
+            64,
+            58
+          ],
+          "student": "student_04"
+        },
+        {
+          "columns": 50,
+          "direct_and_causality_summary": {
+            "action_max_abs_error": 1.9073486328125e-06,
+            "alternate_future_max_abs_error": 1.1920928955078125e-07,
+            "direct_max_abs_error": 2.384185791015625e-07,
+            "positions_checked": 5,
+            "probes_compared": 15
+          },
+          "probability_bounds": [
+            0.22040033638477324,
+            0.9469546914100647
+          ],
+          "selection_tier": "preferred",
+          "skills": [
+            1,
+            65,
+            157,
+            64,
+            126
+          ],
+          "student": "student_05"
+        }
+      ],
+      "test_roc_auc": 0.7329927471443225,
+      "torch_inference_mode": true,
+      "training_bank_rows": 3353476,
+      "validation_roc_auc": 0.756207060746916
+    },
+    "ednet_kt1": {
+      "benchmark_row_matched": true,
+      "checkpoint": "experiments/hitskt/ednet_kt1/full/best_model.pt",
+      "checkpoint_config": {
+        "action_layers": 1,
+        "correct_layers": 1,
+        "decoder_layers": 1,
+        "dropout": 0.1,
+        "feedforward_width": 1024,
+        "heads": 2,
+        "num_questions": 13169,
+        "num_skills": 1495,
+        "session_layers": 1,
+        "width": 128
+      },
+      "checkpoint_epoch": 30,
+      "checkpoint_sha256": "58d4b1f393d0fa8ec372ba8bcc00cc8b7168d37817d4badfd26ee42abffd03c8",
+      "dataset_provenance": {
+        "files_sha256": {
+          "_SUCCESS": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1",
+          "correct.npy": "3d4a23992d3c1edeee7375e13ba11ad48e74a69b2a3cb58b8cc9c456064394ef",
+          "metadata.json": "c08ac9eb1b2154de42b5faffd5b0914e635aab97a6e0adec0aeb568676f598f4",
+          "question.npy": "d530490876b57e532173326bf2f2680f3de5fadb9ee26d6ef92bcfd4458b1cec",
+          "session_number.npy": "35bd7cbb07fe445901b1462b2bfcdfc6c0a0a4aaffd11a5fc848c7b4c74dd2c1",
+          "session_offsets.npy": "6b414035ce02c1c32b5ccfcca3bc1b7f11cb475888c73501c29b6f69a8c835aa",
+          "session_split.npy": "c74589f18041de9c79b3ddfa33ed9edc27af1d87bea645043f37441e0d668e5e",
+          "session_student.npy": "f1d3348bc0727e23818844435544c82ac93098898cb7241f778a072ad049b367",
+          "skill.npy": "6be1c6c29d3877a98f4d31d073df9fe356d72b18ecc6fdf529363d6bcf434ab1",
+          "student_offsets.npy": "45aff5bb5622d5e64a45812c8047a65a968a2225dbe967c31c01bb7cc6699d21",
+          "timestamp_ms.npy": "37ef32b2fd921fa1a1e9f021c52517bbed2d9ae8c2e4048c4ad2cfd6c9c6eac8"
+        },
+        "historically_matched_files": [
+          "_SUCCESS",
+          "correct.npy",
+          "metadata.json",
+          "question.npy",
+          "session_number.npy",
+          "session_offsets.npy",
+          "session_split.npy",
+          "session_student.npy",
+          "skill.npy",
+          "student_offsets.npy",
+          "timestamp_ms.npy"
+        ],
+        "session_store": {
+          "action_chunking": false,
+          "action_truncation": false,
+          "format_version": 2,
+          "interactions": 81940867,
+          "maximum_session_length": 13080,
+          "num_questions": 13169,
+          "num_skills": 1495,
+          "processed_timestamp_unit": "milliseconds",
+          "sessions": 2577988,
+          "split_sessions": {
+            "test": 474827,
+            "train": 1628334,
+            "validation": 474827
+          },
+          "students": 116548,
+          "timestamp_hours_divisor": 3600000
+        },
+        "source": "https://github.com/riiid/ednet",
+        "source_sha256": "0d13933f90201c5101c7fe8659e44474fa049e3fb93181a8ba6fb3e63267b535",
+        "test_targets": 13429870
+      },
+      "dataset_stats": {
+        "dataset": "ednet_kt1",
+        "interactions": 81940867,
+        "questions": 13169,
+        "sessions": 2577988,
+        "skills": 1495,
+        "students": 116548,
+        "target_counts": {
+          "test": 13429870,
+          "train": 49458444,
+          "validation": 14520975
+        },
+        "target_ratios": {
+          "test": 0.17349171105292027,
+          "train": 0.6389213056846447,
+          "validation": 0.1875869832624351
+        },
+        "target_sessions": {
+          "test": 474827,
+          "train": 1511786,
+          "validation": 474827
+        }
+      },
+      "deterministic_selection_repeated": true,
+      "epochs_completed": 35,
+      "experiment_config": {
+        "action_chunking": false,
+        "action_layers": 1,
+        "action_truncation": false,
+        "attention": "pure causal ELU+1 Performer linear attention",
+        "best_epoch": 30,
+        "best_validation_auc": 0.7681769525193056,
+        "bucket_size": 512,
+        "context_sessions_including_target": 16,
+        "correct_layers": 1,
+        "dataset": "ednet_kt1",
+        "decoder_layers": 1,
+        "device": "cuda",
+        "dropout": 0.1,
+        "early_stopping_metric": "validation_roc_auc",
+        "early_stopping_min_delta": 0.0,
+        "early_stopping_patience": 5,
+        "early_stopping_strict_improvement": true,
+        "epoch_ceiling": 40,
+        "epochs_completed": 35,
+        "feedforward_width": 1024,
+        "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+        "heads": 2,
+        "history_sessions": 15,
+        "learning_rate": 8e-05,
+        "maximum_batch_size": 64,
+        "model": "HiTSKT",
+        "optimizer": "Adam",
+        "reload_best_checkpoint_before_test": true,
+        "runtime_seconds_accumulated": 83399.66895867884,
+        "seed": 42,
+        "session_layers": 1,
+        "token_budget": 32768,
+        "total_parameters": 5074433,
+        "trainable_parameters": 5074433,
+        "weight_decay": 0.0,
+        "width": 128,
+        "workers": 8
+      },
+      "historical_evidence": "experiments/hitskt/ednet_kt1/full/independent_evaluation.json",
+      "model_eval_and_dropout_disabled": true,
+      "numerical_matrix_and_plot_checks": true,
+      "plotting_convention": "Post bundle at its final row, with closure estimated by the maximum delivery time plus elapsed time. Earlier rows show the state before the bundle. Merge equal delivery times. Require previous groups to have closed by the delivery time of each plotted group.",
+      "status": "generated",
+      "students": [
+        {
+          "columns": 50,
+          "direct_and_causality_summary": {
+            "action_max_abs_error": 3.814697265625e-06,
+            "alternate_future_max_abs_error": 5.960464477539063e-08,
+            "direct_max_abs_error": 1.1920928955078125e-07,
+            "positions_checked": 5,
+            "probes_compared": 15
+          },
+          "probability_bounds": [
+            0.5773963928222656,
+            0.7816360235214234
+          ],
+          "selection_tier": "preferred",
+          "skills": [
+            1100,
+            1109,
+            527,
+            530,
+            1132
+          ],
+          "student": "student_01"
+        },
+        {
+          "columns": 50,
+          "direct_and_causality_summary": {
+            "action_max_abs_error": 7.62939453125e-06,
+            "alternate_future_max_abs_error": 1.1920928955078125e-07,
+            "direct_max_abs_error": 1.1920928955078125e-07,
+            "positions_checked": 6,
+            "probes_compared": 18
+          },
+          "probability_bounds": [
+            0.695079904794693,
+            0.9243838936090469
+          ],
+          "selection_tier": "preferred",
+          "skills": [
+            35,
+            109,
+            117,
+            189,
+            253
+          ],
+          "student": "student_02"
+        },
+        {
+          "columns": 50,
+          "direct_and_causality_summary": {
+            "action_max_abs_error": 4.172325134277344e-06,
+            "alternate_future_max_abs_error": 1.1920928955078125e-07,
+            "direct_max_abs_error": 1.1920928955078125e-07,
+            "positions_checked": 6,
+            "probes_compared": 18
+          },
+          "probability_bounds": [
+            0.5726738452911377,
+            0.7981442332267761
+          ],
+          "selection_tier": "preferred",
+          "skills": [
+            1098,
+            1192,
+            88,
+            146,
+            1091
+          ],
+          "student": "student_03"
+        },
+        {
+          "columns": 50,
+          "direct_and_causality_summary": {
+            "action_max_abs_error": 2.86102294921875e-06,
+            "alternate_future_max_abs_error": 5.960464477539063e-08,
+            "direct_max_abs_error": 2.384185791015625e-07,
+            "positions_checked": 3,
+            "probes_compared": 9
+          },
+          "probability_bounds": [
+            0.4932748794555664,
+            0.886550784111023
+          ],
+          "selection_tier": "preferred",
+          "skills": [
+            1204,
+            654,
+            890,
+            973,
+            1434
+          ],
+          "student": "student_04"
+        },
+        {
+          "columns": 50,
+          "direct_and_causality_summary": {
+            "action_max_abs_error": 8.58306884765625e-06,
+            "alternate_future_max_abs_error": 1.1920928955078125e-07,
+            "direct_max_abs_error": 1.4901161193847656e-07,
+            "positions_checked": 8,
+            "probes_compared": 24
+          },
+          "probability_bounds": [
+            0.4765172004699707,
+            0.8785396814346313
+          ],
+          "selection_tier": "preferred",
+          "skills": [
+            1098,
+            444,
+            1100,
+            1102,
+            1104
+          ],
+          "student": "student_05"
+        }
+      ],
+      "test_roc_auc": 0.7693648364413692,
+      "torch_inference_mode": true,
+      "training_bank_rows": 53990022,
+      "validation_roc_auc": 0.7681769525193056
+    },
+    "junyi": {
+      "benchmark_row_matched": true,
+      "checkpoint": "experiments/hitskt/junyi/full/best_model.pt",
+      "checkpoint_config": {
+        "action_layers": 1,
+        "correct_layers": 1,
+        "decoder_layers": 1,
+        "dropout": 0.1,
+        "feedforward_width": 1024,
+        "heads": 2,
+        "num_questions": 25630,
+        "num_skills": 1521,
+        "session_layers": 1,
+        "width": 128
+      },
+      "checkpoint_epoch": 32,
+      "checkpoint_sha256": "2308c5bf0c850da1e55daf802a0853a30fac45eeed071c7162c68fc17bfa3bdd",
+      "dataset_provenance": {
+        "files_sha256": {
+          "_SUCCESS": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1",
+          "correct.npy": "2366e130fc8d684de129bcddc9ad98115234e89d3eb7d3d94aca0337a5906b96",
+          "metadata.json": "581ee6f42d96681d3421991dd96ba628834175f53f57cc47e2f712b45023d4cd",
+          "question.npy": "2791c059775f4226a631b630d7d81303986fa731549e0c7a055a3156b94d0c33",
+          "session_number.npy": "0e9c15f7d973207e62cbfcd935e2c573c299c08531b774d1632aa7baa879137f",
+          "session_offsets.npy": "4958d26f376fa364eb9bfa864bb9867586dcbb460f46a2615898cecdbadbdb14",
+          "session_split.npy": "4d5ffc176e7a91b7333688d5e522348a2cd25848c944d54c9b03730fcece8e47",
+          "session_student.npy": "87eb4f34652c0cbf7d11719d233ffa8de1c19bc223adb274ec204d0be2a27248",
+          "skill.npy": "8f429f5fc3ff504df149dbd66d6211562b6957f6fd82d68df394e99150708fd6",
+          "student_offsets.npy": "2473f98238fbe2c70f013f41adac68b24c7ad991079099f478f86d5553210427",
+          "timestamp_ms.npy": "45830cf3109f2c129e7dea8fe39911fc93ad98f15b38818d7fcaecbf51e1b5fc"
+        },
+        "historically_matched_files": [
+          "_SUCCESS",
+          "correct.npy",
+          "metadata.json",
+          "question.npy",
+          "session_number.npy",
+          "session_offsets.npy",
+          "session_split.npy",
+          "session_student.npy",
+          "skill.npy",
+          "student_offsets.npy",
+          "timestamp_ms.npy"
+        ],
+        "session_store": {
+          "action_chunking": false,
+          "action_truncation": false,
+          "format_version": 2,
+          "interactions": 14660217,
+          "maximum_session_length": 3924,
+          "num_questions": 25630,
+          "num_skills": 1521,
+          "processed_timestamp_unit": "milliseconds",
+          "sessions": 600154,
+          "split_sessions": {
+            "test": 109506,
+            "train": 381142,
+            "validation": 109506
+          },
+          "students": 29865,
+          "timestamp_hours_divisor": 3600000
+        },
+        "source": "https://github.com/pokerme7777/HiTSKT/tree/main/dataset",
+        "source_sha256": "8a18000806279ae4feae90a94a5af75b7688f2e4ba666c9a0662c75e1a404b6a",
+        "test_targets": 2456402
+      },
+      "dataset_stats": {
+        "dataset": "junyi",
+        "interactions": 14660217,
+        "questions": 25630,
+        "sessions": 600154,
+        "skills": 1521,
+        "students": 29865,
+        "target_counts": {
+          "test": 2456402,
+          "train": 8920358,
+          "validation": 2556773
+        },
+        "target_ratios": {
+          "test": 0.17629426793620828,
+          "train": 0.6402079070685087,
+          "validation": 0.18349782499528297
+        },
+        "target_sessions": {
+          "test": 109506,
+          "train": 351277,
+          "validation": 109506
+        }
+      },
+      "deterministic_selection_repeated": true,
+      "epochs_completed": 37,
+      "experiment_config": {
+        "action_chunking": false,
+        "action_layers": 1,
+        "action_truncation": false,
+        "attention": "pure causal ELU+1 Performer linear attention",
+        "best_epoch": 32,
+        "best_validation_auc": 0.8008507199510555,
+        "bucket_size": 512,
+        "context_sessions_including_target": 16,
+        "correct_layers": 1,
+        "dataset": "junyi",
+        "decoder_layers": 1,
+        "device": "cuda",
+        "dropout": 0.1,
+        "early_stopping_metric": "validation_roc_auc",
+        "early_stopping_min_delta": 0.0,
+        "early_stopping_patience": 5,
+        "early_stopping_strict_improvement": true,
+        "epoch_ceiling": 50,
+        "epochs_completed": 37,
+        "feedforward_width": 1024,
+        "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+        "heads": 2,
+        "history_sessions": 15,
+        "learning_rate": 5e-05,
+        "maximum_batch_size": 64,
+        "model": "HiTSKT",
+        "optimizer": "Adam",
+        "reload_best_checkpoint_before_test": true,
+        "seed": 42,
+        "session_layers": 1,
+        "token_budget": 32768,
+        "total_parameters": 8271105,
+        "trainable_parameters": 8271105,
+        "weight_decay": 0.0,
+        "width": 128,
+        "workers": 8
+      },
+      "historical_evidence": "reports/independent_correctness_audit/junyi_evaluation_guarded_manifest.json",
+      "model_eval_and_dropout_disabled": true,
+      "numerical_matrix_and_plot_checks": true,
+      "plotting_convention": "Post logged response group. Equal timestamps update together at the final group row.",
+      "status": "generated",
+      "students": [
+        {
+          "columns": 50,
+          "direct_and_causality_summary": {
+            "action_max_abs_error": 1.9073486328125e-06,
+            "alternate_future_max_abs_error": 1.1920928955078125e-07,
+            "direct_max_abs_error": 5.960464477539063e-08,
+            "positions_checked": 3,
+            "probes_compared": 9
+          },
+          "probability_bounds": [
+            0.5043395832180977,
+            0.8652711510658264
+          ],
+          "selection_tier": "preferred",
+          "skills": [
+            527,
+            447,
+            448,
+            1158,
+            475
+          ],
+          "student": "student_01"
+        },
+        {
+          "columns": 50,
+          "direct_and_causality_summary": {
+            "action_max_abs_error": 1.1920928955078125e-06,
+            "alternate_future_max_abs_error": 1.1920928955078125e-07,
+            "direct_max_abs_error": 5.960464477539063e-08,
+            "positions_checked": 5,
+            "probes_compared": 15
+          },
+          "probability_bounds": [
+            0.6774836421012879,
+            0.9518755078315735
+          ],
+          "selection_tier": "preferred",
+          "skills": [
+            145,
+            16,
+            143,
+            150,
+            15
+          ],
+          "student": "student_02"
+        },
+        {
+          "columns": 50,
+          "direct_and_causality_summary": {
+            "action_max_abs_error": 1.1920928955078125e-06,
+            "alternate_future_max_abs_error": 1.7881393432617188e-07,
+            "direct_max_abs_error": 1.1920928955078125e-07,
+            "positions_checked": 5,
+            "probes_compared": 15
+          },
+          "probability_bounds": [
+            0.18589097261428833,
+            0.593902051448822
+          ],
+          "selection_tier": "preferred",
+          "skills": [
+            632,
+            843,
+            621,
+            616,
+            627
+          ],
+          "student": "student_03"
+        },
+        {
+          "columns": 50,
+          "direct_and_causality_summary": {
+            "action_max_abs_error": 1.9073486328125e-06,
+            "alternate_future_max_abs_error": 1.1920928955078125e-07,
+            "direct_max_abs_error": 8.940696716308594e-08,
+            "positions_checked": 5,
+            "probes_compared": 15
+          },
+          "probability_bounds": [
+            0.3854886531829834,
+            0.8302746176719665
+          ],
+          "selection_tier": "preferred",
+          "skills": [
+            531,
+            662,
+            195,
+            304,
+            530
+          ],
+          "student": "student_04"
+        },
+        {
+          "columns": 50,
+          "direct_and_causality_summary": {
+            "action_max_abs_error": 1.2516975402832031e-06,
+            "alternate_future_max_abs_error": 1.1920928955078125e-07,
+            "direct_max_abs_error": 5.960464477539063e-08,
+            "positions_checked": 4,
+            "probes_compared": 12
+          },
+          "probability_bounds": [
+            0.8036495566368103,
+            0.9710165739059449
+          ],
+          "selection_tier": "preferred",
+          "skills": [
+            17,
+            16,
+            15,
+            397,
+            19
+          ],
+          "student": "student_05"
+        }
+      ],
+      "test_roc_auc": 0.7978262055191263,
+      "torch_inference_mode": true,
+      "training_bank_rows": 9647042,
+      "validation_roc_auc": 0.8008507199510555
+    }
+  },
+  "device": "cpu",
+  "dpi": 330,
+  "files_sha256": {
+    "assist2012_hitskt_knowledge_state.csv": "b1a8eb8fbdd8cddc82f986692babf72e858b9ba24a696cc2b3f9e80c25294d53",
+    "assist2012_hitskt_knowledge_state.png": "3717cbfd0908ffa77018b90bbb7cb98e6fa3f16b359b36ee1f10e61cfff525b2",
+    "ednet_kt1_hitskt_knowledge_state.csv": "a6c89549a27d35b8f2b4cc32a681053b940e6577a2efedd0ae92d072c5586c3c",
+    "ednet_kt1_hitskt_knowledge_state.png": "4b583bd0aedaee7773ad4ec744f9c4de2a9dad8a7c737b222a93c271a94723c1",
+    "hitskt_knowledge_state_all_datasets.csv": "6bb832bb320ac4d2c4f6f9df2d6a8f7429c67d54dfb779935bdd844f3022d20c",
+    "hitskt_knowledge_state_all_datasets.png": "d6d2cfd114e385a6c9c2eeacb7c3b3250ff9954ffb0c66b3de9de735f0a73667",
+    "junyi_hitskt_knowledge_state.csv": "930263dc7f2c196024c1c9de4b3000f6412df41124feb72cbe12330c16949d61",
+    "junyi_hitskt_knowledge_state.png": "0ea90d924701c152115b37d61a449d91d15ab839cc2c1e760bb1367407c97c68",
+    "knowledge_state_heatmaps/assist2012/combined_students.csv": "2af421594049174b15f8276e86d32d4ca0fd9f31e8c3d9135d438b141a9302a5",
+    "knowledge_state_heatmaps/assist2012/combined_students.png": "2c37f70d663e33dd9c934829ab2a7ae0d2db1042d2773449f99d0c2626d9cefa",
+    "knowledge_state_heatmaps/assist2012/student_01.csv": "b1a8eb8fbdd8cddc82f986692babf72e858b9ba24a696cc2b3f9e80c25294d53",
+    "knowledge_state_heatmaps/assist2012/student_01.png": "3717cbfd0908ffa77018b90bbb7cb98e6fa3f16b359b36ee1f10e61cfff525b2",
+    "knowledge_state_heatmaps/assist2012/student_02.csv": "bcb34091ffd1574b0d277cde5877df660852247ff541c8a578da5882c66bfeec",
+    "knowledge_state_heatmaps/assist2012/student_02.png": "161d01c4342839bc10720837d3b0f36159c5e66ac5bcf4b1cd9205b7cd72b3ed",
+    "knowledge_state_heatmaps/assist2012/student_03.csv": "9d3b73683f829c7a335ca0b6d9f7f9be91d00f6faac0f560d2f6f916fa89c218",
+    "knowledge_state_heatmaps/assist2012/student_03.png": "1b6db887aaf2a3c7209b157374f3417dc54ac40fbd8c873911ac0083aaf0467d",
+    "knowledge_state_heatmaps/assist2012/student_04.csv": "b6feddba481e307a03cd82c84a5c8aa0db243878ae98bb12c1fcabf1143f0310",
+    "knowledge_state_heatmaps/assist2012/student_04.png": "e1ed6537d63be433b0e9dc9aeb009bd2aa9924294dc390eae69b9a65aa37b7b3",
+    "knowledge_state_heatmaps/assist2012/student_05.csv": "71bd20e4e0171c4bdcc4f42dcf0008d55297ddb4b15f27985c8b1a319feee109",
+    "knowledge_state_heatmaps/assist2012/student_05.png": "3ccafcc31b896073cb3e59512f65ff6a485d5b37119a4aecb8707fff539d0143",
+    "knowledge_state_heatmaps/ednet_kt1/combined_students.csv": "2f64f563422cc2d149c7a39b5a2084bfc97045bd4aa975c1deac96e6f05f3ce7",
+    "knowledge_state_heatmaps/ednet_kt1/combined_students.png": "83790c1efad1e868c58e7a79d3bbcebd4a69325dcd141b14b8dae894ede45766",
+    "knowledge_state_heatmaps/ednet_kt1/student_01.csv": "a6c89549a27d35b8f2b4cc32a681053b940e6577a2efedd0ae92d072c5586c3c",
+    "knowledge_state_heatmaps/ednet_kt1/student_01.png": "4b583bd0aedaee7773ad4ec744f9c4de2a9dad8a7c737b222a93c271a94723c1",
+    "knowledge_state_heatmaps/ednet_kt1/student_02.csv": "272aaf0022c6a736a03b9b9c2557ca6e5980b02ed2b1c279c6bbc035f943748a",
+    "knowledge_state_heatmaps/ednet_kt1/student_02.png": "aae4411a6c9600cd694d4237a30076efe1800657db9cdff74900e4b83291881e",
+    "knowledge_state_heatmaps/ednet_kt1/student_03.csv": "87f79bb7655ae74d3d19ac1f3fc2526ed07bad73e8ec2d945877f8da98a1c44c",
+    "knowledge_state_heatmaps/ednet_kt1/student_03.png": "b225918e979b356bf38f522cfac8e39ebf8469a7ea7c31a41a20b588c6be6933",
+    "knowledge_state_heatmaps/ednet_kt1/student_04.csv": "a375aca43d00a77c0e0f220f7002095e6f5b2048f1eb0c228d0144fe4843215d",
+    "knowledge_state_heatmaps/ednet_kt1/student_04.png": "563ee4dd6243a7820cc7e8e02f5e6a60ef633069b65fdf432a54e9d6230f34a2",
+    "knowledge_state_heatmaps/ednet_kt1/student_05.csv": "2e20b5a195a686fef25f817700cf36d3925c155d6ce22ea19aac917f76b87746",
+    "knowledge_state_heatmaps/ednet_kt1/student_05.png": "01ff7b4bb81909b814a3eb5c19942fd9d9bcc2ab356ae180dbacc245251148fd",
+    "knowledge_state_heatmaps/junyi/combined_students.csv": "c2d19baeddc14fe9de61391ea847f3485f4d1b8c08f001cf43cddbedc72f4dee",
+    "knowledge_state_heatmaps/junyi/combined_students.png": "009d910e1f1e06828542a3b8e9227b50ac3fe7a0834c716bdc0ab168fc8face6",
+    "knowledge_state_heatmaps/junyi/student_01.csv": "930263dc7f2c196024c1c9de4b3000f6412df41124feb72cbe12330c16949d61",
+    "knowledge_state_heatmaps/junyi/student_01.png": "0ea90d924701c152115b37d61a449d91d15ab839cc2c1e760bb1367407c97c68",
+    "knowledge_state_heatmaps/junyi/student_02.csv": "a46e0c412b6bc5d86caa992ab953129ff45639189cf624be20d34aee3cdf5f90",
+    "knowledge_state_heatmaps/junyi/student_02.png": "2c77122b4a06c5d29275ea22ff8c41fb2e287d203159eb00a41fb3946d3fd029",
+    "knowledge_state_heatmaps/junyi/student_03.csv": "4dc4424f0ec9a01afc5fa9fc0f827f626956fa1863f0485ce91dccae04a32125",
+    "knowledge_state_heatmaps/junyi/student_03.png": "34b34bb2683d919958083d95b8bb94d44a21be7fed7448593f4c77959b85abe8",
+    "knowledge_state_heatmaps/junyi/student_04.csv": "92354f3fedc0731e6f6700613cd99693ef4ad8a372c2519b67ddb4547e682877",
+    "knowledge_state_heatmaps/junyi/student_04.png": "2aa8ad9c4511264970d5c5eca66f2643d4c1f60a9703d2e74fb3b0f9af4cf48f",
+    "knowledge_state_heatmaps/junyi/student_05.csv": "594764fe7b9254cd7180f1975903e37088c434ec60f9727b71e319ac76a3f36d",
+    "knowledge_state_heatmaps/junyi/student_05.png": "41c20de40dda93a030811601aa9952e6565776ece043d148f3c9501df0a6fdc6"
+  },
+  "probability_absolute_tolerance": 1e-05,
+  "seed": 42,
+  "software": {
+    "matplotlib": "3.11.2",
+    "numpy": "2.1.0",
+    "python": "3.12.3",
+    "torch": "2.14.0a0+b2c75dd062.nv26.09"
+  },
+  "source_sha256": {
+    "ktbench/batching.py": "890204c3d9c126d37d52692b0d96a55707ddfb8785f25c223f149c9a8866fb68",
+    "ktbench/data/session_store.py": "1d9d59f8ced25a0f1da5a35dfedb9c17e67177b854bce043eefd84636264267f",
+    "ktbench/models/hitskt.py": "627e3715eb1bd386139a7ba69eb603e6ac49dafe111f46e53ea731c03f55c515",
+    "ktbench/models/performer.py": "1b517922893f8573d294fbb036b0f7af6bb9e8d4a1a7808d50db52682d323004",
+    "report_graphs/Junyi_original_ranking/replay_scores.py": "8d52c0dd97e7c1096f213b20935a22602dfd5c757628b7a73b36ec19bf4222f6",
+    "report_graphs/generate_hitskt_knowledge_state_heatmaps.py": "2b814e75b1ce3aded410d7e151c208e4cdf49cca7eef8e79fbdf9ae04d7ca35d",
+    "reports/final_results.csv": "f8b958d42c0bb0ed3b08b2ef1880289dc95748bc0872eeb39be90c8131f22f94"
+  },
+  "status": "verified",
+  "student_selection": "Test sessions only. Rank students by SHA-256 of seed 42 and the processed student ID. Prefer 50 consecutive rows with >=4 completed sessions at entry, both labels, and five train-backed skills with >=2 attempts each. Search by student rank and earliest window. Fallback tiers relax to >=1 prior session, then 50/49\u202640/51\u202660 rows and 3\u20135 repeated skills. Window boundaries must contain whole availability groups. Exclude EdNet <UNTAGGED> from skill rows. Skill ties use ascending processed IDs.",
+  "threads": 2
+}
