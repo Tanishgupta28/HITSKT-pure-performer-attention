@@ -19,6 +19,8 @@ from app.catalog import BANK, CONCEPTS, SUBJECT
 from app.config import Settings
 from app.engine import PRACTICE_MODES, concept_rows, initial_concept, recommendations, select_question, update_knowledge
 from app.inference import Predictor
+from app.junyi_routes import JunyiService, matches_account, mount_junyi, setup_junyi
+from app.junyi_runtime import JunyiRuntime
 from app.profile import LearnerProfile, profile_view, public_user
 from app.workspace import mount_workspace
 from app.content import available_questions, grade, safe_question
@@ -58,7 +60,7 @@ class Answer(BaseModel):
     request_id: UUID
 
 
-def create_app(settings=None):
+def create_app(settings=None, *, junyi_runtime=None):
     settings = settings or Settings()
     if settings.demo_enabled and (urlparse(settings.frontend_origin).hostname not in {"localhost", "127.0.0.1", "::1"}
                                   or urlparse(settings.mongodb_uri).hostname not in {"localhost", "127.0.0.1", "::1"}):
@@ -72,10 +74,15 @@ def create_app(settings=None):
         await db.users.create_index("email", unique=True)
         await db.sessions.create_index("expires_at", expireAfterSeconds=0)
         await db.rate_limits.create_index("expires_at", expireAfterSeconds=0)
+        await setup_junyi(db)
         app.state.db = db
         app.state.predictor = await run_in_threadpool(Predictor, settings)
-        yield
-        await client.close()
+        runtime = junyi_runtime or await run_in_threadpool(JunyiRuntime.from_settings, settings)
+        app.state.junyi = JunyiService(db, runtime, settings.junyi_stage, settings.junyi_allow_reuse)
+        try:
+            yield
+        finally:
+            await client.close()
 
     app = FastAPI(title="Lumen Learning API", version="2.0.0", lifespan=lifespan)
     app.add_middleware(CORSMiddleware, allow_origins=[settings.frontend_origin], allow_credentials=True,
@@ -263,6 +270,8 @@ def create_app(settings=None):
         active = next((a for a in state["assessments"] if a["status"] == "active" and a["mode"] in PRACTICE_MODES), None)
         if active:
             return practice_view(active)
+        if data.mode == "adaptive" and matches_account(user, settings.junyi_student_account_id):
+            raise HTTPException(409, "Start Junyi Adaptive Assessment from Today to work across multiple skills.")
         total = 6 if data.mode == "practice" else profile_view(user)["adaptive_session_questions"]
         if len(state["history"]) + total > 5000:
             raise HTTPException(409, "Learning archive capacity reached. Contact the administrator to archive this history.")
@@ -370,6 +379,7 @@ def create_app(settings=None):
                  'hints_used': r.get('hints_used', 0), 'response_time_ms': r.get('response_time_ms')} for r in a['responses']]
 
     mount_workspace(app, settings, auth, student, learning, limit_auth, passwords)
+    mount_junyi(app, settings, student, auth)
     return app
 
 

@@ -2,6 +2,8 @@
 
 Updated: 2026-11-21 (Asia/Kolkata)
 
+The separately scoped Junyi assessment rebuild began on 2026-11-23. See [Junyi platform workstream](JUNYI_PLATFORM.md) for its current evidence and runtime dependencies.
+
 ## Practice-only platform handoff - 2026-11-21
 
 Achin retired Teacher and Assessments. Student and Administrator remain

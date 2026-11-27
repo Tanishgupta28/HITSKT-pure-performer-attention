@@ -12,6 +12,8 @@ this same repo. Read [PLATFORM_STATE.md](PLATFORM_STATE.md) and
 integration request. Existing GPU training ownership and scientific rules
 remain intact; platform changes do not alter research source or live runs.
 
+The Junyi assessment pilot has its own current status and handoff under [JUNYI_PLATFORM.md](JUNYI_PLATFORM.md). It runs in the `D:/CS/HITSKT-platform-junyi` worktree.
+
 ## Resume order
 
 1. Read [USER_DIRECTIVES.md](USER_DIRECTIVES.md).
