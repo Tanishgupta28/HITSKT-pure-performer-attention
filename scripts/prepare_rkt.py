@@ -18,6 +18,11 @@ from ktbench.rkt.phi import assign_student_folds, build_cross_fitted_phi_cache
 
 
 RAW_TIMESTAMP_PROVENANCE = {
+    "assist2012": {
+        "native_unit": "Unix milliseconds",
+        "evidence": "ASSISTments action log start and first graded action offset",
+        "preprocessing_conversion": "UTC-anchored exported start plus first answer, hint or scaffold offset in ms",
+    },
     "algebra2005": {
         "native_unit": "source wall clock, second precision",
         "evidence": "First Transaction Time, full coverage in the labeled train and master union",
@@ -68,8 +73,8 @@ def main() -> None:
         print(json.dumps(build_cross_fitted_phi_cache(store, args.output_root), indent=2))
         return
     store = SessionStore(args.store_root)
-    if args.dataset == "algebra2005" and not store.strict_timestamp_history:
-        raise ValueError("Algebra2005 requires the verified strict-time session store")
+    if args.dataset in ("algebra2005", "assist2012") and not store.strict_timestamp_history:
+        raise ValueError("Strict-time benchmark requires the verified strict-time session store")
     selected = None
     if args.smoke_students_per_fold is not None:
         if args.smoke_students_per_fold <= 0:
@@ -93,7 +98,7 @@ def main() -> None:
         "memory_strength": memory,
         "selected_smoke_students": None if selected is None else len(selected),
     }
-    if args.dataset == "algebra2005":
+    if args.dataset in ("algebra2005", "assist2012"):
         provenance["session_store_metadata_sha256"] = sha256_file(store.root / "metadata.json")
     (args.output_root / "provenance.json").write_text(
         json.dumps(provenance, indent=2, sort_keys=True) + "\n"

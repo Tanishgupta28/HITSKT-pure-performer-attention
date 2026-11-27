@@ -32,6 +32,7 @@ from ktbench.rkt.settings import (
     RKT_LEARNING_RATE,
     RKT_WEIGHT_DECAY,
 )
+from scripts.train_baseline import _verify_finite_resume_state
 from ktbench.training import (
     COMMON_EARLY_STOPPING,
     ValidationAUCEarlyStopping,
@@ -142,12 +143,12 @@ def train_rkt(
     if not (prepared_root / "_SUCCESS").exists():
         raise ValueError("full RKT Phi/initialization artifacts are incomplete")
     ordered = dataset_name == "assist2009"
-    algebra = dataset_name == "algebra2005"
-    if algebra and (not torch.cuda.is_available() or not store.strict_timestamp_history):
-        raise ValueError("Algebra2005 full training requires CUDA and the verified strict-time session store")
+    strict_time = dataset_name in ("algebra2005", "assist2012")
+    if strict_time and (not torch.cuda.is_available() or not store.strict_timestamp_history):
+        raise ValueError("Strict-time benchmark full training requires CUDA and the verified strict-time session store")
     if ordered and (not isinstance(store, Assist2009Store) or not torch.cuda.is_available()):
         raise ValueError("ASSIST2009 RKT requires the ordered interaction store and CUDA")
-    if (ordered or algebra) and not resume and (output_root / "config.json").exists():
+    if (ordered or strict_time) and not resume and (output_root / "config.json").exists():
         raise FileExistsError(output_root)
     output_root.mkdir(parents=True, exist_ok=True)
     epoch_ceiling = RKT_EPOCH_CEILING
@@ -160,11 +161,11 @@ def train_rkt(
     )
     if int(repository.metadata["cache_students"]) != int(store.metadata["students"]):
         raise ValueError("RKT production training requires a full-student Phi cache")
-    if algebra:
+    if strict_time:
         provenance = json.loads((prepared_root / "provenance.json").read_text())
         if provenance.get("session_store_metadata_sha256") != hashlib.sha256(
                 (store.root / "metadata.json").read_bytes()).hexdigest():
-            raise ValueError("RKT cache does not match the Algebra2005 session store")
+            raise ValueError("RKT cache does not match the Strict-time benchmark session store")
     if ordered and repository.metadata.get("dataset_provenance") != store.provenance:
         raise ValueError("Phi cache does not match the shared ASSIST2009 split")
     datasets = {
@@ -225,7 +226,7 @@ def train_rkt(
     }
     if ordered:
         configuration.update(dataset_provenance=store.provenance, relation_mode="phi_only")
-    if algebra:
+    if strict_time:
         configuration.update(session_store_metadata_sha256=hashlib.sha256(
             (store.root / "metadata.json").read_bytes()).hexdigest(),
             torch_version=str(torch.__version__), cuda_runtime=torch.version.cuda,
@@ -252,9 +253,9 @@ def train_rkt(
         for key in ("model", "dataset", "seed", "batch_size", "history_length"):
             if stored_configuration.get(key) != configuration.get(key):
                 raise ValueError(f"resume configuration mismatch for {key}")
-        if algebra and any(stored_configuration.get(key) != configuration[key]
+        if strict_time and any(stored_configuration.get(key) != configuration[key]
                            for key in ("session_store_metadata_sha256", "phi")):
-            raise ValueError("Algebra2005 resume session store or Phi cache differs")
+            raise ValueError("Strict-time benchmark resume session store or Phi cache differs")
         if ordered and any(stored_configuration.get(key) != configuration[key]
                            for key in ("dataset_provenance", "phi", "relation_mode")):
             raise ValueError("RKT resume protocol or Phi cache differs")
@@ -352,7 +353,7 @@ def train_rkt(
         for epoch in range(start_epoch, epoch_ceiling + 1):
             if control.should_stop:
                 break
-            if algebra:
+            if strict_time:
                 torch.cuda.reset_peak_memory_stats(device)
             train_metrics = _run_epoch(
                 model, datasets["train"], repository, device=device, epoch=epoch,
@@ -362,7 +363,9 @@ def train_rkt(
                 model, datasets["validation"], repository, device=device, epoch=epoch,
                 optimizer=None, workers=workers,
             )
-            if algebra:
+            if strict_time:
+                _verify_finite_resume_state({"state_dict": model.state_dict(),
+                                             "optimizer_state_dict": optimizer.state_dict()})
                 print(json.dumps({
                     "event": "epoch_metrics", "epoch": epoch, "train": train_metrics,
                     "validation": validation_metrics,
@@ -468,7 +471,7 @@ def train_rkt(
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("dataset", choices=("assist2017", "junyi", "ednet_kt1", "assist2009", "algebra2005"))
+    parser.add_argument("dataset", choices=("assist2017", "junyi", "ednet_kt1", "assist2009", "algebra2005", "assist2012"))
     parser.add_argument("store_root", type=Path)
     parser.add_argument("prepared_root", type=Path)
     parser.add_argument("output_root", type=Path)

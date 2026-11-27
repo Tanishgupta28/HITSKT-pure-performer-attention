@@ -27,6 +27,7 @@ from ktbench.data.session_store import (
 from ktbench.hitskt_registry import HITSKT_COMMON_CONFIG, HITSKT_TRAINING_CONFIGS
 from ktbench.metrics import binary_metrics, masked_bce_loss
 from ktbench.models import HiTSKT, HiTSKTConfig
+from scripts.train_baseline import _verify_finite_resume_state
 from ktbench.training import (
     COMMON_EARLY_STOPPING,
     ValidationAUCEarlyStopping,
@@ -138,14 +139,14 @@ def train_hitskt(
             raise ValueError("epoch ceiling override is restricted to automated tests")
         epoch_ceiling = epoch_ceiling_override
     ordered = dataset_name == "assist2009"
-    algebra = dataset_name == "algebra2005"
-    if algebra and (not torch.cuda.is_available() or not store.strict_timestamp_history):
-        raise ValueError("Algebra2005 full training requires CUDA and the verified strict-time session store")
+    strict_time = dataset_name in ("algebra2005", "assist2012")
+    if strict_time and (not torch.cuda.is_available() or not store.strict_timestamp_history):
+        raise ValueError("Strict-time benchmark full training requires CUDA and the verified strict-time session store")
     if ordered and (not isinstance(store, AssignmentRunStore) or not torch.cuda.is_available()):
         raise ValueError("ASSIST2009 HiTSKT requires the assignment-run store and CUDA")
-    if (ordered or algebra) and not resume and (output_root / "config.json").exists():
+    if (ordered or strict_time) and not resume and (output_root / "config.json").exists():
         raise FileExistsError(output_root)
-    dataset_class = (AssignmentTargets if ordered else AlgebraSessionTargets if algebra else RollingSessionDataset)
+    dataset_class = (AssignmentTargets if ordered else AlgebraSessionTargets if strict_time else RollingSessionDataset)
     datasets = {
         split: dataset_class(
             store, split, history_sessions=int(profile["history_sessions"])
@@ -204,7 +205,7 @@ def train_hitskt(
         fresh_configuration.update(dataset_provenance=store.provenance,
                                    session_protocol=store.metadata["session_protocol"],
                                    session_offsets_sha256=store.session_offsets_sha256)
-    if algebra:
+    if strict_time:
         fresh_configuration.update(session_store_metadata_sha256=hashlib.sha256(
             (store.root / "metadata.json").read_bytes()).hexdigest(),
             torch_version=str(torch.__version__), cuda_runtime=torch.version.cuda,
@@ -252,8 +253,8 @@ def train_hitskt(
         ):
             if configuration.get(key) != fresh_configuration.get(key):
                 raise ValueError(f"resume configuration mismatch for {key}")
-        if algebra and configuration.get("session_store_metadata_sha256") != fresh_configuration["session_store_metadata_sha256"]:
-            raise ValueError("Algebra2005 resume session store differs")
+        if strict_time and configuration.get("session_store_metadata_sha256") != fresh_configuration["session_store_metadata_sha256"]:
+            raise ValueError("Strict-time benchmark resume session store differs")
         if ordered and any(configuration.get(key) != fresh_configuration[key] for key in
                            ("dataset_provenance", "session_protocol", "session_offsets_sha256")):
             raise ValueError("HiTSKT resume assignment provenance mismatch")
@@ -327,7 +328,7 @@ def train_hitskt(
         for epoch in range(start_epoch, epoch_ceiling + 1):
             if control.should_stop:
                 break
-            if algebra:
+            if strict_time:
                 torch.cuda.reset_peak_memory_stats(device)
             train_metrics = _run_epoch(
                 model, datasets["train"], device=device, epoch=epoch,
@@ -337,7 +338,9 @@ def train_hitskt(
                 model, datasets["validation"], device=device, epoch=epoch,
                 optimizer=None, workers=workers,
             )
-            if algebra:
+            if strict_time:
+                _verify_finite_resume_state({"state_dict": model.state_dict(),
+                                             "optimizer_state_dict": optimizer.state_dict()})
                 print(json.dumps({
                     "event": "epoch_metrics", "epoch": epoch, "train": train_metrics,
                     "validation": validation_metrics,

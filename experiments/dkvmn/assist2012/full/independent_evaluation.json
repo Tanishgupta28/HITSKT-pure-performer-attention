@@ -1,0 +1,37 @@
+{
+  "best_epoch": 7,
+  "checkpoint_sha256": "ba7e024d36fcfb1161170b80e5106815afa1fc2725dc286b90aa88000c9f126a",
+  "dataset": "assist2012",
+  "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+  "model": "DKVMN",
+  "runtime_seconds": 82.85004295688123,
+  "seed": 42,
+  "session_store_metadata_sha256": "b81ec6333b5ed731dcb0e6d78cc1a7c516490f465905d083fddaf02d95a41a7a",
+  "test": {
+    "accuracy": 0.7131621841438639,
+    "f1": 0.8081660942791925,
+    "loss": 0.5669361989393387,
+    "mse": 0.19168330700396893,
+    "precision": 0.7355008549963936,
+    "recall": 0.8967636005520258,
+    "roc_auc": 0.7118747153644095,
+    "targets": 901241,
+    "threshold": 0.5
+  },
+  "total_parameters": 97301,
+  "trainable_parameters": 97301,
+  "validation": {
+    "accuracy": 0.7183737398584592,
+    "f1": 0.8153011190735039,
+    "loss": 0.5603167990031769,
+    "mse": 0.18884615664229842,
+    "precision": 0.7423004432428216,
+    "recall": 0.9042261950943773,
+    "roc_auc": 0.7077655260210095,
+    "targets": 918746,
+    "threshold": 0.5
+  },
+  "validation_and_test_target_ids_verified": true,
+  "verification": "fresh model loaded from best checkpoint; exact equality of all test metrics",
+  "verified": true
+}

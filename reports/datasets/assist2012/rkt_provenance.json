@@ -1,0 +1,64 @@
+{
+  "dataset": "assist2012",
+  "memory_strength": {
+    "conversion": "delta_hours = (target_timestamp_ms - history_timestamp_ms) / 3,600,000",
+    "global_training_only_fallback_hours": 0.010235,
+    "source": "positive consecutive gaps in the student training prefix",
+    "students": 19092,
+    "students_using_fallback": 0,
+    "timestamp_input_unit": "milliseconds",
+    "validation_or_test_used": false
+  },
+  "model_conversion": "delta_hours = (target_timestamp_ms - history_timestamp_ms) / 3,600,000",
+  "phi": {
+    "all_dataset_targets": {
+      "test": 901241,
+      "train": 3353476,
+      "validation": 918746
+    },
+    "all_train_unique_directed_pairs": 50686478,
+    "cache_students": 19092,
+    "chunk_values": 5000000,
+    "construction_seconds": 268.6816478818655,
+    "fold_assignment": "seeded NumPy permutation of sorted student IDs, then round-robin index modulo 5",
+    "fold_count": 5,
+    "fold_unique_directed_pairs": {
+      "0": 14348568,
+      "1": 14747173,
+      "2": 14472518,
+      "3": 14657055,
+      "4": 14318942
+    },
+    "folds_balanced_within_one": true,
+    "format_version": 1,
+    "history_length": 49,
+    "label": "RKT paper-faithful performance-only Phi-relation variant with 5-fold student-level cross-fitting.",
+    "peak_process_rss_bytes": 11685617664,
+    "phi_pair_contributions": 140422069,
+    "phi_source": "training-partition histories only",
+    "scratch_bytes_before_cleanup": 1518951224,
+    "scratch_parts": 30,
+    "seed": 42,
+    "students_per_fold": {
+      "0": 3819,
+      "1": 3819,
+      "2": 3818,
+      "3": 3818,
+      "4": 3818
+    },
+    "text_relation": null,
+    "threshold": null,
+    "training_rule": "target student's entire fold excluded",
+    "training_targets_cross_fitted": 3353476,
+    "undefined_relation": 0.0,
+    "validation_test_rule": "all training folds; no validation/test interactions"
+  },
+  "raw_timestamp": {
+    "evidence": "ASSISTments action log start and first graded action offset",
+    "native_unit": "Unix milliseconds",
+    "preprocessing_conversion": "UTC-anchored exported start plus first answer, hint or scaffold offset in ms"
+  },
+  "seed": 42,
+  "selected_smoke_students": null,
+  "session_store_metadata_sha256": "b81ec6333b5ed731dcb0e6d78cc1a7c516490f465905d083fddaf02d95a41a7a"
+}

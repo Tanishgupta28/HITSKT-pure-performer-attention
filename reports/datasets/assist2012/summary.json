@@ -1,0 +1,263 @@
+{
+  "dataset": "assist2012",
+  "distributions": {
+    "all_sessions_per_student": {
+      "count": 46659,
+      "mean": 8.625624209691592,
+      "percentiles": {
+        "0": 1.0,
+        "100": 130.0,
+        "25": 1.0,
+        "50": 3.0,
+        "75": 9.0,
+        "90": 22.0,
+        "95": 36.0,
+        "99": 78.0
+      }
+    },
+    "inter_session_gap_hours": {
+      "count": 332925,
+      "mean": 214.07882800950242,
+      "percentiles": {
+        "0": 10.000035833333333,
+        "100": 8474.512530555556,
+        "25": 28.562944722222223,
+        "50": 99.50683722222222,
+        "75": 218.01634805555557,
+        "90": 503.4814320555556,
+        "95": 815.7535258888888,
+        "99": 1792.8790623666762
+      }
+    },
+    "questions_frequency": {
+      "count": 153547,
+      "mean": 33.69302558825636,
+      "percentiles": {
+        "0": 1.0,
+        "100": 2091.0,
+        "25": 2.0,
+        "50": 12.0,
+        "75": 37.0,
+        "90": 78.0,
+        "95": 119.0,
+        "99": 302.0
+      }
+    },
+    "retained_interaction_history_length_per_student": {
+      "count": 19092,
+      "mean": 270.97543473706264,
+      "percentiles": {
+        "0": 7.0,
+        "100": 5562.0,
+        "25": 90.0,
+        "50": 160.5,
+        "75": 337.0,
+        "90": 601.0,
+        "95": 864.0,
+        "99": 1617.3600000000006
+      }
+    },
+    "retained_interactions_per_session": {
+      "count": 352017,
+      "mean": 14.696628287838372,
+      "percentiles": {
+        "0": 1.0,
+        "100": 1032.0,
+        "25": 5.0,
+        "50": 10.0,
+        "75": 19.0,
+        "90": 30.0,
+        "95": 40.0,
+        "99": 71.0
+      }
+    },
+    "sessions_per_retained_student": {
+      "count": 19092,
+      "mean": 18.437932118164678,
+      "percentiles": {
+        "0": 5.0,
+        "100": 130.0,
+        "25": 7.0,
+        "50": 11.0,
+        "75": 22.0,
+        "90": 42.0,
+        "95": 60.0,
+        "99": 91.0
+      }
+    },
+    "skills_frequency": {
+      "count": 265,
+      "mean": 19522.501886792452,
+      "percentiles": {
+        "0": 1.0,
+        "100": 2771237.0,
+        "25": 223.0,
+        "50": 1353.0,
+        "75": 11127.0,
+        "90": 23189.8,
+        "95": 40143.0,
+        "99": 127634.64000000003
+      }
+    }
+  },
+  "download": "https://drive.google.com/file/d/1cU6Ft4R3hLqA7G1rIGArVfelSZvc6RxY/view",
+  "excluded_for_session_eligibility": 934882,
+  "excluded_fraction": 0.1551143425000041,
+  "maximum_session_length": 1032,
+  "minimum_sessions": 5,
+  "protocol": "assist2012_first_action_10h_sessions_v1",
+  "provenance": {
+    "archive_crc32": "8f51cc70",
+    "archive_member_timestamp": [
+      2013,
+      11,
+      20,
+      17,
+      22,
+      36
+    ],
+    "archive_sha256": "7bb18f932f97e63c2eb34bb869c44cd4f46f4adec4d7fe02298578dbba572445",
+    "ascii_only": false,
+    "columns": [
+      "problem_log_id",
+      "skill",
+      "problem_id",
+      "user_id",
+      "assignment_id",
+      "assistment_id",
+      "start_time",
+      "end_time",
+      "problem_type",
+      "original",
+      "correct",
+      "bottom_hint",
+      "hint_count",
+      "actions",
+      "attempt_count",
+      "ms_first_response",
+      "tutor_mode",
+      "sequence_id",
+      "student_class_id",
+      "position",
+      "type",
+      "base_sequence_id",
+      "skill_id",
+      "teacher_id",
+      "school_id",
+      "overlap_time",
+      "template_id",
+      "answer_id",
+      "answer_text",
+      "first_action",
+      "problemlogid",
+      "Average_confidence(FRUSTRATED)",
+      "Average_confidence(CONFUSED)",
+      "Average_confidence(CONCENTRATING)",
+      "Average_confidence(BORED)"
+    ],
+    "csv_bytes": 3009494391,
+    "csv_sha256": "1d06aee9e649c5ba9db49052fe9a86e68d0c3ccb4709a7487289d7721f5464db",
+    "delimiter": ",",
+    "encoding_used": "utf-8",
+    "strict_utf8_valid": true
+  },
+  "questions": 153547,
+  "raw": {
+    "atomic_skills": 265,
+    "end_before_start_time": 727,
+    "first_action_after_end": 2194,
+    "first_action_delay_differs_from_ms_first_response": 4987,
+    "first_action_local_max": "2013-09-01 00:03:46.128000",
+    "first_action_local_min": "2012-09-01 00:00:46.137652",
+    "first_action_outcome_differs_from_binary_label": 9440,
+    "fractional_score": 5323,
+    "invalid_end_time": 0,
+    "invalid_score": 0,
+    "invalid_start_time": 0,
+    "missing": {
+      "Average_confidence(BORED)": 0,
+      "Average_confidence(CONCENTRATING)": 0,
+      "Average_confidence(CONFUSED)": 0,
+      "Average_confidence(FRUSTRATED)": 0,
+      "actions": 0,
+      "answer_id": 6114995,
+      "answer_text": 346326,
+      "assignment_id": 0,
+      "assistment_id": 0,
+      "attempt_count": 0,
+      "base_sequence_id": 0,
+      "bottom_hint": 60348,
+      "correct": 0,
+      "end_time": 0,
+      "first_action": 0,
+      "hint_count": 0,
+      "ms_first_response": 0,
+      "original": 0,
+      "overlap_time": 0,
+      "position": 0,
+      "problem_id": 0,
+      "problem_log_id": 0,
+      "problem_type": 0,
+      "problemlogid": 0,
+      "school_id": 157,
+      "sequence_id": 0,
+      "skill": 3493190,
+      "skill_id": 3411457,
+      "start_time": 0,
+      "student_class_id": 0,
+      "teacher_id": 0,
+      "template_id": 0,
+      "tutor_mode": 0,
+      "type": 0,
+      "user_id": 0
+    },
+    "missing_logged_first_action": 0,
+    "missing_logged_start": 0,
+    "multiple_skill_event_keys": 0,
+    "negative_first_action_delay": 41,
+    "problem_types": {
+      "algebra": 3500688,
+      "choose_1": 1847657,
+      "choose_n": 11597,
+      "fill_in_1": 742960,
+      "open_response": 17642,
+      "rank": 2726
+    },
+    "questions": 179999,
+    "source_rows": 6123270,
+    "start_clock_mismatch": 4971,
+    "students": 46674,
+    "unique_response_ids": 6123270,
+    "valid_timed_response": 6108345
+  },
+  "repeated_student_question_events": 217301,
+  "retained_fraction": 0.8448856574999959,
+  "retained_interactions": 5173463,
+  "retained_sessions": 352017,
+  "retained_students": 19092,
+  "same_clock_additional_events": 0,
+  "session_gap_ms": 36000000,
+  "skills": 265,
+  "source": "https://sites.google.com/site/assistmentsdata/datasets/2012-13-school-data-with-affect",
+  "source_sessions": 402463,
+  "split_correct": {
+    "test": 607218,
+    "train": 2306643,
+    "validation": 631561
+  },
+  "split_interactions": {
+    "test": 901241,
+    "train": 3353476,
+    "validation": 918746
+  },
+  "split_sessions": {
+    "test": 63780,
+    "train": 224457,
+    "validation": 63780
+  },
+  "students_at_least_five_sessions": 19092,
+  "timestamp_eligible_interactions": 6108345,
+  "timestamp_eligible_students": 46659,
+  "timestamp_field": "exported problem start anchored by logged Unix time plus first graded action offset",
+  "untagged_interactions": 2771237
+}

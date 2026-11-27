@@ -24,14 +24,14 @@ def require(condition, message):
         raise ValueError(message)
 
 
-def verify(root):
+def verify(root, *, source_id="Row"):
     store = SessionStore(root / "session_store")
     parquet = root / "events" / "part-00000.parquet"
     require(store.strict_timestamp_history and sha256_file(parquet) == store.metadata["events_sha256"],
             "store provenance mismatch")
     table = pq.read_table(parquet)
     arrays = {name: table[name].to_numpy() for name in table.column_names}
-    row = arrays["Row"]
+    row = arrays[source_id]
     require(len(np.unique(row)) == len(row), "duplicate raw event identity")
     for disk, source in (("question", "question_id"), ("skill", "skill_id"),
                          ("correct", "correct"), ("timestamp_ms", "timestamp")):

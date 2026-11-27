@@ -24,7 +24,7 @@ from ktbench.rkt.data import RKTTargetDataset, collate_rkt
 from ktbench.rkt.phi import CrossFittedPhiRepository
 
 
-def batches(store, prepared):
+def batches(store, prepared, dataset_name="algebra2005"):
     metadata = store.metadata
     vocabulary = {name: metadata[name] for name in ("num_questions", "num_skills")}
     for name, profile in BASELINE_TRAINING_CONFIGS.items():
@@ -39,14 +39,15 @@ def batches(store, prepared):
     yield "rkt", PaperFaithfulRKT(RKTConfig(vocabulary["num_questions"], len(initial) - 1), initial), batch, None
 
     dataset = AlgebraSessionTargets(store, "train")
-    examples = [dataset[i] for i in [0, 1, len(dataset.targets)]]
+    final_index = len(dataset.targets) if len(dataset) > len(dataset.targets) else 2
+    examples = [dataset[i] for i in (0, 1, final_index)]
     batch = collate_hitskt(examples, **vocabulary)
     target = examples[-1]
     flipped = np.asarray(target.target.correct).copy()
     flipped[-1] ^= 1
     variant = collate_hitskt([*examples[:-1], replace(target, target=replace(target.target, correct=flipped))],
                             **vocabulary)
-    config = HITSKT_TRAINING_CONFIGS["algebra2005"]
+    config = HITSKT_TRAINING_CONFIGS[dataset_name]
     model = HiTSKT(HiTSKTConfig(**vocabulary, width=config["width"], heads=config["heads"],
                                feedforward_width=config["feedforward_width"]))
     yield "hitskt", model, batch, variant
@@ -56,13 +57,14 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("store", type=Path)
     parser.add_argument("prepared", type=Path)
+    parser.add_argument("--dataset", choices=("algebra2005", "assist2012"), default="algebra2005")
     parser.add_argument("--cpu-forward-only", action="store_true")
     args = parser.parse_args()
     if not args.cpu_forward_only and not torch.cuda.is_available():
         raise RuntimeError("CUDA is required for the optimizer smoke")
     device = torch.device("cpu" if args.cpu_forward_only else "cuda")
     seed_everything()
-    for name, model, batch, variant in batches(SessionStore(args.store), args.prepared):
+    for name, model, batch, variant in batches(SessionStore(args.store), args.prepared, args.dataset):
         model = model.to(device).eval()
         batch = batch.to(device)
         if variant is None:

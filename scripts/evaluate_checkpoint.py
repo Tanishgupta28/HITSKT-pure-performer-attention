@@ -47,12 +47,12 @@ def evaluate_checkpoint(
         if int(stats[stat]) != int(store.metadata[metadata]):
             raise ValueError(f"session store mismatch for {stat}")
     ordered = config["dataset"] == "assist2009"
-    algebra = config["dataset"] == "algebra2005"
-    if algebra:
+    strict_time = config["dataset"] in ("algebra2005", "assist2012")
+    if strict_time:
         store_hash = hashlib.sha256((store.root / "metadata.json").read_bytes()).hexdigest()
         if (not torch.cuda.is_available() or not store.strict_timestamp_history
                 or store_hash != config["session_store_metadata_sha256"]):
-            raise ValueError("Algebra2005 replay requires CUDA and the original strict-time session store")
+            raise ValueError("Strict-time benchmark replay requires CUDA and the original strict-time session store")
         if "cudnn_allow_tf32" in config:
             torch.backends.cudnn.allow_tf32 = config["cudnn_allow_tf32"]
     if ordered:
@@ -98,14 +98,14 @@ def evaluate_checkpoint(
                     or config["session_protocol"] != store.metadata["session_protocol"]):
                 raise ValueError("HiTSKT assignment boundary provenance differs from training")
             dataset_class = AssignmentTargets
-        if algebra:
+        if strict_time:
             from ktbench.data.algebra2005 import AlgebraSessionTargets
 
             dataset_class = AlgebraSessionTargets
         model = HiTSKT.from_checkpoint(checkpoint_path, map_location=device).to(device).eval()
         dataset = dataset_class(store, "test", history_sessions=config["history_sessions"])
-        metrics = _run_epoch(model, dataset, verify_target_coverage=ordered or algebra, **common)
-        if ordered or algebra:
+        metrics = _run_epoch(model, dataset, verify_target_coverage=ordered or strict_time, **common)
+        if ordered or strict_time:
             validation_set = dataset_class(store, "validation", history_sessions=config["history_sessions"])
             validation = _run_epoch(model, validation_set, verify_target_coverage=True, **common)
     elif model_name in ("RKT", RKT_PHI_ONLY):
@@ -132,8 +132,8 @@ def evaluate_checkpoint(
             model.set_relation_parameters_trainable(True)
         else:
             dataset = RKTTargetDataset(store, "test")
-            metrics = _run_epoch(model, dataset, repository, verify_target_coverage=algebra, **common)
-            if algebra:
+            metrics = _run_epoch(model, dataset, repository, verify_target_coverage=strict_time, **common)
+            if strict_time:
                 validation_set = RKTTargetDataset(store, "validation")
                 validation = _run_epoch(model, validation_set, repository, verify_target_coverage=True, **common)
                 model.set_relation_parameters_trainable(True)
@@ -144,11 +144,11 @@ def evaluate_checkpoint(
                    else RollingTargetDataset(store, "test", history_length=config["history_length"]))
         model = load_baseline_checkpoint(checkpoint_path, map_location=device).to(device).eval()
         settings = dict(batch_size=config["batch_size"], gradient_clip=None,
-                        transport=config["transport"] if ordered or gated or algebra else "reference",
+                        transport=config["transport"] if ordered or gated or strict_time else "reference",
                         dkt_dense=config.get("dkt_dense_lstm", False),
                         verify_target_coverage=ordered or gated, **common)
         metrics = _run_epoch(model, dataset, **settings)
-        if ordered or gated or algebra:
+        if ordered or gated or strict_time:
             validation_set = (store.targets("validation", config["history_length"]) if ordered
                               else RollingTargetDataset(store, "validation", history_length=config["history_length"]))
             validation = _run_epoch(model, validation_set, **settings)
@@ -156,7 +156,7 @@ def evaluate_checkpoint(
         raise ValueError(f"unsupported benchmark model: {model_name}")
     if metrics["targets"] != stats["target_counts"]["test"]:
         raise ValueError("independent test target count differs from stored data stats")
-    if ordered or gated or algebra:
+    if ordered or gated or strict_time:
         if validation["roc_auc"] != result["best_validation_auc"]:
             raise ValueError("independent replay validation ROC-AUC differs from best record")
         total = sum(p.numel() for p in model.parameters())
@@ -173,7 +173,7 @@ def evaluate_checkpoint(
             "trainable_parameters": trainable, "validation": validation,
             "validation_and_test_target_ids_verified": True} if ordered else {}),
         **({"total_parameters": total, "trainable_parameters": trainable,
-            "validation": validation, "validation_and_test_target_ids_verified": True} if gated or algebra else {}),
+            "validation": validation, "validation_and_test_target_ids_verified": True} if gated or strict_time else {}),
         "verified": True,
         "verification": "fresh model loaded from best checkpoint; exact equality of all test metrics",
         "model": model_name,

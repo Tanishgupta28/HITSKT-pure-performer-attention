@@ -1,0 +1,67 @@
+{
+  "attention": "deterministic ELU+1 feature map and causal prefix sums",
+  "historical_checkpoints": {
+    "assist2017": {
+      "best_epoch": 40,
+      "checkpoint_format": 1,
+      "commit": "d3ff9ecef406e5f8d4cd1bb04abab42fd112c1d6",
+      "config": {
+        "action_layers": 1,
+        "correct_layers": 1,
+        "decoder_layers": 1,
+        "dropout": 0.1,
+        "feedforward_width": 2048,
+        "heads": 4,
+        "num_questions": 3158,
+        "num_skills": 102,
+        "session_layers": 1,
+        "width": 256
+      },
+      "total_parameters": 6931457
+    },
+    "ednet_kt1": {
+      "best_epoch": 30,
+      "checkpoint_format": 1,
+      "commit": "d499585b43743fa64232f938e70c01240d9f6ff9",
+      "config": {
+        "action_layers": 1,
+        "correct_layers": 1,
+        "decoder_layers": 1,
+        "dropout": 0.1,
+        "feedforward_width": 1024,
+        "heads": 2,
+        "num_questions": 13169,
+        "num_skills": 1495,
+        "session_layers": 1,
+        "width": 128
+      },
+      "total_parameters": 5074433
+    },
+    "junyi": {
+      "best_epoch": 32,
+      "checkpoint_format": 1,
+      "commit": "d6c0ff499c040f6cf2fdec13128b3a6ba9a930d9",
+      "config": {
+        "action_layers": 1,
+        "correct_layers": 1,
+        "decoder_layers": 1,
+        "dropout": 0.1,
+        "feedforward_width": 1024,
+        "heads": 2,
+        "num_questions": 25630,
+        "num_skills": 1521,
+        "session_layers": 1,
+        "width": 128
+      },
+      "total_parameters": 8271105
+    }
+  },
+  "model": "ktbench.models.hitskt.HiTSKT",
+  "runner": "scripts/train_hitskt.py",
+  "sha256": {
+    "ktbench/models/hitskt.py": "627e3715eb1bd386139a7ba69eb603e6ac49dafe111f46e53ea731c03f55c515",
+    "ktbench/models/performer.py": "1b517922893f8573d294fbb036b0f7af6bb9e8d4a1a7808d50db52682d323004"
+  },
+  "source_main_commit": "33364c5090d90502f55364575218fd69ac201ca9",
+  "verified": true
+}

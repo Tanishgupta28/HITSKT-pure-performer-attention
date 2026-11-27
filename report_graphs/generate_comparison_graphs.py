@@ -18,9 +18,10 @@ from matplotlib.ticker import MaxNLocator
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 DATASETS = {"assist2017": "ASSIST2017", "junyi": "Junyi", "ednet_kt1": "EdNet-KT1",
-            "assist2009": "ASSIST2009", "algebra2005": "Algebra I 2005–2006"}
+            "assist2009": "ASSIST2009", "algebra2005": "Algebra I 2005–2006",
+            "assist2012": "ASSIST2012"}
 PHI_ONLY = "RKT (Phi-only)"
-HISTORICAL = tuple(d for d in DATASETS if d not in ("assist2009", "algebra2005"))
+HISTORICAL = tuple(d for d in DATASETS if d not in ("assist2009", "algebra2005", "assist2012"))
 # Color, marker, line style. Markers identify individual measured epochs.
 STYLES = {
     "DKT": ("#0072B2", "o", "-"),
@@ -94,14 +95,14 @@ def load_run(summary):
     return points
 
 
-def load_benchmark(*, assist2009=False, algebra2005=False):
-    datasets = ("algebra2005",) if algebra2005 else ("assist2009",) if assist2009 else HISTORICAL
-    path = ROOT / "reports" / (f"{datasets[0]}_final_results.csv" if assist2009 or algebra2005 else "final_results.csv")
+def load_benchmark(*, assist2009=False, algebra2005=False, assist2012=False):
+    datasets = ("assist2012",) if assist2012 else ("algebra2005",) if algebra2005 else ("assist2009",) if assist2009 else HISTORICAL
+    path = ROOT / "reports" / (f"{datasets[0]}_final_results.csv" if assist2009 or algebra2005 or assist2012 else "final_results.csv")
     rows = read_csv(path, {"dataset", "model", "experiment_directory", "epochs_completed",
                            "best_epoch", "best_validation_auc", "seed"})
     models = tuple(PHI_ONLY if assist2009 and model == "RKT" else model for model in STYLES)
     expected = {(d, m) for d in datasets for m in models
-                if assist2009 or algebra2005 or (ROOT / "experiments" / m.lower() / d / "full" / "_SUCCESS").is_file()}
+                if assist2009 or algebra2005 or assist2012 or (ROOT / "experiments" / m.lower() / d / "full" / "_SUCCESS").is_file()}
     runs = {}
     for row in rows:
         key = row["dataset"], row["model"]
@@ -161,16 +162,17 @@ def main():
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument("--assist2009", action="store_true")
     mode.add_argument("--algebra2005", action="store_true")
+    mode.add_argument("--assist2012", action="store_true")
     parser.add_argument("--replace-ednet-kt1", action="store_true",
                         help="refresh only the EdNet-KT1 PNGs after all five runs are verified")
     parser.add_argument("--replace-assist2009", action="store_true",
                         help="refresh the ASSIST2009 PNGs after new runs are independently verified")
     args = parser.parse_args()
-    if args.replace_ednet_kt1 and (args.assist2009 or args.algebra2005):
+    if args.replace_ednet_kt1 and (args.assist2009 or args.algebra2005 or args.assist2012):
         parser.error("--replace-ednet-kt1 requires historical dataset mode")
     if args.replace_assist2009 and not args.assist2009:
         parser.error("--replace-assist2009 requires --assist2009")
-    runs = load_benchmark(assist2009=args.assist2009, algebra2005=args.algebra2005)
+    runs = load_benchmark(assist2009=args.assist2009, algebra2005=args.algebra2005, assist2012=args.assist2012)
     if args.replace_ednet_kt1 and any(("ednet_kt1", model) not in runs for model in STYLES):
         raise ValueError("EdNet-KT1 replacement requires all five completed runs")
     images = {}

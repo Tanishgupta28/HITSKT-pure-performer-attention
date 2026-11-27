@@ -347,7 +347,7 @@ def train_baseline(
             raise ValueError("final test is already recorded; run independent checkpoint verification")
         if not resume and output_root.exists():
             raise FileExistsError(output_root)
-    if dataset_name == "algebra2005" and not resume and (output_root / "config.json").exists():
+    if dataset_name in ("algebra2005", "assist2012") and not resume and (output_root / "config.json").exists():
         raise FileExistsError(output_root)
     output_root.mkdir(parents=True, exist_ok=True)
     profile = dict(BASELINE_TRAINING_CONFIGS[model_name])
@@ -358,10 +358,10 @@ def train_baseline(
         epoch_ceiling = epoch_ceiling_override
     history_length = int(profile["history_length"])
     ordered = dataset_name == "assist2009"
-    algebra = dataset_name == "algebra2005"
-    if algebra and (not torch.cuda.is_available() or not store.strict_timestamp_history):
-        raise ValueError("Algebra2005 full training requires CUDA and the verified strict-time session store")
-    if (ordered or algebra) and (transport != "packed64" or not torch.cuda.is_available()):
+    strict_time = dataset_name in ("algebra2005", "assist2012")
+    if strict_time and (not torch.cuda.is_available() or not store.strict_timestamp_history):
+        raise ValueError("Strict-time benchmark full training requires CUDA and the verified strict-time session store")
+    if (ordered or strict_time) and (transport != "packed64" or not torch.cuda.is_available()):
         raise ValueError("This dataset requires packed64 batch transport and CUDA")
     datasets = {
         split: (store.targets(split, history_length) if ordered
@@ -372,7 +372,7 @@ def train_baseline(
         raise ValueError("an experiment split contains no targets")
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     gpu_name = torch.cuda.get_device_name(device) if device.type == "cuda" else "CPU"
-    dkt_dense = ednet_dkt_dense or ((ordered or algebra) and model_name == "dkt")
+    dkt_dense = ednet_dkt_dense or ((ordered or strict_time) and model_name == "dkt")
     model = make_baseline_model(
         model_name,
         num_questions=int(store.metadata["num_questions"]),
@@ -425,7 +425,7 @@ def train_baseline(
             cuda_runtime=torch.version.cuda,
             gpu_memory_bytes=torch.cuda.get_device_properties(device).total_memory,
         )
-    if algebra:
+    if strict_time:
         fresh_configuration.update(dkt_dense_lstm=dkt_dense,
             cudnn_allow_tf32=torch.backends.cudnn.allow_tf32, session_store_metadata_sha256=hashlib.sha256(
             (store.root / "metadata.json").read_bytes()).hexdigest(),
@@ -481,9 +481,9 @@ def train_baseline(
         for key in ("model", "dataset", "seed", "batch_size", "history_length"):
             if configuration.get(key) != fresh_configuration.get(key):
                 raise ValueError(f"resume configuration mismatch for {key}")
-        if algebra and (configuration.get("session_store_metadata_sha256") !=
+        if strict_time and (configuration.get("session_store_metadata_sha256") !=
                         fresh_configuration["session_store_metadata_sha256"]):
-            raise ValueError("Algebra2005 resume session store differs")
+            raise ValueError("Strict-time benchmark resume session store differs")
         if ordered and (configuration.get("dataset_provenance") != store.provenance
                         or configuration.get("dkt_dense_lstm") != dkt_dense):
             raise ValueError("ASSIST2009 dataset provenance differs from the saved experiment")
@@ -590,7 +590,7 @@ def train_baseline(
         for epoch in range(start_epoch, epoch_ceiling + 1):
             if control.should_stop:
                 break
-            if ordered or algebra or ednet_dkt_dense:
+            if ordered or strict_time or ednet_dkt_dense:
                 torch.cuda.reset_peak_memory_stats(device)
             train_metrics = _run_epoch(
                 model,
@@ -604,8 +604,8 @@ def train_baseline(
                 transport=transport,
                 progress_path=output_root / "progress.json",
                 dkt_dense=dkt_dense,
-                check_finite_train_state=ednet_dkt_dense or algebra,
-                gpu_sample_path=(output_root / "gpu_activity.json" if (ordered or algebra or ednet_dkt_dense) and epoch == 1
+                check_finite_train_state=ednet_dkt_dense or strict_time,
+                gpu_sample_path=(output_root / "gpu_activity.json" if (ordered or strict_time or ednet_dkt_dense) and epoch == 1
                                  and len(datasets["train"]) >= 72 * profile["batch_size"] else None),
             )
             validation_metrics = _run_epoch(
@@ -639,7 +639,7 @@ def train_baseline(
             if decision.improved:
                 torch.save(payload, best_path)
             epochs_completed = epoch
-            if ordered or algebra or ednet_dkt_dense:
+            if ordered or strict_time or ednet_dkt_dense:
                 print(json.dumps({
                     "event": "epoch_metrics", "model": profile["model"], "epoch": epoch,
                     "train_loss": train_metrics["loss"], "validation_loss": validation_metrics["loss"],
@@ -755,7 +755,7 @@ def train_baseline(
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("model", choices=sorted(BASELINE_TRAINING_CONFIGS))
-    parser.add_argument("dataset", choices=("assist2017", "junyi", "ednet_kt1", "assist2009", "algebra2005"))
+    parser.add_argument("dataset", choices=("assist2017", "junyi", "ednet_kt1", "assist2009", "algebra2005", "assist2012"))
     parser.add_argument("store_root", type=Path)
     parser.add_argument("output_root", type=Path)
     parser.add_argument("--workers", type=int, default=0)

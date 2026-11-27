@@ -41,18 +41,18 @@ def csv_bytes(rows):
     return stream.getvalue().encode()
 
 
-def collect():
-    data = Path("reports/datasets/algebra2005")
+def collect(dataset=DATASET):
+    data = Path("reports/datasets") / dataset
     verification = read_json(data / "data_verification.json")
     summary = read_json(data / "summary.json")
     hashes = verification["source_target_manifests"]
     rows = []
     for model in MODELS:
-        run = Path("experiments", model.lower(), DATASET, "full")
+        run = Path("experiments", model.lower(), dataset, "full")
         config, result, replay, stats = (read_json(run / name) for name in (
             "config.json", "final_results.json", "independent_evaluation.json", "dataset_stats.json"))
         if (not (run / "_SUCCESS").is_file() or not replay["verified"]
-                or (result["dataset"], result["model"], result["seed"]) != (DATASET, model, 42)
+                or (result["dataset"], result["model"], result["seed"]) != (dataset, model, 42)
                 or config.get("test_epoch_ceiling_override") is not None
                 or (result["patience"], result["min_delta"], config["device"]) != (5, 0.0, "cuda")
                 or config["session_store_metadata_sha256"] != verification["session_store_metadata_sha256"]
@@ -97,7 +97,7 @@ def update_combined(rows):
     write_json(json_path, combined)
 
 
-def write_report(rows):
+def write_report(rows, dataset=DATASET, *, comparison=None):
     ranked = sorted(rows, key=lambda row: -row["test_auc"])
     best = {field: selector(row[field] for row in rows) for field, (_, selector) in METRICS.items()}
     lines = [
@@ -138,14 +138,16 @@ def write_report(rows):
             gap = row["test_auc"] - hitskt["test_auc"]
             lines.append(f'- **{row["model"]}** ranked {rank} by ROC-AUC, with a signed difference of '
                          f'{gap:+.6f} from HiTSKT. Its F1 was {row["test_f1"]:.6f}.')
+    if comparison:
+        lines += ["", comparison]
     lines += ["", "These ranks describe a single seeded run on one cohort. The held-out partitions are later "
               "sessions from the same students. The benchmark does not estimate uncertainty across seeds or "
               "generalization to unseen students.", "",
-              "[Result CSV](algebra2005_final_results.csv) · [Result JSON](algebra2005_final_results.json) · "
-              "[Validation loss](../report_graphs/algebra2005_loss_vs_epoch.png) · "
-              "[Validation ROC-AUC](../report_graphs/algebra2005_validation_auc_vs_epoch.png) · "
-              "[Trainable parameters](../report_graphs/algebra2005_parameter_comparison.png)", ""]
-    path = Path("reports/ALGEBRA2005_EXPERIMENT_REPORT.md")
+              f"[Result CSV]({dataset}_final_results.csv) · [Result JSON]({dataset}_final_results.json) · "
+              f"[Validation loss](../report_graphs/{dataset}_loss_vs_epoch.png) · "
+              f"[Validation ROC-AUC](../report_graphs/{dataset}_validation_auc_vs_epoch.png) · "
+              f"[Trainable parameters](../report_graphs/{dataset}_parameter_comparison.png)", ""]
+    path = Path("reports") / f"{dataset.upper()}_EXPERIMENT_REPORT.md"
     before, rest = path.read_text().split("<!-- RESULTS_START -->\n", 1)
     after = rest.split("<!-- RESULTS_END -->", 1)[1]
     write_bytes(path, (before + "<!-- RESULTS_START -->\n" + "\n".join(lines) +

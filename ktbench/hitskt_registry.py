@@ -33,6 +33,8 @@ HITSKT_TRAINING_CONFIGS["assist2009"] = HITSKT_TRAINING_CONFIGS["assist2017"].co
 
 HITSKT_TRAINING_CONFIGS["algebra2005"] = HITSKT_TRAINING_CONFIGS["assist2017"].copy()
 
+HITSKT_TRAINING_CONFIGS["assist2012"] = HITSKT_TRAINING_CONFIGS["assist2017"].copy()
+
 HITSKT_COMMON_CONFIG: dict[str, Any] = {
     "model": "HiTSKT",
     "optimizer": "Adam",

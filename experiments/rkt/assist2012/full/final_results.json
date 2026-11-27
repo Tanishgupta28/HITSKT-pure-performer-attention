@@ -1,0 +1,31 @@
+{
+  "best_checkpoint_reloaded": true,
+  "best_epoch": 2,
+  "best_validation_auc": 0.7306344043709698,
+  "dataset": "assist2012",
+  "epoch_ceiling": 300,
+  "epochs_completed": 7,
+  "gpu": "NVIDIA H100 80GB HBM3 MIG 3g.40gb",
+  "label": "RKT paper-faithful performance-only Phi-relation variant with 5-fold student-level cross-fitting.",
+  "min_delta": 0.0,
+  "model": "RKT",
+  "patience": 5,
+  "resume_count": 0,
+  "runtime_before_resume_estimated_from_artifact_mtimes": false,
+  "runtime_seconds": 1598.4414803376421,
+  "seed": 42,
+  "status": "complete",
+  "test": {
+    "accuracy": 0.7092209519984111,
+    "f1": 0.8024490522059411,
+    "loss": 0.5723927248111167,
+    "mse": 0.19442982532806014,
+    "precision": 0.7399129196926054,
+    "recall": 0.8765319868646845,
+    "roc_auc": 0.6981560884229102,
+    "targets": 901241,
+    "threshold": 0.5
+  },
+  "total_parameters": 9881943,
+  "trainable_parameters": 9881943
+}
